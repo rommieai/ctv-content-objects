@@ -4,17 +4,20 @@
 Para cada columna calcula: valores distintos (totales y utiles), fill rate por filas
 y por requests, y la distribucion de valores (completa si hay <= 40 distintos, top-30
 si hay mas). Para las columnas numericas (Total Requests, eCPM) calcula estadisticos.
-Luego repite el desglose filtrando por pais.
+Luego repite el desglose agrupando por una dimension (pais, publisher, etc.).
 
 Un valor se considera "util" cuando no es centinela (Not Available, Not Applicable,
 Unknown, N/A, null, none, undefined, vacio) ni basura equivalente a vacio:
 `[-7]` en contentCategory, el hash MD5 de cadena vacia en contentSeries.
 
 Uso:
-    python analizar.py entrada.csv salida.json [--paises "Mexico,Colombia,Chile"] [--digest carpeta]
+    python analizar.py entrada.csv salida.json [--por Country] \
+        [--grupos "Mexico,Colombia,Chile"] [--top-grupos 12] [--digest carpeta]
 
-Sin --paises se analizan todos. Con --digest escribe resumenes en texto plano
-(digest_global.txt / digest_paises.txt) utiles para redactar reportes.
+--por         dimension de desglose (default: Country; ej. Publisher, pageURL)
+--grupos      lista explicita de valores a incluir (separados por coma)
+--top-grupos  limitar a los N grupos con mas requests (0 = todos)
+--digest      carpeta para resumenes en texto plano (digest_global.txt, digest_grupos.txt)
 """
 import argparse
 import csv
@@ -31,7 +34,7 @@ CATEGORICAS = ["Publisher ID", "Publisher", "pageURL", "App Name", "Country",
                "contentIsLiveStream", "contentTitle", "contentRating"]
 DIST_COMPLETA_HASTA = 40   # si hay mas valores distintos que esto, se emite top-30
 TOP_N = 30
-TOP_PAIS = 15
+TOP_GRUPO = 15
 BUCKETS_ECPM = [("0", lambda e: e == 0), ("0-1", lambda e: 0 < e < 1),
                 ("1-3", lambda e: 1 <= e < 3), ("3-5", lambda e: 3 <= e < 5),
                 ("5-10", lambda e: 5 <= e < 10), ("10-20", lambda e: 10 <= e < 20),
@@ -67,16 +70,21 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("entrada")
     ap.add_argument("salida_json")
-    ap.add_argument("--paises", default="", help="lista separada por comas; vacio = todos")
+    ap.add_argument("--por", default="Country",
+                    help="dimension de desglose (default: Country)")
+    ap.add_argument("--grupos", default="",
+                    help="lista de valores a incluir, separados por coma; vacio = todos")
+    ap.add_argument("--top-grupos", type=int, default=0,
+                    help="limitar a los N grupos con mas requests (0 = todos)")
     ap.add_argument("--digest", default="", help="carpeta para los digests de texto")
     args = ap.parse_args()
-    paises_filtro = {p.strip() for p in args.paises.split(",") if p.strip()}
+    filtro = {g.strip() for g in args.grupos.split(",") if g.strip()}
 
     filas = 0
     total_req = 0
     val_filas = {c: Counter() for c in CATEGORICAS}
     val_reqs = {c: Counter() for c in CATEGORICAS}
-    paises = defaultdict(lambda: {"filas": 0, "req": 0,
+    grupos = defaultdict(lambda: {"filas": 0, "req": 0,
                                   "cols": {c: Counter() for c in CATEGORICAS},
                                   "e0": 0, "e_nz_sum": 0.0, "e_nz_n": 0,
                                   "e_w": 0.0, "req_w": 0})
@@ -89,6 +97,8 @@ def main():
         reader = csv.reader(f)
         cols = next(reader)
         idx = {c: i for i, c in enumerate(cols)}
+        if args.por not in idx:
+            raise SystemExit(f"La columna '{args.por}' no existe en el CSV")
         for row in reader:
             if len(row) != len(cols):
                 continue
@@ -103,19 +113,19 @@ def main():
                 e = None
             total_req += req
             lista_reqs.append(req)
-            pais = row[idx["Country"]].strip()
-            P = paises[pais]
-            P["filas"] += 1; P["req"] += req
+            grupo = row[idx[args.por]].strip()
+            G = grupos[grupo]
+            G["filas"] += 1; G["req"] += req
             if e is not None:
                 lista_ecpm.append(e)
                 if e == 0:
-                    e0 += 1; P["e0"] += 1
+                    e0 += 1; G["e0"] += 1
                 else:
                     e_nz_sum += e; e_nz_n += 1
-                    P["e_nz_sum"] += e; P["e_nz_n"] += 1
+                    G["e_nz_sum"] += e; G["e_nz_n"] += 1
                     if req > 0:
                         e_w += e * req; req_w += req
-                        P["e_w"] += e * req; P["req_w"] += req
+                        G["e_w"] += e * req; G["req_w"] += req
                 for nombre, cond in BUCKETS_ECPM:
                     if cond(e):
                         b_filas[nombre] += 1; b_reqs[nombre] += req
@@ -124,10 +134,11 @@ def main():
                 v = row[idx[c]].strip() or "(vacio)"
                 val_filas[c][v] += 1
                 val_reqs[c][v] += req
-                P["cols"][c][v] += 1
+                G["cols"][c][v] += 1
 
     res = {"archivo": args.entrada.split("\\")[-1], "filas": filas,
-           "total_requests": total_req, "columnas": {}, "paises": {}}
+           "total_requests": total_req, "columnas": {},
+           "dimension_grupos": args.por, "grupos": {}}
 
     for c in CATEGORICAS:
         vc, vq = val_filas[c], val_reqs[c]
@@ -165,29 +176,35 @@ def main():
         "ecpm_ponderado_por_requests": round(e_w / req_w, 3) if req_w else None,
         "buckets_filas": dict(b_filas), "buckets_requests": dict(b_reqs)}
 
-    for pais, P in sorted(paises.items(), key=lambda kv: -kv[1]["req"]):
-        if paises_filtro and pais not in paises_filtro:
+    orden = sorted(grupos.items(), key=lambda kv: -kv[1]["req"])
+    incluidos = 0
+    for grupo, G in orden:
+        if filtro and grupo not in filtro:
             continue
-        entrada = {"filas": P["filas"], "pct_filas": pct(P["filas"], filas),
-                   "requests": P["req"], "pct_requests": pct(P["req"], total_req),
-                   "ecpm": {"pct_filas_cero": pct(P["e0"], P["filas"]),
-                            "media_no_cero": round(P["e_nz_sum"] / P["e_nz_n"], 3) if P["e_nz_n"] else None,
-                            "ponderado_requests": round(P["e_w"] / P["req_w"], 3) if P["req_w"] else None},
+        if args.top_grupos and incluidos >= args.top_grupos:
+            break
+        incluidos += 1
+        entrada = {"filas": G["filas"], "pct_filas": pct(G["filas"], filas),
+                   "requests": G["req"], "pct_requests": pct(G["req"], total_req),
+                   "ecpm": {"pct_filas_cero": pct(G["e0"], G["filas"]),
+                            "media_no_cero": round(G["e_nz_sum"] / G["e_nz_n"], 3) if G["e_nz_n"] else None,
+                            "ponderado_requests": round(G["e_w"] / G["req_w"], 3) if G["req_w"] else None},
                    "columnas": {}}
         for c in CATEGORICAS:
-            if c == "Country":
+            if c == args.por:
                 continue
-            vc = P["cols"][c]
+            vc = G["cols"][c]
             utiles = sum(n for v, n in vc.items() if es_util(c, v if v != "(vacio)" else ""))
             entrada["columnas"][c] = {
                 "valores_distintos": len(vc),
-                "fill_rate_pct": pct(utiles, P["filas"]),
-                "top": [[v, n, pct(n, P["filas"])] for v, n in vc.most_common(TOP_PAIS)]}
-        res["paises"][pais] = entrada
+                "fill_rate_pct": pct(utiles, G["filas"]),
+                "top": [[v, n, pct(n, G["filas"])] for v, n in vc.most_common(TOP_GRUPO)]}
+        res["grupos"][grupo] = entrada
 
     with open(args.salida_json, "w", encoding="utf-8") as f:
         json.dump(res, f, ensure_ascii=False, indent=1)
-    print(f"filas={filas:,} requests={total_req:,} -> {args.salida_json}")
+    print(f"filas={filas:,} requests={total_req:,} grupos={len(res['grupos'])} "
+          f"(por {args.por}) -> {args.salida_json}")
 
     if args.digest:
         with open(args.digest + r"\digest_global.txt", "w", encoding="utf-8") as g:
@@ -205,16 +222,16 @@ def main():
                 g.write("\n")
             g.write("### Total Requests %s\n" % json.dumps(res["columnas"]["Total Requests"]))
             g.write("### eCPM %s\n" % json.dumps(res["columnas"]["eCPM"]))
-        with open(args.digest + r"\digest_paises.txt", "w", encoding="utf-8") as g:
-            for pais, pe in res["paises"].items():
-                g.write(f"== {pais} | filas={pe['filas']} ({pe['pct_filas']}%) "
-                        f"reqs={pe['requests']} ({pe['pct_requests']}%) "
-                        f"ecpm0={pe['ecpm']['pct_filas_cero']}% "
-                        f"avg_nz={pe['ecpm']['media_no_cero']} wtd={pe['ecpm']['ponderado_requests']}\n")
+        with open(args.digest + r"\digest_grupos.txt", "w", encoding="utf-8") as g:
+            for grupo, ge in res["grupos"].items():
+                g.write(f"== {grupo} | filas={ge['filas']} ({ge['pct_filas']}%) "
+                        f"reqs={ge['requests']} ({ge['pct_requests']}%) "
+                        f"ecpm0={ge['ecpm']['pct_filas_cero']}% "
+                        f"avg_nz={ge['ecpm']['media_no_cero']} wtd={ge['ecpm']['ponderado_requests']}\n")
                 for c in CATEGORICAS:
-                    if c == "Country":
+                    if c == args.por:
                         continue
-                    cc = pe["columnas"][c]
+                    cc = ge["columnas"][c]
                     tops = ", ".join(f"{v[:28]} {p:.1f}%" for v, n, p in cc["top"][:5])
                     g.write(f"   {c:20s} d={cc['valores_distintos']:<5d} "
                             f"fill={cc['fill_rate_pct']:5.1f}% | {tops}\n")
