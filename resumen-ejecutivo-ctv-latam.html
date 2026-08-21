@@ -1,0 +1,175 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CTV LATAM — Content Objects y eCPM (resumen ejecutivo)</title>
+<style>
+:root{
+  --paper:#FAFBFC; --surface:#F0F4F6; --ink:#22303F; --muted:#5A6B7C;
+  --line:#D9E1E8; --accent:#0B6E6E; --accent-soft:#E3EFEE;
+  --warn:#9A6A14; --warn-soft:#F6EEDD; --crit:#A63D3A; --crit-soft:#F5E6E5;
+  --ok:#2F6B44;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#151B22; --surface:#1D252E; --ink:#DEE6ED; --muted:#93A3B2;
+    --line:#33404C; --accent:#4FB3AE; --accent-soft:#183230;
+    --warn:#D3A44E; --warn-soft:#2E2617; --crit:#D98380; --crit-soft:#331D1C;
+    --ok:#7CBB93;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#151B22; --surface:#1D252E; --ink:#DEE6ED; --muted:#93A3B2;
+  --line:#33404C; --accent:#4FB3AE; --accent-soft:#183230;
+  --warn:#D3A44E; --warn-soft:#2E2617; --crit:#D98380; --crit-soft:#331D1C;
+  --ok:#7CBB93;
+}
+*{box-sizing:border-box; margin:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font:16px/1.55 Georgia, "Times New Roman", serif;
+  padding:2.2rem 1.2rem 3rem;
+}
+.doc{max-width:780px; margin:0 auto; display:flex; flex-direction:column; gap:2rem}
+h1,h2,h3,.label,table,.kpi{font-family:"Segoe UI", system-ui, -apple-system, sans-serif}
+h1{font-size:1.7rem; line-height:1.2; letter-spacing:-.01em; text-wrap:balance}
+h2{font-size:1.15rem; color:var(--accent); letter-spacing:.01em; text-transform:uppercase; font-size:.95rem}
+h3{font-size:1rem}
+.label{font-size:.72rem; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); font-weight:600}
+header{border-bottom:3px solid var(--accent); padding-bottom:1.1rem; display:flex; flex-direction:column; gap:.55rem}
+header .meta{color:var(--muted); font-size:.85rem; font-family:"Segoe UI",system-ui,sans-serif}
+section{display:flex; flex-direction:column; gap:.8rem}
+p{max-width:70ch}
+.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:.7rem}
+.kpi{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:.75rem .9rem; display:flex; flex-direction:column; gap:.15rem}
+.kpi b{font-size:1.35rem; font-variant-numeric:tabular-nums; letter-spacing:-.01em}
+.kpi span{font-size:.75rem; color:var(--muted); line-height:1.3}
+.tablewrap{overflow-x:auto; border:1px solid var(--line); border-radius:6px}
+table{border-collapse:collapse; width:100%; font-size:.83rem; line-height:1.35}
+th{background:var(--surface); text-align:left; font-weight:600; color:var(--muted); font-size:.72rem; text-transform:uppercase; letter-spacing:.05em}
+th,td{padding:.5rem .65rem; border-bottom:1px solid var(--line); vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+code{font:.82em Consolas, monospace; background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:0 .25em}
+.call{border-left:4px solid var(--accent); background:var(--accent-soft); border-radius:0 6px 6px 0; padding:.7rem .95rem; font-size:.92rem}
+.call.warn{border-left-color:var(--warn); background:var(--warn-soft)}
+.call.crit{border-left-color:var(--crit); background:var(--crit-soft)}
+.pill{display:inline-block; font:600 .68rem/1.5 "Segoe UI",system-ui,sans-serif; text-transform:uppercase; letter-spacing:.06em; border-radius:99px; padding:.05rem .55rem; white-space:nowrap}
+.pill.ok{background:var(--accent-soft); color:var(--accent)}
+.pill.warn{background:var(--warn-soft); color:var(--warn)}
+.pill.crit{background:var(--crit-soft); color:var(--crit)}
+ul,ol{padding-left:1.3rem; display:flex; flex-direction:column; gap:.45rem; max-width:72ch}
+li::marker{color:var(--accent); font-weight:600}
+.foot{border-top:1px solid var(--line); padding-top:1rem; color:var(--muted); font-size:.8rem; font-family:"Segoe UI",system-ui,sans-serif}
+.foot ul{gap:.15rem; font-size:.8rem}
+@media print{
+  :root{
+    --paper:#fff; --surface:#F0F4F6; --ink:#1c2732; --muted:#51606e;
+    --line:#c9d3dc; --accent:#0B6E6E; --accent-soft:#E8F1F0;
+    --warn:#8a5e11; --warn-soft:#F6EEDD; --crit:#A63D3A; --crit-soft:#F5E6E5;
+  }
+  body{padding:0; font-size:12.5px}
+  .doc{max-width:none; gap:1.3rem}
+  section, .call, .kpi, tr{break-inside:avoid}
+  h2{break-after:avoid}
+  a{color:inherit; text-decoration:none}
+  @page{margin:16mm 14mm}
+}
+</style>
+
+<div class="doc">
+<header>
+  <span class="label">Análisis exploratorio · Inventario CTV LATAM</span>
+  <h1>Content objects (OpenRTB) y eCPM: qué llega, qué falta y qué se está vendiendo</h1>
+  <div class="meta">Fuente: reportes de inventory source v10 y v11 (ventana 4–18 ago 2026) · consolidados en un universo único · 20 ago 2026</div>
+</header>
+
+<section>
+  <div class="kpis">
+    <div class="kpi"><b>525,178</b><span>combinaciones únicas analizadas (universo consolidado de ambos CSV)</span></div>
+    <div class="kpi"><b>428&nbsp;mil&nbsp;M</b><span>bid requests en la ventana · 18 países · 232 publishers</span></div>
+    <div class="kpi"><b>51%</b><span>del tráfico corre por inventario que genera revenue (eCPM &gt; 0)</span></div>
+    <div class="kpi"><b>4.98</b><span>eCPM ponderado del tráfico monetizado (mediana 3.1 · p90 10.5)</span></div>
+  </div>
+  <div class="call">
+    <b>Nota metodológica.</b> Los dos CSV resultaron ser <b>dos versiones del mismo corte</b>, no dos periodos: comparten el 97.4% de las combinaciones y el eCPM es idéntico en el 94.5% de ellas. Ambos vienen truncados al límite de exportación de 512,000 filas, así que se trabajó sobre la unión sin duplicados. Todas las cifras se reportan en dos vistas: <b>% de filas</b> (variedad del catálogo) y <b>% de requests</b> (volumen real de tráfico) — pocas combinaciones gigantes concentran el volumen (el 1% de las filas mueve el 50% de los requests).
+  </div>
+</section>
+
+<section>
+  <h2>1 · Content objects: cobertura real por campo</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Campo (OpenRTB)</th><th class="num">% filas con dato</th><th class="num">% requests con dato</th><th>Estado</th></tr>
+    <tr><td>contentGenre <code>content.genre</code></td><td class="num">98.7%</td><td class="num">94.3%</td><td><span class="pill warn">texto libre — 7,700 variantes</span></td></tr>
+    <tr><td>contentTitle <code>content.title</code></td><td class="num">91.6%</td><td class="num">76.2%</td><td><span class="pill ok">usable</span> 24% del tráfico viaja sin título</td></tr>
+    <tr><td>contentRating <code>content.contentrating</code></td><td class="num">84.7%</td><td class="num">88.2%</td><td><span class="pill warn">5 sistemas mezclados</span></td></tr>
+    <tr><td>contentLanguage <code>content.language</code></td><td class="num">79.9%</td><td class="num">86.7%</td><td><span class="pill ok">usable</span> códigos sucios menores</td></tr>
+    <tr><td>contentIsLiveStream <code>content.livestream</code></td><td class="num">29.2%</td><td class="num">38.0%</td><td><span class="pill warn">nunca reportan 0 (VOD)</span></td></tr>
+    <tr><td>contentCategory <code>content.cat</code></td><td class="num">22.0%</td><td class="num">30.0%</td><td><span class="pill crit">78% trae el placeholder [-7]</span></td></tr>
+    <tr><td>contentLength <code>content.len</code></td><td class="num">11.2%</td><td class="num">23.6%</td><td><span class="pill crit">buckets 1–8, no segundos</span></td></tr>
+    <tr><td>contentSeries <code>content.series</code></td><td class="num">5.5%</td><td class="num">6.7%</td><td><span class="pill crit">el campo más vacío</span></td></tr>
+  </table></div>
+  <p><b>Los campos confiables hoy son género, título, rating e idioma</b> (76–94% del tráfico), siempre que se normalicen. Categoría, duración, serie y livestream están entre parciales e inservibles tal como llegan.</p>
+</section>
+
+<section>
+  <h2>2 · Problemas de calidad encontrados (vienen "poblados" pero son basura)</h2>
+  <ul>
+    <li><b><code>content.cat = [-7]</code> en el 78% de las filas (70% del tráfico).</b> No es una categoría IAB válida; es un placeholder/bug. Lo poco válido usa la taxonomía 1.0 deprecada, e incluye códigos inexistentes (<code>IAB1-22</code>) y taxonomías 2.x sin declarar <code>cattax</code>. Sin arreglar esto no hay targeting contextual ni brand safety por categoría.</li>
+    <li><b>Roku ofusca serie con hash MD5</b> — y el valor que llega es el hash de cadena vacía (11% del tráfico): metadata "poblada" que en realidad está vacía. Sus títulos llegan como <code>roku</code>/<code>epg</code> (6% del tráfico con título oculto).</li>
+    <li><b>Macros de ad server sin reemplazar</b> en producción: <code>{{CONTENT_SERIES}}</code>, <code>{{content_title}}</code> y <code>{{content_rating</code> — publishers con la variable mal configurada.</li>
+    <li><b><code>content.len</code> no viene en segundos</b> como exige la spec: solo valores 1–8 (buckets sin documentar). No usable como duración hasta confirmar el mapeo con la fuente.</li>
+    <li><b><code>livestream</code> nunca vale 0:</b> solo marcan el 1 (live). La ausencia no se puede leer como VOD, así que no se puede medir la proporción live/VOD real (live confirmado: 38% del tráfico).</li>
+    <li><b>Formatos sucios sistemáticos:</b> ratings en 5 sistemas (TV Parental, MPAA, edades, RTC México, concatenados tipo <code>tvpg_tv_14</code>), géneros con prefijo <code>genre_*</code>, idiomas ISO-2/ISO-3 mezclados, mojibake en títulos con acentos.</li>
+  </ul>
+  <div class="call warn"><b>La calidad depende del publisher, no del país.</b> TCL (≈56% del tráfico) no manda categoría ni duración; Roku manda estructura pero oculta título/serie; Coocaa/Skyworth manda el content object completo. Los arreglos se negocian con <b>4–5 integraciones</b>, no mercado por mercado.</div>
+</section>
+
+<section>
+  <h2>3 · Normalizando género y rating, el panorama mejora</h2>
+  <p>Se construyó una normalización reutilizable (entregada como CSV enriquecido): las 7,700 variantes de género se reducen a <b>~15 géneros que concentran el tráfico</b> (92% de filas mapeadas) y los 182 ratings a <b>7 franjas de edad</b> (97% mapeado). Con eso aparecen conclusiones que el dato crudo escondía:</p>
+  <ul>
+    <li>El precio por género varía poco (4.2–6.2), pero <b>la facilidad de venta varía 3x</b>: los géneros de canal FAST (animación 78%, entretenimiento 74%, deportes 69%, noticias 66% de su tráfico monetizado) se venden al doble de tasa que el catálogo de películas (terror 36%, western 26%). <b>Deportes: el más fácil de vender, al peor precio (2.84). Anime: el mejor pagado (6.16).</b></li>
+    <li>El 54% del tráfico es apto para audiencias generales (franjas "todos" a 13-15). El contenido 16+/adulto (24% del tráfico) <b>no paga menos, pero se vende a la mitad de tasa</b> (36–37% vs 71% del familiar).</li>
+    <li><b>El inventario "sin clasificar" paga 24% menos</b> (3.98 vs ~5.2): argumento directo, con números, para exigir rating a los publishers.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>4 · eCPM: cómo se está monetizando</h2>
+  <p>El 83% de las filas tiene eCPM = 0, pero esas filas son catálogo de cola: <b>el 51% del tráfico sí corre por combinaciones con revenue</b>. El precio de mercado del tráfico vendido: <b>4.98 ponderado</b> (mediana 3.1, p90 10.5), con el grueso transándose entre 1 y 10 USD.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Mercado</th><th class="num">% del tráfico del país que monetiza</th><th class="num">eCPM ponderado</th><th>Lectura</th></tr>
+    <tr><td>México (62% del tráfico total)</td><td class="num">58%</td><td class="num">4.44</td><td>mucho volumen, precio medio</td></tr>
+    <tr><td>Argentina</td><td class="num">54%</td><td class="num">6.25</td><td>parejo y sano</td></tr>
+    <tr><td>Chile</td><td class="num">35%</td><td class="num">8.33</td><td>vende menos, el mejor precio</td></tr>
+    <tr><td>Colombia</td><td class="num">21%</td><td class="num">3.00</td><td><span class="pill crit">falla en tasa y precio</span></td></tr>
+    <tr><td>Venezuela</td><td class="num">0%</td><td class="num">—</td><td>cero revenue en toda la ventana</td></tr>
+  </table></div>
+  <ul>
+    <li><b>Tres modelos de vendedor:</b> broadcasters con fill casi total a precio bajo (TelevisaUnivision monetiza 93–98% de su tráfico a 1.30–2.24); premium real (TV Azteca: 75% a 8.55; Zeasn/WhaleLive: 91% a 10.72); y <b>agregadores que casi no venden — OTTera es dueño del 24% del catálogo y solo monetiza el 1.45% de su tráfico</b>. El "83% en cero" del dataset es básicamente su catálogo muerto.</li>
+    <li><b>El contenido en español es la mitad del tráfico vendido y paga ~12% más que el inglés</b> (5.63 vs 5.03). El tráfico sin idioma declarado se castiga fuerte (2.91).</li>
+    <li>Matiz: el tráfico premium de alto volumen se vende caro <i>aunque</i> oculte metadata (el tráfico sin título paga 5.79) — el precio de los gigantes viene de la relación comercial; la metadata pesa en la cola.</li>
+  </ul>
+  <div class="call crit"><b>Outlier a auditar:</b> 16 de las 20 filas más caras son de Perú, encabezadas por un eCPM de exactamente 200.0 (ViX/TelevisaUnivision). Sospecha de error de moneda o deal mal cargado en esa integración; conviene excluir eCPM &gt; 30 de los promedios hasta aclararlo.</div>
+</section>
+
+<section>
+  <h2>5 · Recomendaciones</h2>
+  <ol>
+    <li><b>Reclamar 3 fixes a las integraciones grandes</b> (TCL/OEMs y Roku): corregir <code>cat = [-7]</code>, mandar <code>livestream = 0</code> para VOD, y <code>len</code> en segundos. Recuperaría categoría en ~70% del tráfico y habilitaría contextual + live/VOD.</li>
+    <li><b>Adoptar la normalización de género y rating en el pipeline</b> (ya construida y entregada como CSV enriquecido) — es lo que vuelve usables los dos campos con mejor cobertura.</li>
+    <li><b>Auditar los eCPM de Perú</b> (y el 200.0) con la fuente antes de usar promedios de ese país.</li>
+    <li><b>Armar el mapa bundle→servicio</b> (ViX aparece con 4 bundles, Tubi con 3, Plex con 2) para poder medir alcance y precio por servicio real.</li>
+    <li><b>Pedir exportaciones segmentadas</b> (por país o publisher): el reporte trunca a 512K filas y hoy la cola queda cortada.</li>
+  </ol>
+</section>
+
+<div class="foot">
+  <b>Documentos de respaldo disponibles</b> (por si quieres el detalle):
+  <ul>
+    <li>· Reporte detallado por columna y por país (universo unificado) — <code>reporte-content-objects-detallado-unificado.md</code></li>
+    <li>· Normalización de género/rating + análisis del inventario monetizado — <code>reporte-normalizacion-y-ecpm.md</code></li>
+    <li>· Comparativo v10 vs v11 y construcción del consolidado — <code>reporte-comparativo-v10-v11.md</code></li>
+    <li>· Data completa en JSON + CSV consolidado enriquecido con género/rating normalizados</li>
+  </ul>
+</div>
+</div>

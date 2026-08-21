@@ -1,0 +1,7 @@
+# Los CSV de inventario y derivados no se versionan (100+ MB cada uno)
+*.csv
+
+# Artefactos de compilacion
+*.aux
+*.log
+__pycache__/

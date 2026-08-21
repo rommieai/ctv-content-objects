@@ -1,0 +1,875 @@
+{
+  "file": "inventory-source-alcance-ctv-v10-latam-content-objetcs.csv",
+  "rows": 512000,
+  "total_requests": 422968016640,
+  "columns": {
+    "Publisher ID": {
+      "filled_rows": 512000,
+      "empty_or_sentinel_rows": 0,
+      "fill_rate_rows_pct": 100.0,
+      "fill_rate_requests_pct": 100.0,
+      "empty_breakdown": {},
+      "pseudo_empty_special": {},
+      "distinct_useful_values": null,
+      "top_values": null
+    },
+    "Publisher": {
+      "filled_rows": 512000,
+      "empty_or_sentinel_rows": 0,
+      "fill_rate_rows_pct": 100.0,
+      "fill_rate_requests_pct": 100.0,
+      "empty_breakdown": {},
+      "pseudo_empty_special": {},
+      "distinct_useful_values": null,
+      "top_values": null
+    },
+    "pageURL": {
+      "filled_rows": 512000,
+      "empty_or_sentinel_rows": 0,
+      "fill_rate_rows_pct": 100.0,
+      "fill_rate_requests_pct": 100.0,
+      "empty_breakdown": {},
+      "pseudo_empty_special": {},
+      "distinct_useful_values": null,
+      "top_values": null
+    },
+    "App Name": {
+      "filled_rows": 470090,
+      "empty_or_sentinel_rows": 41910,
+      "fill_rate_rows_pct": 91.81,
+      "fill_rate_requests_pct": 93.22,
+      "empty_breakdown": {
+        "Not Available": 41910
+      },
+      "pseudo_empty_special": {},
+      "distinct_useful_values": null,
+      "top_values": null
+    },
+    "Country": {
+      "filled_rows": 512000,
+      "empty_or_sentinel_rows": 0,
+      "fill_rate_rows_pct": 100.0,
+      "fill_rate_requests_pct": 100.0,
+      "empty_breakdown": {},
+      "pseudo_empty_special": {},
+      "distinct_useful_values": 18,
+      "top_values": [
+        [
+          "Mexico",
+          146426
+        ],
+        [
+          "Argentina",
+          96040
+        ],
+        [
+          "Chile",
+          57727
+        ],
+        [
+          "Colombia",
+          50566
+        ],
+        [
+          "Peru",
+          42991
+        ],
+        [
+          "Ecuador",
+          21503
+        ],
+        [
+          "Dominican Republic",
+          19162
+        ],
+        [
+          "Costa Rica",
+          16794
+        ],
+        [
+          "Panama",
+          10132
+        ],
+        [
+          "Honduras",
+          10046
+        ],
+        [
+          "Venezuela",
+          8941
+        ],
+        [
+          "El Salvador",
+          7683
+        ]
+      ]
+    },
+    "contentGenre": {
+      "filled_rows": 505413,
+      "empty_or_sentinel_rows": 6587,
+      "fill_rate_rows_pct": 98.71,
+      "fill_rate_requests_pct": 93.94,
+      "empty_breakdown": {
+        "Not Applicable": 6375,
+        "none": 207,
+        "Unknown": 5
+      },
+      "pseudo_empty_special": {},
+      "distinct_useful_values": 7655,
+      "top_values": [
+        [
+          "drama",
+          50815
+        ],
+        [
+          "other",
+          29826
+        ],
+        [
+          "documentary",
+          26454
+        ],
+        [
+          "horror",
+          19231
+        ],
+        [
+          "comedy",
+          17735
+        ],
+        [
+          "drama,romance",
+          11536
+        ],
+        [
+          "action",
+          9159
+        ],
+        [
+          "thriller",
+          8033
+        ],
+        [
+          "music",
+          7215
+        ],
+        [
+          "sports",
+          6578
+        ],
+        [
+          "news",
+          5329
+        ],
+        [
+          "horror,thriller",
+          4837
+        ]
+      ]
+    },
+    "contentCategory": {
+      "filled_rows": 112520,
+      "empty_or_sentinel_rows": 399480,
+      "fill_rate_rows_pct": 21.98,
+      "fill_rate_requests_pct": 29.99,
+      "empty_breakdown": {},
+      "pseudo_empty_special": {
+        "[-7]": 399480
+      },
+      "distinct_useful_values": 477,
+      "top_values": [
+        [
+          "[IAB1]",
+          32443
+        ],
+        [
+          "[IAB1-22]",
+          18799
+        ],
+        [
+          "[IAB1-5]",
+          7469
+        ],
+        [
+          "[IAB12]",
+          6060
+        ],
+        [
+          "[IAB1, IAB1-5]",
+          4826
+        ],
+        [
+          "[IAB1-7]",
+          4635
+        ],
+        [
+          "[sports]",
+          4075
+        ],
+        [
+          "[IAB1-5, IAB1-7]",
+          3827
+        ],
+        [
+          "[IAB17]",
+          3741
+        ],
+        [
+          "[640]",
+          1949
+        ],
+        [
+          "[IAB1, IAB1-5, IAB1-7]",
+          1482
+        ],
+        [
+          "[IAB1-6]",
+          1423
+        ]
+      ]
+    },
+    "contentSeries": {
+      "filled_rows": 28248,
+      "empty_or_sentinel_rows": 483752,
+      "fill_rate_rows_pct": 5.52,
+      "fill_rate_requests_pct": 6.94,
+      "empty_breakdown": {
+        "Not Available": 479394,
+        "N/A": 71
+      },
+      "pseudo_empty_special": {
+        "md5-of-empty-string": 4287
+      },
+      "distinct_useful_values": 1838,
+      "top_values": [
+        [
+          "VOD",
+          3354
+        ],
+        [
+          "OTT Studios Entertainment On Demand",
+          963
+        ],
+        [
+          "{{CONTENT_SERIES}}",
+          614
+        ],
+        [
+          "No Series",
+          525
+        ],
+        [
+          "OTT Studios Sports Livestream",
+          512
+        ],
+        [
+          "Research Unit",
+          380
+        ],
+        [
+          "Doña Bárbara",
+          321
+        ],
+        [
+          "OTT Studios Entertainment Livestream",
+          293
+        ],
+        [
+          "WDBJ News",
+          226
+        ],
+        [
+          "Una Gran Balada",
+          219
+        ],
+        [
+          "QWEST",
+          212
+        ],
+        [
+          "The Cube USA",
+          186
+        ]
+      ]
+    },
+    "contentIsTitlePresent": {
+      "filled_rows": 512000,
+      "empty_or_sentinel_rows": 0,
+      "fill_rate_rows_pct": 100.0,
+      "fill_rate_requests_pct": 100.0,
+      "empty_breakdown": {},
+      "pseudo_empty_special": {},
+      "distinct_useful_values": 2,
+      "top_values": [
+        [
+          "true",
+          468751
+        ],
+        [
+          "false",
+          43249
+        ]
+      ]
+    },
+    "contentLength": {
+      "filled_rows": 58004,
+      "empty_or_sentinel_rows": 453996,
+      "fill_rate_rows_pct": 11.33,
+      "fill_rate_requests_pct": 24.07,
+      "empty_breakdown": {
+        "Not Applicable": 453996
+      },
+      "pseudo_empty_special": {},
+      "distinct_useful_values": 8,
+      "top_values": [
+        [
+          "6",
+          16548
+        ],
+        [
+          "5",
+          15315
+        ],
+        [
+          "4",
+          13661
+        ],
+        [
+          "8",
+          7947
+        ],
+        [
+          "7",
+          2434
+        ],
+        [
+          "3",
+          1104
+        ],
+        [
+          "2",
+          867
+        ],
+        [
+          "1",
+          128
+        ]
+      ]
+    },
+    "contentLanguage": {
+      "filled_rows": 408812,
+      "empty_or_sentinel_rows": 103188,
+      "fill_rate_rows_pct": 79.85,
+      "fill_rate_requests_pct": 86.85,
+      "empty_breakdown": {
+        "Not Applicable": 102852,
+        "Unknown": 336
+      },
+      "pseudo_empty_special": {},
+      "distinct_useful_values": 482,
+      "top_values": [
+        [
+          "en",
+          247778
+        ],
+        [
+          "es",
+          136657
+        ],
+        [
+          "pt",
+          6297
+        ],
+        [
+          "ru",
+          2345
+        ],
+        [
+          "hi",
+          1956
+        ],
+        [
+          "c",
+          1665
+        ],
+        [
+          "spa",
+          1584
+        ],
+        [
+          "de",
+          1039
+        ],
+        [
+          "eng",
+          688
+        ],
+        [
+          "fr",
+          687
+        ],
+        [
+          "ja",
+          666
+        ],
+        [
+          "it",
+          629
+        ]
+      ]
+    },
+    "contentIsLiveStream": {
+      "filled_rows": 149170,
+      "empty_or_sentinel_rows": 362830,
+      "fill_rate_rows_pct": 29.13,
+      "fill_rate_requests_pct": 38.71,
+      "empty_breakdown": {
+        "Unknown": 205942,
+        "Not Available": 156888
+      },
+      "pseudo_empty_special": {},
+      "distinct_useful_values": 1,
+      "top_values": [
+        [
+          "1",
+          149170
+        ]
+      ]
+    },
+    "contentTitle": {
+      "filled_rows": 468703,
+      "empty_or_sentinel_rows": 43297,
+      "fill_rate_rows_pct": 91.54,
+      "fill_rate_requests_pct": 75.4,
+      "empty_breakdown": {
+        "Not Applicable": 43297
+      },
+      "pseudo_empty_special": {},
+      "distinct_useful_values": 13612,
+      "top_values": [
+        [
+          "roku",
+          955
+        ],
+        [
+          "the baddest bad boy",
+          768
+        ],
+        [
+          "epg",
+          765
+        ],
+        [
+          "haus of horror",
+          757
+        ],
+        [
+          "eve",
+          736
+        ],
+        [
+          "hatchback",
+          645
+        ],
+        [
+          "catalunya �ber alles!",
+          635
+        ],
+        [
+          "beast no more: trailer",
+          617
+        ],
+        [
+          "rollers: trailer",
+          614
+        ],
+        [
+          "hide and bleed: trailer",
+          613
+        ],
+        [
+          "ovid and the art of love: trailer",
+          604
+        ],
+        [
+          "brooklyn love stories: trailer",
+          599
+        ]
+      ]
+    },
+    "contentRating": {
+      "filled_rows": 433891,
+      "empty_or_sentinel_rows": 78109,
+      "fill_rate_rows_pct": 84.74,
+      "fill_rate_requests_pct": 87.42,
+      "empty_breakdown": {
+        "Not Applicable": 77929,
+        "Unknown": 138,
+        "N/A": 40,
+        "undefined": 2
+      },
+      "pseudo_empty_special": {},
+      "distinct_useful_values": 177,
+      "top_values": [
+        [
+          "tv-14",
+          59043
+        ],
+        [
+          "tv-ma",
+          57360
+        ],
+        [
+          "r",
+          56271
+        ],
+        [
+          "tv-pg",
+          41685
+        ],
+        [
+          "nr",
+          37769
+        ],
+        [
+          "g",
+          29689
+        ],
+        [
+          "pg-13",
+          12414
+        ],
+        [
+          "not rated",
+          12036
+        ],
+        [
+          "nc-17",
+          12026
+        ],
+        [
+          "12",
+          11415
+        ],
+        [
+          "14",
+          10273
+        ],
+        [
+          "18",
+          9221
+        ]
+      ]
+    },
+    "Total Requests": {
+      "filled_rows": 512000,
+      "empty_or_sentinel_rows": 0,
+      "fill_rate_rows_pct": 100.0,
+      "fill_rate_requests_pct": 100.0,
+      "empty_breakdown": {},
+      "pseudo_empty_special": {},
+      "distinct_useful_values": null,
+      "top_values": null
+    },
+    "eCPM": {
+      "filled_rows": 512000,
+      "empty_or_sentinel_rows": 0,
+      "fill_rate_rows_pct": 100.0,
+      "fill_rate_requests_pct": 100.0,
+      "empty_breakdown": {},
+      "pseudo_empty_special": {},
+      "distinct_useful_values": null,
+      "top_values": null
+    }
+  },
+  "countries": {
+    "by_rows": [
+      [
+        "Mexico",
+        146426
+      ],
+      [
+        "Argentina",
+        96040
+      ],
+      [
+        "Chile",
+        57727
+      ],
+      [
+        "Colombia",
+        50566
+      ],
+      [
+        "Peru",
+        42991
+      ],
+      [
+        "Ecuador",
+        21503
+      ],
+      [
+        "Dominican Republic",
+        19162
+      ],
+      [
+        "Costa Rica",
+        16794
+      ],
+      [
+        "Panama",
+        10132
+      ],
+      [
+        "Honduras",
+        10046
+      ],
+      [
+        "Venezuela",
+        8941
+      ],
+      [
+        "El Salvador",
+        7683
+      ],
+      [
+        "Guatemala",
+        7256
+      ],
+      [
+        "Puerto Rico",
+        7235
+      ],
+      [
+        "Uruguay",
+        5022
+      ],
+      [
+        "Paraguay",
+        1827
+      ],
+      [
+        "Nicaragua",
+        1513
+      ],
+      [
+        "Bolivia",
+        1136
+      ]
+    ],
+    "by_requests": [
+      [
+        "Mexico",
+        261252206960
+      ],
+      [
+        "Argentina",
+        70957365440
+      ],
+      [
+        "Colombia",
+        27467979200
+      ],
+      [
+        "Chile",
+        24748737280
+      ],
+      [
+        "Peru",
+        10681106400
+      ],
+      [
+        "Ecuador",
+        5534074240
+      ],
+      [
+        "Costa Rica",
+        5405951840
+      ],
+      [
+        "Dominican Republic",
+        5017659680
+      ],
+      [
+        "Venezuela",
+        2755450240
+      ],
+      [
+        "Panama",
+        2273002080
+      ],
+      [
+        "Puerto Rico",
+        1876947760
+      ],
+      [
+        "Uruguay",
+        1577211680
+      ],
+      [
+        "Guatemala",
+        948000800
+      ],
+      [
+        "El Salvador",
+        937261680
+      ],
+      [
+        "Honduras",
+        873695200
+      ],
+      [
+        "Paraguay",
+        369871120
+      ],
+      [
+        "Bolivia",
+        159894160
+      ],
+      [
+        "Nicaragua",
+        131600880
+      ]
+    ]
+  },
+  "publishers": {
+    "count": 229,
+    "top_by_requests": [
+      [
+        "OTTera.tv",
+        92830334160
+      ],
+      [
+        "Roku - oRTB",
+        61253933520
+      ],
+      [
+        "TCL ADS - Springserve",
+        45790810080
+      ],
+      [
+        "TCL ADs (APAC)",
+        38491011840
+      ],
+      [
+        "iion Pty Ltd",
+        30597652960
+      ],
+      [
+        "TV Azteca - Springserve",
+        24792316880
+      ],
+      [
+        "Select Plus PTE LTD (CTV)",
+        19444360160
+      ],
+      [
+        "Televisa Univision via SpringServe",
+        19418305200
+      ],
+      [
+        "Coocaa, a SKYWORTH company",
+        18170801440
+      ],
+      [
+        "Equativ (Formerly SMART AdServer) - oRTB CTV",
+        13491097120
+      ],
+      [
+        "Televisa Univision via OB",
+        12547027680
+      ],
+      [
+        "Zeasn Europe B.V.",
+        7222742880
+      ],
+      [
+        "Vidaa",
+        6899216800
+      ],
+      [
+        "OneFox - Tubi",
+        5626253280
+      ],
+      [
+        "PML Digital",
+        3162413280
+      ]
+    ]
+  },
+  "ecpm": {
+    "zero_rows": 424037,
+    "rows_with_nonzero_ecpm": 87963
+  },
+  "content_richness": {
+    "note": "n de los 9 campos content* con dato util por fila",
+    "rows_by_n_filled": {
+      "1": 900,
+      "2": 2815,
+      "3": 17683,
+      "4": 97483,
+      "5": 205445,
+      "6": 143979,
+      "7": 24025,
+      "8": 9054,
+      "9": 10616
+    },
+    "requests_by_n_filled": {
+      "1": 1053518960,
+      "2": 3238000000,
+      "3": 23688088160,
+      "4": 67784741760,
+      "5": 166629525120,
+      "6": 76212392000,
+      "7": 35459671120,
+      "8": 30423640960,
+      "9": 18478438560
+    },
+    "avg_ecpm_by_n_filled": {
+      "1": 0.6859,
+      "2": 0.6239,
+      "3": 0.3205,
+      "4": 0.8214,
+      "5": 1.1356,
+      "6": 0.4364,
+      "7": 0.8551,
+      "8": 0.8991,
+      "9": 1.742
+    }
+  },
+  "ecpm_by_field_presence": {
+    "note": "Promedio de eCPM (solo filas con eCPM > 0; 88k de 512k filas) segun si el campo viene poblado o no",
+    "contentGenre": {
+      "avg_ecpm_filled": 4.913,
+      "avg_ecpm_empty": 4.166
+    },
+    "contentCategory": {
+      "avg_ecpm_filled": 4.889,
+      "avg_ecpm_empty": 4.907
+    },
+    "contentSeries": {
+      "avg_ecpm_filled": 4.526,
+      "avg_ecpm_empty": 4.934
+    },
+    "contentLength": {
+      "avg_ecpm_filled": 4.821,
+      "avg_ecpm_empty": 4.917
+    },
+    "contentLanguage": {
+      "avg_ecpm_filled": 5.147,
+      "avg_ecpm_empty": 3.755
+    },
+    "contentIsLiveStream": {
+      "avg_ecpm_filled": 4.948,
+      "avg_ecpm_empty": 4.893
+    },
+    "contentTitle": {
+      "avg_ecpm_filled": 4.935,
+      "avg_ecpm_empty": 4.465
+    },
+    "contentRating": {
+      "avg_ecpm_filled": 4.956,
+      "avg_ecpm_empty": 4.497
+    }
+  }
+}

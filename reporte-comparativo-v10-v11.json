@@ -1,0 +1,574 @@
+{
+ "definiciones": {
+  "llave": "combinacion de las 14 columnas de dimension (todas menos Total Requests y eCPM)",
+  "fila_identica": "las 16 columnas iguales, metricas incluidas"
+ },
+ "filas": {
+  "v10": 512000,
+  "v11": 512000,
+  "llaves_duplicadas_internas_v10": 0,
+  "llaves_duplicadas_internas_v11": 0
+ },
+ "solapamiento": {
+  "llaves_compartidas": 498822,
+  "pct_de_v10": 97.43,
+  "pct_de_v11": 97.43,
+  "solo_v10": 13178,
+  "solo_v11": 13178,
+  "filas_100pct_identicas_con_metricas": 39929
+ },
+ "requests": {
+  "total_v10": 422968016640,
+  "total_v11": 427408026000,
+  "compartidas_v10": 422235502000,
+  "pct_req_v10_en_compartidas": 99.83,
+  "compartidas_v11": 426734820960,
+  "pct_req_v11_en_compartidas": 99.84,
+  "solo_v10": 732514640,
+  "pct_req_solo_v10": 0.17,
+  "solo_v11": 673205040,
+  "pct_req_solo_v11": 0.16
+ },
+ "metricas_en_llaves_compartidas": {
+  "requests": {
+   "iguales": 40052,
+   "suben_en_v11": 277228,
+   "bajan_en_v11": 181542,
+   "delta_neto_requests": 4499318960
+  },
+  "ecpm": {
+   "iguales": 471421,
+   "sube_en_v11": 12186,
+   "baja_en_v11": 15215,
+   "media_v10": 0.855,
+   "media_v11": 0.8569,
+   "cero_a_positivo": 3349,
+   "positivo_a_cero": 2113,
+   "cero_en_ambos": 408509,
+   "positivo_en_ambos": 84851
+  }
+ },
+ "solo_v10_top": {
+  "publishers_filas": [
+   [
+    "Select Plus PTE LTD (CTV)",
+    1998
+   ],
+   [
+    "TCL ADs (APAC)",
+    1685
+   ],
+   [
+    "iion Pty Ltd",
+    1272
+   ],
+   [
+    "TCL ADS - Springserve",
+    1144
+   ],
+   [
+    "OTTera.tv",
+    1090
+   ],
+   [
+    "Equativ (Formerly SMART AdServer) - oRTB CTV",
+    973
+   ],
+   [
+    "Televisa Univision via SpringServe",
+    583
+   ],
+   [
+    "METAX SOFTWARE PTE. LTD. (Exchange)",
+    458
+   ],
+   [
+    "PML Digital",
+    317
+   ],
+   [
+    "Ex.co (oRTB/CTV)",
+    299
+   ],
+   [
+    "METAX SOFTWARE PTE. LTD.",
+    271
+   ],
+   [
+    "Roku - oRTB",
+    248
+   ]
+  ],
+  "publishers_requests": [
+   [
+    "Equativ (Formerly SMART AdServer) - oRTB CTV",
+    148024240
+   ],
+   [
+    "Televisa Univision via SpringServe",
+    91602320
+   ],
+   [
+    "TCL ADs (APAC)",
+    72996640
+   ],
+   [
+    "Select Plus PTE LTD (CTV)",
+    65842240
+   ],
+   [
+    "iion Pty Ltd",
+    54065120
+   ],
+   [
+    "TCL ADS - Springserve",
+    50385600
+   ],
+   [
+    "OTTera.tv",
+    48432480
+   ],
+   [
+    "METAX SOFTWARE PTE. LTD.",
+    30883840
+   ],
+   [
+    "METAX SOFTWARE PTE. LTD. (Exchange)",
+    17814880
+   ],
+   [
+    "Vidaa",
+    14438480
+   ],
+   [
+    "PML Digital",
+    13080560
+   ],
+   [
+    "Roku - oRTB",
+    12667280
+   ]
+  ],
+  "paises_filas": [
+   [
+    "Mexico",
+    4498
+   ],
+   [
+    "Argentina",
+    1795
+   ],
+   [
+    "Peru",
+    1336
+   ],
+   [
+    "Chile",
+    1100
+   ],
+   [
+    "Colombia",
+    951
+   ],
+   [
+    "Ecuador",
+    608
+   ],
+   [
+    "Dominican Republic",
+    558
+   ],
+   [
+    "Costa Rica",
+    477
+   ],
+   [
+    "Puerto Rico",
+    477
+   ],
+   [
+    "El Salvador",
+    257
+   ],
+   [
+    "Guatemala",
+    257
+   ],
+   [
+    "Panama",
+    237
+   ]
+  ],
+  "paises_requests": [
+   [
+    "Mexico",
+    375810080
+   ],
+   [
+    "Argentina",
+    99992000
+   ],
+   [
+    "Peru",
+    46100560
+   ],
+   [
+    "Colombia",
+    44450800
+   ],
+   [
+    "Chile",
+    39717200
+   ],
+   [
+    "Ecuador",
+    23006400
+   ],
+   [
+    "Puerto Rico",
+    18572000
+   ],
+   [
+    "Dominican Republic",
+    17563280
+   ],
+   [
+    "Costa Rica",
+    15875760
+   ],
+   [
+    "Panama",
+    8841680
+   ],
+   [
+    "El Salvador",
+    8460880
+   ],
+   [
+    "Guatemala",
+    8375680
+   ]
+  ]
+ },
+ "solo_v11_top": {
+  "publishers_filas": [
+   [
+    "OTTera.tv",
+    4201
+   ],
+   [
+    "iion Pty Ltd",
+    2345
+   ],
+   [
+    "TCL ADS - Springserve",
+    1713
+   ],
+   [
+    "TCL ADs (APAC)",
+    1135
+   ],
+   [
+    "Select Plus PTE LTD (CTV)",
+    766
+   ],
+   [
+    "PML Digital",
+    422
+   ],
+   [
+    "Vidaa  APAC Hisense Headquarter",
+    410
+   ],
+   [
+    "Equativ (Formerly SMART AdServer) - oRTB CTV",
+    297
+   ],
+   [
+    "Vidaa",
+    173
+   ],
+   [
+    "Unruly Group LLC (oRTB)",
+    152
+   ],
+   [
+    "Aluna Limited",
+    148
+   ],
+   [
+    "METAX SOFTWARE PTE. LTD. (Exchange)",
+    120
+   ]
+  ],
+  "publishers_requests": [
+   [
+    "OTTera.tv",
+    190198240
+   ],
+   [
+    "TCL ADS - Springserve",
+    103946480
+   ],
+   [
+    "iion Pty Ltd",
+    85125280
+   ],
+   [
+    "TCL ADs (APAC)",
+    63631120
+   ],
+   [
+    "Roku - oRTB",
+    47986000
+   ],
+   [
+    "Vidaa  APAC Hisense Headquarter",
+    29103840
+   ],
+   [
+    "Select Plus PTE LTD (CTV)",
+    25269440
+   ],
+   [
+    "AWG Media",
+    21344080
+   ],
+   [
+    "PML Digital",
+    13912400
+   ],
+   [
+    "Equativ (Formerly SMART AdServer) - oRTB CTV",
+    11260800
+   ],
+   [
+    "Unruly Group LLC (oRTB)",
+    9138320
+   ],
+   [
+    "Vidaa",
+    9123600
+   ]
+  ],
+  "paises_filas": [
+   [
+    "Argentina",
+    3012
+   ],
+   [
+    "Mexico",
+    2973
+   ],
+   [
+    "Chile",
+    1483
+   ],
+   [
+    "Peru",
+    1259
+   ],
+   [
+    "Ecuador",
+    791
+   ],
+   [
+    "Honduras",
+    788
+   ],
+   [
+    "Colombia",
+    735
+   ],
+   [
+    "Panama",
+    421
+   ],
+   [
+    "Dominican Republic",
+    382
+   ],
+   [
+    "Costa Rica",
+    357
+   ],
+   [
+    "Puerto Rico",
+    288
+   ],
+   [
+    "El Salvador",
+    213
+   ]
+  ],
+  "paises_requests": [
+   [
+    "Mexico",
+    279880320
+   ],
+   [
+    "Argentina",
+    133488800
+   ],
+   [
+    "Chile",
+    54649760
+   ],
+   [
+    "Peru",
+    45007760
+   ],
+   [
+    "Ecuador",
+    28498400
+   ],
+   [
+    "Colombia",
+    28453120
+   ],
+   [
+    "Honduras",
+    26844400
+   ],
+   [
+    "Panama",
+    14458400
+   ],
+   [
+    "Puerto Rico",
+    13416640
+   ],
+   [
+    "Dominican Republic",
+    12424960
+   ],
+   [
+    "Costa Rica",
+    11507840
+   ],
+   [
+    "El Salvador",
+    7246800
+   ]
+  ]
+ },
+ "universos": {
+  "publishers_solo_v10": [
+   "AETN - CTV - SpringServe",
+   "Connatix - CTV",
+   "GustoTV Springserve",
+   "Hearst News CTV",
+   "NEWRY GLOBAL MEDIA SL.",
+   "OnDemandKorea (Managed)",
+   "Opera (Admob OB)",
+   "Outdoor America - SpringServe",
+   "VIZIO V-AMPLIFY",
+   "Xumo - Springserve"
+  ],
+  "publishers_solo_v11": [
+   "Herring Networks - OB",
+   "Kivi via ORTB",
+   "Volantis Digital Media Pte. Ltd."
+  ],
+  "publishers_en_ambos": 219,
+  "bundles_solo_v10": 30,
+  "bundles_solo_v11": 7,
+  "bundles_en_ambos": 631
+ },
+ "ecpm_por_pais_llaves_compartidas": {
+  "Mexico": {
+   "n_llaves": 141928,
+   "ecpm_medio_v10": 0.519,
+   "ecpm_medio_v11": 0.504
+  },
+  "Argentina": {
+   "n_llaves": 94245,
+   "ecpm_medio_v10": 1.254,
+   "ecpm_medio_v11": 1.271
+  },
+  "Chile": {
+   "n_llaves": 56627,
+   "ecpm_medio_v10": 1.499,
+   "ecpm_medio_v11": 1.488
+  },
+  "Colombia": {
+   "n_llaves": 49615,
+   "ecpm_medio_v10": 0.322,
+   "ecpm_medio_v11": 0.332
+  },
+  "Peru": {
+   "n_llaves": 41655,
+   "ecpm_medio_v10": 1.198,
+   "ecpm_medio_v11": 1.187
+  },
+  "Ecuador": {
+   "n_llaves": 20895,
+   "ecpm_medio_v10": 0.376,
+   "ecpm_medio_v11": 0.394
+  },
+  "Dominican Republic": {
+   "n_llaves": 18604,
+   "ecpm_medio_v10": 0.485,
+   "ecpm_medio_v11": 0.485
+  },
+  "Costa Rica": {
+   "n_llaves": 16317,
+   "ecpm_medio_v10": 1.751,
+   "ecpm_medio_v11": 1.75
+  },
+  "Panama": {
+   "n_llaves": 9895,
+   "ecpm_medio_v10": 0.456,
+   "ecpm_medio_v11": 0.492
+  },
+  "Honduras": {
+   "n_llaves": 9893,
+   "ecpm_medio_v10": 0.853,
+   "ecpm_medio_v11": 0.894
+  },
+  "Venezuela": {
+   "n_llaves": 8803,
+   "ecpm_medio_v10": 0.0,
+   "ecpm_medio_v11": 0.0
+  },
+  "El Salvador": {
+   "n_llaves": 7426,
+   "ecpm_medio_v10": 0.872,
+   "ecpm_medio_v11": 0.908
+  },
+  "Guatemala": {
+   "n_llaves": 6999,
+   "ecpm_medio_v10": 1.055,
+   "ecpm_medio_v11": 1.106
+  },
+  "Puerto Rico": {
+   "n_llaves": 6758,
+   "ecpm_medio_v10": 1.019,
+   "ecpm_medio_v11": 1.018
+  },
+  "Uruguay": {
+   "n_llaves": 4931,
+   "ecpm_medio_v10": 0.179,
+   "ecpm_medio_v11": 0.184
+  },
+  "Paraguay": {
+   "n_llaves": 1724,
+   "ecpm_medio_v10": 0.729,
+   "ecpm_medio_v11": 0.75
+  },
+  "Nicaragua": {
+   "n_llaves": 1443,
+   "ecpm_medio_v10": 1.804,
+   "ecpm_medio_v11": 1.923
+  },
+  "Bolivia": {
+   "n_llaves": 1064,
+   "ecpm_medio_v10": 0.002,
+   "ecpm_medio_v11": 0.006
+  }
+ },
+ "csv_unificado": {
+  "archivo": "inventory-merged-v10-v11-sin-duplicados.csv",
+  "filas": 525178
+ }
+}
