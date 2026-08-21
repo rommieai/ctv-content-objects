@@ -1,0 +1,1491 @@
+{
+ "fuente": "inventory-consolidado-v10-v11-v12.csv",
+ "filas": 539190,
+ "requests": 429176186240,
+ "genero": {
+  "filas_multigenero": 227749,
+  "filas_sin_dato": 6816,
+  "filas_con_genero_pero_nada_mapeado": 38827,
+  "tokens_no_mapeados_top": [
+   [
+    "short",
+    8086
+   ],
+   [
+    "tv series",
+    3738
+   ],
+   [
+    "genre_drama",
+    3533
+   ],
+   [
+    "culture",
+    3368
+   ],
+   [
+    "relaxing",
+    2876
+   ],
+   [
+    "genre_foreign",
+    2711
+   ],
+   [
+    "drama tv",
+    2172
+   ],
+   [
+    "genre_action",
+    2049
+   ],
+   [
+    "videos",
+    2034
+   ],
+   [
+    "tvshows",
+    1995
+   ],
+   [
+    "feature film",
+    1924
+   ],
+   [
+    "genre_comedy",
+    1885
+   ],
+   [
+    "opinion",
+    1779
+   ],
+   [
+    "outdoors",
+    1777
+   ],
+   [
+    "en español",
+    1574
+   ],
+   [
+    "genre_thriller",
+    1424
+   ],
+   [
+    "technology",
+    1382
+   ],
+   [
+    "e-sports",
+    1338
+   ],
+   [
+    "genre_crime",
+    1311
+   ],
+   [
+    "western drama",
+    1255
+   ],
+   [
+    "romance movies",
+    1216
+   ],
+   [
+    "classic tv",
+    1172
+   ],
+   [
+    "review",
+    1104
+   ],
+   [
+    "genre_romance",
+    1095
+   ],
+   [
+    "genre_adventure",
+    1081
+   ],
+   [
+    "business",
+    1068
+   ],
+   [
+    "global news",
+    1056
+   ],
+   [
+    "comedy tv",
+    1035
+   ],
+   [
+    "crime and mystery movies",
+    998
+   ],
+   [
+    "aventuras",
+    997
+   ],
+   [
+    "arts",
+    994
+   ],
+   [
+    "world",
+    966
+   ],
+   [
+    "romántica",
+    944
+   ],
+   [
+    "live",
+    936
+   ],
+   [
+    "genre_horror",
+    845
+   ],
+   [
+    "international",
+    819
+   ],
+   [
+    "film noir",
+    819
+   ],
+   [
+    "soap operas",
+    815
+   ],
+   [
+    "genre_family",
+    788
+   ],
+   [
+    "finance",
+    776
+   ]
+  ],
+  "tokens_no_mapeados_filas_total": 122347,
+  "distribucion": [
+   {
+    "genero": "drama",
+    "filas": 161390,
+    "pct_filas": 29.93,
+    "requests": 128606427840,
+    "pct_requests": 29.97,
+    "ecpm_ponderado_no_cero": 4.477,
+    "pct_req_monetizado": 42.8
+   },
+   {
+    "genero": "comedia",
+    "filas": 70652,
+    "pct_filas": 13.1,
+    "requests": 51092963600,
+    "pct_requests": 11.9,
+    "ecpm_ponderado_no_cero": 4.375,
+    "pct_req_monetizado": 45.79
+   },
+   {
+    "genero": "thriller",
+    "filas": 64901,
+    "pct_filas": 12.04,
+    "requests": 51062371920,
+    "pct_requests": 11.9,
+    "ecpm_ponderado_no_cero": 4.72,
+    "pct_req_monetizado": 37.65
+   },
+   {
+    "genero": "terror",
+    "filas": 62258,
+    "pct_filas": 11.55,
+    "requests": 49547522240,
+    "pct_requests": 11.54,
+    "ecpm_ponderado_no_cero": 4.743,
+    "pct_req_monetizado": 35.76
+   },
+   {
+    "genero": "accion",
+    "filas": 54212,
+    "pct_filas": 10.05,
+    "requests": 37409795680,
+    "pct_requests": 8.72,
+    "ecpm_ponderado_no_cero": 5.163,
+    "pct_req_monetizado": 41.55
+   },
+   {
+    "genero": "romance",
+    "filas": 43862,
+    "pct_filas": 8.13,
+    "requests": 35838171040,
+    "pct_requests": 8.35,
+    "ecpm_ponderado_no_cero": 5.375,
+    "pct_req_monetizado": 42.96
+   },
+   {
+    "genero": "documental",
+    "filas": 64222,
+    "pct_filas": 11.91,
+    "requests": 33375252960,
+    "pct_requests": 7.78,
+    "ecpm_ponderado_no_cero": 5.337,
+    "pct_req_monetizado": 38.09
+   },
+   {
+    "genero": "entretenimiento (generico)",
+    "filas": 21865,
+    "pct_filas": 4.06,
+    "requests": 32573078320,
+    "pct_requests": 7.59,
+    "ecpm_ponderado_no_cero": 5.612,
+    "pct_req_monetizado": 73.84
+   },
+   {
+    "genero": "infantil-familia",
+    "filas": 35828,
+    "pct_filas": 6.64,
+    "requests": 23592652880,
+    "pct_requests": 5.5,
+    "ecpm_ponderado_no_cero": 5.229,
+    "pct_req_monetizado": 46.3
+   },
+   {
+    "genero": "deportes",
+    "filas": 20768,
+    "pct_filas": 3.85,
+    "requests": 19838780320,
+    "pct_requests": 4.62,
+    "ecpm_ponderado_no_cero": 2.86,
+    "pct_req_monetizado": 68.67
+   },
+   {
+    "genero": "crimen",
+    "filas": 29327,
+    "pct_filas": 5.44,
+    "requests": 19136672000,
+    "pct_requests": 4.46,
+    "ecpm_ponderado_no_cero": 5.153,
+    "pct_req_monetizado": 39.95
+   },
+   {
+    "genero": "otros/desconocido",
+    "filas": 37459,
+    "pct_filas": 6.95,
+    "requests": 17649527040,
+    "pct_requests": 4.11,
+    "ecpm_ponderado_no_cero": 4.919,
+    "pct_req_monetizado": 30.8
+   },
+   {
+    "genero": "aventura",
+    "filas": 27614,
+    "pct_filas": 5.12,
+    "requests": 16698235440,
+    "pct_requests": 3.89,
+    "ecpm_ponderado_no_cero": 5.829,
+    "pct_req_monetizado": 38.8
+   },
+   {
+    "genero": "misterio",
+    "filas": 23424,
+    "pct_filas": 4.34,
+    "requests": 15031707280,
+    "pct_requests": 3.5,
+    "ecpm_ponderado_no_cero": 5.051,
+    "pct_req_monetizado": 36.32
+   },
+   {
+    "genero": "musica",
+    "filas": 24559,
+    "pct_filas": 4.55,
+    "requests": 13144963040,
+    "pct_requests": 3.06,
+    "ecpm_ponderado_no_cero": 4.17,
+    "pct_req_monetizado": 49.3
+   },
+   {
+    "genero": "noticias",
+    "filas": 9020,
+    "pct_filas": 1.67,
+    "requests": 12909078160,
+    "pct_requests": 3.01,
+    "ecpm_ponderado_no_cero": 5.221,
+    "pct_req_monetizado": 65.5
+   },
+   {
+    "genero": "sci-fi",
+    "filas": 17319,
+    "pct_filas": 3.21,
+    "requests": 10370450880,
+    "pct_requests": 2.42,
+    "ecpm_ponderado_no_cero": 4.459,
+    "pct_req_monetizado": 32.61
+   },
+   {
+    "genero": "fantasia",
+    "filas": 19263,
+    "pct_filas": 3.57,
+    "requests": 9870726080,
+    "pct_requests": 2.3,
+    "ecpm_ponderado_no_cero": 5.009,
+    "pct_req_monetizado": 33.12
+   },
+   {
+    "genero": "anime",
+    "filas": 12095,
+    "pct_filas": 2.24,
+    "requests": 9362080800,
+    "pct_requests": 2.18,
+    "ecpm_ponderado_no_cero": 6.538,
+    "pct_req_monetizado": 44.39
+   },
+   {
+    "genero": "pelicula (generico)",
+    "filas": 13000,
+    "pct_filas": 2.41,
+    "requests": 6093720560,
+    "pct_requests": 1.42,
+    "ecpm_ponderado_no_cero": 5.934,
+    "pct_req_monetizado": 51.55
+   },
+   {
+    "genero": "tv/series (generico)",
+    "filas": 3926,
+    "pct_filas": 0.73,
+    "requests": 5690960000,
+    "pct_requests": 1.33,
+    "ecpm_ponderado_no_cero": 5.534,
+    "pct_req_monetizado": 24.28
+   },
+   {
+    "genero": "reality",
+    "filas": 8429,
+    "pct_filas": 1.56,
+    "requests": 4767500240,
+    "pct_requests": 1.11,
+    "ecpm_ponderado_no_cero": 4.774,
+    "pct_req_monetizado": 47.61
+   },
+   {
+    "genero": "western",
+    "filas": 9185,
+    "pct_filas": 1.7,
+    "requests": 4239189360,
+    "pct_requests": 0.99,
+    "ecpm_ponderado_no_cero": 4.388,
+    "pct_req_monetizado": 26.0
+   },
+   {
+    "genero": "animacion",
+    "filas": 5801,
+    "pct_filas": 1.08,
+    "requests": 3931983120,
+    "pct_requests": 0.92,
+    "ecpm_ponderado_no_cero": 3.375,
+    "pct_req_monetizado": 78.1
+   },
+   {
+    "genero": "lifestyle",
+    "filas": 7671,
+    "pct_filas": 1.42,
+    "requests": 3423338560,
+    "pct_requests": 0.8,
+    "ecpm_ponderado_no_cero": 4.912,
+    "pct_req_monetizado": 42.83
+   },
+   {
+    "genero": "gastronomia",
+    "filas": 2960,
+    "pct_filas": 0.55,
+    "requests": 3212761520,
+    "pct_requests": 0.75,
+    "ecpm_ponderado_no_cero": 5.188,
+    "pct_req_monetizado": 64.82
+   },
+   {
+    "genero": "videojuegos",
+    "filas": 3251,
+    "pct_filas": 0.6,
+    "requests": 2696479040,
+    "pct_requests": 0.63,
+    "ecpm_ponderado_no_cero": 5.566,
+    "pct_req_monetizado": 65.04
+   },
+   {
+    "genero": "belico",
+    "filas": 5170,
+    "pct_filas": 0.96,
+    "requests": 2553666880,
+    "pct_requests": 0.6,
+    "ecpm_ponderado_no_cero": 4.597,
+    "pct_req_monetizado": 28.82
+   },
+   {
+    "genero": "telenovela",
+    "filas": 1801,
+    "pct_filas": 0.33,
+    "requests": 2423955760,
+    "pct_requests": 0.56,
+    "ecpm_ponderado_no_cero": 4.459,
+    "pct_req_monetizado": 41.14
+   },
+   {
+    "genero": "concursos",
+    "filas": 1197,
+    "pct_filas": 0.22,
+    "requests": 2335578800,
+    "pct_requests": 0.54,
+    "ecpm_ponderado_no_cero": 5.964,
+    "pct_req_monetizado": 74.96
+   },
+   {
+    "genero": "viajes",
+    "filas": 5907,
+    "pct_filas": 1.1,
+    "requests": 2212710960,
+    "pct_requests": 0.52,
+    "ecpm_ponderado_no_cero": 3.877,
+    "pct_req_monetizado": 46.69
+   },
+   {
+    "genero": "talk show",
+    "filas": 1971,
+    "pct_filas": 0.37,
+    "requests": 1279396720,
+    "pct_requests": 0.3,
+    "ecpm_ponderado_no_cero": 3.663,
+    "pct_req_monetizado": 53.41
+   },
+   {
+    "genero": "religion",
+    "filas": 1361,
+    "pct_filas": 0.25,
+    "requests": 1044708400,
+    "pct_requests": 0.24,
+    "ecpm_ponderado_no_cero": 4.797,
+    "pct_req_monetizado": 38.69
+   },
+   {
+    "genero": "educacion",
+    "filas": 1731,
+    "pct_filas": 0.32,
+    "requests": 469771040,
+    "pct_requests": 0.11,
+    "ecpm_ponderado_no_cero": 4.156,
+    "pct_req_monetizado": 29.81
+   }
+  ]
+ },
+ "rating": {
+  "no_mapeados_top": [
+   [
+    "dv-t",
+    2064
+   ],
+   [
+    "mpaa_r",
+    1050
+   ],
+   [
+    "pg 13",
+    847
+   ],
+   [
+    "dv-g",
+    717
+   ],
+   [
+    "su",
+    700
+   ],
+   [
+    "dv-ma",
+    641
+   ],
+   [
+    "tv-14.tv-pg",
+    641
+   ],
+   [
+    "movie-pg-13",
+    614
+   ],
+   [
+    "sam 13",
+    564
+   ],
+   [
+    "tvpg_tv_g",
+    449
+   ],
+   [
+    "mpaa_pg",
+    387
+   ],
+   [
+    "mpaa_pg_13",
+    383
+   ],
+   [
+    "{{content_rating",
+    332
+   ],
+   [
+    "17",
+    326
+   ],
+   [
+    "m/16",
+    292
+   ],
+   [
+    "pg18",
+    250
+   ],
+   [
+    "pg 18",
+    250
+   ],
+   [
+    "ur",
+    240
+   ],
+   [
+    "tp",
+    232
+   ],
+   [
+    "12a",
+    223
+   ],
+   [
+    "-10",
+    221
+   ],
+   [
+    "-12",
+    209
+   ],
+   [
+    "0+",
+    204
+   ],
+   [
+    "11",
+    190
+   ],
+   [
+    "18 anos",
+    177
+   ],
+   [
+    "tvpg_tv_y7",
+    156
+   ],
+   [
+    "u",
+    133
+   ],
+   [
+    "16 anos",
+    131
+   ],
+   [
+    "tvpg_tv_y",
+    127
+   ],
+   [
+    "us-tv-14",
+    123
+   ]
+  ],
+  "distribucion": [
+   {
+    "franja": "todos",
+    "filas": 42040,
+    "pct_filas": 7.8,
+    "requests": 44386334240,
+    "pct_requests": 10.34,
+    "ecpm_ponderado_no_cero": 5.283,
+    "pct_req_monetizado": 71.83
+   },
+   {
+    "franja": "7+",
+    "filas": 3675,
+    "pct_filas": 0.68,
+    "requests": 2978480800,
+    "pct_requests": 0.69,
+    "ecpm_ponderado_no_cero": 5.28,
+    "pct_req_monetizado": 43.91
+   },
+   {
+    "franja": "10+",
+    "filas": 55374,
+    "pct_filas": 10.27,
+    "requests": 45726980080,
+    "pct_requests": 10.65,
+    "ecpm_ponderado_no_cero": 4.963,
+    "pct_req_monetizado": 54.06
+   },
+   {
+    "franja": "13-15",
+    "filas": 132918,
+    "pct_filas": 24.65,
+    "requests": 138575914800,
+    "pct_requests": 32.29,
+    "ecpm_ponderado_no_cero": 4.374,
+    "pct_req_monetizado": 53.94
+   },
+   {
+    "franja": "16-17",
+    "filas": 67495,
+    "pct_filas": 12.52,
+    "requests": 39976346240,
+    "pct_requests": 9.31,
+    "ecpm_ponderado_no_cero": 5.21,
+    "pct_req_monetizado": 36.02
+   },
+   {
+    "franja": "18+ / adulto",
+    "filas": 86558,
+    "pct_filas": 16.05,
+    "requests": 62306650080,
+    "pct_requests": 14.52,
+    "ecpm_ponderado_no_cero": 5.158,
+    "pct_req_monetizado": 36.54
+   },
+   {
+    "franja": "sin clasificar",
+    "filas": 53914,
+    "pct_filas": 10.0,
+    "requests": 32700188640,
+    "pct_requests": 7.62,
+    "ecpm_ponderado_no_cero": 4.063,
+    "pct_req_monetizado": 43.5
+   },
+   {
+    "franja": "sin dato",
+    "filas": 81965,
+    "pct_filas": 15.2,
+    "requests": 49122084160,
+    "pct_requests": 11.45,
+    "ecpm_ponderado_no_cero": 3.343,
+    "pct_req_monetizado": 51.15
+   },
+   {
+    "franja": "no mapeado",
+    "filas": 15251,
+    "pct_filas": 2.83,
+    "requests": 13403207200,
+    "pct_requests": 3.12,
+    "ecpm_ponderado_no_cero": 3.598,
+    "pct_req_monetizado": 61.22
+   }
+  ]
+ },
+ "monetizado": {
+  "filas_no_cero": 92088,
+  "pct_filas": 17.08,
+  "requests_no_cero": 217381322400,
+  "pct_requests": 50.65,
+  "por_pais": [
+   {
+    "pais": "Mexico",
+    "filas_nz": 27591,
+    "req_nz": 150246707040,
+    "pct_req_pais_monetizado": 57.62,
+    "pct_filas_pais_monetizadas": 17.85,
+    "ecpm_ponderado": 3.783
+   },
+   {
+    "pais": "Argentina",
+    "filas_nz": 20241,
+    "req_nz": 40953064320,
+    "pct_req_pais_monetizado": 53.98,
+    "pct_filas_pais_monetizadas": 19.96,
+    "ecpm_ponderado": 6.344
+   },
+   {
+    "pais": "Chile",
+    "filas_nz": 11719,
+    "req_nz": 8934645760,
+    "pct_req_pais_monetizado": 35.11,
+    "pct_filas_pais_monetizadas": 19.39,
+    "ecpm_ponderado": 8.17
+   },
+   {
+    "pais": "Colombia",
+    "filas_nz": 6368,
+    "req_nz": 5770132000,
+    "pct_req_pais_monetizado": 21.92,
+    "pct_filas_pais_monetizadas": 12.2,
+    "ecpm_ponderado": 3.009
+   },
+   {
+    "pais": "Peru",
+    "filas_nz": 8392,
+    "req_nz": 3425108800,
+    "pct_req_pais_monetizado": 31.97,
+    "pct_filas_pais_monetizadas": 18.63,
+    "ecpm_ponderado": 6.049
+   },
+   {
+    "pais": "Costa Rica",
+    "filas_nz": 6613,
+    "req_nz": 3238682640,
+    "pct_req_pais_monetizado": 56.75,
+    "pct_filas_pais_monetizadas": 37.74,
+    "ecpm_ponderado": 5.821
+   },
+   {
+    "pais": "Ecuador",
+    "filas_nz": 1417,
+    "req_nz": 1377970080,
+    "pct_req_pais_monetizado": 22.07,
+    "pct_filas_pais_monetizadas": 6.15,
+    "ecpm_ponderado": 7.319
+   },
+   {
+    "pais": "Puerto Rico",
+    "filas_nz": 856,
+    "req_nz": 1002141920,
+    "pct_req_pais_monetizado": 53.49,
+    "pct_filas_pais_monetizadas": 11.19,
+    "ecpm_ponderado": 8.111
+   },
+   {
+    "pais": "Dominican Republic",
+    "filas_nz": 1571,
+    "req_nz": 898781680,
+    "pct_req_pais_monetizado": 16.69,
+    "pct_filas_pais_monetizadas": 7.84,
+    "ecpm_ponderado": 5.424
+   },
+   {
+    "pais": "Panama",
+    "filas_nz": 1230,
+    "req_nz": 344191120,
+    "pct_req_pais_monetizado": 13.31,
+    "pct_filas_pais_monetizadas": 11.13,
+    "ecpm_ponderado": 4.331
+   },
+   {
+    "pais": "Guatemala",
+    "filas_nz": 1697,
+    "req_nz": 265654320,
+    "pct_req_pais_monetizado": 25.89,
+    "pct_filas_pais_monetizadas": 22.78,
+    "ecpm_ponderado": 4.702
+   },
+   {
+    "pais": "Honduras",
+    "filas_nz": 2360,
+    "req_nz": 265465920,
+    "pct_req_pais_monetizado": 24.42,
+    "pct_filas_pais_monetizadas": 21.19,
+    "ecpm_ponderado": 4.003
+   },
+   {
+    "pais": "Paraguay",
+    "filas_nz": 257,
+    "req_nz": 244173600,
+    "pct_req_pais_monetizado": 65.25,
+    "pct_filas_pais_monetizadas": 12.78,
+    "ecpm_ponderado": 5.945
+   },
+   {
+    "pais": "Uruguay",
+    "filas_nz": 135,
+    "req_nz": 218968000,
+    "pct_req_pais_monetizado": 12.09,
+    "pct_filas_pais_monetizadas": 2.41,
+    "ecpm_ponderado": 5.468
+   },
+   {
+    "pais": "El Salvador",
+    "filas_nz": 1146,
+    "req_nz": 86124160,
+    "pct_req_pais_monetizado": 8.68,
+    "pct_filas_pais_monetizadas": 14.4,
+    "ecpm_ponderado": 6.342
+   },
+   {
+    "pais": "Nicaragua",
+    "filas_nz": 493,
+    "req_nz": 60683200,
+    "pct_req_pais_monetizado": 45.46,
+    "pct_filas_pais_monetizadas": 31.58,
+    "ecpm_ponderado": 7.713
+   },
+   {
+    "pais": "Bolivia",
+    "filas_nz": 2,
+    "req_nz": 48827840,
+    "pct_req_pais_monetizado": 26.54,
+    "pct_filas_pais_monetizadas": 0.16,
+    "ecpm_ponderado": 1.987
+   },
+   {
+    "pais": "Venezuela",
+    "filas_nz": 0,
+    "req_nz": 0,
+    "pct_req_pais_monetizado": 0.0,
+    "pct_filas_pais_monetizadas": 0.0,
+    "ecpm_ponderado": null
+   }
+  ],
+  "por_publisher_top": [
+   {
+    "publisher": "Roku - oRTB",
+    "filas_nz": 459,
+    "req_nz": 38244908960,
+    "share_del_trafico_monetizado": 17.59,
+    "pct_req_propio_monetizado": 63.8,
+    "ecpm_ponderado": 5.961
+   },
+   {
+    "publisher": "TCL ADS - Springserve",
+    "filas_nz": 23610,
+    "req_nz": 38133623840,
+    "share_del_trafico_monetizado": 17.54,
+    "pct_req_propio_monetizado": 78.63,
+    "ecpm_ponderado": 5.188
+   },
+   {
+    "publisher": "TCL ADs (APAC)",
+    "filas_nz": 30628,
+    "req_nz": 28853341840,
+    "share_del_trafico_monetizado": 13.27,
+    "pct_req_propio_monetizado": 76.08,
+    "ecpm_ponderado": 6.201
+   },
+   {
+    "publisher": "Televisa Univision via SpringServe",
+    "filas_nz": 3596,
+    "req_nz": 17371857280,
+    "share_del_trafico_monetizado": 7.99,
+    "pct_req_propio_monetizado": 92.26,
+    "ecpm_ponderado": 2.227
+   },
+   {
+    "publisher": "Coocaa, a SKYWORTH company",
+    "filas_nz": 3737,
+    "req_nz": 17183436640,
+    "share_del_trafico_monetizado": 7.9,
+    "pct_req_propio_monetizado": 94.89,
+    "ecpm_ponderado": 3.47
+   },
+   {
+    "publisher": "TV Azteca - Springserve",
+    "filas_nz": 96,
+    "req_nz": 15991883440,
+    "share_del_trafico_monetizado": 7.36,
+    "pct_req_propio_monetizado": 70.77,
+    "ecpm_ponderado": 5.341
+   },
+   {
+    "publisher": "iion Pty Ltd",
+    "filas_nz": 12044,
+    "req_nz": 12265793760,
+    "share_del_trafico_monetizado": 5.64,
+    "pct_req_propio_monetizado": 37.57,
+    "ecpm_ponderado": 3.632
+   },
+   {
+    "publisher": "Televisa Univision via OB",
+    "filas_nz": 2045,
+    "req_nz": 11405385920,
+    "share_del_trafico_monetizado": 5.25,
+    "pct_req_propio_monetizado": 97.55,
+    "ecpm_ponderado": 1.314
+   },
+   {
+    "publisher": "Equativ (Formerly SMART AdServer) - oRTB CTV",
+    "filas_nz": 2058,
+    "req_nz": 10759343360,
+    "share_del_trafico_monetizado": 4.95,
+    "pct_req_propio_monetizado": 77.79,
+    "ecpm_ponderado": 2.748
+   },
+   {
+    "publisher": "Zeasn Europe B.V.",
+    "filas_nz": 277,
+    "req_nz": 6723259840,
+    "share_del_trafico_monetizado": 3.09,
+    "pct_req_propio_monetizado": 91.5,
+    "ecpm_ponderado": 4.756
+   },
+   {
+    "publisher": "Vidaa",
+    "filas_nz": 2033,
+    "req_nz": 5746889280,
+    "share_del_trafico_monetizado": 2.64,
+    "pct_req_propio_monetizado": 83.47,
+    "ecpm_ponderado": 1.419
+   },
+   {
+    "publisher": "Aluna Limited",
+    "filas_nz": 1804,
+    "req_nz": 2561189520,
+    "share_del_trafico_monetizado": 1.18,
+    "pct_req_propio_monetizado": 82.46,
+    "ecpm_ponderado": 5.233
+   },
+   {
+    "publisher": "PML Digital",
+    "filas_nz": 2771,
+    "req_nz": 2139509680,
+    "share_del_trafico_monetizado": 0.98,
+    "pct_req_propio_monetizado": 56.37,
+    "ecpm_ponderado": 2.884
+   },
+   {
+    "publisher": "AWG Media",
+    "filas_nz": 717,
+    "req_nz": 2133472160,
+    "share_del_trafico_monetizado": 0.98,
+    "pct_req_propio_monetizado": 83.23,
+    "ecpm_ponderado": 3.04
+   },
+   {
+    "publisher": "METAX SOFTWARE PTE. LTD.",
+    "filas_nz": 1213,
+    "req_nz": 1465026080,
+    "share_del_trafico_monetizado": 0.67,
+    "pct_req_propio_monetizado": 87.61,
+    "ecpm_ponderado": 7.197
+   },
+   {
+    "publisher": "OTTera.tv",
+    "filas_nz": 144,
+    "req_nz": 1337695360,
+    "share_del_trafico_monetizado": 0.62,
+    "pct_req_propio_monetizado": 1.29,
+    "ecpm_ponderado": 6.328
+   },
+   {
+    "publisher": "Samsung - Publica - Mexico",
+    "filas_nz": 157,
+    "req_nz": 803286240,
+    "share_del_trafico_monetizado": 0.37,
+    "pct_req_propio_monetizado": 96.56,
+    "ecpm_ponderado": 4.697
+   },
+   {
+    "publisher": "Xapads Media - CTV",
+    "filas_nz": 628,
+    "req_nz": 770410320,
+    "share_del_trafico_monetizado": 0.35,
+    "pct_req_propio_monetizado": 33.99,
+    "ecpm_ponderado": 3.937
+   },
+   {
+    "publisher": "METAX SOFTWARE PTE. LTD. (Exchange)",
+    "filas_nz": 784,
+    "req_nz": 466484960,
+    "share_del_trafico_monetizado": 0.21,
+    "pct_req_propio_monetizado": 21.82,
+    "ecpm_ponderado": 4.702
+   },
+   {
+    "publisher": "Zeasn Europe B.V. (Springserve)",
+    "filas_nz": 65,
+    "req_nz": 372646240,
+    "share_del_trafico_monetizado": 0.17,
+    "pct_req_propio_monetizado": 79.81,
+    "ecpm_ponderado": 4.62
+   },
+   {
+    "publisher": "LG Ads EMEA - SS",
+    "filas_nz": 444,
+    "req_nz": 346284080,
+    "share_del_trafico_monetizado": 0.16,
+    "pct_req_propio_monetizado": 78.81,
+    "ecpm_ponderado": 3.964
+   },
+   {
+    "publisher": "Select Plus PTE LTD (CTV)",
+    "filas_nz": 93,
+    "req_nz": 341116640,
+    "share_del_trafico_monetizado": 0.16,
+    "pct_req_propio_monetizado": 2.16,
+    "ecpm_ponderado": 7.27
+   },
+   {
+    "publisher": "Playworks (SpringServe)",
+    "filas_nz": 350,
+    "req_nz": 195820560,
+    "share_del_trafico_monetizado": 0.09,
+    "pct_req_propio_monetizado": 56.87,
+    "ecpm_ponderado": 2.035
+   },
+   {
+    "publisher": "Pluto LATAM via SpringServe",
+    "filas_nz": 696,
+    "req_nz": 189657680,
+    "share_del_trafico_monetizado": 0.09,
+    "pct_req_propio_monetizado": 24.52,
+    "ecpm_ponderado": 9.864
+   },
+   {
+    "publisher": "OneFox - Tubi",
+    "filas_nz": 2,
+    "req_nz": 181471840,
+    "share_del_trafico_monetizado": 0.08,
+    "pct_req_propio_monetizado": 3.3,
+    "ecpm_ponderado": 21.085
+   }
+  ],
+  "por_bundle_top": [
+   {
+    "bundle": "151908",
+    "filas_nz": 704,
+    "req_nz": 37497355520,
+    "share_del_trafico_monetizado": 17.25,
+    "ecpm_ponderado": 5.966
+   },
+   {
+    "bundle": "com.tcl.movieark",
+    "filas_nz": 21574,
+    "req_nz": 33635812000,
+    "share_del_trafico_monetizado": 15.47,
+    "ecpm_ponderado": 5.31
+   },
+   {
+    "bundle": "com.tcl.livetv",
+    "filas_nz": 33563,
+    "req_nz": 22920714720,
+    "share_del_trafico_monetizado": 10.54,
+    "ecpm_ponderado": 2.896
+   },
+   {
+    "bundle": "552828",
+    "filas_nz": 2228,
+    "req_nz": 18643076160,
+    "share_del_trafico_monetizado": 8.58,
+    "ecpm_ponderado": 2.514
+   },
+   {
+    "bundle": "com.tcl.waterfall.overseas",
+    "filas_nz": 9618,
+    "req_nz": 18200597520,
+    "share_del_trafico_monetizado": 8.37,
+    "ecpm_ponderado": 6.868
+   },
+   {
+    "bundle": "com.coolita.channel",
+    "filas_nz": 4363,
+    "req_nz": 17945771200,
+    "share_del_trafico_monetizado": 8.26,
+    "ecpm_ponderado": 3.488
+   },
+   {
+    "bundle": "com.tubitv",
+    "filas_nz": 95,
+    "req_nz": 15986761200,
+    "share_del_trafico_monetizado": 7.35,
+    "ecpm_ponderado": 5.336
+   },
+   {
+    "bundle": "com.univision.prendetv",
+    "filas_nz": 2031,
+    "req_nz": 13041969600,
+    "share_del_trafico_monetizado": 6.0,
+    "ecpm_ponderado": 1.342
+   },
+   {
+    "bundle": "com.tcl.browser",
+    "filas_nz": 5978,
+    "req_nz": 9985533120,
+    "share_del_trafico_monetizado": 4.59,
+    "ecpm_ponderado": 7.973
+   },
+   {
+    "bundle": "tv.zeasn.whalelive",
+    "filas_nz": 275,
+    "req_nz": 6722898880,
+    "share_del_trafico_monetizado": 3.09,
+    "ecpm_ponderado": 4.756
+   },
+   {
+    "bundle": "tv.vidaa.ui.plus",
+    "filas_nz": 1590,
+    "req_nz": 3681962240,
+    "share_del_trafico_monetizado": 1.69,
+    "ecpm_ponderado": 1.648
+   },
+   {
+    "bundle": "974696",
+    "filas_nz": 1097,
+    "req_nz": 3456715600,
+    "share_del_trafico_monetizado": 1.59,
+    "ecpm_ponderado": 2.804
+   },
+   {
+    "bundle": "tv.vidaa.ui.apps.vix",
+    "filas_nz": 1413,
+    "req_nz": 2886692080,
+    "share_del_trafico_monetizado": 1.33,
+    "ecpm_ponderado": 1.499
+   },
+   {
+    "bundle": "g20329015921",
+    "filas_nz": 1175,
+    "req_nz": 2405992720,
+    "share_del_trafico_monetizado": 1.11,
+    "ecpm_ponderado": 2.237
+   },
+   {
+    "bundle": "b08kj77pqy",
+    "filas_nz": 260,
+    "req_nz": 1025280880,
+    "share_del_trafico_monetizado": 0.47,
+    "ecpm_ponderado": 6.122
+   },
+   {
+    "bundle": "com.batanga.vix",
+    "filas_nz": 315,
+    "req_nz": 1021391520,
+    "share_del_trafico_monetizado": 0.47,
+    "ecpm_ponderado": 2.035
+   },
+   {
+    "bundle": "roku",
+    "filas_nz": 2,
+    "req_nz": 821794560,
+    "share_del_trafico_monetizado": 0.38,
+    "ecpm_ponderado": 5.746
+   },
+   {
+    "bundle": "com.seraphic.metaxplay",
+    "filas_nz": 788,
+    "req_nz": 797723840,
+    "share_del_trafico_monetizado": 0.37,
+    "ecpm_ponderado": 9.528
+   },
+   {
+    "bundle": "1167028",
+    "filas_nz": 347,
+    "req_nz": 792950720,
+    "share_del_trafico_monetizado": 0.36,
+    "ecpm_ponderado": 1.11
+   },
+   {
+    "bundle": "tv.mirada.iris.android.inspire.izzitv",
+    "filas_nz": 3,
+    "req_nz": 790103040,
+    "share_del_trafico_monetizado": 0.36,
+    "ecpm_ponderado": 1.076
+   }
+  ],
+  "por_idioma_top": [
+   {
+    "idioma": "es",
+    "req_nz": 109184588240,
+    "share": 50.23,
+    "ecpm_ponderado": 5.176
+   },
+   {
+    "idioma": "en",
+    "req_nz": 65637383840,
+    "share": 30.19,
+    "ecpm_ponderado": 4.368
+   },
+   {
+    "idioma": "(sin dato)",
+    "req_nz": 32652968560,
+    "share": 15.02,
+    "ecpm_ponderado": 2.984
+   },
+   {
+    "idioma": "pt",
+    "req_nz": 6061646480,
+    "share": 2.79,
+    "ecpm_ponderado": 3.579
+   },
+   {
+    "idioma": "hi",
+    "req_nz": 1273733440,
+    "share": 0.59,
+    "ecpm_ponderado": 4.286
+   },
+   {
+    "idioma": "ca",
+    "req_nz": 575949120,
+    "share": 0.26,
+    "ecpm_ponderado": 7.055
+   },
+   {
+    "idioma": "ru",
+    "req_nz": 507017280,
+    "share": 0.23,
+    "ecpm_ponderado": 4.276
+   },
+   {
+    "idioma": "ja",
+    "req_nz": 228996560,
+    "share": 0.11,
+    "ecpm_ponderado": 4.487
+   },
+   {
+    "idioma": "sp",
+    "req_nz": 182069440,
+    "share": 0.08,
+    "ecpm_ponderado": 1.422
+   },
+   {
+    "idioma": "mr",
+    "req_nz": 139296800,
+    "share": 0.06,
+    "ecpm_ponderado": 4.798
+   },
+   {
+    "idioma": "spa",
+    "req_nz": 118158160,
+    "share": 0.05,
+    "ecpm_ponderado": 4.067
+   },
+   {
+    "idioma": "de",
+    "req_nz": 115494720,
+    "share": 0.05,
+    "ecpm_ponderado": 4.423
+   }
+  ],
+  "por_livestream": {
+   "1 (live)": {
+    "req_nz": 105787081440,
+    "share": 48.66,
+    "ecpm_ponderado": 4.739
+   },
+   "(sin dato)": {
+    "req_nz": 111594240960,
+    "share": 51.34,
+    "ecpm_ponderado": 4.368
+   }
+  },
+  "por_titulo_presente": {
+   "false": {
+    "req_nz": 63820784640,
+    "share": 29.36,
+    "ecpm_ponderado": 4.352
+   },
+   "true": {
+    "req_nz": 153560537760,
+    "share": 70.64,
+    "ecpm_ponderado": 4.63
+   }
+  },
+  "por_riqueza_metadata": {
+   "0": {
+    "filas_nz": 137,
+    "req_nz": 1389850080,
+    "ecpm_ponderado": 5.516
+   },
+   "1": {
+    "filas_nz": 373,
+    "req_nz": 1834475920,
+    "ecpm_ponderado": 4.975
+   },
+   "2": {
+    "filas_nz": 1869,
+    "req_nz": 18270416800,
+    "ecpm_ponderado": 3.966
+   },
+   "3": {
+    "filas_nz": 19949,
+    "req_nz": 35990007440,
+    "ecpm_ponderado": 3.605
+   },
+   "4": {
+    "filas_nz": 46991,
+    "req_nz": 71010102320,
+    "ecpm_ponderado": 4.161
+   },
+   "5": {
+    "filas_nz": 13176,
+    "req_nz": 27160386000,
+    "ecpm_ponderado": 6.289
+   },
+   "6": {
+    "filas_nz": 3884,
+    "req_nz": 21053524320,
+    "ecpm_ponderado": 5.099
+   },
+   "7": {
+    "filas_nz": 1706,
+    "req_nz": 25047984320,
+    "ecpm_ponderado": 5.662
+   },
+   "8": {
+    "filas_nz": 4003,
+    "req_nz": 15624575200,
+    "ecpm_ponderado": 3.472
+   }
+  },
+  "top_20_ecpm": [
+   {
+    "ecpm": 76.666667,
+    "requests": 96320,
+    "publisher": "TCL ADs (APAC)",
+    "app": "MovieArk: Stream Movies & Live",
+    "pais": "Peru",
+    "titulo": "abandoned: trailer"
+   },
+   {
+    "ecpm": 70.107384,
+    "requests": 858400,
+    "publisher": "Select Plus PTE LTD (CTV)",
+    "app": "MovieArk: Stream Movies & Live",
+    "pais": "Peru",
+    "titulo": "serenata en la ciudad de nueva york"
+   },
+   {
+    "ecpm": 68.365723,
+    "requests": 110640,
+    "publisher": "Televisa Univision via SpringServe",
+    "app": "ViX: TV, Sports and News",
+    "pais": "Peru",
+    "titulo": "gata salvaje"
+   },
+   {
+    "ecpm": 67.818832,
+    "requests": 30400,
+    "publisher": "TCL ADs (APAC)",
+    "app": "MovieArk: Stream Movies & Live",
+    "pais": "Peru",
+    "titulo": "christmas eve: trailer"
+   },
+   {
+    "ecpm": 67.378883,
+    "requests": 106880,
+    "publisher": "TCL ADs (APAC)",
+    "app": "MovieArk: Stream Movies & Live",
+    "pais": "Peru",
+    "titulo": "club"
+   },
+   {
+    "ecpm": 65.889015,
+    "requests": 56320,
+    "publisher": "OneFox - Tubi",
+    "app": "Tubi - Free Movies & TV",
+    "pais": "Argentina",
+    "titulo": "Not Applicable"
+   },
+   {
+    "ecpm": 65.852509,
+    "requests": 565680,
+    "publisher": "Unruly Group LLC (oRTB)",
+    "app": "Xiaomi TV+: Watch Live TV",
+    "pais": "Peru",
+    "titulo": "Not Applicable"
+   },
+   {
+    "ecpm": 60.936394,
+    "requests": 96000,
+    "publisher": "Pluto LATAM via SpringServe",
+    "app": "PlutoTV: Stream Free Movies/TV",
+    "pais": "Ecuador",
+    "titulo": "Not Applicable"
+   },
+   {
+    "ecpm": 59.007114,
+    "requests": 126080,
+    "publisher": "iion Pty Ltd",
+    "app": "MovieArk: Stream Movies & Live",
+    "pais": "Peru",
+    "titulo": "space dogs: tropical adventure (space dogs 3)"
+   },
+   {
+    "ecpm": 48.471317,
+    "requests": 38720,
+    "publisher": "TCL ADs (APAC)",
+    "app": "Live TV",
+    "pais": "Peru",
+    "titulo": "asphyxia"
+   },
+   {
+    "ecpm": 48.235043,
+    "requests": 342400,
+    "publisher": "Pluto LATAM via SpringServe",
+    "app": "PlutoTV: Stream Free Movies/TV",
+    "pais": "Peru",
+    "titulo": "Not Applicable"
+   },
+   {
+    "ecpm": 48.067509,
+    "requests": 222000,
+    "publisher": "iion Pty Ltd",
+    "app": "TCL CHANNEL",
+    "pais": "Peru",
+    "titulo": "the baddest bad boy"
+   },
+   {
+    "ecpm": 47.1778,
+    "requests": 34400,
+    "publisher": "TCL ADs (APAC)",
+    "app": "Live TV",
+    "pais": "Peru",
+    "titulo": "jada"
+   },
+   {
+    "ecpm": 46.868759,
+    "requests": 32960,
+    "publisher": "TCL ADs (APAC)",
+    "app": "MovieArk: Stream Movies & Live",
+    "pais": "Peru",
+    "titulo": "teahupoo uncut"
+   },
+   {
+    "ecpm": 46.824795,
+    "requests": 34560,
+    "publisher": "TCL ADs (APAC)",
+    "app": "MovieArk: Stream Movies & Live",
+    "pais": "Puerto Rico",
+    "titulo": "corona: trailer"
+   },
+   {
+    "ecpm": 46.359451,
+    "requests": 54720,
+    "publisher": "Pluto LATAM via SpringServe",
+    "app": "PlutoTV: Stream Free Movies/TV",
+    "pais": "Peru",
+    "titulo": "Not Applicable"
+   },
+   {
+    "ecpm": 45.607708,
+    "requests": 42560,
+    "publisher": "TCL ADs (APAC)",
+    "app": "Live TV",
+    "pais": "Peru",
+    "titulo": "liquid bridge: trailer"
+   },
+   {
+    "ecpm": 45.343778,
+    "requests": 262560,
+    "publisher": "Televisa Univision via SpringServe",
+    "app": "ViX: TV, Sports and News",
+    "pais": "Peru",
+    "titulo": "cuidado con el angel"
+   },
+   {
+    "ecpm": 45.207275,
+    "requests": 109760,
+    "publisher": "iion Pty Ltd",
+    "app": "MovieArk: Stream Movies & Live",
+    "pais": "Peru",
+    "titulo": "the town inside"
+   },
+   {
+    "ecpm": 45.027683,
+    "requests": 108480,
+    "publisher": "iion Pty Ltd",
+    "app": "MovieArk: Stream Movies & Live",
+    "pais": "Peru",
+    "titulo": "5 souls_trailer"
+   }
+  ]
+ }
+}

@@ -62,5 +62,6 @@ Solo requiere Python 3.9+ (stdlib, sin dependencias).
 | `reporte-content-objects-detallado.md` / `-v11.md` | Detallados de cada exportación individual (18 países) |
 | `reporte-content-objects-detallado-unificado.md` | Consolidado v10+v11 |
 | `reporte-comparativo-v10-v11.md` | Cruce entre exportaciones y justificación del consolidado |
-| `reporte-normalizacion-y-ecpm.md` | Género/rating normalizados + análisis del inventario monetizado |
+| `reporte-normalizacion-y-ecpm.md` | Género/rating normalizados + análisis del inventario monetizado (sobre v10+v11) |
+| `reporte-normalizacion-y-ecpm-v12-consolidado.md` | Ídem sobre el consolidado v10+v11+v12; documenta el recálculo de eCPM de v12 |
 | `resumen-ejecutivo.pdf` | Resumen para stakeholders (compilado con LaTeX) |
