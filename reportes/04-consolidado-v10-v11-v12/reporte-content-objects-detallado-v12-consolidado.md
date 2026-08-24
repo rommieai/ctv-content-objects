@@ -173,20 +173,19 @@ Solo estos tres mercados por pedido expreso; el JSON trae el mismo detalle (top-
 
 eCPM: 82.2% de filas en cero · media no-cero 2.61 · **ponderado 3.78**
 
-| Columna | Fill | Top valores (% filas del país) |
+| Columna | Fill | Top 3 valores (% filas del país) |
 |---|---:|---|
-| Publisher | 100% | OTTera 14.7%, iion 12.8%, TCL Springserve 11.5%, TCL APAC 10.9%, Equativ 7.3% |
-| pageURL | 100% | com.tcl.livetv 24.1%, com.tcl.movieark 22.9%, com.tcl.browser 5.8%, 974696 (Roku) 5.2% |
+| Publisher | 100% | OTTera 14.7%, iion 12.8%, TCL Springserve 11.5% |
 | contentIsTitlePresent | 100% | true 82.5%, false 17.5% |
-| contentGenre | 99.0% | drama 10.8%, documentary 4.2%, other 4.1%, comedy 3.7%, horror 3.4% |
-| contentRating | 84.7% | *N/A 15.2%*, tv-14 13.7%, r 10.1%, tv-ma 8.2% |
-| App Name | 82.8% | MovieArk 22.9%, Live TV 21.4%, *N/A 17.2%*, BrowseHere 5.8% |
-| contentTitle | 82.5% | *N/A 17.5%*, las estrellas 0.4%, canal 5 0.3%, golden 0.3% |
-| contentLanguage | 77.7% | en 36.6%, es 36.3%, *N/A 22.1%*, spa 0.8% |
+| contentGenre | 99.0% | drama 10.8%, documentary 4.2%, other 4.1% |
+| contentRating | 84.7% | *N/A 15.2%*, tv-14 13.7%, r 10.1% |
+| App Name | 82.8% | MovieArk 22.9%, Live TV 21.4%, *N/A 17.2%* |
+| contentTitle | 82.5% | *N/A 17.5%*, las estrellas 0.4%, canal 5 0.3% |
+| contentLanguage | 77.7% | en 36.6%, es 36.3%, *N/A 22.1%* |
 | contentIsLiveStream | 25.5% | *Unknown 38.7%*, *N/A 35.8%*, 1 25.5% |
-| contentCategory | 22.9% | *[-7] 77.1%*, [IAB1] 4.5%, [IAB1-5] 3.7%, [IAB12] 2.7% |
-| contentLength | 17.5% | *N/A 82.5%*, 6 6.4%, 5 3.9%, 8 3.5% |
-| contentSeries | 6.9% | *N/A 91.6%*, md5-vacío 1.5%, VOD 0.5%, Doña Bárbara 0.2% |
+| contentCategory | 22.9% | *[-7] 77.1%*, [IAB1] 4.5%, [IAB1-5] 3.7% |
+| contentLength | 17.5% | *N/A 82.5%*, 6 6.4%, 5 3.9% |
+| contentSeries | 6.9% | *N/A 91.6%*, md5-vacío 1.5%, VOD 0.5% |
 
 **Conclusiones — México:**
 - Único mercado con paridad inglés/español (36.6% vs 36.3%), gracias a los broadcasters locales (Televisa: "Las Estrellas" y "Canal 5" en el top de títulos).
@@ -197,19 +196,18 @@ eCPM: 82.2% de filas en cero · media no-cero 2.61 · **ponderado 3.78**
 
 eCPM: 87.8% de filas en cero · media no-cero 2.63 · **ponderado 3.01**
 
-| Columna | Fill | Top valores (% filas del país) |
+| Columna | Fill | Top 3 valores (% filas del país) |
 |---|---:|---|
-| Publisher | 100% | iion 30.0%, OTTera 24.5%, Select Plus 11.4%, TCL APAC 11.0%, METAX 7.6% |
-| pageURL | 100% | com.tcl.movieark 34.6%, com.tcl.livetv 28.4%, com.tcl.waterfall 13.3%, com.tcl.browser 8.1% |
+| Publisher | 100% | iion 30.0%, OTTera 24.5%, Select Plus 11.4% |
 | contentIsTitlePresent | 100% | true 94.9%, false 5.1% |
-| contentGenre | 98.5% | drama 10.1%, other 7.6%, documentary 4.8%, horror 4.3% |
-| App Name | 96.7% | MovieArk 34.6%, Live TV 28.3%, TCL CHANNEL 13.3%, BrowseHere 8.1% |
+| contentGenre | 98.5% | drama 10.1%, other 7.6%, documentary 4.8% |
+| App Name | 96.7% | MovieArk 34.6%, Live TV 28.3%, TCL CHANNEL 13.3% |
 | contentTitle | 94.9% | *N/A 5.1%*, {{content_title}} 0.2%, haus of horror 0.2% |
-| contentRating | 80.2% | *N/A 19.8%*, r 11.8%, tv-14 9.8%, tv-pg 9.4%, nr 8.8% |
-| contentLanguage | **62.2%** | en 41.8%, *N/A 37.8%*, es 15.6%, c (basura) 1.9% |
+| contentRating | 80.2% | *N/A 19.8%*, r 11.8%, tv-14 9.8% |
+| contentLanguage | **62.2%** | en 41.8%, *N/A 37.8%*, es 15.6% |
 | contentIsLiveStream | 28.0% | *Unknown 44.9%*, 1 28.0%, *N/A 27.0%* |
-| contentCategory | 24.3% | *[-7] 75.7%*, [IAB1] 7.1%, [IAB1-22] 3.5%, [sports] 1.9% |
-| contentLength | 9.6% | *N/A 90.4%*, 4 3.2%, 5 2.8%, 6 2.5% |
+| contentCategory | 24.3% | *[-7] 75.7%*, [IAB1] 7.1%, [IAB1-22] 3.5% |
+| contentLength | 9.6% | *N/A 90.4%*, 4 3.2%, 5 2.8% |
 | contentSeries | 5.7% | *N/A 94.3%*, VOD 0.9%, No Series 0.1% |
 
 **Conclusiones — Colombia:**
@@ -221,19 +219,18 @@ eCPM: 87.8% de filas en cero · media no-cero 2.63 · **ponderado 3.01**
 
 eCPM: 80.6% de filas en cero · media no-cero 7.30 · **ponderado 8.17**
 
-| Columna | Fill | Top valores (% filas del país) |
+| Columna | Fill | Top 3 valores (% filas del país) |
 |---|---:|---|
-| Publisher | 100% | iion 21.2%, TCL Springserve 19.1%, OTTera 17.1%, TCL APAC 17.1%, PML Digital 6.6% |
-| pageURL | 100% | com.tcl.movieark 41.6%, com.tcl.livetv 34.7%, com.tcl.waterfall 7.4%, com.tcl.browser 5.5% |
+| Publisher | 100% | iion 21.2%, TCL Springserve 19.1%, OTTera 17.1% |
 | contentIsTitlePresent | 100% | true 96.6%, false 3.4% |
-| contentGenre | 99.5% | drama 8.5%, other 6.7%, documentary 6.2%, horror 3.6% |
+| contentGenre | 99.5% | drama 8.5%, other 6.7%, documentary 6.2% |
 | contentTitle | 96.6% | *N/A 3.4%*, catalunya über alles! 0.2%, the baddest bad boy 0.2% |
-| App Name | 92.3% | MovieArk 41.6%, Live TV 30.2%, *N/A 7.7%*, TCL CHANNEL 7.4% |
-| contentRating | 83.2% | *N/A 16.8%*, tv-ma 13.5%, r 11.8%, tv-14 10.6%, nr 9.2% |
-| contentLanguage | 75.3% | en 52.6%, *N/A 24.7%*, es 18.6%, pt 1.4% |
+| App Name | 92.3% | MovieArk 41.6%, Live TV 30.2%, *N/A 7.7%* |
+| contentRating | 83.2% | *N/A 16.8%*, tv-ma 13.5%, r 11.8% |
+| contentLanguage | 75.3% | en 52.6%, *N/A 24.7%*, es 18.6% |
 | contentIsLiveStream | **17.8%** | *N/A 42.5%*, *Unknown 39.7%*, 1 17.8% |
 | contentCategory | **14.4%** | *[-7] 85.5%*, [IAB1] 6.4%, [IAB1-22] 0.8% |
-| contentLength | 6.9% | *N/A 93.1%*, 4 2.6%, 5 1.8%, 6 1.6% |
+| contentLength | 6.9% | *N/A 93.1%*, 4 2.6%, 5 1.8% |
 | contentSeries | 4.5% | *N/A 95.5%*, VOD 0.9%, {{CONTENT_SERIES}} 0.1% |
 
 **Conclusiones — Chile:**
