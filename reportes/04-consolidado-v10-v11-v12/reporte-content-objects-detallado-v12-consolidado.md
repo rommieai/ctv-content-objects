@@ -173,7 +173,7 @@ Solo estos tres mercados por pedido expreso; el JSON trae el mismo detalle (top-
 
 eCPM: 82.2% de filas en cero · media no-cero 2.61 · **ponderado 3.78**
 
-| Columna | Fill | Top 3 valores (% filas del país) |
+| Columna | Fill | Top 3 referencias (% filas del país) |
 |---|---:|---|
 | Publisher | 100% | OTTera 14.7%, iion 12.8%, TCL Springserve 11.5% |
 | contentIsTitlePresent | 100% | true 82.5%, false 17.5% |
@@ -196,7 +196,7 @@ eCPM: 82.2% de filas en cero · media no-cero 2.61 · **ponderado 3.78**
 
 eCPM: 87.8% de filas en cero · media no-cero 2.63 · **ponderado 3.01**
 
-| Columna | Fill | Top 3 valores (% filas del país) |
+| Columna | Fill | Top 3 referencias (% filas del país) |
 |---|---:|---|
 | Publisher | 100% | iion 30.0%, OTTera 24.5%, Select Plus 11.4% |
 | contentIsTitlePresent | 100% | true 94.9%, false 5.1% |
@@ -219,7 +219,7 @@ eCPM: 87.8% de filas en cero · media no-cero 2.63 · **ponderado 3.01**
 
 eCPM: 80.6% de filas en cero · media no-cero 7.30 · **ponderado 8.17**
 
-| Columna | Fill | Top 3 valores (% filas del país) |
+| Columna | Fill | Top 3 referencias (% filas del país) |
 |---|---:|---|
 | Publisher | 100% | iion 21.2%, TCL Springserve 19.1%, OTTera 17.1% |
 | contentIsTitlePresent | 100% | true 96.6%, false 3.4% |
