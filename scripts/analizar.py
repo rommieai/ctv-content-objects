@@ -86,6 +86,7 @@ def main():
     val_reqs = {c: Counter() for c in CATEGORICAS}
     grupos = defaultdict(lambda: {"filas": 0, "req": 0,
                                   "cols": {c: Counter() for c in CATEGORICAS},
+                                  "util": {c: [0, 0] for c in CATEGORICAS},
                                   "e0": 0, "e_nz_sum": 0.0, "e_nz_n": 0,
                                   "e_w": 0.0, "req_w": 0})
     lista_reqs = []
@@ -131,10 +132,15 @@ def main():
                         b_filas[nombre] += 1; b_reqs[nombre] += req
                         break
             for c in CATEGORICAS:
-                v = row[idx[c]].strip() or "(vacio)"
+                v_raw = row[idx[c]].strip()
+                v = v_raw or "(vacio)"
                 val_filas[c][v] += 1
                 val_reqs[c][v] += req
                 G["cols"][c][v] += 1
+                if es_util(c, v_raw):
+                    u = G["util"][c]
+                    u[0] += 1
+                    u[1] += req
 
     res = {"archivo": args.entrada.split("\\")[-1], "filas": filas,
            "total_requests": total_req, "columnas": {},
@@ -194,10 +200,13 @@ def main():
             if c == args.por:
                 continue
             vc = G["cols"][c]
-            utiles = sum(n for v, n in vc.items() if es_util(c, v if v != "(vacio)" else ""))
+            u_filas, u_req = G["util"][c]
             entrada["columnas"][c] = {
                 "valores_distintos": len(vc),
-                "fill_rate_pct": pct(utiles, G["filas"]),
+                "filas_utiles": u_filas,
+                "requests_utiles": u_req,
+                "fill_rate_pct": pct(u_filas, G["filas"]),
+                "fill_rate_requests_pct": pct(u_req, G["req"]),
                 "top": [[v, n, pct(n, G["filas"])] for v, n in vc.most_common(TOP_GRUPO)]}
         res["grupos"][grupo] = entrada
 
@@ -234,7 +243,8 @@ def main():
                     cc = ge["columnas"][c]
                     tops = ", ".join(f"{v[:28]} {p:.1f}%" for v, n, p in cc["top"][:5])
                     g.write(f"   {c:20s} d={cc['valores_distintos']:<5d} "
-                            f"fill={cc['fill_rate_pct']:5.1f}% | {tops}\n")
+                            f"fill={cc['fill_rate_pct']:5.1f}% "
+                            f"futil={cc['filas_utiles']} rutil={cc['requests_utiles']} | {tops}\n")
                 g.write("\n")
         print("digests escritos en", args.digest)
 

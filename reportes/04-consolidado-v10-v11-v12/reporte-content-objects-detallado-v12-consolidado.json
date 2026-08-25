@@ -2508,7 +2508,8 @@
    }
   }
  },
- "paises": {
+ "dimension_grupos": "Country",
+ "grupos": {
   "Mexico": {
    "filas": 154529,
    "pct_filas": 28.66,
@@ -2522,7 +2523,10 @@
    "columnas": {
     "Publisher ID": {
      "valores_distintos": 177,
+     "filas_utiles": 154529,
+     "requests_utiles": 260777028560,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "161101",
@@ -2603,7 +2607,10 @@
     },
     "Publisher": {
      "valores_distintos": 174,
+     "filas_utiles": 154529,
+     "requests_utiles": 260777028560,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "OTTera.tv",
@@ -2684,7 +2691,10 @@
     },
     "pageURL": {
      "valores_distintos": 513,
+     "filas_utiles": 154529,
+     "requests_utiles": 260777028560,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "com.tcl.livetv",
@@ -2765,7 +2775,10 @@
     },
     "App Name": {
      "valores_distintos": 308,
+     "filas_utiles": 127877,
+     "requests_utiles": 235944600000,
      "fill_rate_pct": 82.75,
+     "fill_rate_requests_pct": 90.48,
      "top": [
       [
        "MovieArk: Stream Movies & Live",
@@ -2846,7 +2859,10 @@
     },
     "contentGenre": {
      "valores_distintos": 6167,
+     "filas_utiles": 152991,
+     "requests_utiles": 243563559680,
      "fill_rate_pct": 99.0,
+     "fill_rate_requests_pct": 93.4,
      "top": [
       [
        "drama",
@@ -2927,7 +2943,10 @@
     },
     "contentCategory": {
      "valores_distintos": 312,
+     "filas_utiles": 35388,
+     "requests_utiles": 89519006880,
      "fill_rate_pct": 22.9,
+     "fill_rate_requests_pct": 34.33,
      "top": [
       [
        "[-7]",
@@ -3008,7 +3027,10 @@
     },
     "contentSeries": {
      "valores_distintos": 1517,
+     "filas_utiles": 10673,
+     "requests_utiles": 11043845920,
      "fill_rate_pct": 6.91,
+     "fill_rate_requests_pct": 4.23,
      "top": [
       [
        "Not Available",
@@ -3089,7 +3111,10 @@
     },
     "contentIsTitlePresent": {
      "valores_distintos": 2,
+     "filas_utiles": 154529,
+     "requests_utiles": 260777028560,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "true",
@@ -3105,7 +3130,10 @@
     },
     "contentLength": {
      "valores_distintos": 9,
+     "filas_utiles": 27017,
+     "requests_utiles": 77764135920,
      "fill_rate_pct": 17.48,
+     "fill_rate_requests_pct": 29.82,
      "top": [
       [
        "Not Applicable",
@@ -3156,7 +3184,10 @@
     },
     "contentLanguage": {
      "valores_distintos": 477,
+     "filas_utiles": 120103,
+     "requests_utiles": 223888887360,
      "fill_rate_pct": 77.72,
+     "fill_rate_requests_pct": 85.85,
      "top": [
       [
        "en",
@@ -3237,7 +3268,10 @@
     },
     "contentIsLiveStream": {
      "valores_distintos": 3,
+     "filas_utiles": 39463,
+     "requests_utiles": 92132062080,
      "fill_rate_pct": 25.54,
+     "fill_rate_requests_pct": 35.33,
      "top": [
       [
        "Unknown",
@@ -3258,7 +3292,10 @@
     },
     "contentTitle": {
      "valores_distintos": 11685,
+     "filas_utiles": 127538,
+     "requests_utiles": 169679292240,
      "fill_rate_pct": 82.53,
+     "fill_rate_requests_pct": 65.07,
      "top": [
       [
        "Not Applicable",
@@ -3339,7 +3376,10 @@
     },
     "contentRating": {
      "valores_distintos": 154,
+     "filas_utiles": 130922,
+     "requests_utiles": 230375862960,
      "fill_rate_pct": 84.72,
+     "fill_rate_requests_pct": 88.34,
      "top": [
       [
        "Not Applicable",
@@ -3433,7 +3473,10 @@
    "columnas": {
     "Publisher ID": {
      "valores_distintos": 94,
+     "filas_utiles": 52176,
+     "requests_utiles": 26320275120,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "161101",
@@ -3514,7 +3557,10 @@
     },
     "Publisher": {
      "valores_distintos": 93,
+     "filas_utiles": 52176,
+     "requests_utiles": 26320275120,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "iion Pty Ltd",
@@ -3595,7 +3641,10 @@
     },
     "pageURL": {
      "valores_distintos": 176,
+     "filas_utiles": 52176,
+     "requests_utiles": 26320275120,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "com.tcl.movieark",
@@ -3676,7 +3725,10 @@
     },
     "App Name": {
      "valores_distintos": 134,
+     "filas_utiles": 50446,
+     "requests_utiles": 25789618560,
      "fill_rate_pct": 96.68,
+     "fill_rate_requests_pct": 97.98,
      "top": [
       [
        "MovieArk: Stream Movies & Live",
@@ -3757,7 +3809,10 @@
     },
     "contentGenre": {
      "valores_distintos": 1337,
+     "filas_utiles": 51382,
+     "requests_utiles": 25267140640,
      "fill_rate_pct": 98.48,
+     "fill_rate_requests_pct": 96.0,
      "top": [
       [
        "drama",
@@ -3838,7 +3893,10 @@
     },
     "contentCategory": {
      "valores_distintos": 128,
+     "filas_utiles": 12668,
+     "requests_utiles": 6031716800,
      "fill_rate_pct": 24.28,
+     "fill_rate_requests_pct": 22.92,
      "top": [
       [
        "[-7]",
@@ -3919,7 +3977,10 @@
     },
     "contentSeries": {
      "valores_distintos": 580,
+     "filas_utiles": 2981,
+     "requests_utiles": 2238519520,
      "fill_rate_pct": 5.71,
+     "fill_rate_requests_pct": 8.5,
      "top": [
       [
        "Not Available",
@@ -4000,7 +4061,10 @@
     },
     "contentIsTitlePresent": {
      "valores_distintos": 2,
+     "filas_utiles": 52176,
+     "requests_utiles": 26320275120,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "true",
@@ -4016,7 +4080,10 @@
     },
     "contentLength": {
      "valores_distintos": 9,
+     "filas_utiles": 5015,
+     "requests_utiles": 3070436000,
      "fill_rate_pct": 9.61,
+     "fill_rate_requests_pct": 11.67,
      "top": [
       [
        "Not Applicable",
@@ -4067,7 +4134,10 @@
     },
     "contentLanguage": {
      "valores_distintos": 30,
+     "filas_utiles": 32449,
+     "requests_utiles": 19398734000,
      "fill_rate_pct": 62.19,
+     "fill_rate_requests_pct": 73.7,
      "top": [
       [
        "en",
@@ -4148,7 +4218,10 @@
     },
     "contentIsLiveStream": {
      "valores_distintos": 3,
+     "filas_utiles": 14626,
+     "requests_utiles": 9148213680,
      "fill_rate_pct": 28.03,
+     "fill_rate_requests_pct": 34.76,
      "top": [
       [
        "Unknown",
@@ -4169,7 +4242,10 @@
     },
     "contentTitle": {
      "valores_distintos": 4371,
+     "filas_utiles": 49526,
+     "requests_utiles": 25303289120,
      "fill_rate_pct": 94.92,
+     "fill_rate_requests_pct": 96.14,
      "top": [
       [
        "Not Applicable",
@@ -4250,7 +4326,10 @@
     },
     "contentRating": {
      "valores_distintos": 97,
+     "filas_utiles": 41855,
+     "requests_utiles": 21154255040,
      "fill_rate_pct": 80.22,
+     "fill_rate_requests_pct": 80.37,
      "top": [
       [
        "Not Applicable",
@@ -4344,7 +4423,10 @@
    "columnas": {
     "Publisher ID": {
      "valores_distintos": 94,
+     "filas_utiles": 60427,
+     "requests_utiles": 25450442880,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "164918",
@@ -4425,7 +4507,10 @@
     },
     "Publisher": {
      "valores_distintos": 93,
+     "filas_utiles": 60427,
+     "requests_utiles": 25450442880,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "iion Pty Ltd",
@@ -4506,7 +4591,10 @@
     },
     "pageURL": {
      "valores_distintos": 145,
+     "filas_utiles": 60427,
+     "requests_utiles": 25450442880,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "com.tcl.movieark",
@@ -4587,7 +4675,10 @@
     },
     "App Name": {
      "valores_distintos": 106,
+     "filas_utiles": 55756,
+     "requests_utiles": 24759342960,
      "fill_rate_pct": 92.27,
+     "fill_rate_requests_pct": 97.28,
      "top": [
       [
        "MovieArk: Stream Movies & Live",
@@ -4668,7 +4759,10 @@
     },
     "contentGenre": {
      "valores_distintos": 1441,
+     "filas_utiles": 60118,
+     "requests_utiles": 25105079600,
      "fill_rate_pct": 99.49,
+     "fill_rate_requests_pct": 98.64,
      "top": [
       [
        "drama",
@@ -4749,7 +4843,10 @@
     },
     "contentCategory": {
      "valores_distintos": 110,
+     "filas_utiles": 8734,
+     "requests_utiles": 6310202400,
      "fill_rate_pct": 14.45,
+     "fill_rate_requests_pct": 24.79,
      "top": [
       [
        "[-7]",
@@ -4830,7 +4927,10 @@
     },
     "contentSeries": {
      "valores_distintos": 500,
+     "filas_utiles": 2735,
+     "requests_utiles": 2471262320,
      "fill_rate_pct": 4.53,
+     "fill_rate_requests_pct": 9.71,
      "top": [
       [
        "Not Available",
@@ -4911,7 +5011,10 @@
     },
     "contentIsTitlePresent": {
      "valores_distintos": 2,
+     "filas_utiles": 60427,
+     "requests_utiles": 25450442880,
      "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
      "top": [
       [
        "true",
@@ -4927,7 +5030,10 @@
     },
     "contentLength": {
      "valores_distintos": 9,
+     "filas_utiles": 4165,
+     "requests_utiles": 3188060880,
      "fill_rate_pct": 6.89,
+     "fill_rate_requests_pct": 12.53,
      "top": [
       [
        "Not Applicable",
@@ -4978,7 +5084,10 @@
     },
     "contentLanguage": {
      "valores_distintos": 44,
+     "filas_utiles": 45517,
+     "requests_utiles": 22340017280,
      "fill_rate_pct": 75.33,
+     "fill_rate_requests_pct": 87.78,
      "top": [
       [
        "en",
@@ -5059,7 +5168,10 @@
     },
     "contentIsLiveStream": {
      "valores_distintos": 3,
+     "filas_utiles": 10735,
+     "requests_utiles": 4494850480,
      "fill_rate_pct": 17.77,
+     "fill_rate_requests_pct": 17.66,
      "top": [
       [
        "Not Available",
@@ -5080,7 +5192,10 @@
     },
     "contentTitle": {
      "valores_distintos": 4089,
+     "filas_utiles": 58396,
+     "requests_utiles": 24838507440,
      "fill_rate_pct": 96.64,
+     "fill_rate_requests_pct": 97.6,
      "top": [
       [
        "Not Applicable",
@@ -5161,7 +5276,10 @@
     },
     "contentRating": {
      "valores_distintos": 95,
+     "filas_utiles": 50290,
+     "requests_utiles": 23927384160,
      "fill_rate_pct": 83.22,
+     "fill_rate_requests_pct": 94.02,
      "top": [
       [
        "Not Applicable",
