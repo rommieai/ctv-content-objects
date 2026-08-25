@@ -15,6 +15,7 @@ scripts/                          codigo que genera los consolidados y los JSON
   consolidar.py                   une N exportaciones en un CSV sin duplicados
   analizar.py                     analisis por columna + desglose por dimension -> JSON
   normalizar_monetizar.py         normaliza genero/rating y analiza el eCPM > 0
+  generar_visual_paises.py        SVG con las tablas de paises lado a lado
 
 reportes/
   01-v10/                         primera exploracion (v10): resumen y detallado 18 paises
@@ -70,6 +71,7 @@ Solo requiere Python 3.9+ (stdlib, sin dependencias).
 | Reporte | Contenido |
 |---|---|
 | `reportes/04-.../reporte-publishers-v12-consolidado.md` | Desglose por publisher (top 12): quién manda qué metadata, quién rompe qué y cómo monetiza cada ruta |
+| `reportes/04-.../reporte-timeline-emision-programas.md` | Timeline de emisión de los programas que aparecen como contentTitle (4–19 ago 2026): qué es evento real (LCDLFM4, Survivor, MasterChef, telenovelas, Liga MX) y qué es FAST de catálogo en loop |
 | `reportes/04-.../reporte-normalizacion-y-ecpm-v12-consolidado.md` | Género/rating normalizados + inventario monetizado; documenta el recálculo de eCPM de v12 |
 | `reportes/04-.../reporte-content-objects-detallado-v12-consolidado.md` | Content objects por país (México/Colombia/Chile) sobre el consolidado v10+v11+v12, con comparativo de fill por columna |
 | `reportes/03-.../reporte-normalizacion-y-ecpm.md` | Normalización y monetización sobre v10+v11 |

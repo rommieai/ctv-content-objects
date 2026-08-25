@@ -21,6 +21,12 @@ Porcentaje de filas de cada país con dato útil (excluye centinelas y basura eq
 | contentLength | 17.5% | 9.6% | 6.9% |
 | contentSeries | 6.9% | 5.7% | 4.5% |
 
+Versión visual con los tres países lado a lado (fill con semáforo):
+
+![Tablas de los tres países lado a lado](visual-tablas-paises.svg)
+
+*(Generada con `scripts/generar_visual_paises.py` a partir del JSON de este reporte.)*
+
 ## México — 154,529 filas (28.7%) · 60.8% de los requests
 
 eCPM: 82.2% de filas en cero · media no-cero 2.61 · **ponderado 3.78**
