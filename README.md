@@ -22,8 +22,9 @@ reportes/
   01-v10/                         primera exploracion (v10): resumen y detallado 18 paises
   02-v11/                         detallado de v11 (18 paises)
   03-consolidado-v10-v11/         comparativo v10 vs v11, unificado y normalizacion
-  04-consolidado-v10-v11-v12/     la version vigente: detallado (MX/CO/CL),
-                                  normalizacion+eCPM y analisis por publisher
+  04-consolidado-v10-v11-v12/     tanda sobre el consolidado v10+v11+v12
+  05-consolidado-v10-a-v13/       la version vigente: detallado por pais (MX/CO/CL),
+                                  publishers, normalizacion+eCPM y genero/titulo
 
 ejecutivo/                        resumenes en PDF para stakeholders
 ```
@@ -71,6 +72,10 @@ Solo requiere Python 3.9+ (stdlib, sin dependencias).
 
 | Reporte | Contenido |
 |---|---|
+| `reportes/05-.../reporte-content-objects-detallado-v13-consolidado.md` | **Vigente:** content objects por país (MX/CO/CL) sobre el consolidado v10 a v13, con comparativo de fill y visual SVG |
+| `reportes/05-.../reporte-publishers-v13-consolidado.md` | **Vigente:** desglose por publisher (top 12; entra Vidaa) |
+| `reportes/05-.../reporte-normalizacion-y-ecpm-v13-consolidado.md` | **Vigente:** género/rating normalizados + inventario monetizado |
+| `reportes/05-.../reporte-genero-titulo-paises.md` | **Vigente:** género por país + fill efectivo de contentGenre y contentTitle |
 | `reportes/04-.../reporte-genero-titulo-paises.md` | Género normalizado por país (MX/CO/CL) + fill efectivo de contentTitle: qué parte de lo "lleno" no es un título real |
 | `reportes/04-.../reporte-publishers-v12-consolidado.md` | Desglose por publisher (top 12): quién manda qué metadata, quién rompe qué y cómo monetiza cada ruta |
 | `reportes/04-.../reporte-timeline-emision-programas.md` | Timeline de emisión de los programas que aparecen como contentTitle (4–19 ago 2026): qué es evento real (LCDLFM4, Survivor, MasterChef, telenovelas, Liga MX) y qué es FAST de catálogo en loop |
