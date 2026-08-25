@@ -316,7 +316,182 @@
       "ecpm_ponderado_no_cero": 2.955,
       "pct_req_monetizado": 32.85
      }
-    ]
+    ],
+    "auditoria": {
+     "fill_util_pct_filas": 99.0,
+     "fill_util_pct_requests": 93.4,
+     "mapeado_parcial_filas": 12395,
+     "mapeado_parcial_pct_filas": 8.02,
+     "sin_sentido": {
+      "prefijo_tecnico": {
+       "filas": 8355,
+       "pct_filas_pais": 5.41,
+       "pct_requests_pais": 8.66,
+       "ejemplos_top": [
+        [
+         "genre_drama",
+         246
+        ],
+        [
+         "genre_action",
+         156
+        ],
+        [
+         "genre_comedy",
+         156
+        ],
+        [
+         "genre_drama,genre_foreign",
+         147
+        ],
+        [
+         "genre_horror",
+         97
+        ]
+       ]
+      },
+      "genero_en_formato_sucio": {
+       "filas": 6478,
+       "pct_filas_pais": 4.19,
+       "pct_requests_pais": 2.93,
+       "ejemplos_top": [
+        [
+         "western drama",
+         816
+        ],
+        [
+         "drama%2cromance",
+         131
+        ],
+        [
+         "general drama",
+         78
+        ],
+        [
+         "soapromance",
+         72
+        ],
+        [
+         "soapdrama",
+         67
+        ]
+       ]
+      },
+      "tipo_de_contenido": {
+       "filas": 1851,
+       "pct_filas_pais": 1.2,
+       "pct_requests_pais": 0.27,
+       "ejemplos_top": [
+        [
+         "tv series",
+         538
+        ],
+        [
+         "videos",
+         508
+        ],
+        [
+         "feature film",
+         490
+        ],
+        [
+         "live",
+         217
+        ],
+        [
+         "classic tv",
+         69
+        ]
+       ]
+      },
+      "idioma_o_region": {
+       "filas": 473,
+       "pct_filas_pais": 0.31,
+       "pct_requests_pais": 0.07,
+       "ejemplos_top": [
+        [
+         "en español",
+         401
+        ],
+        [
+         "foreign",
+         37
+        ],
+        [
+         "international",
+         19
+        ],
+        [
+         "hindi & regional",
+         12
+        ],
+        [
+         "reality_tv,foreign",
+         4
+        ]
+       ]
+      },
+      "tema_no_genero": {
+       "filas": 472,
+       "pct_filas_pais": 0.31,
+       "pct_requests_pais": 0.31,
+       "ejemplos_top": [
+        [
+         "business & finance",
+         89
+        ],
+        [
+         "arts",
+         76
+        ],
+        [
+         "relaxing",
+         61
+        ],
+        [
+         "outdoors",
+         59
+        ],
+        [
+         "technology",
+         42
+        ]
+       ]
+      },
+      "otros_no_reconocidos": {
+       "filas": 5063,
+       "pct_filas_pais": 3.28,
+       "pct_requests_pais": 2.48,
+       "ejemplos_top": [
+        [
+         "bingeworthy",
+         305
+        ],
+        [
+         "classic",
+         253
+        ],
+        [
+         "se",
+         251
+        ],
+        [
+         "entertinament,holiday",
+         198
+        ],
+        [
+         "milenio noticias",
+         195
+        ]
+       ]
+      }
+     },
+     "total_sin_sentido_filas": 22692,
+     "total_sin_sentido_pct_filas": 14.68,
+     "total_sin_sentido_pct_requests": 14.72,
+     "fill_efectivo_pct_filas": 84.32,
+     "fill_efectivo_pct_requests": 78.68
+    }
    },
    "titulo": {
     "fill_util_filas": 127538,
@@ -809,7 +984,151 @@
       "ecpm_ponderado_no_cero": 9.673,
       "pct_req_monetizado": 42.97
      }
-    ]
+    ],
+    "auditoria": {
+     "fill_util_pct_filas": 98.48,
+     "fill_util_pct_requests": 96.0,
+     "mapeado_parcial_filas": 3831,
+     "mapeado_parcial_pct_filas": 7.34,
+     "sin_sentido": {
+      "genero_en_formato_sucio": {
+       "filas": 365,
+       "pct_filas_pais": 0.7,
+       "pct_requests_pais": 0.77,
+       "ejemplos_top": [
+        [
+         "english & international news",
+         52
+        ],
+        [
+         "music audio",
+         40
+        ],
+        [
+         "romance movies,drama tv",
+         19
+        ],
+        [
+         "drama tv",
+         19
+        ],
+        [
+         "drama tv,romance movies",
+         18
+        ]
+       ]
+      },
+      "tipo_de_contenido": {
+       "filas": 973,
+       "pct_filas_pais": 1.86,
+       "pct_requests_pais": 0.58,
+       "ejemplos_top": [
+        [
+         "tv series",
+         456
+        ],
+        [
+         "videos",
+         266
+        ],
+        [
+         "live",
+         216
+        ],
+        [
+         "classic tv",
+         34
+        ],
+        [
+         "photo & video",
+         1
+        ]
+       ]
+      },
+      "idioma_o_region": {
+       "filas": 289,
+       "pct_filas_pais": 0.55,
+       "pct_requests_pais": 0.18,
+       "ejemplos_top": [
+        [
+         "en español",
+         239
+        ],
+        [
+         "hindi & regional",
+         24
+        ],
+        [
+         "international",
+         19
+        ],
+        [
+         "world",
+         7
+        ]
+       ]
+      },
+      "tema_no_genero": {
+       "filas": 195,
+       "pct_filas_pais": 0.37,
+       "pct_requests_pais": 0.71,
+       "ejemplos_top": [
+        [
+         "business & finance",
+         48
+        ],
+        [
+         "relaxing",
+         46
+        ],
+        [
+         "arts",
+         33
+        ],
+        [
+         "outdoors",
+         24
+        ],
+        [
+         "review",
+         22
+        ]
+       ]
+      },
+      "otros_no_reconocidos": {
+       "filas": 923,
+       "pct_filas_pais": 1.77,
+       "pct_requests_pais": 2.15,
+       "ejemplos_top": [
+        [
+         "arcade",
+         64
+        ],
+        [
+         "se",
+         63
+        ],
+        [
+         "bingeworthy",
+         62
+        ],
+        [
+         "soap operas",
+         53
+        ],
+        [
+         "puzzle",
+         49
+        ]
+       ]
+      }
+     },
+     "total_sin_sentido_filas": 2745,
+     "total_sin_sentido_pct_filas": 5.26,
+     "total_sin_sentido_pct_requests": 4.39,
+     "fill_efectivo_pct_filas": 93.22,
+     "fill_efectivo_pct_requests": 91.61
+    }
    },
    "titulo": {
     "fill_util_filas": 49526,
@@ -1249,7 +1568,151 @@
       "ecpm_ponderado_no_cero": 5.39,
       "pct_req_monetizado": 44.94
      }
-    ]
+    ],
+    "auditoria": {
+     "fill_util_pct_filas": 99.49,
+     "fill_util_pct_requests": 98.64,
+     "mapeado_parcial_filas": 4342,
+     "mapeado_parcial_pct_filas": 7.19,
+     "sin_sentido": {
+      "genero_en_formato_sucio": {
+       "filas": 479,
+       "pct_filas_pais": 0.79,
+       "pct_requests_pais": 0.84,
+       "ejemplos_top": [
+        [
+         "english & international news",
+         54
+        ],
+        [
+         "music audio",
+         20
+        ],
+        [
+         "romance movies,drama tv",
+         18
+        ],
+        [
+         "drama tv,romance movies",
+         18
+        ],
+        [
+         "drama tv",
+         16
+        ]
+       ]
+      },
+      "tipo_de_contenido": {
+       "filas": 686,
+       "pct_filas_pais": 1.14,
+       "pct_requests_pais": 0.47,
+       "ejemplos_top": [
+        [
+         "tv series",
+         322
+        ],
+        [
+         "videos",
+         235
+        ],
+        [
+         "live",
+         102
+        ],
+        [
+         "classic tv",
+         21
+        ],
+        [
+         "trailer",
+         6
+        ]
+       ]
+      },
+      "idioma_o_region": {
+       "filas": 139,
+       "pct_filas_pais": 0.23,
+       "pct_requests_pais": 0.13,
+       "ejemplos_top": [
+        [
+         "en español",
+         103
+        ],
+        [
+         "hindi & regional",
+         24
+        ],
+        [
+         "international",
+         11
+        ],
+        [
+         "world",
+         1
+        ]
+       ]
+      },
+      "tema_no_genero": {
+       "filas": 149,
+       "pct_filas_pais": 0.25,
+       "pct_requests_pais": 0.6,
+       "ejemplos_top": [
+        [
+         "business & finance",
+         47
+        ],
+        [
+         "arts",
+         30
+        ],
+        [
+         "outdoors",
+         22
+        ],
+        [
+         "review",
+         16
+        ],
+        [
+         "relaxing",
+         15
+        ]
+       ]
+      },
+      "otros_no_reconocidos": {
+       "filas": 742,
+       "pct_filas_pais": 1.23,
+       "pct_requests_pais": 2.06,
+       "ejemplos_top": [
+        [
+         "arcade",
+         73
+        ],
+        [
+         "se",
+         47
+        ],
+        [
+         "cm",
+         47
+        ],
+        [
+         "puzzle",
+         36
+        ],
+        [
+         "soccer match",
+         32
+        ]
+       ]
+      }
+     },
+     "total_sin_sentido_filas": 2195,
+     "total_sin_sentido_pct_filas": 3.63,
+     "total_sin_sentido_pct_requests": 4.09,
+     "fill_efectivo_pct_filas": 95.86,
+     "fill_efectivo_pct_requests": 94.55
+    }
    },
    "titulo": {
     "fill_util_filas": 58396,

@@ -3,7 +3,7 @@
 **Fuente:** `inventory-consolidado-v10-v11-v12.csv` (539,190 filas; métricas de v12).
 **Generado con:** `scripts/analizar_genero_titulo_paises.py` → `reporte-genero-titulo-paises.json` (distribuciones completas y ejemplos por categoría).
 
-Dos análisis en uno, ambos desglosados por país: (A) la normalización de `contentGenre` (mismo diccionario de sinónimos de la tanda anterior, ahora con porcentajes por país) y (B) una auditoría de `contentTitle` que va un paso más allá del fill: dentro de lo que cuenta como "lleno", cuánto **no es realmente un título de contenido** según lo que espera [OpenRTB 2.6](https://github.com/InteractiveAdvertisingBureau/openrtb2.x/blob/main/2.6.md#objectcontent) (`content.title` = el título del contenido, ej. "A New Hope").
+Dos análisis en uno, ambos desglosados por país: (A) la normalización de `contentGenre` (mismo diccionario de sinónimos de la tanda anterior, ahora con porcentajes por país) con su propia auditoría de **valores que no son un género**, y (B) una auditoría de `contentTitle` que va un paso más allá del fill: dentro de lo que cuenta como "lleno", cuánto **no es realmente un título de contenido** según lo que espera [OpenRTB 2.6](https://github.com/InteractiveAdvertisingBureau/openrtb2.x/blob/main/2.6.md#objectcontent). En ambos campos la lógica es la misma: el fill nominal es una cota superior; aquí se calcula el **fill efectivo**.
 
 ---
 
@@ -80,6 +80,40 @@ México es el país con peor mapeo, y no por catálogo raro: ahí viven los dos 
 2. **Chile es notablemente plano en precio** (7.6–9.3 en todos los géneros): su prima es de mercado, no de contenido. Contrasta con México, donde sí hay dispersión (deportes 1.98 vs entretenimiento 5.51).
 3. **Colombia monetiza mal en todos los géneros** (15–30%, contra 40–78% de México): la enfermedad colombiana es transversal a todo el catálogo — es demanda, no mix de contenido.
 4. Particularidades: en México el "entretenimiento genérico" (el EPG de Roku) es el 10.6% del tráfico y lo mejor monetizado (78%); en Colombia el **anime pesa 5.8% del tráfico** (el triple que en los otros) y es su género mejor pagado (3.99); en Chile drama solo ya es el 40% del tráfico.
+
+## Auditoría de contentGenre: lo "lleno" que no es un género
+
+Misma lógica que la auditoría de título: dentro del fill útil (que ya excluye centinelas), se clasifican las filas cuyo valor **no corresponde a un género** según lo que espera la spec (`content.genre` = "género que mejor describe el contenido"):
+
+| Categoría | Qué es | Ejemplos reales |
+|---|---|---|
+| prefijo_tecnico | la variable con prefijo en vez del valor | `genre_drama`, `genre_action` |
+| genero_en_formato_sucio | sí es un género, pero en formato no estándar | `western drama`, `drama%2cromance` (coma URL-encoded), `music audio` |
+| tipo_de_contenido | formato del asset, no género | `tv series`, `videos`, `feature film`, `live` |
+| idioma_o_region | idioma/región metido como género | `en español`, `foreign`, `international` |
+| tema_no_genero | tema editorial, no género | `business & finance`, `relaxing`, `arts` |
+| otros_no_reconocidos | vocabulario propio no interpretable | `bingeworthy`, `classic`, `arcade`, `se` |
+
+Resultados (% sobre filas y requests de cada país):
+
+| Categoría | MX filas | MX reqs | CO filas | CO reqs | CL filas | CL reqs |
+|---|---:|---:|---:|---:|---:|---:|
+| Fill útil (nominal) | 99.0% | 93.4% | 98.5% | 96.0% | 99.5% | 98.6% |
+| − prefijo_tecnico | 5.4% | **8.7%** | — | — | — | — |
+| − genero_en_formato_sucio | 4.2% | 2.9% | 0.7% | 0.8% | 0.8% | 0.8% |
+| − tipo_de_contenido | 1.2% | 0.3% | 1.9% | 0.6% | 1.1% | 0.5% |
+| − idioma_o_region | 0.3% | 0.1% | 0.6% | 0.2% | 0.2% | 0.1% |
+| − tema_no_genero | 0.3% | 0.3% | 0.4% | 0.7% | 0.3% | 0.6% |
+| − otros_no_reconocidos | 3.3% | 2.5% | 1.8% | 2.2% | 1.2% | 2.1% |
+| **Fill efectivo (género real)** | **84.3%** | **78.7%** | **93.2%** | **91.6%** | **95.9%** | **94.6%** |
+
+Aparte, en los tres países hay un ~7–8% adicional de filas "mapeadas parciales": traen un género canónico válido pero acompañado de tokens basura (usables, pero delatan el mismo desorden de vocabulario).
+
+**Conclusiones — auditoría de género:**
+
+1. **Otra vez México es donde el fill más engaña**: del 93.4% nominal por requests, el género real queda en 78.7%. Y la mitad de la fuga es un solo responsable: el prefijo `genre_*` de TV Azteca, que él solo es el **8.7% del tráfico del país** — las otras dos plazas no lo tienen en absoluto. Colombia (91.6%) y Chile (94.6%) quedan sanos.
+2. Buena noticia dentro de lo sucio: la categoría más grande después del prefijo es "género en formato sucio" — valores que **sí son géneros** (`western drama`, `drama%2cromance`) y se recuperarían con ~20 sinónimos más en el diccionario, incluyendo el hallazgo nuevo de esta pasada: comas URL-encoded (`%2c`) sin decodificar, otra variante de pipeline roto.
+3. Lo verdaderamente irrecuperable (tipos de contenido, idiomas, temas, vocabulario propio) ronda apenas el 3–5% del tráfico en los tres países: el género, bien normalizado, es y sigue siendo la mejor señal contextual del dataset.
 
 ---
 

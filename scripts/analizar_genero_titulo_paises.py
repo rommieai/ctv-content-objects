@@ -109,20 +109,63 @@ GENRE_MAP = {
 
 
 def norm_genre(raw):
+    """Devuelve (generos canonicos, hubo_algun_token, tokens_no_mapeados)."""
     s = raw.strip().lower()
     if s in SENT:
-        return [], False
+        return [], False, []
     toks = [t.strip() for t in s.replace("/", ",").replace("&", ",").replace(";", ",").split(",")]
     out = []
+    no_map = []
     algun_token = False
     for t in toks:
         if not t or t in SENT:
             continue
         algun_token = True
         g = GENRE_MAP.get(t)
-        if g and g not in out:
+        if g is None:
+            no_map.append(t)
+        elif g not in out:
             out.append(g)
-    return out, algun_token
+    return out, algun_token, no_map
+
+
+# --- auditoria de contentGenre: valores que no son un genero ---
+TIPO_CONTENIDO = {"short", "shorts", "feature film", "tv series", "tvshows", "tv shows",
+                  "videos", "video", "classic tv", "movies & tv", "movies and tv",
+                  "live", "live tv", "episode", "episodes", "clip", "clips",
+                  "trailer", "trailers", "web series", "full episodes"}
+IDIOMA_REGION = {"en español", "en espanol", "spanish", "english", "international",
+                 "world", "foreign", "latino", "latin", "hindi", "korean", "japanese",
+                 "global news"}
+TEMA_NO_GENERO = {"culture", "relaxing", "opinion", "technology", "business", "finance",
+                  "arts", "outdoors", "review", "technology & computing",
+                  "home entertaining", "consumer electronics", "shopping", "weather"}
+GENERO_BASE = ["drama", "comed", "roman", "crime", "horror", "terror", "thriller",
+               "action", "accion", "western", "myster", "adventur", "fantas", "sci",
+               "documenta", "noir", "suspense", "animat", "anime", "sport", "music",
+               "news", "kids", "family", "novela"]
+CATEGORIAS_GENERO = ["prefijo_tecnico", "genero_en_formato_sucio", "tipo_de_contenido",
+                     "idioma_o_region", "tema_no_genero", "otros_no_reconocidos"]
+
+
+def clasificar_genero_no_mapeado(tokens):
+    """Clasifica una fila cuyo genero no mapeo a nada canonico."""
+    for t in tokens:
+        if t.startswith("genre_"):
+            return "prefijo_tecnico"
+    for t in tokens:
+        if any(b in t for b in GENERO_BASE):
+            return "genero_en_formato_sucio"
+    for t in tokens:
+        if t in TIPO_CONTENIDO:
+            return "tipo_de_contenido"
+    for t in tokens:
+        if t in IDIOMA_REGION:
+            return "idioma_o_region"
+    for t in tokens:
+        if t in TEMA_NO_GENERO:
+            return "tema_no_genero"
+    return "otros_no_reconocidos"
 
 
 # --- auditoria de contentTitle ---
@@ -177,6 +220,10 @@ def main():
              "gen_filas": Counter(), "gen_req": Counter(),
              "gen_ewsum": defaultdict(float), "gen_ewreq": defaultdict(int),
              "gen_sin_dato": 0, "gen_no_mapeado": 0, "gen_multi": 0,
+             "gen_util_filas": 0, "gen_util_req": 0,
+             "gen_parcial_filas": 0, "gen_parcial_req": 0,
+             "gen_cat_filas": Counter(), "gen_cat_req": Counter(),
+             "gen_cat_ejemplos": defaultdict(Counter),
              "tit_filas_util": 0, "tit_req_util": 0,
              "tit_cat_filas": Counter(), "tit_cat_req": Counter(),
              "tit_ejemplos": defaultdict(Counter)}
@@ -204,11 +251,21 @@ def main():
             g["filas"] += 1
             g["req"] += req
 
-            generos, tenia_algo = norm_genre(row[idx["contentGenre"]])
+            generos, tenia_algo, no_map = norm_genre(row[idx["contentGenre"]])
             if not tenia_algo:
                 g["gen_sin_dato"] += 1
-            elif not generos:
-                g["gen_no_mapeado"] += 1
+            else:
+                g["gen_util_filas"] += 1
+                g["gen_util_req"] += req
+                if not generos:
+                    g["gen_no_mapeado"] += 1
+                    cat = clasificar_genero_no_mapeado(no_map)
+                    g["gen_cat_filas"][cat] += 1
+                    g["gen_cat_req"][cat] += req
+                    g["gen_cat_ejemplos"][cat][row[idx["contentGenre"]].strip()[:40]] += 1
+                elif no_map:
+                    g["gen_parcial_filas"] += 1
+                    g["gen_parcial_req"] += req
             if len(generos) > 1:
                 g["gen_multi"] += 1
             for gen in generos:
@@ -250,6 +307,26 @@ def main():
                 "pct_filas_con_genero_canonico": pct(
                     g["filas"] - g["gen_sin_dato"] - g["gen_no_mapeado"], g["filas"]),
                 "distribucion": generos,
+                "auditoria": {
+                    "fill_util_pct_filas": pct(g["gen_util_filas"], g["filas"]),
+                    "fill_util_pct_requests": pct(g["gen_util_req"], g["req"]),
+                    "mapeado_parcial_filas": g["gen_parcial_filas"],
+                    "mapeado_parcial_pct_filas": pct(g["gen_parcial_filas"], g["filas"]),
+                    "sin_sentido": {
+                        cat: {"filas": g["gen_cat_filas"][cat],
+                              "pct_filas_pais": pct(g["gen_cat_filas"][cat], g["filas"]),
+                              "pct_requests_pais": pct(g["gen_cat_req"][cat], g["req"]),
+                              "ejemplos_top": g["gen_cat_ejemplos"][cat].most_common(5)}
+                        for cat in CATEGORIAS_GENERO if g["gen_cat_filas"][cat]},
+                    "total_sin_sentido_filas": g["gen_no_mapeado"],
+                    "total_sin_sentido_pct_filas": pct(g["gen_no_mapeado"], g["filas"]),
+                    "total_sin_sentido_pct_requests": pct(
+                        sum(g["gen_cat_req"].values()), g["req"]),
+                    "fill_efectivo_pct_filas": pct(
+                        g["gen_util_filas"] - g["gen_no_mapeado"], g["filas"]),
+                    "fill_efectivo_pct_requests": pct(
+                        g["gen_util_req"] - sum(g["gen_cat_req"].values()), g["req"]),
+                },
             },
             "titulo": {
                 "fill_util_filas": g["tit_filas_util"],
