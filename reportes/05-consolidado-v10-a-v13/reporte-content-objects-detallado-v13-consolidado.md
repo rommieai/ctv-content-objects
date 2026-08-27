@@ -42,14 +42,21 @@ eCPM: 81.7% de filas en cero · media no-cero 2.40 · **ponderado 3.60**
 
 *Nota: "no vacías" incluye la exclusión de centinelas — una fila cuenta como vacía tanto si la celda no trae valor como si trae `Not Available`, `Not Applicable`, `Unknown` o basura equivalente a vacío (`[-7]`, hash MD5 de cadena vacía, macros sin reemplazar).*
 
+**Campos de app / vendedor:**
+
 | Columna | % de filas no vacías | # filas no vacías | Top 3 referencias (% filas del país) |
 |---|---:|---:|---|
 | Publisher | 100% | 169,125 | OTTera 14.1%, iion 13.7%, TCL Springserve 11.1% |
+| App Name | 82.5% | 139,617 | MovieArk 24.7%, Live TV 20.4%, *N/A 17.4%* |
+
+**Content objects:**
+
+| Columna | % de filas no vacías | # filas no vacías | Top 3 referencias (% filas del país) |
+|---|---:|---:|---|
 | contentIsTitlePresent | 100% | 169,125 | true 83.0%, false 17.0% |
 | contentGenre | 99.0% | 167,495 | drama 10.8%, documentary 4.1%, other 4.1% |
 | contentRating | 84.4% | 142,700 | *N/A 15.6%*, tv-14 13.6%, r 10.0% |
 | contentTitle | 83.0% | 140,304 | *N/A 17.0%*, las estrellas 0.4%, canal 5 0.3% |
-| App Name | 82.5% | 139,617 | MovieArk 24.7%, Live TV 20.4%, *N/A 17.4%* |
 | contentLanguage | 75.8% | 128,222 | **es 36.0%, en 35.2%**, *N/A 24.0%* |
 | contentIsLiveStream | 26.1% | 44,151 | *Unknown 37.5%*, *N/A 36.4%*, 1 26.1% |
 | contentCategory | 22.9% | 38,759 | *[-7] 77.1%*, [IAB1] 4.3%, [IAB1-5] 3.6% |
@@ -67,12 +74,19 @@ eCPM: 87.9% de filas en cero · media no-cero 3.30 · **ponderado 4.51**
 
 *Nota: "no vacías" incluye la exclusión de centinelas — una fila cuenta como vacía tanto si la celda no trae valor como si trae `Not Available`, `Not Applicable`, `Unknown` o basura equivalente a vacío (`[-7]`, hash MD5 de cadena vacía, macros sin reemplazar).*
 
+**Campos de app / vendedor:**
+
 | Columna | % de filas no vacías | # filas no vacías | Top 3 referencias (% filas del país) |
 |---|---:|---:|---|
 | Publisher | 100% | 55,737 | iion 29.7%, OTTera 23.9%, Select Plus 11.1% |
+| App Name | 96.6% | 53,828 | MovieArk 35.6%, Live TV 27.5%, TCL CHANNEL 13.1% |
+
+**Content objects:**
+
+| Columna | % de filas no vacías | # filas no vacías | Top 3 referencias (% filas del país) |
+|---|---:|---:|---|
 | contentIsTitlePresent | 100% | 55,737 | true 95.0%, false 5.0% |
 | contentGenre | 98.5% | 54,890 | drama 9.9%, other 7.3%, documentary 4.7% |
-| App Name | 96.6% | 53,828 | MovieArk 35.6%, Live TV 27.5%, TCL CHANNEL 13.1% |
 | contentTitle | 95.0% | 52,925 | *N/A 5.0%*, {{content_title}} 0.2%, nail in the coffin 0.2% |
 | contentRating | 80.6% | 44,928 | *N/A 19.4%*, r 11.8%, tv-14 9.8% |
 | contentLanguage | **61.5%** | 34,262 | en 41.1%, *N/A 38.5%*, es 15.7% |
@@ -92,13 +106,20 @@ eCPM: **76.8% de filas en cero (la mejor tasa de los tres)** · media no-cero 6.
 
 *Nota: "no vacías" incluye la exclusión de centinelas — una fila cuenta como vacía tanto si la celda no trae valor como si trae `Not Available`, `Not Applicable`, `Unknown` o basura equivalente a vacío (`[-7]`, hash MD5 de cadena vacía, macros sin reemplazar).*
 
+**Campos de app / vendedor:**
+
 | Columna | % de filas no vacías | # filas no vacías | Top 3 referencias (% filas del país) |
 |---|---:|---:|---|
 | Publisher | 100% | 63,613 | iion 21.8%, TCL Springserve 18.8%, OTTera 17.2% |
+| App Name | 92.4% | 58,785 | MovieArk 41.9%, Live TV 30.1%, *N/A 7.6%* |
+
+**Content objects:**
+
+| Columna | % de filas no vacías | # filas no vacías | Top 3 referencias (% filas del país) |
+|---|---:|---:|---|
 | contentIsTitlePresent | 100% | 63,613 | true 96.7%, false 3.3% |
 | contentGenre | 99.5% | 63,276 | drama 8.4%, other 6.5%, documentary 6.1% |
 | contentTitle | 96.7% | 61,492 | *N/A 3.3%*, catalunya über alles! 0.2%, the baddest bad boy 0.2% |
-| App Name | 92.4% | 58,785 | MovieArk 41.9%, Live TV 30.1%, *N/A 7.6%* |
 | contentRating | 83.0% | 52,824 | *N/A 17.0%*, tv-ma 13.3%, r 11.6% |
 | contentLanguage | 74.7% | 47,507 | en 52.0%, *N/A 25.3%*, es 18.7% |
 | contentIsLiveStream | **17.3%** | 10,995 | *N/A 42.9%*, *Unknown 39.8%*, 1 17.3% |
