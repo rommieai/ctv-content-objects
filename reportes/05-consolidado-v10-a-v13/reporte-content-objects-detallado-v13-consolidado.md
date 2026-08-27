@@ -9,13 +9,20 @@
 
 Porcentaje de filas de cada país con dato útil (excluye centinelas y basura equivalente a vacío):
 
+**Campos de app / vendedor:**
+
 | Columna | México | Colombia | Chile |
 |---|---:|---:|---:|
 | Publisher | 100% | 100% | 100% |
+| App Name | 82.5% | 96.6% | 92.4% |
+
+**Content objects:**
+
+| Columna | México | Colombia | Chile |
+|---|---:|---:|---:|
 | contentIsTitlePresent | 100% | 100% | 100% |
 | contentGenre | 99.0% | 98.5% | 99.5% |
 | contentTitle | 83.0% | 95.0% | 96.7% |
-| App Name | 82.5% | 96.6% | 92.4% |
 | contentRating | 84.4% | 80.6% | 83.0% |
 | contentLanguage | 75.8% | **61.5%** | 74.7% |
 | contentIsLiveStream | 26.1% | 27.4% | **17.3%** |
