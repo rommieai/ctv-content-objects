@@ -11,7 +11,7 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 
 ## Distribución (multi-etiqueta; % sobre las filas con género útil del país)
 
-### México
+### México — 193,264 filas (29.8% del consolidado)
 
 | Género | % filas no vacías | eCPM pond. (>0) | % monetizado |
 |---|---:|---:|---:|
@@ -24,7 +24,7 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 | entretenimiento (genérico) | 4.7% | **4.92** | **76.1%** |
 | deportes | 3.8% | **2.18** | **81.0%** |
 
-### Colombia
+### Colombia — 63,163 filas (9.7% del consolidado)
 
 | Género | % filas no vacías | eCPM pond. (>0) | % monetizado |
 |---|---:|---:|---:|
@@ -37,7 +37,7 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 | infantil-familia | 7.5% | 7.19 | **41.9%** |
 | anime | 2.4% | **11.04** | 41.3% |
 
-### Chile
+### Chile — 70,326 filas (10.8% del consolidado)
 
 | Género | % filas no vacías | eCPM pond. (>0) | % monetizado |
 |---|---:|---:|---:|
@@ -53,6 +53,17 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 **Conclusiones — distribución:** la regla "el país fija el precio, el género la vendibilidad" cumple seis cortes, y **Colombia consolida su nicho premium: anime a 11.04 de eCPM con el 8.4% del tráfico del país, aventura a 10.18 (7.7% del tráfico) y acción a 9.10** — precios que ningún género alcanza en Chile o México. La recuperación colombiana sigue concentrada, no es pareja. Chile sigue plano (5.8–6.4) y en México el patrón de liquidez barata se acentúa: el EPG de Roku (12.2% del tráfico, 76% monetizado) y ahora también deportes (81% monetizado a 2.18 — lo más líquido y más barato del país).
 
 ## Auditoría de contentGenre: lo "lleno" que no es un género
+
+La tabla parte de las filas no vacías y les resta lo que trae texto pero **no es un género usable tal cual**. Qué significa cada descuento:
+
+- **prefijo_tecnico** — el vendedor manda su etiqueta interna de sistema en vez del género limpio: `genre_drama`, `genre_action` (marca de la casa de TV Azteca). El género real está ahí, pero envuelto en formato técnico.
+- **genero_en_formato_sucio** — sí es un género, pero mal escrito o mal codificado: palabras pegadas (`soapdrama`), codificación de URL sin resolver (`drama%2cromance`, que debía ser "drama, romance") o combos no estándar (`western drama`). También recuperable con limpieza.
+- **tipo_de_contenido** — dice el *formato* y no el género: `tv series`, `feature film`, `videos`, `live`. Saber que es una serie no dice si es comedia o terror.
+- **idioma_o_region** — dice el idioma o la procedencia (`en español`, `foreign`, `hindi & regional`): ese dato va en `contentLanguage`, no aquí.
+- **tema_no_genero** — un tema de interés que no es un género de entretenimiento: `outdoors`, `arts`, `business & finance`, `relaxing`.
+- **otros_no_reconocidos** — texto que no se pudo mapear a ningún género conocido (`game`, `se`, `bingeworthy`): vocabulario propio de cada app.
+
+Los dos primeros son recuperables normalizando (el género real viene, mal empacado); el resto es el campo usado para otra cosa. Nada de esto le sirve tal cual a un comprador que quiera segmentar por género.
 
 | Categoría (% de filas del país) | México | Colombia | Chile |
 |---|---:|---:|---:|
@@ -71,7 +82,19 @@ Más ~7% de filas "mapeadas parciales" en los tres. **En los tres países el tr�
 
 # PARTE B — contentTitle: de "la celda trae algo" a "trae un título de verdad"
 
-**México:**
+Las tablas parten de las filas no vacías y les restan todo lo que técnicamente trae texto pero **no es el título del programa que alguien está viendo**. Qué significa cada descuento:
+
+- **placeholder** — la celda trae una palabra de relleno genérica (`roku`, `epg`, `vod`) que describe la plataforma o el tipo de contenido, no el programa. Es como si en "título del libro" alguien escribiera "libro".
+- **slug_tecnico** — llega el nombre interno de archivo o de sistema en vez del título comercial: `devils prey_trailer`, con guiones bajos y sufijos técnicos. Delata que el vendedor manda su identificador de catálogo, no el título.
+- **canal_no_programa** — trae el nombre del canal (`las estrellas`, `canal 5`) y no el del programa emitido. Sirve para saber dónde, pero no qué se está viendo, que es lo que pide OpenRTB.
+- **macro / macro_sin_reemplazar** — el sistema del vendedor debía sustituir una plantilla tipo `{{content_title}}` por el título real y falló: llega la plantilla literal, escrita tal cual.
+- **sin_letras** — solo números o símbolos (`41`, `8.0`): no identifican ningún contenido.
+- **muy_corto** — una o dos letras (`n`, `fx`): imposible saber qué programa es.
+- **encoding_roto** — sí hay un título, pero llegó con los caracteres dañados por una mala codificación de texto (`catalunya �ber alles!` en vez de "über"): un sistema intermedio lo corrompió.
+
+Nada de esto cuenta como título útil porque un comprador (o un algoritmo de brand safety) no puede saber con eso qué contenido está comprando.
+
+**México — 193,264 filas:**
 
 | Métrica | % filas |
 |---|---:|
@@ -82,7 +105,7 @@ Más ~7% de filas "mapeadas parciales" en los tres. **En los tres países el tr�
 | − macro / sin_letras / muy_corto / encoding | 0.3% |
 | **Filas con un título de verdad** | **78.3%** |
 
-**Colombia:**
+**Colombia — 63,163 filas:**
 
 | Métrica | % filas |
 |---|---:|
@@ -91,7 +114,7 @@ Más ~7% de filas "mapeadas parciales" en los tres. **En los tres países el tr�
 | − macro + resto | 0.4% |
 | **Filas con un título de verdad** | **89.8%** |
 
-**Chile:**
+**Chile — 70,326 filas:**
 
 | Métrica | % filas |
 |---|---:|
