@@ -5,7 +5,7 @@
 
 **Nota del corte v15:** los requests totales siguen bajando (−2.7% vs el corte anterior) y el eCPM ponderado global también, aunque cada vez menos (4.20 → 4.16); el outlier de 135.3 de Perú persiste. La novedad está en otra parte: **el % de tráfico monetizado subió a 52.9%** — primera vez en seis cortes que sale de la banda 51±0.1 (ver reporte de normalización).
 
-## Comparativo de fill por columna
+## Comparativo de % de filas no vacías por columna
 
 Porcentaje de filas de cada país con dato útil (excluye centinelas y basura equivalente a vacío):
 
@@ -30,7 +30,7 @@ Porcentaje de filas de cada país con dato útil (excluye centinelas y basura eq
 | contentLength | 17.0% | 10.1% | 7.7% |
 | contentSeries | 7.2% | 6.2% | 5.2% |
 
-Versión visual con los tres países lado a lado (fill con semáforo):
+Versión visual con los tres países lado a lado (semáforo por % de filas no vacías):
 
 ![Tablas de los tres países lado a lado](visual-tablas-paises.svg)
 

@@ -9,44 +9,46 @@
 
 # PARTE A — Género normalizado
 
-89.3% de filas con al menos un género canónico (bajó de 91.9% — el vocabulario nuevo de v15 entró sin mapear); 261,068 multi-género. Distribución (por % de requests):
+89.3% de filas con al menos un género canónico (bajó de 91.9% — el vocabulario nuevo de v15 entró sin mapear); 261,068 multi-género. Distribución (multi-etiqueta; % sobre las filas con género útil):
 
-| Género | % filas | % requests | eCPM pond. (>0) | % monetizado |
-|---|---:|---:|---:|---:|
-| drama | 28.8% | 28.7% | 3.77 | 46.0% |
-| comedia | 12.5% | 12.2% | 3.92 | 49.0% |
-| thriller | 11.5% | 10.3% | 3.88 | 36.1% |
-| terror | 11.3% | 9.9% | 4.06 | 34.8% |
-| entretenimiento (genérico) | 4.0% | 8.5% | 5.03 | **72.1%** |
-| accion | 9.8% | 8.3% | 4.80 | 41.3% |
-| romance | 7.6% | 7.8% | 4.90 | 42.0% |
-| documental | 11.3% | 7.7% | 5.19 | 38.0% |
-| infantil-familia | 6.5% | 5.7% | 5.61 | 47.1% |
-| deportes | 4.0% | 5.6% | **2.77** | **73.6%** |
-| crimen | 5.2% | 4.3% | 4.77 | 38.6% |
-| aventura | 4.9% | 3.8% | 6.04 | 38.4% |
-| noticias | 1.7% | 3.2% | 4.76 | **64.9%** |
-| musica | 4.5% | 3.2% | 3.95 | 55.8% |
-| misterio | 4.0% | 3.1% | 4.40 | 36.7% |
-| anime | 2.3% | 2.3% | **7.84** | 44.4% |
-| fantasia | 3.4% | 2.2% | 4.95 | 33.3% |
-| sci-fi | 3.1% | 2.1% | 4.01 | 30.1% |
+| Género | % filas no vacías | eCPM pond. (>0) | % monetizado |
+|---|---:|---:|---:|
+| drama | 29.2% | 3.77 | 46.0% |
+| comedia | 12.7% | 3.92 | 49.0% |
+| thriller | 11.6% | 3.88 | 36.1% |
+| documental | 11.4% | 5.19 | 38.0% |
+| terror | 11.4% | 4.06 | 34.8% |
+| accion | 9.9% | 4.80 | 41.3% |
+| romance | 7.7% | 4.90 | 42.0% |
+| infantil-familia | 6.6% | 5.61 | 47.1% |
+| crimen | 5.3% | 4.77 | 38.6% |
+| aventura | 4.9% | 6.04 | 38.4% |
+| musica | 4.5% | 3.95 | 55.8% |
+| misterio | 4.1% | 4.40 | 36.7% |
+| entretenimiento (genérico) | 4.1% | 5.03 | **72.1%** |
+| deportes | 4.0% | **2.77** | **73.6%** |
+| fantasia | 3.4% | 4.95 | 33.3% |
+| sci-fi | 3.1% | 4.01 | 30.1% |
+| anime | 2.3% | **7.84** | 44.4% |
+| noticias | 1.7% | 4.76 | **64.9%** |
 
 **Conclusiones:** sexta confirmación del patrón precio-plano / vendibilidad-dispersa. **Anime marca nuevo récord (7.84; la serie va 6.16 → 7.49 → 7.84)** y ya casi triplica al género más barato con volumen (deportes 2.77, que a la vez sigue siendo de los más fáciles de vender: 73.6%). Aventura (6.04) mantiene el segundo puesto de yield. Ojo metodológico: el % de filas mapeables bajó ~2.6pp — conviene revisar los `tokens_no_mapeados_top` del JSON para ampliar el diccionario en la próxima tanda.
 
 # PARTE B — Rating en franjas de edad
 
-| Franja | % filas | % requests | eCPM pond. (>0) | % monetizado |
+| Franja | % filas | % filas no vacías | eCPM pond. (>0) | % monetizado |
 |---|---:|---:|---:|---:|
-| todos | 7.9% | 11.3% | 4.99 | **66.3%** |
+| todos | 7.9% | 9.4% | 4.99 | **66.3%** |
 | 7+ | 0.7% | 0.8% | 6.69 | 45.9% |
-| 10+ | 10.3% | 11.8% | 4.51 | 54.0% |
-| 13-15 | 25.0% | **31.9%** | 3.88 | 54.0% |
-| 16-17 | 12.1% | 8.9% | 4.98 | 38.0% |
-| 18+ / adulto | 15.6% | 12.9% | 4.52 | **36.8%** |
-| sin clasificar | 9.7% | 7.6% | 3.68 | 48.9% |
-| sin dato | 16.1% | 11.9% | **3.25** | 64.3% |
-| no mapeado | 2.8% | 3.0% | 3.87 | 66.3% |
+| 10+ | 10.3% | 12.3% | 4.51 | 54.0% |
+| 13-15 | 25.0% | **29.7%** | 3.88 | 54.0% |
+| 16-17 | 12.1% | 14.4% | 4.98 | 38.0% |
+| 18+ / adulto | 15.6% | 18.6% | 4.52 | **36.8%** |
+| sin clasificar | 9.7% | 11.5% | 3.68 | 48.9% |
+| sin dato | 16.1% | — | **3.25** | 64.3% |
+| no mapeado | 2.8% | 3.3% | 3.87 | 66.3% |
+
+*Aquí se conservan ambas columnas porque no son intercambiables: la distribución incluye la fila vacía ("sin dato", 16.1% de las filas). "% filas no vacías" renormaliza sobre el 83.9% restante — "sin clasificar" (`nr`) y "no mapeado" sí son dato presente.*
 
 **Conclusiones:** invariantes de siempre — teen (13-15) sigue siendo un tercio del tráfico y la franja clasificada más barata (3.88), y el adulto se vende a la mitad de tasa que el family-safe. El "sin dato" recuperó algo de precio (2.87 → 3.25) pero sigue siendo el más castigado: clasificar contenido sigue valiendo ~+30–35%.
 

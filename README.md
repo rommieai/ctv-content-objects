@@ -79,10 +79,10 @@ carga; contiene siempre el consolidado vigente). Tras cada tanda se recarga con
 
 | Reporte | Contenido |
 |---|---|
-| `reportes/07-.../reporte-content-objects-detallado-v15-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v15, con comparativo de fill y visual SVG |
+| `reportes/07-.../reporte-content-objects-detallado-v15-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v15, con comparativo de % de filas no vacias y visual SVG |
 | `reportes/07-.../reporte-publishers-v15-consolidado.md` | **Vigente:** desglose por publisher (top 12; el rebote de TV Azteca y el default [IAB12] de Vidaa) |
 | `reportes/07-.../reporte-normalizacion-y-ecpm-v15-consolidado.md` | **Vigente:** genero/rating normalizados + inventario monetizado (52.9% del trafico, primera salida de la banda 51±0.1) |
-| `reportes/07-.../reporte-genero-titulo-paises.md` | **Vigente:** genero por pais + fill efectivo de contentGenre y contentTitle |
+| `reportes/07-.../reporte-genero-titulo-paises.md` | **Vigente:** genero por pais + cuantas filas traen un genero/titulo de verdad (no vacio no siempre es util) |
 | `reportes/06-.../` | Tanda anterior (consolidado v10 a v14), misma estructura |
 | `reportes/05-.../` | Consolidado v10 a v13, misma estructura |
 | `reportes/04-.../reporte-genero-titulo-paises.md` | Género normalizado por país (MX/CO/CL) + fill efectivo de contentTitle: qué parte de lo "lleno" no es un título real |

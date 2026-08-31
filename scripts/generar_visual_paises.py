@@ -2,7 +2,7 @@
 """Genera un SVG con las tablas de los paises lado a lado (estilo hoja de calculo).
 
 Lee el JSON del analisis por pais (salida de analizar.py) y arma, para cada pais,
-un panel Columna | Fill | Top valores, con el fill coloreado por semaforo:
+un panel Columna | No vacias | Top valores, con el % de filas no vacias coloreado por semaforo:
 verde >= 90%, amarillo >= 60%, naranja >= 20%, rojo < 20%.
 
 Uso:
@@ -30,7 +30,7 @@ ABREVIAR = {"Not Available": "N/A", "Not Applicable": "N/A",
             "Equativ (Formerly SMART AdServer) - oRTB CTV": "Equativ",
             "iion Pty Ltd": "iion", "OTTera.tv": "OTTera"}
 TOP_N = 4
-ANCHO_COL, ANCHO_FILL, ANCHO_TOP = 158, 66, 470
+ANCHO_COL, ANCHO_FILL, ANCHO_TOP = 158, 84, 470
 ALTO_FILA, ALTO_HEADER = 24, 26
 SEP = 16
 MAX_CHARS_TOP = 76
@@ -86,7 +86,7 @@ def main():
               bg="#efefef", negrilla=True, tam=13, dx=ancho_panel / 2, anchor="middle")
         y += ALTO_HEADER
         celda(x0, y, ANCHO_COL, ALTO_HEADER, "Columna", bg="#f7f7f7", negrilla=True)
-        celda(x0 + ANCHO_COL, y, ANCHO_FILL, ALTO_HEADER, "Fill", bg="#f7f7f7", negrilla=True)
+        celda(x0 + ANCHO_COL, y, ANCHO_FILL, ALTO_HEADER, "No vacías", bg="#f7f7f7", negrilla=True)
         celda(x0 + ANCHO_COL + ANCHO_FILL, y, ANCHO_TOP, ALTO_HEADER,
               "Top valores (% filas del país)", bg="#f7f7f7", negrilla=True)
         y += ALTO_HEADER

@@ -8,20 +8,22 @@
 
 ## Tabla comparativa
 
-| Publisher | % filas | % requests | % filas eCPM=0 | eCPM pond. | Fill category | Fill language | Fill title | Fill length |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| OTTera.tv | 23.3% | 23.0% | **99.9%** | 6.97 | 39.0% | 99.7% | 99.8% | 1.1% |
-| Roku - oRTB | 1.5% | 15.0% | 96.6% | 5.44 | **98.2%** | 94.8% | **24.6%** | **77.5%** |
-| TCL ADS - Springserve | 12.2% | 10.6% | 59.1% | 5.06 | 0.8% | 87.7% | 99.6% | 1.4% |
-| iion Pty Ltd | 15.6% | 10.1% | 87.3% | 4.99 | 0.7% | **5.0%** | 99.8% | 3.4% |
-| TCL ADs (APAC) | 12.3% | 5.9% | **53.0%** | 5.51 | 0.9% | 91.5% | 99.8% | 2.4% |
-| Equativ - oRTB CTV | 2.8% | 4.8% | 82.9% | 2.58 | 25.9% | 86.3% | 84.3% | 21.7% |
-| Coocaa (SKYWORTH) | 1.0% | 4.6% | **48.0%** | 3.01 | **100%** | **100%** | **100%** | **100%** |
-| Televisa Univision via SpringServe | 1.4% | 4.6% | 59.7% | 2.44 | 0.0% | 60.9% | 85.3% | 50.5% |
-| TV Azteca - Springserve | 0.3% | 3.6% | 93.1% | 5.46 | 0.3% | 100% | **0.2%** | 0.2% |
-| Televisa Univision via OB | 0.7% | 2.6% | 47.6% | **1.44** | 0.0% | 100% | **0.0%** | 0.0% |
-| Vidaa | 2.0% | 2.5% | 71.3% | **1.40** | 84.5% | 100% | 79.7% | 2.2% |
-| Select Plus PTE LTD (CTV) | 7.5% | 2.1% | **99.9%** | **9.54** | 0.0% | 77.0% | 99.9% | 1.1% |
+| Publisher | % filas no vacías | % filas eCPM=0 | eCPM pond. | % no vacías: category | % no vacías: language | % no vacías: title | % no vacías: length |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| OTTera.tv | 23.3% | **99.9%** | 6.97 | 39.0% | 99.7% | 99.8% | 1.1% |
+| Roku - oRTB | 1.5% | 96.6% | 5.44 | **98.2%** | 94.8% | **24.6%** | **77.5%** |
+| TCL ADS - Springserve | 12.2% | 59.1% | 5.06 | 0.8% | 87.7% | 99.6% | 1.4% |
+| iion Pty Ltd | 15.6% | 87.3% | 4.99 | 0.7% | **5.0%** | 99.8% | 3.4% |
+| TCL ADs (APAC) | 12.3% | **53.0%** | 5.51 | 0.9% | 91.5% | 99.8% | 2.4% |
+| Equativ - oRTB CTV | 2.8% | 82.9% | 2.58 | 25.9% | 86.3% | 84.3% | 21.7% |
+| Coocaa (SKYWORTH) | 1.0% | **48.0%** | 3.01 | **100%** | **100%** | **100%** | **100%** |
+| Televisa Univision via SpringServe | 1.4% | 59.7% | 2.44 | 0.0% | 60.9% | 85.3% | 50.5% |
+| TV Azteca - Springserve | 0.3% | 93.1% | 5.46 | 0.3% | 100% | **0.2%** | 0.2% |
+| Televisa Univision via OB | 0.7% | 47.6% | **1.44** | 0.0% | 100% | **0.0%** | 0.0% |
+| Vidaa | 2.0% | 71.3% | **1.40** | 84.5% | 100% | 79.7% | 2.2% |
+| Select Plus PTE LTD (CTV) | 7.5% | **99.9%** | **9.54** | 0.0% | 77.0% | 99.9% | 1.1% |
+
+*"% filas no vacías" equivale aquí al % de filas del dataset (Publisher viene en el 100% de las filas). El orden de la tabla — y la numeración de los perfiles — sigue el peso en requests de cada publisher (data completa en el JSON).*
 
 ## Perfiles (con los datos del corte v15)
 
@@ -31,7 +33,7 @@
 
 **3. TCL ADS - Springserve** (12.2% / 10.6% · 59.1% en cero · pond. 5.06). La ruta TCL sana en lo descriptivo (título 99.6%) y nula en lo estructural (`[-7]` 99.2%). Sigue #2 del tráfico monetizado (16.9%), ya casi empatado con Roku (17.1%).
 
-**4. iion Pty Ltd** (15.6% / 10.1% · pond. 4.99). Tercera ruta TCL, dos cuentas, y **el agujero del idioma intacto: fill 5.0%** cuando sus rutas hermanas superan el 87%. Su precio mejora por tercer corte (4.21 → 4.47 → 4.99) — le iría aún mejor con el campo activado.
+**4. iion Pty Ltd** (15.6% / 10.1% · pond. 4.99). Tercera ruta TCL, dos cuentas, y **el agujero del idioma intacto: solo el 5.0% de sus filas trae idioma** cuando sus rutas hermanas superan el 87%. Su precio mejora por tercer corte (4.21 → 4.47 → 4.99) — le iría aún mejor con el campo activado.
 
 **5. TCL ADs (APAC)** (12.3% / 5.9% · **53.0% en cero** · pond. 5.51). La ruta TCL que mejor convierte (47% de filas monetizadas). Este corte el top 5 de outliers peruanos es **enteramente suyo** (135.3, 102.9, 100.6, 100.3, 99.2 — todos MovieArk Perú).
 
@@ -39,13 +41,13 @@
 
 **7. Coocaa, a SKYWORTH company** (1.0% / 4.6% · **48.0% en cero** · pond. 3.01). El content object perfecto (100% en todo, series 91.0%) y la parrilla clonada multi-país. Metadata perfecta ≠ precio: 3.01, y su tasa de monetización cedió un poco (42.1% → 48.0% en cero).
 
-**8. Televisa Univision via SpringServe** (1.4% / 4.6% · 59.7% en cero · pond. 2.44). ViX multi-plataforma, rating 99.0% (tv-14 62.8%), duración 50.5% (bucket 8), y el modelo broadcaster de siempre: fill alto, precio bajo (y bajando: 2.66 → 2.44).
+**8. Televisa Univision via SpringServe** (1.4% / 4.6% · 59.7% en cero · pond. 2.44). ViX multi-plataforma, rating 99.0% (tv-14 62.8%), duración 50.5% (bucket 8), y el modelo broadcaster de siempre: metadata casi siempre llena, precio bajo (y bajando: 2.66 → 2.44).
 
 **9. TV Azteca - Springserve** (0.3% / 3.6% · 93.1% en cero · pond. 5.46). **El rebote del corte**: tras tres cortes cayendo, sube en volumen (3.1% → 3.6%) y su sell-through salta (97.7% → 93.1% en cero; 2.9% → 5.2% del tráfico monetizado). Sigue siendo el más sucio (géneros `genre_*`, la macro `[{{CONTENT_CATEGORIES}}]`, título 0.2%) — vender más no lo hizo más limpio.
 
 **10. Televisa Univision via OB** (0.7% / 2.6% · pond. **1.44**). El despojo de metadata de siempre (título/serie/duración/categoría en 0%, ratings `dv-*` — `dv-t` 46.5%) al peor precio útil del top. El contraste con su ruta hermana (2.44 con metadata) sigue siendo el caso de estudio de supply path.
 
-**11. Vidaa** (2.0% / 2.5% · 71.3% en cero · pond. **1.40**). Se enfrió tras el salto del corte pasado (2.9% → 2.5% de los requests), pero su perfil se mantiene: **ViX es el 64.9% de su inventario** y **el default [IAB12] "News" marca el 67.2% de sus filas** — cine y novelas etiquetados como noticias. Su categoría sigue sin ser usable pese al 84.5% de fill, su App Name sigue a medias (33.0%, con el genérico "Vidaa") y sigue siendo el más barato del top (1.40).
+**11. Vidaa** (2.0% / 2.5% · 71.3% en cero · pond. **1.40**). Se enfrió tras el salto del corte pasado (2.9% → 2.5% de los requests), pero su perfil se mantiene: **ViX es el 64.9% de su inventario** y **el default [IAB12] "News" marca el 67.2% de sus filas** — cine y novelas etiquetados como noticias. Su categoría sigue sin ser usable pese a venir llena en el 84.5% de sus filas, su App Name sigue a medias (33.0%, con el genérico "Vidaa") y sigue siendo el más barato del top (1.40).
 
 **12. Select Plus PTE LTD (CTV)** (7.5% / 2.1% · **99.9% en cero** · pond. 9.54). El premium fantasma: catálogo TCL que no se vende, livestream=1 falso al 100%, rating al 21.9%. Su precio de vitrina también se eroda (10.35 → 9.54).
 
