@@ -1,0 +1,482 @@
+{
+ "por_pais": {
+  "_total": {
+   "filas": 648589,
+   "columnas": {
+    "contentCategory": {
+     "pct_filas_original": 23.0,
+     "pct_filas_final": 95.2,
+     "pct_reqs_original": 32.3,
+     "pct_reqs_final": 86.9,
+     "origen_pct_filas": {
+      "derivado_tipo": 26.4,
+      "derivado_genero": 25.7,
+      "original": 23.0,
+      "intra_titulo": 12.0,
+      "app_default": 8.1,
+      "sin_dato": 4.8
+     }
+    },
+    "contentSeries": {
+     "pct_filas_original": 6.1,
+     "pct_filas_final": 14.6,
+     "pct_reqs_original": 6.9,
+     "pct_reqs_final": 16.4,
+     "origen_pct_filas": {
+      "sin_dato": 85.4,
+      "imdb": 6.6,
+      "original": 6.1,
+      "intra_titulo": 1.9
+     }
+    },
+    "contentLength": {
+     "pct_filas_original": 11.7,
+     "pct_filas_final": 50.1,
+     "pct_reqs_original": 24.8,
+     "pct_reqs_final": 59.5,
+     "origen_pct_filas": {
+      "sin_dato": 49.9,
+      "intra_titulo": 32.4,
+      "original": 11.7,
+      "app_default": 6.0
+     }
+    },
+    "contentLanguage": {
+     "pct_filas_original": 77.2,
+     "pct_filas_final": 97.4,
+     "pct_reqs_original": 82.5,
+     "pct_reqs_final": 96.3,
+     "origen_pct_filas": {
+      "original": 77.2,
+      "intra_titulo": 19.6,
+      "sin_dato": 2.6,
+      "app_default": 0.3,
+      "wikidata": 0.2
+     }
+    },
+    "contentIsLiveStream": {
+     "pct_filas_original": 28.7,
+     "pct_filas_final": 48.9,
+     "pct_reqs_original": 38.9,
+     "pct_reqs_final": 53.1,
+     "origen_pct_filas": {
+      "sin_dato": 51.1,
+      "original": 28.7,
+      "app_semantica": 19.7,
+      "derivado_tipo": 0.5
+     }
+    },
+    "contentRating": {
+     "pct_filas_original": 83.9,
+     "pct_filas_final": 90.5,
+     "pct_reqs_original": 87.9,
+     "pct_reqs_final": 92.1,
+     "origen_pct_filas": {
+      "original": 83.9,
+      "sin_dato": 9.5,
+      "intra_titulo": 6.4,
+      "app_default": 0.2,
+      "wikidata": 0.0
+     }
+    },
+    "contentGenre": {
+     "pct_filas_original": 98.8,
+     "pct_filas_final": 99.1,
+     "pct_reqs_original": 92.4,
+     "pct_reqs_final": 92.6,
+     "origen_pct_filas": {
+      "original": 98.8,
+      "sin_dato": 0.9,
+      "app_default": 0.2,
+      "intra_titulo": 0.1,
+      "imdb": 0.1
+     }
+    }
+   }
+  },
+  "Mexico": {
+   "filas": 193264,
+   "columnas": {
+    "contentCategory": {
+     "pct_filas_original": 25.3,
+     "pct_filas_final": 90.3,
+     "pct_reqs_original": 37.6,
+     "pct_reqs_final": 84.2,
+     "origen_pct_filas": {
+      "original": 25.3,
+      "derivado_genero": 25.1,
+      "derivado_tipo": 23.3,
+      "intra_titulo": 12.2,
+      "sin_dato": 9.7,
+      "app_default": 4.5
+     }
+    },
+    "contentSeries": {
+     "pct_filas_original": 7.0,
+     "pct_filas_final": 17.4,
+     "pct_reqs_original": 4.2,
+     "pct_reqs_final": 15.8,
+     "origen_pct_filas": {
+      "sin_dato": 82.6,
+      "imdb": 7.7,
+      "original": 7.0,
+      "intra_titulo": 2.6
+     }
+    },
+    "contentLength": {
+     "pct_filas_original": 17.0,
+     "pct_filas_final": 52.3,
+     "pct_reqs_original": 32.0,
+     "pct_reqs_final": 64.3,
+     "origen_pct_filas": {
+      "sin_dato": 47.7,
+      "intra_titulo": 29.2,
+      "original": 17.0,
+      "app_default": 6.0
+     }
+    },
+    "contentLanguage": {
+     "pct_filas_original": 75.9,
+     "pct_filas_final": 96.6,
+     "pct_reqs_original": 83.3,
+     "pct_reqs_final": 97.8,
+     "origen_pct_filas": {
+      "original": 75.9,
+      "intra_titulo": 20.0,
+      "sin_dato": 3.4,
+      "app_default": 0.4,
+      "wikidata": 0.3
+     }
+    },
+    "contentIsLiveStream": {
+     "pct_filas_original": 26.3,
+     "pct_filas_final": 43.7,
+     "pct_reqs_original": 38.9,
+     "pct_reqs_final": 52.5,
+     "origen_pct_filas": {
+      "sin_dato": 56.3,
+      "original": 26.3,
+      "app_semantica": 17.0,
+      "derivado_tipo": 0.4
+     }
+    },
+    "contentRating": {
+     "pct_filas_original": 82.6,
+     "pct_filas_final": 89.0,
+     "pct_reqs_original": 88.0,
+     "pct_reqs_final": 92.2,
+     "origen_pct_filas": {
+      "original": 82.6,
+      "sin_dato": 11.0,
+      "intra_titulo": 6.3,
+      "wikidata": 0.0,
+      "app_default": 0.0
+     }
+    },
+    "contentGenre": {
+     "pct_filas_original": 99.1,
+     "pct_filas_final": 99.2,
+     "pct_reqs_original": 93.8,
+     "pct_reqs_final": 93.8,
+     "origen_pct_filas": {
+      "original": 99.1,
+      "sin_dato": 0.8,
+      "intra_titulo": 0.1,
+      "imdb": 0.0
+     }
+    }
+   }
+  },
+  "Colombia": {
+   "filas": 63163,
+   "columnas": {
+    "contentCategory": {
+     "pct_filas_original": 23.5,
+     "pct_filas_final": 96.8,
+     "pct_reqs_original": 28.0,
+     "pct_reqs_final": 93.0,
+     "origen_pct_filas": {
+      "derivado_tipo": 30.0,
+      "derivado_genero": 27.6,
+      "original": 23.5,
+      "intra_titulo": 10.3,
+      "app_default": 5.3,
+      "sin_dato": 3.2
+     }
+    },
+    "contentSeries": {
+     "pct_filas_original": 6.1,
+     "pct_filas_final": 13.7,
+     "pct_reqs_original": 12.2,
+     "pct_reqs_final": 19.9,
+     "origen_pct_filas": {
+      "sin_dato": 86.3,
+      "original": 6.1,
+      "imdb": 5.5,
+      "intra_titulo": 2.1
+     }
+    },
+    "contentLength": {
+     "pct_filas_original": 10.1,
+     "pct_filas_final": 54.1,
+     "pct_reqs_original": 16.4,
+     "pct_reqs_final": 66.1,
+     "origen_pct_filas": {
+      "sin_dato": 45.9,
+      "intra_titulo": 35.9,
+      "original": 10.1,
+      "app_default": 8.0
+     }
+    },
+    "contentLanguage": {
+     "pct_filas_original": 62.2,
+     "pct_filas_final": 96.7,
+     "pct_reqs_original": 68.8,
+     "pct_reqs_final": 94.6,
+     "origen_pct_filas": {
+      "original": 62.2,
+      "intra_titulo": 33.7,
+      "sin_dato": 3.3,
+      "app_default": 0.5,
+      "wikidata": 0.3
+     }
+    },
+    "contentIsLiveStream": {
+     "pct_filas_original": 26.3,
+     "pct_filas_final": 50.4,
+     "pct_reqs_original": 36.7,
+     "pct_reqs_final": 56.0,
+     "origen_pct_filas": {
+      "sin_dato": 49.6,
+      "original": 26.3,
+      "app_semantica": 23.5,
+      "derivado_tipo": 0.7
+     }
+    },
+    "contentRating": {
+     "pct_filas_original": 79.9,
+     "pct_filas_final": 88.5,
+     "pct_reqs_original": 81.0,
+     "pct_reqs_final": 91.1,
+     "origen_pct_filas": {
+      "original": 79.9,
+      "sin_dato": 11.5,
+      "intra_titulo": 8.2,
+      "app_default": 0.4,
+      "wikidata": 0.0
+     }
+    },
+    "contentGenre": {
+     "pct_filas_original": 98.5,
+     "pct_filas_final": 99.0,
+     "pct_reqs_original": 93.1,
+     "pct_reqs_final": 95.0,
+     "origen_pct_filas": {
+      "original": 98.5,
+      "sin_dato": 1.0,
+      "app_default": 0.4,
+      "intra_titulo": 0.2,
+      "imdb": 0.0
+     }
+    }
+   }
+  },
+  "Chile": {
+   "filas": 70326,
+   "columnas": {
+    "contentCategory": {
+     "pct_filas_original": 15.3,
+     "pct_filas_final": 98.0,
+     "pct_reqs_original": 28.8,
+     "pct_reqs_final": 95.8,
+     "origen_pct_filas": {
+      "derivado_tipo": 31.4,
+      "derivado_genero": 29.4,
+      "original": 15.3,
+      "intra_titulo": 12.3,
+      "app_default": 9.5,
+      "sin_dato": 2.0
+     }
+    },
+    "contentSeries": {
+     "pct_filas_original": 5.0,
+     "pct_filas_final": 12.4,
+     "pct_reqs_original": 10.8,
+     "pct_reqs_final": 15.8,
+     "origen_pct_filas": {
+      "sin_dato": 87.6,
+      "imdb": 5.9,
+      "original": 5.0,
+      "intra_titulo": 1.5
+     }
+    },
+    "contentLength": {
+     "pct_filas_original": 7.7,
+     "pct_filas_final": 44.5,
+     "pct_reqs_original": 14.6,
+     "pct_reqs_final": 55.8,
+     "origen_pct_filas": {
+      "sin_dato": 55.5,
+      "intra_titulo": 33.9,
+      "original": 7.7,
+      "app_default": 2.9
+     }
+    },
+    "contentLanguage": {
+     "pct_filas_original": 73.1,
+     "pct_filas_final": 97.5,
+     "pct_reqs_original": 83.2,
+     "pct_reqs_final": 96.3,
+     "origen_pct_filas": {
+      "original": 73.1,
+      "intra_titulo": 24.1,
+      "sin_dato": 2.5,
+      "wikidata": 0.2,
+      "app_default": 0.2
+     }
+    },
+    "contentIsLiveStream": {
+     "pct_filas_original": 17.0,
+     "pct_filas_final": 49.5,
+     "pct_reqs_original": 16.8,
+     "pct_reqs_final": 48.2,
+     "origen_pct_filas": {
+      "sin_dato": 50.5,
+      "app_semantica": 31.7,
+      "original": 17.0,
+      "derivado_tipo": 0.7
+     }
+    },
+    "contentRating": {
+     "pct_filas_original": 82.9,
+     "pct_filas_final": 88.1,
+     "pct_reqs_original": 92.2,
+     "pct_reqs_final": 93.5,
+     "origen_pct_filas": {
+      "original": 82.9,
+      "sin_dato": 11.9,
+      "intra_titulo": 5.2,
+      "wikidata": 0.0,
+      "app_default": 0.0
+     }
+    },
+    "contentGenre": {
+     "pct_filas_original": 99.5,
+     "pct_filas_final": 99.5,
+     "pct_reqs_original": 96.0,
+     "pct_reqs_final": 96.1,
+     "origen_pct_filas": {
+      "original": 99.5,
+      "sin_dato": 0.5,
+      "intra_titulo": 0.0
+     }
+    }
+   }
+  },
+  "Argentina": {
+   "filas": 117750,
+   "columnas": {
+    "contentCategory": {
+     "pct_filas_original": 11.3,
+     "pct_filas_final": 97.2,
+     "pct_reqs_original": 19.5,
+     "pct_reqs_final": 88.8,
+     "origen_pct_filas": {
+      "derivado_genero": 30.4,
+      "derivado_tipo": 28.9,
+      "intra_titulo": 19.7,
+      "original": 11.3,
+      "app_default": 7.0,
+      "sin_dato": 2.8
+     }
+    },
+    "contentSeries": {
+     "pct_filas_original": 2.9,
+     "pct_filas_final": 11.3,
+     "pct_reqs_original": 11.8,
+     "pct_reqs_final": 18.6,
+     "origen_pct_filas": {
+      "sin_dato": 88.7,
+      "imdb": 6.9,
+      "original": 2.9,
+      "intra_titulo": 1.5
+     }
+    },
+    "contentLength": {
+     "pct_filas_original": 4.9,
+     "pct_filas_final": 39.1,
+     "pct_reqs_original": 14.0,
+     "pct_reqs_final": 46.5,
+     "origen_pct_filas": {
+      "sin_dato": 60.9,
+      "intra_titulo": 29.1,
+      "app_default": 5.1,
+      "original": 4.9
+     }
+    },
+    "contentLanguage": {
+     "pct_filas_original": 72.8,
+     "pct_filas_final": 97.9,
+     "pct_reqs_original": 81.7,
+     "pct_reqs_final": 93.0,
+     "origen_pct_filas": {
+      "original": 72.8,
+      "intra_titulo": 24.7,
+      "sin_dato": 2.1,
+      "wikidata": 0.4,
+      "app_default": 0.0
+     }
+    },
+    "contentIsLiveStream": {
+     "pct_filas_original": 29.4,
+     "pct_filas_final": 51.1,
+     "pct_reqs_original": 47.5,
+     "pct_reqs_final": 58.9,
+     "origen_pct_filas": {
+      "sin_dato": 48.9,
+      "original": 29.4,
+      "app_semantica": 21.2,
+      "derivado_tipo": 0.5
+     }
+    },
+    "contentRating": {
+     "pct_filas_original": 87.1,
+     "pct_filas_final": 91.2,
+     "pct_reqs_original": 88.5,
+     "pct_reqs_final": 91.1,
+     "origen_pct_filas": {
+      "original": 87.1,
+      "sin_dato": 8.8,
+      "intra_titulo": 4.1,
+      "wikidata": 0.0,
+      "app_default": 0.0
+     }
+    },
+    "contentGenre": {
+     "pct_filas_original": 98.9,
+     "pct_filas_final": 99.4,
+     "pct_reqs_original": 88.5,
+     "pct_reqs_final": 88.6,
+     "origen_pct_filas": {
+      "original": 98.9,
+      "sin_dato": 0.6,
+      "imdb": 0.3,
+      "intra_titulo": 0.2
+     }
+    }
+   }
+  }
+ },
+ "confianza_imdb_pct_filas": {
+  "-": 46.4,
+  "A": 25.9,
+  "B": 22.0,
+  "C": 3.0,
+  "D": 2.7
+ },
+ "filas_con_runtime_pct": 41.5,
+ "livestream_derivado": {
+  "0": 3171,
+  "1": 62
+ }
+}

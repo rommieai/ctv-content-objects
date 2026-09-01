@@ -17,6 +17,8 @@ scripts/                          codigo que genera los consolidados y los JSON
   normalizar_monetizar.py         normaliza genero/rating y analiza el eCPM > 0
   analizar_genero_titulo_paises.py genero normalizado + auditoria de contentTitle por pais
   generar_visual_paises.py        SVG con las tablas de paises lado a lado
+  enriquecer_externo.py           rellena content objects vacios: intra-dataset, defaults
+                                  por app, IMDb offline, Wikidata/TVMaze (cache incremental)
 
 reportes/
   01-v10/                         primera exploracion (v10): resumen y detallado 18 paises
@@ -27,6 +29,8 @@ reportes/
   06-consolidado-v10-a-v14/         tanda sobre el consolidado v10 a v14
   07-consolidado-v10-a-v15/         la version vigente: detallado por pais (MX/CO/CL),
                                   publishers, normalizacion+eCPM y genero/titulo
+  08-enriquecimiento-externo/     investigacion: que columnas vacias se pueden rellenar
+                                  con fuentes abiertas, en que %, y el pipeline periodico
 
 ejecutivo/                        resumenes en PDF para stakeholders
 ```
@@ -51,7 +55,19 @@ python scripts/normalizar_monetizar.py inventory-consolidado.csv \
     inventory-enriquecido.csv reporte-normalizacion.json
 ```
 
-Solo requiere Python 3.9+ (stdlib, sin dependencias).
+# 4. (opcional) Relleno de content objects vacios con fuentes internas + abiertas
+python scripts/enriquecer_externo.py inventory-enriquecido.csv \
+    inventory-relleno.csv reporte-relleno.json \
+    --cache-dir cache-enriquecimiento --wikidata [--tvmaze]
+```
+
+Solo requiere Python 3.9+ (stdlib, sin dependencias). El paso 4 usa `requests` si esta
+instalado (para Wikidata/TVMaze) y descarga los IMDb Non-Commercial Datasets (~750 MB) a
+`cache-enriquecimiento/` la primera vez; despues solo consulta los titulos nuevos de cada
+tanda (cache en `cache-enriquecimiento/titulos.json`). Ver `reportes/08-.../` para el
+detalle de fuentes, licencias y cobertura medida.
+
+```bash
 
 El consolidado enriquecido tambien vive en **BigQuery** para consultarlo desde Looker Studio:
 tabla `tudia-tagscreen.ctv_inventory.consolidado_v10_a_v14` (nombre historico de la primera
@@ -79,6 +95,7 @@ carga; contiene siempre el consolidado vigente). Tras cada tanda se recarga con
 
 | Reporte | Contenido |
 |---|---|
+| `reportes/08-enriquecimiento-externo/reporte-enriquecimiento-externo.md` | **Nuevo:** que columnas vacias se rellenan con fuentes abiertas (IMDb datasets, Wikidata, TVMaze) y con el propio consolidado, en que %, con que precision y licencia; hallazgos: contentLength no es duracion y contentIsLiveStream declarado es siempre 1; pipeline periodico `enriquecer_externo.py` |
 | `reportes/07-.../reporte-content-objects-detallado-v15-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v15, con comparativo de % de filas no vacias y visual SVG |
 | `reportes/07-.../reporte-publishers-v15-consolidado.md` | **Vigente:** desglose por publisher (top 12; el rebote de TV Azteca y el default [IAB12] de Vidaa) |
 | `reportes/07-.../reporte-normalizacion-y-ecpm-v15-consolidado.md` | **Vigente:** genero/rating normalizados + inventario monetizado (52.9% del trafico, primera salida de la banda 51±0.1) |

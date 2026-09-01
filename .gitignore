@@ -5,3 +5,8 @@
 *.aux
 *.log
 __pycache__/
+
+# Cache del pipeline de enriquecimiento externo (datasets IMDb + resultados por titulo),
+# EXCEPTO la tabla de semantica por app, que es curada a mano y si se versiona
+cache-enriquecimiento/*
+!cache-enriquecimiento/semantica_apps.csv
