@@ -20,11 +20,13 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 | drama | 25.2% | 2.43 |
 | comedia | 11.8% | 2.81 |
 | terror | 9.4% | 2.00 |
+| documental | 9.2% | 2.46 |
 | accion | 9.0% | 3.70 |
 | thriller | 8.9% | 2.31 |
 | romance | 6.1% | 3.38 |
+| infantil-familia | 4.8% | 2.15 |
+| crimen | 4.7% | 3.19 |
 | entretenimiento | 4.7% | **4.92** |
-| deportes | 3.8% | 2.18 |
 
 ### Colombia
 
@@ -40,8 +42,10 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 | documental | 11.6% | 6.13 |
 | thriller | 10.8% | 5.87 |
 | accion | 10.2% | **9.10** |
+| romance | 8.2% | 4.50 |
 | infantil-familia | 7.5% | 7.19 |
-| anime | 2.4% | **11.04** |
+| musica | 5.3% | 3.80 |
+| crimen | 5.2% | 5.61 |
 
 ### Chile
 
@@ -59,6 +63,8 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 | accion | 10.1% | 6.29 |
 | romance | 8.5% | 5.99 |
 | infantil-familia | 7.5% | 5.71 |
+| musica | 5.7% | 5.76 |
+| crimen | 5.3% | 5.63 |
 
 **Conclusiones — distribución:** la regla "el país fija el precio" cumple seis cortes, y **Colombia consolida su nicho premium: anime a 11.04 de eCPM con el 8.4% del tráfico del país, aventura a 10.18 (7.7% del tráfico) y acción a 9.10** — precios que ningún género alcanza en Chile o México. La recuperación colombiana sigue concentrada, no es pareja. Chile sigue plano (5.8–6.4) y en México el patrón de precio bajo se acentúa: el EPG de Roku (12.2% del tráfico) es lo mejor pagado del país a 4.92, mientras deportes queda en 2.18, lo más barato.
 
