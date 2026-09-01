@@ -17,7 +17,7 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 |---|---:|---:|---:|---:|
 | drama | 25.1% | 28.3% | 2.58 | 53.7% |
 | comedia | 11.7% | 11.9% | 2.99 | 58.3% |
-| entretenimiento (genérico) | 4.6% | **11.6%** | **5.23** | **79.2%** |
+| entretenimiento | 4.6% | **11.6%** | **5.23** | **79.2%** |
 | thriller | 8.8% | 9.7% | 2.74 | 39.5% |
 | terror | 9.3% | 9.3% | 2.43 | 39.4% |
 | accion | 8.9% | 8.4% | 4.17 | 49.7% |

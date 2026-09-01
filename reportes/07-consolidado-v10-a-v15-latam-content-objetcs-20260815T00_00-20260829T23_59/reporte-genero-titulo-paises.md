@@ -9,48 +9,58 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 
 # PARTE A — Género normalizado por país
 
-## Distribución (multi-etiqueta; % sobre las filas con género útil del país)
+### México
 
-### México — 193,264 filas (29.8% del consolidado)
-
-| Género | % filas no vacías | eCPM pond. (>0) | % monetizado |
+| País | Total filas | % de filas | # filas no vacías |
 |---|---:|---:|---:|
-| drama | 25.2% | 2.43 | 54.2% |
-| comedia | 11.8% | 2.81 | 58.2% |
-| terror | 9.4% | 2.00 | 38.0% |
-| accion | 9.0% | 3.70 | 46.7% |
-| thriller | 8.9% | 2.31 | 39.2% |
-| romance | 6.1% | 3.38 | 45.2% |
-| entretenimiento (genérico) | 4.7% | **4.92** | **76.1%** |
-| deportes | 3.8% | **2.18** | **81.0%** |
+| México | 193,264 | 29.8% | 191,462 |
 
-### Colombia — 63,163 filas (9.7% del consolidado)
+| Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
+|---|---:|---:|
+| drama | 25.2% | 2.43 |
+| comedia | 11.8% | 2.81 |
+| terror | 9.4% | 2.00 |
+| accion | 9.0% | 3.70 |
+| thriller | 8.9% | 2.31 |
+| romance | 6.1% | 3.38 |
+| entretenimiento | 4.7% | **4.92** |
+| deportes | 3.8% | 2.18 |
 
-| Género | % filas no vacías | eCPM pond. (>0) | % monetizado |
+### Colombia
+
+| País | Total filas | % de filas | # filas no vacías |
 |---|---:|---:|---:|
-| drama | 31.3% | 5.26 | 24.7% |
-| comedia | 12.5% | 7.03 | 28.4% |
-| terror | 12.0% | 7.04 | 26.7% |
-| documental | 11.6% | 6.13 | 25.3% |
-| thriller | 10.8% | 5.87 | 32.2% |
-| accion | 10.2% | **9.10** | 35.7% |
-| infantil-familia | 7.5% | 7.19 | **41.9%** |
-| anime | 2.4% | **11.04** | 41.3% |
+| Colombia | 63,163 | 9.7% | 62,203 |
 
-### Chile — 70,326 filas (10.8% del consolidado)
+| Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
+|---|---:|---:|
+| drama | 31.3% | 5.26 |
+| comedia | 12.5% | 7.03 |
+| terror | 12.0% | 7.04 |
+| documental | 11.6% | 6.13 |
+| thriller | 10.8% | 5.87 |
+| accion | 10.2% | **9.10** |
+| infantil-familia | 7.5% | 7.19 |
+| anime | 2.4% | **11.04** |
 
-| Género | % filas no vacías | eCPM pond. (>0) | % monetizado |
+### Chile
+
+| País | Total filas | % de filas | # filas no vacías |
 |---|---:|---:|---:|
-| drama | 30.5% | 5.94 | 38.1% |
-| comedia | 13.6% | 5.92 | 37.3% |
-| thriller | 13.5% | 5.83 | 38.0% |
-| documental | 13.3% | 6.39 | 36.5% |
-| terror | 12.6% | 6.06 | 36.6% |
-| accion | 10.1% | 6.29 | 37.9% |
-| romance | 8.5% | 5.99 | 38.5% |
-| infantil-familia | 7.5% | 5.71 | **45.0%** |
+| Chile | 70,326 | 10.8% | 69,946 |
 
-**Conclusiones — distribución:** la regla "el país fija el precio, el género la vendibilidad" cumple seis cortes, y **Colombia consolida su nicho premium: anime a 11.04 de eCPM con el 8.4% del tráfico del país, aventura a 10.18 (7.7% del tráfico) y acción a 9.10** — precios que ningún género alcanza en Chile o México. La recuperación colombiana sigue concentrada, no es pareja. Chile sigue plano (5.8–6.4) y en México el patrón de liquidez barata se acentúa: el EPG de Roku (12.2% del tráfico, 76% monetizado) y ahora también deportes (81% monetizado a 2.18 — lo más líquido y más barato del país).
+| Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
+|---|---:|---:|
+| drama | 30.5% | 5.94 |
+| comedia | 13.6% | 5.92 |
+| thriller | 13.5% | 5.83 |
+| documental | 13.3% | 6.39 |
+| terror | 12.6% | 6.06 |
+| accion | 10.1% | 6.29 |
+| romance | 8.5% | 5.99 |
+| infantil-familia | 7.5% | 5.71 |
+
+**Conclusiones — distribución:** la regla "el país fija el precio" cumple seis cortes, y **Colombia consolida su nicho premium: anime a 11.04 de eCPM con el 8.4% del tráfico del país, aventura a 10.18 (7.7% del tráfico) y acción a 9.10** — precios que ningún género alcanza en Chile o México. La recuperación colombiana sigue concentrada, no es pareja. Chile sigue plano (5.8–6.4) y en México el patrón de precio bajo se acentúa: el EPG de Roku (12.2% del tráfico) es lo mejor pagado del país a 4.92, mientras deportes queda en 2.18, lo más barato.
 
 ## Auditoría de contentGenre: lo "lleno" que no es un género
 

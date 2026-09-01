@@ -25,7 +25,7 @@
 | aventura | 4.9% | 6.04 | 38.4% |
 | musica | 4.5% | 3.95 | 55.8% |
 | misterio | 4.1% | 4.40 | 36.7% |
-| entretenimiento (genérico) | 4.1% | 5.03 | **72.1%** |
+| entretenimiento | 4.1% | 5.03 | **72.1%** |
 | deportes | 4.0% | **2.77** | **73.6%** |
 | fantasia | 3.4% | 4.95 | 33.3% |
 | sci-fi | 3.1% | 4.01 | 30.1% |

@@ -31,7 +31,7 @@ Cada valor de `contentGenre` se partió por comas (y `/`, `&`, `;`), se pasó a 
 | accion | 10.1% | 8.7% | 5.21 | 41.5% |
 | romance | 8.2% | 8.3% | 5.38 | 42.9% |
 | documental | 12.0% | 7.7% | 5.38 | 38.3% |
-| entretenimiento (genérico) | 4.1% | 7.6% | 5.61 | **74.1%** |
+| entretenimiento | 4.1% | 7.6% | 5.61 | **74.1%** |
 | infantil-familia | 6.7% | 5.3% | 4.99 | 46.2% |
 | deportes | 3.9% | 4.7% | **2.84** | **69.3%** |
 | crimen | 5.5% | 4.4% | 5.17 | 40.6% |

@@ -17,7 +17,7 @@ Dos análisis desglosados por país: (A) la normalización de `contentGenre` con
 |---|---:|---:|---:|---:|
 | drama | 25.1% | 27.4% | 2.82 | 52.2% |
 | comedia | 11.8% | 11.6% | 3.25 | 56.1% |
-| entretenimiento (genérico) | 4.7% | **11.3%** | **5.32** | **79.8%** |
+| entretenimiento | 4.7% | **11.3%** | **5.32** | **79.8%** |
 | thriller | 9.1% | 9.9% | 3.11 | 41.6% |
 | terror | 9.6% | 9.5% | 2.85 | 40.8% |
 | accion | 9.1% | 8.5% | 4.37 | 50.7% |
@@ -50,7 +50,7 @@ Dos análisis desglosados por país: (A) la normalización de `contentGenre` con
 | accion | 10.3% | 10.3% | 6.99 | 38.1% |
 | infantil-familia | 7.5% | 6.6% | 6.69 | **45.3%** |
 
-**Conclusiones — distribución:** se sostiene la regla de los cortes anteriores — el país fija el precio, el género fija la vendibilidad — con dos novedades del recálculo v13: **en Colombia la acción saltó a 8.65 de eCPM** (el género más caro de los tres países, señal de la demanda nueva que le subió el precio al mercado) y el kids/familia colombiano pesa 11.3% del tráfico con la mejor tasa local (33%). Chile sigue plano (6.4–7.1: prima de mercado, no de contenido) y en México el EPG de Roku ("entretenimiento genérico") sigue siendo el mejor negocio: 11.3% del tráfico, 80% monetizado.
+**Conclusiones — distribución:** se sostiene la regla de los cortes anteriores — el país fija el precio, el género fija la vendibilidad — con dos novedades del recálculo v13: **en Colombia la acción saltó a 8.65 de eCPM** (el género más caro de los tres países, señal de la demanda nueva que le subió el precio al mercado) y el kids/familia colombiano pesa 11.3% del tráfico con la mejor tasa local (33%). Chile sigue plano (6.4–7.1: prima de mercado, no de contenido) y en México el EPG de Roku ("entretenimiento") sigue siendo el mejor negocio: 11.3% del tráfico, 80% monetizado.
 
 ## Auditoría de contentGenre: lo "lleno" que no es un género
 

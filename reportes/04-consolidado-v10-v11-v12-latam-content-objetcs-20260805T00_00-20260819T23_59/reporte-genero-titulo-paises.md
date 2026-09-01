@@ -27,7 +27,7 @@ México es el país con peor mapeo, y no por catálogo raro: ahí viven los dos 
 |---|---:|---:|---:|---:|
 | drama | 25.9% | 26.9% | 3.11 | 50.5% |
 | comedia | 12.1% | 11.3% | 3.52 | 54.9% |
-| entretenimiento (genérico) | 4.8% | **10.6%** | **5.51** | **78.3%** |
+| entretenimiento | 4.8% | **10.6%** | **5.51** | **78.3%** |
 | thriller | 9.4% | 10.2% | 3.48 | 42.7% |
 | terror | 9.7% | 9.9% | 3.26 | 41.4% |
 | accion | 9.3% | 8.4% | 4.55 | 49.2% |
@@ -79,7 +79,7 @@ México es el país con peor mapeo, y no por catálogo raro: ahí viven los dos 
 1. **El país fija el precio; el género fija la vendibilidad.** El mismo drama paga 3.11 en México, 2.61 en Colombia y 7.84 en Chile — pero el patrón de sell-through se repite en los tres: deportes, entretenimiento y noticias monetizan al doble de tasa que el catálogo de películas (terror, thriller, documental). El hallazgo global se confirma mercado por mercado.
 2. **Chile es notablemente plano en precio** (7.6–9.3 en todos los géneros): su prima es de mercado, no de contenido. Contrasta con México, donde sí hay dispersión (deportes 1.98 vs entretenimiento 5.51).
 3. **Colombia monetiza mal en todos los géneros** (15–30%, contra 40–78% de México): la enfermedad colombiana es transversal a todo el catálogo — es demanda, no mix de contenido.
-4. Particularidades: en México el "entretenimiento genérico" (el EPG de Roku) es el 10.6% del tráfico y lo mejor monetizado (78%); en Colombia el **anime pesa 5.8% del tráfico** (el triple que en los otros) y es su género mejor pagado (3.99); en Chile drama solo ya es el 40% del tráfico.
+4. Particularidades: en México el "entretenimiento" (el EPG de Roku) es el 10.6% del tráfico y lo mejor monetizado (78%); en Colombia el **anime pesa 5.8% del tráfico** (el triple que en los otros) y es su género mejor pagado (3.99); en Chile drama solo ya es el 40% del tráfico.
 
 ## Auditoría de contentGenre: lo "lleno" que no es un género
 

@@ -27,7 +27,7 @@ Split por comas (`/`, `&`, `;`), minúsculas, y mapeo por diccionario de sinóni
 | accion | 10.1% | 8.7% | 5.16 | 41.6% |
 | romance | 8.1% | 8.4% | 5.38 | 43.0% |
 | documental | 11.9% | 7.8% | 5.34 | 38.1% |
-| entretenimiento (genérico) | 4.1% | 7.6% | 5.61 | **73.8%** |
+| entretenimiento | 4.1% | 7.6% | 5.61 | **73.8%** |
 | infantil-familia | 6.6% | 5.5% | 5.23 | 46.3% |
 | deportes | 3.9% | 4.6% | **2.86** | **68.7%** |
 | crimen | 5.4% | 4.5% | 5.15 | 40.0% |
