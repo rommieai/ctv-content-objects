@@ -73,7 +73,6 @@ Vacías al inicio: 16.1% del total. Se rescató el 41.0% de las vacías. Context
 | wikidata | +0.04% | P3834 existe pero solo ~2% de los títulos la tienen (y en escala RTC). Confirmó que no hay fuente abierta buena para rating; el camino real es TMDB (clasificación **por país**, requiere key). |
 | sin_dato | 9.5% | El candado bloqueó mucho: rating tiene 61% de ambigüedad entre títulos rellenables, casi toda por *sistemas distintos* ("so i married the anti fan": `16`×4, `b`×2, `16+`×1 → dominante 57% < 80% → no se rellena). Mejora pendiente: hacer el intra sobre `rating_franja` (la banda normalizada) en vez del código crudo. |
 
-⚠️ Nota operativa: `rating_franja` se calcula *antes* del relleno, así que las filas rellenadas traen rating pero franja "sin dato" hasta recalcularla sobre la columna rellenada.
 
 ## contentLength — 11.7% → 50.1% del total
 
