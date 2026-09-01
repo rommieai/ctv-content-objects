@@ -10,3 +10,6 @@ __pycache__/
 # EXCEPTO la tabla de semantica por app, que es curada a mano y si se versiona
 cache-enriquecimiento/*
 !cache-enriquecimiento/semantica_apps.csv
+
+# Reporte interno (material de trabajo, no para lectores externos)
+reportes/08-enriquecimiento-externo/reporte-enriquecimiento-externo.md

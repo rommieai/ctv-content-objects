@@ -95,7 +95,7 @@ carga; contiene siempre el consolidado vigente). Tras cada tanda se recarga con
 
 | Reporte | Contenido |
 |---|---|
-| `reportes/08-enriquecimiento-externo/reporte-enriquecimiento-externo.md` | **Nuevo:** que columnas vacias se rellenan con fuentes abiertas (IMDb datasets, Wikidata, TVMaze) y con el propio consolidado, en que %, con que precision y licencia; hallazgos: contentLength no es duracion y contentIsLiveStream declarado es siempre 1; pipeline periodico `enriquecer_externo.py` |
+| `reportes/08-enriquecimiento-externo/reporte-relleno-por-columna.md` | **Nuevo:** que se hizo columna por columna para rellenar los content objects vacios: las corridas de cada origen (intra-titulo, default por app, IMDb, Wikidata, derivados, semantica por app) con el % de filas que aporto cada una; hallazgos: contentLength es un codigo 1-8 (no duracion) y el contentIsLiveStream declarado es siempre 1 |
 | `reportes/07-.../reporte-content-objects-detallado-v15-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v15, con comparativo de % de filas no vacias y visual SVG |
 | `reportes/07-.../reporte-publishers-v15-consolidado.md` | **Vigente:** desglose por publisher (top 12; el rebote de TV Azteca y el default [IAB12] de Vidaa) |
 | `reportes/07-.../reporte-normalizacion-y-ecpm-v15-consolidado.md` | **Vigente:** genero/rating normalizados + inventario monetizado (52.9% del trafico, primera salida de la banda 51±0.1) |
