@@ -11,9 +11,9 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 
 ### México
 
-| País | Total filas | % de filas | # filas no vacías |
-|---|---:|---:|---:|
-| México | 193,264 | 29.8% | 191,462 |
+| País | % de filas | Total filas | % filas no vacías | # filas no vacías |
+|---|---:|---:|---:|---:|
+| México | 29.8% | 193,264 | 99.1% | 191,462 |
 
 | Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
 |---|---:|---:|
@@ -30,9 +30,9 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 
 ### Colombia
 
-| País | Total filas | % de filas | # filas no vacías |
-|---|---:|---:|---:|
-| Colombia | 63,163 | 9.7% | 62,203 |
+| País | % de filas | Total filas | % filas no vacías | # filas no vacías |
+|---|---:|---:|---:|---:|
+| Colombia | 9.7% | 63,163 | 98.5% | 62,203 |
 
 | Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
 |---|---:|---:|
@@ -49,9 +49,9 @@ Dos análisis desglosados por país: (A) normalización de `contentGenre` con su
 
 ### Chile
 
-| País | Total filas | % de filas | # filas no vacías |
-|---|---:|---:|---:|
-| Chile | 70,326 | 10.8% | 69,946 |
+| País | % de filas | Total filas | % filas no vacías | # filas no vacías |
+|---|---:|---:|---:|---:|
+| Chile | 10.8% | 70,326 | 99.5% | 69,946 |
 
 | Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
 |---|---:|---:|
