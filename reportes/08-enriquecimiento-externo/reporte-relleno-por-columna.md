@@ -48,7 +48,6 @@ Vacías al inicio: 22.8% del total. Se rescató el 88.4% de las vacías. Es el c
 | original | 77.2% | Lo declarado. |
 | intra_titulo | +19.6% | "cbn rj" trae `es` por 8 rutas (OTTera, TCL, Equativ, NubaTV…) y `Not Applicable` por iion → las de iion reciben `es`. Repetido ~131k veces. |
 | app_default | +0.3% | Solo apps monolingües calificaron: ViX (`es` ≥ 97%), iion\|LG (`en` 100%). Las rutas grandes de iion mandan mezcla `en`/`es` → no pasan el 95%. |
-| wikidata | +0.2% | Último recurso: idioma **original** de la obra (P364, vía IMDb id). Va al final porque dice en qué idioma se *hizo* la obra, no en qué idioma se está *sirviendo*. |
 | sin_dato | 2.6% | Sobre todo títulos bilingües bloqueados por el candado: "memorias adolescentes" trae `es` 3 veces y `en` 1 (75% < 80%) → no se adivina. La mezcla es información (pistas de audio), no ruido. |
 
 ## contentIsLiveStream — 28.7% → 48.9% del total
