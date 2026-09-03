@@ -7,46 +7,32 @@
   "pct_filas_con_titulo_real": 85.6,
   "cols": {
    "contentGenre": {
-    "antes_filas": 98.8,
-    "despues_filas": 99.1,
-    "antes_reqs": 92.4,
-    "despues_reqs": 92.6
+    "pct_filas_con_dato": 98.8,
+    "pct_reqs_con_dato": 92.4
    },
    "contentCategory": {
-    "antes_filas": 23.0,
-    "despues_filas": 95.2,
-    "antes_reqs": 32.3,
-    "despues_reqs": 86.9
+    "pct_filas_con_dato": 23.0,
+    "pct_reqs_con_dato": 32.3
    },
    "contentSeries": {
-    "antes_filas": 6.1,
-    "despues_filas": 14.6,
-    "antes_reqs": 6.9,
-    "despues_reqs": 16.4
+    "pct_filas_con_dato": 6.1,
+    "pct_reqs_con_dato": 6.9
    },
    "contentLength": {
-    "antes_filas": 11.7,
-    "despues_filas": 50.1,
-    "antes_reqs": 24.8,
-    "despues_reqs": 59.5
+    "pct_filas_con_dato": 11.7,
+    "pct_reqs_con_dato": 24.8
    },
    "contentLanguage": {
-    "antes_filas": 77.2,
-    "despues_filas": 97.4,
-    "antes_reqs": 82.5,
-    "despues_reqs": 96.3
+    "pct_filas_con_dato": 77.2,
+    "pct_reqs_con_dato": 82.5
    },
    "contentIsLiveStream": {
-    "antes_filas": 28.7,
-    "despues_filas": 48.9,
-    "antes_reqs": 38.9,
-    "despues_reqs": 53.1
+    "pct_filas_con_dato": 28.7,
+    "pct_reqs_con_dato": 38.9
    },
    "contentRating": {
-    "antes_filas": 83.9,
-    "despues_filas": 90.5,
-    "antes_reqs": 87.9,
-    "despues_reqs": 92.1
+    "pct_filas_con_dato": 83.9,
+    "pct_reqs_con_dato": 87.9
    }
   }
  },
@@ -58,46 +44,32 @@
   "pct_filas_con_titulo_real": 60.5,
   "cols": {
    "contentGenre": {
-    "antes_filas": 99.4,
-    "despues_filas": 99.4,
-    "antes_reqs": 94.7,
-    "despues_reqs": 94.7
+    "pct_filas_con_dato": 99.4,
+    "pct_reqs_con_dato": 94.7
    },
    "contentCategory": {
-    "antes_filas": 39.2,
-    "despues_filas": 88.4,
-    "antes_reqs": 15.5,
-    "despues_reqs": 81.6
+    "pct_filas_con_dato": 39.2,
+    "pct_reqs_con_dato": 15.5
    },
    "contentSeries": {
-    "antes_filas": 0.4,
-    "despues_filas": 31.6,
-    "antes_reqs": 0.0,
-    "despues_reqs": 38.5
+    "pct_filas_con_dato": 0.4,
+    "pct_reqs_con_dato": 0.0
    },
    "contentLength": {
-    "antes_filas": 18.4,
-    "despues_filas": 61.1,
-    "antes_reqs": 20.8,
-    "despues_reqs": 73.2
+    "pct_filas_con_dato": 18.4,
+    "pct_reqs_con_dato": 20.8
    },
    "contentLanguage": {
-    "antes_filas": 75.6,
-    "despues_filas": 96.8,
-    "antes_reqs": 65.9,
-    "despues_reqs": 97.6
+    "pct_filas_con_dato": 75.6,
+    "pct_reqs_con_dato": 65.9
    },
    "contentIsLiveStream": {
-    "antes_filas": 42.3,
-    "despues_filas": 42.3,
-    "antes_reqs": 40.6,
-    "despues_reqs": 40.6
+    "pct_filas_con_dato": 42.3,
+    "pct_reqs_con_dato": 40.6
    },
    "contentRating": {
-    "antes_filas": 80.8,
-    "despues_filas": 86.1,
-    "antes_reqs": 79.6,
-    "despues_reqs": 83.6
+    "pct_filas_con_dato": 80.8,
+    "pct_reqs_con_dato": 79.6
    }
   }
  },
@@ -579,5 +551,6 @@
    "Seedtag Advertising, S.L. (ORTB) | Not Available | 2152",
    2
   ]
- ]
+ ],
+ "nota_ecpm": "eCPM = promedio ponderado por requests (sum(req*ecpm)/sum(req)) sobre requests con eCPM > 0"
 }

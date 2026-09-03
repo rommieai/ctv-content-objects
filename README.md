@@ -97,7 +97,7 @@ carga; contiene siempre el consolidado vigente). Tras cada tanda se recarga con
 
 | Reporte | Contenido |
 |---|---|
-| `reportes/09-vix-televisa/reporte-vix-televisa.md` | **Nuevo:** ViX/TelevisaUnivision en Mexico — completitud por columna antes/despues del relleno (filas y requests), eCPM ponderado, y las 28 rutas de venta del inventario (Equativ, SpringServe, OB, Vidaa...) |
+| `reportes/09-vix-televisa/reporte-vix-televisa.md` | **Nuevo:** ViX/TelevisaUnivision en Mexico sobre el consolidado tal como viene — completitud por columna (filas y requests), eCPM ponderado por requests, y las 28 rutas de venta del inventario (Equativ, SpringServe, OB, Vidaa...) |
 | `reportes/08-enriquecimiento-externo/reporte-relleno-por-columna.md` | **Nuevo:** que se hizo columna por columna para rellenar los content objects vacios: las corridas de cada origen (intra-titulo, default por app, IMDb, Wikidata, derivados, semantica por app) con el % de filas que aporto cada una; hallazgos: contentLength es un codigo 1-8 (no duracion) y el contentIsLiveStream declarado es siempre 1 |
 | `reportes/07-.../reporte-content-objects-detallado-v15-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v15, con comparativo de % de filas no vacias y visual SVG |
 | `reportes/07-.../reporte-publishers-v15-consolidado.md` | **Vigente:** desglose por publisher (top 12; el rebote de TV Azteca y el default [IAB12] de Vidaa) |
