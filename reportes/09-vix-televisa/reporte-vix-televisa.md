@@ -20,6 +20,25 @@ La foto comercial en una línea: **ViX/Televisa es el inventario más líquido d
 
 ## Completitud por columna (el consolidado como viene)
 
+Referencias de totales (mismas de los demás reportes de la serie):
+
+| Población | # total de filas (vacías o no) | Total Requests |
+|---|---:|---:|
+| Global (todo el consolidado) | 648,589 | 385,830,361,280 |
+| ViX/Televisa MX | 18,723 | 44,167,178,640 |
+
+**# de filas completadas por columna** (filas con dato útil) y % que representan del # total de filas de su población:
+
+| Columna | Global: # filas completadas | Global: % del total | ViX/Televisa MX: # filas completadas | ViX/Televisa MX: % del total |
+|---|---:|---:|---:|---:|
+| contentGenre | 640,565 | 98.8% | 18,543 | 99.0% |
+| contentRating | 544,108 | 83.9% | 16,782 | 89.6% |
+| contentLanguage | 500,711 | 77.2% | 12,091 | 64.6% |
+| contentIsLiveStream | 186,111 | 28.7% | 8,030 | 42.9% |
+| contentCategory | 148,967 | 23.0% | 1,782 | 9.5% |
+| contentLength | 76,122 | 11.7% | 5,296 | 28.3% |
+| contentSeries | 39,482 | 6.1% | 48 | 0.3% |
+
 % de filas y % de requests con dato útil, para el total y para el segmento:
 
 | Columna | Global: % filas | Global: % reqs | ViX/Televisa MX: % filas | ViX/Televisa MX: % reqs |
