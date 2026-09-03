@@ -2,7 +2,7 @@
 
 **Fuente:** `inventory-consolidado-v10-a-v15.csv` — 648,589 filas (métricas del corte v15, ventana 15–29 ago 2026). Todos los porcentajes de completitud describen el consolidado **tal como viene del reporte de inventario**: una celda cuenta como con dato si trae algo útil (se excluyen centinelas y basura: `Not Available`, `Unknown`, `[-7]`, hash MD5 de cadena vacía, macros `{{...}}`).
 
-**Definición del segmento (filtro acordado):** `Country = Mexico` **y** (`Publisher` contiene la palabra "televisa" **o** `App Name` contiene la palabra "vix"), ambos sin distinguir mayúsculas. Resultado: **18,723 filas**. Queda documentado que este filtro **excluye a propósito** el ViX embebido en televisores Hisense/Vidaa, que solo es identificable por el id técnico de la app (`tv.vidaa.ui.apps.vix`, `com.vix`) porque llega con `App Name` = "Vidaa" o vacío: son 10,467 filas y 7.4B de requests adicionales (~14% del tráfico del segmento ampliado) que este reporte NO incluye. Con el filtro acordado, el segmento también existe fuera de México (Argentina 746 filas, Perú 741, Colombia 629, Chile 568, Ecuador 514, Costa Rica 477, Guatemala 446), no cubierto aquí.
+**Definición del segmento (filtro acordado):** `Country = Mexico` **y** (`Publisher` contiene la palabra "televisa" **o** `App Name` contiene la palabra "vix"), ambos sin distinguir mayúsculas. Resultado: **18,723 filas**. Nota: el ViX embebido en televisores Hisense/Vidaa llega con `App Name` = "Vidaa" o vacío (solo lo delata el id técnico de la app), por lo que no entra en este filtro. El segmento también existe fuera de México (Argentina 746 filas, Perú 741, Colombia 629, Chile 568, Ecuador 514, Costa Rica 477, Guatemala 446), no cubierto aquí.
 
 **Nota sobre el eCPM:** todos los eCPM de este reporte son **promedios ponderados por requests** — Σ(requests × eCPM) / Σ(requests) — calculados solo sobre los requests con eCPM > 0. No son promedios simples de filas: una combinación con mil millones de requests pesa mil millones de veces más que una de un request.
 
@@ -99,5 +99,3 @@ El contraste retrata al segmento: es **hispanohablante puro** (es 60.5% + spa 3.
 3. **Resellers LATAM/APAC (≈1.5%):** VGI, AWG, Adsmovil, NubaTV, NGL — poco volumen, monetización floja (0–35%), aunque con eCPM nominal más alto cuando venden (2.1–3.1): la ruta larga cobra más caro pero casi no vende.
 
 **El patrón de precio del segmento:** a más directa la ruta, más barato y más líquido (OB: 1.40 y 97.7% vendido; resellers: 3+ de eCPM y <35% vendido). Consistente con un inventario que TelevisaUnivision mueve a volumen por sus propios pipes, y que los intermediarios remarcan sin lograr venderlo.
-
-**Nota:** con el filtro acordado, la ruta OEM (Vidaa/Hisense vendiendo el ViX embebido en sus televisores) queda fuera del segmento — esa ruta movía ~11.7% de los requests en la definición ampliada y era la más barata (eCPM 1.26).
