@@ -56,7 +56,7 @@ La foto comercial en una línea: **ViX/Televisa es el inventario más líquido d
 
 28 publishers distintos venden este inventario. Concentración: **los 4 primeros mueven el 95.2% de los requests del segmento.**
 
-| Ruta de venta (Publisher) | Filas | % reqs del segmento | eCPM pond (>0) | % reqs monetizados | Bundles principales |
+| Ruta de venta (Publisher) | Filas | % reqs del segmento | eCPM pond (>0) | % reqs monetizados | Plataformas donde corre la app |
 |---|---:|---:|---:|---:|---|
 | **Equativ (ex SMART AdServer) — oRTB CTV** | 8,361 | **33.0%** | 2.60 | 87.9% | ViX en Vidaa/Hisense, Roku, Samsung |
 | **TelevisaUnivision via SpringServe** | 5,552 | **31.7%** | 2.25 | 90.9% | prendetv (Android), Roku, Amazon |
