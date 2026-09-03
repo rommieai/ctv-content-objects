@@ -2,555 +2,577 @@
  "global": {
   "filas": 648589,
   "reqs": 385830361280,
-  "ecpm_pond_pos": 4.16,
-  "pct_reqs_monetizados": 52.9,
-  "pct_filas_con_titulo_real": 85.6,
-  "cols": {
-   "contentGenre": {
-    "pct_filas_con_dato": 98.8,
-    "pct_reqs_con_dato": 92.4
-   },
-   "contentCategory": {
-    "pct_filas_con_dato": 23.0,
-    "pct_reqs_con_dato": 32.3
-   },
-   "contentSeries": {
-    "pct_filas_con_dato": 6.1,
-    "pct_reqs_con_dato": 6.9
-   },
-   "contentLength": {
-    "pct_filas_con_dato": 11.7,
-    "pct_reqs_con_dato": 24.8
-   },
-   "contentLanguage": {
-    "pct_filas_con_dato": 77.2,
-    "pct_reqs_con_dato": 82.5
-   },
-   "contentIsLiveStream": {
-    "pct_filas_con_dato": 28.7,
-    "pct_reqs_con_dato": 38.9
-   },
-   "contentRating": {
-    "pct_filas_con_dato": 83.9,
-    "pct_reqs_con_dato": 87.9
-   }
+  "ecpm": 4.16,
+  "pct_mon": 52.9,
+  "pct_titulo_real": 86.7
+ },
+ "seg": {
+  "filas": 18723,
+  "reqs": 44167178640,
+  "ecpm": 2.19,
+  "pct_mon": 89.8,
+  "pct_titulo_real": 62.6
+ },
+ "completitud": {
+  "contentGenre": {
+   "g_filas": 98.8,
+   "g_reqs": 92.4,
+   "s_filas": 99.0,
+   "s_reqs": 93.9
+  },
+  "contentRating": {
+   "g_filas": 83.9,
+   "g_reqs": 87.9,
+   "s_filas": 89.6,
+   "s_reqs": 86.4
+  },
+  "contentLanguage": {
+   "g_filas": 77.2,
+   "g_reqs": 82.5,
+   "s_filas": 64.6,
+   "s_reqs": 60.5
+  },
+  "contentIsLiveStream": {
+   "g_filas": 28.7,
+   "g_reqs": 38.9,
+   "s_filas": 42.9,
+   "s_reqs": 40.4
+  },
+  "contentCategory": {
+   "g_filas": 23.0,
+   "g_reqs": 32.3,
+   "s_filas": 9.5,
+   "s_reqs": 1.9
+  },
+  "contentLength": {
+   "g_filas": 11.7,
+   "g_reqs": 24.8,
+   "s_filas": 28.3,
+   "s_reqs": 24.3
+  },
+  "contentSeries": {
+   "g_filas": 6.1,
+   "g_reqs": 6.9,
+   "s_filas": 0.3,
+   "s_reqs": 0.0
   }
  },
- "vix_televisa_mx": {
-  "filas": 29190,
-  "reqs": 51555372720,
-  "ecpm_pond_pos": 2.09,
-  "pct_reqs_monetizados": 88.3,
-  "pct_filas_con_titulo_real": 60.5,
-  "cols": {
-   "contentGenre": {
-    "pct_filas_con_dato": 99.4,
-    "pct_reqs_con_dato": 94.7
-   },
-   "contentCategory": {
-    "pct_filas_con_dato": 39.2,
-    "pct_reqs_con_dato": 15.5
-   },
-   "contentSeries": {
-    "pct_filas_con_dato": 0.4,
-    "pct_reqs_con_dato": 0.0
-   },
-   "contentLength": {
-    "pct_filas_con_dato": 18.4,
-    "pct_reqs_con_dato": 20.8
-   },
-   "contentLanguage": {
-    "pct_filas_con_dato": 75.6,
-    "pct_reqs_con_dato": 65.9
-   },
-   "contentIsLiveStream": {
-    "pct_filas_con_dato": 42.3,
-    "pct_reqs_con_dato": 40.6
-   },
-   "contentRating": {
-    "pct_filas_con_dato": 80.8,
-    "pct_reqs_con_dato": 79.6
-   }
-  }
+ "top3_seg": {
+  "contentIsTitlePresent": [
+   [
+    "true",
+    75.2
+   ],
+   [
+    "false",
+    24.8
+   ]
+  ],
+  "contentGenre": [
+   [
+    "drama",
+    38.5
+   ],
+   [
+    "comedy",
+    11.6
+   ],
+   [
+    "news",
+    3.1
+   ]
+  ],
+  "contentTitle": [
+   [
+    "not applicable",
+    24.8
+   ],
+   [
+    "las estrellas",
+    2.6
+   ],
+   [
+    "golden",
+    2.5
+   ]
+  ],
+  "contentRating": [
+   [
+    "tv-14",
+    43.3
+   ],
+   [
+    "not applicable",
+    10.4
+   ],
+   [
+    "dv-t",
+    8.6
+   ]
+  ],
+  "contentLanguage": [
+   [
+    "es",
+    60.5
+   ],
+   [
+    "not applicable",
+    35.4
+   ],
+   [
+    "spa",
+    3.1
+   ]
+  ],
+  "contentIsLiveStream": [
+   [
+    "1",
+    42.9
+   ],
+   [
+    "not available",
+    39.8
+   ],
+   [
+    "unknown",
+    17.4
+   ]
+  ],
+  "contentCategory": [
+   [
+    "[-7]",
+    90.5
+   ],
+   [
+    "[iab1, iab1-5]",
+    7.2
+   ],
+   [
+    "[iab1, iab1-5, iab1-7]",
+    1.6
+   ]
+  ],
+  "contentLength": [
+   [
+    "not applicable",
+    71.7
+   ],
+   [
+    "8",
+    28.3
+   ]
+  ],
+  "contentSeries": [
+   [
+    "not available",
+    99.7
+   ],
+   [
+    "fifa club world cup",
+    0.2
+   ],
+   [
+    "wdbj news",
+    0.0
+   ]
+  ]
  },
- "segmento_por_pais_filas": {
-  "Mexico": 29190,
-  "Argentina": 1404,
-  "Guatemala": 1114,
-  "Peru": 1051,
-  "Colombia": 920,
-  "Chile": 809,
-  "Panama": 591,
-  "Ecuador": 566,
-  "Costa Rica": 508,
-  "Puerto Rico": 304
- },
- "publishers": [
+ "paises": [
+  [
+   "Mexico",
+   18723
+  ],
+  [
+   "Argentina",
+   746
+  ],
+  [
+   "Peru",
+   741
+  ],
+  [
+   "Colombia",
+   629
+  ],
+  [
+   "Chile",
+   568
+  ],
+  [
+   "Ecuador",
+   514
+  ],
+  [
+   "Costa Rica",
+   477
+  ],
+  [
+   "Guatemala",
+   446
+  ]
+ ],
+ "pubs": [
   {
-   "publisher": "Equativ (Formerly SMART AdServer) - oRTB CTV",
-   "filas": 8361,
-   "pct_reqs_seg": 33.0,
-   "reqs": 16990133440,
-   "ecpm_pond_pos": 2.6,
-   "pct_reqs_monetizados": 87.9,
+   "p": "Equativ (Formerly SMART AdServer) - oRTB CTV",
+   "filas": 5343,
+   "pct_reqs": 37.1,
+   "ecpm": 2.61,
+   "pct_mon": 88.8,
    "apps": [
     "ViX: TV, Deportes y Noticias",
-    "Not Available",
     "ViX: Cine y TV Gratis en Español",
     "ViX: TV, Sports and News"
    ],
-   "bundles": [
-    "tv.vidaa.ui.apps.vix",
+   "bund": [
     "552828",
-    "g20329015921"
+    "g20329015921",
+    "b08kj77pqy"
    ]
   },
   {
-   "publisher": "Televisa Univision via SpringServe",
+   "p": "Televisa Univision via SpringServe",
    "filas": 5552,
-   "pct_reqs_seg": 31.7,
-   "reqs": 16367937280,
-   "ecpm_pond_pos": 2.25,
-   "pct_reqs_monetizados": 90.9,
+   "pct_reqs": 37.1,
+   "ecpm": 2.25,
+   "pct_mon": 90.9,
    "apps": [
     "ViX: TV, Sports and News",
     "ViX: TV, Deportes y Noticias",
-    "ViX: Cine y TV Gratis en Español",
-    "Not Available"
+    "ViX: Cine y TV Gratis en Español"
    ],
-   "bundles": [
+   "bund": [
     "com.univision.prendetv",
     "552828",
     "b08kj77pqy"
    ]
   },
   {
-   "publisher": "Televisa Univision via OB",
+   "p": "Televisa Univision via OB",
    "filas": 3380,
-   "pct_reqs_seg": 18.8,
-   "reqs": 9691663440,
-   "ecpm_pond_pos": 1.4,
-   "pct_reqs_monetizados": 97.7,
+   "pct_reqs": 21.9,
+   "ecpm": 1.4,
+   "pct_mon": 97.7,
    "apps": [
     "ViX: TV, Deportes y Noticias",
     "ViX: TV, Sports and News",
-    "VIX - Filmes e TV",
-    "ViX: Cine y TV en Español"
+    "VIX - Filmes e TV"
    ],
-   "bundles": [
+   "bund": [
     "552828",
     "com.univision.prendetv",
     "com.batanga.vix"
    ]
   },
   {
-   "publisher": "Vidaa",
-   "filas": 5495,
-   "pct_reqs_seg": 11.7,
-   "reqs": 6043306000,
-   "ecpm_pond_pos": 1.26,
-   "pct_reqs_monetizados": 84.5,
-   "apps": [
-    "Vidaa",
-    "Not Available"
-   ],
-   "bundles": [
-    "tv.vidaa.ui.apps.vix"
-   ]
-  },
-  {
-   "publisher": "METAX SOFTWARE PTE. LTD. (Exchange)",
+   "p": "METAX SOFTWARE PTE. LTD. (Exchange)",
    "filas": 1760,
-   "pct_reqs_seg": 1.6,
-   "reqs": 845947840,
-   "ecpm_pond_pos": 2.47,
-   "pct_reqs_monetizados": 65.4,
+   "pct_reqs": 1.9,
+   "ecpm": 2.47,
+   "pct_mon": 65.4,
    "apps": [
     "ViX: TV, Sports and News",
     "ViX: TV, Deportes y Noticias",
-    "ViX: Cine y TV Gratis en Español",
-    "ViX: Cine y TV en Español"
+    "ViX: Cine y TV Gratis en Español"
    ],
-   "bundles": [
+   "bund": [
     "com.univision.prendetv",
     "552828",
     "g20329015921"
    ]
   },
   {
-   "publisher": "Vidaa  APAC Hisense Headquarter",
-   "filas": 1844,
-   "pct_reqs_seg": 1.3,
-   "reqs": 692113360,
-   "ecpm_pond_pos": 3.2,
-   "pct_reqs_monetizados": 54.3,
-   "apps": [
-    "Vidaa",
-    "Not Available"
-   ],
-   "bundles": [
-    "tv.vidaa.ui.apps.vix"
-   ]
-  },
-  {
-   "publisher": "VGI CTV, Inc APAC",
+   "p": "VGI CTV, Inc APAC",
    "filas": 1712,
-   "pct_reqs_seg": 1.0,
-   "reqs": 506596880,
-   "ecpm_pond_pos": 2.13,
-   "pct_reqs_monetizados": 34.9,
+   "pct_reqs": 1.1,
+   "ecpm": 2.13,
+   "pct_mon": 34.9,
    "apps": [
     "ViX: TV, Sports and News",
     "ViX: TV, Deportes y Noticias"
    ],
-   "bundles": [
+   "bund": [
     "com.univision.prendetv",
     "552828",
     "b08kj77pqy"
    ]
   },
   {
-   "publisher": "AWG Media",
+   "p": "AWG Media",
    "filas": 19,
-   "pct_reqs_seg": 0.3,
-   "reqs": 135230960,
-   "ecpm_pond_pos": 3.13,
-   "pct_reqs_monetizados": 28.7,
+   "pct_reqs": 0.3,
+   "ecpm": 3.13,
+   "pct_mon": 28.7,
    "apps": [
     "ViX: TV, Deportes y Noticias",
     "ViX: TV, Sports and News",
     "ViX: Cine y TV Gratis en Español"
    ],
-   "bundles": [
+   "bund": [
     "552828",
     "com.univision.prendetv",
     "g20329015921"
    ]
   },
   {
-   "publisher": "Televisa Univision via TAM (Prime)",
+   "p": "Televisa Univision via TAM (Prime)",
    "filas": 13,
-   "pct_reqs_seg": 0.2,
-   "reqs": 86444320,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.2,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Sports and News",
     "Univision App: Stream TV Shows",
     "ViX: TV, Deportes y Noticias"
    ],
-   "bundles": [
+   "bund": [
     "com.univision.prendetv",
     "com.univision.android",
     "552828"
    ]
   },
   {
-   "publisher": "Televisa Univision via TAM",
+   "p": "Televisa Univision via TAM",
    "filas": 8,
-   "pct_reqs_seg": 0.1,
-   "reqs": 72177120,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.2,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Sports and News"
    ],
-   "bundles": [
+   "bund": [
     "com.univision.prendetv"
    ]
   },
   {
-   "publisher": "Seedtag Advertising, S.L. (ORTB)",
-   "filas": 443,
-   "pct_reqs_seg": 0.1,
-   "reqs": 51821840,
-   "ecpm_pond_pos": 1.42,
-   "pct_reqs_monetizados": 23.8,
+   "p": "Seedtag Advertising, S.L. (ORTB)",
+   "filas": 339,
+   "pct_reqs": 0.1,
+   "ecpm": 1.72,
+   "pct_mon": 1.4,
    "apps": [
     "ViX: TV, Sports and News",
     "ViX: TV, Deportes y Noticias",
-    "Not Available",
     "ViX: Cine y TV Gratis en Español"
    ],
-   "bundles": [
+   "bund": [
     "com.univision.prendetv",
     "552828",
-    "com.vix"
+    "g20329015921"
    ]
   },
   {
-   "publisher": "EXTE - Rich Audience (oRTB)",
+   "p": "EXTE - Rich Audience (oRTB)",
    "filas": 362,
-   "pct_reqs_seg": 0.0,
-   "reqs": 22407520,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.1,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: Cine y TV en Español"
    ],
-   "bundles": [
+   "bund": [
     "1167028"
    ]
   },
   {
-   "publisher": "TCL ADS - Springserve",
-   "filas": 4,
-   "pct_reqs_seg": 0.0,
-   "reqs": 16250240,
-   "ecpm_pond_pos": 5.75,
-   "pct_reqs_monetizados": 84.8,
-   "apps": [
-    "ViX: TV, Deportes y Noticias",
-    "Vidaa",
-    "Not Available"
-   ],
-   "bundles": [
-    "tv.vidaa.ui.apps.vix",
-    "552828"
-   ]
-  },
-  {
-   "publisher": "Indicue",
-   "filas": 9,
-   "pct_reqs_seg": 0.0,
-   "reqs": 14735040,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "p": "Indicue",
+   "filas": 8,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Sports and News",
     "ViX: Cine y TV en Español",
-    "ViX: Cine y TV Gratis en Español",
-    "ViX: TV, Deportes y Noticias"
+    "ViX: Cine y TV Gratis en Español"
    ],
-   "bundles": [
+   "bund": [
     "com.univision.prendetv",
     "1167028",
     "g20329015921"
    ]
   },
   {
-   "publisher": "EXTE - Rich Audience Marketplace (oRTB)",
+   "p": "EXTE - Rich Audience Marketplace (oRTB)",
    "filas": 94,
-   "pct_reqs_seg": 0.0,
-   "reqs": 6231680,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: Cine y TV en Español"
    ],
-   "bundles": [
+   "bund": [
     "1167028"
    ]
   },
   {
-   "publisher": "LG Ads EMEA - SS",
+   "p": "LG Ads EMEA - SS",
    "filas": 77,
-   "pct_reqs_seg": 0.0,
-   "reqs": 3988960,
-   "ecpm_pond_pos": 4.49,
-   "pct_reqs_monetizados": 8.2,
+   "pct_reqs": 0.0,
+   "ecpm": 4.49,
+   "pct_mon": 8.2,
    "apps": [
     "ViX: Cine y TV en Español"
    ],
-   "bundles": [
+   "bund": [
     "1167028"
    ]
   },
   {
-   "publisher": "TCL ADs (APAC)",
-   "filas": 2,
-   "pct_reqs_seg": 0.0,
-   "reqs": 2983600,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
-   "apps": [
-    "Vidaa",
-    "Not Available"
-   ],
-   "bundles": [
-    "tv.vidaa.ui.apps.vix"
-   ]
-  },
-  {
-   "publisher": "Adsmovil via Publica",
+   "p": "Adsmovil via Publica",
    "filas": 15,
-   "pct_reqs_seg": 0.0,
-   "reqs": 2335600,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Deportes y Noticias",
     "ViX: Cine y TV Gratis en Español"
    ],
-   "bundles": [
+   "bund": [
     "552828",
     "g20329015921"
    ]
   },
   {
-   "publisher": "NGL Media via SpringServe",
+   "p": "NGL Media via SpringServe",
    "filas": 12,
-   "pct_reqs_seg": 0.0,
-   "reqs": 1703600,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Sports and News",
     "ViX: TV, Deportes y Noticias",
-    "ViX: Cine y TV en Español",
-    "ViX: Cine y TV Gratis en Español"
+    "ViX: Cine y TV en Español"
    ],
-   "bundles": [
+   "bund": [
     "552828",
     "com.univision.prendetv",
     "b08kj77pqy"
    ]
   },
   {
-   "publisher": "NubaTV - SpringServe",
+   "p": "NubaTV - SpringServe",
    "filas": 7,
-   "pct_reqs_seg": 0.0,
-   "reqs": 390400,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Deportes y Noticias",
     "ViX: TV, Sports and News"
    ],
-   "bundles": [
+   "bund": [
     "552828",
     "com.univision.prendetv"
    ]
   },
   {
-   "publisher": "InMobi PTE LTD.",
+   "p": "InMobi PTE LTD.",
    "filas": 4,
-   "pct_reqs_seg": 0.0,
-   "reqs": 306000,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Sports and News",
     "ViX: TV, Deportes y Noticias"
    ],
-   "bundles": [
+   "bund": [
     "com.univision.prendetv",
     "552828"
    ]
   },
   {
-   "publisher": "LoopMe Ltd (oRTB)",
+   "p": "LoopMe Ltd (oRTB)",
    "filas": 7,
-   "pct_reqs_seg": 0.0,
-   "reqs": 301680,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Sports and News",
     "ViX: TV, Deportes y Noticias"
    ],
-   "bundles": [
+   "bund": [
     "com.univision.prendetv",
     "552828",
     "b08kj77pqy"
    ]
   },
   {
-   "publisher": "Glewed.tv - oRTB",
+   "p": "Glewed.tv - oRTB",
    "filas": 4,
-   "pct_reqs_seg": 0.0,
-   "reqs": 139920,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Deportes y Noticias",
     "ViX: TV, Sports and News"
    ],
-   "bundles": [
+   "bund": [
     "552828",
     "com.univision.prendetv"
    ]
   },
   {
-   "publisher": "TCL ADs (CTV Alliances)",
+   "p": "TCL ADS - Springserve",
    "filas": 2,
-   "pct_reqs_seg": 0.0,
-   "reqs": 70560,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Deportes y Noticias"
    ],
-   "bundles": [
+   "bund": [
     "552828"
    ]
   },
   {
-   "publisher": "Sparteo CTV (Publica)",
-   "filas": 1,
-   "pct_reqs_seg": 0.0,
-   "reqs": 46800,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
-   "apps": [
-    "Vidaa"
-   ],
-   "bundles": [
-    "tv.vidaa.ui.apps.vix"
-   ]
-  },
-  {
-   "publisher": "TripleB.TV ORTB",
-   "filas": 1,
-   "pct_reqs_seg": 0.0,
-   "reqs": 41440,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "p": "TCL ADs (CTV Alliances)",
+   "filas": 2,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Deportes y Noticias"
    ],
-   "bundles": [
+   "bund": [
     "552828"
    ]
   },
   {
-   "publisher": "Vizio - OW OTT",
+   "p": "TripleB.TV ORTB",
    "filas": 1,
-   "pct_reqs_seg": 0.0,
-   "reqs": 38560,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: TV, Deportes y Noticias"
    ],
-   "bundles": [
+   "bund": [
     "552828"
    ]
   },
   {
-   "publisher": "VIZIO V-AMPLIFY",
+   "p": "Vizio - OW OTT",
    "filas": 1,
-   "pct_reqs_seg": 0.0,
-   "reqs": 28640,
-   "ecpm_pond_pos": 0.0,
-   "pct_reqs_monetizados": 0.0,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
+   "apps": [
+    "ViX: TV, Deportes y Noticias"
+   ],
+   "bund": [
+    "552828"
+   ]
+  },
+  {
+   "p": "VIZIO V-AMPLIFY",
+   "filas": 1,
+   "pct_reqs": 0.0,
+   "ecpm": 0.0,
+   "pct_mon": 0.0,
    "apps": [
     "ViX: Cine y TV en Español"
    ],
-   "bundles": [
+   "bund": [
     "1167028"
    ]
   }
- ],
- "canales_televisa_fuera_del_segmento": [
-  [
-   "Equativ (Formerly SMART AdServer) - oRTB CTV | Not Available | tv.mirada.iris.android.inspire.izzitv",
-   2
-  ],
-  [
-   "Seedtag Advertising, S.L. (ORTB) | Not Available | 2152",
-   2
-  ]
- ],
- "nota_ecpm": "eCPM = promedio ponderado por requests (sum(req*ecpm)/sum(req)) sobre requests con eCPM > 0"
+ ]
 }
