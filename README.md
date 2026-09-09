@@ -17,6 +17,8 @@ scripts/                          codigo que genera los consolidados y los JSON
   normalizar_monetizar.py         normaliza genero/rating y analiza el eCPM > 0
   analizar_genero_titulo_paises.py genero normalizado + auditoria de contentTitle por pais
   generar_visual_paises.py        SVG con las tablas de paises lado a lado
+  generar_reporte_vacios.py       markdown "content objects cuando X esta vacio" a partir del
+                                  JSON de analizar.py --solo-vacios-en X y del JSON completo
   enriquecer_externo.py           rellena content objects vacios: intra-dataset, defaults
                                   por app, IMDb offline, Wikidata/TVMaze (cache incremental)
 
@@ -41,6 +43,8 @@ reportes/
                                   OJO: el formato nuevo ya es el 54% del corte
   13-enriquecimiento-externo-v17/ relleno de content objects sobre el consolidado v10-a-v17
                                   (misma estructura que 08 y 11)
+  14-content-objects-vacios-v17/  un reporte por content object con la distribucion de las
+                                  DEMAS columnas en las filas donde ese viene vacio
 
 ejecutivo/                        resumenes en PDF para stakeholders
 ```
@@ -59,6 +63,10 @@ python scripts/analizar.py inventory-consolidado.csv reporte-paises.json \
     --grupos "Mexico,Colombia,Chile" --digest ./digests          # por pais (default)
 python scripts/analizar.py inventory-consolidado.csv reporte-publishers.json \
     --por Publisher --top-grupos 12                              # por publisher
+python scripts/analizar.py inventory-consolidado.csv vacios-contentRating.json \
+    --grupos "Mexico,Colombia,Chile" --solo-vacios-en contentRating   # solo filas sin rating
+python scripts/generar_reporte_vacios.py vacios-contentRating.json reporte-paises.json \
+    reporte-vacios-contentRating.md --visual visual.svg [--notas conclusiones.md]
 
 # 3. Normalizacion de genero/rating + analisis del inventario monetizado
 python scripts/normalizar_monetizar.py inventory-consolidado.csv \
@@ -107,6 +115,7 @@ carga; contiene siempre el consolidado vigente). Tras cada tanda se recarga con
 
 | Reporte | Contenido |
 |---|---|
+| `reportes/14-content-objects-vacios-v17/README.md` | **Nuevo:** ocho reportes (uno por content object) con la distribucion de las demas columnas en las filas donde ese content object viene vacio, MX/CO/CL, comparado con todo el dataset; el titulo vacio es el 7% de las filas pero el 29.5% de los requests |
 | `reportes/12-.../reporte-content-objects-detallado-v17-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v17. La escritura nueva del reporte ya es el 54% del corte y viene mejor poblada (rating 60%, idioma 48% de sus filas); el consolidado por llave ya no deduplica (959k filas, 10.6% de requests de llaves viejas): leer trafico y precio sobre el corte |
 | `reportes/12-.../reporte-publishers-v17-consolidado.md` | **Vigente:** desglose por publisher (top 12; Roku supera a OTTera como #1 en requests, iion #3, TV Azteca se apaga otra vez, Select Plus vuelve a 12.6 de vitrina) |
 | `reportes/12-.../reporte-normalizacion-y-ecpm-v17-consolidado.md` | **Vigente:** genero/rating normalizados + inventario monetizado (50.7% del trafico, de vuelta a la banda de 51; eCPM 4.04; Colombia 5.85 quinto corte subiendo; Chile rebota a 6.10; Argentina lidera con 6.25; documental 5.88 al frente del yield con volumen) |

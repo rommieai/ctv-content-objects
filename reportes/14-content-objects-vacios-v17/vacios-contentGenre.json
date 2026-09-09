@@ -1,0 +1,4977 @@
+{
+ "archivo": "inventory-consolidado-v10-a-v17.csv",
+ "filas": 60981,
+ "total_requests": 52768176320,
+ "columnas": {
+  "Publisher ID": {
+   "valores_distintos_totales": 173,
+   "valores_distintos_utiles": 173,
+   "fill_rate_filas_pct": 100.0,
+   "fill_rate_requests_pct": 100.0,
+   "distribucion": [
+    [
+     "166799",
+     11232,
+     18.42,
+     5456444560,
+     10.34
+    ],
+    [
+     "161101",
+     10295,
+     16.88,
+     7331461120,
+     13.89
+    ],
+    [
+     "164918",
+     8194,
+     13.44,
+     7179439120,
+     13.61
+    ],
+    [
+     "163091",
+     7017,
+     11.51,
+     2591828800,
+     4.91
+    ],
+    [
+     "161489",
+     5897,
+     9.67,
+     2869557280,
+     5.44
+    ],
+    [
+     "161517",
+     4307,
+     7.06,
+     921778080,
+     1.75
+    ],
+    [
+     "161325",
+     1458,
+     2.39,
+     1120084880,
+     2.12
+    ],
+    [
+     "166832",
+     1018,
+     1.67,
+     216059040,
+     0.41
+    ],
+    [
+     "166449",
+     950,
+     1.56,
+     968882400,
+     1.84
+    ],
+    [
+     "160222",
+     933,
+     1.53,
+     324138240,
+     0.61
+    ],
+    [
+     "165045",
+     923,
+     1.51,
+     2888956240,
+     5.47
+    ],
+    [
+     "161212",
+     731,
+     1.2,
+     206350480,
+     0.39
+    ],
+    [
+     "159698",
+     649,
+     1.06,
+     125334800,
+     0.24
+    ],
+    [
+     "161150",
+     562,
+     0.92,
+     590587200,
+     1.12
+    ],
+    [
+     "154037",
+     528,
+     0.87,
+     305895120,
+     0.58
+    ],
+    [
+     "160710",
+     510,
+     0.84,
+     659687360,
+     1.25
+    ],
+    [
+     "159834",
+     500,
+     0.82,
+     249943280,
+     0.47
+    ],
+    [
+     "159669",
+     417,
+     0.68,
+     62085440,
+     0.12
+    ],
+    [
+     "163433",
+     322,
+     0.53,
+     22687520,
+     0.04
+    ],
+    [
+     "157880",
+     304,
+     0.5,
+     2895999360,
+     5.49
+    ],
+    [
+     "162254",
+     298,
+     0.49,
+     294400400,
+     0.56
+    ],
+    [
+     "166254",
+     278,
+     0.46,
+     138196640,
+     0.26
+    ],
+    [
+     "161058",
+     272,
+     0.45,
+     138353600,
+     0.26
+    ],
+    [
+     "158711",
+     246,
+     0.4,
+     31218000,
+     0.06
+    ],
+    [
+     "157743",
+     220,
+     0.36,
+     34533200,
+     0.07
+    ],
+    [
+     "167797",
+     160,
+     0.26,
+     40243360,
+     0.08
+    ],
+    [
+     "168321",
+     138,
+     0.23,
+     105866880,
+     0.2
+    ],
+    [
+     "159889",
+     132,
+     0.22,
+     9255389440,
+     17.54
+    ],
+    [
+     "164705",
+     131,
+     0.21,
+     121883920,
+     0.23
+    ],
+    [
+     "159880",
+     127,
+     0.21,
+     15890480,
+     0.03
+    ]
+   ],
+   "distribucion_es_completa": false,
+   "otras_filas": 2232
+  },
+  "Publisher": {
+   "valores_distintos_totales": 172,
+   "valores_distintos_utiles": 172,
+   "fill_rate_filas_pct": 100.0,
+   "fill_rate_requests_pct": 100.0,
+   "distribucion": [
+    [
+     "iion Pty Ltd",
+     18249,
+     29.93,
+     8048273360,
+     15.25
+    ],
+    [
+     "OTTera.tv",
+     10295,
+     16.88,
+     7331461120,
+     13.89
+    ],
+    [
+     "TCL ADS - Springserve",
+     8194,
+     13.44,
+     7179439120,
+     13.61
+    ],
+    [
+     "TCL ADs (APAC)",
+     5897,
+     9.67,
+     2869557280,
+     5.44
+    ],
+    [
+     "Select Plus PTE LTD (CTV)",
+     4307,
+     7.06,
+     921778080,
+     1.75
+    ],
+    [
+     "Aluna Limited",
+     1458,
+     2.39,
+     1120084880,
+     2.12
+    ],
+    [
+     "AWG Media",
+     1018,
+     1.67,
+     216059040,
+     0.41
+    ],
+    [
+     "Coocaa, a SKYWORTH company",
+     950,
+     1.56,
+     968882400,
+     1.84
+    ],
+    [
+     "PML Digital",
+     933,
+     1.53,
+     324138240,
+     0.61
+    ],
+    [
+     "Roku - oRTB",
+     923,
+     1.51,
+     2888956240,
+     5.47
+    ],
+    [
+     "METAX SOFTWARE PTE. LTD. (Exchange)",
+     731,
+     1.2,
+     206350480,
+     0.39
+    ],
+    [
+     "Plex TV via SSHB",
+     649,
+     1.06,
+     125334800,
+     0.24
+    ],
+    [
+     "METAX SOFTWARE PTE. LTD.",
+     562,
+     0.92,
+     590587200,
+     1.12
+    ],
+    [
+     "Equativ (Formerly SMART AdServer) - oRTB CTV",
+     528,
+     0.87,
+     305895120,
+     0.58
+    ],
+    [
+     "Televisa Univision via SpringServe",
+     510,
+     0.84,
+     659687360,
+     1.25
+    ],
+    [
+     "Playworks (SpringServe)",
+     500,
+     0.82,
+     249943280,
+     0.47
+    ],
+    [
+     "Kidoodle OpenWrap OTT",
+     417,
+     0.68,
+     62085440,
+     0.12
+    ],
+    [
+     "APMC",
+     322,
+     0.53,
+     22687520,
+     0.04
+    ],
+    [
+     "Televisa Univision via OB",
+     304,
+     0.5,
+     2895999360,
+     5.49
+    ],
+    [
+     "Vidaa",
+     298,
+     0.49,
+     294400400,
+     0.56
+    ],
+    [
+     "Xapads Media - CTV",
+     278,
+     0.46,
+     138196640,
+     0.26
+    ],
+    [
+     "Unruly Group LLC (oRTB)",
+     272,
+     0.45,
+     138353600,
+     0.26
+    ],
+    [
+     "SpringServe, LLC",
+     246,
+     0.4,
+     31218000,
+     0.06
+    ],
+    [
+     "Seedtag Advertising, S.L. (ORTB)",
+     220,
+     0.36,
+     34533200,
+     0.07
+    ],
+    [
+     "NubaTV - SpringServe",
+     160,
+     0.26,
+     40243360,
+     0.08
+    ],
+    [
+     "Vidaa  APAC Hisense Headquarter",
+     138,
+     0.23,
+     105866880,
+     0.2
+    ],
+    [
+     "Zeasn Europe B.V.",
+     132,
+     0.22,
+     9255389440,
+     17.54
+    ],
+    [
+     "Kivi via Springserve",
+     131,
+     0.21,
+     121883920,
+     0.23
+    ],
+    [
+     "Canela Media via Springserve",
+     127,
+     0.21,
+     15890480,
+     0.03
+    ],
+    [
+     "Sharethrough, Inc (CTV-oRTB)",
+     117,
+     0.19,
+     42318560,
+     0.08
+    ]
+   ],
+   "distribucion_es_completa": false,
+   "otras_filas": 2115
+  },
+  "pageURL": {
+   "valores_distintos_totales": 470,
+   "valores_distintos_utiles": 470,
+   "fill_rate_filas_pct": 100.0,
+   "fill_rate_requests_pct": 100.0,
+   "distribucion": [
+    [
+     "com.tcl.movieark",
+     29073,
+     47.68,
+     7479019840,
+     14.17
+    ],
+    [
+     "com.tcl.livetv",
+     12084,
+     19.82,
+     2867685920,
+     5.43
+    ],
+    [
+     "com.tcl.waterfall.overseas",
+     4511,
+     7.4,
+     9420307680,
+     17.85
+    ],
+    [
+     "com.coolita.channel",
+     2121,
+     3.48,
+     1162988640,
+     2.2
+    ],
+    [
+     "300620",
+     1784,
+     2.93,
+     1043074560,
+     1.98
+    ],
+    [
+     "com.tcl.browser",
+     1180,
+     1.94,
+     4997776480,
+     9.47
+    ],
+    [
+     "151908",
+     841,
+     1.38,
+     2029777120,
+     3.85
+    ],
+    [
+     "g18354012332",
+     597,
+     0.98,
+     119377360,
+     0.23
+    ],
+    [
+     "com.plexapp.android",
+     486,
+     0.8,
+     119527200,
+     0.23
+    ],
+    [
+     "tv.vidaa.ui.plus",
+     463,
+     0.76,
+     291206800,
+     0.55
+    ],
+    [
+     "com.seraphic.metaxplay",
+     403,
+     0.66,
+     117804320,
+     0.22
+    ],
+    [
+     "tv.kidoodle.app.kidoodle",
+     400,
+     0.66,
+     59952560,
+     0.11
+    ],
+    [
+     "13535",
+     394,
+     0.65,
+     125385440,
+     0.24
+    ],
+    [
+     "com.univision.prendetv",
+     317,
+     0.52,
+     1206233760,
+     2.29
+    ],
+    [
+     "806510",
+     292,
+     0.48,
+     33678720,
+     0.06
+    ],
+    [
+     "974696",
+     289,
+     0.47,
+     1893211040,
+     3.59
+    ],
+    [
+     "621046",
+     271,
+     0.44,
+     41280640,
+     0.08
+    ],
+    [
+     "71376",
+     267,
+     0.44,
+     22068160,
+     0.04
+    ],
+    [
+     "4932",
+     256,
+     0.42,
+     70314240,
+     0.13
+    ],
+    [
+     "tv.vidaa.ui.apps.vix",
+     241,
+     0.4,
+     432481120,
+     0.82
+    ],
+    [
+     "com.seraphic.openinet.pre",
+     229,
+     0.38,
+     496909120,
+     0.94
+    ],
+    [
+     "g20329015921",
+     219,
+     0.36,
+     204597840,
+     0.39
+    ],
+    [
+     "552828",
+     215,
+     0.35,
+     682307680,
+     1.29
+    ],
+    [
+     "b08kj77pqy",
+     204,
+     0.33,
+     190970240,
+     0.36
+    ],
+    [
+     "com.mitv.tvhome.mitvplus",
+     175,
+     0.29,
+     81426960,
+     0.15
+    ],
+    [
+     "256567",
+     146,
+     0.24,
+     16091200,
+     0.03
+    ],
+    [
+     "b004y1wcde",
+     144,
+     0.24,
+     21031680,
+     0.04
+    ],
+    [
+     "tv.zeasn.whalelive",
+     112,
+     0.18,
+     9237268480,
+     17.51
+    ],
+    [
+     "tv.twitch.ctv",
+     108,
+     0.18,
+     31659360,
+     0.06
+    ],
+    [
+     "584171",
+     102,
+     0.17,
+     25959520,
+     0.05
+    ]
+   ],
+   "distribucion_es_completa": false,
+   "otras_filas": 3057
+  },
+  "App Name": {
+   "valores_distintos_totales": 329,
+   "valores_distintos_utiles": 328,
+   "fill_rate_filas_pct": 96.47,
+   "fill_rate_requests_pct": 92.12,
+   "distribucion": [
+    [
+     "MovieArk: Stream Movies & Live",
+     29073,
+     47.68,
+     7479019840,
+     14.17
+    ],
+    [
+     "Live TV",
+     12057,
+     19.77,
+     2823490720,
+     5.35
+    ],
+    [
+     "TCL CHANNEL",
+     4511,
+     7.4,
+     9420307680,
+     17.85
+    ],
+    [
+     "Not Available",
+     2151,
+     3.53,
+     4159430400,
+     7.88
+    ],
+    [
+     "Coolita Channel",
+     2121,
+     3.48,
+     1162988640,
+     2.2
+    ],
+    [
+     "Browser TV Web - BrowseHere",
+     1180,
+     1.94,
+     4997776480,
+     9.47
+    ],
+    [
+     "LG",
+     900,
+     1.48,
+     522232880,
+     0.99
+    ],
+    [
+     "Free Games by PlayWorks",
+     892,
+     1.46,
+     521537280,
+     0.99
+    ],
+    [
+     "The Roku Channel",
+     841,
+     1.38,
+     2029777120,
+     3.85
+    ],
+    [
+     "Samsung",
+     599,
+     0.98,
+     119467440,
+     0.23
+    ],
+    [
+     "ViX: TV, Sports and News",
+     562,
+     0.92,
+     1411239040,
+     2.67
+    ],
+    [
+     "Plex: Find Movies & TV Shows",
+     486,
+     0.8,
+     119527200,
+     0.23
+    ],
+    [
+     "Metax TV - Live TV & Movies",
+     403,
+     0.66,
+     117804320,
+     0.22
+    ],
+    [
+     "Plex - Free Movies & TV",
+     394,
+     0.65,
+     125385440,
+     0.24
+    ],
+    [
+     "BrowseFree Movies, TV, More",
+     292,
+     0.48,
+     33678720,
+     0.06
+    ],
+    [
+     "Runtime",
+     272,
+     0.45,
+     41329760,
+     0.08
+    ],
+    [
+     "Kidoodle.TV®- Safe Streaming™",
+     267,
+     0.44,
+     22068160,
+     0.04
+    ],
+    [
+     "Roku",
+     246,
+     0.4,
+     54750160,
+     0.1
+    ],
+    [
+     "Vidaa",
+     239,
+     0.39,
+     429207120,
+     0.81
+    ],
+    [
+     "Open Browser - TV Web Browser",
+     229,
+     0.38,
+     496909120,
+     0.94
+    ],
+    [
+     "ViX: Cine y TV Gratis en Español",
+     219,
+     0.36,
+     204597840,
+     0.39
+    ],
+    [
+     "ViX: TV, Deportes y Noticias",
+     215,
+     0.35,
+     682307680,
+     1.29
+    ],
+    [
+     "Xiaomi TV+: Watch Live TV",
+     175,
+     0.29,
+     81426960,
+     0.15
+    ],
+    [
+     "Ottera",
+     156,
+     0.26,
+     166730000,
+     0.32
+    ],
+    [
+     "Plex: Stream Movies & TV",
+     144,
+     0.24,
+     21031680,
+     0.04
+    ],
+    [
+     "WhaleLive",
+     112,
+     0.18,
+     9237268480,
+     17.51
+    ],
+    [
+     "FreeTV: Películas, Series y TV",
+     104,
+     0.17,
+     201768960,
+     0.38
+    ],
+    [
+     "Canela.TV",
+     102,
+     0.17,
+     25959520,
+     0.05
+    ],
+    [
+     "Kidoodle.TV: Movies, TV, Fun!",
+     84,
+     0.14,
+     4783440,
+     0.01
+    ],
+    [
+     "Plex",
+     76,
+     0.12,
+     8272880,
+     0.02
+    ]
+   ],
+   "distribucion_es_completa": false,
+   "otras_filas": 1879
+  },
+  "Country": {
+   "valores_distintos_totales": 18,
+   "valores_distintos_utiles": 18,
+   "fill_rate_filas_pct": 100.0,
+   "fill_rate_requests_pct": 100.0,
+   "distribucion": [
+    [
+     "Mexico",
+     24044,
+     39.43,
+     27997349440,
+     53.06
+    ],
+    [
+     "Argentina",
+     10993,
+     18.03,
+     13341734080,
+     25.28
+    ],
+    [
+     "Colombia",
+     7080,
+     11.61,
+     3110223680,
+     5.89
+    ],
+    [
+     "Chile",
+     5806,
+     9.52,
+     2063646080,
+     3.91
+    ],
+    [
+     "Peru",
+     4002,
+     6.56,
+     1460041520,
+     2.77
+    ],
+    [
+     "Ecuador",
+     2108,
+     3.46,
+     803014560,
+     1.52
+    ],
+    [
+     "Costa Rica",
+     1200,
+     1.97,
+     1040351200,
+     1.97
+    ],
+    [
+     "Dominican Republic",
+     1115,
+     1.83,
+     759980560,
+     1.44
+    ],
+    [
+     "Puerto Rico",
+     957,
+     1.57,
+     374529840,
+     0.71
+    ],
+    [
+     "Uruguay",
+     831,
+     1.36,
+     158400000,
+     0.3
+    ],
+    [
+     "Venezuela",
+     693,
+     1.14,
+     215724880,
+     0.41
+    ],
+    [
+     "Honduras",
+     477,
+     0.78,
+     165019680,
+     0.31
+    ],
+    [
+     "Panama",
+     475,
+     0.78,
+     788556480,
+     1.49
+    ],
+    [
+     "Paraguay",
+     348,
+     0.57,
+     153730080,
+     0.29
+    ],
+    [
+     "Bolivia",
+     260,
+     0.43,
+     100584800,
+     0.19
+    ],
+    [
+     "Guatemala",
+     215,
+     0.35,
+     81638320,
+     0.15
+    ],
+    [
+     "El Salvador",
+     208,
+     0.34,
+     106300560,
+     0.2
+    ],
+    [
+     "Nicaragua",
+     169,
+     0.28,
+     47350560,
+     0.09
+    ]
+   ],
+   "distribucion_es_completa": true,
+   "otras_filas": 0
+  },
+  "contentGenre": {
+   "valores_distintos_totales": 3,
+   "valores_distintos_utiles": 0,
+   "fill_rate_filas_pct": 0.0,
+   "fill_rate_requests_pct": 0.0,
+   "distribucion": [
+    [
+     "Not Applicable",
+     60728,
+     99.59,
+     52751162320,
+     99.97
+    ],
+    [
+     "none",
+     247,
+     0.41,
+     16648960,
+     0.03
+    ],
+    [
+     "unknown",
+     6,
+     0.01,
+     365040,
+     0.0
+    ]
+   ],
+   "distribucion_es_completa": true,
+   "otras_filas": 0
+  },
+  "contentCategory": {
+   "valores_distintos_totales": 125,
+   "valores_distintos_utiles": 124,
+   "fill_rate_filas_pct": 13.79,
+   "fill_rate_requests_pct": 13.65,
+   "distribucion": [
+    [
+     "[-7]",
+     52569,
+     86.21,
+     45566637360,
+     86.35
+    ],
+    [
+     "[IAB1]",
+     2478,
+     4.06,
+     655668320,
+     1.24
+    ],
+    [
+     "[IAB1-7]",
+     726,
+     1.19,
+     1361681280,
+     2.58
+    ],
+    [
+     "[IAB1-5, IAB1-7]",
+     546,
+     0.9,
+     1189862640,
+     2.25
+    ],
+    [
+     "[IAB1, IAB1-5]",
+     503,
+     0.82,
+     160162880,
+     0.3
+    ],
+    [
+     "[IAB1-5]",
+     467,
+     0.77,
+     110773360,
+     0.21
+    ],
+    [
+     "[IAB1-22]",
+     443,
+     0.73,
+     1540799600,
+     2.92
+    ],
+    [
+     "[640]",
+     423,
+     0.69,
+     65364960,
+     0.12
+    ],
+    [
+     "[IAB1-7, IAB19-29]",
+     360,
+     0.59,
+     204835520,
+     0.39
+    ],
+    [
+     "[Live]",
+     309,
+     0.51,
+     82495600,
+     0.16
+    ],
+    [
+     "[IAB12]",
+     258,
+     0.42,
+     376854320,
+     0.71
+    ],
+    [
+     "[IAB17-1]",
+     179,
+     0.29,
+     102449920,
+     0.19
+    ],
+    [
+     "[324]",
+     168,
+     0.28,
+     26429280,
+     0.05
+    ],
+    [
+     "[IAB12-1]",
+     143,
+     0.23,
+     81521440,
+     0.15
+    ],
+    [
+     "[IAB1, IAB1-5, IAB1-7]",
+     134,
+     0.22,
+     35144080,
+     0.07
+    ],
+    [
+     "[IAB17-29]",
+     110,
+     0.18,
+     61438240,
+     0.12
+    ],
+    [
+     "[IAB2]",
+     108,
+     0.18,
+     61242880,
+     0.12
+    ],
+    [
+     "[IAB18]",
+     92,
+     0.15,
+     39213280,
+     0.07
+    ],
+    [
+     "[IAB1-5, IAB1-7, IAB11, IAB12]",
+     84,
+     0.14,
+     221727280,
+     0.42
+    ],
+    [
+     "[IAB8]",
+     72,
+     0.12,
+     40903360,
+     0.08
+    ],
+    [
+     "[IAB17]",
+     65,
+     0.11,
+     24720240,
+     0.05
+    ],
+    [
+     "[IAB13]",
+     46,
+     0.08,
+     19615520,
+     0.04
+    ],
+    [
+     "[IAB15]",
+     43,
+     0.07,
+     102423360,
+     0.19
+    ],
+    [
+     "[IAB14]",
+     40,
+     0.07,
+     20576000,
+     0.04
+    ],
+    [
+     "[sports]",
+     39,
+     0.06,
+     22978560,
+     0.04
+    ],
+    [
+     "[IAB15-6]",
+     37,
+     0.06,
+     20535360,
+     0.04
+    ],
+    [
+     "[IAB1-1]",
+     36,
+     0.06,
+     20306880,
+     0.04
+    ],
+    [
+     "[IAB4]",
+     36,
+     0.06,
+     20385760,
+     0.04
+    ],
+    [
+     "[IAB23-1]",
+     35,
+     0.06,
+     20304480,
+     0.04
+    ],
+    [
+     "[IAB1-7, IAB11, IAB12]",
+     34,
+     0.06,
+     67151920,
+     0.13
+    ]
+   ],
+   "distribucion_es_completa": false,
+   "otras_filas": 398
+  },
+  "contentSeries": {
+   "valores_distintos_totales": 602,
+   "valores_distintos_utiles": 600,
+   "fill_rate_filas_pct": 6.73,
+   "fill_rate_requests_pct": 8.35,
+   "distribucion": [
+    [
+     "Not Available",
+     56565,
+     92.76,
+     47211656560,
+     89.47
+    ],
+    [
+     "The Cube USA",
+     396,
+     0.65,
+     225306080,
+     0.43
+    ],
+    [
+     "d41d8cd98f00b204e9800998ecf8427e",
+     309,
+     0.51,
+     1148969040,
+     2.18
+    ],
+    [
+     "{{CONTENT_SERIES}}",
+     247,
+     0.41,
+     2100647760,
+     3.98
+    ],
+    [
+     "Teste Quatro Rodas",
+     216,
+     0.35,
+     122613440,
+     0.23
+    ],
+    [
+     "VOD",
+     212,
+     0.35,
+     31858800,
+     0.06
+    ],
+    [
+     "Kritikê Podcast",
+     74,
+     0.12,
+     40836000,
+     0.08
+    ],
+    [
+     "Drishtikon",
+     47,
+     0.08,
+     19646880,
+     0.04
+    ],
+    [
+     "Vintage Huntress",
+     46,
+     0.08,
+     19576640,
+     0.04
+    ],
+    [
+     "Design Loves Detail",
+     46,
+     0.08,
+     19636640,
+     0.04
+    ],
+    [
+     "Afwahbaaz",
+     46,
+     0.08,
+     19600960,
+     0.04
+    ],
+    [
+     "Matt Mortgage",
+     46,
+     0.08,
+     19615520,
+     0.04
+    ],
+    [
+     "Murders By Masses",
+     46,
+     0.08,
+     19647520,
+     0.04
+    ],
+    [
+     "Kidoodle: Kin Tin Plays Roblox",
+     46,
+     0.08,
+     4788720,
+     0.01
+    ],
+    [
+     "Sultanat",
+     45,
+     0.07,
+     19566720,
+     0.04
+    ],
+    [
+     "Kidoodle: Lively Lewis Show",
+     41,
+     0.07,
+     3657360,
+     0.01
+    ],
+    [
+     "Kin Tin Plays Roblox",
+     40,
+     0.07,
+     19919440,
+     0.04
+    ],
+    [
+     "Lively Lewis Show",
+     38,
+     0.06,
+     4323120,
+     0.01
+    ],
+    [
+     "Who Is Mags?",
+     37,
+     0.06,
+     20510080,
+     0.04
+    ],
+    [
+     "Crete",
+     37,
+     0.06,
+     20588800,
+     0.04
+    ],
+    [
+     "Ciência Sem Fim",
+     37,
+     0.06,
+     20535360,
+     0.04
+    ],
+    [
+     "Torn",
+     36,
+     0.06,
+     20534880,
+     0.04
+    ],
+    [
+     "Home",
+     36,
+     0.06,
+     20528480,
+     0.04
+    ],
+    [
+     "Decisions",
+     36,
+     0.06,
+     20493120,
+     0.04
+    ],
+    [
+     "Heart",
+     36,
+     0.06,
+     20483520,
+     0.04
+    ],
+    [
+     "All I Have Is How I Feel",
+     36,
+     0.06,
+     20521120,
+     0.04
+    ],
+    [
+     "Desafio do Fred",
+     36,
+     0.06,
+     20426400,
+     0.04
+    ],
+    [
+     "HOTELS",
+     36,
+     0.06,
+     20466400,
+     0.04
+    ],
+    [
+     "Fever Dream",
+     36,
+     0.06,
+     20365280,
+     0.04
+    ],
+    [
+     "Luxury Stays",
+     36,
+     0.06,
+     20385760,
+     0.04
+    ]
+   ],
+   "distribucion_es_completa": false,
+   "otras_filas": 2040
+  },
+  "contentIsTitlePresent": {
+   "valores_distintos_totales": 2,
+   "valores_distintos_utiles": 2,
+   "fill_rate_filas_pct": 100.0,
+   "fill_rate_requests_pct": 100.0,
+   "distribucion": [
+    [
+     "true",
+     53871,
+     88.34,
+     15654387040,
+     29.67
+    ],
+    [
+     "false",
+     7110,
+     11.66,
+     37113789280,
+     70.33
+    ]
+   ],
+   "distribucion_es_completa": true,
+   "otras_filas": 0
+  },
+  "contentLength": {
+   "valores_distintos_totales": 9,
+   "valores_distintos_utiles": 8,
+   "fill_rate_filas_pct": 9.04,
+   "fill_rate_requests_pct": 7.27,
+   "distribucion": [
+    [
+     "Not Applicable",
+     55466,
+     90.96,
+     48932830800,
+     92.73
+    ],
+    [
+     "5",
+     2307,
+     3.78,
+     1773158160,
+     3.36
+    ],
+    [
+     "4",
+     1185,
+     1.94,
+     395519280,
+     0.75
+    ],
+    [
+     "6",
+     1149,
+     1.88,
+     1105901600,
+     2.1
+    ],
+    [
+     "3",
+     262,
+     0.43,
+     56123040,
+     0.11
+    ],
+    [
+     "7",
+     259,
+     0.42,
+     227633120,
+     0.43
+    ],
+    [
+     "8",
+     243,
+     0.4,
+     235676080,
+     0.45
+    ],
+    [
+     "1",
+     59,
+     0.1,
+     22105440,
+     0.04
+    ],
+    [
+     "2",
+     51,
+     0.08,
+     19228800,
+     0.04
+    ]
+   ],
+   "distribucion_es_completa": true,
+   "otras_filas": 0
+  },
+  "contentLanguage": {
+   "valores_distintos_totales": 47,
+   "valores_distintos_utiles": 46,
+   "fill_rate_filas_pct": 39.58,
+   "fill_rate_requests_pct": 57.81,
+   "distribucion": [
+    [
+     "Not Applicable",
+     36844,
+     60.42,
+     22260932320,
+     42.19
+    ],
+    [
+     "English",
+     15669,
+     25.69,
+     10987050560,
+     20.82
+    ],
+    [
+     "Spanish",
+     4572,
+     7.5,
+     7730045040,
+     14.65
+    ],
+    [
+     "en",
+     1687,
+     2.77,
+     7518550800,
+     14.25
+    ],
+    [
+     "es",
+     1248,
+     2.05,
+     3902821840,
+     7.4
+    ],
+    [
+     "Portuguese",
+     367,
+     0.6,
+     227559520,
+     0.43
+    ],
+    [
+     "Hindi",
+     125,
+     0.2,
+     58428960,
+     0.11
+    ],
+    [
+     "French",
+     84,
+     0.14,
+     9795840,
+     0.02
+    ],
+    [
+     "ko",
+     71,
+     0.12,
+     7363280,
+     0.01
+    ],
+    [
+     "German",
+     44,
+     0.07,
+     4983680,
+     0.01
+    ],
+    [
+     "Korean",
+     43,
+     0.07,
+     20370640,
+     0.04
+    ],
+    [
+     "pt",
+     20,
+     0.03,
+     2935360,
+     0.01
+    ],
+    [
+     "ru",
+     16,
+     0.03,
+     2415440,
+     0.0
+    ],
+    [
+     "hi",
+     14,
+     0.02,
+     2876960,
+     0.01
+    ],
+    [
+     "spa",
+     14,
+     0.02,
+     1359200,
+     0.0
+    ],
+    [
+     "ca",
+     12,
+     0.02,
+     3652000,
+     0.01
+    ],
+    [
+     "ja",
+     10,
+     0.02,
+     881120,
+     0.0
+    ],
+    [
+     "eng",
+     9,
+     0.01,
+     675600,
+     0.0
+    ],
+    [
+     "de",
+     9,
+     0.01,
+     627760,
+     0.0
+    ],
+    [
+     "fr",
+     9,
+     0.01,
+     521440,
+     0.0
+    ],
+    [
+     "c",
+     8,
+     0.01,
+     10114400,
+     0.02
+    ],
+    [
+     "Russian",
+     8,
+     0.01,
+     1977120,
+     0.0
+    ],
+    [
+     "zh",
+     8,
+     0.01,
+     524000,
+     0.0
+    ],
+    [
+     "sp",
+     8,
+     0.01,
+     583600,
+     0.0
+    ],
+    [
+     "mr",
+     7,
+     0.01,
+     550240,
+     0.0
+    ],
+    [
+     "it",
+     7,
+     0.01,
+     487200,
+     0.0
+    ],
+    [
+     "any",
+     6,
+     0.01,
+     522160,
+     0.0
+    ],
+    [
+     "he",
+     6,
+     0.01,
+     461760,
+     0.0
+    ],
+    [
+     "fa",
+     6,
+     0.01,
+     418160,
+     0.0
+    ],
+    [
+     "bn",
+     6,
+     0.01,
+     359360,
+     0.0
+    ]
+   ],
+   "distribucion_es_completa": false,
+   "otras_filas": 44
+  },
+  "contentIsLiveStream": {
+   "valores_distintos_totales": 3,
+   "valores_distintos_utiles": 1,
+   "fill_rate_filas_pct": 19.87,
+   "fill_rate_requests_pct": 38.28,
+   "distribucion": [
+    [
+     "Not Available",
+     26957,
+     44.21,
+     19961415280,
+     37.83
+    ],
+    [
+     "Unknown",
+     21907,
+     35.92,
+     12606136480,
+     23.89
+    ],
+    [
+     "1",
+     12117,
+     19.87,
+     20200624560,
+     38.28
+    ]
+   ],
+   "distribucion_es_completa": true,
+   "otras_filas": 0
+  },
+  "contentTitle": {
+   "valores_distintos_totales": 3082,
+   "valores_distintos_utiles": 3081,
+   "fill_rate_filas_pct": 88.21,
+   "fill_rate_requests_pct": 29.02,
+   "distribucion": [
+    [
+     "Not Applicable",
+     7190,
+     11.79,
+     37453172640,
+     70.98
+    ],
+    [
+     "blink and friends",
+     241,
+     0.4,
+     119325280,
+     0.23
+    ],
+    [
+     "unboxathon - official announcement trailer",
+     182,
+     0.3,
+     31854880,
+     0.06
+    ],
+    [
+     "choppertown: the sinners_trailer",
+     171,
+     0.28,
+     35601840,
+     0.07
+    ],
+    [
+     "tempest rising video review - single-player campaign",
+     170,
+     0.28,
+     37883120,
+     0.07
+    ],
+    [
+     "om nom",
+     169,
+     0.28,
+     114129840,
+     0.22
+    ],
+    [
+     "hello kitty island adventure - official imagination celebration trailer",
+     167,
+     0.27,
+     33738880,
+     0.06
+    ],
+    [
+     "andor: season 2 - official 'win' teaser trailer",
+     166,
+     0.27,
+     33633280,
+     0.06
+    ],
+    [
+     "wild assault - official early access gameplay trailer",
+     165,
+     0.27,
+     33586720,
+     0.06
+    ],
+    [
+     "lords of the fallen - official version 2.0 update overview trailer",
+     165,
+     0.27,
+     33524960,
+     0.06
+    ],
+    [
+     "necrophosis - official release trailer",
+     164,
+     0.27,
+     33448960,
+     0.06
+    ],
+    [
+     "marvel studios’ thunderbolts - official final trailer",
+     164,
+     0.27,
+     33511440,
+     0.06
+    ],
+    [
+     "fortnite x undertaker - official trailer",
+     164,
+     0.27,
+     33443680,
+     0.06
+    ],
+    [
+     "confidential killings - official announcement trailer",
+     164,
+     0.27,
+     33405920,
+     0.06
+    ],
+    [
+     "marathon - official alpha intro cinematic trailer",
+     164,
+     0.27,
+     33617840,
+     0.06
+    ],
+    [
+     "star wars: the old republic - official darth malgus teaser trailer",
+     164,
+     0.27,
+     33342320,
+     0.06
+    ],
+    [
+     "cyber rats - official announcement trailer",
+     164,
+     0.27,
+     33263680,
+     0.06
+    ],
+    [
+     "captain america: brave new world - official 'buy it now on digital' trailer",
+     164,
+     0.27,
+     33356560,
+     0.06
+    ],
+    [
+     "bionic bay - official accolades trailer",
+     164,
+     0.27,
+     33373680,
+     0.06
+    ],
+    [
+     "starsand island - official trailer   galaxies gaming showcase 2025",
+     164,
+     0.27,
+     33521520,
+     0.06
+    ],
+    [
+     "daredevil: born again - official darkness trailer",
+     163,
+     0.27,
+     33388880,
+     0.06
+    ],
+    [
+     "wild assault - official early access narrative trailer",
+     163,
+     0.27,
+     33420480,
+     0.06
+    ],
+    [
+     "holy night: demon hunters - official u.s. trailer (english subtitles)",
+     163,
+     0.27,
+     33446240,
+     0.06
+    ],
+    [
+     "atelier yumia: the alchemist of memories & the envisioned land - official accolades trailer",
+     163,
+     0.27,
+     33391120,
+     0.06
+    ],
+    [
+     "spine - official overview trailer   galaxies gaming showcase 2025",
+     163,
+     0.27,
+     33433440,
+     0.06
+    ],
+    [
+     "abathor: ultimate edition - official launch trailer",
+     163,
+     0.27,
+     33498720,
+     0.06
+    ],
+    [
+     "war robots: frontiers - official ‘perfect crime’ story trailer",
+     163,
+     0.27,
+     33648480,
+     0.06
+    ],
+    [
+     "hunting grounds - official trailer",
+     163,
+     0.27,
+     33539200,
+     0.06
+    ],
+    [
+     "deckline - official announcement trailer",
+     163,
+     0.27,
+     33635520,
+     0.06
+    ],
+    [
+     "the house of da vinci vr - official playstation vr2 release date trailer",
+     163,
+     0.27,
+     33362880,
+     0.06
+    ]
+   ],
+   "distribucion_es_completa": false,
+   "otras_filas": 48925
+  },
+  "contentRating": {
+   "valores_distintos_totales": 64,
+   "valores_distintos_utiles": 61,
+   "fill_rate_filas_pct": 51.54,
+   "fill_rate_requests_pct": 40.35,
+   "distribucion": [
+    [
+     "Not Applicable",
+     29550,
+     48.46,
+     31474077600,
+     59.65
+    ],
+    [
+     "Unrated",
+     9519,
+     15.61,
+     2482782640,
+     4.71
+    ],
+    [
+     "Adults",
+     6415,
+     10.52,
+     2356893520,
+     4.47
+    ],
+    [
+     "Teen Plus",
+     5553,
+     9.11,
+     4041251440,
+     7.66
+    ],
+    [
+     "Teen",
+     4828,
+     7.92,
+     4967070960,
+     9.41
+    ],
+    [
+     "All Ages",
+     2601,
+     4.27,
+     1728782160,
+     3.28
+    ],
+    [
+     "tv-pg",
+     426,
+     0.7,
+     2762874960,
+     5.24
+    ],
+    [
+     "tv-g",
+     346,
+     0.57,
+     295903600,
+     0.56
+    ],
+    [
+     "tv-14",
+     334,
+     0.55,
+     329090480,
+     0.62
+    ],
+    [
+     "g",
+     324,
+     0.53,
+     54926400,
+     0.1
+    ],
+    [
+     "tv-ma",
+     209,
+     0.34,
+     63976320,
+     0.12
+    ],
+    [
+     "r",
+     197,
+     0.32,
+     18750080,
+     0.04
+    ],
+    [
+     "nr",
+     64,
+     0.1,
+     17645360,
+     0.03
+    ],
+    [
+     "15",
+     60,
+     0.1,
+     6996800,
+     0.01
+    ],
+    [
+     "12",
+     57,
+     0.09,
+     3720000,
+     0.01
+    ],
+    [
+     "tv14",
+     42,
+     0.07,
+     2955120,
+     0.01
+    ],
+    [
+     "18",
+     39,
+     0.06,
+     4006480,
+     0.01
+    ],
+    [
+     "not rated",
+     35,
+     0.06,
+     12607200,
+     0.02
+    ],
+    [
+     "tvpg_tv_14",
+     33,
+     0.05,
+     1092172880,
+     2.07
+    ],
+    [
+     "14",
+     32,
+     0.05,
+     4390400,
+     0.01
+    ],
+    [
+     "pg-13",
+     28,
+     0.05,
+     3318880,
+     0.01
+    ],
+    [
+     "nc-17",
+     27,
+     0.04,
+     3146960,
+     0.01
+    ],
+    [
+     "dv-g",
+     26,
+     0.04,
+     11393360,
+     0.02
+    ],
+    [
+     "16",
+     25,
+     0.04,
+     4147120,
+     0.01
+    ],
+    [
+     "tvpg_tv_pg",
+     20,
+     0.03,
+     380487760,
+     0.72
+    ],
+    [
+     "tvpg_tv_ma",
+     17,
+     0.03,
+     364642320,
+     0.69
+    ],
+    [
+     "dv-t",
+     17,
+     0.03,
+     3737680,
+     0.01
+    ],
+    [
+     "tvg",
+     14,
+     0.02,
+     987040,
+     0.0
+    ],
+    [
+     "13",
+     13,
+     0.02,
+     1049440,
+     0.0
+    ],
+    [
+     "pg13",
+     13,
+     0.02,
+     751360,
+     0.0
+    ]
+   ],
+   "distribucion_es_completa": false,
+   "otras_filas": 117
+  },
+  "Total Requests": {
+   "tipo": "numerica",
+   "min": 28560,
+   "max": 2437325600,
+   "media": 865321.6,
+   "mediana": 125760,
+   "p75": 242880,
+   "p90": 516000,
+   "p99": 4957440.0,
+   "share_requests_top1pct_filas": 71.93
+  },
+  "eCPM": {
+   "tipo": "numerica",
+   "filas_cero": 50117,
+   "pct_filas_cero": 82.18,
+   "filas_no_cero": 10864,
+   "media_no_cero": 4.004,
+   "mediana_no_cero": 2.455,
+   "p90_no_cero": 10.0,
+   "max": 39.447594,
+   "ecpm_ponderado_por_requests": 4.384,
+   "buckets_filas": {
+    "1-3": 5070,
+    "10-20": 1149,
+    "0": 50117,
+    "5-10": 1521,
+    "3-5": 1604,
+    "0-1": 1513,
+    ">=20": 7
+   },
+   "buckets_requests": {
+    "1-3": 10747511280,
+    "10-20": 2248601520,
+    "0": 21115245120,
+    "5-10": 9779783280,
+    "3-5": 6116100480,
+    "0-1": 2753430720,
+    ">=20": 7503920
+   }
+  }
+ },
+ "dimension_grupos": "Country",
+ "grupos": {
+  "Mexico": {
+   "filas": 24044,
+   "pct_filas": 39.43,
+   "requests": 27997349440,
+   "pct_requests": 53.06,
+   "ecpm": {
+    "pct_filas_cero": 79.38,
+    "media_no_cero": 1.969,
+    "ponderado_requests": 2.795
+   },
+   "columnas": {
+    "Publisher ID": {
+     "valores_distintos": 125,
+     "filas_utiles": 24044,
+     "requests_utiles": 27997349440,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "166799",
+       3879,
+       16.13
+      ],
+      [
+       "164918",
+       3856,
+       16.04
+      ],
+      [
+       "161101",
+       3252,
+       13.53
+      ],
+      [
+       "161489",
+       3174,
+       13.2
+      ],
+      [
+       "163091",
+       3082,
+       12.82
+      ],
+      [
+       "161517",
+       1811,
+       7.53
+      ],
+      [
+       "165045",
+       679,
+       2.82
+      ],
+      [
+       "154037",
+       474,
+       1.97
+      ],
+      [
+       "159834",
+       470,
+       1.95
+      ],
+      [
+       "161212",
+       397,
+       1.65
+      ],
+      [
+       "160710",
+       331,
+       1.38
+      ],
+      [
+       "162254",
+       230,
+       0.96
+      ],
+      [
+       "159698",
+       185,
+       0.77
+      ],
+      [
+       "159669",
+       179,
+       0.74
+      ],
+      [
+       "167797",
+       137,
+       0.57
+      ]
+     ]
+    },
+    "Publisher": {
+     "valores_distintos": 125,
+     "filas_utiles": 24044,
+     "requests_utiles": 27997349440,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "iion Pty Ltd",
+       6961,
+       28.95
+      ],
+      [
+       "TCL ADS - Springserve",
+       3856,
+       16.04
+      ],
+      [
+       "OTTera.tv",
+       3252,
+       13.53
+      ],
+      [
+       "TCL ADs (APAC)",
+       3174,
+       13.2
+      ],
+      [
+       "Select Plus PTE LTD (CTV)",
+       1811,
+       7.53
+      ],
+      [
+       "Roku - oRTB",
+       679,
+       2.82
+      ],
+      [
+       "Equativ (Formerly SMART AdServer) - oRTB CTV",
+       474,
+       1.97
+      ],
+      [
+       "Playworks (SpringServe)",
+       470,
+       1.95
+      ],
+      [
+       "METAX SOFTWARE PTE. LTD. (Exchange)",
+       397,
+       1.65
+      ],
+      [
+       "Televisa Univision via SpringServe",
+       331,
+       1.38
+      ],
+      [
+       "Vidaa",
+       230,
+       0.96
+      ],
+      [
+       "Plex TV via SSHB",
+       185,
+       0.77
+      ],
+      [
+       "Kidoodle OpenWrap OTT",
+       179,
+       0.74
+      ],
+      [
+       "NubaTV - SpringServe",
+       137,
+       0.57
+      ],
+      [
+       "AWG Media",
+       130,
+       0.54
+      ]
+     ]
+    },
+    "pageURL": {
+     "valores_distintos": 357,
+     "filas_utiles": 24044,
+     "requests_utiles": 27997349440,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "com.tcl.movieark",
+       13564,
+       56.41
+      ],
+      [
+       "com.tcl.livetv",
+       4691,
+       19.51
+      ],
+      [
+       "151908",
+       575,
+       2.39
+      ],
+      [
+       "com.tcl.waterfall.overseas",
+       325,
+       1.35
+      ],
+      [
+       "806510",
+       290,
+       1.21
+      ],
+      [
+       "300620",
+       278,
+       1.16
+      ],
+      [
+       "974696",
+       263,
+       1.09
+      ],
+      [
+       "com.coolita.channel",
+       236,
+       0.98
+      ],
+      [
+       "621046",
+       206,
+       0.86
+      ],
+      [
+       "tv.vidaa.ui.apps.vix",
+       188,
+       0.78
+      ],
+      [
+       "com.univision.prendetv",
+       185,
+       0.77
+      ],
+      [
+       "b08kj77pqy",
+       182,
+       0.76
+      ],
+      [
+       "g20329015921",
+       182,
+       0.76
+      ],
+      [
+       "tv.vidaa.ui.plus",
+       171,
+       0.71
+      ],
+      [
+       "4932",
+       159,
+       0.66
+      ]
+     ]
+    },
+    "App Name": {
+     "valores_distintos": 258,
+     "filas_utiles": 22979,
+     "requests_utiles": 24077257680,
+     "fill_rate_pct": 95.57,
+     "fill_rate_requests_pct": 86.0,
+     "top": [
+      [
+       "MovieArk: Stream Movies & Live",
+       13564,
+       56.41
+      ],
+      [
+       "Live TV",
+       4691,
+       19.51
+      ],
+      [
+       "Not Available",
+       1065,
+       4.43
+      ],
+      [
+       "The Roku Channel",
+       575,
+       2.39
+      ],
+      [
+       "ViX: TV, Sports and News",
+       405,
+       1.68
+      ],
+      [
+       "TCL CHANNEL",
+       325,
+       1.35
+      ],
+      [
+       "BrowseFree Movies, TV, More",
+       290,
+       1.21
+      ],
+      [
+       "Coolita Channel",
+       236,
+       0.98
+      ],
+      [
+       "Runtime",
+       207,
+       0.86
+      ],
+      [
+       "Vidaa",
+       188,
+       0.78
+      ],
+      [
+       "ViX: Cine y TV Gratis en Español",
+       182,
+       0.76
+      ],
+      [
+       "LG",
+       145,
+       0.6
+      ],
+      [
+       "Free Games by PlayWorks",
+       139,
+       0.58
+      ],
+      [
+       "Plex - Free Movies & TV",
+       127,
+       0.53
+      ],
+      [
+       "ViX: TV, Deportes y Noticias",
+       116,
+       0.48
+      ]
+     ]
+    },
+    "contentGenre": {
+     "valores_distintos": 3,
+     "filas_utiles": 0,
+     "requests_utiles": 0,
+     "fill_rate_pct": 0.0,
+     "fill_rate_requests_pct": 0.0,
+     "top": [
+      [
+       "Not Applicable",
+       24015,
+       99.88
+      ],
+      [
+       "none",
+       28,
+       0.12
+      ],
+      [
+       "unknown",
+       1,
+       0.0
+      ]
+     ]
+    },
+    "contentCategory": {
+     "valores_distintos": 105,
+     "filas_utiles": 3016,
+     "requests_utiles": 4229111680,
+     "fill_rate_pct": 12.54,
+     "fill_rate_requests_pct": 15.11,
+     "top": [
+      [
+       "[-7]",
+       21028,
+       87.46
+      ],
+      [
+       "[IAB1]",
+       718,
+       2.99
+      ],
+      [
+       "[IAB1-5]",
+       408,
+       1.7
+      ],
+      [
+       "[IAB1-5, IAB1-7]",
+       298,
+       1.24
+      ],
+      [
+       "[IAB12]",
+       204,
+       0.85
+      ],
+      [
+       "[IAB1-7]",
+       181,
+       0.75
+      ],
+      [
+       "[Live]",
+       152,
+       0.63
+      ],
+      [
+       "[640]",
+       135,
+       0.56
+      ],
+      [
+       "[IAB1, IAB1-5, IAB1-7]",
+       131,
+       0.54
+      ],
+      [
+       "[IAB1, IAB1-5]",
+       104,
+       0.43
+      ],
+      [
+       "[324]",
+       101,
+       0.42
+      ],
+      [
+       "[IAB1-22]",
+       63,
+       0.26
+      ],
+      [
+       "[IAB1-5, IAB1-7, IAB11, IAB12]",
+       51,
+       0.21
+      ],
+      [
+       "[IAB1-7, IAB19-29]",
+       40,
+       0.17
+      ],
+      [
+       "[IAB1-7, IAB11, IAB12]",
+       23,
+       0.1
+      ]
+     ]
+    },
+    "contentSeries": {
+     "valores_distintos": 516,
+     "filas_utiles": 1527,
+     "requests_utiles": 3260716560,
+     "fill_rate_pct": 6.35,
+     "fill_rate_requests_pct": 11.65,
+     "top": [
+      [
+       "Not Available",
+       22306,
+       92.77
+      ],
+      [
+       "d41d8cd98f00b204e9800998ecf8427e",
+       211,
+       0.88
+      ],
+      [
+       "VOD",
+       82,
+       0.34
+      ],
+      [
+       "{{CONTENT_SERIES}}",
+       51,
+       0.21
+      ],
+      [
+       "The Cube USA",
+       44,
+       0.18
+      ],
+      [
+       "Teste Quatro Rodas",
+       24,
+       0.1
+      ],
+      [
+       "Kidoodle: Kin Tin Plays Roblox",
+       13,
+       0.05
+      ],
+      [
+       "JAJAJA",
+       12,
+       0.05
+      ],
+      [
+       "Kin Tin Plays Roblox",
+       11,
+       0.05
+      ],
+      [
+       "fe7b5b528c3c8234fd8889971fd9a687",
+       11,
+       0.05
+      ],
+      [
+       "No Series",
+       10,
+       0.04
+      ],
+      [
+       "pixel_dash",
+       9,
+       0.04
+      ],
+      [
+       "CONTENT_SERIES",
+       9,
+       0.04
+      ],
+      [
+       "pacman",
+       8,
+       0.03
+      ],
+      [
+       "Kritikê Podcast",
+       8,
+       0.03
+      ]
+     ]
+    },
+    "contentIsTitlePresent": {
+     "valores_distintos": 2,
+     "filas_utiles": 24044,
+     "requests_utiles": 27997349440,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "true",
+       21608,
+       89.87
+      ],
+      [
+       "false",
+       2436,
+       10.13
+      ]
+     ]
+    },
+    "contentLength": {
+     "valores_distintos": 9,
+     "filas_utiles": 1751,
+     "requests_utiles": 2364350640,
+     "fill_rate_pct": 7.28,
+     "fill_rate_requests_pct": 8.44,
+     "top": [
+      [
+       "Not Applicable",
+       22293,
+       92.72
+      ],
+      [
+       "5",
+       723,
+       3.01
+      ],
+      [
+       "6",
+       456,
+       1.9
+      ],
+      [
+       "4",
+       259,
+       1.08
+      ],
+      [
+       "7",
+       106,
+       0.44
+      ],
+      [
+       "8",
+       104,
+       0.43
+      ],
+      [
+       "3",
+       71,
+       0.3
+      ],
+      [
+       "2",
+       27,
+       0.11
+      ],
+      [
+       "1",
+       5,
+       0.02
+      ]
+     ]
+    },
+    "contentLanguage": {
+     "valores_distintos": 24,
+     "filas_utiles": 7535,
+     "requests_utiles": 18842223840,
+     "fill_rate_pct": 31.34,
+     "fill_rate_requests_pct": 67.3,
+     "top": [
+      [
+       "Not Applicable",
+       16509,
+       68.66
+      ],
+      [
+       "English",
+       4419,
+       18.38
+      ],
+      [
+       "Spanish",
+       2356,
+       9.8
+      ],
+      [
+       "en",
+       257,
+       1.07
+      ],
+      [
+       "es",
+       257,
+       1.07
+      ],
+      [
+       "Portuguese",
+       64,
+       0.27
+      ],
+      [
+       "Korean",
+       41,
+       0.17
+      ],
+      [
+       "French",
+       40,
+       0.17
+      ],
+      [
+       "ko",
+       30,
+       0.12
+      ],
+      [
+       "German",
+       20,
+       0.08
+      ],
+      [
+       "spa",
+       14,
+       0.06
+      ],
+      [
+       "Hindi",
+       12,
+       0.05
+      ],
+      [
+       "eng",
+       5,
+       0.02
+      ],
+      [
+       "l",
+       4,
+       0.02
+      ],
+      [
+       "any",
+       4,
+       0.02
+      ]
+     ]
+    },
+    "contentIsLiveStream": {
+     "valores_distintos": 3,
+     "filas_utiles": 3991,
+     "requests_utiles": 13167871520,
+     "fill_rate_pct": 16.6,
+     "fill_rate_requests_pct": 47.03,
+     "top": [
+      [
+       "Not Available",
+       12538,
+       52.15
+      ],
+      [
+       "Unknown",
+       7515,
+       31.26
+      ],
+      [
+       "1",
+       3991,
+       16.6
+      ]
+     ]
+    },
+    "contentTitle": {
+     "valores_distintos": 2397,
+     "filas_utiles": 21595,
+     "requests_utiles": 8041338800,
+     "fill_rate_pct": 89.81,
+     "fill_rate_requests_pct": 28.72,
+     "top": [
+      [
+       "Not Applicable",
+       2449,
+       10.19
+      ],
+      [
+       "las estrellas",
+       83,
+       0.35
+      ],
+      [
+       "unboxathon - official announcement trailer",
+       61,
+       0.25
+      ],
+      [
+       "canal 5",
+       58,
+       0.24
+      ],
+      [
+       "golden edge",
+       52,
+       0.22
+      ],
+      [
+       "deleite diabólico",
+       52,
+       0.22
+      ],
+      [
+       "el peso del amor",
+       50,
+       0.21
+      ],
+      [
+       "golden",
+       48,
+       0.2
+      ],
+      [
+       "daredevil: born again - official darkness trailer",
+       48,
+       0.2
+      ],
+      [
+       "atelier yumia: the alchemist of memories & the envisioned land - official accolades trailer",
+       48,
+       0.2
+      ],
+      [
+       "abathor: ultimate edition - official launch trailer",
+       48,
+       0.2
+      ],
+      [
+       "hunting grounds - official trailer",
+       48,
+       0.2
+      ],
+      [
+       "hello kitty island adventure - official imagination celebration trailer",
+       48,
+       0.2
+      ],
+      [
+       "deckline - official announcement trailer",
+       48,
+       0.2
+      ],
+      [
+       "roadcraft: 10 minutes of gameplay",
+       48,
+       0.2
+      ]
+     ]
+    },
+    "contentRating": {
+     "valores_distintos": 39,
+     "filas_utiles": 10792,
+     "requests_utiles": 12469654400,
+     "fill_rate_pct": 44.88,
+     "fill_rate_requests_pct": 44.54,
+     "top": [
+      [
+       "Not Applicable",
+       13251,
+       55.11
+      ],
+      [
+       "Unrated",
+       2990,
+       12.44
+      ],
+      [
+       "Adults",
+       2573,
+       10.7
+      ],
+      [
+       "Teen Plus",
+       2106,
+       8.76
+      ],
+      [
+       "Teen",
+       1925,
+       8.01
+      ],
+      [
+       "All Ages",
+       750,
+       3.12
+      ],
+      [
+       "tv-pg",
+       86,
+       0.36
+      ],
+      [
+       "tv-g",
+       84,
+       0.35
+      ],
+      [
+       "tv-14",
+       62,
+       0.26
+      ],
+      [
+       "g",
+       42,
+       0.17
+      ],
+      [
+       "tvpg_tv_14",
+       32,
+       0.13
+      ],
+      [
+       "not rated",
+       31,
+       0.13
+      ],
+      [
+       "tvpg_tv_pg",
+       19,
+       0.08
+      ],
+      [
+       "tvpg_tv_ma",
+       16,
+       0.07
+      ],
+      [
+       "dv-g",
+       11,
+       0.05
+      ]
+     ]
+    }
+   }
+  },
+  "Colombia": {
+   "filas": 7080,
+   "pct_filas": 11.61,
+   "requests": 3110223680,
+   "pct_requests": 5.89,
+   "ecpm": {
+    "pct_filas_cero": 87.25,
+    "media_no_cero": 4.154,
+    "ponderado_requests": 3.276
+   },
+   "columnas": {
+    "Publisher ID": {
+     "valores_distintos": 72,
+     "filas_utiles": 7080,
+     "requests_utiles": 3110223680,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "166799",
+       2038,
+       28.79
+      ],
+      [
+       "163091",
+       1431,
+       20.21
+      ],
+      [
+       "161101",
+       925,
+       13.06
+      ],
+      [
+       "161489",
+       721,
+       10.18
+      ],
+      [
+       "161517",
+       662,
+       9.35
+      ],
+      [
+       "161212",
+       227,
+       3.21
+      ],
+      [
+       "166449",
+       128,
+       1.81
+      ],
+      [
+       "166832",
+       123,
+       1.74
+      ],
+      [
+       "161058",
+       98,
+       1.38
+      ],
+      [
+       "159698",
+       69,
+       0.97
+      ],
+      [
+       "161150",
+       61,
+       0.86
+      ],
+      [
+       "166254",
+       56,
+       0.79
+      ],
+      [
+       "163433",
+       54,
+       0.76
+      ],
+      [
+       "159669",
+       53,
+       0.75
+      ],
+      [
+       "158711",
+       46,
+       0.65
+      ]
+     ]
+    },
+    "Publisher": {
+     "valores_distintos": 72,
+     "filas_utiles": 7080,
+     "requests_utiles": 3110223680,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "iion Pty Ltd",
+       3469,
+       49.0
+      ],
+      [
+       "OTTera.tv",
+       925,
+       13.06
+      ],
+      [
+       "TCL ADs (APAC)",
+       721,
+       10.18
+      ],
+      [
+       "Select Plus PTE LTD (CTV)",
+       662,
+       9.35
+      ],
+      [
+       "METAX SOFTWARE PTE. LTD. (Exchange)",
+       227,
+       3.21
+      ],
+      [
+       "Coocaa, a SKYWORTH company",
+       128,
+       1.81
+      ],
+      [
+       "AWG Media",
+       123,
+       1.74
+      ],
+      [
+       "Unruly Group LLC (oRTB)",
+       98,
+       1.38
+      ],
+      [
+       "Plex TV via SSHB",
+       69,
+       0.97
+      ],
+      [
+       "METAX SOFTWARE PTE. LTD.",
+       61,
+       0.86
+      ],
+      [
+       "Xapads Media - CTV",
+       56,
+       0.79
+      ],
+      [
+       "APMC",
+       54,
+       0.76
+      ],
+      [
+       "Kidoodle OpenWrap OTT",
+       53,
+       0.75
+      ],
+      [
+       "SpringServe, LLC",
+       46,
+       0.65
+      ],
+      [
+       "Televisa Univision via OB",
+       43,
+       0.61
+      ]
+     ]
+    },
+    "pageURL": {
+     "valores_distintos": 136,
+     "filas_utiles": 7080,
+     "requests_utiles": 3110223680,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "com.tcl.movieark",
+       2837,
+       40.07
+      ],
+      [
+       "com.tcl.livetv",
+       2109,
+       29.79
+      ],
+      [
+       "300620",
+       400,
+       5.65
+      ],
+      [
+       "com.tcl.waterfall.overseas",
+       359,
+       5.07
+      ],
+      [
+       "com.coolita.channel",
+       299,
+       4.22
+      ],
+      [
+       "g18354012332",
+       172,
+       2.43
+      ],
+      [
+       "com.tcl.browser",
+       67,
+       0.95
+      ],
+      [
+       "13535",
+       64,
+       0.9
+      ],
+      [
+       "com.plexapp.android",
+       49,
+       0.69
+      ],
+      [
+       "com.seraphic.metaxplay",
+       47,
+       0.66
+      ],
+      [
+       "tv.kidoodle.app.kidoodle",
+       47,
+       0.66
+      ],
+      [
+       "71376",
+       44,
+       0.62
+      ],
+      [
+       "4932",
+       42,
+       0.59
+      ],
+      [
+       "621046",
+       41,
+       0.58
+      ],
+      [
+       "tv.vidaa.ui.plus",
+       40,
+       0.56
+      ]
+     ]
+    },
+    "App Name": {
+     "valores_distintos": 108,
+     "filas_utiles": 6882,
+     "requests_utiles": 3064409040,
+     "fill_rate_pct": 97.2,
+     "fill_rate_requests_pct": 98.53,
+     "top": [
+      [
+       "MovieArk: Stream Movies & Live",
+       2837,
+       40.07
+      ],
+      [
+       "Live TV",
+       2109,
+       29.79
+      ],
+      [
+       "TCL CHANNEL",
+       359,
+       5.07
+      ],
+      [
+       "Coolita Channel",
+       299,
+       4.22
+      ],
+      [
+       "LG",
+       202,
+       2.85
+      ],
+      [
+       "Free Games by PlayWorks",
+       200,
+       2.82
+      ],
+      [
+       "Not Available",
+       198,
+       2.8
+      ],
+      [
+       "Samsung",
+       172,
+       2.43
+      ],
+      [
+       "Browser TV Web - BrowseHere",
+       67,
+       0.95
+      ],
+      [
+       "Plex - Free Movies & TV",
+       64,
+       0.9
+      ],
+      [
+       "Roku",
+       51,
+       0.72
+      ],
+      [
+       "Plex: Find Movies & TV Shows",
+       49,
+       0.69
+      ],
+      [
+       "Metax TV - Live TV & Movies",
+       47,
+       0.66
+      ],
+      [
+       "Kidoodle.TV®- Safe Streaming™",
+       44,
+       0.62
+      ],
+      [
+       "Runtime",
+       41,
+       0.58
+      ]
+     ]
+    },
+    "contentGenre": {
+     "valores_distintos": 2,
+     "filas_utiles": 0,
+     "requests_utiles": 0,
+     "fill_rate_pct": 0.0,
+     "fill_rate_requests_pct": 0.0,
+     "top": [
+      [
+       "Not Applicable",
+       7033,
+       99.34
+      ],
+      [
+       "none",
+       47,
+       0.66
+      ]
+     ]
+    },
+    "contentCategory": {
+     "valores_distintos": 32,
+     "filas_utiles": 970,
+     "requests_utiles": 408533280,
+     "fill_rate_pct": 13.7,
+     "fill_rate_requests_pct": 13.14,
+     "top": [
+      [
+       "[-7]",
+       6110,
+       86.3
+      ],
+      [
+       "[IAB1]",
+       449,
+       6.34
+      ],
+      [
+       "[IAB1-7]",
+       80,
+       1.13
+      ],
+      [
+       "[IAB1, IAB1-5]",
+       62,
+       0.88
+      ],
+      [
+       "[640]",
+       51,
+       0.72
+      ],
+      [
+       "[IAB1-7, IAB19-29]",
+       50,
+       0.71
+      ],
+      [
+       "[IAB1-22]",
+       29,
+       0.41
+      ],
+      [
+       "[IAB1-5, IAB1-7]",
+       27,
+       0.38
+      ],
+      [
+       "[IAB17-1]",
+       25,
+       0.35
+      ],
+      [
+       "[IAB12-1]",
+       20,
+       0.28
+      ],
+      [
+       "[IAB1, IAB6]",
+       18,
+       0.25
+      ],
+      [
+       "[IAB17-29]",
+       15,
+       0.21
+      ],
+      [
+       "[IAB2]",
+       15,
+       0.21
+      ],
+      [
+       "[IAB18]",
+       14,
+       0.2
+      ],
+      [
+       "[324]",
+       14,
+       0.2
+      ]
+     ]
+    },
+    "contentSeries": {
+     "valores_distintos": 101,
+     "filas_utiles": 400,
+     "requests_utiles": 185625600,
+     "fill_rate_pct": 5.65,
+     "fill_rate_requests_pct": 5.97,
+     "top": [
+      [
+       "Not Available",
+       6680,
+       94.35
+      ],
+      [
+       "The Cube USA",
+       55,
+       0.78
+      ],
+      [
+       "Teste Quatro Rodas",
+       30,
+       0.42
+      ],
+      [
+       "VOD",
+       22,
+       0.31
+      ],
+      [
+       "Kritikê Podcast",
+       10,
+       0.14
+      ],
+      [
+       "Kidoodle: Kin Tin Plays Roblox",
+       10,
+       0.14
+      ],
+      [
+       "Kin Tin Plays Roblox",
+       7,
+       0.1
+      ],
+      [
+       "Vintage Huntress",
+       7,
+       0.1
+      ],
+      [
+       "Drishtikon",
+       7,
+       0.1
+      ],
+      [
+       "Sultanat",
+       7,
+       0.1
+      ],
+      [
+       "Matt Mortgage",
+       7,
+       0.1
+      ],
+      [
+       "Murders By Masses",
+       7,
+       0.1
+      ],
+      [
+       "Afwahbaaz",
+       7,
+       0.1
+      ],
+      [
+       "Design Loves Detail",
+       7,
+       0.1
+      ],
+      [
+       "Ciência Sem Fim",
+       5,
+       0.07
+      ]
+     ]
+    },
+    "contentIsTitlePresent": {
+     "valores_distintos": 2,
+     "filas_utiles": 7080,
+     "requests_utiles": 3110223680,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "true",
+       6422,
+       90.71
+      ],
+      [
+       "false",
+       658,
+       9.29
+      ]
+     ]
+    },
+    "contentLength": {
+     "valores_distintos": 9,
+     "filas_utiles": 558,
+     "requests_utiles": 273986480,
+     "fill_rate_pct": 7.88,
+     "fill_rate_requests_pct": 8.81,
+     "top": [
+      [
+       "Not Applicable",
+       6522,
+       92.12
+      ],
+      [
+       "5",
+       236,
+       3.33
+      ],
+      [
+       "4",
+       144,
+       2.03
+      ],
+      [
+       "6",
+       102,
+       1.44
+      ],
+      [
+       "3",
+       37,
+       0.52
+      ],
+      [
+       "7",
+       21,
+       0.3
+      ],
+      [
+       "1",
+       11,
+       0.16
+      ],
+      [
+       "8",
+       4,
+       0.06
+      ],
+      [
+       "2",
+       3,
+       0.04
+      ]
+     ]
+    },
+    "contentLanguage": {
+     "valores_distintos": 15,
+     "filas_utiles": 2532,
+     "requests_utiles": 1361304560,
+     "fill_rate_pct": 35.76,
+     "fill_rate_requests_pct": 43.77,
+     "top": [
+      [
+       "Not Applicable",
+       4548,
+       64.24
+      ],
+      [
+       "English",
+       1902,
+       26.86
+      ],
+      [
+       "Spanish",
+       347,
+       4.9
+      ],
+      [
+       "en",
+       99,
+       1.4
+      ],
+      [
+       "es",
+       81,
+       1.14
+      ],
+      [
+       "Portuguese",
+       43,
+       0.61
+      ],
+      [
+       "Hindi",
+       20,
+       0.28
+      ],
+      [
+       "French",
+       19,
+       0.27
+      ],
+      [
+       "German",
+       9,
+       0.13
+      ],
+      [
+       "c",
+       4,
+       0.06
+      ],
+      [
+       "ko",
+       4,
+       0.06
+      ],
+      [
+       "Korean",
+       1,
+       0.01
+      ],
+      [
+       "pt",
+       1,
+       0.01
+      ],
+      [
+       "hi",
+       1,
+       0.01
+      ],
+      [
+       "ar",
+       1,
+       0.01
+      ]
+     ]
+    },
+    "contentIsLiveStream": {
+     "valores_distintos": 3,
+     "filas_utiles": 1315,
+     "requests_utiles": 1063453200,
+     "fill_rate_pct": 18.57,
+     "fill_rate_requests_pct": 34.19,
+     "top": [
+      [
+       "Unknown",
+       2897,
+       40.92
+      ],
+      [
+       "Not Available",
+       2868,
+       40.51
+      ],
+      [
+       "1",
+       1315,
+       18.57
+      ]
+     ]
+    },
+    "contentTitle": {
+     "valores_distintos": 625,
+     "filas_utiles": 6419,
+     "requests_utiles": 1830309440,
+     "fill_rate_pct": 90.66,
+     "fill_rate_requests_pct": 58.85,
+     "top": [
+      [
+       "Not Applicable",
+       661,
+       9.34
+      ],
+      [
+       "om nom",
+       48,
+       0.68
+      ],
+      [
+       "alien high",
+       47,
+       0.66
+      ],
+      [
+       "blink and friends",
+       40,
+       0.56
+      ],
+      [
+       "amplified voices",
+       39,
+       0.55
+      ],
+      [
+       "absinthe films",
+       38,
+       0.54
+      ],
+      [
+       "unboxathon - official announcement trailer",
+       32,
+       0.45
+      ],
+      [
+       "tempest rising - official launch trailer   galaxies gaming showcase 2025",
+       31,
+       0.44
+      ],
+      [
+       "marvel studios’ thunderbolts - official final trailer",
+       31,
+       0.44
+      ],
+      [
+       "purple pin",
+       30,
+       0.42
+      ],
+      [
+       "spray paint simulator - official nintendo switch announcement trailer",
+       30,
+       0.42
+      ],
+      [
+       "choppertown: the sinners",
+       30,
+       0.42
+      ],
+      [
+       "overwatch 2 - official season 16: stadium trailer",
+       30,
+       0.42
+      ],
+      [
+       "star wars: the old republic - official darth malgus teaser trailer",
+       30,
+       0.42
+      ],
+      [
+       "andor: season 2 - official 'win' teaser trailer",
+       30,
+       0.42
+      ]
+     ]
+    },
+    "contentRating": {
+     "valores_distintos": 37,
+     "filas_utiles": 3467,
+     "requests_utiles": 1113396480,
+     "fill_rate_pct": 48.97,
+     "fill_rate_requests_pct": 35.8,
+     "top": [
+      [
+       "Not Applicable",
+       3613,
+       51.03
+      ],
+      [
+       "Unrated",
+       1493,
+       21.09
+      ],
+      [
+       "Teen",
+       575,
+       8.12
+      ],
+      [
+       "Teen Plus",
+       488,
+       6.89
+      ],
+      [
+       "Adults",
+       421,
+       5.95
+      ],
+      [
+       "All Ages",
+       319,
+       4.51
+      ],
+      [
+       "tv-g",
+       52,
+       0.73
+      ],
+      [
+       "tv-pg",
+       29,
+       0.41
+      ],
+      [
+       "g",
+       27,
+       0.38
+      ],
+      [
+       "tv-14",
+       11,
+       0.16
+      ],
+      [
+       "tv14",
+       8,
+       0.11
+      ],
+      [
+       "tv-ma",
+       3,
+       0.04
+      ],
+      [
+       "dv-g",
+       3,
+       0.04
+      ],
+      [
+       "14",
+       3,
+       0.04
+      ],
+      [
+       "18",
+       3,
+       0.04
+      ]
+     ]
+    }
+   }
+  },
+  "Chile": {
+   "filas": 5806,
+   "pct_filas": 9.52,
+   "requests": 2063646080,
+   "pct_requests": 3.91,
+   "ecpm": {
+    "pct_filas_cero": 78.56,
+    "media_no_cero": 5.919,
+    "ponderado_requests": 8.115
+   },
+   "columnas": {
+    "Publisher ID": {
+     "valores_distintos": 73,
+     "filas_utiles": 5806,
+     "requests_utiles": 2063646080,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "166799",
+       1189,
+       20.48
+      ],
+      [
+       "161101",
+       933,
+       16.07
+      ],
+      [
+       "164918",
+       891,
+       15.35
+      ],
+      [
+       "163091",
+       601,
+       10.35
+      ],
+      [
+       "161489",
+       495,
+       8.53
+      ],
+      [
+       "161517",
+       490,
+       8.44
+      ],
+      [
+       "160222",
+       426,
+       7.34
+      ],
+      [
+       "166832",
+       122,
+       2.1
+      ],
+      [
+       "166449",
+       121,
+       2.08
+      ],
+      [
+       "166254",
+       91,
+       1.57
+      ],
+      [
+       "159698",
+       39,
+       0.67
+      ],
+      [
+       "163433",
+       34,
+       0.59
+      ],
+      [
+       "161058",
+       31,
+       0.53
+      ],
+      [
+       "157880",
+       31,
+       0.53
+      ],
+      [
+       "159669",
+       27,
+       0.47
+      ]
+     ]
+    },
+    "Publisher": {
+     "valores_distintos": 73,
+     "filas_utiles": 5806,
+     "requests_utiles": 2063646080,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "iion Pty Ltd",
+       1790,
+       30.83
+      ],
+      [
+       "OTTera.tv",
+       933,
+       16.07
+      ],
+      [
+       "TCL ADS - Springserve",
+       891,
+       15.35
+      ],
+      [
+       "TCL ADs (APAC)",
+       495,
+       8.53
+      ],
+      [
+       "Select Plus PTE LTD (CTV)",
+       490,
+       8.44
+      ],
+      [
+       "PML Digital",
+       426,
+       7.34
+      ],
+      [
+       "AWG Media",
+       122,
+       2.1
+      ],
+      [
+       "Coocaa, a SKYWORTH company",
+       121,
+       2.08
+      ],
+      [
+       "Xapads Media - CTV",
+       91,
+       1.57
+      ],
+      [
+       "Plex TV via SSHB",
+       39,
+       0.67
+      ],
+      [
+       "APMC",
+       34,
+       0.59
+      ],
+      [
+       "Unruly Group LLC (oRTB)",
+       31,
+       0.53
+      ],
+      [
+       "Televisa Univision via OB",
+       31,
+       0.53
+      ],
+      [
+       "Kidoodle OpenWrap OTT",
+       27,
+       0.47
+      ],
+      [
+       "METAX SOFTWARE PTE. LTD.",
+       22,
+       0.38
+      ]
+     ]
+    },
+    "pageURL": {
+     "valores_distintos": 87,
+     "filas_utiles": 5806,
+     "requests_utiles": 2063646080,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "com.tcl.movieark",
+       3168,
+       54.56
+      ],
+      [
+       "com.tcl.livetv",
+       1638,
+       28.21
+      ],
+      [
+       "com.coolita.channel",
+       324,
+       5.58
+      ],
+      [
+       "300620",
+       76,
+       1.31
+      ],
+      [
+       "com.tcl.waterfall.overseas",
+       59,
+       1.02
+      ],
+      [
+       "tv.vidaa.ui.plus",
+       54,
+       0.93
+      ],
+      [
+       "tv.kidoodle.app.kidoodle",
+       42,
+       0.72
+      ],
+      [
+       "com.tcl.browser",
+       38,
+       0.65
+      ],
+      [
+       "com.plexapp.android",
+       37,
+       0.64
+      ],
+      [
+       "13535",
+       29,
+       0.5
+      ],
+      [
+       "71376",
+       21,
+       0.36
+      ],
+      [
+       "1196211",
+       18,
+       0.31
+      ],
+      [
+       "com.mitv.tvhome.mitvplus",
+       18,
+       0.31
+      ],
+      [
+       "com.seraphic.metaxplay",
+       18,
+       0.31
+      ],
+      [
+       "g18354012332",
+       17,
+       0.29
+      ]
+     ]
+    },
+    "App Name": {
+     "valores_distintos": 64,
+     "filas_utiles": 5649,
+     "requests_utiles": 2023743600,
+     "fill_rate_pct": 97.3,
+     "fill_rate_requests_pct": 98.07,
+     "top": [
+      [
+       "MovieArk: Stream Movies & Live",
+       3168,
+       54.56
+      ],
+      [
+       "Live TV",
+       1637,
+       28.19
+      ],
+      [
+       "Coolita Channel",
+       324,
+       5.58
+      ],
+      [
+       "Not Available",
+       157,
+       2.7
+      ],
+      [
+       "TCL CHANNEL",
+       59,
+       1.02
+      ],
+      [
+       "Browser TV Web - BrowseHere",
+       38,
+       0.65
+      ],
+      [
+       "LG",
+       38,
+       0.65
+      ],
+      [
+       "Free Games by PlayWorks",
+       38,
+       0.65
+      ],
+      [
+       "Plex: Find Movies & TV Shows",
+       37,
+       0.64
+      ],
+      [
+       "Plex - Free Movies & TV",
+       29,
+       0.5
+      ],
+      [
+       "Ottera",
+       24,
+       0.41
+      ],
+      [
+       "Kidoodle.TV®- Safe Streaming™",
+       21,
+       0.36
+      ],
+      [
+       "Xiaomi TV+: Watch Live TV",
+       18,
+       0.31
+      ],
+      [
+       "Metax TV - Live TV & Movies",
+       18,
+       0.31
+      ],
+      [
+       "Samsung",
+       17,
+       0.29
+      ]
+     ]
+    },
+    "contentGenre": {
+     "valores_distintos": 2,
+     "filas_utiles": 0,
+     "requests_utiles": 0,
+     "fill_rate_pct": 0.0,
+     "fill_rate_requests_pct": 0.0,
+     "top": [
+      [
+       "Not Applicable",
+       5787,
+       99.67
+      ],
+      [
+       "none",
+       19,
+       0.33
+      ]
+     ]
+    },
+    "contentCategory": {
+     "valores_distintos": 31,
+     "filas_utiles": 863,
+     "requests_utiles": 280607280,
+     "fill_rate_pct": 14.86,
+     "fill_rate_requests_pct": 13.6,
+     "top": [
+      [
+       "[-7]",
+       4943,
+       85.14
+      ],
+      [
+       "[IAB1]",
+       465,
+       8.01
+      ],
+      [
+       "[IAB1-7]",
+       80,
+       1.38
+      ],
+      [
+       "[IAB1-7, IAB19-29]",
+       53,
+       0.91
+      ],
+      [
+       "[640]",
+       30,
+       0.52
+      ],
+      [
+       "[IAB17-1]",
+       26,
+       0.45
+      ],
+      [
+       "[IAB1-5, IAB1-7]",
+       22,
+       0.38
+      ],
+      [
+       "[IAB1, IAB1-5]",
+       21,
+       0.36
+      ],
+      [
+       "[IAB12-1]",
+       20,
+       0.34
+      ],
+      [
+       "[IAB17-29]",
+       17,
+       0.29
+      ],
+      [
+       "[IAB18]",
+       17,
+       0.29
+      ],
+      [
+       "[IAB2]",
+       15,
+       0.26
+      ],
+      [
+       "[Live]",
+       14,
+       0.24
+      ],
+      [
+       "[IAB8]",
+       11,
+       0.19
+      ],
+      [
+       "[IAB1-22]",
+       10,
+       0.17
+      ]
+     ]
+    },
+    "contentSeries": {
+     "valores_distintos": 76,
+     "filas_utiles": 418,
+     "requests_utiles": 243324720,
+     "fill_rate_pct": 7.2,
+     "fill_rate_requests_pct": 11.79,
+     "top": [
+      [
+       "Not Available",
+       5388,
+       92.8
+      ],
+      [
+       "The Cube USA",
+       56,
+       0.96
+      ],
+      [
+       "{{CONTENT_SERIES}}",
+       50,
+       0.86
+      ],
+      [
+       "VOD",
+       35,
+       0.6
+      ],
+      [
+       "Teste Quatro Rodas",
+       31,
+       0.53
+      ],
+      [
+       "Kritikê Podcast",
+       12,
+       0.21
+      ],
+      [
+       "Murders By Masses",
+       9,
+       0.16
+      ],
+      [
+       "Sultanat",
+       9,
+       0.16
+      ],
+      [
+       "Design Loves Detail",
+       9,
+       0.16
+      ],
+      [
+       "Matt Mortgage",
+       9,
+       0.16
+      ],
+      [
+       "Drishtikon",
+       9,
+       0.16
+      ],
+      [
+       "Afwahbaaz",
+       9,
+       0.16
+      ],
+      [
+       "Vintage Huntress",
+       8,
+       0.14
+      ],
+      [
+       "Who Is Mags?",
+       6,
+       0.1
+      ],
+      [
+       "Ciência Sem Fim",
+       6,
+       0.1
+      ]
+     ]
+    },
+    "contentIsTitlePresent": {
+     "valores_distintos": 2,
+     "filas_utiles": 5806,
+     "requests_utiles": 2063646080,
+     "fill_rate_pct": 100.0,
+     "fill_rate_requests_pct": 100.0,
+     "top": [
+      [
+       "true",
+       5301,
+       91.3
+      ],
+      [
+       "false",
+       505,
+       8.7
+      ]
+     ]
+    },
+    "contentLength": {
+     "valores_distintos": 9,
+     "filas_utiles": 479,
+     "requests_utiles": 154339280,
+     "fill_rate_pct": 8.25,
+     "fill_rate_requests_pct": 7.48,
+     "top": [
+      [
+       "Not Applicable",
+       5327,
+       91.75
+      ],
+      [
+       "5",
+       202,
+       3.48
+      ],
+      [
+       "4",
+       129,
+       2.22
+      ],
+      [
+       "6",
+       76,
+       1.31
+      ],
+      [
+       "3",
+       32,
+       0.55
+      ],
+      [
+       "7",
+       20,
+       0.34
+      ],
+      [
+       "8",
+       13,
+       0.22
+      ],
+      [
+       "1",
+       6,
+       0.1
+      ],
+      [
+       "2",
+       1,
+       0.02
+      ]
+     ]
+    },
+    "contentLanguage": {
+     "valores_distintos": 12,
+     "filas_utiles": 2429,
+     "requests_utiles": 952464640,
+     "fill_rate_pct": 41.84,
+     "fill_rate_requests_pct": 46.15,
+     "top": [
+      [
+       "Not Applicable",
+       3377,
+       58.16
+      ],
+      [
+       "English",
+       1955,
+       33.67
+      ],
+      [
+       "Spanish",
+       208,
+       3.58
+      ],
+      [
+       "es",
+       81,
+       1.4
+      ],
+      [
+       "en",
+       76,
+       1.31
+      ],
+      [
+       "Portuguese",
+       52,
+       0.9
+      ],
+      [
+       "Hindi",
+       24,
+       0.41
+      ],
+      [
+       "French",
+       14,
+       0.24
+      ],
+      [
+       "ko",
+       9,
+       0.16
+      ],
+      [
+       "German",
+       7,
+       0.12
+      ],
+      [
+       "sp",
+       2,
+       0.03
+      ],
+      [
+       "pt",
+       1,
+       0.02
+      ]
+     ]
+    },
+    "contentIsLiveStream": {
+     "valores_distintos": 3,
+     "filas_utiles": 1017,
+     "requests_utiles": 453086800,
+     "fill_rate_pct": 17.52,
+     "fill_rate_requests_pct": 21.96,
+     "top": [
+      [
+       "Unknown",
+       2493,
+       42.94
+      ],
+      [
+       "Not Available",
+       2296,
+       39.55
+      ],
+      [
+       "1",
+       1017,
+       17.52
+      ]
+     ]
+    },
+    "contentTitle": {
+     "valores_distintos": 565,
+     "filas_utiles": 5296,
+     "requests_utiles": 909147600,
+     "fill_rate_pct": 91.22,
+     "fill_rate_requests_pct": 44.06,
+     "top": [
+      [
+       "Not Applicable",
+       510,
+       8.78
+      ],
+      [
+       "blink and friends",
+       30,
+       0.52
+      ],
+      [
+       "unboxathon - official announcement trailer",
+       30,
+       0.52
+      ],
+      [
+       "satin",
+       28,
+       0.48
+      ],
+      [
+       "absinthe films",
+       28,
+       0.48
+      ],
+      [
+       "muerto despierto",
+       26,
+       0.45
+      ],
+      [
+       "advice i'd give to my younger self - gemma cairney",
+       26,
+       0.45
+      ],
+      [
+       "andor: season 2 - official 'win' teaser trailer",
+       26,
+       0.45
+      ],
+      [
+       "bionic bay - official accolades trailer",
+       26,
+       0.45
+      ],
+      [
+       "lords of the fallen - official version 2.0 update overview trailer",
+       26,
+       0.45
+      ],
+      [
+       "tour de france 2025 - official refueling mechanism trailer",
+       26,
+       0.45
+      ],
+      [
+       "marathon - official alpha intro cinematic trailer",
+       26,
+       0.45
+      ],
+      [
+       "amplified voices",
+       25,
+       0.43
+      ],
+      [
+       "an introduction to beatboxing",
+       25,
+       0.43
+      ],
+      [
+       "advice i'd give to my younger self - bri aphrodite",
+       25,
+       0.43
+      ]
+     ]
+    },
+    "contentRating": {
+     "valores_distintos": 21,
+     "filas_utiles": 3089,
+     "requests_utiles": 940328480,
+     "fill_rate_pct": 53.2,
+     "fill_rate_requests_pct": 45.57,
+     "top": [
+      [
+       "Not Applicable",
+       2717,
+       46.8
+      ],
+      [
+       "Unrated",
+       1163,
+       20.03
+      ],
+      [
+       "Adults",
+       701,
+       12.07
+      ],
+      [
+       "Teen Plus",
+       482,
+       8.3
+      ],
+      [
+       "Teen",
+       425,
+       7.32
+      ],
+      [
+       "All Ages",
+       198,
+       3.41
+      ],
+      [
+       "tv-g",
+       38,
+       0.65
+      ],
+      [
+       "g",
+       27,
+       0.47
+      ],
+      [
+       "tv-pg",
+       23,
+       0.4
+      ],
+      [
+       "tv-14",
+       8,
+       0.14
+      ],
+      [
+       "tv-ma",
+       5,
+       0.09
+      ],
+      [
+       "tv14",
+       3,
+       0.05
+      ],
+      [
+       "tvg",
+       3,
+       0.05
+      ],
+      [
+       "dv-g",
+       2,
+       0.03
+      ],
+      [
+       "pg13",
+       2,
+       0.03
+      ]
+     ]
+    }
+   }
+  }
+ },
+ "filtro": {
+  "solo_vacios_en": "contentGenre",
+  "filas_dataset": 959442,
+  "requests_dataset": 380355807040,
+  "pct_filas_dataset": 6.36,
+  "pct_requests_dataset": 13.87
+ }
+}

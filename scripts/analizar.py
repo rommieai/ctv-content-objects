@@ -18,6 +18,9 @@ Uso:
 --grupos      lista explicita de valores a incluir (separados por coma)
 --top-grupos  limitar a los N grupos con mas requests (0 = todos)
 --digest      carpeta para resumenes en texto plano (digest_global.txt, digest_grupos.txt)
+--solo-vacios-en COL  analizar SOLO las filas donde COL no trae dato util (centinela,
+              vacio, [-7], hash MD5 vacio): sirve para ver como se distribuyen los demas
+              content objects cuando ese esta vacio
 """
 import argparse
 import csv
@@ -77,6 +80,8 @@ def main():
     ap.add_argument("--top-grupos", type=int, default=0,
                     help="limitar a los N grupos con mas requests (0 = todos)")
     ap.add_argument("--digest", default="", help="carpeta para los digests de texto")
+    ap.add_argument("--solo-vacios-en", default="",
+                    help="quedarse solo con las filas donde esta columna NO trae dato util")
     args = ap.parse_args()
     filtro = {g.strip() for g in args.grupos.split(",") if g.strip()}
 
@@ -100,8 +105,19 @@ def main():
         idx = {c: i for i, c in enumerate(cols)}
         if args.por not in idx:
             raise SystemExit(f"La columna '{args.por}' no existe en el CSV")
+        if args.solo_vacios_en and args.solo_vacios_en not in idx:
+            raise SystemExit(f"La columna '{args.solo_vacios_en}' no existe en el CSV")
+        filas_leidas = 0
+        req_leidos = 0
         for row in reader:
             if len(row) != len(cols):
+                continue
+            filas_leidas += 1
+            try:
+                req_leidos += int(row[idx["Total Requests"]])
+            except ValueError:
+                pass
+            if args.solo_vacios_en and es_util(args.solo_vacios_en, row[idx[args.solo_vacios_en]]):
                 continue
             filas += 1
             try:
@@ -145,6 +161,11 @@ def main():
     res = {"archivo": args.entrada.split("\\")[-1], "filas": filas,
            "total_requests": total_req, "columnas": {},
            "dimension_grupos": args.por, "grupos": {}}
+    if args.solo_vacios_en:
+        res["filtro"] = {"solo_vacios_en": args.solo_vacios_en,
+                         "filas_dataset": filas_leidas, "requests_dataset": req_leidos,
+                         "pct_filas_dataset": pct(filas, filas_leidas),
+                         "pct_requests_dataset": pct(total_req, req_leidos)}
 
     for c in CATEGORICAS:
         vc, vq = val_filas[c], val_reqs[c]
@@ -163,6 +184,8 @@ def main():
             "otras_filas": filas - sum(n for _, n in items),
         }
 
+    if filas == 0:
+        raise SystemExit("Ninguna fila cumple el filtro (la columna nunca esta vacia): no se genera JSON")
     lista_reqs.sort(); lista_ecpm.sort()
     nz = [e for e in lista_ecpm if e > 0]
     top1 = sum(sorted(lista_reqs, reverse=True)[:max(1, filas // 100)])
