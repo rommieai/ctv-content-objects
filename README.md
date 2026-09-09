@@ -21,6 +21,14 @@ scripts/                          codigo que genera los consolidados y los JSON
                                   JSON de analizar.py --solo-vacios-en X y del JSON completo
   enriquecer_externo.py           rellena content objects vacios: intra-dataset, defaults
                                   por app, IMDb offline, Wikidata/TVMaze (cache incremental)
+  validar_categorias.py           valida contentCategory contra IMDb/Wikidata (cache) y las
+                                  taxonomias IAB oficiales: correctitud de lo lleno y
+                                  categoria mas fina alcanzable por fila
+  generar_reporte_validacion.py   los dos markdown (correctitud, completitud) desde los JSON
+  validar_genero_series.py        lo mismo para contentGenre (correctitud + completitud) y
+                                  contentSeries (correctitud basica + que filas son serie sin
+                                  decirlo, nombre propuesto, temporada/episodio del titulo)
+  generar_reporte_genero_series.py  sus dos markdown (genero, series)
 
 reportes/
   01-v10/                         primera exploracion (v10): resumen y detallado 18 paises
@@ -45,6 +53,10 @@ reportes/
                                   (misma estructura que 08 y 11)
   14-content-objects-vacios-v17/  un reporte por content object con la distribucion de las
                                   DEMAS columnas en las filas donde ese viene vacio
+  15-validacion-categorias-v17/   validacion de contentCategory (consolidado y relleno) con
+                                  fuentes abiertas: correctitud de las filas llenas y
+                                  completitud (granularidad IAB alcanzable)
+  16-validacion-genero-series-v17/  lo mismo para contentGenre y contentSeries
 
 ejecutivo/                        resumenes en PDF para stakeholders
 ```
@@ -71,12 +83,30 @@ python scripts/generar_reporte_vacios.py vacios-contentRating.json reporte-paise
 # 3. Normalizacion de genero/rating + analisis del inventario monetizado
 python scripts/normalizar_monetizar.py inventory-consolidado.csv \
     inventory-enriquecido.csv reporte-normalizacion.json
-```
 
 # 4. (opcional) Relleno de content objects vacios con fuentes internas + abiertas
 python scripts/enriquecer_externo.py inventory-enriquecido.csv \
     inventory-relleno.csv reporte-relleno.json \
     --cache-dir cache-enriquecimiento --wikidata [--tvmaze]
+
+# 5. Validacion de contentCategory (correctitud + completitud), sobre el consolidado y el
+#    relleno. Usa el cache de titulos del paso 4 y descarga las taxonomias IAB oficiales a
+#    cache-enriquecimiento/iab/ la primera vez. El CSV fila a fila (--filas) es grande:
+#    dejarlo en la raiz; los JSON y las muestras van al paquete de reportes.
+python scripts/validar_categorias.py inventory-consolidado.csv reportes/NN/validacion-consolidado \
+    --nombre consolidado --filas validacion-consolidado-filas.csv
+python scripts/validar_categorias.py inventory-relleno.csv reportes/NN/validacion-relleno \
+    --nombre relleno --filas validacion-relleno-filas.csv
+python scripts/generar_reporte_validacion.py reportes/NN \
+    consolidado=reportes/NN/validacion-consolidado.json relleno=reportes/NN/validacion-relleno.json
+
+# 6. Lo mismo para contentGenre y contentSeries (mismo cache, mismas opciones)
+python scripts/validar_genero_series.py inventory-consolidado.csv reportes/MM/validacion-consolidado \
+    --nombre consolidado --filas validacion-genero-series-consolidado-filas.csv
+python scripts/validar_genero_series.py inventory-relleno.csv reportes/MM/validacion-relleno \
+    --nombre relleno --filas validacion-genero-series-relleno-filas.csv
+python scripts/generar_reporte_genero_series.py reportes/MM \
+    consolidado=reportes/MM/validacion-consolidado.json relleno=reportes/MM/validacion-relleno.json
 ```
 
 Solo requiere Python 3.9+ (stdlib, sin dependencias). En Windows conviene correr los
@@ -85,9 +115,9 @@ falla al imprimirlos; el JSON se escribe igual). El paso 4 usa `requests` si est
 instalado (para Wikidata/TVMaze) y descarga los IMDb Non-Commercial Datasets (~750 MB) a
 `cache-enriquecimiento/` la primera vez; despues solo consulta los titulos nuevos de cada
 tanda (cache en `cache-enriquecimiento/titulos.json`). Ver `reportes/08-.../` para el
-detalle de fuentes, licencias y cobertura medida.
-
-```bash
+detalle de fuentes, licencias y cobertura medida. Los pasos 5 y 6 no consultan nada online
+salvo las taxonomias IAB (~100 KB, GitHub de IAB Tech Lab); ver `reportes/15-.../README.md`
+y `reportes/16-.../README.md`.
 
 El consolidado enriquecido tambien vive en **BigQuery** para consultarlo desde Looker Studio:
 tabla `tudia-tagscreen.ctv_inventory.consolidado_v10_a_v14` (nombre historico de la primera
@@ -115,7 +145,9 @@ carga; contiene siempre el consolidado vigente). Tras cada tanda se recarga con
 
 | Reporte | Contenido |
 |---|---|
-| `reportes/14-content-objects-vacios-v17/README.md` | **Nuevo:** ocho reportes (uno por content object) con la distribucion de las demas columnas en las filas donde ese content object viene vacio, MX/CO/CL, comparado con todo el dataset; el titulo vacio es el 7% de las filas pero el 29.5% de los requests |
+| `reportes/16-validacion-genero-series-v17/README.md` | **Nuevo:** lo mismo para contentGenre (el 85% de lo evaluable coincide con IMDb/Wikidata y solo 2.7% contradice; el 22% de las filas puede recibir mas generos o uno mas preciso, p. ej. telenovela en 16k filas) y contentSeries (correctitud basica: 2.4% de las series declaradas son peliculas segun IMDb; completitud: 10% del consolidado es serie sin nombre y se le puede proponer uno, 4.2% trae temporada/episodio en el titulo) |
+| `reportes/15-validacion-categorias-v17/README.md` | ¿la contentCategory declarada esta bien? (correctitud: 15% de las filas evaluables del consolidado contradicen la evidencia IMDb/Wikidata o su propio genero, casi todo mapeos por defecto de Vidaa, PML, Equativ y METAX; el relleno baja a 6% pero `intra_titulo` propaga el `[IAB12]` de Vidaa al 48% de sus requests) y ¿se puede afinar? (completitud: el 79% de las filas del consolidado puede recibir una categoria IAB 2.2 con forma y/o genero; el relleno esta casi todo en nivel 1-2 y el 69% puede subir) |
+| `reportes/14-content-objects-vacios-v17/README.md` | ocho reportes (uno por content object) con la distribucion de las demas columnas en las filas donde ese content object viene vacio, MX/CO/CL, comparado con todo el dataset; el titulo vacio es el 7% de las filas pero el 29.5% de los requests |
 | `reportes/12-.../reporte-content-objects-detallado-v17-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v17. La escritura nueva del reporte ya es el 54% del corte y viene mejor poblada (rating 60%, idioma 48% de sus filas); el consolidado por llave ya no deduplica (959k filas, 10.6% de requests de llaves viejas): leer trafico y precio sobre el corte |
 | `reportes/12-.../reporte-publishers-v17-consolidado.md` | **Vigente:** desglose por publisher (top 12; Roku supera a OTTera como #1 en requests, iion #3, TV Azteca se apaga otra vez, Select Plus vuelve a 12.6 de vitrina) |
 | `reportes/12-.../reporte-normalizacion-y-ecpm-v17-consolidado.md` | **Vigente:** genero/rating normalizados + inventario monetizado (50.7% del trafico, de vuelta a la banda de 51; eCPM 4.04; Colombia 5.85 quinto corte subiendo; Chile rebota a 6.10; Argentina lidera con 6.25; documental 5.88 al frente del yield con volumen) |

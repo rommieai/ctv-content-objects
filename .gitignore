@@ -6,10 +6,15 @@
 *.log
 __pycache__/
 
-# Cache del pipeline de enriquecimiento externo (datasets IMDb + resultados por titulo),
-# EXCEPTO la tabla de semantica por app, que es curada a mano y si se versiona
+# Cache del pipeline de enriquecimiento externo (datasets IMDb + resultados por titulo,
+# taxonomias IAB descargadas), EXCEPTO la tabla de semantica por app, que es curada a
+# mano y si se versiona
 cache-enriquecimiento/*
 !cache-enriquecimiento/semantica_apps.csv
+
+# Las muestras para revision manual de la validacion de categorias son chicas y si se
+# versionan (el CSV fila a fila queda en la raiz, cubierto por *.csv)
+!reportes/*/validacion-*-muestra-*.csv
 
 # Reporte interno (material de trabajo, no para lectores externos)
 reportes/08-enriquecimiento-externo/reporte-enriquecimiento-externo.md
