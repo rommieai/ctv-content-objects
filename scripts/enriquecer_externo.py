@@ -119,10 +119,20 @@ IDIOMA_CANON = {"english": "en", "spanish": "es", "portuguese": "pt", "hindi": "
                 "italian": "it", "korean": "ko", "chinese": "zh", "arabic": "ar"}
 
 
+# Lo mismo para el rating: la escala nueva del reporte (All Ages / Teen / Teen Plus /
+# Adults / Unrated) convive con los codigos viejos en el mismo titulo ("hatchback":
+# tv-14 x1367 + Teen Plus x616). Equivalencias verificadas por cruce de titulos en v16
+# (ver normalizar_monetizar.RATING_MAP): se aprenden como el codigo viejo equivalente.
+RATING_CANON = {"all ages": "g", "teen": "tv-pg", "teen plus": "tv-14", "adults": "tv-ma",
+                "unrated": "nr"}
+
+
 def canon_valor(col, v):
     v = v.strip()
     if col == "contentLanguage":
         return IDIOMA_CANON.get(v.lower(), v)
+    if col == "contentRating":
+        return RATING_CANON.get(v.lower(), v)
     return v
 UA = "ctv-inventory-enrich/0.1 (+https://github.com; contacto: analista)"
 
@@ -477,6 +487,12 @@ def main():
                     help="CSV con el veredicto de entrega por app (bundle,app_name,veredicto,"
                          "aplicar,...); default: <cache-dir>/semantica_apps.csv si existe. "
                          "Solo filas con aplicar=si rellenan: lineal->1, vod->0")
+    ap.add_argument("--min-filas-serie", type=int, default=30,
+                    help="intra_titulo en contentSeries: minimo de filas con dato del titulo "
+                         "(evita propagar el nombre de una serie cuyo EPISODIO se llama igual "
+                         "que una pelicula: 'abandoned' -> FBI por 3 filas)")
+    ap.add_argument("--min-rutas-serie", type=int, default=2,
+                    help="intra_titulo en contentSeries: minimo de publishers distintos con dato")
     ap.add_argument("--sin-imdb", action="store_true")
     ap.add_argument("--imdb-max-dias", type=int, default=7)
     ap.add_argument("--tvmaze", action="store_true")
@@ -541,6 +557,7 @@ def main():
 
     conocido = {c: defaultdict(Counter) for c in OBJETIVO}
     por_app = {c: defaultdict(Counter) for c in OBJETIVO}
+    rutas_serie = defaultdict(set)   # titulo_clave -> publishers que traen contentSeries
     claves = {}
     for d in filas:
         t = (d.get("contentTitle") or "").strip()
@@ -552,6 +569,8 @@ def main():
                 v = canon_valor(c, d[c])
                 if k:
                     conocido[c][k][v] += 1
+                    if c == "contentSeries":
+                        rutas_serie[k].add(d.get("Publisher", ""))
                 por_app[c][app][v] += 1
         if k:
             claves[k] = claves.get(k, 0) + 1
@@ -658,6 +677,12 @@ def main():
         cnt = conocido[c].get(k)
         if not cnt:
             return None
+        if c == "contentSeries":
+            # Candado extra: el titulo de una PELICULA puede coincidir con el de un
+            # EPISODIO de una serie que si manda contentSeries ("abandoned" -> FBI,
+            # 3 filas de una ruta). Se exige evidencia minima en filas y en rutas.
+            if sum(cnt.values()) < args.min_filas_serie or                     len(rutas_serie.get(k, ())) < args.min_rutas_serie:
+                return None
         v, m = cnt.most_common(1)[0]
         return v if m / sum(cnt.values()) >= args.umbral_intra else None
 

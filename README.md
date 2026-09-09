@@ -33,11 +33,14 @@ reportes/
                                   pipeline periodico
   09-vix-televisa/                ViX/Televisa en Mexico: completitud antes/despues del
                                   relleno, requests, eCPM y rutas de venta (publishers)
-  10-consolidado-v10-a-v16/         la version vigente: detallado por pais (MX/CO/CL),
-                                  publishers, normalizacion+eCPM y genero/titulo.
-                                  OJO: v16 trae un cambio de formato en la fuente
+  10-consolidado-v10-a-v16/         tanda sobre el consolidado v10 a v16 (primer corte con
+                                  el cambio de formato en la fuente)
   11-enriquecimiento-externo-v16/ relleno de content objects sobre el consolidado v10-a-v16
-                                  (misma estructura que 08)
+  12-consolidado-v10-a-v17/         la version vigente: detallado por pais (MX/CO/CL),
+                                  publishers, normalizacion+eCPM y genero/titulo.
+                                  OJO: el formato nuevo ya es el 54% del corte
+  13-enriquecimiento-externo-v17/ relleno de content objects sobre el consolidado v10-a-v17
+                                  (misma estructura que 08 y 11)
 
 ejecutivo/                        resumenes en PDF para stakeholders
 ```
@@ -104,11 +107,16 @@ carga; contiene siempre el consolidado vigente). Tras cada tanda se recarga con
 
 | Reporte | Contenido |
 |---|---|
-| `reportes/10-.../reporte-content-objects-detallado-v16-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v16. **v16 cambia de formato a mitad de ventana** (genero con mayuscula, rating en escala nueva, idioma como nombre; rating e idioma vacios en 2 de cada 3 filas nuevas): 162k llaves "nuevas" que son el mismo contenido reescrito, y caidas de 10-13pp en rating/idioma que son del reporte, no de los vendedores |
-| `reportes/10-.../reporte-publishers-v16-consolidado.md` | **Vigente:** desglose por publisher (top 12; Roku casi empata a OTTera, iion sube al #3, Zeasn entra y Select Plus sale) |
-| `reportes/10-.../reporte-normalizacion-y-ecpm-v16-consolidado.md` | **Vigente:** genero/rating normalizados (diccionario ampliado con la escala nueva) + inventario monetizado (52.6% del trafico; eCPM 4.06, sexta bajada; Colombia 5.60 cuarto corte subiendo; Chile ya detras de Argentina) |
-| `reportes/10-.../reporte-genero-titulo-paises.md` | **Vigente:** genero por pais + cuantas filas traen un genero/titulo de verdad (Mexico: 43% del trafico con titulo real) |
-| `reportes/11-enriquecimiento-externo-v16/reporte-relleno-por-columna.md` | **Vigente:** el pipeline de relleno corrido sobre v10-a-v16: recupera casi todo el idioma y buena parte del rating que el formato nuevo dejo vacios (idioma 66.9 -> 95.9%, rating 72.9 -> 85.4%) |
+| `reportes/12-.../reporte-content-objects-detallado-v17-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v17. La escritura nueva del reporte ya es el 54% del corte y viene mejor poblada (rating 60%, idioma 48% de sus filas); el consolidado por llave ya no deduplica (959k filas, 10.6% de requests de llaves viejas): leer trafico y precio sobre el corte |
+| `reportes/12-.../reporte-publishers-v17-consolidado.md` | **Vigente:** desglose por publisher (top 12; Roku supera a OTTera como #1 en requests, iion #3, TV Azteca se apaga otra vez, Select Plus vuelve a 12.6 de vitrina) |
+| `reportes/12-.../reporte-normalizacion-y-ecpm-v17-consolidado.md` | **Vigente:** genero/rating normalizados + inventario monetizado (50.7% del trafico, de vuelta a la banda de 51; eCPM 4.04; Colombia 5.85 quinto corte subiendo; Chile rebota a 6.10; Argentina lidera con 6.25; documental 5.88 al frente del yield con volumen) |
+| `reportes/12-.../reporte-genero-titulo-paises.md` | **Vigente:** genero por pais + cuantas filas traen un genero/titulo de verdad (Mexico: 44% del trafico con titulo real) |
+| `reportes/13-enriquecimiento-externo-v17/reporte-relleno-por-columna.md` | **Vigente:** el pipeline de relleno corrido sobre v10-a-v17 |
+| `reportes/10-.../reporte-content-objects-detallado-v16-consolidado.md` | (v10-a-v16) content objects por pais (MX/CO/CL) sobre el consolidado v10 a v16. **v16 cambia de formato a mitad de ventana** (genero con mayuscula, rating en escala nueva, idioma como nombre; rating e idioma vacios en 2 de cada 3 filas nuevas): 162k llaves "nuevas" que son el mismo contenido reescrito, y caidas de 10-13pp en rating/idioma que son del reporte, no de los vendedores |
+| `reportes/10-.../reporte-publishers-v16-consolidado.md` | (v10-a-v16) desglose por publisher (top 12; Roku casi empata a OTTera, iion sube al #3, Zeasn entra y Select Plus sale) |
+| `reportes/10-.../reporte-normalizacion-y-ecpm-v16-consolidado.md` | (v10-a-v16) genero/rating normalizados (diccionario ampliado con la escala nueva) + inventario monetizado (52.6% del trafico; eCPM 4.06, sexta bajada; Colombia 5.60 cuarto corte subiendo; Chile ya detras de Argentina) |
+| `reportes/10-.../reporte-genero-titulo-paises.md` | (v10-a-v16) genero por pais + cuantas filas traen un genero/titulo de verdad (Mexico: 43% del trafico con titulo real) |
+| `reportes/11-enriquecimiento-externo-v16/reporte-relleno-por-columna.md` | (v10-a-v16) el pipeline de relleno corrido sobre v10-a-v16: recupera casi todo el idioma y buena parte del rating que el formato nuevo dejo vacios (idioma 66.9 -> 95.9%, rating 72.9 -> 85.4%) |
 | `reportes/09-vix-televisa/reporte-vix-televisa.md` | ViX/TelevisaUnivision en Mexico (sobre v10-a-v15) sobre el consolidado tal como viene — completitud por columna (filas y requests), eCPM ponderado por requests, y las 28 rutas de venta del inventario (Equativ, SpringServe, OB, Vidaa...) |
 | `reportes/08-enriquecimiento-externo/reporte-relleno-por-columna.md` | (sobre v10-a-v15) que se hizo columna por columna para rellenar los content objects vacios: las corridas de cada origen (intra-titulo, default por app, IMDb, Wikidata, derivados, semantica por app) con el % de filas que aporto cada una; hallazgos: contentLength es un codigo 1-8 (no duracion) y el contentIsLiveStream declarado es siempre 1 |
 | `reportes/07-.../reporte-content-objects-detallado-v15-consolidado.md` | (v10-a-v15) content objects por pais (MX/CO/CL) sobre el consolidado v10 a v15, con comparativo de % de filas no vacias y visual SVG |
