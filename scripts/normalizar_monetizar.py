@@ -138,6 +138,15 @@ for v in ["tv-ma", "tvma", "tvpg_tv_ma", "nc-17", "nc17", "18", "18+", "x", "adu
 for v in ["nr", "not rated", "not-rated", "unrated", "banned", "no rating",
           "sin clasificar"]:
     RATING_MAP[v] = "sin clasificar"
+# Vocabulario nuevo del corte v16 (escala con mayusculas que llega ya normalizada por
+# la plataforma: All Ages / Teen / Teen Plus / Adults / Unrated). La equivalencia se
+# verifico cruzando, dentro de v16, los titulos que traen las dos escrituras:
+#   All Ages <-> g / tv-g   |  Teen <-> tv-pg  |  Teen Plus <-> tv-14 / 14 / pg-13
+#   Adults <-> r / tv-ma / nc-17 / 18         |  Unrated <-> nr (ya estaba arriba)
+RATING_MAP["all ages"] = "todos"
+RATING_MAP["teen"] = "10+"
+RATING_MAP["teen plus"] = "13-15"
+RATING_MAP["adults"] = "18+ / adulto"
 
 
 def norm_rating(raw):

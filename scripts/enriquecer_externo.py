@@ -110,6 +110,20 @@ SENT = {"not available", "not applicable", "unknown", "n/a", "null", "undefined"
 MD5_VACIO = "d41d8cd98f00b204e9800998ecf8427e"
 OBJETIVO = ["contentCategory", "contentSeries", "contentLength", "contentLanguage",
             "contentIsLiveStream", "contentRating", "contentGenre"]
+# Desde el corte v16 parte de las filas trae el idioma como nombre completo ("English")
+# en vez del codigo ISO 639-1 ("en") que usa el resto del dataset. Para aprender los
+# valores de un titulo/app (pasada 1) se canonizan al codigo: si no, "en" x3 + "English"
+# x2 contaria como dos valores distintos y el candado del 80% bloquearia el relleno.
+IDIOMA_CANON = {"english": "en", "spanish": "es", "portuguese": "pt", "hindi": "hi",
+                "russian": "ru", "japanese": "ja", "french": "fr", "german": "de",
+                "italian": "it", "korean": "ko", "chinese": "zh", "arabic": "ar"}
+
+
+def canon_valor(col, v):
+    v = v.strip()
+    if col == "contentLanguage":
+        return IDIOMA_CANON.get(v.lower(), v)
+    return v
 UA = "ctv-inventory-enrich/0.1 (+https://github.com; contacto: analista)"
 
 
@@ -535,7 +549,7 @@ def main():
         app = f'{d.get("Publisher", "")}|{d.get("App Name", "")}'
         for c in OBJETIVO:
             if es_propagable(c, d.get(c)):
-                v = d[c].strip()
+                v = canon_valor(c, d[c])
                 if k:
                     conocido[c][k][v] += 1
                 por_app[c][app][v] += 1

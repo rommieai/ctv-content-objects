@@ -27,12 +27,17 @@ reportes/
   04-consolidado-v10-v11-v12/     tanda sobre el consolidado v10+v11+v12
   05-consolidado-v10-a-v13/       tanda sobre el consolidado v10 a v13
   06-consolidado-v10-a-v14/         tanda sobre el consolidado v10 a v14
-  07-consolidado-v10-a-v15/         la version vigente: detallado por pais (MX/CO/CL),
-                                  publishers, normalizacion+eCPM y genero/titulo
-  08-enriquecimiento-externo/     investigacion: que columnas vacias se pueden rellenar
-                                  con fuentes abiertas, en que %, y el pipeline periodico
+  07-consolidado-v10-a-v15/         tanda sobre el consolidado v10 a v15
+  08-enriquecimiento-externo/     investigacion (sobre v10-a-v15): que columnas vacias se
+                                  pueden rellenar con fuentes abiertas, en que %, y el
+                                  pipeline periodico
   09-vix-televisa/                ViX/Televisa en Mexico: completitud antes/despues del
                                   relleno, requests, eCPM y rutas de venta (publishers)
+  10-consolidado-v10-a-v16/         la version vigente: detallado por pais (MX/CO/CL),
+                                  publishers, normalizacion+eCPM y genero/titulo.
+                                  OJO: v16 trae un cambio de formato en la fuente
+  11-enriquecimiento-externo-v16/ relleno de content objects sobre el consolidado v10-a-v16
+                                  (misma estructura que 08)
 
 ejecutivo/                        resumenes en PDF para stakeholders
 ```
@@ -63,7 +68,9 @@ python scripts/enriquecer_externo.py inventory-enriquecido.csv \
     --cache-dir cache-enriquecimiento --wikidata [--tvmaze]
 ```
 
-Solo requiere Python 3.9+ (stdlib, sin dependencias). El paso 4 usa `requests` si esta
+Solo requiere Python 3.9+ (stdlib, sin dependencias). En Windows conviene correr los
+scripts con `PYTHONIOENCODING=utf-8` (algunos titulos traen U+FFFD y la consola cp1252
+falla al imprimirlos; el JSON se escribe igual). El paso 4 usa `requests` si esta
 instalado (para Wikidata/TVMaze) y descarga los IMDb Non-Commercial Datasets (~750 MB) a
 `cache-enriquecimiento/` la primera vez; despues solo consulta los titulos nuevos de cada
 tanda (cache en `cache-enriquecimiento/titulos.json`). Ver `reportes/08-.../` para el
@@ -97,12 +104,17 @@ carga; contiene siempre el consolidado vigente). Tras cada tanda se recarga con
 
 | Reporte | Contenido |
 |---|---|
-| `reportes/09-vix-televisa/reporte-vix-televisa.md` | **Nuevo:** ViX/TelevisaUnivision en Mexico sobre el consolidado tal como viene — completitud por columna (filas y requests), eCPM ponderado por requests, y las 28 rutas de venta del inventario (Equativ, SpringServe, OB, Vidaa...) |
-| `reportes/08-enriquecimiento-externo/reporte-relleno-por-columna.md` | **Nuevo:** que se hizo columna por columna para rellenar los content objects vacios: las corridas de cada origen (intra-titulo, default por app, IMDb, Wikidata, derivados, semantica por app) con el % de filas que aporto cada una; hallazgos: contentLength es un codigo 1-8 (no duracion) y el contentIsLiveStream declarado es siempre 1 |
-| `reportes/07-.../reporte-content-objects-detallado-v15-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v15, con comparativo de % de filas no vacias y visual SVG |
-| `reportes/07-.../reporte-publishers-v15-consolidado.md` | **Vigente:** desglose por publisher (top 12; el rebote de TV Azteca y el default [IAB12] de Vidaa) |
-| `reportes/07-.../reporte-normalizacion-y-ecpm-v15-consolidado.md` | **Vigente:** genero/rating normalizados + inventario monetizado (52.9% del trafico, primera salida de la banda 51±0.1) |
-| `reportes/07-.../reporte-genero-titulo-paises.md` | **Vigente:** genero por pais + cuantas filas traen un genero/titulo de verdad (no vacio no siempre es util) |
+| `reportes/10-.../reporte-content-objects-detallado-v16-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v16. **v16 cambia de formato a mitad de ventana** (genero con mayuscula, rating en escala nueva, idioma como nombre; rating e idioma vacios en 2 de cada 3 filas nuevas): 162k llaves "nuevas" que son el mismo contenido reescrito, y caidas de 10-13pp en rating/idioma que son del reporte, no de los vendedores |
+| `reportes/10-.../reporte-publishers-v16-consolidado.md` | **Vigente:** desglose por publisher (top 12; Roku casi empata a OTTera, iion sube al #3, Zeasn entra y Select Plus sale) |
+| `reportes/10-.../reporte-normalizacion-y-ecpm-v16-consolidado.md` | **Vigente:** genero/rating normalizados (diccionario ampliado con la escala nueva) + inventario monetizado (52.6% del trafico; eCPM 4.06, sexta bajada; Colombia 5.60 cuarto corte subiendo; Chile ya detras de Argentina) |
+| `reportes/10-.../reporte-genero-titulo-paises.md` | **Vigente:** genero por pais + cuantas filas traen un genero/titulo de verdad (Mexico: 43% del trafico con titulo real) |
+| `reportes/11-enriquecimiento-externo-v16/reporte-relleno-por-columna.md` | **Vigente:** el pipeline de relleno corrido sobre v10-a-v16: recupera casi todo el idioma y buena parte del rating que el formato nuevo dejo vacios (idioma 66.9 -> 95.9%, rating 72.9 -> 85.4%) |
+| `reportes/09-vix-televisa/reporte-vix-televisa.md` | ViX/TelevisaUnivision en Mexico (sobre v10-a-v15) sobre el consolidado tal como viene — completitud por columna (filas y requests), eCPM ponderado por requests, y las 28 rutas de venta del inventario (Equativ, SpringServe, OB, Vidaa...) |
+| `reportes/08-enriquecimiento-externo/reporte-relleno-por-columna.md` | (sobre v10-a-v15) que se hizo columna por columna para rellenar los content objects vacios: las corridas de cada origen (intra-titulo, default por app, IMDb, Wikidata, derivados, semantica por app) con el % de filas que aporto cada una; hallazgos: contentLength es un codigo 1-8 (no duracion) y el contentIsLiveStream declarado es siempre 1 |
+| `reportes/07-.../reporte-content-objects-detallado-v15-consolidado.md` | (v10-a-v15) content objects por pais (MX/CO/CL) sobre el consolidado v10 a v15, con comparativo de % de filas no vacias y visual SVG |
+| `reportes/07-.../reporte-publishers-v15-consolidado.md` | (v10-a-v15) desglose por publisher (top 12; el rebote de TV Azteca y el default [IAB12] de Vidaa) |
+| `reportes/07-.../reporte-normalizacion-y-ecpm-v15-consolidado.md` | (v10-a-v15) genero/rating normalizados + inventario monetizado (52.9% del trafico, primera salida de la banda 51±0.1) |
+| `reportes/07-.../reporte-genero-titulo-paises.md` | (v10-a-v15) genero por pais + cuantas filas traen un genero/titulo de verdad (no vacio no siempre es util) |
 | `reportes/06-.../` | Tanda anterior (consolidado v10 a v14), misma estructura |
 | `reportes/05-.../` | Consolidado v10 a v13, misma estructura |
 | `reportes/04-.../reporte-genero-titulo-paises.md` | Género normalizado por país (MX/CO/CL) + fill efectivo de contentTitle: qué parte de lo "lleno" no es un título real |
