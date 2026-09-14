@@ -1,6 +1,192 @@
 {
  "fuente": "inventory-consolidado-v10-a-v18.csv",
  "paises": {
+  "(todos)": {
+   "filas": 1071840,
+   "requests": 426223575360,
+   "columnas": {
+    "App Name": {
+     "lleno": {
+      "filas": 1004417,
+      "pct_filas": 93.71,
+      "requests": 391904094240,
+      "pct_requests": 91.95,
+      "ecpm_ponderado": 4.182,
+      "pct_req_monetizado": 52.36
+     },
+     "vacio": {
+      "filas": 67423,
+      "pct_filas": 6.29,
+      "requests": 34319481120,
+      "pct_requests": 8.05,
+      "ecpm_ponderado": 2.685,
+      "pct_req_monetizado": 63.83
+     }
+    },
+    "contentIsTitlePresent": {
+     "lleno": {
+      "filas": 1071840,
+      "pct_filas": 100.0,
+      "requests": 426223575360,
+      "pct_requests": 100.0,
+      "ecpm_ponderado": 4.037,
+      "pct_req_monetizado": 53.29
+     },
+     "vacio": {
+      "filas": 0,
+      "pct_filas": 0.0,
+      "requests": 0,
+      "pct_requests": 0.0,
+      "ecpm_ponderado": null,
+      "pct_req_monetizado": null
+     }
+    },
+    "contentGenre": {
+     "lleno": {
+      "filas": 990654,
+      "pct_filas": 92.43,
+      "requests": 360144181200,
+      "pct_requests": 84.5,
+      "ecpm_ponderado": 3.956,
+      "pct_req_monetizado": 51.68
+     },
+     "vacio": {
+      "filas": 81186,
+      "pct_filas": 7.57,
+      "requests": 66079394160,
+      "pct_requests": 15.5,
+      "ecpm_ponderado": 4.407,
+      "pct_req_monetizado": 62.06
+     }
+    },
+    "contentTitle": {
+     "lleno": {
+      "filas": 998106,
+      "pct_filas": 93.12,
+      "requests": 304468102480,
+      "pct_requests": 71.43,
+      "ecpm_ponderado": 4.068,
+      "pct_req_monetizado": 48.3
+     },
+     "vacio": {
+      "filas": 73734,
+      "pct_filas": 6.88,
+      "requests": 121755472880,
+      "pct_requests": 28.57,
+      "ecpm_ponderado": 3.982,
+      "pct_req_monetizado": 65.75
+     }
+    },
+    "contentRating": {
+     "lleno": {
+      "filas": 802953,
+      "pct_filas": 74.91,
+      "requests": 315813674240,
+      "pct_requests": 74.1,
+      "ecpm_ponderado": 4.239,
+      "pct_req_monetizado": 52.62
+     },
+     "vacio": {
+      "filas": 268887,
+      "pct_filas": 25.09,
+      "requests": 110409901120,
+      "pct_requests": 25.9,
+      "ecpm_ponderado": 3.488,
+      "pct_req_monetizado": 55.2
+     }
+    },
+    "contentLanguage": {
+     "lleno": {
+      "filas": 709852,
+      "pct_filas": 66.23,
+      "requests": 280003900880,
+      "pct_requests": 65.69,
+      "ecpm_ponderado": 4.063,
+      "pct_req_monetizado": 52.88
+     },
+     "vacio": {
+      "filas": 361988,
+      "pct_filas": 33.77,
+      "requests": 146219674480,
+      "pct_requests": 34.31,
+      "ecpm_ponderado": 3.99,
+      "pct_req_monetizado": 54.07
+     }
+    },
+    "contentIsLiveStream": {
+     "lleno": {
+      "filas": 309870,
+      "pct_filas": 28.91,
+      "requests": 180941806400,
+      "pct_requests": 42.45,
+      "ecpm_ponderado": 4.003,
+      "pct_req_monetizado": 62.13
+     },
+     "vacio": {
+      "filas": 761970,
+      "pct_filas": 71.09,
+      "requests": 245281768960,
+      "pct_requests": 57.55,
+      "ecpm_ponderado": 4.071,
+      "pct_req_monetizado": 46.77
+     }
+    },
+    "contentCategory": {
+     "lleno": {
+      "filas": 234323,
+      "pct_filas": 21.86,
+      "requests": 131371682720,
+      "pct_requests": 30.82,
+      "ecpm_ponderado": 4.299,
+      "pct_req_monetizado": 54.57
+     },
+     "vacio": {
+      "filas": 837517,
+      "pct_filas": 78.14,
+      "requests": 294851892640,
+      "pct_requests": 69.18,
+      "ecpm_ponderado": 3.917,
+      "pct_req_monetizado": 52.71
+     }
+    },
+    "contentLength": {
+     "lleno": {
+      "filas": 127405,
+      "pct_filas": 11.89,
+      "requests": 99630319200,
+      "pct_requests": 23.38,
+      "ecpm_ponderado": 4.507,
+      "pct_req_monetizado": 65.35
+     },
+     "vacio": {
+      "filas": 944435,
+      "pct_filas": 88.11,
+      "requests": 326593256160,
+      "pct_requests": 76.62,
+      "ecpm_ponderado": 3.849,
+      "pct_req_monetizado": 49.61
+     }
+    },
+    "contentSeries": {
+     "lleno": {
+      "filas": 69614,
+      "pct_filas": 6.49,
+      "requests": 29592960640,
+      "pct_requests": 6.94,
+      "ecpm_ponderado": 3.605,
+      "pct_req_monetizado": 59.29
+     },
+     "vacio": {
+      "filas": 1002226,
+      "pct_filas": 93.51,
+      "requests": 396630614720,
+      "pct_requests": 93.06,
+      "ecpm_ponderado": 4.074,
+      "pct_req_monetizado": 52.84
+     }
+    }
+   }
+  },
   "Mexico": {
    "filas": 328845,
    "requests": 251776068880,

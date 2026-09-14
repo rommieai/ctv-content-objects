@@ -7,6 +7,8 @@ Mismo criterio de "util" que analizar.py.
 sum(requests) excluyendo las filas con requests = 0 o eCPM = 0 (misma convencion que el
 resto de los reportes). pct_req_monetizado = requests de esas filas / requests del grupo.
 
+Ademas de los paises pedidos emite el grupo "(todos)" con el total del dataset.
+
 Uso:
     python requests_ecpm_por_vacio.py entrada.csv salida.json [--paises "Mexico,Colombia,Chile"]
 """
@@ -37,7 +39,7 @@ def main():
     ap.add_argument("entrada"); ap.add_argument("salida_json")
     ap.add_argument("--paises", default="Mexico,Colombia,Chile")
     a = ap.parse_args()
-    paises = [p.strip() for p in a.paises.split(",")]
+    paises = ["(todos)"] + [p.strip() for p in a.paises.split(",")]
     csv.field_size_limit(10**9)
     # acc[pais][col][lleno/vacio] = [filas, req, sum_ecpm_req, req_no_cero]
     acc = {p: {c: {"lleno": [0, 0, 0.0, 0], "vacio": [0, 0, 0.0, 0]} for c in COLUMNAS} for p in paises}
@@ -45,17 +47,16 @@ def main():
     with open(a.entrada, newline="", encoding="utf-8-sig") as f:
         r = csv.DictReader(f)
         for row in r:
-            p = row["Country"]
-            if p not in acc:
-                continue
             req = int(row["Total Requests"]); e = float(row["eCPM"])
-            tot[p][0] += 1; tot[p][1] += req
-            for c in COLUMNAS:
-                k = "lleno" if util(c, row[c]) else "vacio"
-                b = acc[p][c][k]
-                b[0] += 1; b[1] += req
-                if e > 0 and req > 0:
-                    b[2] += e * req; b[3] += req
+            grupos = ["(todos)"] + ([row["Country"]] if row["Country"] in acc else [])
+            for p in grupos:
+                tot[p][0] += 1; tot[p][1] += req
+                for c in COLUMNAS:
+                    k = "lleno" if util(c, row[c]) else "vacio"
+                    b = acc[p][c][k]
+                    b[0] += 1; b[1] += req
+                    if e > 0 and req > 0:
+                        b[2] += e * req; b[3] += req
     out = {"fuente": a.entrada, "paises": {}}
     for p in paises:
         filas, reqs = tot[p]

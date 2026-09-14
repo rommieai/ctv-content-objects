@@ -38,6 +38,31 @@ Entre paréntesis, el valor del consolidado anterior (v10 a v17) cuando el cambi
 
 *(Generada con `scripts/generar_visual_paises.py` a partir del JSON de este reporte. En contentGenre aparecen `Drama` y `drama` como valores separados: así vienen en la fuente.)*
 
+## Total consolidado (todos los países) — 1,071,840 filas · 426,223,575,360 requests
+
+eCPM: 82.5% de filas en cero · media no-cero 4.53 · ponderado 4.04
+
+**Campos de app / vendedor:**
+
+| Columna | % de filas no vacías | Requests no vacías | eCPM pond. no vacías | Requests vacías | eCPM pond. vacías | Top 3 referencias (% filas del total) |
+|---|---:|---:|---:|---:|---:|---|
+| Publisher | 100% | 426,223,575,360 | 4.04 | 0 | — | OTTera 20.6%, iion 19.4%, TCL Springserve 12.4% |
+| App Name | 93.7% | 391,904,094,240 | 4.18 | 34,319,481,120 | 2.69 | MovieArk 34.6%, Live TV 22.8%, TCL CHANNEL 11.6% |
+
+**Content objects:**
+
+| Columna | % de filas no vacías | Requests no vacías | eCPM pond. no vacías | Requests vacías | eCPM pond. vacías | Top 3 referencias (% filas del total) |
+|---|---:|---:|---:|---:|---:|---|
+| contentIsTitlePresent | 100% | 426,223,575,360 | 4.04 | 0 | — | true 93.1%, false 6.9% |
+| contentGenre | 92.4% | 360,144,181,200 | 3.96 | 66,079,394,160 | 4.41 | Drama 9.2%, *N/A 7.5%*, drama 6.0% |
+| contentTitle | 93.1% | 304,468,102,480 | 4.07 | 121,755,472,880 | 3.98 | *N/A 6.9%*, roku 0.2%, epg 0.1% |
+| contentRating | 74.9% | 315,813,674,240 | 4.24 | 110,409,901,120 | 3.49 | *N/A 25.1%*, Adults 8.1%, tv-14 7.0% |
+| contentLanguage | 66.2% | 280,003,900,880 | 4.06 | 146,219,674,480 | 3.99 | *N/A 33.7%*, en 27.9%, es 16.0% |
+| contentIsLiveStream | 28.9% | 180,941,806,400 | 4.00 | 245,281,768,960 | 4.07 | *Unknown 37.5%*, *N/A 33.5%*, 1 28.9% |
+| contentCategory | 21.9% | 131,371,682,720 | 4.30 | 294,851,892,640 | 3.92 | *[-7] 78.1%*, [IAB1] 5.4%, [IAB1-22] 2.9% |
+| contentLength | 11.9% | 99,630,319,200 | 4.51 | 326,593,256,160 | 3.85 | *N/A 88.1%*, 5 3.3%, 4 3.1% |
+| contentSeries | 6.5% | 29,592,960,640 | 3.60 | 396,630,614,720 | 4.07 | *N/A 92.8%*, *md5-vacío 0.7%*, VOD 0.6% |
+
 ## México — 328,845 filas (30.7%) · 59.1% de los requests
 
 eCPM: 80.0% de filas en cero · media no-cero 2.06 · ponderado 3.20
