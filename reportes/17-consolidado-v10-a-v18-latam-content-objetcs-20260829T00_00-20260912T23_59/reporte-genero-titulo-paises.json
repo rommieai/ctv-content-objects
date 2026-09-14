@@ -1,0 +1,1866 @@
+{
+ "archivo": "inventory-consolidado-v10-a-v18.csv",
+ "paises": {
+  "Mexico": {
+   "filas": 328845,
+   "requests": 251776068880,
+   "genero": {
+    "filas_sin_dato": 28851,
+    "filas_con_genero_no_mapeado": 36111,
+    "filas_multigenero": 61133,
+    "pct_filas_con_genero_canonico": 80.25,
+    "distribucion": [
+     {
+      "genero": "drama",
+      "filas": 76964,
+      "pct_filas": 23.4,
+      "requests": 62068160080,
+      "pct_requests": 24.65,
+      "ecpm_ponderado_no_cero": 2.578,
+      "pct_req_monetizado": 58.75
+     },
+     {
+      "genero": "entretenimiento",
+      "filas": 15105,
+      "pct_filas": 4.59,
+      "requests": 28030271680,
+      "pct_requests": 11.13,
+      "ecpm_ponderado_no_cero": 4.747,
+      "pct_req_monetizado": 74.49
+     },
+     {
+      "genero": "comedia",
+      "filas": 30833,
+      "pct_filas": 9.38,
+      "requests": 20921795040,
+      "pct_requests": 8.31,
+      "ecpm_ponderado_no_cero": 2.869,
+      "pct_req_monetizado": 64.99
+     },
+     {
+      "genero": "deportes",
+      "filas": 10463,
+      "pct_filas": 3.18,
+      "requests": 20082156000,
+      "pct_requests": 7.98,
+      "ecpm_ponderado_no_cero": 1.77,
+      "pct_req_monetizado": 82.53
+     },
+     {
+      "genero": "terror",
+      "filas": 29225,
+      "pct_filas": 8.89,
+      "requests": 14906200160,
+      "pct_requests": 5.92,
+      "ecpm_ponderado_no_cero": 2.356,
+      "pct_req_monetizado": 43.58
+     },
+     {
+      "genero": "accion",
+      "filas": 24318,
+      "pct_filas": 7.39,
+      "requests": 14417771120,
+      "pct_requests": 5.73,
+      "ecpm_ponderado_no_cero": 4.012,
+      "pct_req_monetizado": 50.8
+     },
+     {
+      "genero": "noticias",
+      "filas": 6516,
+      "pct_filas": 1.98,
+      "requests": 10773469360,
+      "pct_requests": 4.28,
+      "ecpm_ponderado_no_cero": 4.662,
+      "pct_req_monetizado": 74.75
+     },
+     {
+      "genero": "documental",
+      "filas": 29407,
+      "pct_filas": 8.94,
+      "requests": 9292392720,
+      "pct_requests": 3.69,
+      "ecpm_ponderado_no_cero": 3.157,
+      "pct_req_monetizado": 39.1
+     },
+     {
+      "genero": "romance",
+      "filas": 14105,
+      "pct_filas": 4.29,
+      "requests": 8885375840,
+      "pct_requests": 3.53,
+      "ecpm_ponderado_no_cero": 3.084,
+      "pct_req_monetizado": 57.44
+     },
+     {
+      "genero": "thriller",
+      "filas": 20438,
+      "pct_filas": 6.22,
+      "requests": 6074229760,
+      "pct_requests": 2.41,
+      "ecpm_ponderado_no_cero": 2.382,
+      "pct_req_monetizado": 29.7
+     },
+     {
+      "genero": "aventura",
+      "filas": 11128,
+      "pct_filas": 3.38,
+      "requests": 4083343760,
+      "pct_requests": 1.62,
+      "ecpm_ponderado_no_cero": 4.006,
+      "pct_req_monetizado": 36.23
+     },
+     {
+      "genero": "crimen",
+      "filas": 11216,
+      "pct_filas": 3.41,
+      "requests": 3404778480,
+      "pct_requests": 1.35,
+      "ecpm_ponderado_no_cero": 3.539,
+      "pct_req_monetizado": 32.52
+     },
+     {
+      "genero": "infantil-familia",
+      "filas": 11449,
+      "pct_filas": 3.48,
+      "requests": 2465316960,
+      "pct_requests": 0.98,
+      "ecpm_ponderado_no_cero": 2.214,
+      "pct_req_monetizado": 29.1
+     },
+     {
+      "genero": "pelicula (generico)",
+      "filas": 7186,
+      "pct_filas": 2.19,
+      "requests": 2348750560,
+      "pct_requests": 0.93,
+      "ecpm_ponderado_no_cero": 4.461,
+      "pct_req_monetizado": 58.06
+     },
+     {
+      "genero": "sci-fi",
+      "filas": 6868,
+      "pct_filas": 2.09,
+      "requests": 2242708560,
+      "pct_requests": 0.89,
+      "ecpm_ponderado_no_cero": 2.206,
+      "pct_req_monetizado": 32.88
+     },
+     {
+      "genero": "reality",
+      "filas": 4743,
+      "pct_filas": 1.44,
+      "requests": 2159041840,
+      "pct_requests": 0.86,
+      "ecpm_ponderado_no_cero": 2.651,
+      "pct_req_monetizado": 50.32
+     },
+     {
+      "genero": "western",
+      "filas": 4791,
+      "pct_filas": 1.46,
+      "requests": 1657188880,
+      "pct_requests": 0.66,
+      "ecpm_ponderado_no_cero": 2.199,
+      "pct_req_monetizado": 28.66
+     },
+     {
+      "genero": "gastronomia",
+      "filas": 1584,
+      "pct_filas": 0.48,
+      "requests": 1604138640,
+      "pct_requests": 0.64,
+      "ecpm_ponderado_no_cero": 5.131,
+      "pct_req_monetizado": 56.21
+     },
+     {
+      "genero": "musica",
+      "filas": 7009,
+      "pct_filas": 2.13,
+      "requests": 1362428080,
+      "pct_requests": 0.54,
+      "ecpm_ponderado_no_cero": 2.51,
+      "pct_req_monetizado": 41.49
+     },
+     {
+      "genero": "fantasia",
+      "filas": 6329,
+      "pct_filas": 1.92,
+      "requests": 1329323040,
+      "pct_requests": 0.53,
+      "ecpm_ponderado_no_cero": 2.159,
+      "pct_req_monetizado": 25.12
+     },
+     {
+      "genero": "animacion",
+      "filas": 2119,
+      "pct_filas": 0.64,
+      "requests": 1258897520,
+      "pct_requests": 0.5,
+      "ecpm_ponderado_no_cero": 2.862,
+      "pct_req_monetizado": 53.91
+     },
+     {
+      "genero": "otros/desconocido",
+      "filas": 9195,
+      "pct_filas": 2.8,
+      "requests": 1198609440,
+      "pct_requests": 0.48,
+      "ecpm_ponderado_no_cero": 1.841,
+      "pct_req_monetizado": 14.91
+     },
+     {
+      "genero": "concursos",
+      "filas": 549,
+      "pct_filas": 0.17,
+      "requests": 1121305200,
+      "pct_requests": 0.45,
+      "ecpm_ponderado_no_cero": 5.467,
+      "pct_req_monetizado": 69.81
+     },
+     {
+      "genero": "misterio",
+      "filas": 5419,
+      "pct_filas": 1.65,
+      "requests": 992375280,
+      "pct_requests": 0.39,
+      "ecpm_ponderado_no_cero": 2.103,
+      "pct_req_monetizado": 18.81
+     },
+     {
+      "genero": "anime",
+      "filas": 5143,
+      "pct_filas": 1.56,
+      "requests": 948802320,
+      "pct_requests": 0.38,
+      "ecpm_ponderado_no_cero": 2.453,
+      "pct_req_monetizado": 26.57
+     },
+     {
+      "genero": "lifestyle",
+      "filas": 3794,
+      "pct_filas": 1.15,
+      "requests": 868185760,
+      "pct_requests": 0.34,
+      "ecpm_ponderado_no_cero": 2.606,
+      "pct_req_monetizado": 40.67
+     },
+     {
+      "genero": "telenovela",
+      "filas": 1595,
+      "pct_filas": 0.49,
+      "requests": 494200320,
+      "pct_requests": 0.2,
+      "ecpm_ponderado_no_cero": 2.022,
+      "pct_req_monetizado": 18.38
+     },
+     {
+      "genero": "tv/series (generico)",
+      "filas": 1295,
+      "pct_filas": 0.39,
+      "requests": 460318640,
+      "pct_requests": 0.18,
+      "ecpm_ponderado_no_cero": 2.243,
+      "pct_req_monetizado": 6.21
+     },
+     {
+      "genero": "videojuegos",
+      "filas": 1348,
+      "pct_filas": 0.41,
+      "requests": 360342800,
+      "pct_requests": 0.14,
+      "ecpm_ponderado_no_cero": 1.843,
+      "pct_req_monetizado": 43.39
+     },
+     {
+      "genero": "talk show",
+      "filas": 906,
+      "pct_filas": 0.28,
+      "requests": 331809760,
+      "pct_requests": 0.13,
+      "ecpm_ponderado_no_cero": 2.5,
+      "pct_req_monetizado": 42.29
+     },
+     {
+      "genero": "belico",
+      "filas": 1687,
+      "pct_filas": 0.51,
+      "requests": 312129520,
+      "pct_requests": 0.12,
+      "ecpm_ponderado_no_cero": 1.876,
+      "pct_req_monetizado": 19.41
+     },
+     {
+      "genero": "religion",
+      "filas": 554,
+      "pct_filas": 0.17,
+      "requests": 299284240,
+      "pct_requests": 0.12,
+      "ecpm_ponderado_no_cero": 0.914,
+      "pct_req_monetizado": 48.63
+     },
+     {
+      "genero": "viajes",
+      "filas": 1840,
+      "pct_filas": 0.56,
+      "requests": 222379760,
+      "pct_requests": 0.09,
+      "ecpm_ponderado_no_cero": 2.03,
+      "pct_req_monetizado": 27.23
+     },
+     {
+      "genero": "educacion",
+      "filas": 650,
+      "pct_filas": 0.2,
+      "requests": 103724400,
+      "pct_requests": 0.04,
+      "ecpm_ponderado_no_cero": 3.169,
+      "pct_req_monetizado": 33.01
+     }
+    ],
+    "auditoria": {
+     "fill_util_pct_filas": 91.23,
+     "fill_util_pct_requests": 85.93,
+     "mapeado_parcial_filas": 14309,
+     "mapeado_parcial_pct_filas": 4.35,
+     "sin_sentido": {
+      "prefijo_tecnico": {
+       "filas": 8639,
+       "pct_filas_pais": 2.63,
+       "pct_requests_pais": 0.97,
+       "ejemplos_top": [
+        [
+         "genre_drama",
+         257
+        ],
+        [
+         "genre_action",
+         166
+        ],
+        [
+         "genre_comedy",
+         163
+        ],
+        [
+         "genre_drama,genre_foreign",
+         148
+        ],
+        [
+         "genre_horror",
+         101
+        ]
+       ]
+      },
+      "genero_en_formato_sucio": {
+       "filas": 12710,
+       "pct_filas_pais": 3.87,
+       "pct_requests_pais": 1.13,
+       "ejemplos_top": [
+        [
+         "western drama",
+         1351
+        ],
+        [
+         "drama%2cromance",
+         245
+        ],
+        [
+         "horror%2cthriller",
+         141
+        ],
+        [
+         "soapdrama",
+         124
+        ],
+        [
+         "music%20audio",
+         120
+        ]
+       ]
+      },
+      "tipo_de_contenido": {
+       "filas": 3117,
+       "pct_filas_pais": 0.95,
+       "pct_requests_pais": 0.11,
+       "ejemplos_top": [
+        [
+         "videos",
+         935
+        ],
+        [
+         "feature film",
+         860
+        ],
+        [
+         "tv series",
+         662
+        ],
+        [
+         "live",
+         519
+        ],
+        [
+         "classic tv",
+         76
+        ]
+       ]
+      },
+      "idioma_o_region": {
+       "filas": 598,
+       "pct_filas_pais": 0.18,
+       "pct_requests_pais": 0.02,
+       "ejemplos_top": [
+        [
+         "en español",
+         485
+        ],
+        [
+         "foreign",
+         68
+        ],
+        [
+         "international",
+         22
+        ],
+        [
+         "hindi & regional",
+         19
+        ],
+        [
+         "reality_tv,foreign",
+         4
+        ]
+       ]
+      },
+      "tema_no_genero": {
+       "filas": 1292,
+       "pct_filas_pais": 0.39,
+       "pct_requests_pais": 0.33,
+       "ejemplos_top": [
+        [
+         "Outdoors",
+         320
+        ],
+        [
+         "Business & Finance",
+         162
+        ],
+        [
+         "outdoors",
+         109
+        ],
+        [
+         "arts",
+         109
+        ],
+        [
+         "business & finance",
+         100
+        ]
+       ]
+      },
+      "otros_no_reconocidos": {
+       "filas": 9755,
+       "pct_filas_pais": 2.97,
+       "pct_requests_pais": 1.38,
+       "ejemplos_top": [
+        [
+         "Soap-Opera",
+         558
+        ],
+        [
+         "game",
+         362
+        ],
+        [
+         "bingeworthy",
+         362
+        ],
+        [
+         "se",
+         341
+        ],
+        [
+         "classic",
+         334
+        ]
+       ]
+      }
+     },
+     "total_sin_sentido_filas": 36111,
+     "total_sin_sentido_pct_filas": 10.98,
+     "total_sin_sentido_pct_requests": 3.94,
+     "fill_efectivo_pct_filas": 80.25,
+     "fill_efectivo_pct_requests": 81.99
+    }
+   },
+   "titulo": {
+    "fill_util_filas": 287049,
+    "fill_util_pct_filas": 87.29,
+    "fill_util_pct_requests": 61.03,
+    "sospechosos": {
+     "macro_sin_reemplazar": {
+      "filas": 736,
+      "pct_filas_pais": 0.22,
+      "pct_del_fill_filas": 0.26,
+      "requests": 91424080,
+      "pct_requests_pais": 0.04,
+      "ejemplos_top": [
+       [
+        "{{content_title}}",
+        736
+       ]
+      ]
+     },
+     "placeholder": {
+      "filas": 1184,
+      "pct_filas_pais": 0.36,
+      "pct_del_fill_filas": 0.41,
+      "requests": 26735810240,
+      "pct_requests_pais": 10.62,
+      "ejemplos_top": [
+       [
+        "roku",
+        505
+       ],
+       [
+        "vod",
+        482
+       ],
+       [
+        "epg",
+        182
+       ],
+       [
+        "demo",
+        12
+       ],
+       [
+        "run of video network",
+        3
+       ]
+      ]
+     },
+     "canal_no_programa": {
+      "filas": 5418,
+      "pct_filas_pais": 1.65,
+      "pct_del_fill_filas": 1.89,
+      "requests": 4338197680,
+      "pct_requests_pais": 1.72,
+      "ejemplos_top": [
+       [
+        "las estrellas",
+        1359
+       ],
+       [
+        "canal 5",
+        1041
+       ],
+       [
+        "golden multiplex",
+        896
+       ],
+       [
+        "golden",
+        862
+       ],
+       [
+        "de pelicula",
+        410
+       ]
+      ]
+     },
+     "slug_tecnico": {
+      "filas": 9854,
+      "pct_filas_pais": 3.0,
+      "pct_del_fill_filas": 3.43,
+      "requests": 6659850960,
+      "pct_requests_pais": 2.65,
+      "ejemplos_top": [
+       [
+        "alfaaz_trailer",
+        185
+       ],
+       [
+        "devils prey_trailer",
+        179
+       ],
+       [
+        "the hanji box_trailer",
+        174
+       ],
+       [
+        "scandaleux horror nouvelle_trailer",
+        171
+       ],
+       [
+        "let me in 2_trailer",
+        166
+       ]
+      ]
+     },
+     "encoding_roto": {
+      "filas": 3,
+      "pct_filas_pais": 0.0,
+      "pct_del_fill_filas": 0.0,
+      "requests": 662080,
+      "pct_requests_pais": 0.0,
+      "ejemplos_top": [
+       [
+        "catalunya �ber alles!",
+        3
+       ]
+      ]
+     },
+     "sin_letras": {
+      "filas": 406,
+      "pct_filas_pais": 0.12,
+      "pct_del_fill_filas": 0.14,
+      "requests": 2107988400,
+      "pct_requests_pais": 0.84,
+      "ejemplos_top": [
+       [
+        "8.0",
+        152
+       ],
+       [
+        "41",
+        134
+       ],
+       [
+        "199",
+        61
+       ],
+       [
+        "23",
+        13
+       ],
+       [
+        "555",
+        8
+       ]
+      ]
+     },
+     "muy_corto": {
+      "filas": 101,
+      "pct_filas_pais": 0.03,
+      "pct_del_fill_filas": 0.04,
+      "requests": 602997360,
+      "pct_requests_pais": 0.24,
+      "ejemplos_top": [
+       [
+        "n",
+        92
+       ],
+       [
+        "c",
+        6
+       ],
+       [
+        "fx",
+        1
+       ],
+       [
+        "j2",
+        1
+       ],
+       [
+        "w",
+        1
+       ]
+      ]
+     }
+    },
+    "total_sospechosos_filas": 17702,
+    "total_sospechosos_requests": 40536930800,
+    "fill_efectivo_filas": 269347,
+    "fill_efectivo_pct_filas": 81.91,
+    "fill_efectivo_pct_requests": 44.93
+   }
+  },
+  "Colombia": {
+   "filas": 114223,
+   "requests": 31032732560,
+   "genero": {
+    "filas_sin_dato": 9097,
+    "filas_con_genero_no_mapeado": 4084,
+    "filas_multigenero": 25780,
+    "pct_filas_con_genero_canonico": 88.46,
+    "distribucion": [
+     {
+      "genero": "drama",
+      "filas": 32054,
+      "pct_filas": 28.06,
+      "requests": 7348165840,
+      "pct_requests": 23.68,
+      "ecpm_ponderado_no_cero": 5.03,
+      "pct_req_monetizado": 16.83
+     },
+     {
+      "genero": "terror",
+      "filas": 12731,
+      "pct_filas": 11.15,
+      "requests": 3772454320,
+      "pct_requests": 12.16,
+      "ecpm_ponderado_no_cero": 6.497,
+      "pct_req_monetizado": 20.97
+     },
+     {
+      "genero": "accion",
+      "filas": 9800,
+      "pct_filas": 8.58,
+      "requests": 3450221600,
+      "pct_requests": 11.12,
+      "ecpm_ponderado_no_cero": 6.928,
+      "pct_req_monetizado": 36.18
+     },
+     {
+      "genero": "documental",
+      "filas": 11627,
+      "pct_filas": 10.18,
+      "requests": 2334668560,
+      "pct_requests": 7.52,
+      "ecpm_ponderado_no_cero": 5.64,
+      "pct_req_monetizado": 22.67
+     },
+     {
+      "genero": "comedia",
+      "filas": 10029,
+      "pct_filas": 8.78,
+      "requests": 1575010080,
+      "pct_requests": 5.08,
+      "ecpm_ponderado_no_cero": 5.445,
+      "pct_req_monetizado": 21.29
+     },
+     {
+      "genero": "thriller",
+      "filas": 8039,
+      "pct_filas": 7.04,
+      "requests": 1208695760,
+      "pct_requests": 3.89,
+      "ecpm_ponderado_no_cero": 4.53,
+      "pct_req_monetizado": 15.75
+     },
+     {
+      "genero": "infantil-familia",
+      "filas": 5544,
+      "pct_filas": 4.85,
+      "requests": 1197146400,
+      "pct_requests": 3.86,
+      "ecpm_ponderado_no_cero": 5.815,
+      "pct_req_monetizado": 31.95
+     },
+     {
+      "genero": "romance",
+      "filas": 6293,
+      "pct_filas": 5.51,
+      "requests": 1186206560,
+      "pct_requests": 3.82,
+      "ecpm_ponderado_no_cero": 3.404,
+      "pct_req_monetizado": 16.26
+     },
+     {
+      "genero": "deportes",
+      "filas": 4144,
+      "pct_filas": 3.63,
+      "requests": 1063378160,
+      "pct_requests": 3.43,
+      "ecpm_ponderado_no_cero": 4.207,
+      "pct_req_monetizado": 38.01
+     },
+     {
+      "genero": "entretenimiento",
+      "filas": 3851,
+      "pct_filas": 3.37,
+      "requests": 857145200,
+      "pct_requests": 2.76,
+      "ecpm_ponderado_no_cero": 4.055,
+      "pct_req_monetizado": 39.62
+     },
+     {
+      "genero": "anime",
+      "filas": 2028,
+      "pct_filas": 1.78,
+      "requests": 782498800,
+      "pct_requests": 2.52,
+      "ecpm_ponderado_no_cero": 6.494,
+      "pct_req_monetizado": 42.57
+     },
+     {
+      "genero": "aventura",
+      "filas": 3679,
+      "pct_filas": 3.22,
+      "requests": 740010480,
+      "pct_requests": 2.38,
+      "ecpm_ponderado_no_cero": 5.207,
+      "pct_req_monetizado": 27.63
+     },
+     {
+      "genero": "noticias",
+      "filas": 1423,
+      "pct_filas": 1.25,
+      "requests": 687101200,
+      "pct_requests": 2.21,
+      "ecpm_ponderado_no_cero": 6.133,
+      "pct_req_monetizado": 50.54
+     },
+     {
+      "genero": "sci-fi",
+      "filas": 3070,
+      "pct_filas": 2.69,
+      "requests": 626739680,
+      "pct_requests": 2.02,
+      "ecpm_ponderado_no_cero": 4.452,
+      "pct_req_monetizado": 14.49
+     },
+     {
+      "genero": "animacion",
+      "filas": 1467,
+      "pct_filas": 1.28,
+      "requests": 572329520,
+      "pct_requests": 1.84,
+      "ecpm_ponderado_no_cero": 2.821,
+      "pct_req_monetizado": 50.87
+     },
+     {
+      "genero": "otros/desconocido",
+      "filas": 5501,
+      "pct_filas": 4.82,
+      "requests": 569641040,
+      "pct_requests": 1.84,
+      "ecpm_ponderado_no_cero": 4.354,
+      "pct_req_monetizado": 16.17
+     },
+     {
+      "genero": "crimen",
+      "filas": 3870,
+      "pct_filas": 3.39,
+      "requests": 546265520,
+      "pct_requests": 1.76,
+      "ecpm_ponderado_no_cero": 5.763,
+      "pct_req_monetizado": 22.59
+     },
+     {
+      "genero": "western",
+      "filas": 2037,
+      "pct_filas": 1.78,
+      "requests": 497003040,
+      "pct_requests": 1.6,
+      "ecpm_ponderado_no_cero": 5.169,
+      "pct_req_monetizado": 21.94
+     },
+     {
+      "genero": "lifestyle",
+      "filas": 1622,
+      "pct_filas": 1.42,
+      "requests": 331694880,
+      "pct_requests": 1.07,
+      "ecpm_ponderado_no_cero": 3.538,
+      "pct_req_monetizado": 38.03
+     },
+     {
+      "genero": "musica",
+      "filas": 3313,
+      "pct_filas": 2.9,
+      "requests": 274478560,
+      "pct_requests": 0.88,
+      "ecpm_ponderado_no_cero": 3.918,
+      "pct_req_monetizado": 11.8
+     },
+     {
+      "genero": "misterio",
+      "filas": 2124,
+      "pct_filas": 1.86,
+      "requests": 228751200,
+      "pct_requests": 0.74,
+      "ecpm_ponderado_no_cero": 3.396,
+      "pct_req_monetizado": 14.08
+     },
+     {
+      "genero": "talk show",
+      "filas": 630,
+      "pct_filas": 0.55,
+      "requests": 225884240,
+      "pct_requests": 0.73,
+      "ecpm_ponderado_no_cero": 3.06,
+      "pct_req_monetizado": 41.64
+     },
+     {
+      "genero": "fantasia",
+      "filas": 1799,
+      "pct_filas": 1.57,
+      "requests": 207759200,
+      "pct_requests": 0.67,
+      "ecpm_ponderado_no_cero": 4.583,
+      "pct_req_monetizado": 13.85
+     },
+     {
+      "genero": "pelicula (generico)",
+      "filas": 1714,
+      "pct_filas": 1.5,
+      "requests": 196293200,
+      "pct_requests": 0.63,
+      "ecpm_ponderado_no_cero": 7.99,
+      "pct_req_monetizado": 30.76
+     },
+     {
+      "genero": "reality",
+      "filas": 943,
+      "pct_filas": 0.83,
+      "requests": 176843200,
+      "pct_requests": 0.57,
+      "ecpm_ponderado_no_cero": 5.515,
+      "pct_req_monetizado": 39.21
+     },
+     {
+      "genero": "gastronomia",
+      "filas": 514,
+      "pct_filas": 0.45,
+      "requests": 172657280,
+      "pct_requests": 0.56,
+      "ecpm_ponderado_no_cero": 4.404,
+      "pct_req_monetizado": 37.0
+     },
+     {
+      "genero": "videojuegos",
+      "filas": 755,
+      "pct_filas": 0.66,
+      "requests": 103287520,
+      "pct_requests": 0.33,
+      "ecpm_ponderado_no_cero": 2.645,
+      "pct_req_monetizado": 10.81
+     },
+     {
+      "genero": "viajes",
+      "filas": 699,
+      "pct_filas": 0.61,
+      "requests": 86739200,
+      "pct_requests": 0.28,
+      "ecpm_ponderado_no_cero": 4.988,
+      "pct_req_monetizado": 18.15
+     },
+     {
+      "genero": "belico",
+      "filas": 624,
+      "pct_filas": 0.55,
+      "requests": 62751680,
+      "pct_requests": 0.2,
+      "ecpm_ponderado_no_cero": 2.109,
+      "pct_req_monetizado": 10.84
+     },
+     {
+      "genero": "educacion",
+      "filas": 319,
+      "pct_filas": 0.28,
+      "requests": 39310320,
+      "pct_requests": 0.13,
+      "ecpm_ponderado_no_cero": 4.089,
+      "pct_req_monetizado": 30.14
+     },
+     {
+      "genero": "religion",
+      "filas": 200,
+      "pct_filas": 0.18,
+      "requests": 34119920,
+      "pct_requests": 0.11,
+      "ecpm_ponderado_no_cero": 5.837,
+      "pct_req_monetizado": 47.81
+     },
+     {
+      "genero": "concursos",
+      "filas": 117,
+      "pct_filas": 0.1,
+      "requests": 27160800,
+      "pct_requests": 0.09,
+      "ecpm_ponderado_no_cero": 5.555,
+      "pct_req_monetizado": 37.06
+     },
+     {
+      "genero": "tv/series (generico)",
+      "filas": 316,
+      "pct_filas": 0.28,
+      "requests": 22422960,
+      "pct_requests": 0.07,
+      "ecpm_ponderado_no_cero": 7.588,
+      "pct_req_monetizado": 9.79
+     },
+     {
+      "genero": "telenovela",
+      "filas": 101,
+      "pct_filas": 0.09,
+      "requests": 13818560,
+      "pct_requests": 0.04,
+      "ecpm_ponderado_no_cero": 6.564,
+      "pct_req_monetizado": 50.19
+     }
+    ],
+    "auditoria": {
+     "fill_util_pct_filas": 92.04,
+     "fill_util_pct_requests": 86.4,
+     "mapeado_parcial_filas": 4612,
+     "mapeado_parcial_pct_filas": 4.04,
+     "sin_sentido": {
+      "genero_en_formato_sucio": {
+       "filas": 472,
+       "pct_filas_pais": 0.41,
+       "pct_requests_pais": 0.17,
+       "ejemplos_top": [
+        [
+         "english & international news",
+         70
+        ],
+        [
+         "music audio",
+         51
+        ],
+        [
+         "drama tv",
+         23
+        ],
+        [
+         "romance movies,drama tv",
+         22
+        ],
+        [
+         "drama tv,romance movies",
+         20
+        ]
+       ]
+      },
+      "tipo_de_contenido": {
+       "filas": 1122,
+       "pct_filas_pais": 0.98,
+       "pct_requests_pais": 0.22,
+       "ejemplos_top": [
+        [
+         "tv series",
+         514
+        ],
+        [
+         "videos",
+         333
+        ],
+        [
+         "live",
+         233
+        ],
+        [
+         "classic tv",
+         41
+        ],
+        [
+         "photo & video",
+         1
+        ]
+       ]
+      },
+      "idioma_o_region": {
+       "filas": 333,
+       "pct_filas_pais": 0.29,
+       "pct_requests_pais": 0.07,
+       "ejemplos_top": [
+        [
+         "en español",
+         273
+        ],
+        [
+         "hindi & regional",
+         32
+        ],
+        [
+         "international",
+         19
+        ],
+        [
+         "world",
+         7
+        ],
+        [
+         "foreign",
+         2
+        ]
+       ]
+      },
+      "tema_no_genero": {
+       "filas": 447,
+       "pct_filas_pais": 0.39,
+       "pct_requests_pais": 0.75,
+       "ejemplos_top": [
+        [
+         "Outdoors",
+         124
+        ],
+        [
+         "relaxing",
+         64
+        ],
+        [
+         "business & finance",
+         52
+        ],
+        [
+         "outdoors",
+         50
+        ],
+        [
+         "arts",
+         36
+        ]
+       ]
+      },
+      "otros_no_reconocidos": {
+       "filas": 1710,
+       "pct_filas_pais": 1.5,
+       "pct_requests_pais": 1.17,
+       "ejemplos_top": [
+        [
+         "game",
+         222
+        ],
+        [
+         "Soap-Opera",
+         116
+        ],
+        [
+         "se",
+         76
+        ],
+        [
+         "arcade",
+         68
+        ],
+        [
+         "bingeworthy",
+         66
+        ]
+       ]
+      }
+     },
+     "total_sin_sentido_filas": 4084,
+     "total_sin_sentido_pct_filas": 3.58,
+     "total_sin_sentido_pct_requests": 2.37,
+     "fill_efectivo_pct_filas": 88.46,
+     "fill_efectivo_pct_requests": 84.03
+    }
+   },
+   "titulo": {
+    "fill_util_filas": 109106,
+    "fill_util_pct_filas": 95.52,
+    "fill_util_pct_requests": 93.02,
+    "sospechosos": {
+     "macro_sin_reemplazar": {
+      "filas": 252,
+      "pct_filas_pais": 0.22,
+      "pct_del_fill_filas": 0.23,
+      "requests": 23531200,
+      "pct_requests_pais": 0.08,
+      "ejemplos_top": [
+       [
+        "{{content_title}}",
+        252
+       ]
+      ]
+     },
+     "placeholder": {
+      "filas": 5,
+      "pct_filas_pais": 0.0,
+      "pct_del_fill_filas": 0.0,
+      "requests": 339440,
+      "pct_requests_pais": 0.0,
+      "ejemplos_top": [
+       [
+        "vod",
+        5
+       ]
+      ]
+     },
+     "canal_no_programa": {
+      "filas": 55,
+      "pct_filas_pais": 0.05,
+      "pct_del_fill_filas": 0.05,
+      "requests": 6011440,
+      "pct_requests_pais": 0.02,
+      "ejemplos_top": [
+       [
+        "red bull tv",
+        49
+       ],
+       [
+        "las estrellas",
+        4
+       ],
+       [
+        "tlnovelas",
+        2
+       ]
+      ]
+     },
+     "slug_tecnico": {
+      "filas": 5802,
+      "pct_filas_pais": 5.08,
+      "pct_del_fill_filas": 5.32,
+      "requests": 2160382000,
+      "pct_requests_pais": 6.96,
+      "ejemplos_top": [
+       [
+        "alfaaz_trailer",
+        144
+       ],
+       [
+        "devils prey_trailer",
+        141
+       ],
+       [
+        "the hanji box_trailer",
+        137
+       ],
+       [
+        "scandaleux horror nouvelle_trailer",
+        129
+       ],
+       [
+        "let me in 2_trailer",
+        129
+       ]
+      ]
+     },
+     "encoding_roto": {
+      "filas": 3,
+      "pct_filas_pais": 0.0,
+      "pct_del_fill_filas": 0.0,
+      "requests": 122400,
+      "pct_requests_pais": 0.0,
+      "ejemplos_top": [
+       [
+        "catalunya �ber alles!",
+        3
+       ]
+      ]
+     },
+     "sin_letras": {
+      "filas": 178,
+      "pct_filas_pais": 0.16,
+      "pct_del_fill_filas": 0.16,
+      "requests": 35703600,
+      "pct_requests_pais": 0.12,
+      "ejemplos_top": [
+       [
+        "8.0",
+        90
+       ],
+       [
+        "41",
+        79
+       ],
+       [
+        "20/20",
+        8
+       ],
+       [
+        "555.0",
+        1
+       ]
+      ]
+     }
+    },
+    "total_sospechosos_filas": 6295,
+    "total_sospechosos_requests": 2226090080,
+    "fill_efectivo_filas": 102811,
+    "fill_efectivo_pct_filas": 90.01,
+    "fill_efectivo_pct_requests": 85.84
+   }
+  },
+  "Chile": {
+   "filas": 122923,
+   "requests": 24304976800,
+   "genero": {
+    "filas_sin_dato": 9270,
+    "filas_con_genero_no_mapeado": 4684,
+    "filas_multigenero": 32886,
+    "pct_filas_con_genero_canonico": 88.65,
+    "distribucion": [
+     {
+      "genero": "drama",
+      "filas": 33733,
+      "pct_filas": 27.44,
+      "requests": 7034151040,
+      "pct_requests": 28.94,
+      "ecpm_ponderado_no_cero": 5.83,
+      "pct_req_monetizado": 34.44
+     },
+     {
+      "genero": "terror",
+      "filas": 14135,
+      "pct_filas": 11.5,
+      "requests": 3158799120,
+      "pct_requests": 13.0,
+      "ecpm_ponderado_no_cero": 5.892,
+      "pct_req_monetizado": 33.89
+     },
+     {
+      "genero": "accion",
+      "filas": 10432,
+      "pct_filas": 8.49,
+      "requests": 1822501520,
+      "pct_requests": 7.5,
+      "ecpm_ponderado_no_cero": 6.04,
+      "pct_req_monetizado": 34.3
+     },
+     {
+      "genero": "documental",
+      "filas": 14074,
+      "pct_filas": 11.45,
+      "requests": 1798352640,
+      "pct_requests": 7.4,
+      "ecpm_ponderado_no_cero": 6.221,
+      "pct_req_monetizado": 30.21
+     },
+     {
+      "genero": "comedia",
+      "filas": 12120,
+      "pct_filas": 9.86,
+      "requests": 1646964560,
+      "pct_requests": 6.78,
+      "ecpm_ponderado_no_cero": 6.039,
+      "pct_req_monetizado": 31.36
+     },
+     {
+      "genero": "thriller",
+      "filas": 10938,
+      "pct_filas": 8.9,
+      "requests": 1399184240,
+      "pct_requests": 5.76,
+      "ecpm_ponderado_no_cero": 6.285,
+      "pct_req_monetizado": 27.88
+     },
+     {
+      "genero": "romance",
+      "filas": 7195,
+      "pct_filas": 5.85,
+      "requests": 1160149600,
+      "pct_requests": 4.77,
+      "ecpm_ponderado_no_cero": 5.85,
+      "pct_req_monetizado": 33.09
+     },
+     {
+      "genero": "entretenimiento",
+      "filas": 4872,
+      "pct_filas": 3.96,
+      "requests": 801315120,
+      "pct_requests": 3.3,
+      "ecpm_ponderado_no_cero": 5.508,
+      "pct_req_monetizado": 42.62
+     },
+     {
+      "genero": "deportes",
+      "filas": 3801,
+      "pct_filas": 3.09,
+      "requests": 730937440,
+      "pct_requests": 3.01,
+      "ecpm_ponderado_no_cero": 4.923,
+      "pct_req_monetizado": 43.09
+     },
+     {
+      "genero": "infantil-familia",
+      "filas": 6070,
+      "pct_filas": 4.94,
+      "requests": 651381920,
+      "pct_requests": 2.68,
+      "ecpm_ponderado_no_cero": 6.897,
+      "pct_req_monetizado": 28.18
+     },
+     {
+      "genero": "aventura",
+      "filas": 4695,
+      "pct_filas": 3.82,
+      "requests": 582110000,
+      "pct_requests": 2.4,
+      "ecpm_ponderado_no_cero": 6.908,
+      "pct_req_monetizado": 30.22
+     },
+     {
+      "genero": "crimen",
+      "filas": 4430,
+      "pct_filas": 3.6,
+      "requests": 564472960,
+      "pct_requests": 2.32,
+      "ecpm_ponderado_no_cero": 5.95,
+      "pct_req_monetizado": 31.94
+     },
+     {
+      "genero": "sci-fi",
+      "filas": 3354,
+      "pct_filas": 2.73,
+      "requests": 530527760,
+      "pct_requests": 2.18,
+      "ecpm_ponderado_no_cero": 6.24,
+      "pct_req_monetizado": 31.16
+     },
+     {
+      "genero": "otros/desconocido",
+      "filas": 5196,
+      "pct_filas": 4.23,
+      "requests": 410398000,
+      "pct_requests": 1.69,
+      "ecpm_ponderado_no_cero": 6.169,
+      "pct_req_monetizado": 23.6
+     },
+     {
+      "genero": "misterio",
+      "filas": 3673,
+      "pct_filas": 2.99,
+      "requests": 379775040,
+      "pct_requests": 1.56,
+      "ecpm_ponderado_no_cero": 6.382,
+      "pct_req_monetizado": 23.79
+     },
+     {
+      "genero": "videojuegos",
+      "filas": 803,
+      "pct_filas": 0.65,
+      "requests": 368587520,
+      "pct_requests": 1.52,
+      "ecpm_ponderado_no_cero": 9.448,
+      "pct_req_monetizado": 48.8
+     },
+     {
+      "genero": "animacion",
+      "filas": 1467,
+      "pct_filas": 1.19,
+      "requests": 365962960,
+      "pct_requests": 1.51,
+      "ecpm_ponderado_no_cero": 4.295,
+      "pct_req_monetizado": 53.0
+     },
+     {
+      "genero": "fantasia",
+      "filas": 3319,
+      "pct_filas": 2.7,
+      "requests": 342737920,
+      "pct_requests": 1.41,
+      "ecpm_ponderado_no_cero": 6.118,
+      "pct_req_monetizado": 27.2
+     },
+     {
+      "genero": "noticias",
+      "filas": 1544,
+      "pct_filas": 1.26,
+      "requests": 340843600,
+      "pct_requests": 1.4,
+      "ecpm_ponderado_no_cero": 5.277,
+      "pct_req_monetizado": 41.86
+     },
+     {
+      "genero": "anime",
+      "filas": 2043,
+      "pct_filas": 1.66,
+      "requests": 308988720,
+      "pct_requests": 1.27,
+      "ecpm_ponderado_no_cero": 8.453,
+      "pct_req_monetizado": 38.23
+     },
+     {
+      "genero": "western",
+      "filas": 1978,
+      "pct_filas": 1.61,
+      "requests": 305594240,
+      "pct_requests": 1.26,
+      "ecpm_ponderado_no_cero": 5.561,
+      "pct_req_monetizado": 33.36
+     },
+     {
+      "genero": "musica",
+      "filas": 3990,
+      "pct_filas": 3.25,
+      "requests": 297128000,
+      "pct_requests": 1.22,
+      "ecpm_ponderado_no_cero": 6.874,
+      "pct_req_monetizado": 20.2
+     },
+     {
+      "genero": "concursos",
+      "filas": 275,
+      "pct_filas": 0.22,
+      "requests": 256331920,
+      "pct_requests": 1.05,
+      "ecpm_ponderado_no_cero": 9.507,
+      "pct_req_monetizado": 52.04
+     },
+     {
+      "genero": "lifestyle",
+      "filas": 1664,
+      "pct_filas": 1.35,
+      "requests": 244368320,
+      "pct_requests": 1.01,
+      "ecpm_ponderado_no_cero": 5.29,
+      "pct_req_monetizado": 39.29
+     },
+     {
+      "genero": "pelicula (generico)",
+      "filas": 2081,
+      "pct_filas": 1.69,
+      "requests": 210839360,
+      "pct_requests": 0.87,
+      "ecpm_ponderado_no_cero": 6.494,
+      "pct_req_monetizado": 28.45
+     },
+     {
+      "genero": "reality",
+      "filas": 1133,
+      "pct_filas": 0.92,
+      "requests": 159538240,
+      "pct_requests": 0.66,
+      "ecpm_ponderado_no_cero": 6.253,
+      "pct_req_monetizado": 43.35
+     },
+     {
+      "genero": "talk show",
+      "filas": 551,
+      "pct_filas": 0.45,
+      "requests": 149277040,
+      "pct_requests": 0.61,
+      "ecpm_ponderado_no_cero": 4.655,
+      "pct_req_monetizado": 51.72
+     },
+     {
+      "genero": "belico",
+      "filas": 870,
+      "pct_filas": 0.71,
+      "requests": 85622720,
+      "pct_requests": 0.35,
+      "ecpm_ponderado_no_cero": 5.993,
+      "pct_req_monetizado": 23.4
+     },
+     {
+      "genero": "gastronomia",
+      "filas": 503,
+      "pct_filas": 0.41,
+      "requests": 73341280,
+      "pct_requests": 0.3,
+      "ecpm_ponderado_no_cero": 5.535,
+      "pct_req_monetizado": 45.77
+     },
+     {
+      "genero": "viajes",
+      "filas": 916,
+      "pct_filas": 0.75,
+      "requests": 61786000,
+      "pct_requests": 0.25,
+      "ecpm_ponderado_no_cero": 5.782,
+      "pct_req_monetizado": 23.59
+     },
+     {
+      "genero": "tv/series (generico)",
+      "filas": 482,
+      "pct_filas": 0.39,
+      "requests": 45974800,
+      "pct_requests": 0.19,
+      "ecpm_ponderado_no_cero": 7.703,
+      "pct_req_monetizado": 19.58
+     },
+     {
+      "genero": "educacion",
+      "filas": 321,
+      "pct_filas": 0.26,
+      "requests": 31381120,
+      "pct_requests": 0.13,
+      "ecpm_ponderado_no_cero": 4.715,
+      "pct_req_monetizado": 23.41
+     },
+     {
+      "genero": "religion",
+      "filas": 200,
+      "pct_filas": 0.16,
+      "requests": 26503520,
+      "pct_requests": 0.11,
+      "ecpm_ponderado_no_cero": 5.211,
+      "pct_req_monetizado": 46.59
+     },
+     {
+      "genero": "telenovela",
+      "filas": 43,
+      "pct_filas": 0.03,
+      "requests": 7047920,
+      "pct_requests": 0.03,
+      "ecpm_ponderado_no_cero": 7.993,
+      "pct_req_monetizado": 39.78
+     }
+    ],
+    "auditoria": {
+     "fill_util_pct_filas": 92.46,
+     "fill_util_pct_requests": 87.63,
+     "mapeado_parcial_filas": 4792,
+     "mapeado_parcial_pct_filas": 3.9,
+     "sin_sentido": {
+      "genero_en_formato_sucio": {
+       "filas": 2002,
+       "pct_filas_pais": 1.63,
+       "pct_requests_pais": 0.66,
+       "ejemplos_top": [
+        [
+         "drama%2cromance",
+         106
+        ],
+        [
+         "english & international news",
+         72
+        ],
+        [
+         "horror%2cthriller",
+         46
+        ],
+        [
+         "comedy variety",
+         44
+        ],
+        [
+         "drama%2cromance%2ccomedy",
+         43
+        ]
+       ]
+      },
+      "tipo_de_contenido": {
+       "filas": 832,
+       "pct_filas_pais": 0.68,
+       "pct_requests_pais": 0.21,
+       "ejemplos_top": [
+        [
+         "tv series",
+         387
+        ],
+        [
+         "videos",
+         290
+        ],
+        [
+         "live",
+         117
+        ],
+        [
+         "classic tv",
+         24
+        ],
+        [
+         "trailer",
+         14
+        ]
+       ]
+      },
+      "idioma_o_region": {
+       "filas": 166,
+       "pct_filas_pais": 0.14,
+       "pct_requests_pais": 0.05,
+       "ejemplos_top": [
+        [
+         "en español",
+         122
+        ],
+        [
+         "hindi & regional",
+         32
+        ],
+        [
+         "international",
+         11
+        ],
+        [
+         "world",
+         1
+        ]
+       ]
+      },
+      "tema_no_genero": {
+       "filas": 346,
+       "pct_filas_pais": 0.28,
+       "pct_requests_pais": 0.46,
+       "ejemplos_top": [
+        [
+         "Outdoors",
+         86
+        ],
+        [
+         "business & finance",
+         56
+        ],
+        [
+         "Business & Finance",
+         47
+        ],
+        [
+         "outdoors",
+         35
+        ],
+        [
+         "Arts",
+         32
+        ]
+       ]
+      },
+      "otros_no_reconocidos": {
+       "filas": 1338,
+       "pct_filas_pais": 1.09,
+       "pct_requests_pais": 0.93,
+       "ejemplos_top": [
+        [
+         "game",
+         109
+        ],
+        [
+         "arcade",
+         73
+        ],
+        [
+         "Hobbies",
+         71
+        ],
+        [
+         "se",
+         68
+        ],
+        [
+         "cm",
+         62
+        ]
+       ]
+      }
+     },
+     "total_sin_sentido_filas": 4684,
+     "total_sin_sentido_pct_filas": 3.81,
+     "total_sin_sentido_pct_requests": 2.3,
+     "fill_efectivo_pct_filas": 88.65,
+     "fill_efectivo_pct_requests": 85.33
+    }
+   },
+   "titulo": {
+    "fill_util_filas": 119349,
+    "fill_util_pct_filas": 97.09,
+    "fill_util_pct_requests": 92.7,
+    "sospechosos": {
+     "macro_sin_reemplazar": {
+      "filas": 179,
+      "pct_filas_pais": 0.15,
+      "pct_del_fill_filas": 0.15,
+      "requests": 13244240,
+      "pct_requests_pais": 0.05,
+      "ejemplos_top": [
+       [
+        "{{content_title}}",
+        179
+       ]
+      ]
+     },
+     "placeholder": {
+      "filas": 5,
+      "pct_filas_pais": 0.0,
+      "pct_del_fill_filas": 0.0,
+      "requests": 289440,
+      "pct_requests_pais": 0.0,
+      "ejemplos_top": [
+       [
+        "vod",
+        3
+       ],
+       [
+        "demo",
+        2
+       ]
+      ]
+     },
+     "canal_no_programa": {
+      "filas": 71,
+      "pct_filas_pais": 0.06,
+      "pct_del_fill_filas": 0.06,
+      "requests": 12347120,
+      "pct_requests_pais": 0.05,
+      "ejemplos_top": [
+       [
+        "red bull tv",
+        71
+       ]
+      ]
+     },
+     "slug_tecnico": {
+      "filas": 5927,
+      "pct_filas_pais": 4.82,
+      "pct_del_fill_filas": 4.97,
+      "requests": 1448484720,
+      "pct_requests_pais": 5.96,
+      "ejemplos_top": [
+       [
+        "the hanji box_trailer",
+        137
+       ],
+       [
+        "alfaaz_trailer",
+        134
+       ],
+       [
+        "monster_trailer",
+        129
+       ],
+       [
+        "let me in 2_trailer",
+        128
+       ],
+       [
+        "devils prey_trailer",
+        127
+       ]
+      ]
+     },
+     "encoding_roto": {
+      "filas": 222,
+      "pct_filas_pais": 0.18,
+      "pct_del_fill_filas": 0.19,
+      "requests": 316480720,
+      "pct_requests_pais": 1.3,
+      "ejemplos_top": [
+       [
+        "catalunya �ber alles!",
+        222
+       ]
+      ]
+     },
+     "sin_letras": {
+      "filas": 155,
+      "pct_filas_pais": 0.13,
+      "pct_del_fill_filas": 0.13,
+      "requests": 25020560,
+      "pct_requests_pais": 0.1,
+      "ejemplos_top": [
+       [
+        "8.0",
+        78
+       ],
+       [
+        "41",
+        69
+       ],
+       [
+        "20/20",
+        8
+       ]
+      ]
+     },
+     "muy_corto": {
+      "filas": 2,
+      "pct_filas_pais": 0.0,
+      "pct_del_fill_filas": 0.0,
+      "requests": 66640,
+      "pct_requests_pais": 0.0,
+      "ejemplos_top": [
+       [
+        "c",
+        2
+       ]
+      ]
+     }
+    },
+    "total_sospechosos_filas": 6561,
+    "total_sospechosos_requests": 1815933440,
+    "fill_efectivo_filas": 112788,
+    "fill_efectivo_pct_filas": 91.76,
+    "fill_efectivo_pct_requests": 85.22
+   }
+  }
+ }
+}

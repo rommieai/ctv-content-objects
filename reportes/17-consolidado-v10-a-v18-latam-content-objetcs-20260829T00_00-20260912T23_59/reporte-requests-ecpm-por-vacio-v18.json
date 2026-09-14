@@ -1,0 +1,563 @@
+{
+ "fuente": "inventory-consolidado-v10-a-v18.csv",
+ "paises": {
+  "Mexico": {
+   "filas": 328845,
+   "requests": 251776068880,
+   "columnas": {
+    "App Name": {
+     "lleno": {
+      "filas": 287421,
+      "pct_filas": 87.4,
+      "requests": 223200927200,
+      "pct_requests": 88.65,
+      "ecpm_ponderado": 3.328,
+      "pct_req_monetizado": 60.88
+     },
+     "vacio": {
+      "filas": 41424,
+      "pct_filas": 12.6,
+      "requests": 28575141680,
+      "pct_requests": 11.35,
+      "ecpm_ponderado": 2.262,
+      "pct_req_monetizado": 65.29
+     }
+    },
+    "contentIsTitlePresent": {
+     "lleno": {
+      "filas": 328845,
+      "pct_filas": 100.0,
+      "requests": 251776068880,
+      "pct_requests": 100.0,
+      "ecpm_ponderado": 3.199,
+      "pct_req_monetizado": 61.38
+     },
+     "vacio": {
+      "filas": 0,
+      "pct_filas": 0.0,
+      "requests": 0,
+      "pct_requests": 0.0,
+      "ecpm_ponderado": null,
+      "pct_req_monetizado": null
+     }
+    },
+    "contentGenre": {
+     "lleno": {
+      "filas": 299994,
+      "pct_filas": 91.23,
+      "requests": 216354524800,
+      "pct_requests": 85.93,
+      "ecpm_ponderado": 3.158,
+      "pct_req_monetizado": 60.56
+     },
+     "vacio": {
+      "filas": 28851,
+      "pct_filas": 8.77,
+      "requests": 35421544080,
+      "pct_requests": 14.07,
+      "ecpm_ponderado": 3.427,
+      "pct_req_monetizado": 66.38
+     }
+    },
+    "contentTitle": {
+     "lleno": {
+      "filas": 287049,
+      "pct_filas": 87.29,
+      "requests": 153663795040,
+      "pct_requests": 61.03,
+      "ecpm_ponderado": 2.953,
+      "pct_req_monetizado": 58.8
+     },
+     "vacio": {
+      "filas": 41796,
+      "pct_filas": 12.71,
+      "requests": 98112273840,
+      "pct_requests": 38.97,
+      "ecpm_ponderado": 3.546,
+      "pct_req_monetizado": 65.42
+     }
+    },
+    "contentRating": {
+     "lleno": {
+      "filas": 233978,
+      "pct_filas": 71.15,
+      "requests": 185945231760,
+      "pct_requests": 73.85,
+      "ecpm_ponderado": 3.502,
+      "pct_req_monetizado": 61.48
+     },
+     "vacio": {
+      "filas": 94867,
+      "pct_filas": 28.85,
+      "requests": 65830837120,
+      "pct_requests": 26.15,
+      "ecpm_ponderado": 2.339,
+      "pct_req_monetizado": 61.09
+     }
+    },
+    "contentLanguage": {
+     "lleno": {
+      "filas": 205027,
+      "pct_filas": 62.35,
+      "requests": 168641028160,
+      "pct_requests": 66.98,
+      "ecpm_ponderado": 3.479,
+      "pct_req_monetizado": 60.55
+     },
+     "vacio": {
+      "filas": 123818,
+      "pct_filas": 37.65,
+      "requests": 83135040720,
+      "pct_requests": 33.02,
+      "ecpm_ponderado": 2.654,
+      "pct_req_monetizado": 63.05
+     }
+    },
+    "contentIsLiveStream": {
+     "lleno": {
+      "filas": 82581,
+      "pct_filas": 25.11,
+      "requests": 113407234000,
+      "pct_requests": 45.04,
+      "ecpm_ponderado": 3.524,
+      "pct_req_monetizado": 71.39
+     },
+     "vacio": {
+      "filas": 246264,
+      "pct_filas": 74.89,
+      "requests": 138368834880,
+      "pct_requests": 54.96,
+      "ecpm_ponderado": 2.841,
+      "pct_req_monetizado": 53.17
+     }
+    },
+    "contentCategory": {
+     "lleno": {
+      "filas": 78666,
+      "pct_filas": 23.92,
+      "requests": 92790362240,
+      "pct_requests": 36.85,
+      "ecpm_ponderado": 4.347,
+      "pct_req_monetizado": 60.48
+     },
+     "vacio": {
+      "filas": 250179,
+      "pct_filas": 76.08,
+      "requests": 158985706640,
+      "pct_requests": 63.15,
+      "ecpm_ponderado": 2.544,
+      "pct_req_monetizado": 61.9
+     }
+    },
+    "contentLength": {
+     "lleno": {
+      "filas": 50490,
+      "pct_filas": 15.35,
+      "requests": 75090024240,
+      "pct_requests": 29.82,
+      "ecpm_ponderado": 4.688,
+      "pct_req_monetizado": 69.35
+     },
+     "vacio": {
+      "filas": 278355,
+      "pct_filas": 84.65,
+      "requests": 176686044640,
+      "pct_requests": 70.18,
+      "ecpm_ponderado": 2.442,
+      "pct_req_monetizado": 57.99
+     }
+    },
+    "contentSeries": {
+     "lleno": {
+      "filas": 21821,
+      "pct_filas": 6.64,
+      "requests": 12120951680,
+      "pct_requests": 4.81,
+      "ecpm_ponderado": 3.703,
+      "pct_req_monetizado": 61.21
+     },
+     "vacio": {
+      "filas": 307024,
+      "pct_filas": 93.36,
+      "requests": 239655117200,
+      "pct_requests": 95.19,
+      "ecpm_ponderado": 3.174,
+      "pct_req_monetizado": 61.39
+     }
+    }
+   }
+  },
+  "Colombia": {
+   "filas": 114223,
+   "requests": 31032732560,
+   "columnas": {
+    "App Name": {
+     "lleno": {
+      "filas": 111213,
+      "pct_filas": 97.36,
+      "requests": 29995251680,
+      "pct_requests": 96.66,
+      "ecpm_ponderado": 4.905,
+      "pct_req_monetizado": 26.07
+     },
+     "vacio": {
+      "filas": 3010,
+      "pct_filas": 2.64,
+      "requests": 1037480880,
+      "pct_requests": 3.34,
+      "ecpm_ponderado": 6.358,
+      "pct_req_monetizado": 69.08
+     }
+    },
+    "contentIsTitlePresent": {
+     "lleno": {
+      "filas": 114223,
+      "pct_filas": 100.0,
+      "requests": 31032732560,
+      "pct_requests": 100.0,
+      "ecpm_ponderado": 5.027,
+      "pct_req_monetizado": 27.51
+     },
+     "vacio": {
+      "filas": 0,
+      "pct_filas": 0.0,
+      "requests": 0,
+      "pct_requests": 0.0,
+      "ecpm_ponderado": null,
+      "pct_req_monetizado": null
+     }
+    },
+    "contentGenre": {
+     "lleno": {
+      "filas": 105126,
+      "pct_filas": 92.04,
+      "requests": 26813145360,
+      "pct_requests": 86.4,
+      "ecpm_ponderado": 5.447,
+      "pct_req_monetizado": 26.41
+     },
+     "vacio": {
+      "filas": 9097,
+      "pct_filas": 7.96,
+      "requests": 4219587200,
+      "pct_requests": 13.6,
+      "ecpm_ponderado": 2.987,
+      "pct_req_monetizado": 34.49
+     }
+    },
+    "contentTitle": {
+     "lleno": {
+      "filas": 109106,
+      "pct_filas": 95.52,
+      "requests": 28865513440,
+      "pct_requests": 93.02,
+      "ecpm_ponderado": 5.313,
+      "pct_req_monetizado": 25.14
+     },
+     "vacio": {
+      "filas": 5117,
+      "pct_filas": 4.48,
+      "requests": 2167219120,
+      "pct_requests": 6.98,
+      "ecpm_ponderado": 3.411,
+      "pct_req_monetizado": 59.11
+     }
+    },
+    "contentRating": {
+     "lleno": {
+      "filas": 80748,
+      "pct_filas": 70.69,
+      "requests": 22410576240,
+      "pct_requests": 72.22,
+      "ecpm_ponderado": 5.243,
+      "pct_req_monetizado": 28.63
+     },
+     "vacio": {
+      "filas": 33475,
+      "pct_filas": 29.31,
+      "requests": 8622156320,
+      "pct_requests": 27.78,
+      "ecpm_ponderado": 4.376,
+      "pct_req_monetizado": 24.6
+     }
+    },
+    "contentLanguage": {
+     "lleno": {
+      "filas": 60226,
+      "pct_filas": 52.73,
+      "requests": 16536785120,
+      "pct_requests": 53.29,
+      "ecpm_ponderado": 3.626,
+      "pct_req_monetizado": 32.74
+     },
+     "vacio": {
+      "filas": 53997,
+      "pct_filas": 47.27,
+      "requests": 14495947440,
+      "pct_requests": 46.71,
+      "ecpm_ponderado": 7.457,
+      "pct_req_monetizado": 21.54
+     }
+    },
+    "contentIsLiveStream": {
+     "lleno": {
+      "filas": 30471,
+      "pct_filas": 26.68,
+      "requests": 11424824480,
+      "pct_requests": 36.82,
+      "ecpm_ponderado": 4.354,
+      "pct_req_monetizado": 33.77
+     },
+     "vacio": {
+      "filas": 83752,
+      "pct_filas": 73.32,
+      "requests": 19607908080,
+      "pct_requests": 63.18,
+      "ecpm_ponderado": 5.583,
+      "pct_req_monetizado": 23.86
+     }
+    },
+    "contentCategory": {
+     "lleno": {
+      "filas": 25355,
+      "pct_filas": 22.2,
+      "requests": 6899772240,
+      "pct_requests": 22.23,
+      "ecpm_ponderado": 4.737,
+      "pct_req_monetizado": 39.13
+     },
+     "vacio": {
+      "filas": 88868,
+      "pct_filas": 77.8,
+      "requests": 24132960320,
+      "pct_requests": 77.77,
+      "ecpm_ponderado": 5.162,
+      "pct_req_monetizado": 24.19
+     }
+    },
+    "contentLength": {
+     "lleno": {
+      "filas": 11990,
+      "pct_filas": 10.5,
+      "requests": 4804151920,
+      "pct_requests": 15.48,
+      "ecpm_ponderado": 3.504,
+      "pct_req_monetizado": 43.19
+     },
+     "vacio": {
+      "filas": 102233,
+      "pct_filas": 89.5,
+      "requests": 26228580640,
+      "pct_requests": 84.52,
+      "ecpm_ponderado": 5.517,
+      "pct_req_monetizado": 24.64
+     }
+    },
+    "contentSeries": {
+     "lleno": {
+      "filas": 7376,
+      "pct_filas": 6.46,
+      "requests": 3363751680,
+      "pct_requests": 10.84,
+      "ecpm_ponderado": 2.954,
+      "pct_req_monetizado": 46.04
+     },
+     "vacio": {
+      "filas": 106847,
+      "pct_filas": 93.54,
+      "requests": 27668980880,
+      "pct_requests": 89.16,
+      "ecpm_ponderado": 5.487,
+      "pct_req_monetizado": 25.26
+     }
+    }
+   }
+  },
+  "Chile": {
+   "filas": 122923,
+   "requests": 24304976800,
+   "columnas": {
+    "App Name": {
+     "lleno": {
+      "filas": 117026,
+      "pct_filas": 95.2,
+      "requests": 23415349840,
+      "pct_requests": 96.34,
+      "ecpm_ponderado": 6.117,
+      "pct_req_monetizado": 36.02
+     },
+     "vacio": {
+      "filas": 5897,
+      "pct_filas": 4.8,
+      "requests": 889626960,
+      "pct_requests": 3.66,
+      "ecpm_ponderado": 5.998,
+      "pct_req_monetizado": 38.85
+     }
+    },
+    "contentIsTitlePresent": {
+     "lleno": {
+      "filas": 122923,
+      "pct_filas": 100.0,
+      "requests": 24304976800,
+      "pct_requests": 100.0,
+      "ecpm_ponderado": 6.112,
+      "pct_req_monetizado": 36.12
+     },
+     "vacio": {
+      "filas": 0,
+      "pct_filas": 0.0,
+      "requests": 0,
+      "pct_requests": 0.0,
+      "ecpm_ponderado": null,
+      "pct_req_monetizado": null
+     }
+    },
+    "contentGenre": {
+     "lleno": {
+      "filas": 113653,
+      "pct_filas": 92.46,
+      "requests": 21297972480,
+      "pct_requests": 87.63,
+      "ecpm_ponderado": 5.848,
+      "pct_req_monetizado": 36.05
+     },
+     "vacio": {
+      "filas": 9270,
+      "pct_filas": 7.54,
+      "requests": 3007004320,
+      "pct_requests": 12.37,
+      "ecpm_ponderado": 7.95,
+      "pct_req_monetizado": 36.61
+     }
+    },
+    "contentTitle": {
+     "lleno": {
+      "filas": 119349,
+      "pct_filas": 97.09,
+      "requests": 22529672320,
+      "pct_requests": 92.7,
+      "ecpm_ponderado": 5.793,
+      "pct_req_monetizado": 35.26
+     },
+     "vacio": {
+      "filas": 3574,
+      "pct_filas": 2.91,
+      "requests": 1775304480,
+      "pct_requests": 7.3,
+      "ecpm_ponderado": 9.143,
+      "pct_req_monetizado": 47.05
+     }
+    },
+    "contentRating": {
+     "lleno": {
+      "filas": 89546,
+      "pct_filas": 72.85,
+      "requests": 18995032800,
+      "pct_requests": 78.15,
+      "ecpm_ponderado": 5.909,
+      "pct_req_monetizado": 38.37
+     },
+     "vacio": {
+      "filas": 33377,
+      "pct_filas": 27.15,
+      "requests": 5309944000,
+      "pct_requests": 21.85,
+      "ecpm_ponderado": 7.103,
+      "pct_req_monetizado": 28.1
+     }
+    },
+    "contentLanguage": {
+     "lleno": {
+      "filas": 76457,
+      "pct_filas": 62.2,
+      "requests": 16084206720,
+      "pct_requests": 66.18,
+      "ecpm_ponderado": 5.896,
+      "pct_req_monetizado": 46.53
+     },
+     "vacio": {
+      "filas": 46466,
+      "pct_filas": 37.8,
+      "requests": 8220770080,
+      "pct_requests": 33.82,
+      "ecpm_ponderado": 7.358,
+      "pct_req_monetizado": 15.76
+     }
+    },
+    "contentIsLiveStream": {
+     "lleno": {
+      "filas": 22412,
+      "pct_filas": 18.23,
+      "requests": 5556279120,
+      "pct_requests": 22.86,
+      "ecpm_ponderado": 5.831,
+      "pct_req_monetizado": 37.11
+     },
+     "vacio": {
+      "filas": 100511,
+      "pct_filas": 81.77,
+      "requests": 18748697680,
+      "pct_requests": 77.14,
+      "ecpm_ponderado": 6.198,
+      "pct_req_monetizado": 35.83
+     }
+    },
+    "contentCategory": {
+     "lleno": {
+      "filas": 19086,
+      "pct_filas": 15.53,
+      "requests": 5181273520,
+      "pct_requests": 21.32,
+      "ecpm_ponderado": 4.89,
+      "pct_req_monetizado": 31.17
+     },
+     "vacio": {
+      "filas": 103837,
+      "pct_filas": 84.47,
+      "requests": 19123703280,
+      "pct_requests": 78.68,
+      "ecpm_ponderado": 6.388,
+      "pct_req_monetizado": 37.46
+     }
+    },
+    "contentLength": {
+     "lleno": {
+      "filas": 10344,
+      "pct_filas": 8.42,
+      "requests": 3187057360,
+      "pct_requests": 13.11,
+      "ecpm_ponderado": 5.066,
+      "pct_req_monetizado": 49.3
+     },
+     "vacio": {
+      "filas": 112579,
+      "pct_filas": 91.58,
+      "requests": 21117919440,
+      "pct_requests": 86.89,
+      "ecpm_ponderado": 6.34,
+      "pct_req_monetizado": 34.13
+     }
+    },
+    "contentSeries": {
+     "lleno": {
+      "filas": 7161,
+      "pct_filas": 5.83,
+      "requests": 2408447120,
+      "pct_requests": 9.91,
+      "ecpm_ponderado": 4.85,
+      "pct_req_monetizado": 50.21
+     },
+     "vacio": {
+      "filas": 115762,
+      "pct_filas": 94.17,
+      "requests": 21896529680,
+      "pct_requests": 90.09,
+      "ecpm_ponderado": 6.314,
+      "pct_req_monetizado": 34.57
+     }
+    }
+   }
+  }
+ }
+}
