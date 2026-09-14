@@ -17,16 +17,16 @@ Dos números por columna: **% de filas no vacías** (la celda trae algo) y **% d
 
 | Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
 |---|---:|---:|
-| drama | 25.7% | 2.58 |
-| comedia | 10.3% | 2.87 |
-| documental | 9.8% | 3.16 |
-| terror | 9.7% | 2.36 |
-| accion | 8.1% | 4.01 |
-| thriller | 6.8% | 2.38 |
-| entretenimiento | 5.0% | 4.75 |
-| romance | 4.7% | 3.08 |
-| infantil-familia | 3.8% | 2.21 |
-| crimen | 3.7% | 3.54 |
+| drama | 25.7% | $2.58 |
+| comedia | 10.3% | $2.87 |
+| documental | 9.8% | $3.16 |
+| terror | 9.7% | $2.36 |
+| accion | 8.1% | $4.01 |
+| thriller | 6.8% | $2.38 |
+| entretenimiento | 5.0% | $4.75 |
+| romance | 4.7% | $3.08 |
+| infantil-familia | 3.8% | $2.21 |
+| crimen | 3.7% | $3.54 |
 
 ### Colombia
 
@@ -36,16 +36,16 @@ Dos números por columna: **% de filas no vacías** (la celda trae algo) y **% d
 
 | Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
 |---|---:|---:|
-| drama | 30.5% | 5.03 |
-| terror | 12.1% | 6.50 |
-| documental | 11.1% | 5.64 |
-| comedia | 9.5% | 5.45 |
-| accion | 9.3% | 6.93 |
-| thriller | 7.6% | 4.53 |
-| romance | 6.0% | 3.40 |
-| infantil-familia | 5.3% | 5.82 |
-| otros/desconocido | 5.2% | 4.35 |
-| deportes | 3.9% | 4.21 |
+| drama | 30.5% | $5.03 |
+| terror | 12.1% | $6.50 |
+| documental | 11.1% | $5.64 |
+| comedia | 9.5% | $5.45 |
+| accion | 9.3% | $6.93 |
+| thriller | 7.6% | $4.53 |
+| romance | 6.0% | $3.40 |
+| infantil-familia | 5.3% | $5.82 |
+| otros/desconocido | 5.2% | $4.35 |
+| deportes | 3.9% | $4.21 |
 
 ### Chile
 
@@ -55,16 +55,16 @@ Dos números por columna: **% de filas no vacías** (la celda trae algo) y **% d
 
 | Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
 |---|---:|---:|
-| drama | 29.7% | 5.83 |
-| terror | 12.4% | 5.89 |
-| documental | 12.4% | 6.22 |
-| comedia | 10.7% | 6.04 |
-| thriller | 9.6% | 6.29 |
-| accion | 9.2% | 6.04 |
-| romance | 6.3% | 5.85 |
-| infantil-familia | 5.3% | 6.90 |
-| otros/desconocido | 4.6% | 6.17 |
-| entretenimiento | 4.3% | 5.51 |
+| drama | 29.7% | $5.83 |
+| terror | 12.4% | $5.89 |
+| documental | 12.4% | $6.22 |
+| comedia | 10.7% | $6.04 |
+| thriller | 9.6% | $6.29 |
+| accion | 9.2% | $6.04 |
+| romance | 6.3% | $5.85 |
+| infantil-familia | 5.3% | $6.90 |
+| otros/desconocido | 4.6% | $6.17 |
+| entretenimiento | 4.3% | $5.51 |
 
 ## Auditoría de contentGenre: lo "lleno" que no es un género
 
