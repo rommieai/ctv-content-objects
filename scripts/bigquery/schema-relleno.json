@@ -1,0 +1,230 @@
+[
+ {
+  "name": "publisher_id",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Publisher ID"
+ },
+ {
+  "name": "publisher",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Publisher"
+ },
+ {
+  "name": "page_url",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "pageURL (bundle/dominio)"
+ },
+ {
+  "name": "app_name",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "App Name"
+ },
+ {
+  "name": "country",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Country"
+ },
+ {
+  "name": "content_genre",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentGenre"
+ },
+ {
+  "name": "content_category",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentCategory"
+ },
+ {
+  "name": "content_series",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentSeries"
+ },
+ {
+  "name": "content_is_title_present",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentIsTitlePresent"
+ },
+ {
+  "name": "content_length",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentLength"
+ },
+ {
+  "name": "content_language",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentLanguage"
+ },
+ {
+  "name": "content_is_live_stream",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentIsLiveStream"
+ },
+ {
+  "name": "content_title",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentTitle"
+ },
+ {
+  "name": "content_rating",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentRating"
+ },
+ {
+  "name": "total_requests",
+  "type": "INTEGER",
+  "mode": "NULLABLE",
+  "description": "Total Requests"
+ },
+ {
+  "name": "ecpm",
+  "type": "FLOAT",
+  "mode": "NULLABLE",
+  "description": "eCPM"
+ },
+ {
+  "name": "genero_normalizado",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Genero normalizado (scripts/normalizar_monetizar.py)"
+ },
+ {
+  "name": "rating_franja",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Franja de rating normalizada"
+ },
+ {
+  "name": "titulo_clave",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Titulo normalizado usado como llave de enriquecimiento"
+ },
+ {
+  "name": "ext_imdb_id",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "IMDb ID (enriquecer_externo.py)"
+ },
+ {
+  "name": "ext_tipo",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Tipo IMDb (movie, tvSeries, ...)"
+ },
+ {
+  "name": "ext_anio",
+  "type": "INTEGER",
+  "mode": "NULLABLE",
+  "description": "Anio de estreno (IMDb)"
+ },
+ {
+  "name": "ext_runtime_min",
+  "type": "INTEGER",
+  "mode": "NULLABLE",
+  "description": "Duracion en minutos (IMDb)"
+ },
+ {
+  "name": "ext_confianza",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Confianza del match externo (A-D)"
+ },
+ {
+  "name": "content_category_relleno",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentCategory rellenado (original o inferido)"
+ },
+ {
+  "name": "content_category_origen",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Origen del relleno de contentCategory (original, app_default, intra_titulo, imdb, wikidata, ...)"
+ },
+ {
+  "name": "content_series_relleno",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentSeries rellenado (original o inferido)"
+ },
+ {
+  "name": "content_series_origen",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Origen del relleno de contentSeries (original, app_default, intra_titulo, imdb, wikidata, ...)"
+ },
+ {
+  "name": "content_length_relleno",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentLength rellenado (original o inferido)"
+ },
+ {
+  "name": "content_length_origen",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Origen del relleno de contentLength (original, app_default, intra_titulo, imdb, wikidata, ...)"
+ },
+ {
+  "name": "content_language_relleno",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentLanguage rellenado (original o inferido)"
+ },
+ {
+  "name": "content_language_origen",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Origen del relleno de contentLanguage (original, app_default, intra_titulo, imdb, wikidata, ...)"
+ },
+ {
+  "name": "content_is_live_stream_relleno",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentIsLiveStream rellenado (original o inferido)"
+ },
+ {
+  "name": "content_is_live_stream_origen",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Origen del relleno de contentIsLiveStream (original, app_default, intra_titulo, imdb, wikidata, ...)"
+ },
+ {
+  "name": "content_rating_relleno",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentRating rellenado (original o inferido)"
+ },
+ {
+  "name": "content_rating_origen",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Origen del relleno de contentRating (original, app_default, intra_titulo, imdb, wikidata, ...)"
+ },
+ {
+  "name": "content_genre_relleno",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentGenre rellenado (original o inferido)"
+ },
+ {
+  "name": "content_genre_origen",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Origen del relleno de contentGenre (original, app_default, intra_titulo, imdb, wikidata, ...)"
+ }
+]

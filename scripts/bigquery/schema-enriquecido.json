@@ -1,0 +1,122 @@
+[
+ {
+  "name": "publisher_id",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Publisher ID"
+ },
+ {
+  "name": "publisher",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Publisher"
+ },
+ {
+  "name": "page_url",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "pageURL (bundle/dominio)"
+ },
+ {
+  "name": "app_name",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "App Name"
+ },
+ {
+  "name": "country",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Country"
+ },
+ {
+  "name": "content_genre",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentGenre"
+ },
+ {
+  "name": "content_category",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentCategory"
+ },
+ {
+  "name": "content_series",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentSeries"
+ },
+ {
+  "name": "content_is_title_present",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentIsTitlePresent"
+ },
+ {
+  "name": "content_length",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentLength"
+ },
+ {
+  "name": "content_language",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentLanguage"
+ },
+ {
+  "name": "content_is_live_stream",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentIsLiveStream"
+ },
+ {
+  "name": "content_title",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentTitle"
+ },
+ {
+  "name": "content_rating",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "contentRating"
+ },
+ {
+  "name": "total_requests",
+  "type": "INTEGER",
+  "mode": "NULLABLE",
+  "description": "Total Requests"
+ },
+ {
+  "name": "ecpm",
+  "type": "FLOAT",
+  "mode": "NULLABLE",
+  "description": "eCPM"
+ },
+ {
+  "name": "genero_normalizado",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Genero normalizado (scripts/normalizar_monetizar.py)"
+ },
+ {
+  "name": "rating_franja",
+  "type": "STRING",
+  "mode": "NULLABLE",
+  "description": "Franja de rating normalizada"
+ },
+ {
+  "name": "cal_total_cost",
+  "type": "FLOAT",
+  "mode": "NULLABLE",
+  "description": "Costo total calculado = total_requests * ecpm / 1000 (para eCPM ponderado en Looker: SUM(cal_total_cost)/SUM(total_requests)*1000)"
+ },
+ {
+  "name": "fecha_reporte",
+  "type": "DATE",
+  "mode": "NULLABLE",
+  "description": "Fecha en que se genero el reporte en PubMatic"
+ }
+]

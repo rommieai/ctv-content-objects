@@ -119,10 +119,31 @@ detalle de fuentes, licencias y cobertura medida. Los pasos 5 y 6 no consultan n
 salvo las taxonomias IAB (~100 KB, GitHub de IAB Tech Lab); ver `reportes/15-.../README.md`
 y `reportes/16-.../README.md`.
 
-El consolidado enriquecido tambien vive en **BigQuery** para consultarlo desde Looker Studio:
-tabla `tudia-tagscreen.ctv_inventory.consolidado_v10_a_v14` (nombre historico de la primera
-carga; contiene siempre el consolidado vigente). Tras cada tanda se recarga con
-`bq load --source_format=CSV --skip_leading_rows=1 --allow_quoted_newlines --replace`.
+El inventario tambien vive en **BigQuery** (proyecto `tudia-tagscreen`, dataset `ctv_inventory`,
+location US) para consultarlo desde Looker Studio. Dos tablas (esquemas en `scripts/bigquery/`):
+
+- `consolidado_v10_a_v14` (nombre historico de la primera carga): contiene **solo el corte
+  vigente** (desde 2026-09-14, v18: 512,000 filas), enriquecido con `genero_normalizado` y
+  `rating_franja` via `normalizar_monetizar.py` sobre el CSV crudo, mas dos columnas para Looker:
+  `cal_total_cost` = total_requests * ecpm / 1000 (eCPM ponderado en Looker =
+  SUM(cal_total_cost) / SUM(total_requests) * 1000) y `fecha_reporte` (DATE, dia en que se
+  genero el reporte en PubMatic). Ya no es un consolidado.
+- `consolidado_v10_a_v17_relleno`: el consolidado v10-a-v17 relleno completo
+  (`inventory-consolidado-v10-a-v17-relleno.csv`, 959,442 filas, 38 columnas con
+  `*_relleno` / `*_origen` y `ext_*`).
+
+Recarga (reemplaza la tabla completa):
+
+```
+python scripts/normalizar_monetizar.py <vN crudo>.csv vN-enriquecido-base.csv vN.json
+# agregar cal_total_cost y fecha_reporte (ver scripts/bigquery/agregar_columnas_looker.py)
+python scripts/bigquery/agregar_columnas_looker.py vN-enriquecido-base.csv vN-enriquecido.csv 2026-09-14
+bq load --source_format=CSV --skip_leading_rows=1 --allow_quoted_newlines --replace   ctv_inventory.consolidado_v10_a_v14 vN-enriquecido.csv scripts/bigquery/schema-enriquecido.json
+bq load --source_format=CSV --skip_leading_rows=1 --allow_quoted_newlines --replace   ctv_inventory.consolidado_v10_a_v17_relleno inventory-consolidado-v10-a-v17-relleno.csv scripts/bigquery/schema-relleno.json
+```
+
+Validar siempre `COUNT(*)` y `SUM(total_requests)` contra el CSV. Los campos vacios del CSV
+quedan como NULL en BigQuery.
 
 ## Notas metodológicas clave
 
