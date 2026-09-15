@@ -19,6 +19,9 @@ scripts/                          codigo que genera los consolidados y los JSON
   generar_visual_paises.py        SVG con las tablas de paises lado a lado
   requests_ecpm_por_vacio.py      por pais y columna: requests y eCPM ponderado de las filas
                                   con dato util vs vacias (tablas por pais del detallado)
+  generar_graficos_ecpm_vacio.py  SVG (sin dependencias): scatter eCPM no vacias vs vacias por
+                                  columna con recta OLS y R2, scatter completitud vs eCPM, y
+                                  pies del reparto del gasto; a partir del JSON anterior
   generar_reporte_vacios.py       markdown "content objects cuando X esta vacio" a partir del
                                   JSON de analizar.py --solo-vacios-en X y del JSON completo
   enriquecer_externo.py           rellena content objects vacios: intra-dataset, defaults
@@ -62,7 +65,8 @@ reportes/
   16-validacion-genero-series-v17/  lo mismo para contentGenre y contentSeries
   17-consolidado-v10-a-v18/         la version vigente (solo tablas): detallado por pais
                                   (MX/CO/CL), publishers, normalizacion+eCPM y genero/titulo; el detallado
-                                  trae requests y eCPM ponderado por columna llena/vacia
+                                  trae requests y eCPM ponderado por columna llena/vacia, y
+                                  reporte-graficos-ecpm-vacio.md con scatter (R2) y pies
 
 ejecutivo/                        resumenes en PDF para stakeholders
 ```
@@ -89,6 +93,9 @@ python scripts/generar_reporte_vacios.py vacios-contentRating.json reporte-paise
 # 3. Normalizacion de genero/rating + analisis del inventario monetizado
 python scripts/normalizar_monetizar.py inventory-consolidado.csv \
     inventory-enriquecido.csv reporte-normalizacion.json
+python scripts/requests_ecpm_por_vacio.py inventory-consolidado.csv \
+    reporte-requests-ecpm-por-vacio.json --paises "Mexico,Colombia,Chile"
+python scripts/generar_graficos_ecpm_vacio.py reporte-requests-ecpm-por-vacio.json reportes/NN
 
 # 4. (opcional) Relleno de content objects vacios con fuentes internas + abiertas
 python scripts/enriquecer_externo.py inventory-enriquecido.csv \
@@ -179,6 +186,7 @@ quedan como NULL en BigQuery.
 | `reportes/17-.../reporte-publishers-v18-consolidado.md` | **Vigente:** tabla comparativa por publisher (top 12, con % filas y % requests) |
 | `reportes/17-.../reporte-normalizacion-y-ecpm-v18-consolidado.md` | **Vigente:** genero/rating normalizados + inventario monetizado (53.3% del trafico; eCPM 4.04), misma estructura que v17 |
 | `reportes/17-.../reporte-genero-titulo-paises.md` | **Vigente:** genero por pais + cuantas filas traen un genero/titulo de verdad (tablas) |
+| `reportes/17-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** graficos SVG del eCPM de filas no vacias vs vacias por columna (scatter con OLS y R2, completitud vs eCPM, pies del reparto del gasto) |
 | `reportes/12-.../reporte-content-objects-detallado-v17-consolidado.md` | (v10-a-v17) content objects por pais (MX/CO/CL) sobre el consolidado v10 a v17. La escritura nueva del reporte ya es el 54% del corte y viene mejor poblada (rating 60%, idioma 48% de sus filas); el consolidado por llave ya no deduplica (959k filas, 10.6% de requests de llaves viejas): leer trafico y precio sobre el corte |
 | `reportes/12-.../reporte-publishers-v17-consolidado.md` | (v10-a-v17) desglose por publisher (top 12; Roku supera a OTTera como #1 en requests, iion #3, TV Azteca se apaga otra vez, Select Plus vuelve a 12.6 de vitrina) |
 | `reportes/12-.../reporte-normalizacion-y-ecpm-v17-consolidado.md` | (v10-a-v17) genero/rating normalizados + inventario monetizado (50.7% del trafico, de vuelta a la banda de 51; eCPM 4.04; Colombia 5.85 quinto corte subiendo; Chile rebota a 6.10; Argentina lidera con 6.25; documental 5.88 al frente del yield con volumen) |
