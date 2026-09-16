@@ -57,18 +57,20 @@ reportes/
   12-consolidado-v10-a-v17/         tanda sobre el consolidado v10 a v17: detallado por pais
                                   (MX/CO/CL), publishers, normalizacion+eCPM y genero/titulo.
                                   OJO: el formato nuevo ya es el 54% del corte
-  13-enriquecimiento-externo-v17/ relleno de content objects sobre el consolidado v10-a-v17
-                                  (misma estructura que 08 y 11)
+  13-enriquecimiento-externo-v17/ relleno de content objects sobre el consolidado v10-a-v17 (tanda anterior)
   14-content-objects-vacios-v17/  un reporte por content object con la distribucion de las
                                   DEMAS columnas en las filas donde ese viene vacio
-  15-validacion-categorias-v17/   validacion de contentCategory (consolidado y relleno) con
-                                  fuentes abiertas: correctitud de las filas llenas y
-                                  completitud (granularidad IAB alcanzable)
-  16-validacion-genero-series-v17/  lo mismo para contentGenre y contentSeries
+  15-validacion-categorias-v17/   validacion de contentCategory sobre v10-a-v17 (tanda anterior)
+  16-validacion-genero-series-v17/  lo mismo para contentGenre y contentSeries (tanda anterior)
   17-consolidado-v10-a-v18/         la version vigente (solo tablas): detallado por pais
                                   (MX/CO/CL), publishers, normalizacion+eCPM y genero/titulo; el detallado
                                   trae requests y eCPM ponderado por columna llena/vacia, y
                                   reporte-graficos-ecpm-vacio.md con scatter (R2) y pies
+  18-enriquecimiento-externo-v18/ relleno de content objects sobre el consolidado v10-a-v18
+                                  (JSON + tabla por columna)
+  19-validacion-categorias-v18/   validacion de contentCategory (consolidado y relleno v18):
+                                  correctitud y completitud, con glosario y etiquetas claras
+  20-validacion-genero-series-v18/  lo mismo para contentGenre y contentSeries (v18)
 
 ejecutivo/                        resumenes en PDF para stakeholders
 ```
@@ -182,8 +184,11 @@ quedan como NULL en BigQuery.
 
 | Reporte | Contenido |
 |---|---|
-| `reportes/16-validacion-genero-series-v17/README.md` | **Nuevo:** lo mismo para contentGenre (el 85% de lo evaluable coincide con IMDb/Wikidata y solo 2.7% contradice; el 22% de las filas puede recibir mas generos o uno mas preciso, p. ej. telenovela en 16k filas) y contentSeries (correctitud basica: 2.4% de las series declaradas son peliculas segun IMDb; completitud: 10% del consolidado es serie sin nombre y se le puede proponer uno, 4.2% trae temporada/episodio en el titulo) |
-| `reportes/15-validacion-categorias-v17/README.md` | ¿la contentCategory declarada esta bien? (correctitud: 15% de las filas evaluables del consolidado contradicen la evidencia IMDb/Wikidata o su propio genero, casi todo mapeos por defecto de Vidaa, PML, Equativ y METAX; el relleno baja a 6% pero `intra_titulo` propaga el `[IAB12]` de Vidaa al 48% de sus requests) y ¿se puede afinar? (completitud: el 79% de las filas del consolidado puede recibir una categoria IAB 2.2 con forma y/o genero; el relleno esta casi todo en nivel 1-2 y el 69% puede subir) |
+| `reportes/20-validacion-genero-series-v18/README.md` | **Vigente:** validacion de contentGenre y contentSeries sobre v10-a-v18 (consolidado y relleno), con glosario y etiquetas en lenguaje claro; cifras clave v17 vs v18 en el README |
+| `reportes/19-validacion-categorias-v18/README.md` | **Vigente:** validacion de contentCategory sobre v10-a-v18 (correctitud y completitud), mismo formato claro; cifras clave v17 vs v18 en el README |
+| `reportes/18-enriquecimiento-externo-v18/reporte-relleno-por-columna.md` | **Vigente:** el pipeline de relleno corrido sobre v10-a-v18: % antes/despues y origen del valor por columna |
+| `reportes/16-validacion-genero-series-v17/README.md` | (v10-a-v17) lo mismo para contentGenre (el 85% de lo evaluable coincide con IMDb/Wikidata y solo 2.7% contradice; el 22% de las filas puede recibir mas generos o uno mas preciso, p. ej. telenovela en 16k filas) y contentSeries (correctitud basica: 2.4% de las series declaradas son peliculas segun IMDb; completitud: 10% del consolidado es serie sin nombre y se le puede proponer uno, 4.2% trae temporada/episodio en el titulo) |
+| `reportes/15-validacion-categorias-v17/README.md` | (v10-a-v17) ¿la contentCategory declarada esta bien? (correctitud: 15% de las filas evaluables del consolidado contradicen la evidencia IMDb/Wikidata o su propio genero, casi todo mapeos por defecto de Vidaa, PML, Equativ y METAX; el relleno baja a 6% pero `intra_titulo` propaga el `[IAB12]` de Vidaa al 48% de sus requests) y ¿se puede afinar? (completitud: el 79% de las filas del consolidado puede recibir una categoria IAB 2.2 con forma y/o genero; el relleno esta casi todo en nivel 1-2 y el 69% puede subir) |
 | `reportes/14-content-objects-vacios-v17/README.md` | ocho reportes (uno por content object) con la distribucion de las demas columnas en las filas donde ese content object viene vacio, MX/CO/CL, comparado con todo el dataset; el titulo vacio es el 7% de las filas pero el 29.5% de los requests |
 | `reportes/17-.../reporte-content-objects-detallado-v18-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v18 (1,071,840 filas; 13.0% de requests de llaves viejas; la escritura nueva ya es el 67% del corte). Tablas por pais con requests y eCPM ponderado de las filas llenas vs vacias por columna |
 | `reportes/17-.../reporte-publishers-v18-consolidado.md` | **Vigente:** tabla comparativa por publisher (top 12, con % filas y % requests) |
