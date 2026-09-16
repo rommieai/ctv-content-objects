@@ -196,7 +196,7 @@ for gi, g in enumerate(GRUPOS):
         if c not in d:
             o.append(f'<text x="{cx}" y="{cy}" font-size="11" text-anchor="middle" fill="{MUTED}">{ABR[c]}: sin vacías</text>'); continue
         r = d[c]; tot = r["gasto_lleno"] + r["gasto_vacio"]; frac = r["gasto_lleno"] / tot if tot else 1
-        resumen[g]["gasto"][c] = {"pct_gasto_no_vacias": round(frac * 100, 1), "gasto_no_vacias": round(r["gasto_lleno"], 2), "gasto_vacias": round(r["gasto_vacio"], 2)}
+        resumen[g]["gasto"][c] = {"pct_gasto_llenas": round(frac * 100, 1), "gasto_llenas": round(r["gasto_lleno"], 2), "gasto_vacias": round(r["gasto_vacio"], 2)}
         o.append(donut(cx, cy, frac, ABR[c], f"${r['e_lleno']:.2f} / ${r['e_vacio']:.2f}"))
 o.append("</svg>")
 open(os.path.join(OUT, "graficos-ecpm-vacio-pies.svg"), "w", encoding="utf-8").write("\n".join(o))
