@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1102" height="800" viewBox="0 0 1102 800" font-family="system-ui,-apple-system,Segoe UI,sans-serif">
 <rect width="1102" height="800" fill="#fcfcfb"/>
-<text x="16" y="24" font-size="17" font-weight="700" fill="#0b0b0b">Reparto del gasto (eCPM × requests / 1000) entre filas no vacías y vacías, por columna</text>
-<text x="16" y="44" font-size="12" fill="#52514e">El número del centro es la parte del gasto del grupo que cae en filas donde la columna trae dato útil. Debajo: eCPM ponderado no vacías / vacías.</text>
-<circle cx="24" cy="60" r="5" fill="#2a78d6"/><text x="34" y="64" font-size="11.5" fill="#0b0b0b">filas no vacías</text>
+<text x="16" y="24" font-size="17" font-weight="700" fill="#0b0b0b">Reparto del gasto (eCPM × requests / 1000) entre filas llenas y vacías, por columna</text>
+<text x="16" y="44" font-size="12" fill="#52514e">El número del centro es la parte del gasto del grupo que cae en filas donde la columna trae dato útil. Debajo: eCPM ponderado llenas / vacías.</text>
+<circle cx="24" cy="60" r="5" fill="#2a78d6"/><text x="34" y="64" font-size="11.5" fill="#0b0b0b">filas llenas</text>
 <circle cx="140" cy="60" r="5" fill="#eb6834"/><text x="150" y="64" font-size="11.5" fill="#0b0b0b">filas vacías</text>
 <text x="16" y="88" font-size="14" font-weight="600" fill="#0b0b0b">Total consolidado</text>
 <path d="M99.0,148 L99.0,104 A44,44 0 1,1 81.74,107.53 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>

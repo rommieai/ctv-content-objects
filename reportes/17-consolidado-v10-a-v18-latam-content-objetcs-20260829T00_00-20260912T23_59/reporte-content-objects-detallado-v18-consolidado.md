@@ -3,13 +3,13 @@
 **Fuente:** `inventory-consolidado-v10-a-v18.csv` — 1,071,840 filas únicas, 426,223,575,360 requests (métricas del corte v18, ventana 29 ago–12 sep 2026; v18 aportó 112,398 combinaciones nuevas). Solo v18: 512,000 filas, 370,603,937,600 requests.
 **Data completa:** `reporte-content-objects-detallado-v18-consolidado.json` (top-15 de valores por columna para cada país). Generado con `scripts/analizar.py`.
 
-*Nota: "no vacías" excluye centinelas — una fila cuenta como vacía tanto si la celda no trae valor como si trae `Not Available`, `Not Applicable`, `Unknown` o basura equivalente a vacío (`[-7]`, hash MD5 de cadena vacía, macros sin reemplazar).*
+*Nota: "llenas" excluye centinelas — una fila cuenta como vacía tanto si la celda no trae valor como si trae `Not Available`, `Not Applicable`, `Unknown` o basura equivalente a vacío (`[-7]`, hash MD5 de cadena vacía, macros sin reemplazar).*
 
-*Nota sobre las columnas de requests y eCPM en las tablas por país: "Requests no vacías" / "Requests vacías" es el total de requests de las filas del país donde esa columna trae dato útil / viene vacía. "eCPM pond." = Σ(eCPM × requests) / Σ requests de esas filas, sin contar las que tienen requests = 0 o eCPM = 0. Calculado con `scripts/requests_ecpm_por_vacio.py` → `reporte-requests-ecpm-por-vacio-v18.json`.*
+*Nota sobre las columnas de requests y eCPM en las tablas por país: "Requests llenas" / "Requests vacías" es el total de requests de las filas del país donde esa columna trae dato útil / viene vacía. "eCPM pond." = Σ(eCPM × requests) / Σ requests de esas filas, sin contar las que tienen requests = 0 o eCPM = 0. Calculado con `scripts/requests_ecpm_por_vacio.py` → `reporte-requests-ecpm-por-vacio-v18.json`.*
 
 *Nota sobre `md5-vacío`: en `contentSeries` algunos vendedores mandan un hash MD5 en vez del nombre de la serie. El valor `d41d8cd98f00b204e9800998ecf8427e` es el MD5 de la cadena vacía, es decir, el vendedor hasheó un texto en blanco; se cuenta como vacío.*
 
-## Comparativo de % de filas no vacías por columna
+## Comparativo de % de filas llenas por columna
 
 Entre paréntesis, el valor del consolidado anterior (v10 a v17) cuando el cambio supera un punto.
 
@@ -44,14 +44,14 @@ eCPM: 82.5% de filas en cero · media no-cero 4.53 · ponderado 4.04
 
 **Campos de app / vendedor:**
 
-| Columna | % de filas no vacías | Top 3 referencias (% filas del total) | Requests no vacías | eCPM pond. no vacías | Requests vacías | eCPM pond. vacías |
+| Columna | % de filas llenas | Top 3 referencias (% filas del total) | Requests llenas | eCPM pond. llenas | Requests vacías | eCPM pond. vacías |
 |---|---:|---|---:|---:|---:|---:|
 | Publisher | 100% | OTTera 20.6%, iion 19.4%, TCL Springserve 12.4% | 426,223,575,360 | $4.04 | 0 | — |
 | App Name | 93.7% | MovieArk 34.6%, Live TV 22.8%, TCL CHANNEL 11.6% | 391,904,094,240 | $4.18 | 34,319,481,120 | $2.69 |
 
 **Content objects:**
 
-| Columna | % de filas no vacías | Top 3 referencias (% filas del total) | Requests no vacías | eCPM pond. no vacías | Requests vacías | eCPM pond. vacías |
+| Columna | % de filas llenas | Top 3 referencias (% filas del total) | Requests llenas | eCPM pond. llenas | Requests vacías | eCPM pond. vacías |
 |---|---:|---|---:|---:|---:|---:|
 | contentIsTitlePresent | 100% | true 93.1%, false 6.9% | 426,223,575,360 | $4.04 | 0 | — |
 | contentGenre | 92.4% | Drama 9.2%, *N/A 7.5%*, drama 6.0% | 360,144,181,200 | $3.96 | 66,079,394,160 | $4.41 |
@@ -69,14 +69,14 @@ eCPM: 80.0% de filas en cero · media no-cero 2.06 · ponderado 3.20
 
 **Campos de app / vendedor:**
 
-| Columna | % de filas no vacías | Top 3 referencias (% filas del país) | Requests no vacías | eCPM pond. no vacías | Requests vacías | eCPM pond. vacías |
+| Columna | % de filas llenas | Top 3 referencias (% filas del país) | Requests llenas | eCPM pond. llenas | Requests vacías | eCPM pond. vacías |
 |---|---:|---|---:|---:|---:|---:|
 | Publisher | 100% | iion 17.5%, OTTera 13.3%, TCL Springserve 12.1% | 251,776,068,880 | $3.20 | 0 | — |
 | App Name | 87.4% | MovieArk 32.3%, Live TV 21.6%, *N/A 12.6%* | 223,200,927,200 | $3.33 | 28,575,141,680 | $2.26 |
 
 **Content objects:**
 
-| Columna | % de filas no vacías | Top 3 referencias (% filas del país) | Requests no vacías | eCPM pond. no vacías | Requests vacías | eCPM pond. vacías |
+| Columna | % de filas llenas | Top 3 referencias (% filas del país) | Requests llenas | eCPM pond. llenas | Requests vacías | eCPM pond. vacías |
 |---|---:|---|---:|---:|---:|---:|
 | contentIsTitlePresent | 100% | true 87.3%, false 12.7% | 251,776,068,880 | $3.20 | 0 | — |
 | contentGenre | 91.2% | *N/A 8.8%*, Drama 8.7%, drama 6.5% | 216,354,524,800 | $3.16 | 35,421,544,080 | $3.43 |
@@ -94,14 +94,14 @@ eCPM: 86.4% de filas en cero · media no-cero 4.25 · ponderado 5.03
 
 **Campos de app / vendedor:**
 
-| Columna | % de filas no vacías | Top 3 referencias (% filas del país) | Requests no vacías | eCPM pond. no vacías | Requests vacías | eCPM pond. vacías |
+| Columna | % de filas llenas | Top 3 referencias (% filas del país) | Requests llenas | eCPM pond. llenas | Requests vacías | eCPM pond. vacías |
 |---|---:|---|---:|---:|---:|---:|
 | Publisher | 100% | iion 32.8%, OTTera 17.8%, TCL APAC 11.5% | 31,032,732,560 | $5.03 | 0 | — |
 | App Name | 97.4% | MovieArk 37.8%, Live TV 30.8%, TCL CHANNEL 10.6% | 29,995,251,680 | $4.91 | 1,037,480,880 | $6.36 |
 
 **Content objects:**
 
-| Columna | % de filas no vacías | Top 3 referencias (% filas del país) | Requests no vacías | eCPM pond. no vacías | Requests vacías | eCPM pond. vacías |
+| Columna | % de filas llenas | Top 3 referencias (% filas del país) | Requests llenas | eCPM pond. llenas | Requests vacías | eCPM pond. vacías |
 |---|---:|---|---:|---:|---:|---:|
 | contentIsTitlePresent | 100% | true 95.5%, false 4.5% | 31,032,732,560 | $5.03 | 0 | — |
 | contentGenre | 92.0% | Drama 11.0%, *N/A 7.9%*, drama 5.4% | 26,813,145,360 | $5.45 | 4,219,587,200 | $2.99 |
@@ -119,14 +119,14 @@ eCPM: 78.1% de filas en cero · media no-cero 6.46 · ponderado 6.11
 
 **Campos de app / vendedor:**
 
-| Columna | % de filas no vacías | Top 3 referencias (% filas del país) | Requests no vacías | eCPM pond. no vacías | Requests vacías | eCPM pond. vacías |
+| Columna | % de filas llenas | Top 3 referencias (% filas del país) | Requests llenas | eCPM pond. llenas | Requests vacías | eCPM pond. vacías |
 |---|---:|---|---:|---:|---:|---:|
 | Publisher | 100% | iion 25.3%, TCL Springserve 17.9%, OTTera 15.6% | 24,304,976,800 | $6.11 | 0 | — |
 | App Name | 95.2% | MovieArk 46.8%, Live TV 31.7%, *N/A 4.8%* | 23,415,349,840 | $6.12 | 889,626,960 | $6.00 |
 
 **Content objects:**
 
-| Columna | % de filas no vacías | Top 3 referencias (% filas del país) | Requests no vacías | eCPM pond. no vacías | Requests vacías | eCPM pond. vacías |
+| Columna | % de filas llenas | Top 3 referencias (% filas del país) | Requests llenas | eCPM pond. llenas | Requests vacías | eCPM pond. vacías |
 |---|---:|---|---:|---:|---:|---:|
 | contentIsTitlePresent | 100% | true 97.1%, false 2.9% | 24,304,976,800 | $6.11 | 0 | — |
 | contentGenre | 92.5% | Drama 10.1%, *N/A 7.5%*, drama 4.8% | 21,297,972,480 | $5.85 | 3,007,004,320 | $7.95 |

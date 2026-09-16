@@ -19,7 +19,7 @@ scripts/                          codigo que genera los consolidados y los JSON
   generar_visual_paises.py        SVG con las tablas de paises lado a lado
   requests_ecpm_por_vacio.py      por pais y columna: requests y eCPM ponderado de las filas
                                   con dato util vs vacias (tablas por pais del detallado)
-  generar_graficos_ecpm_vacio.py  SVG (sin dependencias): scatter eCPM no vacias vs vacias por
+  generar_graficos_ecpm_vacio.py  SVG (sin dependencias): scatter eCPM llenas vs vacias por
                                   columna con recta OLS y R2, scatter completitud vs eCPM, y
                                   pies del reparto del gasto; a partir del JSON anterior
   generar_heatmap_completitud_ecpm.py  heatmap fila a fila (SVG): campos llenos (0-8) vs eCPM
@@ -194,7 +194,7 @@ quedan como NULL en BigQuery.
 | `reportes/17-.../reporte-publishers-v18-consolidado.md` | **Vigente:** tabla comparativa por publisher (top 12, con % filas y % requests) |
 | `reportes/17-.../reporte-normalizacion-y-ecpm-v18-consolidado.md` | **Vigente:** genero/rating normalizados + inventario monetizado (53.3% del trafico; eCPM 4.04), misma estructura que v17 |
 | `reportes/17-.../reporte-genero-titulo-paises.md` | **Vigente:** genero por pais + cuantas filas traen un genero/titulo de verdad (tablas) |
-| `reportes/17-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** graficos SVG del eCPM de filas no vacias vs vacias por columna (scatter con OLS y R2, completitud vs eCPM, pies del reparto del gasto, heatmap fila a fila de campos llenos vs eCPM) |
+| `reportes/17-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** graficos SVG del eCPM de filas llenas vs vacias por columna (scatter con OLS y R2, completitud vs eCPM, pies del reparto del gasto, heatmap fila a fila de campos llenos vs eCPM) |
 | `reportes/12-.../reporte-content-objects-detallado-v17-consolidado.md` | (v10-a-v17) content objects por pais (MX/CO/CL) sobre el consolidado v10 a v17. La escritura nueva del reporte ya es el 54% del corte y viene mejor poblada (rating 60%, idioma 48% de sus filas); el consolidado por llave ya no deduplica (959k filas, 10.6% de requests de llaves viejas): leer trafico y precio sobre el corte |
 | `reportes/12-.../reporte-publishers-v17-consolidado.md` | (v10-a-v17) desglose por publisher (top 12; Roku supera a OTTera como #1 en requests, iion #3, TV Azteca se apaga otra vez, Select Plus vuelve a 12.6 de vitrina) |
 | `reportes/12-.../reporte-normalizacion-y-ecpm-v17-consolidado.md` | (v10-a-v17) genero/rating normalizados + inventario monetizado (50.7% del trafico, de vuelta a la banda de 51; eCPM 4.04; Colombia 5.85 quinto corte subiendo; Chile rebota a 6.10; Argentina lidera con 6.25; documental 5.88 al frente del yield con volumen) |

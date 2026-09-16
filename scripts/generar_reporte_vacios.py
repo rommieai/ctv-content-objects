@@ -3,7 +3,7 @@
 
 Toma el JSON de analizar.py corrido con --solo-vacios-en X (subconjunto de filas donde
 X no trae dato util) y el JSON del analisis completo (referencia), y arma un reporte con
-la misma estructura del detallado por pais: comparativo de % de filas no vacias de las
+la misma estructura del detallado por pais: comparativo de % de filas llenas de las
 DEMAS columnas (subconjunto vs dataset completo), visual, y secciones por pais con
 Publisher / App Name / content objects. Las conclusiones narradas se agregan aparte
 (--notas archivo.md: se inserta al final tal cual).
@@ -100,7 +100,7 @@ def main():
     L.append("")
 
     # comparativo
-    L.append("## Comparativo de % de filas no vacías de las demás columnas\n")
+    L.append("## Comparativo de % de filas llenas de las demás columnas\n")
     L.append(f"Porcentaje de filas del subconjunto con dato útil en cada una de las otras columnas. Entre paréntesis, el mismo porcentaje en **todo el dataset** del país: la diferencia dice si el vacío de `{col}` viene acompañado de otros vacíos o no.\n")
     L.append("**Campos de app / vendedor:**\n")
     L.append("| Columna | " + " | ".join(ETIQ.get(p, p) for p in paises) + " |")
@@ -123,7 +123,7 @@ def main():
     L.append("\n*En negrilla, las columnas que pierden 10 puntos o más de completitud dentro del subconjunto respecto a todo el dataset.*\n")
 
     if args.visual:
-        L.append("Versión visual con los tres países lado a lado (semáforo por % de filas no vacías dentro del subconjunto):\n")
+        L.append("Versión visual con los tres países lado a lado (semáforo por % de filas llenas dentro del subconjunto):\n")
         L.append(f"![Tablas de los tres países lado a lado]({args.visual.split('/')[-1]})\n")
         L.append("*(Generada con `scripts/generar_visual_paises.py` a partir del JSON de este reporte.)*\n")
 
@@ -135,13 +135,13 @@ def main():
         L.append(f"eCPM del subconjunto: {g['ecpm']['pct_filas_cero']}% de filas en cero (todo el país: {rg['ecpm']['pct_filas_cero']}%) · "
                  f"media no-cero {g['ecpm']['media_no_cero']} · **ponderado {g['ecpm']['ponderado_requests']}** (todo el país: {rg['ecpm']['ponderado_requests']})\n")
         L.append("**Campos de app / vendedor:**\n")
-        L.append("| Columna | % de filas no vacías | Top 3 referencias (% filas del subconjunto) |")
+        L.append("| Columna | % de filas llenas | Top 3 referencias (% filas del subconjunto) |")
         L.append("|---|---:|---|")
         for c in otras_app:
             x = g["columnas"][c]
             L.append(f"| {c} | {pct1(x['fill_rate_pct'])} | {top3(x['top'])} |")
         L.append("\n**Content objects:**\n")
-        L.append("| Columna | % de filas no vacías | Top 3 referencias (% filas del subconjunto) |")
+        L.append("| Columna | % de filas llenas | Top 3 referencias (% filas del subconjunto) |")
         L.append("|---|---:|---|")
         for c in otras_co:
             x = g["columnas"][c]

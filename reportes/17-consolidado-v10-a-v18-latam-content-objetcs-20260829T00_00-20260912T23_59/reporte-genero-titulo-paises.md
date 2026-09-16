@@ -3,7 +3,7 @@
 **Fuente:** `inventory-consolidado-v10-a-v18.csv` (1,071,840 filas; métricas de v18).
 **Generado con:** `scripts/analizar_genero_titulo_paises.py` → `reporte-genero-titulo-paises.json`.
 
-Dos números por columna: **% de filas no vacías** (la celda trae algo) y **% de filas con dato de verdad** (lo que trae sirve: un género reconocible o el título de un programa, no un placeholder ni basura técnica).
+Dos números por columna: **% de filas llenas** (la celda trae algo) y **% de filas con dato de verdad** (lo que trae sirve: un género reconocible o el título de un programa, no un placeholder ni basura técnica).
 
 ---
 
@@ -11,11 +11,11 @@ Dos números por columna: **% de filas no vacías** (la celda trae algo) y **% d
 
 ### México
 
-| País | % de filas | Total filas | % filas no vacías | # filas no vacías |
+| País | % de filas | Total filas | % filas llenas | # filas llenas |
 |---|---:|---:|---:|---:|
 | México | 30.7% | 328,845 | 91.2% | 299,994 |
 
-| Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
+| Género | Distribución vs # filas llenas | eCPM pond. (>0) |
 |---|---:|---:|
 | drama | 25.7% | $2.58 |
 | comedia | 10.3% | $2.87 |
@@ -30,11 +30,11 @@ Dos números por columna: **% de filas no vacías** (la celda trae algo) y **% d
 
 ### Colombia
 
-| País | % de filas | Total filas | % filas no vacías | # filas no vacías |
+| País | % de filas | Total filas | % filas llenas | # filas llenas |
 |---|---:|---:|---:|---:|
 | Colombia | 10.7% | 114,223 | 92.0% | 105,126 |
 
-| Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
+| Género | Distribución vs # filas llenas | eCPM pond. (>0) |
 |---|---:|---:|
 | drama | 30.5% | $5.03 |
 | terror | 12.1% | $6.50 |
@@ -49,11 +49,11 @@ Dos números por columna: **% de filas no vacías** (la celda trae algo) y **% d
 
 ### Chile
 
-| País | % de filas | Total filas | % filas no vacías | # filas no vacías |
+| País | % de filas | Total filas | % filas llenas | # filas llenas |
 |---|---:|---:|---:|---:|
 | Chile | 11.5% | 122,923 | 92.5% | 113,653 |
 
-| Género | Distribución vs # filas no vacías | eCPM pond. (>0) |
+| Género | Distribución vs # filas llenas | eCPM pond. (>0) |
 |---|---:|---:|
 | drama | 29.7% | $5.83 |
 | terror | 12.4% | $5.89 |
@@ -68,7 +68,7 @@ Dos números por columna: **% de filas no vacías** (la celda trae algo) y **% d
 
 ## Auditoría de contentGenre: lo "lleno" que no es un género
 
-La tabla parte de las filas no vacías y les resta lo que trae texto pero no es un género usable tal cual. Significado de cada descuento:
+La tabla parte de las filas llenas y les resta lo que trae texto pero no es un género usable tal cual. Significado de cada descuento:
 
 - **prefijo_tecnico** — etiqueta interna de sistema en vez del género limpio: `genre_drama`, `genre_action`.
 - **genero_en_formato_sucio** — es un género, pero mal escrito o mal codificado: `soapdrama`, `drama%2cromance`, `western drama`.
@@ -79,7 +79,7 @@ La tabla parte de las filas no vacías y les resta lo que trae texto pero no es 
 
 | Categoría (% de filas del país) | México | Colombia | Chile |
 |---|---:|---:|---:|
-| Filas no vacías | 91.2% | 92.0% | 92.5% |
+| Filas llenas | 91.2% | 92.0% | 92.5% |
 | − prefijo_tecnico (`genre_*`) | 2.6% | — | — |
 | − genero_en_formato_sucio | 3.9% | 0.4% | 1.6% |
 | − tipo_de_contenido | 0.9% | 1.0% | 0.7% |
@@ -94,7 +94,7 @@ La tabla parte de las filas no vacías y les resta lo que trae texto pero no es 
 
 # PARTE B — contentTitle: de "la celda trae algo" a "trae un título de verdad"
 
-Las tablas parten de las filas no vacías y les restan lo que trae texto pero no es el título del programa. Significado de cada descuento:
+Las tablas parten de las filas llenas y les restan lo que trae texto pero no es el título del programa. Significado de cada descuento:
 
 - **placeholder** — palabra de relleno genérica (`roku`, `epg`, `vod`) que describe la plataforma o el tipo de contenido, no el programa.
 - **slug_tecnico** — nombre interno de archivo o de sistema en vez del título comercial: `devils prey_trailer`.
@@ -108,7 +108,7 @@ Las tablas parten de las filas no vacías y les restan lo que trae texto pero no
 
 | Métrica | % filas |
 |---|---:|
-| Filas no vacías | 87.3% |
+| Filas llenas | 87.3% |
 | − placeholder (`roku`/`epg`/`vod`) | 0.4% |
 | − slug_tecnico (`*_trailer`) | 3.0% |
 | − canal_no_programa | 1.6% |
@@ -121,7 +121,7 @@ Las tablas parten de las filas no vacías y les restan lo que trae texto pero no
 
 | Métrica | % filas |
 |---|---:|
-| Filas no vacías | 95.5% |
+| Filas llenas | 95.5% |
 | − slug_tecnico (`*_trailer`) | 5.1% |
 | − canal_no_programa | 0.1% |
 | − macro_sin_reemplazar | 0.2% |
@@ -132,7 +132,7 @@ Las tablas parten de las filas no vacías y les restan lo que trae texto pero no
 
 | Métrica | % filas |
 |---|---:|
-| Filas no vacías | 97.1% |
+| Filas llenas | 97.1% |
 | − slug_tecnico (`*_trailer`) | 4.8% |
 | − canal_no_programa | 0.1% |
 | − macro_sin_reemplazar | 0.1% |
@@ -142,7 +142,7 @@ Las tablas parten de las filas no vacías y les restan lo que trae texto pero no
 
 **Tráfico (requests) con título de verdad:**
 
-| País | % requests no vacíos | % requests con título real |
+| País | % requests llenos | % requests con título real |
 |---|---:|---:|
 | México | 61.0% | 44.9% |
 | Colombia | 93.0% | 85.8% |

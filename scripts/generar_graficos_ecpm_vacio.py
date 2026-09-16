@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 """Graficos (SVG, sin dependencias) del eCPM ponderado de las filas con dato util
-("no vacias") vs las filas vacias, por columna y por grupo (total y paises), a partir
+("llenas") vs las filas vacias, por columna y por grupo (total y paises), a partir
 del JSON de requests_ecpm_por_vacio.py.
 
 Salidas (en la carpeta indicada):
-  graficos-ecpm-vacio-scatter.svg       por grupo: eCPM no vacias (x) vs eCPM vacias (y),
+  graficos-ecpm-vacio-scatter.svg       por grupo: eCPM llenas (x) vs eCPM vacias (y),
                                         un punto por columna, diagonal y=x, recta OLS y R2
-  graficos-ecpm-vacio-scatter-fill.svg  por grupo: % filas no vacias (x) vs eCPM (y), dos
-                                        series (no vacias / vacias), recta OLS y R2 por serie
+  graficos-ecpm-vacio-scatter-fill.svg  por grupo: % filas llenas (x) vs eCPM (y), dos
+                                        series (llenas / vacias), recta OLS y R2 por serie
   graficos-ecpm-vacio-pies.svg          por grupo y columna: reparto del gasto
-                                        (eCPM x requests / 1000) entre filas no vacias y vacias
+                                        (eCPM x requests / 1000) entre filas llenas y vacias
   graficos-ecpm-vacio-r2.json           los R2, pendientes y datos usados
 
 Uso:
@@ -135,7 +135,7 @@ def svg_grid(paneles, cols=2, titulo="", sub=""):
     return "\n".join(o)
 
 resumen = {}
-# ---------- 1. scatter eCPM no vacias vs vacias ----------
+# ---------- 1. scatter eCPM llenas vs vacias ----------
 paneles = []
 for g in GRUPOS:
     d = datos(g); pts = [(r["e_lleno"], r["e_vacio"], ABR[r["col"]]) for r in d]
@@ -143,23 +143,23 @@ for g in GRUPOS:
     arriba = sum(1 for p in pts if p[1] > p[0])
     resumen.setdefault(g, {})["scatter_lleno_vs_vacio"] = {"ols": r, "columnas_vacio_paga_mas": arriba, "columnas": len(pts)}
     paneles.append(panel_scatter(0, 0, TITULO[g], [{"color": C_LLENO, "nombre": "columnas", "puntos": pts, "ols": r}],
-                                 "eCPM pond. de las filas NO vacías ($)", "eCPM pond. de las filas vacías ($)", diagonal=True,
+                                 "eCPM pond. de las filas LLENAS ($)", "eCPM pond. de las filas vacías ($)", diagonal=True,
                                  notas=[f"{arriba} de {len(pts)} columnas pagan más vacías"]))
 open(os.path.join(OUT, "graficos-ecpm-vacio-scatter.svg"), "w", encoding="utf-8").write(
-    svg_grid(paneles, 2, "eCPM ponderado: filas no vacías vs filas vacías, por columna",
+    svg_grid(paneles, 2, "eCPM ponderado: filas llenas vs filas vacías, por columna",
              "Un punto por content object. Encima de la diagonal: la columna paga más cuando viene vacía. eCPM ponderado por requests, sin filas con eCPM = 0."))
 
-# ---------- 2. scatter % no vacias vs eCPM (dos series) ----------
+# ---------- 2. scatter % llenas vs eCPM (dos series) ----------
 paneles = []
 for g in GRUPOS:
     d = datos(g)
     p1 = [(r["fill"], r["e_lleno"], ABR[r["col"]]) for r in d]; p2 = [(r["fill"], r["e_vacio"], "") for r in d]
     r1 = ols([p[0] for p in p1], [p[1] for p in p1]); r2 = ols([p[0] for p in p2], [p[1] for p in p2])
-    resumen[g]["scatter_fill_vs_ecpm"] = {"no_vacias": r1, "vacias": r2}
+    resumen[g]["scatter_fill_vs_ecpm"] = {"llenas": r1, "vacias": r2}
     paneles.append(panel_scatter(0, 0, TITULO[g],
-                                 [{"color": C_LLENO, "nombre": "eCPM filas no vacías", "puntos": p1, "ols": r1},
+                                 [{"color": C_LLENO, "nombre": "eCPM filas llenas", "puntos": p1, "ols": r1},
                                   {"color": C_VACIO, "nombre": "eCPM filas vacías", "puntos": p2, "ols": r2}],
-                                 "% de filas no vacías de la columna", "eCPM ponderado ($)"))
+                                 "% de filas llenas de la columna", "eCPM ponderado ($)"))
 open(os.path.join(OUT, "graficos-ecpm-vacio-scatter-fill.svg"), "w", encoding="utf-8").write(
     svg_grid(paneles, 2, "¿La completitud de la columna se relaciona con el precio?",
              "x = % de filas del grupo donde la columna trae dato útil; y = eCPM ponderado de esas filas (azul) y de las vacías (naranja). Recta OLS y R² por serie."))
@@ -183,9 +183,9 @@ def donut(cx, cy, frac, label, sub):
 
 top = 70; rowh = CH + 30; w = 40 + len(COLS) * CW; h = top + len(GRUPOS) * rowh + 10
 o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" {FONT}>', f'<rect width="{w}" height="{h}" fill="{SURF}"/>']
-o.append(f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Reparto del gasto (eCPM × requests / 1000) entre filas no vacías y vacías, por columna</text>')
-o.append(f'<text x="16" y="44" font-size="12" fill="{INK2}">El número del centro es la parte del gasto del grupo que cae en filas donde la columna trae dato útil. Debajo: eCPM ponderado no vacías / vacías.</text>')
-o.append(f'<circle cx="24" cy="60" r="5" fill="{C_LLENO}"/><text x="34" y="64" font-size="11.5" fill="{INK}">filas no vacías</text>')
+o.append(f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Reparto del gasto (eCPM × requests / 1000) entre filas llenas y vacías, por columna</text>')
+o.append(f'<text x="16" y="44" font-size="12" fill="{INK2}">El número del centro es la parte del gasto del grupo que cae en filas donde la columna trae dato útil. Debajo: eCPM ponderado llenas / vacías.</text>')
+o.append(f'<circle cx="24" cy="60" r="5" fill="{C_LLENO}"/><text x="34" y="64" font-size="11.5" fill="{INK}">filas llenas</text>')
 o.append(f'<circle cx="140" cy="60" r="5" fill="{C_VACIO}"/><text x="150" y="64" font-size="11.5" fill="{INK}">filas vacías</text>')
 for gi, g in enumerate(GRUPOS):
     y = top + gi * rowh
@@ -204,5 +204,5 @@ open(os.path.join(OUT, "graficos-ecpm-vacio-pies.svg"), "w", encoding="utf-8").w
 json.dump({"fuente": SRC, "grupos": resumen}, open(os.path.join(OUT, "graficos-ecpm-vacio-r2.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 for g in GRUPOS:
     s = resumen[g]
-    print(f"{TITULO[g]:18} lleno-vs-vacio R2={s['scatter_lleno_vs_vacio']['ols']['r2']:.3f} ({s['scatter_lleno_vs_vacio']['columnas_vacio_paga_mas']}/{s['scatter_lleno_vs_vacio']['columnas']} vacio paga mas) | fill-vs-eCPM R2 no vacias={s['scatter_fill_vs_ecpm']['no_vacias']['r2']:.3f} vacias={s['scatter_fill_vs_ecpm']['vacias']['r2']:.3f}")
+    print(f"{TITULO[g]:18} lleno-vs-vacio R2={s['scatter_lleno_vs_vacio']['ols']['r2']:.3f} ({s['scatter_lleno_vs_vacio']['columnas_vacio_paga_mas']}/{s['scatter_lleno_vs_vacio']['columnas']} vacio paga mas) | fill-vs-eCPM R2 llenas={s['scatter_fill_vs_ecpm']['llenas']['r2']:.3f} vacias={s['scatter_fill_vs_ecpm']['vacias']['r2']:.3f}")
 print("->", OUT)

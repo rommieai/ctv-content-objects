@@ -6,7 +6,7 @@
 
 ## Tabla comparativa
 
-| Publisher | % filas | % requests | % filas eCPM=0 | eCPM pond. | % no vacías: category | % no vacías: language | % no vacías: title | % no vacías: length |
+| Publisher | % filas | % requests | % filas eCPM=0 | eCPM pond. | % llenas: category | % llenas: language | % llenas: title | % llenas: length |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
 | iion Pty Ltd | 19.4% | 15.9% | 88.9% | $4.72 | 0.6% | 3.3% | 99.8% | 2.9% |
 | Roku - oRTB | 1.4% | 14.8% | 98.2% | $5.67 | 98.1% | 85.7% | 27.5% | 80.8% |
@@ -21,6 +21,6 @@
 | Televisa Univision via OB | 0.5% | 3.1% | 48.0% | $0.97 | 0.0% | 94.0% | 0.0% | 0.0% |
 | Vidaa | 1.8% | 3.0% | 70.5% | $1.48 | 86.3% | 91.3% | 79.1% | 2.3% |
 
-*"% filas" y "% requests" son la participación del publisher sobre el total del dataset (Publisher viene en el 100% de las filas). Las columnas "% no vacías" son sobre las filas del propio publisher. El orden sigue el peso en requests. Data completa en el JSON.*
+*"% filas" y "% requests" son la participación del publisher sobre el total del dataset (Publisher viene en el 100% de las filas). Las columnas "% llenas" son sobre las filas del propio publisher. El orden sigue el peso en requests. Data completa en el JSON.*
 
 *Nota sobre `contentSeries` de Roku: viene como hash MD5 en vez del nombre de la serie; el 53.5% de sus filas trae `d41d8cd98f00b204e9800998ecf8427e`, el MD5 de la cadena vacía, que se cuenta como vacío.*

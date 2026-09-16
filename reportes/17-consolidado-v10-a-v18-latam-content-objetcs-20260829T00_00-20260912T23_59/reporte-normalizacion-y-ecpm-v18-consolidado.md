@@ -13,7 +13,7 @@ eCPM ponderado global (>0): 4.04 (v18 solo: 4.02). Tráfico monetizado (eCPM > 0
 
 86.2% de filas con al menos un género canónico; 261,228 filas multi-género. Distribución multi-etiqueta, % sobre las filas con género útil:
 
-| Género | % filas no vacías | eCPM pond. (>0) | % monetizado |
+| Género | % filas llenas | eCPM pond. (>0) | % monetizado |
 |---|---:|---:|---:|
 | drama | 31.0% | $3.51 | 48.2% |
 | terror | 12.3% | $3.82 | 35.0% |
@@ -38,7 +38,7 @@ eCPM ponderado global (>0): 4.04 (v18 solo: 4.02). Tráfico monetizado (eCPM > 0
 
 # PARTE B — Rating en franjas de edad
 
-| Franja | % filas | % filas no vacías | eCPM pond. (>0) | % monetizado |
+| Franja | % filas | % filas llenas | eCPM pond. (>0) | % monetizado |
 |---|---:|---:|---:|---:|
 | todos | 7.0% | 9.3% | $4.63 | 70.5% |
 | 7+ | 0.4% | 0.6% | $5.16 | 32.7% |
@@ -50,7 +50,7 @@ eCPM ponderado global (>0): 4.04 (v18 solo: 4.02). Tráfico monetizado (eCPM > 0
 | sin dato | 25.1% | — | $3.49 | 55.2% |
 | no mapeado | 1.7% | 2.3% | $2.68 | 33.2% |
 
-*"% filas" incluye la fila vacía ("sin dato"); "% filas no vacías" renormaliza sobre el 74.9% restante. "sin clasificar" (`nr`, `Unrated`) y "no mapeado" (`dv-t`, `mpaa_r`, `movie-pg-13`, `pg 13`, `dv-g`) sí son dato presente. Equivalencias de la escala nueva: `All Ages` = todos, `Teen` = 10+, `Teen Plus` = 13-15, `Adults` = 18+.*
+*"% filas" incluye la fila vacía ("sin dato"); "% filas llenas" renormaliza sobre el 74.9% restante. "sin clasificar" (`nr`, `Unrated`) y "no mapeado" (`dv-t`, `mpaa_r`, `movie-pg-13`, `pg 13`, `dv-g`) sí son dato presente. Equivalencias de la escala nueva: `All Ages` = todos, `Teen` = 10+, `Teen Plus` = 13-15, `Adults` = 18+.*
 
 # PARTE C — El inventario que monetiza (eCPM > 0)
 
