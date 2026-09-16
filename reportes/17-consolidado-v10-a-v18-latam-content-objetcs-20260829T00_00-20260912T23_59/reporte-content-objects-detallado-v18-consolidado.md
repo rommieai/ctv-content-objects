@@ -9,35 +9,6 @@
 
 *Nota sobre `md5-vacío`: en `contentSeries` algunos vendedores mandan un hash MD5 en vez del nombre de la serie. El valor `d41d8cd98f00b204e9800998ecf8427e` es el MD5 de la cadena vacía, es decir, el vendedor hasheó un texto en blanco; se cuenta como vacío.*
 
-## Comparativo de % de filas llenas por columna
-
-Entre paréntesis, el valor del consolidado anterior (v10 a v17) cuando el cambio supera un punto.
-
-**Campos de app / vendedor:**
-
-| Columna | México | Colombia | Chile |
-|---|---:|---:|---:|
-| Publisher | 100% | 100% | 100% |
-| App Name | 87.4% | 97.4% | 95.2% |
-
-**Content objects:**
-
-| Columna | México | Colombia | Chile |
-|---|---:|---:|---:|
-| contentIsTitlePresent | 100% | 100% | 100% |
-| contentGenre | 91.2% | 92.0% | 92.5% (94.6) |
-| contentTitle | 87.3% | 95.5% | 97.1% |
-| contentRating | 71.2% | 70.7% | 72.8% |
-| contentLanguage | 62.4% | 52.7% | 62.2% |
-| contentIsLiveStream | 25.1% | 26.7% | 18.2% |
-| contentCategory | 23.9% | 22.2% | 15.5% |
-| contentLength | 15.3% | 10.5% | 8.4% |
-| contentSeries | 6.6% | 6.5% | 5.8% |
-
-![Tablas de los tres países lado a lado](visual-tablas-paises.svg)
-
-*(Generada con `scripts/generar_visual_paises.py` a partir del JSON de este reporte. En contentGenre aparecen `Drama` y `drama` como valores separados: así vienen en la fuente.)*
-
 ## Total consolidado (todos los países) — 1,071,840 filas · 426,223,575,360 requests
 
 eCPM: 82.5% de filas en cero · media no-cero 4.53 · ponderado 4.04
