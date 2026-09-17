@@ -324,9 +324,49 @@ def main():
     L.append("**Límites:** sin título no hay nada que cruzar afuera: una fila vacía en contentTitle solo la puede completar el vendedor. Y el vacío pesa más en tráfico que en catálogo "
              f"({pct(100 - hr)} de los requests vs {pct(100 - hf)} de las filas): son pocas combinaciones con muchos requests.\n")
 
-    out = os.path.join(a.carpeta, f"reporte-completitud-content-objects-v{V}.md")
-    with open(out, "w", encoding="utf-8", newline="\n") as f:
+    # Version completa (contexto, fuentes, metodos, limites) -> recursos/
+    out_full = os.path.join(a.carpeta, "recursos", f"reporte-completitud-content-objects-v{V}-completo.md")
+    with open(out_full, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L).rstrip("\n") + "\n")
+    print(f"-> {out_full}")
+
+    # Version condensada: solo los bloques por columna (desde contentCategory), y de cada
+    # bloque solo las tablas con su titulo; las columnas sin tablas quedan en una linea.
+    C = [f"# Qué se puede completar de cada content object (consolidado v10 a v{V}) — solo tablas\n",
+         f"Contexto, fuentes, métodos y límites: `recursos/reporte-completitud-content-objects-v{V}-completo.md`.\n"]
+    ini = next(i for i, s in enumerate(L) if s.startswith("## contentCategory"))
+    bloque_actual, tiene_tabla = [], False
+
+    def cerrar():
+        if not bloque_actual:
+            return
+        if tiene_tabla:
+            C.extend(bloque_actual)
+        else:
+            C.append(bloque_actual[0])
+            C.append("No se rellena.\n")
+    for s in L[ini:]:
+        s = s.strip()   # algunos elementos traen saltos de linea al inicio o al final
+        if s.startswith("## "):
+            cerrar()
+            bloque_actual, tiene_tabla = [s + "\n"], False
+        elif s.startswith("|"):
+            bloque_actual.append(s)
+            tiene_tabla = True
+        elif s.startswith("**") and (s.endswith(":**") or s.endswith(":")):
+            bloque_actual.append("\n" + s + "\n")
+        elif s.startswith("**No se rellena.**"):
+            bloque_actual.append(s + "\n")
+            tiene_tabla = True   # el disclaimer se conserva tal cual
+        elif s == "" and bloque_actual and bloque_actual[-1].startswith("|"):
+            bloque_actual.append("")
+    cerrar()
+    out = os.path.join(a.carpeta, f"reporte-completitud-content-objects-v{V}.md")
+    txt = "\n".join(C)
+    while "\n\n\n" in txt:
+        txt = txt.replace("\n\n\n", "\n\n")
+    with open(out, "w", encoding="utf-8", newline="\n") as f:
+        f.write(txt.rstrip("\n") + "\n")
     print(f"-> {out}")
 
 

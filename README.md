@@ -77,8 +77,9 @@ reportes/
   21-consolidado-v10-a-v19/         la version vigente, tres reportes md: detallado por pais
                                   (MX/CO/CL) con requests y eCPM ponderado lleno/vacio por
                                   columna; graficas del eCPM lleno/vacio y heatmap; y "que se
-                                  puede completar de cada content object" (metodos y fuentes);
-                                  recursos/ trae los JSON, SVG y muestras CSV de la tanda
+                                  puede completar de cada content object" (solo tablas);
+                                  recursos/ trae los JSON, SVG, muestras CSV y la version
+                                  completa del reporte de completitud (metodos y fuentes)
 
 ejecutivo/                        resumenes en PDF para stakeholders
 ```
@@ -209,7 +210,7 @@ quedan como NULL en BigQuery.
 |---|---|
 | `reportes/21-.../reporte-content-objects-detallado-v19-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v19 (1,158,509 filas; v19 aporto 86,669 combinaciones nuevas). Tablas por pais con % de filas llenas, top 3 referencias y requests / eCPM ponderado de las filas llenas vs vacias por columna |
 | `reportes/21-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** graficos SVG del eCPM de filas llenas vs vacias por columna (scatter con OLS y R2, completitud vs eCPM, pies del reparto del gasto, heatmap fila a fila de campos llenos vs eCPM) sobre v10-a-v19 |
-| `reportes/21-.../reporte-completitud-content-objects-v19.md` | **Vigente:** que se puede completar de cada content object, con metodos (intra-titulo, default por app, IMDb, Wikidata, derivados, semantica de app) y fuentes (licencias y limites); por columna: cuanto viene lleno hoy, cuanto llena el pipeline y de donde, que mas se puede afinar segun la validacion contra IMDb/Wikidata/IAB y que tan confiable es lo declarado y lo llenado |
+| `reportes/21-.../reporte-completitud-content-objects-v19.md` | **Vigente:** que se puede completar de cada content object, solo tablas por columna: origen del valor tras el relleno, que mas se puede afinar segun la validacion contra IMDb/Wikidata/IAB y que tan confiable es lo declarado y lo llenado. La version completa (contexto, fuentes con licencias y limites, metodos con candados) esta en `recursos/reporte-completitud-content-objects-v19-completo.md` |
 | `reportes/20-validacion-genero-series-v18/README.md` | (v10-a-v18) validacion de contentGenre y contentSeries sobre v10-a-v18 (consolidado y relleno), con glosario y etiquetas en lenguaje claro; cifras clave v17 vs v18 en el README |
 | `reportes/19-validacion-categorias-v18/README.md` | (v10-a-v18) validacion de contentCategory sobre v10-a-v18 (correctitud y completitud), mismo formato claro; cifras clave v17 vs v18 en el README |
 | `reportes/18-enriquecimiento-externo-v18/reporte-relleno-por-columna.md` | (v10-a-v18) el pipeline de relleno corrido sobre v10-a-v18: % antes/despues y origen del valor por columna |
