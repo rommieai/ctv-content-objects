@@ -175,14 +175,14 @@ def panel_fill(titulo, puntos, r, total_filas):
     for tck in range(0, 101, 20):
         o.append(f'<line x1="{sx(tck):.1f}" y1="{MT}" x2="{sx(tck):.1f}" y2="{MT+ph}" stroke="{GRID}" stroke-width="1"/>')
         o.append(f'<text x="{sx(tck):.1f}" y="{MT+ph+15}" font-size="11" text-anchor="middle" fill="{MUTED}">{tck}%</text>')
-        o.append(f'<text x="{sx(tck):.1f}" y="{MT+ph+28}" font-size="9.5" text-anchor="middle" fill="{MUTED}">{round(total_filas * tck / 100):,} filas</text>')
+        o.append(f'<text x="{sx(tck):.1f}" y="{MT+ph+28}" font-size="9.5" text-anchor="middle" fill="{MUTED}">{round(total_filas * tck / 100):,}</text>')
     for tck in ticks(lo_y, hi_y):
         if tck > hi_y: break
         o.append(f'<line x1="{ML}" y1="{sy(tck):.1f}" x2="{ML+pw}" y2="{sy(tck):.1f}" stroke="{GRID}" stroke-width="1"/>')
         o.append(f'<text x="{ML-6}" y="{sy(tck)+4:.1f}" font-size="11" text-anchor="end" fill="{MUTED}">{fmt(tck)}</text>')
     o.append(f'<line x1="{ML}" y1="{MT+ph}" x2="{ML+pw}" y2="{MT+ph}" stroke="{AXIS}" stroke-width="1"/>')
     o.append(f'<line x1="{ML}" y1="{MT}" x2="{ML}" y2="{MT+ph}" stroke="{AXIS}" stroke-width="1"/>')
-    o.append(f'<text x="{ML+pw/2:.1f}" y="{H-2}" font-size="11.5" text-anchor="middle" fill="{INK2}">% de filas llenas de la columna (debajo: cuántas filas del grupo son ese %)</text>')
+    o.append(f'<text x="{ML+pw/2:.1f}" y="{H-2}" font-size="11.5" text-anchor="middle" fill="{INK2}">% de filas llenas de la columna</text>')
     o.append(f'<text transform="translate(16,{MT+ph/2:.1f}) rotate(-90)" font-size="11.5" text-anchor="middle" fill="{INK2}">eCPM ponderado de las filas llenas ($)</text>')
     cid = f"clipfill_{abs(hash(titulo)) % 10000}"
     o.append(f'<clipPath id="{cid}"><rect x="{ML}" y="{MT}" width="{pw}" height="{ph}"/></clipPath>')
@@ -194,19 +194,40 @@ def panel_fill(titulo, puntos, r, total_filas):
         o.append(f'<circle cx="{sx(x):.1f}" cy="{sy(y):.1f}" r="6" fill="{C_COL[col]}" stroke="{SURF}" stroke-width="2"/>')
     # etiquetas del eCPM sobre cada punto, con anticolision: si dos etiquetas quedan a menos de
     # 34 px en x y 12 px en y, la segunda sube 12 px y se une al punto con una guia
-    puestas = []
-    for x, y, col in sorted(puntos, key=lambda p: (p[0], -p[1])):
-        lx, ly = sx(x), sy(y) - 10
-        movida = True
-        while movida:
-            movida = False
-            for ox, oy in puestas:
-                if abs(ox - lx) < 34 and abs(oy - ly) < 12:
-                    ly = oy - 12; movida = True
-        puestas.append((lx, ly))
-        if sy(y) - 10 - ly > 6:
-            o.append(f'<line x1="{lx:.1f}" y1="{sy(y)-6:.1f}" x2="{lx:.1f}" y2="{ly+2:.1f}" stroke="{C_COL[col]}" stroke-width="1"/>')
-        o.append(f'<text x="{lx:.1f}" y="{ly:.1f}" font-size="10.5" font-weight="600" text-anchor="middle" fill="{INK}">${y:.2f}</text>')
+    # Los puntos que quedan a menos de 40 px en x forman un grupo; sus etiquetas se apilan por
+    # encima del punto mas alto del grupo (13 px entre etiquetas), desplazadas a izquierda/derecha
+    # alternadamente para que las guias no se crucen, y cada guia baja al punto con su color.
+    orden = sorted(puntos, key=lambda p: p[0])
+    grupos, actual = [], []
+    for p in orden:
+        if actual and sx(p[0]) - sx(actual[-1][0]) > 40:
+            grupos.append(actual); actual = []
+        actual.append(p)
+    if actual:
+        grupos.append(actual)
+    # si las filas de etiquetas de dos grupos vecinos se pisarian en x, se funden en uno solo
+    def span(grp):
+        c = sum(sx(p[0]) for p in grp) / len(grp); a = 36 * (len(grp) - 1)
+        return c - a / 2 - 18, c + a / 2 + 18
+    fusion = True
+    while fusion and len(grupos) > 1:
+        fusion = False
+        for i in range(len(grupos) - 1):
+            if span(grupos[i])[1] + 6 > span(grupos[i + 1])[0]:
+                grupos[i:i + 2] = [grupos[i] + grupos[i + 1]]; fusion = True; break
+    # Dentro del grupo las etiquetas van todas a la misma altura (12 px sobre el punto mas alto),
+    # repartidas en x cada 36 px en el mismo orden que los puntos, asi las guias no se cruzan.
+    for grp in grupos:
+        n_ = len(grp)
+        top = min(sy(p[1]) for p in grp) - 12
+        cx = sum(sx(p[0]) for p in grp) / n_
+        ancho = 36 * (n_ - 1)
+        cx = min(max(cx, ML + 20 + ancho / 2), ML + pw - 20 - ancho / 2)
+        for i, (x, y, col) in enumerate(grp):
+            lx, ly = cx - ancho / 2 + 36 * i, top
+            if n_ > 1 or sy(y) - 12 - ly > 6:
+                o.append(f'<line x1="{sx(x):.1f}" y1="{sy(y)-6:.1f}" x2="{lx:.1f}" y2="{ly+2:.1f}" stroke="{C_COL[col]}" stroke-width="1"/>')
+            o.append(f'<text x="{lx:.1f}" y="{ly:.1f}" font-size="10.5" font-weight="600" text-anchor="middle" fill="{INK}">${y:.2f}</text>')
     return "\n".join(o)
 
 paneles = []

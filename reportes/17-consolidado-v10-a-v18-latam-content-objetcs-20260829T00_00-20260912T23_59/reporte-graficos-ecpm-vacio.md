@@ -19,7 +19,7 @@
 
 ![completitud vs eCPM](graficos-ecpm-vacio-scatter-fill.svg)
 
-*Un punto por columna, con un color fijo por columna (cuadro de convenciones arriba) y su eCPM ponderado exacto encima. Bajo cada marca del eje x, cuántas filas del grupo representa ese porcentaje. Recta OLS y R² sobre los 9 puntos.*
+*Un punto por columna, con un color fijo por columna (cuadro de convenciones arriba) y su eCPM ponderado exacto encima. Bajo cada marca del eje x, el número de filas del grupo que representa ese porcentaje. Recta OLS y R² sobre los 9 puntos.*
 
 | Grupo | R² | Pendiente ($ por punto de %) | Intercepto |
 |---|---:|---:|---:|
