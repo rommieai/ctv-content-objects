@@ -93,6 +93,23 @@ def main():
         for p, d in sorted(drv["publishers"].items(), key=lambda kv: -kv[1]["requests"]):
             L.append(f"| {p} | {n(d['requests'])} | {pct(d['pct_vendido'])} | ${d['ecpm_ponderado']:.2f} | {pct(d['share_trafico_vendido_pct'])} |")
         L.append("")
+    # ---- 4. por app: eCPM ponderado segun campos llenos (scripts/generar_barras_app_completitud.py) ----
+    pbar = os.path.join(R, "graficos-app-completitud-barras.json")
+    if os.path.exists(pbar):
+        bar = json.load(open(pbar, encoding="utf-8"))
+        L += ["## 4. Por app: eCPM ponderado según cuántos content objects trae el registro\n",
+              f"Top {len(bar['apps'])} apps por requests vendidos. Para cada app, barra = eCPM ponderado (eCPM > 0) de los registros "
+              "con ese número de content objects con dato útil (de 8); debajo de cada barra, el % de los requests vendidos de la app en "
+              f"ese nivel. Los niveles con menos del {bar['min_share_pct']:g} % de los requests vendidos de la app no se dibujan ni se tabulan. "
+              "Generado con `scripts/generar_barras_app_completitud.py` → `recursos/graficos-app-completitud-barras.json`.\n",
+              "![eCPM por app y campos llenos](recursos/graficos-app-completitud-barras.svg)\n",
+              "| App | eCPM pond. app | % tráfico vendido | " + " | ".join(str(k) for k in range(9)) + " |\n|---|---:|---:|" + "---:|" * 9]
+        for app, d in bar["apps"].items():
+            cells = [f"${x['ecpm_ponderado']:.2f} ({x['pct_requests_vendidos']:.0f}%)"
+                     if x["ecpm_ponderado"] is not None and x["pct_requests_vendidos"] >= bar["min_share_pct"] else "—"
+                     for x in d["niveles"]]
+            L.append(f"| {app} | ${d['ecpm_ponderado']:.2f} | {pct(d['share_trafico_vendido_pct'])} | " + " | ".join(cells) + " |")
+        L.append("\n*Entre paréntesis, el % de los requests vendidos de la app que cae en ese nivel de campos llenos.*\n")
     out = os.path.join(D, "reporte-graficos-ecpm-vacio.md")
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L).rstrip("\n") + "\n")

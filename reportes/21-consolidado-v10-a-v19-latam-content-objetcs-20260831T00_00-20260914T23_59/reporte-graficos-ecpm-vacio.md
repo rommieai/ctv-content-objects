@@ -137,3 +137,26 @@ Sobre las filas con eCPM > 0 y requests > 0, la combinación publisher × país 
 | Aluna Limited | 2,491,119,840 | 77.4% | $5.30 | 0.7% |
 | METAX SOFTWARE PTE. LTD. | 1,850,575,760 | 80.5% | $6.11 | 0.6% |
 | Kivi via Springserve | 1,236,449,920 | 22.7% | $5.11 | 0.1% |
+
+## 4. Por app: eCPM ponderado según cuántos content objects trae el registro
+
+Top 12 apps por requests vendidos. Para cada app, barra = eCPM ponderado (eCPM > 0) de los registros con ese número de content objects con dato útil (de 8); debajo de cada barra, el % de los requests vendidos de la app en ese nivel. Los niveles con menos del 2 % de los requests vendidos de la app no se dibujan ni se tabulan. Generado con `scripts/generar_barras_app_completitud.py` → `recursos/graficos-app-completitud-barras.json`.
+
+![eCPM por app y campos llenos](recursos/graficos-app-completitud-barras.svg)
+
+| App | eCPM pond. app | % tráfico vendido | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| The Roku Channel | $5.65 | 15.8% | — | — | — | — | $5.71 (3%) | $5.54 (6%) | $5.77 (39%) | $5.57 (52%) | — |
+| Live TV | $3.16 | 13.4% | — | — | $3.05 (12%) | $3.21 (40%) | $3.09 (44%) | $3.39 (2%) | — | — | — |
+| ViX: TV, Deportes y Noticias | $2.36 | 11.5% | — | — | $2.37 (7%) | $2.14 (19%) | $2.38 (67%) | — | $2.44 (3%) | — | — |
+| TCL CHANNEL | $6.29 | 9.7% | $7.25 (20%) | — | $6.56 (5%) | $5.80 (26%) | $5.14 (10%) | $6.43 (37%) | — | — | — |
+| Not Available | $2.67 | 9.4% | — | — | $2.19 (8%) | $3.98 (6%) | $2.96 (40%) | $2.30 (24%) | $2.16 (15%) | $3.08 (4%) | — |
+| MovieArk: Stream Movies & Live | $4.13 | 7.8% | — | $3.81 (2%) | $3.63 (15%) | $4.31 (39%) | $3.96 (40%) | $5.03 (2%) | — | — | — |
+| ViX: TV, Sports and News | $1.87 | 7.1% | — | — | $1.50 (32%) | $1.93 (46%) | $2.36 (10%) | $2.41 (8%) | — | — | — |
+| Coolita Channel | $3.26 | 5.2% | — | — | — | — | — | — | $2.84 (10%) | $3.39 (22%) | $3.31 (66%) |
+| Browser TV Web - BrowseHere | $7.30 | 4.6% | $5.79 (23%) | — | $7.71 (3%) | $6.65 (15%) | $7.41 (37%) | $9.23 (21%) | — | — | — |
+| Tubi: Free Movies & Live TV | $7.95 | 4.5% | $5.31 (6%) | $7.95 (14%) | $7.97 (36%) | $8.32 (44%) | — | — | — | — | — |
+| WhaleLive | $2.53 | 4.3% | — | $2.82 (10%) | $2.48 (88%) | — | — | — | — | — | — |
+| Vidaa | $1.53 | 2.3% | — | — | — | $1.37 (11%) | $1.46 (18%) | $1.55 (58%) | $1.33 (12%) | — | — |
+
+*Entre paréntesis, el % de los requests vendidos de la app que cae en ese nivel de campos llenos.*
