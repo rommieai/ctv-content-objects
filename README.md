@@ -208,7 +208,7 @@ quedan como NULL en BigQuery.
 
 | Reporte | Contenido |
 |---|---|
-| `reportes/21-.../reporte-content-objects-detallado-v19-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v19 (1,158,509 filas; v19 aporto 86,669 combinaciones nuevas). Tablas por pais con % de filas llenas, top 3 referencias y requests / eCPM ponderado de las filas llenas vs vacias por columna |
+| `reportes/21-.../reporte-content-objects-detallado-v19-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v19 (1,158,509 filas; v19 aporto 86,669 combinaciones nuevas). Tablas por pais con % de filas llenas, top 3 referencias, si se puede aumentar el % de filas llenas y el aumento estimado (ganancia del relleno) por columna |
 | `reportes/21-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** graficos SVG del eCPM de filas llenas vs vacias por columna (scatter con OLS y R2, completitud vs eCPM, pies del reparto del gasto, heatmap fila a fila de campos llenos vs eCPM) sobre v10-a-v19 |
 | `reportes/21-.../reporte-completitud-content-objects-v19.md` | **Vigente:** que se puede completar de cada content object, solo tablas por columna: origen del valor tras el relleno, que mas se puede afinar segun la validacion contra IMDb/Wikidata/IAB y que tan confiable es lo declarado y lo llenado. La version completa (contexto, fuentes con licencias y limites, metodos con candados) esta en `recursos/reporte-completitud-content-objects-v19-completo.md` |
 | `reportes/20-validacion-genero-series-v18/README.md` | (v10-a-v18) validacion de contentGenre y contentSeries sobre v10-a-v18 (consolidado y relleno), con glosario y etiquetas en lenguaje claro; cifras clave v17 vs v18 en el README |

@@ -3,10 +3,10 @@
 
 Lee, en <carpeta>/recursos/:
     reporte-content-objects-detallado-v<N>-consolidado.json   (scripts/analizar.py --grupos MX,CO,CL)
-    reporte-requests-ecpm-por-vacio-v<N>.json                 (scripts/requests_ecpm_por_vacio.py)
+    reporte-relleno-v<N>.json                                 (scripts/enriquecer_externo.py)
 y escribe <carpeta>/reporte-content-objects-detallado-v<N>-consolidado.md: total consolidado + un bloque
-por pais con, por columna, % de filas llenas, top 3 referencias y requests / eCPM ponderado de
-las filas llenas vs vacias.
+por pais con, por columna, % de filas llenas, top 3 referencias, si se puede aumentar el % de filas
+llenas y el aumento estimado (la ganancia del relleno sobre el total consolidado, en puntos).
 
 Uso:
     python scripts/generar_reporte_detallado.py reportes/NN 19 "31 ago-14 sep 2026" \
@@ -69,16 +69,16 @@ def corte_stats(path):
     return filas, req
 
 
-def tablas(cols, vp, tot_req, pond, etiqueta, fillkey):
-    hdr = (f"| Columna | % de filas llenas | Top 3 referencias (% filas {etiqueta}) | Requests llenas | "
-           f"eCPM pond. llenas | Requests vacías | eCPM pond. vacías |\n|---|---:|---|---:|---:|---:|---:|")
+def tablas(cols, ganancia, etiqueta, fillkey):
+    hdr = (f"| Columna | % de filas llenas | Top 3 referencias (% filas {etiqueta}) | "
+           f"¿Se puede aumentar el % de filas llenas? | % aumento estimado |\n|---|---:|---|:---:|---:|")
 
     def fila(c):
         s = f100(cols[c][fillkey])
-        if c in vp:
-            a, b = vp[c]["lleno"], vp[c]["vacio"]
-            return f"| {c} | {s} | {top3(cols[c])} | {n(a['requests'])} | {dol(a)} | {n(b['requests'])} | {dol(b)} |"
-        return f"| {c} | {s} | {top3(cols[c])} | {n(tot_req)} | ${pond:.2f} | 0 | — |"
+        g = ganancia.get(c)
+        if g:
+            return f"| {c} | {s} | {top3(cols[c])} | Sí | +{g:.1f} pp |"
+        return f"| {c} | {s} | {top3(cols[c])} | No | — |"
 
     out = ["**Campos de app / vendedor:**\n\n" + hdr] + [fila(c) for c in APP]
     out += ["\n**Content objects:**\n\n" + hdr] + [fila(c) for c in CO] + [""]
@@ -96,7 +96,9 @@ def main():
     V, D = a.version, a.carpeta
     R = os.path.join(D, "recursos")
     det = json.load(open(os.path.join(R, f"reporte-content-objects-detallado-v{V}-consolidado.json"), encoding="utf-8"))
-    vac = json.load(open(os.path.join(R, f"reporte-requests-ecpm-por-vacio-v{V}.json"), encoding="utf-8"))
+    rel = json.load(open(os.path.join(R, f"reporte-relleno-v{V}.json"), encoding="utf-8"))["columnas"]
+    # ganancia del relleno (puntos porcentuales sobre el total consolidado); 0 = no se rellena
+    ganancia = {c: round(d["pct_final"] - d["pct_original"], 1) for c, d in rel.items()}
     filas, req = det["filas"], det["total_requests"]
     c_filas, c_req = corte_stats(a.corte)
 
@@ -109,10 +111,11 @@ def main():
          '*Nota: "llenas" excluye centinelas — una fila cuenta como vacía tanto si la celda no trae valor como si trae '
          '`Not Available`, `Not Applicable`, `Unknown` o basura equivalente a vacío (`[-7]`, hash MD5 de cadena vacía, '
          'macros sin reemplazar).*\n',
-         '*Nota sobre las columnas de requests y eCPM: "Requests llenas" / "Requests vacías" es el total de requests de '
-         'las filas del grupo donde esa columna trae dato útil / viene vacía. "eCPM pond." = Σ(eCPM × requests) / Σ requests '
-         'de esas filas, sin contar las que tienen requests = 0 o eCPM = 0. Calculado con `scripts/requests_ecpm_por_vacio.py` '
-         f'→ `recursos/reporte-requests-ecpm-por-vacio-v{V}.json`.*\n',
+         '*Nota sobre "¿Se puede aumentar el % de filas llenas?" y "% aumento estimado": "Sí" cuando el pipeline de relleno '
+         '(`scripts/enriquecer_externo.py`) tiene un método para esa columna; el aumento es la ganancia en puntos porcentuales '
+         'sobre el total del consolidado (columna "Ganancia" del reporte de completitud, '
+         f'`recursos/reporte-completitud-content-objects-v{V}-completo.md`) y se muestra igual en las tablas por país. '
+         'contentTitle y contentLanguage no se rellenan; Publisher y contentIsTitlePresent ya vienen al 100 %.*\n',
          "*Nota sobre `md5-vacío`: en `contentSeries` algunos vendedores mandan un hash MD5 en vez del nombre de la serie. "
          "El valor `d41d8cd98f00b204e9800998ecf8427e` es el MD5 de la cadena vacía, es decir, el vendedor hasheó un texto "
          "en blanco; se cuenta como vacío.*\n"]
@@ -120,15 +123,14 @@ def main():
     L.append(f"## Total consolidado (todos los países) — {n(filas)} filas · {n(req)} requests\n")
     L.append(f"eCPM: {pct(ge['pct_filas_cero'])} de filas en cero · media no-cero ${ge['media_no_cero']:.2f} · "
              f"ponderado ${ge['ecpm_ponderado_por_requests']:.2f}\n")
-    L += tablas(det["columnas"], vac["paises"]["(todos)"]["columnas"], req, ge["ecpm_ponderado_por_requests"],
-                "del total", "fill_rate_filas_pct")
+    L += tablas(det["columnas"], ganancia, "del total", "fill_rate_filas_pct")
     for p in PAISES:
         g = det["grupos"][p]
         e = g["ecpm"]
         L.append(f"## {NOMBRE[p]} — {n(g['filas'])} filas ({pct(g['pct_filas'])}) · {pct(g['pct_requests'])} de los requests\n")
         L.append(f"eCPM: {pct(e['pct_filas_cero'])} de filas en cero · media no-cero ${e['media_no_cero']:.2f} · "
                  f"ponderado ${e['ponderado_requests']:.2f}\n")
-        L += tablas(g["columnas"], vac["paises"][p]["columnas"], g["requests"], e["ponderado_requests"], "del país", "fill_rate_pct")
+        L += tablas(g["columnas"], ganancia, "del país", "fill_rate_pct")
     out = os.path.join(D, f"reporte-content-objects-detallado-v{V}-consolidado.md")
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L).rstrip("\n") + "\n")
