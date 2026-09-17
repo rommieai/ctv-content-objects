@@ -12,13 +12,13 @@ Los textos de metodos, fuentes y limites son fijos (describen el pipeline); las 
 
 Uso:
     python scripts/generar_reporte_completitud.py reportes/NN 19 \
-        --detallado reportes/NN/reporte-content-objects-detallado-v19-consolidado.json \
-        --vacio reportes/NN/reporte-requests-ecpm-por-vacio-v19.json \
-        --relleno reportes/NN/reporte-relleno-v19.json \
-        --cat-consolidado reportes/NN/validacion-categorias-consolidado.json \
-        --cat-relleno reportes/NN/validacion-categorias-relleno.json \
-        --gs-consolidado reportes/NN/validacion-genero-series-consolidado.json \
-        --gs-relleno reportes/NN/validacion-genero-series-relleno.json
+        --detallado reportes/NN/recursos/reporte-content-objects-detallado-v19-consolidado.json \
+        --vacio reportes/NN/recursos/reporte-requests-ecpm-por-vacio-v19.json \
+        --relleno reportes/NN/recursos/reporte-relleno-v19.json \
+        --cat-consolidado reportes/NN/recursos/validacion-categorias-consolidado.json \
+        --cat-relleno reportes/NN/recursos/validacion-categorias-relleno.json \
+        --gs-consolidado reportes/NN/recursos/validacion-genero-series-consolidado.json \
+        --gs-relleno reportes/NN/recursos/validacion-genero-series-relleno.json
 """
 import argparse
 import json
@@ -136,10 +136,10 @@ def main():
     L = [f"# Qué se puede completar de cada content object: métodos y fuentes (consolidado v10 a v{V})\n",
          f"**Fuente:** `inventory-consolidado-v10-a-v{V}.csv` — {n(filas)} filas únicas, {n(req)} requests (métricas del corte v{V}). "
          f"**Relleno:** `inventory-consolidado-v10-a-v{V}-relleno.csv` (no versionado), generado con `scripts/enriquecer_externo.py --wikidata`, "
-         f"corrida del {rel['fecha']} → `reporte-relleno-v{V}.json`. Títulos distintos: {n(rel['titulos_distintos'])}; con match en IMDb: "
+         f"corrida del {rel['fecha']} → `recursos/reporte-relleno-v{V}.json`. Títulos distintos: {n(rel['titulos_distintos'])}; con match en IMDb: "
          f"{n(rel['titulos_con_imdb'])}; consultados por primera vez en esta corrida: {n(rel['titulos_nuevos_consultados'])}.",
          "**Validaciones:** `scripts/validar_categorias.py` y `scripts/validar_genero_series.py` sobre el consolidado y sobre el relleno "
-         "(`validacion-*.json` en esta carpeta). Tablas generadas con `scripts/generar_reporte_completitud.py`.\n",
+         "(`recursos/validacion-*.json`, con muestras CSV para revisión manual en la misma carpeta). Tablas generadas con `scripts/generar_reporte_completitud.py`.\n",
          "## Cómo leer este reporte\n",
          "- Cada fila del consolidado es una **combinación** de 14 dimensiones (país × publisher × app × género × …), no un programa. "
          "El mismo contenido llega por varias rutas de venta y cada ruta manda la metadata que quiere: por eso la respuesta a un vacío "

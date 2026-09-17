@@ -15,6 +15,7 @@ cache-enriquecimiento/*
 # Las muestras para revision manual de la validacion de categorias son chicas y si se
 # versionan (el CSV fila a fila queda en la raiz, cubierto por *.csv)
 !reportes/*/validacion-*-muestra-*.csv
+!reportes/*/recursos/validacion-*-muestra-*.csv
 
 # Reporte interno (material de trabajo, no para lectores externos)
 reportes/old_reports/08-enriquecimiento-externo/reporte-enriquecimiento-externo.md

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Markdown del detallado por pais (solo tablas) a partir de los JSON de la tanda.
 
-Lee, en la carpeta de la tanda:
+Lee, en <carpeta>/recursos/:
     reporte-content-objects-detallado-v<N>-consolidado.json   (scripts/analizar.py --grupos MX,CO,CL)
     reporte-requests-ecpm-por-vacio-v<N>.json                 (scripts/requests_ecpm_por_vacio.py)
-y escribe reporte-content-objects-detallado-v<N>-consolidado.md: total consolidado + un bloque
+y escribe <carpeta>/reporte-content-objects-detallado-v<N>-consolidado.md: total consolidado + un bloque
 por pais con, por columna, % de filas llenas, top 3 referencias y requests / eCPM ponderado de
 las filas llenas vs vacias.
 
@@ -94,8 +94,9 @@ def main():
     ap.add_argument("--prev-filas", type=int, required=True, help="filas del consolidado anterior (para las combinaciones nuevas)")
     a = ap.parse_args()
     V, D = a.version, a.carpeta
-    det = json.load(open(os.path.join(D, f"reporte-content-objects-detallado-v{V}-consolidado.json"), encoding="utf-8"))
-    vac = json.load(open(os.path.join(D, f"reporte-requests-ecpm-por-vacio-v{V}.json"), encoding="utf-8"))
+    R = os.path.join(D, "recursos")
+    det = json.load(open(os.path.join(R, f"reporte-content-objects-detallado-v{V}-consolidado.json"), encoding="utf-8"))
+    vac = json.load(open(os.path.join(R, f"reporte-requests-ecpm-por-vacio-v{V}.json"), encoding="utf-8"))
     filas, req = det["filas"], det["total_requests"]
     c_filas, c_req = corte_stats(a.corte)
 
@@ -103,7 +104,7 @@ def main():
          f"**Fuente:** `inventory-consolidado-v10-a-v{V}.csv` — {n(filas)} filas únicas, {n(req)} requests "
          f"(métricas del corte v{V}, ventana {a.ventana}; v{V} aportó {n(filas - a.prev_filas)} combinaciones nuevas). "
          f"Solo v{V}: {n(c_filas)} filas, {n(c_req)} requests.",
-         f"**Data completa:** `reporte-content-objects-detallado-v{V}-consolidado.json` (top-15 de valores por columna "
+         f"**Data completa:** `recursos/reporte-content-objects-detallado-v{V}-consolidado.json` (top-15 de valores por columna "
          f"para cada país). Generado con `scripts/analizar.py`; tablas con `scripts/generar_reporte_detallado.py`.\n",
          '*Nota: "llenas" excluye centinelas — una fila cuenta como vacía tanto si la celda no trae valor como si trae '
          '`Not Available`, `Not Applicable`, `Unknown` o basura equivalente a vacío (`[-7]`, hash MD5 de cadena vacía, '
@@ -111,7 +112,7 @@ def main():
          '*Nota sobre las columnas de requests y eCPM: "Requests llenas" / "Requests vacías" es el total de requests de '
          'las filas del grupo donde esa columna trae dato útil / viene vacía. "eCPM pond." = Σ(eCPM × requests) / Σ requests '
          'de esas filas, sin contar las que tienen requests = 0 o eCPM = 0. Calculado con `scripts/requests_ecpm_por_vacio.py` '
-         f'→ `reporte-requests-ecpm-por-vacio-v{V}.json`.*\n',
+         f'→ `recursos/reporte-requests-ecpm-por-vacio-v{V}.json`.*\n',
          "*Nota sobre `md5-vacío`: en `contentSeries` algunos vendedores mandan un hash MD5 en vez del nombre de la serie. "
          "El valor `d41d8cd98f00b204e9800998ecf8427e` es el MD5 de la cadena vacía, es decir, el vendedor hasheó un texto "
          "en blanco; se cuenta como vacío.*\n"]

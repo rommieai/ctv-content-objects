@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Markdown del reporte de graficas (solo tablas) a partir de los JSON de la tanda.
 
-Lee, en la carpeta de la tanda:
+Lee, en <carpeta>/recursos/:
     graficos-ecpm-vacio-r2.json              (scripts/generar_graficos_ecpm_vacio.py)
     graficos-ecpm-completitud-heatmap.json   (scripts/generar_heatmap_completitud_ecpm.py)
-y escribe reporte-graficos-ecpm-vacio.md con las cuatro secciones: scatter llenas vs vacias
+y escribe <carpeta>/reporte-graficos-ecpm-vacio.md (los SVG se enlazan desde recursos/) con las cuatro secciones: scatter llenas vs vacias
 (OLS/R2), % llenas vs eCPM por serie, reparto del gasto y heatmap de campos llenos vs eCPM.
 
 Uso:
@@ -33,25 +33,26 @@ def main():
     ap.add_argument("version", type=int)
     a = ap.parse_args()
     V, D = a.version, a.carpeta
-    r2 = json.load(open(os.path.join(D, "graficos-ecpm-vacio-r2.json"), encoding="utf-8"))["grupos"]
-    hm = json.load(open(os.path.join(D, "graficos-ecpm-completitud-heatmap.json"), encoding="utf-8"))
+    R = os.path.join(D, "recursos")
+    r2 = json.load(open(os.path.join(R, "graficos-ecpm-vacio-r2.json"), encoding="utf-8"))["grupos"]
+    hm = json.load(open(os.path.join(R, "graficos-ecpm-completitud-heatmap.json"), encoding="utf-8"))
 
     L = [f"# Gráficos: eCPM de las filas llenas vs vacías (consolidado v10 a v{V})\n",
-         f"**Fuente:** `reporte-requests-ecpm-por-vacio-v{V}.json` (mismos datos de las tablas por país del detallado). "
-         "Generado con `scripts/generar_graficos_ecpm_vacio.py` → `graficos-ecpm-vacio-r2.json`; tablas con "
+         f"**Fuente:** `recursos/reporte-requests-ecpm-por-vacio-v{V}.json` (mismos datos de las tablas por país del detallado). "
+         "Generado con `scripts/generar_graficos_ecpm_vacio.py` → `recursos/graficos-ecpm-vacio-r2.json`; tablas con "
          "`scripts/generar_reporte_graficos.py`.\n",
          "*eCPM ponderado = Σ(eCPM × requests) / Σ requests, sin las filas con requests = 0 o eCPM = 0. Un punto por content "
          "object (9 columnas: App Name y los 8 content objects con filas vacías; contentIsTitlePresent y Publisher vienen al "
          "100% y no entran). R² es el de la recta de mínimos cuadrados (OLS) sobre esos 9 puntos.*\n",
          "## 1. eCPM llenas (x) vs eCPM vacías (y)\n",
-         "![eCPM llenas vs vacías](graficos-ecpm-vacio-scatter.svg)\n",
+         "![eCPM llenas vs vacías](recursos/graficos-ecpm-vacio-scatter.svg)\n",
          "| Grupo | R² | Pendiente | Intercepto | Columnas que pagan más vacías |\n|---|---:|---:|---:|---:|"]
     for k, lab in GRUPOS:
         s = r2[k]["scatter_lleno_vs_vacio"]
         o = s["ols"]
         L.append(f"| {lab} | {o['r2']:.3f} | {o['pendiente']:.3f} | {o['intercepto']:.2f} | {s['columnas_vacio_paga_mas']} de {s['columnas']} |")
     L += ["\n## 2. % de filas llenas (x) vs eCPM (y), por serie\n",
-          "![completitud vs eCPM](graficos-ecpm-vacio-scatter-fill.svg)\n",
+          "![completitud vs eCPM](recursos/graficos-ecpm-vacio-scatter-fill.svg)\n",
           "| Grupo | Serie | R² | Pendiente ($ por punto de %) | Intercepto |\n|---|---|---:|---:|---:|"]
     for k, lab in GRUPOS:
         s = r2[k]["scatter_fill_vs_ecpm"]
@@ -59,7 +60,7 @@ def main():
             o = s[key]
             L.append(f"| {lab} | {serie} | {o['r2']:.3f} | {o['pendiente']:.4f} | {o['intercepto']:.2f} |")
     L += ["\n## 3. Reparto del gasto (eCPM × requests / 1000) entre filas llenas y vacías\n",
-          "![reparto del gasto](graficos-ecpm-vacio-pies.svg)\n",
+          "![reparto del gasto](recursos/graficos-ecpm-vacio-pies.svg)\n",
           "*% del gasto del grupo que cae en filas donde la columna trae dato útil. El gasto se calcula solo sobre filas con eCPM > 0.*\n",
           "| Columna | " + " | ".join(lab for _, lab in GRUPOS) + " |\n|---|" + "---:|" * len(GRUPOS)]
     for c in COLS:
@@ -70,8 +71,8 @@ def main():
           "contentIsTitlePresent no cuenta porque siempre viene). El heatmap acumula los requests de las filas en cada celda de "
           "(campos llenos, bin logarítmico de eCPM); la banda inferior son las filas con eCPM = 0. El punto naranja es el eCPM "
           "ponderado (>0) de cada nivel. Generado con `scripts/generar_heatmap_completitud_ecpm.py` → "
-          "`graficos-ecpm-completitud-heatmap.json`.\n",
-          "![completitud vs eCPM, densidad](graficos-ecpm-completitud-heatmap.svg)\n"]
+          "`recursos/graficos-ecpm-completitud-heatmap.json`.\n",
+          "![completitud vs eCPM, densidad](recursos/graficos-ecpm-completitud-heatmap.svg)\n"]
     for k, lab in GRUPOS:
         g = hm["grupos"][k]
         L.append(f"**{lab}** — {n(g['filas'])} filas · {n(g['requests'])} requests\n")

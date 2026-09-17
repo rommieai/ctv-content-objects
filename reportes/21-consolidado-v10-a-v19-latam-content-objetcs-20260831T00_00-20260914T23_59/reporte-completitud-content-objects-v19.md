@@ -1,7 +1,7 @@
 # Qué se puede completar de cada content object: métodos y fuentes (consolidado v10 a v19)
 
-**Fuente:** `inventory-consolidado-v10-a-v19.csv` — 1,158,509 filas únicas, 482,736,715,920 requests (métricas del corte v19). **Relleno:** `inventory-consolidado-v10-a-v19-relleno.csv` (no versionado), generado con `scripts/enriquecer_externo.py --wikidata`, corrida del 2026-09-16 15:30 → `reporte-relleno-v19.json`. Títulos distintos: 15,799; con match en IMDb: 7,879; consultados por primera vez en esta corrida: 532.
-**Validaciones:** `scripts/validar_categorias.py` y `scripts/validar_genero_series.py` sobre el consolidado y sobre el relleno (`validacion-*.json` en esta carpeta). Tablas generadas con `scripts/generar_reporte_completitud.py`.
+**Fuente:** `inventory-consolidado-v10-a-v19.csv` — 1,158,509 filas únicas, 482,736,715,920 requests (métricas del corte v19). **Relleno:** `inventory-consolidado-v10-a-v19-relleno.csv` (no versionado), generado con `scripts/enriquecer_externo.py --wikidata`, corrida del 2026-09-16 15:30 → `recursos/reporte-relleno-v19.json`. Títulos distintos: 15,799; con match en IMDb: 7,879; consultados por primera vez en esta corrida: 532.
+**Validaciones:** `scripts/validar_categorias.py` y `scripts/validar_genero_series.py` sobre el consolidado y sobre el relleno (`recursos/validacion-*.json`, con muestras CSV para revisión manual en la misma carpeta). Tablas generadas con `scripts/generar_reporte_completitud.py`.
 
 ## Cómo leer este reporte
 

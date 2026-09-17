@@ -1,12 +1,12 @@
 # Gráficos: eCPM de las filas llenas vs vacías (consolidado v10 a v19)
 
-**Fuente:** `reporte-requests-ecpm-por-vacio-v19.json` (mismos datos de las tablas por país del detallado). Generado con `scripts/generar_graficos_ecpm_vacio.py` → `graficos-ecpm-vacio-r2.json`; tablas con `scripts/generar_reporte_graficos.py`.
+**Fuente:** `recursos/reporte-requests-ecpm-por-vacio-v19.json` (mismos datos de las tablas por país del detallado). Generado con `scripts/generar_graficos_ecpm_vacio.py` → `recursos/graficos-ecpm-vacio-r2.json`; tablas con `scripts/generar_reporte_graficos.py`.
 
 *eCPM ponderado = Σ(eCPM × requests) / Σ requests, sin las filas con requests = 0 o eCPM = 0. Un punto por content object (9 columnas: App Name y los 8 content objects con filas vacías; contentIsTitlePresent y Publisher vienen al 100% y no entran). R² es el de la recta de mínimos cuadrados (OLS) sobre esos 9 puntos.*
 
 ## 1. eCPM llenas (x) vs eCPM vacías (y)
 
-![eCPM llenas vs vacías](graficos-ecpm-vacio-scatter.svg)
+![eCPM llenas vs vacías](recursos/graficos-ecpm-vacio-scatter.svg)
 
 | Grupo | R² | Pendiente | Intercepto | Columnas que pagan más vacías |
 |---|---:|---:|---:|---:|
@@ -17,7 +17,7 @@
 
 ## 2. % de filas llenas (x) vs eCPM (y), por serie
 
-![completitud vs eCPM](graficos-ecpm-vacio-scatter-fill.svg)
+![completitud vs eCPM](recursos/graficos-ecpm-vacio-scatter-fill.svg)
 
 | Grupo | Serie | R² | Pendiente ($ por punto de %) | Intercepto |
 |---|---|---:|---:|---:|
@@ -32,7 +32,7 @@
 
 ## 3. Reparto del gasto (eCPM × requests / 1000) entre filas llenas y vacías
 
-![reparto del gasto](graficos-ecpm-vacio-pies.svg)
+![reparto del gasto](recursos/graficos-ecpm-vacio-pies.svg)
 
 *% del gasto del grupo que cae en filas donde la columna trae dato útil. El gasto se calcula solo sobre filas con eCPM > 0.*
 
@@ -50,9 +50,9 @@
 
 ## 4. Completitud de la fila vs eCPM: densidad de requests (fila a fila)
 
-Cada fila del consolidado se clasifica por cuántos de los 8 content objects trae con dato útil (contentGenre, contentCategory, contentSeries, contentLength, contentLanguage, contentIsLiveStream, contentTitle, contentRating; contentIsTitlePresent no cuenta porque siempre viene). El heatmap acumula los requests de las filas en cada celda de (campos llenos, bin logarítmico de eCPM); la banda inferior son las filas con eCPM = 0. El punto naranja es el eCPM ponderado (>0) de cada nivel. Generado con `scripts/generar_heatmap_completitud_ecpm.py` → `graficos-ecpm-completitud-heatmap.json`.
+Cada fila del consolidado se clasifica por cuántos de los 8 content objects trae con dato útil (contentGenre, contentCategory, contentSeries, contentLength, contentLanguage, contentIsLiveStream, contentTitle, contentRating; contentIsTitlePresent no cuenta porque siempre viene). El heatmap acumula los requests de las filas en cada celda de (campos llenos, bin logarítmico de eCPM); la banda inferior son las filas con eCPM = 0. El punto naranja es el eCPM ponderado (>0) de cada nivel. Generado con `scripts/generar_heatmap_completitud_ecpm.py` → `recursos/graficos-ecpm-completitud-heatmap.json`.
 
-![completitud vs eCPM, densidad](graficos-ecpm-completitud-heatmap.svg)
+![completitud vs eCPM, densidad](recursos/graficos-ecpm-completitud-heatmap.svg)
 
 **Total consolidado** — 1,158,509 filas · 482,736,715,920 requests
 

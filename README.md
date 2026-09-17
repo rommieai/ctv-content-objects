@@ -76,8 +76,8 @@ reportes/
   21-consolidado-v10-a-v19/         la version vigente, tres reportes md: detallado por pais
                                   (MX/CO/CL) con requests y eCPM ponderado lleno/vacio por
                                   columna; graficas del eCPM lleno/vacio y heatmap; y "que se
-                                  puede completar de cada content object" (metodos y fuentes),
-                                  con el relleno y las validaciones de esa tanda en JSON
+                                  puede completar de cada content object" (metodos y fuentes);
+                                  recursos/ trae los JSON, SVG y muestras CSV de la tanda
 
 ejecutivo/                        resumenes en PDF para stakeholders
 ```
@@ -92,10 +92,11 @@ que lo respalda (distribuciones, tops, estadísticos).
 python scripts/consolidar.py inventory-consolidado.csv v12.csv v11.csv v10.csv
 
 # 2. Analisis por columna + desglose por dimension (JSON + digests para redactar)
-python scripts/analizar.py inventory-consolidado.csv reporte-paises.json \
+python scripts/analizar.py inventory-consolidado.csv reportes/NN/recursos/reporte-paises.json \
     --grupos "Mexico,Colombia,Chile" --digest ./digests          # por pais (default)
 python scripts/generar_reporte_detallado.py reportes/NN 19 "31 ago-14 sep 2026" \
     --corte <v19 crudo>.csv --prev-filas <filas del consolidado anterior>   # md del detallado
+# (desde v19 los JSON, SVG y muestras CSV de la tanda van en reportes/NN/recursos/; los md en reportes/NN/)
 python scripts/analizar.py inventory-consolidado.csv reporte-publishers.json \
     --por Publisher --top-grupos 12                              # por publisher
 python scripts/analizar.py inventory-consolidado.csv vacios-contentRating.json \
@@ -107,9 +108,9 @@ python scripts/generar_reporte_vacios.py vacios-contentRating.json reporte-paise
 python scripts/normalizar_monetizar.py inventory-consolidado.csv \
     inventory-enriquecido.csv reporte-normalizacion.json
 python scripts/requests_ecpm_por_vacio.py inventory-consolidado.csv \
-    reporte-requests-ecpm-por-vacio.json --paises "Mexico,Colombia,Chile"
-python scripts/generar_graficos_ecpm_vacio.py reporte-requests-ecpm-por-vacio.json reportes/NN
-python scripts/generar_heatmap_completitud_ecpm.py inventory-consolidado.csv reportes/NN
+    reportes/NN/recursos/reporte-requests-ecpm-por-vacio.json --paises "Mexico,Colombia,Chile"
+python scripts/generar_graficos_ecpm_vacio.py reportes/NN/recursos/reporte-requests-ecpm-por-vacio.json reportes/NN/recursos
+python scripts/generar_heatmap_completitud_ecpm.py inventory-consolidado.csv reportes/NN/recursos
 python scripts/generar_reporte_graficos.py reportes/NN 19                   # md de las graficas
 
 # 4. (opcional) Relleno de content objects vacios con fuentes internas + abiertas
@@ -139,13 +140,13 @@ python scripts/generar_reporte_genero_series.py reportes/MM \
 # 7. (desde v19) un solo md "que se puede completar de cada content object: metodos y fuentes"
 #    con el JSON del relleno (paso 4) y las cuatro validaciones (pasos 5 y 6) de la misma tanda
 python scripts/generar_reporte_completitud.py reportes/NN 19 \
-    --detallado reportes/NN/reporte-content-objects-detallado-v19-consolidado.json \
-    --vacio reportes/NN/reporte-requests-ecpm-por-vacio-v19.json \
-    --relleno reportes/NN/reporte-relleno-v19.json \
-    --cat-consolidado reportes/NN/validacion-categorias-consolidado.json \
-    --cat-relleno reportes/NN/validacion-categorias-relleno.json \
-    --gs-consolidado reportes/NN/validacion-genero-series-consolidado.json \
-    --gs-relleno reportes/NN/validacion-genero-series-relleno.json
+    --detallado reportes/NN/recursos/reporte-content-objects-detallado-v19-consolidado.json \
+    --vacio reportes/NN/recursos/reporte-requests-ecpm-por-vacio-v19.json \
+    --relleno reportes/NN/recursos/reporte-relleno-v19.json \
+    --cat-consolidado reportes/NN/recursos/validacion-categorias-consolidado.json \
+    --cat-relleno reportes/NN/recursos/validacion-categorias-relleno.json \
+    --gs-consolidado reportes/NN/recursos/validacion-genero-series-consolidado.json \
+    --gs-relleno reportes/NN/recursos/validacion-genero-series-relleno.json
 ```
 
 Solo requiere Python 3.9+ (stdlib, sin dependencias). En Windows conviene correr los

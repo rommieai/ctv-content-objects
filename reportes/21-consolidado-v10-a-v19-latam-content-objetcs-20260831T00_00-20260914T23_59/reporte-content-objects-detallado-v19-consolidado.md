@@ -1,11 +1,11 @@
 # Content Objects por país: México, Colombia y Chile (consolidado v10 a v19)
 
 **Fuente:** `inventory-consolidado-v10-a-v19.csv` — 1,158,509 filas únicas, 482,736,715,920 requests (métricas del corte v19, ventana 31 ago–14 sep 2026; v19 aportó 86,669 combinaciones nuevas). Solo v19: 512,000 filas, 388,392,618,080 requests.
-**Data completa:** `reporte-content-objects-detallado-v19-consolidado.json` (top-15 de valores por columna para cada país). Generado con `scripts/analizar.py`; tablas con `scripts/generar_reporte_detallado.py`.
+**Data completa:** `recursos/reporte-content-objects-detallado-v19-consolidado.json` (top-15 de valores por columna para cada país). Generado con `scripts/analizar.py`; tablas con `scripts/generar_reporte_detallado.py`.
 
 *Nota: "llenas" excluye centinelas — una fila cuenta como vacía tanto si la celda no trae valor como si trae `Not Available`, `Not Applicable`, `Unknown` o basura equivalente a vacío (`[-7]`, hash MD5 de cadena vacía, macros sin reemplazar).*
 
-*Nota sobre las columnas de requests y eCPM: "Requests llenas" / "Requests vacías" es el total de requests de las filas del grupo donde esa columna trae dato útil / viene vacía. "eCPM pond." = Σ(eCPM × requests) / Σ requests de esas filas, sin contar las que tienen requests = 0 o eCPM = 0. Calculado con `scripts/requests_ecpm_por_vacio.py` → `reporte-requests-ecpm-por-vacio-v19.json`.*
+*Nota sobre las columnas de requests y eCPM: "Requests llenas" / "Requests vacías" es el total de requests de las filas del grupo donde esa columna trae dato útil / viene vacía. "eCPM pond." = Σ(eCPM × requests) / Σ requests de esas filas, sin contar las que tienen requests = 0 o eCPM = 0. Calculado con `scripts/requests_ecpm_por_vacio.py` → `recursos/reporte-requests-ecpm-por-vacio-v19.json`.*
 
 *Nota sobre `md5-vacío`: en `contentSeries` algunos vendedores mandan un hash MD5 en vez del nombre de la serie. El valor `d41d8cd98f00b204e9800998ecf8427e` es el MD5 de la cadena vacía, es decir, el vendedor hasheó un texto en blanco; se cuenta como vacío.*
 
