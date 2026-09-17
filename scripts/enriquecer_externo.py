@@ -5,11 +5,13 @@ Toma el consolidado (idealmente el *enriquecido*, que ya trae genero_normalizado
 rating_franja) y produce un CSV con, para cada columna objetivo, dos columnas nuevas:
 
     <col>_relleno   valor final (el original si venia, o el inferido)
-    <col>_origen    de donde salio: original | intra_titulo | app_default | imdb |
-                    tvmaze | wikidata | derivado_genero | derivado_tipo | (vacio)
+    <col>_origen    de donde salio: original | intra_titulo | imdb | tvmaze | wikidata |
+                    derivado_genero | derivado_tipo | app_semantica | (vacio)
 
-Columnas objetivo: contentCategory, contentSeries, contentLength, contentLanguage,
-contentIsLiveStream, contentRating, contentGenre.
+Columnas objetivo: contentCategory, contentSeries, contentLength, contentIsLiveStream,
+contentRating, contentGenre. contentLanguage se conserva en la salida (columnas
+_relleno/_origen) pero NUNCA se rellena: no hay forma de asumir el idioma en que se
+emite un programa (el idioma original de la obra no es la pista de audio servida).
 
 Etapas (en orden; la primera que llena gana):
   0. Normalizacion del titulo -> `titulo_clave` (url-decode, mojibake cp1252->utf8,
@@ -18,8 +20,9 @@ Etapas (en orden; la primera que llena gana):
      analizar_genero_titulo_paises.clasificar_titulo.
   1. intra_titulo: el mismo titulo_clave trae el dato en otra fila del consolidado
      (se exige que el valor dominante cubra >= --umbral-intra de las filas con dato).
-  2. app_default: la app manda un valor constante (>= --umbral-app) cuando lo manda.
-     contentIsLiveStream queda EXCLUIDO por defecto (MovieArk marca 1 todo su VOD).
+  2. (retirado 2026-09-17) app_default: copiar el valor constante que manda una app.
+     Se quito porque su confiabilidad no se puede justificar: un valor por defecto del
+     vendedor describe al vendedor, no al contenido.
   3. imdb: match offline contra los IMDb Non-Commercial Datasets (title.basics +
      title.akas es/pt/en + title.ratings + title.episode). Aporta tipo (movie /
      tvSeries...), runtime, generos y titulo canonico. Se descargan a --cache-dir si
@@ -31,11 +34,11 @@ Etapas (en orden; la primera que llena gana):
   6. derivados: contentCategory desde el genero (mapa IAB 1.0) y el tipo IMDb,
      contentSeries desde el tipo (tvSeries -> titulo canonico), contentLength desde
      el runtime (requiere --length-desde-runtime, ver docstring de BUCKETS).
-     contentIsLiveStream es caso aparte (mide modo de entrega, no contenido):
-     señales del vendedor en contentSeries ("VOD" -> 0, "... Livestream" -> 1) +
-     semantica de la app validada a mano (cache-dir/semantica_apps.csv, columna
-     "aplicar"); ni intra_titulo (propagaria el "1" default) ni el tipo IMDb (una
-     pelicula en canal lineal es livestream=1) se usan salvo flag explicito.
+     contentIsLiveStream es caso aparte (mide modo de entrega, no contenido): solo
+     la semantica de la app validada a mano (cache-dir/semantica_apps.csv, columna
+     "aplicar"). Ni intra_titulo (propagaria el "1" default, salvo flag explicito)
+     ni el tipo IMDb (una pelicula en canal lineal es livestream=1; retirado
+     2026-09-17) se usan.
 
 COMO FUNCIONA, CON UN EJEMPLO REAL (contentCategory: 23% -> 95%)
 ----------------------------------------------------------------
@@ -55,11 +58,7 @@ escalones (el primero que aplica gana, y queda anotado en <col>_origen):
   intra_titulo  (+12.0%) otra fila del MISMO TITULO lo trae -> se copia el [IAB1-6]
                          de Vidaa a las filas de OTTera. Candado: el valor debe
                          dominar >= 80% de las filas con dato de ese titulo.
-  app_default    (+8.1%) para titulos donde NINGUNA ruta manda el dato, la pregunta
-                         cambia de "que es este contenido?" a "que manda este
-                         vendedor cuando si manda?": OTTera->MovieArk manda [IAB1]
-                         el 99.2% de las veces, Vidaa [IAB12] el 100%. Si una app es
-                         asi de constante (>= 95%), sus vacias reciben ese valor.
+  (app_default, retirado 2026-09-17: copiaba el valor constante de la app.)
   derivado_*    (+52.1%) la fila vacia en category casi siempre esta LLENA en
                          contentGenre (99% de fill): deportes -> [IAB17], noticias ->
                          [IAB12]... (mapa aprendido de las ~149k filas que traen
@@ -67,12 +66,10 @@ escalones (el primero que aplica gana, y queda anotado en <col>_origen):
                          (un drama puede ser pelicula o serie), desempata el tipo
                          del match IMDb: movie -> [IAB1-5], tvSeries -> [IAB1-7].
 
-  intra vs app en una frase: intra_titulo copia ENTRE FILAS DEL MISMO TITULO (misma
-  pelicula, distinta ruta); app_default copia ENTRE FILAS DE LA MISMA APP (mismo
-  vendedor, distinto titulo). El primero es mas preciso y por eso va antes.
+  intra_titulo copia ENTRE FILAS DEL MISMO TITULO (misma pelicula, distinta ruta):
+  el mismo contenido, otra ruta de venta.
 
-De todo lo rellenado en las 7 columnas, ~2/3 sale del propio dataset (intra + app +
-derivado del genero) y ~1/3 depende del match externo (el tipo IMDb para separar
+De todo lo rellenado, ~2/3 sale del propio dataset (intra + derivado del genero) y ~1/3 depende del match externo (el tipo IMDb para separar
 pelicula/serie y corregir livestream, el titulo canonico para series).
 
 Cache incremental: --cache-dir/titulos.json guarda el resultado de cada titulo_clave;
@@ -472,14 +469,6 @@ def main():
     ap.add_argument("salida_json")
     ap.add_argument("--cache-dir", default="cache-enriquecimiento")
     ap.add_argument("--umbral-intra", type=float, default=0.8)
-    ap.add_argument("--umbral-app", type=float, default=0.95)
-    ap.add_argument("--min-filas-app", type=int, default=200)
-    ap.add_argument("--app-default-livestream", action="store_true",
-                    help="permitir default por app en contentIsLiveStream (desaconsejado)")
-    ap.add_argument("--livestream-desde-tipo", action="store_true",
-                    help="inferir contentIsLiveStream=0 cuando IMDb dice movie/serie "
-                         "(desaconsejado: confunde tipo de contenido con modo de entrega; "
-                         "una pelicula en canal lineal es livestream=1)")
     ap.add_argument("--intra-livestream", action="store_true",
                     help="permitir intra_titulo en contentIsLiveStream (desaconsejado: como "
                          "todo lo declarado es '1', solo propaga el default del vendedor)")
@@ -542,8 +531,6 @@ def main():
     # Se leen las 648k filas y se construyen dos "memorias":
     #   conocido[col][titulo] = Counter de valores que ese titulo trae en las filas
     #                           donde SI viene el dato  -> alimenta intra_titulo
-    #   por_app[col][app]     = Counter de valores que esa app manda cuando manda
-    #                           el campo                 -> alimenta app_default
     # =========================================================================
     filas = []
     with open(args.entrada, encoding="utf-8-sig", newline="") as f:
@@ -556,7 +543,6 @@ def main():
     print(f"{n} filas leidas", file=sys.stderr)
 
     conocido = {c: defaultdict(Counter) for c in OBJETIVO}
-    por_app = {c: defaultdict(Counter) for c in OBJETIVO}
     rutas_serie = defaultdict(set)   # titulo_clave -> publishers que traen contentSeries
     claves = {}
     for d in filas:
@@ -571,25 +557,11 @@ def main():
                     conocido[c][k][v] += 1
                     if c == "contentSeries":
                         rutas_serie[k].add(d.get("Publisher", ""))
-                por_app[c][app][v] += 1
         if k:
             claves[k] = claves.get(k, 0) + 1
 
-    # Defaults por app: una app "gana" un default solo si es casi monotematica en esa
-    # columna — su valor mas comun cubre >= 95% (umbral-app) de las filas donde manda
-    # el dato, con >= 200 filas de evidencia. Ej.: Vidaa manda [IAB12] el 100% de las
-    # veces que manda categoria; ViX manda "es" el ~97%. contentIsLiveStream queda
-    # excluido: MovieArk marca "1" hasta en peliculas, propagarlo seria amplificar
-    # un valor por defecto que no describe nada (se corrige en la pasada 2).
-    app_default = {c: {} for c in OBJETIVO}
-    for c in OBJETIVO:
-        if c == "contentIsLiveStream" and not args.app_default_livestream:
-            continue
-        for app, cnt in por_app[c].items():
-            tot = sum(cnt.values())
-            v, k_ = cnt.most_common(1)[0]
-            if tot >= args.min_filas_app and k_ / tot >= args.umbral_app:
-                app_default[c][app] = v
+    # (2026-09-17) Ya no se aprenden defaults por app: el valor constante de un
+    # vendedor describe al vendedor, no al contenido, y no se puede justificar.
 
     # =========================================================================
     # FUENTES EXTERNAS — se consultan POR TITULO DISTINTO (14 mil claves), nunca
@@ -690,7 +662,8 @@ def main():
     # PASADA 2 — rellenar fila por fila. Para cada columna vacia se prueban las
     # fuentes EN ORDEN (la primera que da valor gana) y el origen queda anotado
     # en <col>_origen para poder filtrar por confianza despues:
-    #   original -> intra_titulo -> app_default -> fuente externa / derivado
+    #   original -> intra_titulo -> fuente externa / derivado
+    #   (contentLanguage: solo original; nunca se rellena)
     # =========================================================================
     with open(args.salida_csv, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=salida_cols, extrasaction="ignore")
@@ -722,54 +695,38 @@ def main():
                     val, org = d[c].strip(), "original"
                 else:
                     val, org = None, ""
+                    if c == "contentLanguage":
+                        # No hay forma de asumir el idioma en que se EMITE un programa:
+                        # ni las otras rutas del mismo titulo (pistas de audio distintas)
+                        # ni el idioma original de la obra (Wikidata/TVMaze) lo prueban.
+                        stats[c]["sin_dato"] += 1
+                        d[c + "_relleno"], d[c + "_origen"] = "", ""
+                        continue
                     v = intra(c, k) if k else None
                     if c == "contentIsLiveStream":
                         # contentIsLiveStream mide el MODO DE ENTREGA (lineal vs
                         # on-demand), no que es el contenido: una pelicula vieja en un
                         # canal lineal FAST va programada en horario -> livestream=1.
-                        # Fuentes, en orden:
-                        #  1) señales de entrega del propio vendedor en contentSeries
-                        #     ("... Livestream" -> 1, "VOD" -> 0)
-                        #  2) semantica de la app validada a mano (semantica_apps.csv:
-                        #     una app 100% lineal como "Live TV" -> 1)
-                        #  3) intra_titulo/tipo IMDb SOLO con sus flags: propagar el
-                        #     "1" declarado no agrega informacion (todo lo declarado
-                        #     es 1) e inferir 0 de "movie" confunde contenido con
-                        #     entrega.
-                        if es_util("contentSeries", d.get("contentSeries")) and \
-                                "livestream" in d["contentSeries"].lower():
-                            val, org = "1", "derivado_tipo"
-                        elif es_util("contentSeries", d.get("contentSeries")) and \
-                                d["contentSeries"].strip().lower() == "vod":
-                            val, org = "0", "derivado_tipo"
-                        elif (d.get("pageURL") or "").strip().lower() in sem_bundle:
+                        # Unica fuente: la semantica de la app validada a mano
+                        # (semantica_apps.csv: una app 100% lineal como "Live TV" -> 1).
+                        # intra_titulo solo con su flag (propagar el "1" declarado no
+                        # agrega informacion: todo lo declarado es 1). El tipo IMDb
+                        # ("movie" -> 0) se retiro (2026-09-17): confunde contenido con
+                        # modo de entrega.
+                        if (d.get("pageURL") or "").strip().lower() in sem_bundle:
                             val, org = sem_bundle[d["pageURL"].strip().lower()], "app_semantica"
                         elif (d.get("App Name") or "").strip().lower() in sem_app:
                             val, org = sem_app[d["App Name"].strip().lower()], "app_semantica"
-                        elif args.livestream_desde_tipo and tipo in (
-                                "movie", "tvMovie", "video", "short", "tvSeries",
-                                "tvMiniSeries", "tvSpecial", "tvShort"):
-                            val, org = "0", "derivado_tipo"
                         if not val and not args.intra_livestream:
                             v = None   # intra apagado para esta columna por defecto
                     if val:
                         pass
                     elif v:
                         val, org = v, "intra_titulo"
-                    elif app in app_default[c]:
-                        val, org = app_default[c][app], "app_default"
                     elif c == "contentLength" and args.length_desde_runtime and d["ext_runtime_min"]:
                         b = runtime_a_bucket(d["ext_runtime_min"], buckets)
                         if b:
                             val, org = b, "imdb" if imdb.get("runtime") else ("tvmaze" if tvm.get("runtime") else "wikidata")
-                    elif c == "contentLanguage":
-                        # Ultimo recurso tras intra/app: el idioma ORIGINAL de la obra
-                        # segun Wikidata (P364) o TVMaze. Ojo: es el idioma original,
-                        # no la pista de audio servida — por eso va al final.
-                        if wd.get("idioma"):
-                            val, org = wd["idioma"][0], "wikidata"
-                        elif tvm.get("idioma"):
-                            val, org = tvm["idioma"][:2].lower(), "tvmaze"
                     elif c == "contentGenre":
                         gs = [IMDB_GENERO_MAP.get(x) for x in imdb.get("generos", [])]
                         gs = [g for g in gs if g]

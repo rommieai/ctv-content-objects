@@ -31,8 +31,9 @@ scripts/                          codigo que genera los consolidados y los JSON
   generar_reporte_graficos.py     markdown del reporte de graficas desde los JSON de R2 y heatmap
   generar_reporte_completitud.py  markdown "que se puede completar de cada content object:
                                   metodos y fuentes" desde el JSON del relleno y las validaciones
-  enriquecer_externo.py           rellena content objects vacios: intra-dataset, defaults
-                                  por app, IMDb offline, Wikidata/TVMaze (cache incremental)
+  enriquecer_externo.py           rellena content objects vacios: intra-titulo, IMDb offline,
+                                  Wikidata/TVMaze (cache incremental). Sin defaults por app ni
+                                  relleno de contentLanguage desde 2026-09-17
   validar_categorias.py           valida contentCategory contra IMDb/Wikidata (cache) y las
                                   taxonomias IAB oficiales: correctitud de lo lleno y
                                   categoria mas fina alcanzable por fila
