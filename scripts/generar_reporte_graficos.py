@@ -118,9 +118,14 @@ def main():
               f"Publisher = ruta de venta; pageURL = app que emite; emisor = pageURL agrupados por App Name "
               f"(`recursos/pageurl-emisores.csv`). {n(tp['titulos_reales'])} títulos reales. "
               "Generado con `scripts/generar_tabla_pageurl_titulos.py` → `recursos/titulos-pageurl.json`.\n",
-              "| Títulos que aparecen en… | pageURL distintos: % títulos | % requests | emisores distintos: % títulos | % requests |\n|---|---:|---:|---:|---:|"]
-        for a_, b_ in zip(tp["por_pageurl"], tp["por_emisor"]):
-            L.append(f"| {a_['n']} | {pct(a_['pct_titulos'])} | {pct(a_['pct_requests'])} | {pct(b_['pct_titulos'])} | {pct(b_['pct_requests'])} |")
+              "**Según cuántos pageURL distintos emiten el título:**\n",
+              "| pageURL distintos por título | % de títulos | % de requests |\n|---:|---:|---:|"]
+        for a_ in tp["por_pageurl"]:
+            L.append(f"| {a_['n']} | {pct(a_['pct_titulos'])} | {pct(a_['pct_requests'])} |")
+        L += ["\n**Según cuántos emisores distintos lo emiten (pageURL agrupados por App Name):**\n",
+              "| Emisores distintos por título | % de títulos | % de requests |\n|---:|---:|---:|"]
+        for b_ in tp["por_emisor"]:
+            L.append(f"| {b_['n']} | {pct(b_['pct_titulos'])} | {pct(b_['pct_requests'])} |")
         L += ["\n| Título (top por requests, ≥ 2 emisores) | pageURL | publishers | emisores | países | Emisores principales (% de sus requests) |\n|---|---:|---:|---:|---:|---|"]
         for t in tp["top_titulos_multi_emisor"]:
             L.append(f"| {t['titulo']} | {t['pageurls']} | {t['publishers']} | {t['emisores']} | {t['paises']} | {', '.join(t['emisores_principales'])} |")

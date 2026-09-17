@@ -165,13 +165,25 @@ Top 12 apps por requests vendidos. Para cada app, barra = eCPM ponderado (eCPM >
 
 Publisher = ruta de venta; pageURL = app que emite; emisor = pageURL agrupados por App Name (`recursos/pageurl-emisores.csv`). 15,799 títulos reales. Generado con `scripts/generar_tabla_pageurl_titulos.py` → `recursos/titulos-pageurl.json`.
 
-| Títulos que aparecen en… | pageURL distintos: % títulos | % requests | emisores distintos: % títulos | % requests |
-|---|---:|---:|---:|---:|
-| 1 | 46.8% | 7.5% | 52.6% | 12.9% |
-| 2 | 27.9% | 8.7% | 41.2% | 78.5% |
-| 3 | 7.1% | 1.7% | 4.9% | 5.1% |
-| 4 | 3.6% | 1.9% | 0.9% | 2.3% |
-| 5+ | 14.6% | 80.3% | 0.4% | 1.3% |
+**Según cuántos pageURL distintos emiten el título:**
+
+| pageURL distintos por título | % de títulos | % de requests |
+|---:|---:|---:|
+| 1 | 46.8% | 7.5% |
+| 2 | 27.9% | 8.7% |
+| 3 | 7.1% | 1.7% |
+| 4 | 3.6% | 1.9% |
+| 5+ | 14.6% | 80.3% |
+
+**Según cuántos emisores distintos lo emiten (pageURL agrupados por App Name):**
+
+| Emisores distintos por título | % de títulos | % de requests |
+|---:|---:|---:|
+| 1 | 52.6% | 12.9% |
+| 2 | 41.2% | 78.5% |
+| 3 | 4.9% | 5.1% |
+| 4 | 0.9% | 2.3% |
+| 5+ | 0.4% | 1.3% |
 
 | Título (top por requests, ≥ 2 emisores) | pageURL | publishers | emisores | países | Emisores principales (% de sus requests) |
 |---|---:|---:|---:|---:|---|
