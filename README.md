@@ -22,8 +22,10 @@ scripts/                          codigo que genera los consolidados y los JSON
   generar_graficos_ecpm_vacio.py  SVG (sin dependencias): scatter eCPM llenas vs vacias por
                                   columna con recta OLS y R2, scatter completitud vs eCPM, y
                                   pies del reparto del gasto; a partir del JSON anterior
-  generar_heatmap_completitud_ecpm.py  heatmap fila a fila (SVG): campos llenos (0-8) vs eCPM
-                                  en escala log, color = requests; banda de eCPM = 0 aparte
+  generar_scatter_completitud_ecpm.py  scatter fila a fila (SVG): campos llenos (0-8) vs eCPM en
+                                  escala log, un punto por registro vendido (tamano = requests)
+                                  y el eCPM ponderado de cada nivel; reemplaza al heatmap
+                                  (generar_heatmap_completitud_ecpm.py, ya fuera del pipeline)
   generar_graficos_drivers_ecpm.py  SVG de lo que mueve el eCPM ponderado: heatmap publisher x
                                   pais y scatter % vendido vs eCPM por publisher (+ JSON)
   generar_reporte_vacios.py       markdown "content objects cuando X esta vacio" a partir del
@@ -114,7 +116,7 @@ python scripts/normalizar_monetizar.py inventory-consolidado.csv \
 python scripts/requests_ecpm_por_vacio.py inventory-consolidado.csv \
     reportes/NN/recursos/reporte-requests-ecpm-por-vacio.json --paises "Mexico,Colombia,Chile"
 python scripts/generar_graficos_ecpm_vacio.py reportes/NN/recursos/reporte-requests-ecpm-por-vacio.json reportes/NN/recursos
-python scripts/generar_heatmap_completitud_ecpm.py inventory-consolidado.csv reportes/NN/recursos
+python scripts/generar_scatter_completitud_ecpm.py inventory-consolidado.csv reportes/NN/recursos
 python scripts/generar_graficos_drivers_ecpm.py inventory-consolidado.csv reportes/NN/recursos  # publisher x pais
 python scripts/generar_reporte_graficos.py reportes/NN 19                   # md de las graficas
 
@@ -212,7 +214,7 @@ quedan como NULL en BigQuery.
 | Reporte | Contenido |
 |---|---|
 | `reportes/21-.../reporte-content-objects-detallado-v19-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v19 (1,158,509 filas; v19 aporto 86,669 combinaciones nuevas). Tablas por pais con % de filas llenas, top 3 referencias, si se puede aumentar el % de filas llenas y el aumento estimado (ganancia del relleno) por columna |
-| `reportes/21-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** graficos SVG sobre v10-a-v19: pies del reparto del gasto entre filas llenas y vacias por columna, heatmap fila a fila de campos llenos vs eCPM, y los drivers del eCPM ponderado (heatmap publisher x pais, scatter % vendido vs eCPM por publisher: la ruta de venta explica ~2/3 de la variacion, los content objects poco) |
+| `reportes/21-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** graficos SVG sobre v10-a-v19: pies del reparto del gasto entre filas llenas y vacias por columna, scatter fila a fila de campos llenos vs eCPM (log), y los drivers del eCPM ponderado (heatmap publisher x pais, scatter % vendido vs eCPM por publisher: la ruta de venta explica ~2/3 de la variacion, los content objects poco) |
 | `reportes/21-.../reporte-completitud-content-objects-v19.md` | **Vigente:** que se puede completar de cada content object, solo tablas por columna: origen del valor tras el relleno, que mas se puede afinar segun la validacion contra IMDb/Wikidata/IAB y que tan confiable es lo declarado y lo llenado. La version completa (contexto, fuentes con licencias y limites, metodos con candados) esta en `recursos/reporte-completitud-content-objects-v19-completo.md` |
 | `reportes/20-validacion-genero-series-v18/README.md` | (v10-a-v18) validacion de contentGenre y contentSeries sobre v10-a-v18 (consolidado y relleno), con glosario y etiquetas en lenguaje claro; cifras clave v17 vs v18 en el README |
 | `reportes/19-validacion-categorias-v18/README.md` | (v10-a-v18) validacion de contentCategory sobre v10-a-v18 (correctitud y completitud), mismo formato claro; cifras clave v17 vs v18 en el README |

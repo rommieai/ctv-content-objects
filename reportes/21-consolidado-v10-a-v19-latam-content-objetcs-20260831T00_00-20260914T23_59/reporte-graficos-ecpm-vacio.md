@@ -22,11 +22,11 @@
 | contentLength | 31.5% | 46.7% | 18.4% | 15.0% |
 | contentSeries | 6.8% | 5.2% | 11.9% | 11.2% |
 
-## 2. Completitud de la fila vs eCPM: densidad de requests (fila a fila)
+## 2. Completitud de la fila vs eCPM (fila a fila)
 
-Cada fila del consolidado se clasifica por cuántos de los 8 content objects trae con dato útil (contentGenre, contentCategory, contentSeries, contentLength, contentLanguage, contentIsLiveStream, contentTitle, contentRating; contentIsTitlePresent no cuenta porque siempre viene). El heatmap acumula los requests de las filas en cada celda de (campos llenos, bin logarítmico de eCPM); la banda inferior son las filas con eCPM = 0. El punto naranja es el eCPM ponderado (>0) de cada nivel. Generado con `scripts/generar_heatmap_completitud_ecpm.py` → `recursos/graficos-ecpm-completitud-heatmap.json`.
+Cada registro del consolidado se clasifica por cuántos de los 8 content objects trae con dato útil (contentGenre, contentCategory, contentSeries, contentLength, contentLanguage, contentIsLiveStream, contentTitle, contentRating; contentIsTitlePresent no cuenta porque siempre viene). Cada punto es un registro con eCPM > 0, con el eCPM en escala logarítmica y el tamaño según sus requests (por nivel y panel se dibujan los 40 registros de más requests y 300 al azar). El punto naranja es el eCPM ponderado por requests de todos los registros del nivel. Generado con `scripts/generar_scatter_completitud_ecpm.py` → `recursos/graficos-ecpm-completitud-scatter.json`.
 
-![completitud vs eCPM, densidad](recursos/graficos-ecpm-completitud-heatmap.svg)
+![completitud vs eCPM, registro a registro](recursos/graficos-ecpm-completitud-scatter.svg)
 
 **Total consolidado** — 1,158,509 filas · 482,736,715,920 requests
 

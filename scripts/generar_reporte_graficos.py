@@ -3,9 +3,9 @@
 
 Lee, en <carpeta>/recursos/:
     graficos-ecpm-vacio-r2.json              (scripts/generar_graficos_ecpm_vacio.py)
-    graficos-ecpm-completitud-heatmap.json   (scripts/generar_heatmap_completitud_ecpm.py)
+    graficos-ecpm-completitud-scatter.json   (scripts/generar_scatter_completitud_ecpm.py)
 y escribe <carpeta>/reporte-graficos-ecpm-vacio.md (los SVG se enlazan desde recursos/) con dos secciones: reparto del gasto
-entre filas llenas y vacias, y heatmap de campos llenos vs eCPM. (Los scatter de eCPM llenas vs vacias
+entre filas llenas y vacias, y scatter fila a fila de campos llenos vs eCPM (log). (Los scatter de eCPM llenas vs vacias
 y de % llenas vs eCPM se quitaron el 2026-09-17: no mostraban relacion; el script de graficas los
 sigue produciendo en recursos/ pero no se enlazan.)
 
@@ -37,7 +37,7 @@ def main():
     V, D = a.version, a.carpeta
     R = os.path.join(D, "recursos")
     r2 = json.load(open(os.path.join(R, "graficos-ecpm-vacio-r2.json"), encoding="utf-8"))["grupos"]
-    hm = json.load(open(os.path.join(R, "graficos-ecpm-completitud-heatmap.json"), encoding="utf-8"))
+    hm = json.load(open(os.path.join(R, "graficos-ecpm-completitud-scatter.json"), encoding="utf-8"))
 
     L = [f"# Gráficos: eCPM de las filas llenas vs vacías (consolidado v10 a v{V})\n",
          f"**Fuente:** `recursos/reporte-requests-ecpm-por-vacio-v{V}.json` (mismos datos de las tablas por país del detallado). "
@@ -51,14 +51,15 @@ def main():
           "| Columna | " + " | ".join(lab for _, lab in GRUPOS) + " |\n|---|" + "---:|" * len(GRUPOS)]
     for c in COLS:
         L.append(f"| {c} | " + " | ".join(pct(r2[k]["gasto"][c]["pct_gasto_llenas"]) for k, _ in GRUPOS) + " |")
-    L += ["\n## 2. Completitud de la fila vs eCPM: densidad de requests (fila a fila)\n",
-          "Cada fila del consolidado se clasifica por cuántos de los 8 content objects trae con dato útil (contentGenre, "
+    sc = hm["muestra_por_nivel"]
+    L += ["\n## 2. Completitud de la fila vs eCPM (fila a fila)\n",
+          "Cada registro del consolidado se clasifica por cuántos de los 8 content objects trae con dato útil (contentGenre, "
           "contentCategory, contentSeries, contentLength, contentLanguage, contentIsLiveStream, contentTitle, contentRating; "
-          "contentIsTitlePresent no cuenta porque siempre viene). El heatmap acumula los requests de las filas en cada celda de "
-          "(campos llenos, bin logarítmico de eCPM); la banda inferior son las filas con eCPM = 0. El punto naranja es el eCPM "
-          "ponderado (>0) de cada nivel. Generado con `scripts/generar_heatmap_completitud_ecpm.py` → "
-          "`recursos/graficos-ecpm-completitud-heatmap.json`.\n",
-          "![completitud vs eCPM, densidad](recursos/graficos-ecpm-completitud-heatmap.svg)\n"]
+          "contentIsTitlePresent no cuenta porque siempre viene). Cada punto es un registro con eCPM > 0, con el eCPM en escala "
+          f"logarítmica y el tamaño según sus requests (por nivel y panel se dibujan los {sc['top_requests']} registros de más requests "
+          f"y {sc['azar']} al azar). El punto naranja es el eCPM ponderado por requests de todos los registros del nivel. Generado con "
+          "`scripts/generar_scatter_completitud_ecpm.py` → `recursos/graficos-ecpm-completitud-scatter.json`.\n",
+          "![completitud vs eCPM, registro a registro](recursos/graficos-ecpm-completitud-scatter.svg)\n"]
     for k, lab in GRUPOS:
         g = hm["grupos"][k]
         L.append(f"**{lab}** — {n(g['filas'])} filas · {n(g['requests'])} requests\n")
