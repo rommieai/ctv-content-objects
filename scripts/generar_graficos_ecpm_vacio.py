@@ -32,6 +32,10 @@ ABR = {"App Name": "App Name", "contentGenre": "Genre", "contentTitle": "Title",
 
 # paleta (references/palette.md del skill dataviz, modo claro)
 C_LLENO, C_VACIO = "#2a78d6", "#eb6834"
+# un color fijo por columna (orden fijo, nunca ciclado) para el scatter de completitud vs eCPM
+C_COL = {"App Name": "#2a78d6", "contentGenre": "#eb6834", "contentTitle": "#2e9e6b", "contentRating": "#8b5cf6",
+         "contentLanguage": "#d64545", "contentIsLiveStream": "#0e9aa7", "contentCategory": "#a0622d",
+         "contentLength": "#d6409f", "contentSeries": "#6b7280"}
 SURF, INK, INK2, MUTED, GRID, AXIS = "#fcfcfb", "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7"
 FONT = 'font-family="system-ui,-apple-system,Segoe UI,sans-serif"'
 
@@ -121,14 +125,22 @@ def panel_scatter(x0, y0, titulo, series, xlab, ylab, diagonal=False, notas=()):
         o.append(f'<text x="{x0+ML+12}" y="{yy+9}" font-size="10.5" fill="{INK2}">{esc(nt)}</text>'); yy += 14
     return "\n".join(o)
 
-def svg_grid(paneles, cols=2, titulo="", sub=""):
-    filas = math.ceil(len(paneles) / cols); top = 56 if titulo else 0
+def svg_grid(paneles, cols=2, titulo="", sub="", convenciones=()):
+    """convenciones: lista de (color, nombre) que se dibuja como cuadro de leyenda bajo el subtitulo."""
+    filas = math.ceil(len(paneles) / cols); top = (56 if titulo else 0) + (30 if convenciones else 0)
     w, h = cols * W + (cols - 1) * 16, filas * H + (filas - 1) * 16 + top
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" {FONT}>',
          f'<rect width="{w}" height="{h}" fill="{SURF}"/>']
     if titulo:
         o.append(f'<text x="0" y="22" font-size="17" font-weight="700" fill="{INK}">{esc(titulo)}</text>')
         o.append(f'<text x="0" y="42" font-size="12" fill="{INK2}">{esc(sub)}</text>')
+    if convenciones:
+        x = 0
+        o.append(f'<rect x="0" y="52" width="{w}" height="26" rx="4" fill="#ffffff" stroke="{GRID}"/>')
+        for color, nombre in convenciones:
+            o.append(f'<circle cx="{x + 14}" cy="65" r="5" fill="{color}"/>')
+            o.append(f'<text x="{x + 24}" y="69" font-size="11.5" fill="{INK}">{esc(nombre)}</text>')
+            x += 24 + 7 * len(nombre) + 22
     for i, p in enumerate(paneles):
         o.append(f'<g transform="translate({(i % cols) * (W + 16)},{top + (i // cols) * (H + 16)})">{p}</g>')
     o.append("</svg>")
@@ -149,20 +161,65 @@ open(os.path.join(OUT, "graficos-ecpm-vacio-scatter.svg"), "w", encoding="utf-8"
     svg_grid(paneles, 2, "eCPM ponderado: filas llenas vs filas vacías, por columna",
              "Un punto por content object. Encima de la diagonal: la columna paga más cuando viene vacía. eCPM ponderado por requests, sin filas con eCPM = 0."))
 
-# ---------- 2. scatter % llenas vs eCPM (dos series) ----------
+# ---------- 2. scatter % llenas vs eCPM (solo filas llenas; un color por columna) ----------
+def panel_fill(titulo, puntos, r, total_filas):
+    """puntos: [(fill_pct, ecpm, col)]. Un color por columna, el eCPM exacto sobre cada punto y,
+    bajo cada marca del eje x, cuantas filas del grupo representa ese porcentaje."""
+    xs = [p[0] for p in puntos]; ys = [p[1] for p in puntos]
+    lo_x, hi_x = 0, 100; lo_y, hi_y = 0, max(ys) * 1.2
+    pw, ph = W - ML - MR - 26, H - MT - MB - 12
+    sx = lambda v: ML + (v - lo_x) / (hi_x - lo_x) * pw
+    sy = lambda v: MT + ph - (v - lo_y) / (hi_y - lo_y) * ph
+    o = [f'<rect x="0" y="0" width="{W}" height="{H}" fill="{SURF}"/>',
+         f'<text x="{ML}" y="22" font-size="15" font-weight="600" fill="{INK}">{esc(titulo)}</text>']
+    for tck in range(0, 101, 20):
+        o.append(f'<line x1="{sx(tck):.1f}" y1="{MT}" x2="{sx(tck):.1f}" y2="{MT+ph}" stroke="{GRID}" stroke-width="1"/>')
+        o.append(f'<text x="{sx(tck):.1f}" y="{MT+ph+15}" font-size="11" text-anchor="middle" fill="{MUTED}">{tck}%</text>')
+        o.append(f'<text x="{sx(tck):.1f}" y="{MT+ph+28}" font-size="9.5" text-anchor="middle" fill="{MUTED}">{round(total_filas * tck / 100):,} filas</text>')
+    for tck in ticks(lo_y, hi_y):
+        if tck > hi_y: break
+        o.append(f'<line x1="{ML}" y1="{sy(tck):.1f}" x2="{ML+pw}" y2="{sy(tck):.1f}" stroke="{GRID}" stroke-width="1"/>')
+        o.append(f'<text x="{ML-6}" y="{sy(tck)+4:.1f}" font-size="11" text-anchor="end" fill="{MUTED}">{fmt(tck)}</text>')
+    o.append(f'<line x1="{ML}" y1="{MT+ph}" x2="{ML+pw}" y2="{MT+ph}" stroke="{AXIS}" stroke-width="1"/>')
+    o.append(f'<line x1="{ML}" y1="{MT}" x2="{ML}" y2="{MT+ph}" stroke="{AXIS}" stroke-width="1"/>')
+    o.append(f'<text x="{ML+pw/2:.1f}" y="{H-2}" font-size="11.5" text-anchor="middle" fill="{INK2}">% de filas llenas de la columna (debajo: cuántas filas del grupo son ese %)</text>')
+    o.append(f'<text transform="translate(16,{MT+ph/2:.1f}) rotate(-90)" font-size="11.5" text-anchor="middle" fill="{INK2}">eCPM ponderado de las filas llenas ($)</text>')
+    cid = f"clipfill_{abs(hash(titulo)) % 10000}"
+    o.append(f'<clipPath id="{cid}"><rect x="{ML}" y="{MT}" width="{pw}" height="{ph}"/></clipPath>')
+    if r:
+        ya, yb = r["intercepto"] + r["pendiente"] * lo_x, r["intercepto"] + r["pendiente"] * hi_x
+        o.append(f'<line clip-path="url(#{cid})" x1="{sx(lo_x):.1f}" y1="{sy(ya):.1f}" x2="{sx(hi_x):.1f}" y2="{sy(yb):.1f}" stroke="{MUTED}" stroke-width="1.5" stroke-dasharray="5 4"/>')
+        o.append(f'<text x="{ML+4}" y="{MT+ph-6}" font-size="10.5" fill="{INK2}">recta OLS: R² = {r["r2"]:.2f}, pendiente {r["pendiente"]:.3f} $ por punto de %</text>')
+    for x, y, col in puntos:
+        o.append(f'<circle cx="{sx(x):.1f}" cy="{sy(y):.1f}" r="6" fill="{C_COL[col]}" stroke="{SURF}" stroke-width="2"/>')
+    # etiquetas del eCPM sobre cada punto, con anticolision: si dos etiquetas quedan a menos de
+    # 34 px en x y 12 px en y, la segunda sube 12 px y se une al punto con una guia
+    puestas = []
+    for x, y, col in sorted(puntos, key=lambda p: (p[0], -p[1])):
+        lx, ly = sx(x), sy(y) - 10
+        movida = True
+        while movida:
+            movida = False
+            for ox, oy in puestas:
+                if abs(ox - lx) < 34 and abs(oy - ly) < 12:
+                    ly = oy - 12; movida = True
+        puestas.append((lx, ly))
+        if sy(y) - 10 - ly > 6:
+            o.append(f'<line x1="{lx:.1f}" y1="{sy(y)-6:.1f}" x2="{lx:.1f}" y2="{ly+2:.1f}" stroke="{C_COL[col]}" stroke-width="1"/>')
+        o.append(f'<text x="{lx:.1f}" y="{ly:.1f}" font-size="10.5" font-weight="600" text-anchor="middle" fill="{INK}">${y:.2f}</text>')
+    return "\n".join(o)
+
 paneles = []
 for g in GRUPOS:
     d = datos(g)
-    p1 = [(r["fill"], r["e_lleno"], ABR[r["col"]]) for r in d]; p2 = [(r["fill"], r["e_vacio"], "") for r in d]
+    p1 = [(r["fill"], r["e_lleno"], r["col"]) for r in d]; p2 = [(r["fill"], r["e_vacio"]) for r in d]
     r1 = ols([p[0] for p in p1], [p[1] for p in p1]); r2 = ols([p[0] for p in p2], [p[1] for p in p2])
     resumen[g]["scatter_fill_vs_ecpm"] = {"llenas": r1, "vacias": r2}
-    paneles.append(panel_scatter(0, 0, TITULO[g],
-                                 [{"color": C_LLENO, "nombre": "eCPM filas llenas", "puntos": p1, "ols": r1},
-                                  {"color": C_VACIO, "nombre": "eCPM filas vacías", "puntos": p2, "ols": r2}],
-                                 "% de filas llenas de la columna", "eCPM ponderado ($)"))
+    paneles.append(panel_fill(TITULO[g], p1, r1, J["paises"][g]["filas"]))
 open(os.path.join(OUT, "graficos-ecpm-vacio-scatter-fill.svg"), "w", encoding="utf-8").write(
     svg_grid(paneles, 2, "¿La completitud de la columna se relaciona con el precio?",
-             "x = % de filas del grupo donde la columna trae dato útil; y = eCPM ponderado de esas filas (azul) y de las vacías (naranja). Recta OLS y R² por serie."))
+             "x = % de filas del grupo donde la columna trae dato útil; y = eCPM ponderado de esas filas llenas. Un color por columna; sobre cada punto, su eCPM.",
+             convenciones=[(C_COL[c], ABR[c]) for c in COLS]))
 
 # ---------- 3. pies: reparto del gasto ----------
 R, CW, CH = 44, 118, 150

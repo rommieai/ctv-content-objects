@@ -15,20 +15,18 @@
 | Colombia | 0.422 | -1.005 | 9.63 | 6 de 9 |
 | Chile | 0.114 | 0.708 | 3.03 | 8 de 9 |
 
-## 2. % de filas llenas (x) vs eCPM (y), por serie
+## 2. % de filas llenas (x) vs eCPM ponderado de esas filas (y)
 
 ![completitud vs eCPM](graficos-ecpm-vacio-scatter-fill.svg)
 
-| Grupo | Serie | R² | Pendiente ($ por punto de %) | Intercepto |
-|---|---|---:|---:|---:|
-| Total consolidado | eCPM filas llenas | 0.000 | 0.0001 | 4.10 |
-| Total consolidado | eCPM filas vacías | 0.091 | -0.0040 | 4.05 |
-| México | eCPM filas llenas | 0.585 | -0.0124 | 4.28 |
-| México | eCPM filas vacías | 0.033 | 0.0025 | 2.67 |
-| Colombia | eCPM filas llenas | 0.627 | 0.0190 | 3.45 |
-| Colombia | eCPM filas vacías | 0.151 | -0.0144 | 5.91 |
-| Chile | eCPM filas llenas | 0.653 | 0.0101 | 5.05 |
-| Chile | eCPM filas vacías | 0.400 | 0.0165 | 6.12 |
+*Un punto por columna, con un color fijo por columna (cuadro de convenciones arriba) y su eCPM ponderado exacto encima. Bajo cada marca del eje x, cuántas filas del grupo representa ese porcentaje. Recta OLS y R² sobre los 9 puntos.*
+
+| Grupo | R² | Pendiente ($ por punto de %) | Intercepto |
+|---|---:|---:|---:|
+| Total consolidado | 0.000 | 0.0001 | 4.10 |
+| México | 0.585 | -0.0124 | 4.28 |
+| Colombia | 0.627 | 0.0190 | 3.45 |
+| Chile | 0.653 | 0.0101 | 5.05 |
 
 ## 3. Reparto del gasto (eCPM × requests / 1000) entre filas llenas y vacías
 
