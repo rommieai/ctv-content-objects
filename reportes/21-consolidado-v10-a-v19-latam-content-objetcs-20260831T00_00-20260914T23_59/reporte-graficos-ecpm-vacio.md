@@ -160,3 +160,33 @@ Top 12 apps por requests vendidos. Para cada app, barra = eCPM ponderado (eCPM >
 | Vidaa | $1.53 | 2.3% | — | — | — | $1.37 (11%) | $1.46 (18%) | $1.55 (58%) | $1.33 (12%) | — | — |
 
 *Entre paréntesis, el % de los requests vendidos de la app que cae en ese nivel de campos llenos.*
+
+## 5. Títulos emitidos por más de un pageURL
+
+Publisher = ruta de venta; pageURL = app que emite; emisor = pageURL agrupados por App Name (`recursos/pageurl-emisores.csv`). 15,799 títulos reales. Generado con `scripts/generar_tabla_pageurl_titulos.py` → `recursos/titulos-pageurl.json`.
+
+| Títulos que aparecen en… | pageURL distintos: % títulos | % requests | emisores distintos: % títulos | % requests |
+|---|---:|---:|---:|---:|
+| 1 | 46.8% | 7.5% | 52.6% | 12.9% |
+| 2 | 27.9% | 8.7% | 41.2% | 78.5% |
+| 3 | 7.1% | 1.7% | 4.9% | 5.1% |
+| 4 | 3.6% | 1.9% | 0.9% | 2.3% |
+| 5+ | 14.6% | 80.3% | 0.4% | 1.3% |
+
+| Título (top por requests, ≥ 2 emisores) | pageURL | publishers | emisores | países | Emisores principales (% de sus requests) |
+|---|---:|---:|---:|---:|---|
+| lo que la vida me robo | 10 | 10 | 2 | 16 | ViX 100%, (App Name vacío) 0% |
+| eve | 14 | 21 | 3 | 18 | OTTera (pool FAST) 93%, TCL 5%, ViX 2% |
+| brooklyn love stories | 8 | 18 | 3 | 18 | OTTera (pool FAST) 95%, TCL 5%, FreeMovie Browser Like Chrome 0% |
+| hatchback | 7 | 17 | 2 | 18 | OTTera (pool FAST) 94%, TCL 6% |
+| corona | 7 | 17 | 2 | 18 | OTTera (pool FAST) 94%, TCL 6% |
+| penance lane | 9 | 21 | 3 | 18 | OTTera (pool FAST) 95%, TCL 5%, (App Name vacío) 0% |
+| american apocalypse | 9 | 19 | 4 | 18 | OTTera (pool FAST) 95%, TCL 5%, (App Name vacío) 0%, FreeMovie Browser Like Chrome 0% |
+| chicken stew | 7 | 15 | 2 | 16 | OTTera (pool FAST) 50%, TCL 50% |
+| chicken coop | 7 | 17 | 2 | 18 | TCL 57%, OTTera (pool FAST) 43% |
+| humble pie | 7 | 18 | 2 | 18 | OTTera (pool FAST) 75%, TCL 25% |
+| a royal christmas on ice | 2 | 9 | 2 | 3 | TCL 73%, OTTera (pool FAST) 27% |
+| mi corazon es tuyo | 10 | 10 | 2 | 15 | ViX 100%, (App Name vacío) 0% |
+| amores verdaderos | 10 | 10 | 2 | 16 | ViX 100%, (App Name vacío) 0% |
+| la mujer del anarquista | 7 | 17 | 2 | 18 | OTTera (pool FAST) 89%, TCL 11% |
+| la fea mas bella | 10 | 10 | 2 | 15 | ViX 100%, (App Name vacío) 0% |
