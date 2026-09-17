@@ -4,8 +4,10 @@
 Lee, en <carpeta>/recursos/:
     graficos-ecpm-vacio-r2.json              (scripts/generar_graficos_ecpm_vacio.py)
     graficos-ecpm-completitud-heatmap.json   (scripts/generar_heatmap_completitud_ecpm.py)
-y escribe <carpeta>/reporte-graficos-ecpm-vacio.md (los SVG se enlazan desde recursos/) con las cuatro secciones: scatter llenas vs vacias
-(OLS/R2), % llenas vs eCPM por serie, reparto del gasto y heatmap de campos llenos vs eCPM.
+y escribe <carpeta>/reporte-graficos-ecpm-vacio.md (los SVG se enlazan desde recursos/) con dos secciones: reparto del gasto
+entre filas llenas y vacias, y heatmap de campos llenos vs eCPM. (Los scatter de eCPM llenas vs vacias
+y de % llenas vs eCPM se quitaron el 2026-09-17: no mostraban relacion; el script de graficas los
+sigue produciendo en recursos/ pero no se enlazan.)
 
 Uso:
     python scripts/generar_reporte_graficos.py reportes/NN 19
@@ -41,31 +43,15 @@ def main():
          f"**Fuente:** `recursos/reporte-requests-ecpm-por-vacio-v{V}.json` (mismos datos de las tablas por país del detallado). "
          "Generado con `scripts/generar_graficos_ecpm_vacio.py` → `recursos/graficos-ecpm-vacio-r2.json`; tablas con "
          "`scripts/generar_reporte_graficos.py`.\n",
-         "*eCPM ponderado = Σ(eCPM × requests) / Σ requests, sin las filas con requests = 0 o eCPM = 0. Un punto por content "
-         "object (9 columnas: App Name y los 8 content objects con filas vacías; contentIsTitlePresent y Publisher vienen al "
-         "100% y no entran). R² es el de la recta de mínimos cuadrados (OLS) sobre esos 9 puntos.*\n",
-         "## 1. eCPM llenas (x) vs eCPM vacías (y)\n",
-         "![eCPM llenas vs vacías](recursos/graficos-ecpm-vacio-scatter.svg)\n",
-         "| Grupo | R² | Pendiente | Intercepto | Columnas que pagan más vacías |\n|---|---:|---:|---:|---:|"]
-    for k, lab in GRUPOS:
-        s = r2[k]["scatter_lleno_vs_vacio"]
-        o = s["ols"]
-        L.append(f"| {lab} | {o['r2']:.3f} | {o['pendiente']:.3f} | {o['intercepto']:.2f} | {s['columnas_vacio_paga_mas']} de {s['columnas']} |")
-    L += ["\n## 2. % de filas llenas (x) vs eCPM (y), por serie\n",
-          "![completitud vs eCPM](recursos/graficos-ecpm-vacio-scatter-fill.svg)\n",
-          "| Grupo | Serie | R² | Pendiente ($ por punto de %) | Intercepto |\n|---|---|---:|---:|---:|"]
-    for k, lab in GRUPOS:
-        s = r2[k]["scatter_fill_vs_ecpm"]
-        for serie, key in (("eCPM filas llenas", "llenas"), ("eCPM filas vacías", "vacias")):
-            o = s[key]
-            L.append(f"| {lab} | {serie} | {o['r2']:.3f} | {o['pendiente']:.4f} | {o['intercepto']:.2f} |")
-    L += ["\n## 3. Reparto del gasto (eCPM × requests / 1000) entre filas llenas y vacías\n",
+         "*eCPM ponderado = Σ(eCPM × requests) / Σ requests, sin las filas con requests = 0 o eCPM = 0. Columnas: App Name y "
+         "los 8 content objects con filas vacías; contentIsTitlePresent y Publisher vienen al 100% y no entran.*\n"]
+    L += ["## 1. Reparto del gasto (eCPM × requests / 1000) entre filas llenas y vacías\n",
           "![reparto del gasto](recursos/graficos-ecpm-vacio-pies.svg)\n",
           "*% del gasto del grupo que cae en filas donde la columna trae dato útil. El gasto se calcula solo sobre filas con eCPM > 0.*\n",
           "| Columna | " + " | ".join(lab for _, lab in GRUPOS) + " |\n|---|" + "---:|" * len(GRUPOS)]
     for c in COLS:
         L.append(f"| {c} | " + " | ".join(pct(r2[k]["gasto"][c]["pct_gasto_llenas"]) for k, _ in GRUPOS) + " |")
-    L += ["\n## 4. Completitud de la fila vs eCPM: densidad de requests (fila a fila)\n",
+    L += ["\n## 2. Completitud de la fila vs eCPM: densidad de requests (fila a fila)\n",
           "Cada fila del consolidado se clasifica por cuántos de los 8 content objects trae con dato útil (contentGenre, "
           "contentCategory, contentSeries, contentLength, contentLanguage, contentIsLiveStream, contentTitle, contentRating; "
           "contentIsTitlePresent no cuenta porque siempre viene). El heatmap acumula los requests de las filas en cada celda de "
