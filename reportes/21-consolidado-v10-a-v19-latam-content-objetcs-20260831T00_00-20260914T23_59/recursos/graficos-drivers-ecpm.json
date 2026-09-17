@@ -1,0 +1,461 @@
+{
+ "fuente": "inventory-consolidado-v10-a-v19.csv",
+ "total": {
+  "requests": 482736715920,
+  "requests_vendidos": 267308200800,
+  "pct_vendido": 55.4,
+  "ecpm_ponderado": 4.047
+ },
+ "paises": [
+  "Mexico",
+  "Argentina",
+  "Colombia",
+  "Chile",
+  "Peru",
+  "Costa Rica"
+ ],
+ "heatmap": {
+  "Roku - oRTB": {
+   "Mexico": {
+    "ecpm_ponderado": 5.647,
+    "share_trafico_vendido_pct": 16.04,
+    "pct_vendido": 61.5
+   },
+   "Argentina": null,
+   "Colombia": null,
+   "Chile": null,
+   "Peru": null,
+   "Costa Rica": null
+  },
+  "TCL ADS - Springserve": {
+   "Mexico": {
+    "ecpm_ponderado": 2.089,
+    "share_trafico_vendido_pct": 6.49,
+    "pct_vendido": 86.6
+   },
+   "Argentina": {
+    "ecpm_ponderado": 7.45,
+    "share_trafico_vendido_pct": 5.12,
+    "pct_vendido": 81.2
+   },
+   "Colombia": null,
+   "Chile": {
+    "ecpm_ponderado": 7.756,
+    "share_trafico_vendido_pct": 1.24,
+    "pct_vendido": 71.6
+   },
+   "Peru": null,
+   "Costa Rica": {
+    "ecpm_ponderado": 4.746,
+    "share_trafico_vendido_pct": 0.39,
+    "pct_vendido": 89.7
+   }
+  },
+  "iion Pty Ltd": {
+   "Mexico": {
+    "ecpm_ponderado": 2.73,
+    "share_trafico_vendido_pct": 6.03,
+    "pct_vendido": 55.4
+   },
+   "Argentina": {
+    "ecpm_ponderado": 5.733,
+    "share_trafico_vendido_pct": 4.28,
+    "pct_vendido": 59.9
+   },
+   "Colombia": {
+    "ecpm_ponderado": 6.756,
+    "share_trafico_vendido_pct": 1.47,
+    "pct_vendido": 30.4
+   },
+   "Chile": {
+    "ecpm_ponderado": 8.116,
+    "share_trafico_vendido_pct": 0.02,
+    "pct_vendido": 0.8
+   },
+   "Peru": {
+    "ecpm_ponderado": 5.404,
+    "share_trafico_vendido_pct": 1.26,
+    "pct_vendido": 50.3
+   },
+   "Costa Rica": {
+    "ecpm_ponderado": 11.281,
+    "share_trafico_vendido_pct": 0.02,
+    "pct_vendido": 94.2
+   }
+  },
+  "Televisa Univision via SpringServe": {
+   "Mexico": {
+    "ecpm_ponderado": 2.04,
+    "share_trafico_vendido_pct": 7.5,
+    "pct_vendido": 86.1
+   },
+   "Argentina": {
+    "ecpm_ponderado": 2.521,
+    "share_trafico_vendido_pct": 0.08,
+    "pct_vendido": 81.2
+   },
+   "Colombia": {
+    "ecpm_ponderado": 7.37,
+    "share_trafico_vendido_pct": 0.02,
+    "pct_vendido": 66.5
+   },
+   "Chile": {
+    "ecpm_ponderado": 4.929,
+    "share_trafico_vendido_pct": 0.02,
+    "pct_vendido": 80.4
+   },
+   "Peru": {
+    "ecpm_ponderado": 2.619,
+    "share_trafico_vendido_pct": 0.01,
+    "pct_vendido": 32.9
+   },
+   "Costa Rica": {
+    "ecpm_ponderado": 5.343,
+    "share_trafico_vendido_pct": 0.04,
+    "pct_vendido": 90.2
+   }
+  },
+  "Equativ (Formerly SMART AdServer) - oRTB CTV": {
+   "Mexico": {
+    "ecpm_ponderado": 2.616,
+    "share_trafico_vendido_pct": 7.9,
+    "pct_vendido": 84.1
+   },
+   "Argentina": null,
+   "Colombia": {
+    "ecpm_ponderado": 1.208,
+    "share_trafico_vendido_pct": 0.02,
+    "pct_vendido": 30.2
+   },
+   "Chile": {
+    "ecpm_ponderado": 1.765,
+    "share_trafico_vendido_pct": 0.01,
+    "pct_vendido": 20.9
+   },
+   "Peru": null,
+   "Costa Rica": null
+  },
+  "TCL ADs (APAC)": {
+   "Mexico": {
+    "ecpm_ponderado": 2.075,
+    "share_trafico_vendido_pct": 2.52,
+    "pct_vendido": 68.1
+   },
+   "Argentina": {
+    "ecpm_ponderado": 9.472,
+    "share_trafico_vendido_pct": 2.39,
+    "pct_vendido": 86.0
+   },
+   "Colombia": {
+    "ecpm_ponderado": 1.552,
+    "share_trafico_vendido_pct": 0.92,
+    "pct_vendido": 87.7
+   },
+   "Chile": {
+    "ecpm_ponderado": 8.614,
+    "share_trafico_vendido_pct": 0.77,
+    "pct_vendido": 84.9
+   },
+   "Peru": {
+    "ecpm_ponderado": 5.163,
+    "share_trafico_vendido_pct": 0.51,
+    "pct_vendido": 93.3
+   },
+   "Costa Rica": null
+  },
+  "Televisa Univision via OB": {
+   "Mexico": {
+    "ecpm_ponderado": 1.001,
+    "share_trafico_vendido_pct": 5.37,
+    "pct_vendido": 98.1
+   },
+   "Argentina": {
+    "ecpm_ponderado": 1.015,
+    "share_trafico_vendido_pct": 0.07,
+    "pct_vendido": 96.9
+   },
+   "Colombia": {
+    "ecpm_ponderado": 0.629,
+    "share_trafico_vendido_pct": 0.02,
+    "pct_vendido": 75.2
+   },
+   "Chile": {
+    "ecpm_ponderado": 4.667,
+    "share_trafico_vendido_pct": 0.02,
+    "pct_vendido": 95.8
+   },
+   "Peru": {
+    "ecpm_ponderado": 1.084,
+    "share_trafico_vendido_pct": 0.03,
+    "pct_vendido": 91.3
+   },
+   "Costa Rica": {
+    "ecpm_ponderado": 3.925,
+    "share_trafico_vendido_pct": 0.02,
+    "pct_vendido": 92.5
+   }
+  },
+  "Coocaa, a SKYWORTH company": {
+   "Mexico": {
+    "ecpm_ponderado": 2.543,
+    "share_trafico_vendido_pct": 0.53,
+    "pct_vendido": 82.7
+   },
+   "Argentina": {
+    "ecpm_ponderado": 3.145,
+    "share_trafico_vendido_pct": 2.77,
+    "pct_vendido": 87.1
+   },
+   "Colombia": {
+    "ecpm_ponderado": 2.671,
+    "share_trafico_vendido_pct": 0.8,
+    "pct_vendido": 71.9
+   },
+   "Chile": {
+    "ecpm_ponderado": 4.375,
+    "share_trafico_vendido_pct": 0.5,
+    "pct_vendido": 78.5
+   },
+   "Peru": {
+    "ecpm_ponderado": 2.523,
+    "share_trafico_vendido_pct": 0.42,
+    "pct_vendido": 83.3
+   },
+   "Costa Rica": {
+    "ecpm_ponderado": 8.803,
+    "share_trafico_vendido_pct": 0.17,
+    "pct_vendido": 71.2
+   }
+  },
+  "TV Azteca - Springserve": {
+   "Mexico": {
+    "ecpm_ponderado": 7.92,
+    "share_trafico_vendido_pct": 4.56,
+    "pct_vendido": 64.5
+   },
+   "Argentina": null,
+   "Colombia": null,
+   "Chile": null,
+   "Peru": null,
+   "Costa Rica": null
+  },
+  "Vidaa": {
+   "Mexico": {
+    "ecpm_ponderado": 1.106,
+    "share_trafico_vendido_pct": 3.92,
+    "pct_vendido": 87.4
+   },
+   "Argentina": {
+    "ecpm_ponderado": 2.63,
+    "share_trafico_vendido_pct": 0.21,
+    "pct_vendido": 86.6
+   },
+   "Colombia": {
+    "ecpm_ponderado": 6.319,
+    "share_trafico_vendido_pct": 0.11,
+    "pct_vendido": 78.5
+   },
+   "Chile": {
+    "ecpm_ponderado": 3.868,
+    "share_trafico_vendido_pct": 0.05,
+    "pct_vendido": 54.6
+   },
+   "Peru": {
+    "ecpm_ponderado": 2.618,
+    "share_trafico_vendido_pct": 0.07,
+    "pct_vendido": 83.1
+   },
+   "Costa Rica": {
+    "ecpm_ponderado": 8.298,
+    "share_trafico_vendido_pct": 0.0,
+    "pct_vendido": 26.4
+   }
+  },
+  "Zeasn Europe B.V.": {
+   "Mexico": {
+    "ecpm_ponderado": 2.021,
+    "share_trafico_vendido_pct": 2.48,
+    "pct_vendido": 99.8
+   },
+   "Argentina": {
+    "ecpm_ponderado": 2.915,
+    "share_trafico_vendido_pct": 0.91,
+    "pct_vendido": 99.5
+   },
+   "Colombia": {
+    "ecpm_ponderado": 1.721,
+    "share_trafico_vendido_pct": 0.26,
+    "pct_vendido": 98.8
+   },
+   "Chile": {
+    "ecpm_ponderado": 9.597,
+    "share_trafico_vendido_pct": 0.04,
+    "pct_vendido": 98.0
+   },
+   "Peru": {
+    "ecpm_ponderado": 5.301,
+    "share_trafico_vendido_pct": 0.09,
+    "pct_vendido": 93.9
+   },
+   "Costa Rica": {
+    "ecpm_ponderado": 5.974,
+    "share_trafico_vendido_pct": 0.28,
+    "pct_vendido": 98.9
+   }
+  },
+  "Vidaa  APAC Hisense Headquarter": {
+   "Mexico": {
+    "ecpm_ponderado": 1.426,
+    "share_trafico_vendido_pct": 1.62,
+    "pct_vendido": 82.1
+   },
+   "Argentina": {
+    "ecpm_ponderado": 2.633,
+    "share_trafico_vendido_pct": 0.14,
+    "pct_vendido": 88.0
+   },
+   "Colombia": {
+    "ecpm_ponderado": 3.938,
+    "share_trafico_vendido_pct": 0.07,
+    "pct_vendido": 82.2
+   },
+   "Chile": {
+    "ecpm_ponderado": 4.252,
+    "share_trafico_vendido_pct": 0.04,
+    "pct_vendido": 77.3
+   },
+   "Peru": {
+    "ecpm_ponderado": 2.71,
+    "share_trafico_vendido_pct": 0.04,
+    "pct_vendido": 87.5
+   },
+   "Costa Rica": {
+    "ecpm_ponderado": 7.837,
+    "share_trafico_vendido_pct": 0.0,
+    "pct_vendido": 50.0
+   }
+  }
+ },
+ "publishers": {
+  "iion Pty Ltd": {
+   "requests": 74914338080,
+   "pct_vendido": 47.0,
+   "ecpm_ponderado": 4.477,
+   "share_trafico_vendido_pct": 13.18
+  },
+  "Roku - oRTB": {
+   "requests": 71242132400,
+   "pct_vendido": 60.2,
+   "ecpm_ponderado": 5.648,
+   "share_trafico_vendido_pct": 16.05
+  },
+  "OTTera.tv": {
+   "requests": 66580855520,
+   "pct_vendido": 0.3,
+   "ecpm_ponderado": 6.382,
+   "share_trafico_vendido_pct": 0.08
+  },
+  "TCL ADS - Springserve": {
+   "requests": 45260186640,
+   "pct_vendido": 80.4,
+   "ecpm_ponderado": 4.787,
+   "share_trafico_vendido_pct": 13.61
+  },
+  "TCL ADs (APAC)": {
+   "requests": 27098439200,
+   "pct_vendido": 75.6,
+   "ecpm_ponderado": 5.482,
+   "share_trafico_vendido_pct": 7.66
+  },
+  "Equativ (Formerly SMART AdServer) - oRTB CTV": {
+   "requests": 25464790800,
+   "pct_vendido": 83.3,
+   "ecpm_ponderado": 2.611,
+   "share_trafico_vendido_pct": 7.93
+  },
+  "Televisa Univision via SpringServe": {
+   "requests": 25078019680,
+   "pct_vendido": 85.2,
+   "ecpm_ponderado": 2.251,
+   "share_trafico_vendido_pct": 7.99
+  },
+  "Select Plus PTE LTD (CTV)": {
+   "requests": 22836943680,
+   "pct_vendido": 0.1,
+   "ecpm_ponderado": 13.676,
+   "share_trafico_vendido_pct": 0.01
+  },
+  "TV Azteca - Springserve": {
+   "requests": 18892164560,
+   "pct_vendido": 64.5,
+   "ecpm_ponderado": 7.92,
+   "share_trafico_vendido_pct": 4.56
+  },
+  "Coocaa, a SKYWORTH company": {
+   "requests": 17434893120,
+   "pct_vendido": 79.8,
+   "ecpm_ponderado": 3.261,
+   "share_trafico_vendido_pct": 5.21
+  },
+  "Televisa Univision via OB": {
+   "requests": 15145327600,
+   "pct_vendido": 97.8,
+   "ecpm_ponderado": 1.027,
+   "share_trafico_vendido_pct": 5.54
+  },
+  "Vidaa": {
+   "requests": 14056808560,
+   "pct_vendido": 84.5,
+   "ecpm_ponderado": 1.495,
+   "share_trafico_vendido_pct": 4.44
+  },
+  "Zeasn Europe B.V.": {
+   "requests": 11740200320,
+   "pct_vendido": 98.7,
+   "ecpm_ponderado": 2.535,
+   "share_trafico_vendido_pct": 4.34
+  },
+  "AWG Media": {
+   "requests": 7687746400,
+   "pct_vendido": 52.8,
+   "ecpm_ponderado": 3.192,
+   "share_trafico_vendido_pct": 1.52
+  },
+  "PML Digital": {
+   "requests": 7007781760,
+   "pct_vendido": 73.7,
+   "ecpm_ponderado": 2.326,
+   "share_trafico_vendido_pct": 1.93
+  },
+  "Vidaa  APAC Hisense Headquarter": {
+   "requests": 6535494320,
+   "pct_vendido": 81.1,
+   "ecpm_ponderado": 1.884,
+   "share_trafico_vendido_pct": 1.98
+  },
+  "METAX SOFTWARE PTE. LTD. (Exchange)": {
+   "requests": 5692454640,
+   "pct_vendido": 49.2,
+   "ecpm_ponderado": 3.558,
+   "share_trafico_vendido_pct": 1.05
+  },
+  "Aluna Limited": {
+   "requests": 2491119840,
+   "pct_vendido": 77.4,
+   "ecpm_ponderado": 5.3,
+   "share_trafico_vendido_pct": 0.72
+  },
+  "METAX SOFTWARE PTE. LTD.": {
+   "requests": 1850575760,
+   "pct_vendido": 80.5,
+   "ecpm_ponderado": 6.11,
+   "share_trafico_vendido_pct": 0.56
+  },
+  "Kivi via Springserve": {
+   "requests": 1236449920,
+   "pct_vendido": 22.7,
+   "ecpm_ponderado": 5.11,
+   "share_trafico_vendido_pct": 0.1
+  }
+ }
+}

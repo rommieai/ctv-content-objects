@@ -66,6 +66,32 @@ def main():
         for x in g["niveles"]:
             L.append(f"| {x['campos_llenos']} | {pct(x['pct_filas'])} | {pct(x['pct_requests'])} | {pct(x['pct_req_monetizado'])} | ${x['ecpm_ponderado']:.2f} |")
         L.append("")
+    # ---- 3. drivers del eCPM: la ruta de venta (scripts/generar_graficos_drivers_ecpm.py) ----
+    pdrv = os.path.join(R, "graficos-drivers-ecpm.json")
+    if os.path.exists(pdrv):
+        drv = json.load(open(pdrv, encoding="utf-8"))
+        tot = drv["total"]
+        L += ["## 3. Qué mueve el eCPM ponderado: la ruta de venta (publisher y país)\n",
+              "Sobre las filas con eCPM > 0 y requests > 0, la combinación publisher × país explica cerca de dos tercios de la "
+              "variación del eCPM ponderado; los content objects, controlando por la ruta, aportan pocos puntos (género y rating "
+              "los que más). Generado con `scripts/generar_graficos_drivers_ecpm.py` → `recursos/graficos-drivers-ecpm.json`.\n",
+              "### 3.1 eCPM ponderado por publisher y país\n",
+              "![eCPM por publisher y país](recursos/graficos-drivers-ecpm-heatmap-publisher-pais.svg)\n",
+              "*Publishers ordenados por requests vendidos (top 12). En cada celda, eCPM ponderado y, debajo, % del tráfico vendido "
+              "del consolidado que cae en esa combinación. Vacío = menos del 0.05 % del tráfico vendido.*\n",
+              "| Publisher | " + " | ".join(drv["paises"]) + " |\n|---|" + "---:|" * len(drv["paises"])]
+        for p, row in drv["heatmap"].items():
+            cells = [f"${c['ecpm_ponderado']:.2f} ({c['share_trafico_vendido_pct']:.1f}%)" if c and c["share_trafico_vendido_pct"] >= 0.05 else "—"
+                     for c in (row[x] for x in drv["paises"])]
+            L.append(f"| {p} | " + " | ".join(cells) + " |")
+        L += ["\n### 3.2 Publishers: % de requests vendidos vs eCPM ponderado\n",
+              "![publishers: % vendido vs eCPM](recursos/graficos-drivers-ecpm-scatter-publisher.svg)\n",
+              f"*Un punto por publisher (top 20 por requests); el tamaño es el total de requests. Líneas punteadas: promedio "
+              f"ponderado del consolidado ({tot['pct_vendido']:.0f} % vendido, ${tot['ecpm_ponderado']:.2f}).*\n",
+              "| Publisher | Requests | % vendido (eCPM > 0) | eCPM pond. | % del tráfico vendido |\n|---|---:|---:|---:|---:|"]
+        for p, d in sorted(drv["publishers"].items(), key=lambda kv: -kv[1]["requests"]):
+            L.append(f"| {p} | {n(d['requests'])} | {pct(d['pct_vendido'])} | ${d['ecpm_ponderado']:.2f} | {pct(d['share_trafico_vendido_pct'])} |")
+        L.append("")
     out = os.path.join(D, "reporte-graficos-ecpm-vacio.md")
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L).rstrip("\n") + "\n")
