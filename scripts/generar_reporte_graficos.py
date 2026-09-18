@@ -148,6 +148,19 @@ def main():
             L.append(f"| {d['canal']} | {n(d['filas'])} | {n(d['requests'])} | {pct(d['completitud_promedio'])} | "
                      + " | ".join(pct(d["pct_llenas"][c]) for c in cols) + " |")
         L.append("\n*Win y Telefe no aparecen en el consolidado: ningún Publisher ni App Name los nombra.*\n")
+        # ---- 7. canales: requests totales vs eCPM ponderado ----
+        L += ["## 7. Canales: requests totales vs eCPM ponderado\n",
+              "Un punto por canal (mismos canales y misma definición de la sección 6). x = requests totales del canal en escala "
+              "logarítmica; y = eCPM ponderado de sus filas con eCPM > 0. Junto al punto, requests totales y % de requests vendidos.\n",
+              "![canales: requests vs eCPM](recursos/graficos-canales-requests-ecpm.svg)\n",
+              "| Canal | Requests | Requests vendidos | % vendido | eCPM pond. |\n|---|---:|---:|---:|---:|"]
+        for d in sorted(can["canales"], key=lambda d: -d["requests"]):
+            if not d["requests"]:
+                L.append(f"| {d['canal']} | 0 | 0 | — | — |")
+            else:
+                L.append(f"| {d['canal']} | {n(d['requests'])} | {n(d['requests_vendidos'])} | {pct(d['pct_vendido'])} | "
+                         + (f"${d['ecpm_ponderado']:.2f}" if d["ecpm_ponderado"] is not None else "— (sin filas vendidas)") + " |")
+        L.append("")
     out = os.path.join(D, "reporte-graficos-ecpm-vacio.md")
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L).rstrip("\n") + "\n")

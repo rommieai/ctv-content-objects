@@ -62,15 +62,20 @@ def main():
     a = ap.parse_args()
     csv.field_size_limit(10 ** 9)
     pats = [(nombre, re.compile(pp, re.I), re.compile(pa, re.I)) for nombre, pp, pa in CANALES]
-    acc = {nombre: {"filas": 0, "requests": 0, "llenas": {c: 0 for c in CO}, "publishers": {}, "apps": {}} for nombre, _, _ in CANALES}
+    acc = {nombre: {"filas": 0, "requests": 0, "req_vend": 0, "sum_qe": 0.0, "llenas": {c: 0 for c in CO}, "publishers": {}, "apps": {}}
+           for nombre, _, _ in CANALES}
     with open(a.entrada, newline="", encoding="utf-8-sig") as f:
         for r in csv.DictReader(f):
             pub, app = (r["Publisher"] or "").strip(), (r["App Name"] or "").strip()
             for nombre, rp, ra in pats:
                 if rp.search(pub) or ra.search(app):
                     d = acc[nombre]
+                    q, e = int(r["Total Requests"]), float(r["eCPM"])
                     d["filas"] += 1
-                    d["requests"] += int(r["Total Requests"])
+                    d["requests"] += q
+                    if q > 0 and e > 0:
+                        d["req_vend"] += q
+                        d["sum_qe"] += q * e
                     d["publishers"][pub] = d["publishers"].get(pub, 0) + 1
                     d["apps"][app] = d["apps"].get(app, 0) + 1
                     for c in CO:
@@ -81,6 +86,9 @@ def main():
         d = acc[nombre]
         pct = {c: (round(100 * d["llenas"][c] / d["filas"], 1) if d["filas"] else None) for c in CO}
         out["canales"].append({"canal": nombre, "filas": d["filas"], "requests": d["requests"],
+                               "requests_vendidos": d["req_vend"],
+                               "pct_vendido": round(100 * d["req_vend"] / d["requests"], 1) if d["requests"] else None,
+                               "ecpm_ponderado": round(d["sum_qe"] / d["req_vend"], 3) if d["req_vend"] else None,
                                "pct_llenas": pct,
                                "completitud_promedio": round(sum(pct.values()) / len(CO), 1) if d["filas"] else None,
                                "publishers": sorted(d["publishers"], key=d["publishers"].get, reverse=True)[:4],
@@ -134,8 +142,65 @@ def main():
         o.append(f'<text x="{x0 + w / 2:.1f}" y="{ybase + 33}" text-anchor="middle" font-size="10.5" fill="{INK2}">{d["filas"]:,} filas</text>')
     o.append("</svg>")
     open(os.path.join(a.salida_dir, "graficos-canales-completitud-barras.svg"), "w", encoding="utf-8").write("\n".join(o))
+    svg_scatter(out, os.path.join(a.salida_dir, "graficos-canales-requests-ecpm.svg"))
     for d in out["canales"]:
-        print(f'{d["canal"]:10} filas {d["filas"]:>7,}  promedio {d["completitud_promedio"]}  pubs {d["publishers"][:2]} apps {d["apps"][:2]}')
+        print(f'{d["canal"]:10} filas {d["filas"]:>7,}  promedio {d["completitud_promedio"]}  eCPM {d["ecpm_ponderado"]}  pubs {d["publishers"][:2]}')
+
+
+def svg_scatter(out, path):
+    """Un punto por canal: requests totales (x, escala log) vs eCPM ponderado (y)."""
+    import math
+    pts = [d for d in out["canales"] if d["requests"] and d["ecpm_ponderado"] is not None]
+    sin = [d["canal"] for d in out["canales"] if not d["requests"]]
+    sin_venta = [d["canal"] for d in out["canales"] if d["requests"] and d["ecpm_ponderado"] is None]
+    W, H = 900, 540
+    left, right, top_m, bottom = 64, 40, 86, 70
+    pw, ph = W - left - right, H - top_m - bottom
+    xs = [math.log10(d["requests"]) for d in pts]
+    lo, hi = math.floor(min(xs)) , math.ceil(max(xs))
+    ymax = max(d["ecpm_ponderado"] for d in pts) * 1.2
+
+    def X(q):
+        return left + pw * (math.log10(q) - lo) / (hi - lo)
+
+    def Y(e):
+        return top_m + ph * (1 - e / ymax)
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
+         f'font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">',
+         f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
+         f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Canales: requests totales vs eCPM ponderado</text>',
+         f'<text x="16" y="44" font-size="12" fill="{INK2}">Un punto por canal (Publisher o App Name que lo nombra). x = requests totales del canal en escala logarítmica;</text>',
+         f'<text x="16" y="60" font-size="12" fill="{INK2}">y = eCPM ponderado de sus filas con eCPM &gt; 0. Junto al punto, requests totales y % de requests vendidos.</text>']
+    for k in range(lo, hi + 1):
+        q = 10 ** k
+        o.append(f'<line x1="{X(q):.1f}" y1="{top_m}" x2="{X(q):.1f}" y2="{top_m + ph}" stroke="{GRID}"/>')
+        lab = {6: "1 M", 7: "10 M", 8: "100 M", 9: "1,000 M", 10: "10,000 M", 11: "100,000 M"}.get(k, f"1e{k}")
+        o.append(f'<text x="{X(q):.1f}" y="{top_m + ph + 18}" text-anchor="middle" font-size="10.5" fill="{INK2}">{lab}</text>')
+    step = 1 if ymax <= 8 else 2
+    v = 0
+    while v < ymax:
+        o.append(f'<line x1="{left}" y1="{Y(v):.1f}" x2="{left + pw}" y2="{Y(v):.1f}" stroke="{GRID}"/>')
+        o.append(f'<text x="{left - 6}" y="{Y(v) + 4:.1f}" text-anchor="end" font-size="10.5" fill="{INK2}">${v}</text>')
+        v += step
+    o.append(f'<text x="{left + pw / 2:.1f}" y="{H - 30}" text-anchor="middle" fill="{INK}">requests totales del canal (escala log)</text>')
+    o.append(f'<text transform="translate(18,{top_m + ph / 2:.1f}) rotate(-90)" text-anchor="middle" fill="{INK}">eCPM ponderado ($)</text>')
+    for d in pts:
+        x, y = X(d["requests"]), Y(d["ecpm_ponderado"])
+        o.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="8" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>')
+        # etiqueta a la derecha del punto, o a la izquierda si queda cerca del borde derecho
+        izq = x > left + pw * 0.72
+        tx, anc = (x - 12, "end") if izq else (x + 12, "start")
+        o.append(f'<text x="{tx:.1f}" y="{y - 2:.1f}" text-anchor="{anc}" font-size="12" font-weight="600" fill="{INK}">{esc(d["canal"])} · ${d["ecpm_ponderado"]:.2f}</text>')
+        o.append(f'<text x="{tx:.1f}" y="{y + 12:.1f}" text-anchor="{anc}" font-size="10.5" fill="{INK2}">{d["requests"]:,} req · {d["pct_vendido"]:.0f}% vendidos</text>')
+    notas = []
+    if sin:
+        notas.append(f"Sin filas en el consolidado: {', '.join(sin)}.")
+    if sin_venta:
+        notas.append(f"Con requests pero sin ninguna fila vendida (eCPM > 0), por eso no tienen punto: {', '.join(sin_venta)}.")
+    if notas:
+        o.append(f'<text x="{left}" y="{H - 10}" font-size="10.5" fill="{INK2}">{esc(" ".join(notas))}</text>')
+    o.append("</svg>")
+    open(path, "w", encoding="utf-8").write("\n".join(o))
 
 
 if __name__ == "__main__":

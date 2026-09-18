@@ -207,3 +207,19 @@ Canal = filas cuyo Publisher o App Name lo nombra (Caracol via OB / ditu por Car
 | Telefe | 0 | 0 | — | — | — | — | — | — | — | — | — |
 
 *Win y Telefe no aparecen en el consolidado: ningún Publisher ni App Name los nombra.*
+
+## 7. Canales: requests totales vs eCPM ponderado
+
+Un punto por canal (mismos canales y misma definición de la sección 6). x = requests totales del canal en escala logarítmica; y = eCPM ponderado de sus filas con eCPM > 0. Junto al punto, requests totales y % de requests vendidos.
+
+![canales: requests vs eCPM](recursos/graficos-canales-requests-ecpm.svg)
+
+| Canal | Requests | Requests vendidos | % vendido | eCPM pond. |
+|---|---:|---:|---:|---:|
+| Televisa | 66,601,273,920 | 57,893,466,880 | 86.9% | $2.08 |
+| TV Azteca | 18,906,692,640 | 12,184,514,160 | 64.4% | $7.92 |
+| RCN | 105,527,120 | 105,382,000 | 99.9% | $1.65 |
+| Caracol | 34,383,840 | 33,774,800 | 98.2% | $3.17 |
+| Canal 13 | 9,988,800 | 0 | 0.0% | — (sin filas vendidas) |
+| Win | 0 | 0 | — | — |
+| Telefe | 0 | 0 | — | — |
