@@ -2,7 +2,7 @@
 """Graficas sobre los registros SIN contentTitle (SVG sin dependencias), a partir del consolidado tal
 como llega (antes del relleno; el enriquecido solo le agrega genero_normalizado y rating_franja).
 
-  graficos-sin-titulo-columnas.svg  por content object: eCPM ponderado de las filas (sin titulo) que
+  graficos-sin-titulo-con-sin-dato.svg  por content object: eCPM ponderado de las filas (sin titulo) que
                                     traen dato util en la columna vs el de las que la traen vacia,
                                     dos marcas por columna unidas por una linea del color de la
                                     columna, con el % de filas de cada grupo
@@ -145,7 +145,7 @@ def main():
             o.append(f'<text x="{x + dx:.1f}" y="{y + 1:.1f}" text-anchor="{anc}" font-size="11.5" font-weight="700" fill="{INK}">${d["ecpm_ponderado"]:.2f}</text>')
             o.append(f'<text x="{x + dx:.1f}" y="{y + 15:.1f}" text-anchor="{anc}" font-size="10" fill="{INK2}">{d["pct_filas"]:.1f}% de las filas</text>')
     o.append("</svg>")
-    open(os.path.join(a.salida_dir, "graficos-sin-titulo-columnas.svg"), "w", encoding="utf-8").write("\n".join(o))
+    open(os.path.join(a.salida_dir, "graficos-sin-titulo-con-sin-dato.svg"), "w", encoding="utf-8").write("\n".join(o))
 
     # ---- 2. barras: eCPM ponderado por genero (filas sin titulo)
     gs = [g for g in out["genero"] if g["share_trafico_vendido_pct"] >= 0.5][:14]

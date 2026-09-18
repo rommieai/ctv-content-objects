@@ -172,7 +172,7 @@ def main():
               "Filas sin título del consolidado tal como llega, antes del relleno. Por columna se parten en dos grupos: las que traen dato útil "
               "(círculo lleno) y las que la traen vacía (círculo hueco); de cada grupo, su % de las filas sin título, su % de requests vendidos "
               "y su eCPM ponderado. Diferencia = eCPM con dato − eCPM sin dato.\n",
-              "![sin título: eCPM con y sin dato por columna](recursos/graficos-sin-titulo-columnas.svg)\n",
+              "![sin título: eCPM con y sin dato por columna](recursos/graficos-sin-titulo-con-sin-dato.svg)\n",
               "| Columna | % filas con dato | % vendido con dato | eCPM pond. con dato | % filas sin dato | % vendido sin dato | eCPM pond. sin dato | Diferencia |\n"
               "|---|---:|---:|---:|---:|---:|---:|---:|"]
 
