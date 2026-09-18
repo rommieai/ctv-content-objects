@@ -35,8 +35,8 @@ scripts/                          codigo que genera los consolidados y los JSON
   generar_barras_canales_completitud.py  por canal (Caracol, RCN, Canal 13, Televisa, TV Azteca...):
                                   barras apiladas de completitud de los 8 content objects y scatter
                                   requests totales vs eCPM ponderado (+ JSON)
-  generar_graficos_sin_titulo.py  solo filas sin contentTitle: % llenas vs eCPM por columna, sin y
-                                  con relleno, y eCPM por genero (+ JSON); usa el CSV de relleno
+  generar_graficos_sin_titulo.py  solo filas sin contentTitle: eCPM ponderado con y sin dato en
+                                  cada columna, y eCPM por genero (+ JSON); usa el CSV antes del relleno
   generar_reporte_vacios.py       markdown "content objects cuando X esta vacio" a partir del
                                   JSON de analizar.py --solo-vacios-en X y del JSON completo
   generar_reporte_detallado.py    markdown del detallado por pais (solo tablas) desde los JSON de
@@ -130,7 +130,7 @@ python scripts/generar_graficos_drivers_ecpm.py inventory-consolidado.csv report
 python scripts/generar_barras_app_completitud.py inventory-consolidado.csv reportes/NN/recursos  # por app
 python scripts/generar_tabla_pageurl_titulos.py inventory-relleno.csv reportes/NN/recursos       # titulos por App Name (paso 4 antes)
 python scripts/generar_barras_canales_completitud.py inventory-consolidado.csv reportes/NN/recursos  # por canal
-python scripts/generar_graficos_sin_titulo.py inventory-relleno.csv reportes/NN/recursos          # filas sin titulo (paso 4 antes)
+python scripts/generar_graficos_sin_titulo.py inventory-enriquecido.csv reportes/NN/recursos      # filas sin titulo (antes del relleno)
 python scripts/generar_reporte_graficos.py reportes/NN 19                   # md de las graficas
 
 # 4. (opcional) Relleno de content objects vacios con fuentes internas + abiertas

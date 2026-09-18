@@ -228,21 +228,21 @@ Un punto por canal (mismos canales y misma definición de la sección 6). x = re
 
 80,799 filas sin título (138,465,959,120 requests; 68.8% vendidos; eCPM ponderado $4.12). Generado con `scripts/generar_graficos_sin_titulo.py` → `recursos/graficos-sin-titulo.json`.
 
-### 8.1 % de filas llenas vs eCPM por columna, sin y con relleno
+### 8.1 eCPM ponderado con y sin dato en cada columna
 
-Como en la gráfica de completitud vs eCPM de la tanda v18, pero solo con las filas sin título y con dos marcas por columna: círculo = tal como llega, rombo = tras el pipeline de relleno. Sin título no hay `titulo_clave`, así que ni `intra_titulo` ni IMDb aplican; solo cambian las columnas que se derivan de la misma fila (categoría desde el género) o de la app (livestream).
+Filas sin título del consolidado tal como llega, antes del relleno. Por columna se parten en dos grupos: las que traen dato útil (círculo lleno) y las que la traen vacía (círculo hueco); de cada grupo, su % de las filas sin título, su % de requests vendidos y su eCPM ponderado. Diferencia = eCPM con dato − eCPM sin dato.
 
-![sin título: % llenas vs eCPM, sin y con relleno](recursos/graficos-sin-titulo-columnas.svg)
+![sin título: eCPM con y sin dato por columna](recursos/graficos-sin-titulo-columnas.svg)
 
-| Columna | % llenas sin relleno | eCPM pond. sin relleno | % llenas con relleno | eCPM pond. con relleno |
-|---|---:|---:|---:|---:|
-| contentGenre | 87.9% | $3.93 | 87.9% | $3.93 |
-| contentRating | 80.9% | $4.71 | 80.9% | $4.71 |
-| contentLanguage | 82.4% | $4.09 | 82.4% | $4.09 |
-| contentIsLiveStream | 24.2% | $3.17 | 24.6% | $3.18 |
-| contentCategory | 50.7% | $4.98 | 74.3% | $4.01 |
-| contentLength | 54.3% | $5.62 | 54.3% | $5.62 |
-| contentSeries | 6.5% | $5.71 | 6.5% | $5.71 |
+| Columna | % filas con dato | % vendido con dato | eCPM pond. con dato | % filas sin dato | % vendido sin dato | eCPM pond. sin dato | Diferencia |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| contentLength | 54.3% | 57.0% | $5.62 | 45.7% | 73.0% | $3.70 | +$1.92 |
+| contentSeries | 6.5% | 46.0% | $5.71 | 93.5% | 69.6% | $4.08 | +$1.62 |
+| contentRating | 80.9% | 61.5% | $4.71 | 19.1% | 80.8% | $3.38 | +$1.33 |
+| contentCategory | 50.7% | 50.1% | $4.98 | 49.3% | 80.0% | $3.80 | +$1.18 |
+| contentLanguage | 82.4% | 65.2% | $4.09 | 17.6% | 77.9% | $4.18 | −$0.09 |
+| contentGenre | 87.9% | 65.0% | $3.93 | 12.1% | 76.4% | $4.44 | −$0.51 |
+| contentIsLiveStream | 24.2% | 82.8% | $3.17 | 75.8% | 52.9% | $5.80 | −$2.63 |
 
 ### 8.2 eCPM ponderado por género en las filas sin título
 

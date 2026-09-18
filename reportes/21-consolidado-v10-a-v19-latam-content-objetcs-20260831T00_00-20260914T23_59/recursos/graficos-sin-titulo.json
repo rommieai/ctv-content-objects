@@ -1,5 +1,5 @@
 {
- "fuente": "inventory-consolidado-v10-a-v19-relleno.csv",
+ "fuente": "inventory-consolidado-v10-a-v19-enriquecido.csv",
  "filas_sin_titulo": 80799,
  "requests": 138465959120,
  "requests_vendidos": 95272868240,
@@ -7,87 +7,129 @@
  "ecpm_ponderado": 4.121,
  "columnas": {
   "contentGenre": {
-   "orig": {
-    "pct_filas_llenas": 87.9,
+   "con": {
+    "filas": 71024,
+    "pct_filas": 87.9,
+    "requests": 92264098080,
     "requests_vendidos": 59964064800,
+    "pct_vendido": 65.0,
     "ecpm_ponderado": 3.933
    },
-   "rell": {
-    "pct_filas_llenas": 87.9,
-    "requests_vendidos": 59964064800,
-    "ecpm_ponderado": 3.933
+   "sin": {
+    "filas": 9775,
+    "pct_filas": 12.1,
+    "requests": 46201861040,
+    "requests_vendidos": 35308803440,
+    "pct_vendido": 76.4,
+    "ecpm_ponderado": 4.44
    }
   },
   "contentRating": {
-   "orig": {
-    "pct_filas_llenas": 80.9,
+   "con": {
+    "filas": 65394,
+    "pct_filas": 80.9,
+    "requests": 86149564080,
     "requests_vendidos": 52999596960,
+    "pct_vendido": 61.5,
     "ecpm_ponderado": 4.711
    },
-   "rell": {
-    "pct_filas_llenas": 80.9,
-    "requests_vendidos": 52999596960,
-    "ecpm_ponderado": 4.711
+   "sin": {
+    "filas": 15405,
+    "pct_filas": 19.1,
+    "requests": 52316395040,
+    "requests_vendidos": 42273271280,
+    "pct_vendido": 80.8,
+    "ecpm_ponderado": 3.38
    }
   },
   "contentLanguage": {
-   "orig": {
-    "pct_filas_llenas": 82.4,
+   "con": {
+    "filas": 66608,
+    "pct_filas": 82.4,
+    "requests": 99466504320,
     "requests_vendidos": 64880092640,
+    "pct_vendido": 65.2,
     "ecpm_ponderado": 4.092
    },
-   "rell": {
-    "pct_filas_llenas": 82.4,
-    "requests_vendidos": 64880092640,
-    "ecpm_ponderado": 4.092
+   "sin": {
+    "filas": 14191,
+    "pct_filas": 17.6,
+    "requests": 38999454800,
+    "requests_vendidos": 30392775600,
+    "pct_vendido": 77.9,
+    "ecpm_ponderado": 4.183
    }
   },
   "contentIsLiveStream": {
-   "orig": {
-    "pct_filas_llenas": 24.2,
+   "con": {
+    "filas": 19592,
+    "pct_filas": 24.2,
+    "requests": 73586979840,
     "requests_vendidos": 60935722080,
+    "pct_vendido": 82.8,
     "ecpm_ponderado": 3.174
    },
-   "rell": {
-    "pct_filas_llenas": 24.6,
-    "requests_vendidos": 61407883600,
-    "ecpm_ponderado": 3.176
+   "sin": {
+    "filas": 61207,
+    "pct_filas": 75.8,
+    "requests": 64878979280,
+    "requests_vendidos": 34337146160,
+    "pct_vendido": 52.9,
+    "ecpm_ponderado": 5.8
    }
   },
   "contentCategory": {
-   "orig": {
-    "pct_filas_llenas": 50.7,
+   "con": {
+    "filas": 40933,
+    "pct_filas": 50.7,
+    "requests": 51739568400,
     "requests_vendidos": 25924811920,
+    "pct_vendido": 50.1,
     "ecpm_ponderado": 4.979
    },
-   "rell": {
-    "pct_filas_llenas": 74.3,
-    "requests_vendidos": 60490101360,
-    "ecpm_ponderado": 4.007
+   "sin": {
+    "filas": 39866,
+    "pct_filas": 49.3,
+    "requests": 86726390720,
+    "requests_vendidos": 69348056320,
+    "pct_vendido": 80.0,
+    "ecpm_ponderado": 3.8
    }
   },
   "contentLength": {
-   "orig": {
-    "pct_filas_llenas": 54.3,
+   "con": {
+    "filas": 43914,
+    "pct_filas": 54.3,
+    "requests": 36441090320,
     "requests_vendidos": 20761738000,
+    "pct_vendido": 57.0,
     "ecpm_ponderado": 5.625
    },
-   "rell": {
-    "pct_filas_llenas": 54.3,
-    "requests_vendidos": 20761738000,
-    "ecpm_ponderado": 5.625
+   "sin": {
+    "filas": 36885,
+    "pct_filas": 45.7,
+    "requests": 102024868800,
+    "requests_vendidos": 74511130240,
+    "pct_vendido": 73.0,
+    "ecpm_ponderado": 3.702
    }
   },
   "contentSeries": {
-   "orig": {
-    "pct_filas_llenas": 6.5,
+   "con": {
+    "filas": 5278,
+    "pct_filas": 6.5,
+    "requests": 4909480720,
     "requests_vendidos": 2260327920,
+    "pct_vendido": 46.0,
     "ecpm_ponderado": 5.706
    },
-   "rell": {
-    "pct_filas_llenas": 6.5,
-    "requests_vendidos": 2260327920,
-    "ecpm_ponderado": 5.706
+   "sin": {
+    "filas": 75521,
+    "pct_filas": 93.5,
+    "requests": 133556478400,
+    "requests_vendidos": 93012540320,
+    "pct_vendido": 69.6,
+    "ecpm_ponderado": 4.082
    }
   }
  },
