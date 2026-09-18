@@ -22,67 +22,67 @@
 | contentLength | 31.5% | 46.7% | 18.4% | 15.0% |
 | contentSeries | 6.8% | 5.2% | 11.9% | 11.2% |
 
-## 2. Completitud de la fila vs eCPM (fila a fila)
+## 2. % de columnas llenas de la fila vs eCPM (fila a fila)
 
-Cada registro del consolidado se clasifica por cuántos de los 8 content objects trae con dato útil (contentGenre, contentCategory, contentSeries, contentLength, contentLanguage, contentIsLiveStream, contentTitle, contentRating; contentIsTitlePresent no cuenta porque siempre viene). Cada punto es un registro con eCPM > 0, con el eCPM en escala logarítmica y el tamaño según sus requests (por nivel y panel se dibujan los 40 registros de más requests y 300 al azar). El punto naranja es el eCPM ponderado por requests de todos los registros del nivel. Generado con `scripts/generar_scatter_completitud_ecpm.py` → `recursos/graficos-ecpm-completitud-scatter.json`.
+Cada registro del consolidado se clasifica por el % de los 8 content objects que trae con dato útil (contentGenre, contentCategory, contentSeries, contentLength, contentLanguage, contentIsLiveStream, contentTitle, contentRating; contentIsTitlePresent no cuenta porque siempre viene). Cada punto es un registro con eCPM > 0, con el eCPM en escala logarítmica y el tamaño según sus requests (por nivel y panel se dibujan los 40 registros de más requests y 300 al azar). El punto naranja es el eCPM ponderado por requests de todos los registros del nivel. Generado con `scripts/generar_scatter_completitud_ecpm.py` → `recursos/graficos-ecpm-completitud-scatter.json`.
 
 ![completitud vs eCPM, registro a registro](recursos/graficos-ecpm-completitud-scatter.svg)
 
 **Total consolidado** — 1,158,509 filas · 482,736,715,920 requests
 
-| Campos llenos (de 8) | % filas | % requests | % requests vendidos (eCPM > 0) | eCPM pond. (>0) |
+| % de columnas llenas (de 8) | % filas | % requests | % requests vendidos (eCPM > 0) | eCPM pond. (>0) |
 |---:|---:|---:|---:|---:|
-| 0 | 0.1% | 2.4% | 85.9% | $6.46 |
-| 1 | 2.1% | 2.4% | 53.7% | $4.32 |
-| 2 | 11.2% | 11.9% | 61.5% | $3.33 |
-| 3 | 23.6% | 22.4% | 52.8% | $3.87 |
-| 4 | 32.4% | 27.8% | 51.2% | $3.32 |
-| 5 | 21.4% | 15.0% | 39.8% | $4.67 |
-| 6 | 4.8% | 8.4% | 63.0% | $4.79 |
-| 7 | 1.9% | 6.9% | 79.1% | $5.20 |
-| 8 | 2.5% | 3.0% | 67.9% | $3.34 |
+| 0% (0) | 0.1% | 2.4% | 85.9% | $6.46 |
+| 12.5% (1) | 2.1% | 2.4% | 53.7% | $4.32 |
+| 25% (2) | 11.2% | 11.9% | 61.5% | $3.33 |
+| 37.5% (3) | 23.6% | 22.4% | 52.8% | $3.87 |
+| 50% (4) | 32.4% | 27.8% | 51.2% | $3.32 |
+| 62.5% (5) | 21.4% | 15.0% | 39.8% | $4.67 |
+| 75% (6) | 4.8% | 8.4% | 63.0% | $4.79 |
+| 87.5% (7) | 1.9% | 6.9% | 79.1% | $5.20 |
+| 100% (8) | 2.5% | 3.0% | 67.9% | $3.34 |
 
 **México** — 347,432 filas · 285,694,946,000 requests
 
-| Campos llenos (de 8) | % filas | % requests | % requests vendidos (eCPM > 0) | eCPM pond. (>0) |
+| % de columnas llenas (de 8) | % filas | % requests | % requests vendidos (eCPM > 0) | eCPM pond. (>0) |
 |---:|---:|---:|---:|---:|
-| 0 | 0.1% | 0.8% | 84.9% | $4.11 |
-| 1 | 3.0% | 2.5% | 59.8% | $4.34 |
-| 2 | 14.0% | 13.0% | 71.8% | $2.85 |
-| 3 | 23.0% | 22.2% | 63.6% | $3.00 |
-| 4 | 31.3% | 29.2% | 58.3% | $2.35 |
-| 5 | 17.8% | 10.2% | 48.0% | $2.46 |
-| 6 | 6.7% | 11.6% | 66.6% | $4.76 |
-| 7 | 2.6% | 9.7% | 83.9% | $5.40 |
-| 8 | 1.3% | 0.8% | 73.7% | $2.79 |
+| 0% (0) | 0.1% | 0.8% | 84.9% | $4.11 |
+| 12.5% (1) | 3.0% | 2.5% | 59.8% | $4.34 |
+| 25% (2) | 14.0% | 13.0% | 71.8% | $2.85 |
+| 37.5% (3) | 23.0% | 22.2% | 63.6% | $3.00 |
+| 50% (4) | 31.3% | 29.2% | 58.3% | $2.35 |
+| 62.5% (5) | 17.8% | 10.2% | 48.0% | $2.46 |
+| 75% (6) | 6.7% | 11.6% | 66.6% | $4.76 |
+| 87.5% (7) | 2.6% | 9.7% | 83.9% | $5.40 |
+| 100% (8) | 1.3% | 0.8% | 73.7% | $2.79 |
 
 **Colombia** — 122,400 filas · 34,995,318,240 requests
 
-| Campos llenos (de 8) | % filas | % requests | % requests vendidos (eCPM > 0) | eCPM pond. (>0) |
+| % de columnas llenas (de 8) | % filas | % requests | % requests vendidos (eCPM > 0) | eCPM pond. (>0) |
 |---:|---:|---:|---:|---:|
-| 0 | 0.1% | 1.3% | 35.7% | $2.63 |
-| 1 | 2.5% | 2.7% | 21.5% | $3.74 |
-| 2 | 13.8% | 11.6% | 36.6% | $4.55 |
-| 3 | 32.3% | 31.6% | 26.9% | $5.79 |
-| 4 | 24.2% | 22.8% | 26.4% | $2.58 |
-| 5 | 18.3% | 15.9% | 22.7% | $5.69 |
-| 6 | 4.5% | 4.2% | 44.1% | $7.98 |
-| 7 | 1.6% | 2.7% | 59.7% | $3.12 |
-| 8 | 2.7% | 7.2% | 59.6% | $2.69 |
+| 0% (0) | 0.1% | 1.3% | 35.7% | $2.63 |
+| 12.5% (1) | 2.5% | 2.7% | 21.5% | $3.74 |
+| 25% (2) | 13.8% | 11.6% | 36.6% | $4.55 |
+| 37.5% (3) | 32.3% | 31.6% | 26.9% | $5.79 |
+| 50% (4) | 24.2% | 22.8% | 26.4% | $2.58 |
+| 62.5% (5) | 18.3% | 15.9% | 22.7% | $5.69 |
+| 75% (6) | 4.5% | 4.2% | 44.1% | $7.98 |
+| 87.5% (7) | 1.6% | 2.7% | 59.7% | $3.12 |
+| 100% (8) | 2.7% | 7.2% | 59.6% | $2.69 |
 
 **Chile** — 133,317 filas · 27,900,831,680 requests
 
-| Campos llenos (de 8) | % filas | % requests | % requests vendidos (eCPM > 0) | eCPM pond. (>0) |
+| % de columnas llenas (de 8) | % filas | % requests | % requests vendidos (eCPM > 0) | eCPM pond. (>0) |
 |---:|---:|---:|---:|---:|
-| 0 | 0.1% | 2.6% | 42.3% | $12.28 |
-| 1 | 1.8% | 1.3% | 18.3% | $4.98 |
-| 2 | 14.7% | 9.3% | 23.6% | $6.24 |
-| 3 | 28.1% | 23.5% | 17.7% | $5.05 |
-| 4 | 35.4% | 37.1% | 55.9% | $5.72 |
-| 5 | 13.2% | 15.1% | 21.7% | $7.42 |
-| 6 | 3.2% | 3.8% | 41.1% | $5.40 |
-| 7 | 1.2% | 2.0% | 50.7% | $4.68 |
-| 8 | 2.3% | 5.3% | 58.4% | $4.52 |
+| 0% (0) | 0.1% | 2.6% | 42.3% | $12.28 |
+| 12.5% (1) | 1.8% | 1.3% | 18.3% | $4.98 |
+| 25% (2) | 14.7% | 9.3% | 23.6% | $6.24 |
+| 37.5% (3) | 28.1% | 23.5% | 17.7% | $5.05 |
+| 50% (4) | 35.4% | 37.1% | 55.9% | $5.72 |
+| 62.5% (5) | 13.2% | 15.1% | 21.7% | $7.42 |
+| 75% (6) | 3.2% | 3.8% | 41.1% | $5.40 |
+| 87.5% (7) | 1.2% | 2.0% | 50.7% | $4.68 |
+| 100% (8) | 2.3% | 5.3% | 58.4% | $4.52 |
 
 ## 3. Qué mueve el eCPM ponderado: la ruta de venta (publisher y país)
 

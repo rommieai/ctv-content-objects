@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1136" height="790" viewBox="0 0 1136 790" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">
 <rect width="1136" height="790" fill="#ffffff"/>
-<text x="16" y="24" font-size="17" font-weight="700" fill="#1f2933">eCPM (escala log) según cuántos content objects trae cada registro</text>
+<text x="16" y="24" font-size="17" font-weight="700" fill="#1f2933">eCPM (escala log) según el % de content objects que trae cada registro</text>
 <text x="16" y="44" font-size="12" fill="#5f6b76">Cada punto es un registro con eCPM &gt; 0 (tamaño = requests; muestra: los 40 de más requests y 300 al azar por nivel). Naranja: eCPM ponderado por requests de todos los registros de ese nivel.</text>
 <circle cx="24" cy="60" r="5" fill="#2a78d6" fill-opacity="0.4"/><text x="34" y="64" font-size="11.5" fill="#1f2933">registro (eCPM &gt; 0)</text>
 <circle cx="190" cy="60" r="5" fill="#eb6834"/><text x="200" y="64" font-size="11.5" fill="#1f2933">eCPM ponderado del nivel</text>
@@ -19,25 +19,25 @@
 <text x="62" y="175.4" text-anchor="end" font-size="10.5" fill="#5f6b76">$30</text>
 <line x1="68" y1="128.6" x2="560" y2="128.6" stroke="#e3e7ea"/>
 <text x="62" y="132.6" text-anchor="end" font-size="10.5" fill="#5f6b76">$100</text>
-<text x="95.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="95.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">0%</text>
 <text x="95.3" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">2% req</text>
-<text x="150.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="150.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">12.5%</text>
 <text x="150.0" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">2% req</text>
-<text x="204.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<text x="204.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">25%</text>
 <text x="204.7" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">12% req</text>
-<text x="259.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<text x="259.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">37.5%</text>
 <text x="259.3" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">22% req</text>
-<text x="314.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<text x="314.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">50%</text>
 <text x="314.0" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">28% req</text>
-<text x="368.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<text x="368.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">62.5%</text>
 <text x="368.7" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">15% req</text>
-<text x="423.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<text x="423.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">75%</text>
 <text x="423.3" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">8% req</text>
-<text x="478.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="478.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">87.5%</text>
 <text x="478.0" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">7% req</text>
-<text x="532.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<text x="532.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">100%</text>
 <text x="532.7" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">3% req</text>
-<text x="314.0" y="428" text-anchor="middle" font-size="10.5" fill="#1f2933">content objects con dato útil (de 8) · debajo: % de los requests del grupo en ese nivel</text>
+<text x="314.0" y="428" text-anchor="middle" font-size="10.5" fill="#1f2933">% de content objects con dato útil (8 = 100%) · debajo: % de los requests del grupo en ese nivel</text>
 <circle cx="88.4" cy="241.2" r="5.3" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>
 <circle cx="81.6" cy="211.8" r="5.0" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>
 <circle cx="101.3" cy="232.9" r="4.4" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>
@@ -3050,25 +3050,25 @@
 <text x="622" y="175.4" text-anchor="end" font-size="10.5" fill="#5f6b76">$30</text>
 <line x1="628" y1="128.6" x2="1120" y2="128.6" stroke="#e3e7ea"/>
 <text x="622" y="132.6" text-anchor="end" font-size="10.5" fill="#5f6b76">$100</text>
-<text x="655.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="655.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">0%</text>
 <text x="655.3" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">1% req</text>
-<text x="710.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="710.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">12.5%</text>
 <text x="710.0" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">3% req</text>
-<text x="764.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<text x="764.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">25%</text>
 <text x="764.7" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">13% req</text>
-<text x="819.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<text x="819.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">37.5%</text>
 <text x="819.3" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">22% req</text>
-<text x="874.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<text x="874.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">50%</text>
 <text x="874.0" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">29% req</text>
-<text x="928.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<text x="928.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">62.5%</text>
 <text x="928.7" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">10% req</text>
-<text x="983.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<text x="983.3" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">75%</text>
 <text x="983.3" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">12% req</text>
-<text x="1038.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="1038.0" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">87.5%</text>
 <text x="1038.0" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">10% req</text>
-<text x="1092.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<text x="1092.7" y="390" text-anchor="middle" font-size="10.5" fill="#5f6b76">100%</text>
 <text x="1092.7" y="404" text-anchor="middle" font-size="9.5" fill="#5f6b76">1% req</text>
-<text x="874.0" y="428" text-anchor="middle" font-size="10.5" fill="#1f2933">content objects con dato útil (de 8) · debajo: % de los requests del grupo en ese nivel</text>
+<text x="874.0" y="428" text-anchor="middle" font-size="10.5" fill="#1f2933">% de content objects con dato útil (8 = 100%) · debajo: % de los requests del grupo en ese nivel</text>
 <circle cx="648.4" cy="232.9" r="4.4" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>
 <circle cx="641.6" cy="240.9" r="3.2" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>
 <circle cx="661.3" cy="257.1" r="2.6" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>
@@ -5878,25 +5878,25 @@
 <text x="62" y="535.4" text-anchor="end" font-size="10.5" fill="#5f6b76">$30</text>
 <line x1="68" y1="488.6" x2="560" y2="488.6" stroke="#e3e7ea"/>
 <text x="62" y="492.6" text-anchor="end" font-size="10.5" fill="#5f6b76">$100</text>
-<text x="95.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="95.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">0%</text>
 <text x="95.3" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">1% req</text>
-<text x="150.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="150.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">12.5%</text>
 <text x="150.0" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">3% req</text>
-<text x="204.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<text x="204.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">25%</text>
 <text x="204.7" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">12% req</text>
-<text x="259.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<text x="259.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">37.5%</text>
 <text x="259.3" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">32% req</text>
-<text x="314.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<text x="314.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">50%</text>
 <text x="314.0" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">23% req</text>
-<text x="368.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<text x="368.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">62.5%</text>
 <text x="368.7" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">16% req</text>
-<text x="423.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<text x="423.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">75%</text>
 <text x="423.3" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">4% req</text>
-<text x="478.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="478.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">87.5%</text>
 <text x="478.0" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">3% req</text>
-<text x="532.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<text x="532.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">100%</text>
 <text x="532.7" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">7% req</text>
-<text x="314.0" y="788" text-anchor="middle" font-size="10.5" fill="#1f2933">content objects con dato útil (de 8) · debajo: % de los requests del grupo en ese nivel</text>
+<text x="314.0" y="788" text-anchor="middle" font-size="10.5" fill="#1f2933">% de content objects con dato útil (8 = 100%) · debajo: % de los requests del grupo en ese nivel</text>
 <circle cx="88.4" cy="646.0" r="4.6" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>
 <circle cx="81.6" cy="608.1" r="3.7" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>
 <circle cx="101.3" cy="605.8" r="2.6" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>
@@ -8552,25 +8552,25 @@
 <text x="622" y="535.4" text-anchor="end" font-size="10.5" fill="#5f6b76">$30</text>
 <line x1="628" y1="488.6" x2="1120" y2="488.6" stroke="#e3e7ea"/>
 <text x="622" y="492.6" text-anchor="end" font-size="10.5" fill="#5f6b76">$100</text>
-<text x="655.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="655.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">0%</text>
 <text x="655.3" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">3% req</text>
-<text x="710.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="710.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">12.5%</text>
 <text x="710.0" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">1% req</text>
-<text x="764.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<text x="764.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">25%</text>
 <text x="764.7" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">9% req</text>
-<text x="819.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<text x="819.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">37.5%</text>
 <text x="819.3" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">24% req</text>
-<text x="874.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<text x="874.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">50%</text>
 <text x="874.0" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">37% req</text>
-<text x="928.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<text x="928.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">62.5%</text>
 <text x="928.7" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">15% req</text>
-<text x="983.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<text x="983.3" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">75%</text>
 <text x="983.3" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">4% req</text>
-<text x="1038.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="1038.0" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">87.5%</text>
 <text x="1038.0" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">2% req</text>
-<text x="1092.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<text x="1092.7" y="750" text-anchor="middle" font-size="10.5" fill="#5f6b76">100%</text>
 <text x="1092.7" y="764" text-anchor="middle" font-size="9.5" fill="#5f6b76">5% req</text>
-<text x="874.0" y="788" text-anchor="middle" font-size="10.5" fill="#1f2933">content objects con dato útil (de 8) · debajo: % de los requests del grupo en ese nivel</text>
+<text x="874.0" y="788" text-anchor="middle" font-size="10.5" fill="#1f2933">% de content objects con dato útil (8 = 100%) · debajo: % de los requests del grupo en ese nivel</text>
 <circle cx="648.4" cy="559.9" r="8.6" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>
 <circle cx="641.6" cy="562.6" r="5.9" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>
 <circle cx="661.3" cy="624.8" r="3.2" fill="#2a78d6" fill-opacity="0.28" stroke="none"/>

@@ -52,8 +52,8 @@ def main():
     for c in COLS:
         L.append(f"| {c} | " + " | ".join(pct(r2[k]["gasto"][c]["pct_gasto_llenas"]) for k, _ in GRUPOS) + " |")
     sc = hm["muestra_por_nivel"]
-    L += ["\n## 2. Completitud de la fila vs eCPM (fila a fila)\n",
-          "Cada registro del consolidado se clasifica por cuántos de los 8 content objects trae con dato útil (contentGenre, "
+    L += ["\n## 2. % de columnas llenas de la fila vs eCPM (fila a fila)\n",
+          "Cada registro del consolidado se clasifica por el % de los 8 content objects que trae con dato útil (contentGenre, "
           "contentCategory, contentSeries, contentLength, contentLanguage, contentIsLiveStream, contentTitle, contentRating; "
           "contentIsTitlePresent no cuenta porque siempre viene). Cada punto es un registro con eCPM > 0, con el eCPM en escala "
           f"logarítmica y el tamaño según sus requests (por nivel y panel se dibujan los {sc['top_requests']} registros de más requests "
@@ -63,9 +63,9 @@ def main():
     for k, lab in GRUPOS:
         g = hm["grupos"][k]
         L.append(f"**{lab}** — {n(g['filas'])} filas · {n(g['requests'])} requests\n")
-        L.append("| Campos llenos (de 8) | % filas | % requests | % requests vendidos (eCPM > 0) | eCPM pond. (>0) |\n|---:|---:|---:|---:|---:|")
+        L.append("| % de columnas llenas (de 8) | % filas | % requests | % requests vendidos (eCPM > 0) | eCPM pond. (>0) |\n|---:|---:|---:|---:|---:|")
         for x in g["niveles"]:
-            L.append(f"| {x['campos_llenos']} | {pct(x['pct_filas'])} | {pct(x['pct_requests'])} | {pct(x['pct_req_monetizado'])} | ${x['ecpm_ponderado']:.2f} |")
+            L.append(f"| {100 * x['campos_llenos'] / 8:g}% ({x['campos_llenos']}) | {pct(x['pct_filas'])} | {pct(x['pct_requests'])} | {pct(x['pct_req_monetizado'])} | ${x['ecpm_ponderado']:.2f} |")
         L.append("")
     # ---- 3. drivers del eCPM: la ruta de venta (scripts/generar_graficos_drivers_ecpm.py) ----
     pdrv = os.path.join(R, "graficos-drivers-ecpm.json")

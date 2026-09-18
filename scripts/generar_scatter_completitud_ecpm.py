@@ -63,11 +63,11 @@ def panel(o, x0, y0, w, h, g, agg, pts, tot_req_vendido):
         o.append(f'<line x1="{x0 + left}" y1="{Y(e):.1f}" x2="{x0 + left + pw}" y2="{Y(e):.1f}" stroke="{GRID}"/>')
         o.append(f'<text x="{x0 + left - 6}" y="{Y(e) + 4:.1f}" text-anchor="end" font-size="10.5" fill="{INK2}">${e:g}</text>')
     for sc in range(N + 1):
-        o.append(f'<text x="{X(sc):.1f}" y="{y0 + top + ph + 16}" text-anchor="middle" font-size="10.5" fill="{INK2}">{sc}</text>')
+        o.append(f'<text x="{X(sc):.1f}" y="{y0 + top + ph + 16}" text-anchor="middle" font-size="10.5" fill="{INK2}">{100 * sc / N:g}%</text>')
         t = agg[sc]
         if tot_req:
             o.append(f'<text x="{X(sc):.1f}" y="{y0 + top + ph + 30}" text-anchor="middle" font-size="9.5" fill="{INK2}">{100 * t[1] / tot_req:.0f}% req</text>')
-    o.append(f'<text x="{x0 + left + pw / 2:.1f}" y="{y0 + h - 2}" text-anchor="middle" font-size="10.5" fill="{INK}">content objects con dato útil (de 8) · debajo: % de los requests del grupo en ese nivel</text>')
+    o.append(f'<text x="{x0 + left + pw / 2:.1f}" y="{y0 + h - 2}" text-anchor="middle" font-size="10.5" fill="{INK}">% de content objects con dato útil (8 = 100%) · debajo: % de los requests del grupo en ese nivel</text>')
     # puntos (muestra), tamano ~ sqrt(requests)
     qmax = max((q for _, _, q in pts), default=1)
     rnd = random.Random(7)
@@ -146,7 +146,7 @@ def main():
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
          f'font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">',
          f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
-         f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">eCPM (escala log) según cuántos content objects trae cada registro</text>',
+         f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">eCPM (escala log) según el % de content objects que trae cada registro</text>',
          f'<text x="16" y="44" font-size="12" fill="{INK2}">Cada punto es un registro con eCPM &gt; 0 (tamaño = requests; muestra: los {a.top} de más requests y {a.muestra} al azar por nivel). '
          f'Naranja: eCPM ponderado por requests de todos los registros de ese nivel.</text>',
          f'<circle cx="24" cy="60" r="5" fill="{AZUL}" fill-opacity="0.4"/><text x="34" y="64" font-size="11.5" fill="{INK}">registro (eCPM &gt; 0)</text>',
