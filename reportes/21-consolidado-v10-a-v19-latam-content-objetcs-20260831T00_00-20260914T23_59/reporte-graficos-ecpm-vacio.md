@@ -175,6 +175,23 @@ Un punto por App Name con requests vendidos (207 apps; otras 261 no vendieron na
 | chicken coop | 7 | 1,858,788,400 | $6.01 | TCL CHANNEL 62% ($5.13), Browser TV Web - BrowseHere 25% ($9.44), Live TV 7% ($3.14), MovieArk: Stream Movies & Live 5% ($3.91), Not Available 0% ($2.72) |
 | humble pie | 7 | 1,786,588,400 | $6.77 | Live TV 32% ($5.10), TCL CHANNEL 31% ($7.50), MovieArk: Stream Movies & Live 23% ($6.93), Browser TV Web - BrowseHere 13% ($8.82), Not Available 0% ($7.03) |
 
+**Los mismos títulos, con los requests totales en el eje Y:** mismas apps, orden de barras y colores que la gráfica anterior; altura = requests totales (vendidos o no) de ese título en esa app, en miles de millones. Sobre cada grupo, los requests totales del título en todas sus apps.
+
+![títulos en varios App Name: requests totales por app](recursos/graficos-titulos-appname-requests.svg)
+
+| Título | Requests del título | Requests por app (% de los requests del título) |
+|---|---:|---|
+| lo que la vida me robo | 3,106,572,320 | ViX: TV, Deportes y Noticias 2,112,674,720 (68%), Vidaa 356,730,160 (11%), Not Available 260,767,840 (8%), ViX: Cine y TV Gratis en Español 181,190,160 (6%), ViX: TV, Sports and News 159,103,360 (5%) |
+| eve | 2,169,736,560 | MovieArk: Stream Movies & Live 1,135,193,600 (52%), Live TV 802,811,200 (37%), TCL CHANNEL 85,980,720 (4%), ViX: TV, Deportes y Noticias 28,098,240 (1%) |
+| brooklyn love stories | 2,111,762,640 | MovieArk: Stream Movies & Live 1,121,978,880 (53%), Live TV 790,362,240 (37%), TCL CHANNEL 90,228,720 (4%), Browser TV Web - BrowseHere 68,435,360 (3%) |
+| hatchback | 2,070,447,840 | MovieArk: Stream Movies & Live 1,090,233,920 (53%), Live TV 777,630,400 (38%), TCL CHANNEL 92,272,800 (4%), Browser TV Web - BrowseHere 69,810,560 (3%) |
+| corona | 2,055,902,000 | MovieArk: Stream Movies & Live 1,086,298,880 (53%), Live TV 770,498,080 (37%), TCL CHANNEL 90,910,320 (4%) |
+| penance lane | 2,047,331,120 | MovieArk: Stream Movies & Live 1,086,705,760 (53%), Live TV 770,094,240 (38%), TCL CHANNEL 84,703,920 (4%) |
+| american apocalypse | 2,046,553,920 | MovieArk: Stream Movies & Live 1,086,384,000 (53%), Live TV 770,969,760 (38%), TCL CHANNEL 85,750,800 (4%), Browser TV Web - BrowseHere 64,368,960 (3%) |
+| chicken stew | 1,882,113,200 | TCL CHANNEL 933,110,400 (50%), Browser TV Web - BrowseHere 404,687,680 (22%), MovieArk: Stream Movies & Live 316,312,800 (17%), Live TV 217,965,120 (12%) |
+| chicken coop | 1,858,788,400 | TCL CHANNEL 1,058,632,080 (57%), Browser TV Web - BrowseHere 395,943,360 (21%), MovieArk: Stream Movies & Live 237,252,000 (13%), Live TV 158,665,760 (9%) |
+| humble pie | 1,786,588,400 | MovieArk: Stream Movies & Live 693,104,800 (39%), Live TV 457,891,040 (26%), TCL CHANNEL 424,545,600 (24%), Browser TV Web - BrowseHere 194,511,680 (11%) |
+
 ## 5. Completitud de los content objects por canal
 
 Canal = filas cuyo Publisher o App Name lo nombra (Caracol via OB / ditu por Caracol, RCN via OB / Canal RCN, Canal 13 OB, Televisa Univision via … / ViX, TV Azteca - Springserve / Azteca TV). Cada segmento de la barra es una columna, con altura = % de filas del canal con dato útil en esa columna dividido entre 8; la barra completa es la completitud promedio de las 8 columnas. Generado con `scripts/generar_barras_canales_completitud.py` → `recursos/graficos-canales-completitud-barras.json`.

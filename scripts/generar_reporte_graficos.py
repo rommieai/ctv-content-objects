@@ -145,6 +145,17 @@ def main():
         for t_ in tp["top_titulos_multi_app"]:
             reparto = ", ".join(f"{x['app']} {x['pct_requests_vendidos']:.0f}% (${x['ecpm_ponderado']:.2f})" for x in t_["apps"][:5])
             L.append(f"| {t_['titulo']} | {t_['app_names']} | {n(t_['requests'])} | ${t_['ecpm_ponderado']:.2f} | {reparto} |")
+        if os.path.exists(os.path.join(R, "graficos-titulos-appname-requests.svg")):
+            L += ["\n**Los mismos títulos, con los requests totales en el eje Y:** mismas apps, orden de barras y colores que la gráfica anterior; "
+                  "altura = requests totales (vendidos o no) de ese título en esa app, en miles de millones. Sobre cada grupo, los requests "
+                  "totales del título en todas sus apps.\n",
+                  "![títulos en varios App Name: requests totales por app](recursos/graficos-titulos-appname-requests.svg)\n",
+                  "| Título | Requests del título | Requests por app (% de los requests del título) |\n|---|---:|---|"]
+            for t_ in tp["top_titulos_multi_app"]:
+                top5 = [x for x in t_["apps"] if x["pct_requests_vendidos"] >= 2.0][:5]
+                reparto = ", ".join(f"{x['app']} {n(x['requests'])} ({100 * x['requests'] / t_['requests']:.0f}%)"
+                                    for x in sorted(top5, key=lambda x: -x["requests"]))
+                L.append(f"| {t_['titulo']} | {n(t_['requests'])} | {reparto} |")
         L.append("")
     # ---- 5. completitud por canal (scripts/generar_barras_canales_completitud.py) ----
     pcan = os.path.join(R, "graficos-canales-completitud-barras.json")

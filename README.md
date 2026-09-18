@@ -32,7 +32,8 @@ scripts/                          codigo que genera los consolidados y los JSON
                                   (0-8) del registro, con % de requests vendidos por nivel (+ JSON),
                                   y scatter de todas las apps: eCPM ponderado vs requests totales
   generar_tabla_pageurl_titulos.py  titulos emitidos por mas de un App Name: distribucion y barras
-                                  del top 10 (eCPM ponderado del titulo repartido por app)
+                                  del top 10 (eCPM ponderado del titulo repartido por app) y las
+                                  mismas barras con requests totales en el eje Y
   generar_barras_canales_completitud.py  por canal (Caracol, RCN, Canal 13, Televisa, TV Azteca...):
                                   barras apiladas de completitud de los 8 content objects y scatter
                                   requests totales vs eCPM ponderado (+ JSON)
