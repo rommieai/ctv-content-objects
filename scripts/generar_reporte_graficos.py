@@ -161,6 +161,33 @@ def main():
                 L.append(f"| {d['canal']} | {n(d['requests'])} | {n(d['requests_vendidos'])} | {pct(d['pct_vendido'])} | "
                          + (f"${d['ecpm_ponderado']:.2f}" if d["ecpm_ponderado"] is not None else "— (sin filas vendidas)") + " |")
         L.append("")
+    # ---- 8. registros sin contentTitle (scripts/generar_graficos_sin_titulo.py) ----
+    pst = os.path.join(R, "graficos-sin-titulo.json")
+    if os.path.exists(pst):
+        st = json.load(open(pst, encoding="utf-8"))
+        L += ["## 8. Registros sin contentTitle: qué content objects se relacionan con el eCPM\n",
+              f"{n(st['filas_sin_titulo'])} filas sin título ({n(st['requests'])} requests; {pct(st['pct_vendido'])} vendidos; "
+              f"eCPM ponderado ${st['ecpm_ponderado']:.2f}). Generado con `scripts/generar_graficos_sin_titulo.py` → `recursos/graficos-sin-titulo.json`.\n",
+              "### 8.1 % de filas llenas vs eCPM por columna, sin y con relleno\n",
+              "Como en la gráfica de completitud vs eCPM de la tanda v18, pero solo con las filas sin título y con dos marcas por columna: "
+              "círculo = tal como llega, rombo = tras el pipeline de relleno. Sin título no hay `titulo_clave`, así que ni `intra_titulo` "
+              "ni IMDb aplican; solo cambian las columnas que se derivan de la misma fila (categoría desde el género) o de la app (livestream).\n",
+              "![sin título: % llenas vs eCPM, sin y con relleno](recursos/graficos-sin-titulo-columnas.svg)\n",
+              "| Columna | % llenas sin relleno | eCPM pond. sin relleno | % llenas con relleno | eCPM pond. con relleno |\n|---|---:|---:|---:|---:|"]
+        for c, d in st["columnas"].items():
+            a_, b_ = d["orig"], d["rell"]
+            fa = f"${a_['ecpm_ponderado']:.2f}" if a_["ecpm_ponderado"] is not None else "—"
+            fb = f"${b_['ecpm_ponderado']:.2f}" if b_["ecpm_ponderado"] is not None else "—"
+            L.append(f"| {c} | {pct(a_['pct_filas_llenas'])} | {fa} | {pct(b_['pct_filas_llenas'])} | {fb} |")
+        L += ["\n### 8.2 eCPM ponderado por género en las filas sin título\n",
+              "Género normalizado tal como llega. Es el content object que más separa el precio cuando no hay título: explica el 20.6 % de la "
+              "variación del eCPM ponderado solo y aporta 6.9 puntos más controlando por publisher × país (rating: 17.1 % y 4.7 puntos; "
+              "livestream, length, categoría y series: menos de 1.5 puntos).\n",
+              "![sin título: eCPM por género](recursos/graficos-sin-titulo-genero.svg)\n",
+              "| Género | Filas | % del tráfico vendido sin título | eCPM pond. |\n|---|---:|---:|---:|"]
+        for g in sorted([g for g in st["genero"] if g["share_trafico_vendido_pct"] >= 0.5], key=lambda g: -g["ecpm_ponderado"]):
+            L.append(f"| {g['genero']} | {n(g['filas'])} | {pct(g['share_trafico_vendido_pct'])} | ${g['ecpm_ponderado']:.2f} |")
+        L.append("")
     out = os.path.join(D, "reporte-graficos-ecpm-vacio.md")
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L).rstrip("\n") + "\n")

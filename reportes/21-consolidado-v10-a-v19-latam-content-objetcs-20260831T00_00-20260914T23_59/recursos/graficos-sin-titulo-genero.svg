@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="490" viewBox="0 0 900 490" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">
+<rect width="900" height="490" fill="#ffffff"/>
+<text x="16" y="24" font-size="17" font-weight="700" fill="#1f2933">Registros sin contentTitle: eCPM ponderado por género</text>
+<text x="16" y="44" font-size="12" fill="#5f6b76">Género normalizado tal como llega (sin relleno). A la derecha, el % del tráfico vendido sin título que cae en ese género y sus filas.</text>
+<text x="16" y="60" font-size="12" fill="#5f6b76">Géneros con menos del 0.5% del tráfico vendido no se muestran. Línea punteada: $4.12, el ponderado de todas las filas sin título.</text>
+<line x1="150.0" y1="76" x2="150.0" y2="440" stroke="#e3e7ea"/>
+<text x="150.0" y="456" text-anchor="middle" font-size="10.5" fill="#5f6b76">$0</text>
+<line x1="228.1" y1="76" x2="228.1" y2="440" stroke="#e3e7ea"/>
+<text x="228.1" y="456" text-anchor="middle" font-size="10.5" fill="#5f6b76">$1</text>
+<line x1="306.3" y1="76" x2="306.3" y2="440" stroke="#e3e7ea"/>
+<text x="306.3" y="456" text-anchor="middle" font-size="10.5" fill="#5f6b76">$2</text>
+<line x1="384.4" y1="76" x2="384.4" y2="440" stroke="#e3e7ea"/>
+<text x="384.4" y="456" text-anchor="middle" font-size="10.5" fill="#5f6b76">$3</text>
+<line x1="462.5" y1="76" x2="462.5" y2="440" stroke="#e3e7ea"/>
+<text x="462.5" y="456" text-anchor="middle" font-size="10.5" fill="#5f6b76">$4</text>
+<line x1="540.6" y1="76" x2="540.6" y2="440" stroke="#e3e7ea"/>
+<text x="540.6" y="456" text-anchor="middle" font-size="10.5" fill="#5f6b76">$5</text>
+<line x1="618.8" y1="76" x2="618.8" y2="440" stroke="#e3e7ea"/>
+<text x="618.8" y="456" text-anchor="middle" font-size="10.5" fill="#5f6b76">$6</text>
+<line x1="471.9" y1="76" x2="471.9" y2="440" stroke="#5f6b76" stroke-dasharray="5 4"/>
+<text x="142" y="93" text-anchor="end" font-size="11.5" fill="#1f2933">drama</text>
+<rect x="150" y="80" width="476.2" height="18" rx="3" fill="#2a78d6"/>
+<text x="632.2" y="93" font-size="11" font-weight="600" fill="#1f2933">$6.09</text>
+<text x="884" y="93" text-anchor="end" font-size="10.5" fill="#5f6b76">10.5% del tráfico vendido · 7,548 filas</text>
+<text x="142" y="119" text-anchor="end" font-size="11.5" fill="#1f2933">documental</text>
+<rect x="150" y="106" width="462.6" height="18" rx="3" fill="#2a78d6"/>
+<text x="618.6" y="119" font-size="11" font-weight="600" fill="#1f2933">$5.92</text>
+<text x="884" y="119" text-anchor="end" font-size="10.5" fill="#5f6b76">0.6% del tráfico vendido · 2,132 filas</text>
+<text x="142" y="145" text-anchor="end" font-size="11.5" fill="#1f2933">concursos</text>
+<rect x="150" y="132" width="457.0" height="18" rx="3" fill="#2a78d6"/>
+<text x="613.0" y="145" font-size="11" font-weight="600" fill="#1f2933">$5.85</text>
+<text x="884" y="145" text-anchor="end" font-size="10.5" fill="#5f6b76">0.6% del tráfico vendido · 389 filas</text>
+<text x="142" y="171" text-anchor="end" font-size="11.5" fill="#1f2933">noticias</text>
+<rect x="150" y="158" width="422.0" height="18" rx="3" fill="#2a78d6"/>
+<text x="578.0" y="171" font-size="11" font-weight="600" fill="#1f2933">$5.40</text>
+<text x="884" y="171" text-anchor="end" font-size="10.5" fill="#5f6b76">5.5% del tráfico vendido · 2,149 filas</text>
+<text x="142" y="197" text-anchor="end" font-size="11.5" fill="#1f2933">aventura</text>
+<rect x="150" y="184" width="418.5" height="18" rx="3" fill="#2a78d6"/>
+<text x="574.5" y="197" font-size="11" font-weight="600" fill="#1f2933">$5.36</text>
+<text x="884" y="197" text-anchor="end" font-size="10.5" fill="#5f6b76">0.9% del tráfico vendido · 1,134 filas</text>
+<text x="142" y="223" text-anchor="end" font-size="11.5" fill="#1f2933">gastronomia</text>
+<rect x="150" y="210" width="408.7" height="18" rx="3" fill="#2a78d6"/>
+<text x="564.7" y="223" font-size="11" font-weight="600" fill="#1f2933">$5.23</text>
+<text x="884" y="223" text-anchor="end" font-size="10.5" fill="#5f6b76">1.1% del tráfico vendido · 484 filas</text>
+<text x="142" y="249" text-anchor="end" font-size="11.5" fill="#1f2933">terror</text>
+<rect x="150" y="236" width="387.4" height="18" rx="3" fill="#2a78d6"/>
+<text x="543.4" y="249" font-size="11" font-weight="600" fill="#1f2933">$4.96</text>
+<text x="884" y="249" text-anchor="end" font-size="10.5" fill="#5f6b76">1.1% del tráfico vendido · 1,910 filas</text>
+<text x="142" y="275" text-anchor="end" font-size="11.5" fill="#1f2933">accion</text>
+<rect x="150" y="262" width="370.9" height="18" rx="3" fill="#2a78d6"/>
+<text x="526.9" y="275" font-size="11" font-weight="600" fill="#1f2933">$4.75</text>
+<text x="884" y="275" text-anchor="end" font-size="10.5" fill="#5f6b76">3.0% del tráfico vendido · 4,281 filas</text>
+<text x="142" y="301" text-anchor="end" font-size="11.5" fill="#1f2933">pelicula (generico)</text>
+<rect x="150" y="288" width="353.0" height="18" rx="3" fill="#2a78d6"/>
+<text x="509.0" y="301" font-size="11" font-weight="600" fill="#1f2933">$4.52</text>
+<text x="884" y="301" text-anchor="end" font-size="10.5" fill="#5f6b76">0.8% del tráfico vendido · 1,774 filas</text>
+<text x="142" y="327" text-anchor="end" font-size="11.5" fill="#1f2933">entretenimiento</text>
+<rect x="150" y="314" width="348.3" height="18" rx="3" fill="#2a78d6"/>
+<text x="504.3" y="327" font-size="11" font-weight="600" fill="#1f2933">$4.46</text>
+<text x="884" y="327" text-anchor="end" font-size="10.5" fill="#5f6b76">10.8% del tráfico vendido · 3,340 filas</text>
+<text x="142" y="353" text-anchor="end" font-size="11.5" fill="#1f2933">(sin género)</text>
+<rect x="150" y="340" width="343.3" height="18" rx="3" fill="#2a78d6"/>
+<text x="499.3" y="353" font-size="11" font-weight="600" fill="#1f2933">$4.39</text>
+<text x="884" y="353" text-anchor="end" font-size="10.5" fill="#5f6b76">39.0% del tráfico vendido · 30,263 filas</text>
+<text x="142" y="379" text-anchor="end" font-size="11.5" fill="#1f2933">comedia</text>
+<rect x="150" y="366" width="254.9" height="18" rx="3" fill="#2a78d6"/>
+<text x="410.9" y="379" font-size="11" font-weight="600" fill="#1f2933">$3.26</text>
+<text x="884" y="379" text-anchor="end" font-size="10.5" fill="#5f6b76">3.6% del tráfico vendido · 4,961 filas</text>
+<text x="142" y="405" text-anchor="end" font-size="11.5" fill="#1f2933">romance</text>
+<rect x="150" y="392" width="165.4" height="18" rx="3" fill="#2a78d6"/>
+<text x="321.4" y="405" font-size="11" font-weight="600" fill="#1f2933">$2.12</text>
+<text x="884" y="405" text-anchor="end" font-size="10.5" fill="#5f6b76">2.4% del tráfico vendido · 2,048 filas</text>
+<text x="142" y="431" text-anchor="end" font-size="11.5" fill="#1f2933">deportes</text>
+<rect x="150" y="418" width="148.1" height="18" rx="3" fill="#2a78d6"/>
+<text x="304.1" y="431" font-size="11" font-weight="600" fill="#1f2933">$1.90</text>
+<text x="884" y="431" text-anchor="end" font-size="10.5" fill="#5f6b76">17.9% del tráfico vendido · 3,247 filas</text>
+</svg>

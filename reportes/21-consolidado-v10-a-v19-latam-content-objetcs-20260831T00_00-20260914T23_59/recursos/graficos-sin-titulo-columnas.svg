@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="580" viewBox="0 0 900 580" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">
+<rect width="900" height="580" fill="#ffffff"/>
+<text x="16" y="24" font-size="17" font-weight="700" fill="#1f2933">Registros sin contentTitle: % de filas llenas vs eCPM, sin y con relleno</text>
+<text x="16" y="44" font-size="12" fill="#5f6b76">80,799 filas sin título (138,465,959,120 requests; 68.8% vendidos; eCPM ponderado $4.12).</text>
+<text x="16" y="60" font-size="12" fill="#5f6b76">Por columna: x = % de esas filas con dato útil, y = eCPM ponderado de esas filas. Círculo = tal como llega; rombo = tras el relleno; la línea une los dos estados.</text>
+<text x="16" y="76" font-size="12" fill="#5f6b76">Si el círculo y el rombo coinciden, el relleno no cambió esa columna en las filas sin título. Línea punteada: eCPM ponderado de todas las filas sin título.</text>
+<circle cx="24" cy="96" r="5" fill="#5f6b76"/><text x="34" y="100" font-size="11" fill="#1f2933">sin relleno</text>
+<polygon points="118,90 124,96 118,102 112,96" fill="#5f6b76"/><text x="130" y="100" font-size="11" fill="#1f2933">con relleno</text>
+<rect x="230" y="90" width="12" height="12" rx="2" fill="#eb6834"/>
+<text x="246" y="100" font-size="11" fill="#1f2933">Genre</text>
+<rect x="294.5" y="90" width="12" height="12" rx="2" fill="#8b5cf6"/>
+<text x="310.5" y="100" font-size="11" fill="#1f2933">Rating</text>
+<rect x="365.5" y="90" width="12" height="12" rx="2" fill="#d64545"/>
+<text x="381.5" y="100" font-size="11" fill="#1f2933">Language</text>
+<rect x="449.5" y="90" width="12" height="12" rx="2" fill="#0e9aa7"/>
+<text x="465.5" y="100" font-size="11" fill="#1f2933">LiveStream</text>
+<rect x="546.5" y="90" width="12" height="12" rx="2" fill="#a0622d"/>
+<text x="562.5" y="100" font-size="11" fill="#1f2933">Category</text>
+<rect x="630.5" y="90" width="12" height="12" rx="2" fill="#d6409f"/>
+<text x="646.5" y="100" font-size="11" fill="#1f2933">Length</text>
+<rect x="701.5" y="90" width="12" height="12" rx="2" fill="#6b7280"/>
+<text x="717.5" y="100" font-size="11" fill="#1f2933">Series</text>
+<line x1="64.0" y1="120" x2="64.0" y2="518" stroke="#e3e7ea"/>
+<text x="64.0" y="534" text-anchor="middle" font-size="10.5" fill="#5f6b76">0%</text>
+<text x="64.0" y="547" text-anchor="middle" font-size="9.5" fill="#5f6b76">0</text>
+<line x1="225.2" y1="120" x2="225.2" y2="518" stroke="#e3e7ea"/>
+<text x="225.2" y="534" text-anchor="middle" font-size="10.5" fill="#5f6b76">20%</text>
+<text x="225.2" y="547" text-anchor="middle" font-size="9.5" fill="#5f6b76">16,160</text>
+<line x1="386.4" y1="120" x2="386.4" y2="518" stroke="#e3e7ea"/>
+<text x="386.4" y="534" text-anchor="middle" font-size="10.5" fill="#5f6b76">40%</text>
+<text x="386.4" y="547" text-anchor="middle" font-size="9.5" fill="#5f6b76">32,320</text>
+<line x1="547.6" y1="120" x2="547.6" y2="518" stroke="#e3e7ea"/>
+<text x="547.6" y="534" text-anchor="middle" font-size="10.5" fill="#5f6b76">60%</text>
+<text x="547.6" y="547" text-anchor="middle" font-size="9.5" fill="#5f6b76">48,479</text>
+<line x1="708.8" y1="120" x2="708.8" y2="518" stroke="#e3e7ea"/>
+<text x="708.8" y="534" text-anchor="middle" font-size="10.5" fill="#5f6b76">80%</text>
+<text x="708.8" y="547" text-anchor="middle" font-size="9.5" fill="#5f6b76">64,639</text>
+<line x1="870.0" y1="120" x2="870.0" y2="518" stroke="#e3e7ea"/>
+<text x="870.0" y="534" text-anchor="middle" font-size="10.5" fill="#5f6b76">100%</text>
+<text x="870.0" y="547" text-anchor="middle" font-size="9.5" fill="#5f6b76">80,799</text>
+<line x1="64" y1="518.0" x2="870" y2="518.0" stroke="#e3e7ea"/>
+<text x="58" y="522.0" text-anchor="end" font-size="10.5" fill="#5f6b76">$0</text>
+<line x1="64" y1="458.9" x2="870" y2="458.9" stroke="#e3e7ea"/>
+<text x="58" y="462.9" text-anchor="end" font-size="10.5" fill="#5f6b76">$1</text>
+<line x1="64" y1="399.8" x2="870" y2="399.8" stroke="#e3e7ea"/>
+<text x="58" y="403.8" text-anchor="end" font-size="10.5" fill="#5f6b76">$2</text>
+<line x1="64" y1="340.7" x2="870" y2="340.7" stroke="#e3e7ea"/>
+<text x="58" y="344.7" text-anchor="end" font-size="10.5" fill="#5f6b76">$3</text>
+<line x1="64" y1="281.6" x2="870" y2="281.6" stroke="#e3e7ea"/>
+<text x="58" y="285.6" text-anchor="end" font-size="10.5" fill="#5f6b76">$4</text>
+<line x1="64" y1="222.4" x2="870" y2="222.4" stroke="#e3e7ea"/>
+<text x="58" y="226.4" text-anchor="end" font-size="10.5" fill="#5f6b76">$5</text>
+<line x1="64" y1="163.3" x2="870" y2="163.3" stroke="#e3e7ea"/>
+<text x="58" y="167.3" text-anchor="end" font-size="10.5" fill="#5f6b76">$6</text>
+<line x1="64" y1="274.4" x2="870" y2="274.4" stroke="#5f6b76" stroke-dasharray="5 4"/>
+<text x="467.0" y="572" text-anchor="middle" fill="#1f2933">% de filas llenas de la columna (debajo: cuántas filas sin título son ese %)</text>
+<text transform="translate(18,319.0) rotate(-90)" text-anchor="middle" fill="#1f2933">eCPM ponderado de las filas llenas ($)</text>
+<circle cx="772.5" cy="285.5" r="6" fill="#eb6834" stroke="#ffffff" stroke-width="2"/>
+<polygon points="772.5,277.5 780.5,285.5 772.5,293.5 764.5,285.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/>
+<text x="772.5" y="273.5" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1f2933">$3.93</text>
+<circle cx="716.1" cy="239.5" r="6" fill="#8b5cf6" stroke="#ffffff" stroke-width="2"/>
+<polygon points="716.1,231.5 724.1,239.5 716.1,247.5 708.1,239.5" fill="#8b5cf6" stroke="#ffffff" stroke-width="2"/>
+<text x="716.1" y="227.5" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1f2933">$4.71</text>
+<circle cx="728.1" cy="276.1" r="6" fill="#d64545" stroke="#ffffff" stroke-width="2"/>
+<polygon points="728.1,268.1 736.1,276.1 728.1,284.1 720.1,276.1" fill="#d64545" stroke="#ffffff" stroke-width="2"/>
+<text x="728.1" y="264.1" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1f2933">$4.09</text>
+<line x1="259.1" y1="330.4" x2="262.3" y2="330.3" stroke="#0e9aa7" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="259.1" cy="330.4" r="6" fill="#0e9aa7" stroke="#ffffff" stroke-width="2"/>
+<polygon points="262.3,322.3 270.3,330.3 262.3,338.3 254.3,330.3" fill="#0e9aa7" stroke="#ffffff" stroke-width="2"/>
+<text x="262.3" y="318.3" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1f2933">$3.17</text>
+<line x1="472.6" y1="223.7" x2="662.9" y2="281.1" stroke="#a0622d" stroke-width="2" stroke-opacity="0.7"/>
+<circle cx="472.6" cy="223.7" r="6" fill="#a0622d" stroke="#ffffff" stroke-width="2"/>
+<polygon points="662.9,273.1 670.9,281.1 662.9,289.1 654.9,281.1" fill="#a0622d" stroke="#ffffff" stroke-width="2"/>
+<text x="472.6" y="212.7" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1f2933">$4.98</text>
+<text x="662.9" y="269.1" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1f2933">$4.01</text>
+<circle cx="501.7" cy="185.5" r="6" fill="#d6409f" stroke="#ffffff" stroke-width="2"/>
+<polygon points="501.7,177.5 509.7,185.5 501.7,193.5 493.7,185.5" fill="#d6409f" stroke="#ffffff" stroke-width="2"/>
+<text x="501.7" y="173.5" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1f2933">$5.62</text>
+<circle cx="116.4" cy="180.7" r="6" fill="#6b7280" stroke="#ffffff" stroke-width="2"/>
+<polygon points="116.4,172.7 124.4,180.7 116.4,188.7 108.4,180.7" fill="#6b7280" stroke="#ffffff" stroke-width="2"/>
+<text x="116.4" y="168.7" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1f2933">$5.71</text>
+</svg>

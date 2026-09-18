@@ -223,3 +223,47 @@ Un punto por canal (mismos canales y misma definición de la sección 6). x = re
 | Canal 13 | 9,988,800 | 0 | 0.0% | — (sin filas vendidas) |
 | Win | 0 | 0 | — | — |
 | Telefe | 0 | 0 | — | — |
+
+## 8. Registros sin contentTitle: qué content objects se relacionan con el eCPM
+
+80,799 filas sin título (138,465,959,120 requests; 68.8% vendidos; eCPM ponderado $4.12). Generado con `scripts/generar_graficos_sin_titulo.py` → `recursos/graficos-sin-titulo.json`.
+
+### 8.1 % de filas llenas vs eCPM por columna, sin y con relleno
+
+Como en la gráfica de completitud vs eCPM de la tanda v18, pero solo con las filas sin título y con dos marcas por columna: círculo = tal como llega, rombo = tras el pipeline de relleno. Sin título no hay `titulo_clave`, así que ni `intra_titulo` ni IMDb aplican; solo cambian las columnas que se derivan de la misma fila (categoría desde el género) o de la app (livestream).
+
+![sin título: % llenas vs eCPM, sin y con relleno](recursos/graficos-sin-titulo-columnas.svg)
+
+| Columna | % llenas sin relleno | eCPM pond. sin relleno | % llenas con relleno | eCPM pond. con relleno |
+|---|---:|---:|---:|---:|
+| contentGenre | 87.9% | $3.93 | 87.9% | $3.93 |
+| contentRating | 80.9% | $4.71 | 80.9% | $4.71 |
+| contentLanguage | 82.4% | $4.09 | 82.4% | $4.09 |
+| contentIsLiveStream | 24.2% | $3.17 | 24.6% | $3.18 |
+| contentCategory | 50.7% | $4.98 | 74.3% | $4.01 |
+| contentLength | 54.3% | $5.62 | 54.3% | $5.62 |
+| contentSeries | 6.5% | $5.71 | 6.5% | $5.71 |
+
+### 8.2 eCPM ponderado por género en las filas sin título
+
+Género normalizado tal como llega. Es el content object que más separa el precio cuando no hay título: explica el 20.6 % de la variación del eCPM ponderado solo y aporta 6.9 puntos más controlando por publisher × país (rating: 17.1 % y 4.7 puntos; livestream, length, categoría y series: menos de 1.5 puntos).
+
+![sin título: eCPM por género](recursos/graficos-sin-titulo-genero.svg)
+
+| Género | Filas | % del tráfico vendido sin título | eCPM pond. |
+|---|---:|---:|---:|
+| drama | 7,548 | 10.5% | $6.09 |
+| documental | 2,132 | 0.6% | $5.92 |
+| concursos | 389 | 0.6% | $5.85 |
+| noticias | 2,149 | 5.5% | $5.40 |
+| aventura | 1,134 | 0.9% | $5.36 |
+| gastronomia | 484 | 1.1% | $5.23 |
+| terror | 1,910 | 1.1% | $4.96 |
+| accion | 4,281 | 3.0% | $4.75 |
+| pelicula (generico) | 1,774 | 0.8% | $4.52 |
+| entretenimiento | 3,340 | 10.8% | $4.46 |
+| (sin género) | 30,263 | 39.0% | $4.39 |
+| thriller | 1,678 | 0.5% | $4.18 |
+| comedia | 4,961 | 3.6% | $3.26 |
+| romance | 2,048 | 2.4% | $2.12 |
+| deportes | 3,247 | 17.9% | $1.90 |
