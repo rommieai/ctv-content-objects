@@ -1,0 +1,173 @@
+{
+ "fuente": "inventory-consolidado-v10-a-v19.csv",
+ "campos": [
+  "contentTitle",
+  "contentGenre",
+  "contentRating",
+  "contentLanguage",
+  "contentIsLiveStream",
+  "contentCategory",
+  "contentLength",
+  "contentSeries"
+ ],
+ "canales": [
+  {
+   "canal": "Caracol",
+   "filas": 12,
+   "requests": 34383840,
+   "pct_llenas": {
+    "contentTitle": 0.0,
+    "contentGenre": 0.0,
+    "contentRating": 0.0,
+    "contentLanguage": 66.7,
+    "contentIsLiveStream": 50.0,
+    "contentCategory": 0.0,
+    "contentLength": 0.0,
+    "contentSeries": 0.0
+   },
+   "completitud_promedio": 14.6,
+   "publishers": [
+    "Caracol via OB"
+   ],
+   "apps": [
+    "ditu por Caracol",
+    "ditu"
+   ]
+  },
+  {
+   "canal": "Win",
+   "filas": 0,
+   "requests": 0,
+   "pct_llenas": {
+    "contentTitle": null,
+    "contentGenre": null,
+    "contentRating": null,
+    "contentLanguage": null,
+    "contentIsLiveStream": null,
+    "contentCategory": null,
+    "contentLength": null,
+    "contentSeries": null
+   },
+   "completitud_promedio": null,
+   "publishers": [],
+   "apps": []
+  },
+  {
+   "canal": "RCN",
+   "filas": 42,
+   "requests": 105527120,
+   "pct_llenas": {
+    "contentTitle": 0.0,
+    "contentGenre": 0.0,
+    "contentRating": 0.0,
+    "contentLanguage": 83.3,
+    "contentIsLiveStream": 28.6,
+    "contentCategory": 0.0,
+    "contentLength": 57.1,
+    "contentSeries": 0.0
+   },
+   "completitud_promedio": 21.1,
+   "publishers": [
+    "RCN via OB"
+   ],
+   "apps": [
+    "Canal RCN",
+    "Not Available"
+   ]
+  },
+  {
+   "canal": "Canal 13",
+   "filas": 8,
+   "requests": 9988800,
+   "pct_llenas": {
+    "contentTitle": 0.0,
+    "contentGenre": 0.0,
+    "contentRating": 0.0,
+    "contentLanguage": 75.0,
+    "contentIsLiveStream": 75.0,
+    "contentCategory": 0.0,
+    "contentLength": 0.0,
+    "contentSeries": 0.0
+   },
+   "completitud_promedio": 18.8,
+   "publishers": [
+    "Canal 13 OB"
+   ],
+   "apps": [
+    "13 GO"
+   ]
+  },
+  {
+   "canal": "Telefe",
+   "filas": 0,
+   "requests": 0,
+   "pct_llenas": {
+    "contentTitle": null,
+    "contentGenre": null,
+    "contentRating": null,
+    "contentLanguage": null,
+    "contentIsLiveStream": null,
+    "contentCategory": null,
+    "contentLength": null,
+    "contentSeries": null
+   },
+   "completitud_promedio": null,
+   "publishers": [],
+   "apps": []
+  },
+  {
+   "canal": "Televisa",
+   "filas": 40779,
+   "requests": 66601273920,
+   "pct_llenas": {
+    "contentTitle": 75.2,
+    "contentGenre": 96.3,
+    "contentRating": 82.0,
+    "contentLanguage": 57.3,
+    "contentIsLiveStream": 34.8,
+    "contentCategory": 10.7,
+    "contentLength": 38.3,
+    "contentSeries": 0.2
+   },
+   "completitud_promedio": 49.4,
+   "publishers": [
+    "Televisa Univision via SpringServe",
+    "Equativ (Formerly SMART AdServer) - oRTB CTV",
+    "Televisa Univision via OB",
+    "METAX SOFTWARE PTE. LTD. (Exchange)"
+   ],
+   "apps": [
+    "ViX: TV, Sports and News",
+    "ViX: TV, Deportes y Noticias",
+    "ViX: Cine y TV Gratis en Español",
+    "ViX: Cine y TV en Español"
+   ]
+  },
+  {
+   "canal": "TV Azteca",
+   "filas": 2251,
+   "requests": 18906692640,
+   "pct_llenas": {
+    "contentTitle": 0.7,
+    "contentGenre": 97.9,
+    "contentRating": 96.8,
+    "contentLanguage": 98.5,
+    "contentIsLiveStream": 0.2,
+    "contentCategory": 0.4,
+    "contentLength": 0.4,
+    "contentSeries": 0.2
+   },
+   "completitud_promedio": 36.9,
+   "publishers": [
+    "TV Azteca - Springserve",
+    "Roku - oRTB",
+    "Equativ (Formerly SMART AdServer) - oRTB CTV"
+   ],
+   "apps": [
+    "Tubi: Free Movies & Live TV",
+    "Azteca TV",
+    "Pluto TV - Free Movies/Shows"
+   ]
+  }
+ ]
+}

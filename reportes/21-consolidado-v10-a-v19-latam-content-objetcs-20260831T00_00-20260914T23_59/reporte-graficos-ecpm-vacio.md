@@ -189,3 +189,21 @@ Top 12 apps por requests vendidos. Para cada app, barra = eCPM ponderado (eCPM >
 | chicken stew | 7 | 1,882,113,200 | $6.19 | TCL CHANNEL 61% ($5.38), Browser TV Web - BrowseHere 27% ($9.37), Live TV 8% ($2.94), MovieArk: Stream Movies & Live 4% ($3.82), Not Available 0% ($4.54) |
 | chicken coop | 7 | 1,858,788,400 | $6.01 | TCL CHANNEL 62% ($5.13), Browser TV Web - BrowseHere 25% ($9.44), Live TV 7% ($3.14), MovieArk: Stream Movies & Live 5% ($3.91), Not Available 0% ($2.72) |
 | humble pie | 7 | 1,786,588,400 | $6.77 | Live TV 32% ($5.10), TCL CHANNEL 31% ($7.50), MovieArk: Stream Movies & Live 23% ($6.93), Browser TV Web - BrowseHere 13% ($8.82), Not Available 0% ($7.03) |
+
+## 6. Completitud de los content objects por canal
+
+Canal = filas cuyo Publisher o App Name lo nombra (Caracol via OB / ditu por Caracol, RCN via OB / Canal RCN, Canal 13 OB, Televisa Univision via … / ViX, TV Azteca - Springserve / Azteca TV). Cada segmento de la barra es una columna, con altura = % de filas del canal con dato útil en esa columna dividido entre 8; la barra completa es la completitud promedio de las 8 columnas. Generado con `scripts/generar_barras_canales_completitud.py` → `recursos/graficos-canales-completitud-barras.json`.
+
+![completitud por canal](recursos/graficos-canales-completitud-barras.svg)
+
+| Canal | Filas | Requests | Promedio | Title | Genre | Rating | Language | IsLiveStream | Category | Length | Series |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Caracol | 12 | 34,383,840 | 14.6% | 0.0% | 0.0% | 0.0% | 66.7% | 50.0% | 0.0% | 0.0% | 0.0% |
+| Win | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| RCN | 42 | 105,527,120 | 21.1% | 0.0% | 0.0% | 0.0% | 83.3% | 28.6% | 0.0% | 57.1% | 0.0% |
+| Canal 13 | 8 | 9,988,800 | 18.8% | 0.0% | 0.0% | 0.0% | 75.0% | 75.0% | 0.0% | 0.0% | 0.0% |
+| Telefe | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| Televisa | 40,779 | 66,601,273,920 | 49.4% | 75.2% | 96.3% | 82.0% | 57.3% | 34.8% | 10.7% | 38.3% | 0.2% |
+| TV Azteca | 2,251 | 18,906,692,640 | 36.9% | 0.7% | 97.9% | 96.8% | 98.5% | 0.2% | 0.4% | 0.4% | 0.2% |
+
+*Win y Telefe no aparecen en el consolidado: ningún Publisher ni App Name los nombra.*
