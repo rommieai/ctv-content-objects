@@ -110,25 +110,23 @@ def main():
                      for x in d["niveles"]]
             L.append(f"| {app} | ${d['ecpm_ponderado']:.2f} | {pct(d['share_trafico_vendido_pct'])} | " + " | ".join(cells) + " |")
         L.append("\n*Entre paréntesis, el % de los requests vendidos de la app que cae en ese nivel de campos llenos.*\n")
-    # ---- 5. titulos en mas de un pageURL / emisor (scripts/generar_tabla_pageurl_titulos.py) ----
-    ptp = os.path.join(R, "titulos-pageurl.json")
+    # ---- 5. titulos en mas de un App Name (scripts/generar_tabla_pageurl_titulos.py) ----
+    ptp = os.path.join(R, "titulos-appname.json")
     if os.path.exists(ptp):
         tp = json.load(open(ptp, encoding="utf-8"))
-        L += ["## 5. Títulos emitidos por más de un pageURL\n",
-              f"Publisher = ruta de venta; pageURL = app que emite; emisor = pageURL agrupados por App Name "
-              f"(`recursos/pageurl-emisores.csv`). {n(tp['titulos_reales'])} títulos reales. "
-              "Generado con `scripts/generar_tabla_pageurl_titulos.py` → `recursos/titulos-pageurl.json`.\n",
-              "**Según cuántos pageURL distintos emiten el título:**\n",
-              "| pageURL distintos por título | % de títulos | % de requests |\n|---:|---:|---:|"]
-        for a_ in tp["por_pageurl"]:
-            L.append(f"| {a_['n']} | {pct(a_['pct_titulos'])} | {pct(a_['pct_requests'])} |")
-        L += ["\n**Según cuántos emisores distintos lo emiten (pageURL agrupados por App Name):**\n",
-              "| Emisores distintos por título | % de títulos | % de requests |\n|---:|---:|---:|"]
-        for b_ in tp["por_emisor"]:
+        L += ["## 5. Títulos emitidos por más de un App Name\n",
+              f"{n(tp['titulos_reales'])} títulos reales, agrupados solo por App Name (sin pageURL). "
+              "Generado con `scripts/generar_tabla_pageurl_titulos.py` → `recursos/titulos-appname.json`.\n",
+              "| App Name distintos por título | % de títulos | % de requests |\n|---:|---:|---:|"]
+        for b_ in tp["por_app_name"]:
             L.append(f"| {b_['n']} | {pct(b_['pct_titulos'])} | {pct(b_['pct_requests'])} |")
-        L += ["\n| Título (top por requests, ≥ 2 emisores) | pageURL | publishers | emisores | países | Emisores principales (% de sus requests) |\n|---|---:|---:|---:|---:|---|"]
-        for t in tp["top_titulos_multi_emisor"]:
-            L.append(f"| {t['titulo']} | {t['pageurls']} | {t['publishers']} | {t['emisores']} | {t['paises']} | {', '.join(t['emisores_principales'])} |")
+        L += [f"\n**Top {len(tp['top_titulos_multi_app'])} títulos (por requests) en dos o más App Name:** altura de la barra = eCPM ponderado del "
+              "título (eCPM > 0); la barra se reparte por App Name según el % de los requests vendidos del título que aporta cada app.\n",
+              "![títulos en varios App Name: eCPM y reparto por app](recursos/graficos-titulos-appname-barras.svg)\n",
+              "| Título | App Name | Requests | eCPM pond. | Reparto por app (% de requests vendidos, eCPM pond. de la app) |\n|---|---:|---:|---:|---|"]
+        for t_ in tp["top_titulos_multi_app"]:
+            reparto = ", ".join(f"{x['app']} {x['pct_requests_vendidos']:.0f}% (${x['ecpm_ponderado']:.2f})" for x in t_["apps"][:5])
+            L.append(f"| {t_['titulo']} | {t_['app_names']} | {n(t_['requests'])} | ${t_['ecpm_ponderado']:.2f} | {reparto} |")
         L.append("")
     out = os.path.join(D, "reporte-graficos-ecpm-vacio.md")
     with open(out, "w", encoding="utf-8", newline="\n") as f:

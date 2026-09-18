@@ -161,44 +161,31 @@ Top 12 apps por requests vendidos. Para cada app, barra = eCPM ponderado (eCPM >
 
 *Entre paréntesis, el % de los requests vendidos de la app que cae en ese nivel de campos llenos.*
 
-## 5. Títulos emitidos por más de un pageURL
+## 5. Títulos emitidos por más de un App Name
 
-Publisher = ruta de venta; pageURL = app que emite; emisor = pageURL agrupados por App Name (`recursos/pageurl-emisores.csv`). 15,799 títulos reales. Generado con `scripts/generar_tabla_pageurl_titulos.py` → `recursos/titulos-pageurl.json`.
+15,799 títulos reales, agrupados solo por App Name (sin pageURL). Generado con `scripts/generar_tabla_pageurl_titulos.py` → `recursos/titulos-appname.json`.
 
-**Según cuántos pageURL distintos emiten el título:**
-
-| pageURL distintos por título | % de títulos | % de requests |
+| App Name distintos por título | % de títulos | % de requests |
 |---:|---:|---:|
-| 1 | 46.8% | 7.5% |
-| 2 | 27.9% | 8.7% |
-| 3 | 7.1% | 1.7% |
-| 4 | 3.6% | 1.9% |
-| 5+ | 14.6% | 80.3% |
+| 1 | 47.7% | 7.8% |
+| 2 | 27.3% | 8.3% |
+| 3 | 7.0% | 2.1% |
+| 4 | 3.3% | 2.1% |
+| 5+ | 14.7% | 79.7% |
 
-**Según cuántos emisores distintos lo emiten (pageURL agrupados por App Name):**
+**Top 10 títulos (por requests) en dos o más App Name:** altura de la barra = eCPM ponderado del título (eCPM > 0); la barra se reparte por App Name según el % de los requests vendidos del título que aporta cada app.
 
-| Emisores distintos por título | % de títulos | % de requests |
-|---:|---:|---:|
-| 1 | 52.6% | 12.9% |
-| 2 | 41.2% | 78.5% |
-| 3 | 4.9% | 5.1% |
-| 4 | 0.9% | 2.3% |
-| 5+ | 0.4% | 1.3% |
+![títulos en varios App Name: eCPM y reparto por app](recursos/graficos-titulos-appname-barras.svg)
 
-| Título (top por requests, ≥ 2 emisores) | pageURL | publishers | emisores | países | Emisores principales (% de sus requests) |
-|---|---:|---:|---:|---:|---|
-| lo que la vida me robo | 10 | 10 | 2 | 16 | ViX 100%, (App Name vacío) 0% |
-| eve | 14 | 21 | 3 | 18 | OTTera (pool FAST) 93%, TCL 5%, ViX 2% |
-| brooklyn love stories | 8 | 18 | 3 | 18 | OTTera (pool FAST) 95%, TCL 5%, FreeMovie Browser Like Chrome 0% |
-| hatchback | 7 | 17 | 2 | 18 | OTTera (pool FAST) 94%, TCL 6% |
-| corona | 7 | 17 | 2 | 18 | OTTera (pool FAST) 94%, TCL 6% |
-| penance lane | 9 | 21 | 3 | 18 | OTTera (pool FAST) 95%, TCL 5%, (App Name vacío) 0% |
-| american apocalypse | 9 | 19 | 4 | 18 | OTTera (pool FAST) 95%, TCL 5%, (App Name vacío) 0%, FreeMovie Browser Like Chrome 0% |
-| chicken stew | 7 | 15 | 2 | 16 | OTTera (pool FAST) 50%, TCL 50% |
-| chicken coop | 7 | 17 | 2 | 18 | TCL 57%, OTTera (pool FAST) 43% |
-| humble pie | 7 | 18 | 2 | 18 | OTTera (pool FAST) 75%, TCL 25% |
-| a royal christmas on ice | 2 | 9 | 2 | 3 | TCL 73%, OTTera (pool FAST) 27% |
-| mi corazon es tuyo | 10 | 10 | 2 | 15 | ViX 100%, (App Name vacío) 0% |
-| amores verdaderos | 10 | 10 | 2 | 16 | ViX 100%, (App Name vacío) 0% |
-| la mujer del anarquista | 7 | 17 | 2 | 18 | OTTera (pool FAST) 89%, TCL 11% |
-| la fea mas bella | 10 | 10 | 2 | 15 | ViX 100%, (App Name vacío) 0% |
+| Título | App Name | Requests | eCPM pond. | Reparto por app (% de requests vendidos, eCPM pond. de la app) |
+|---|---:|---:|---:|---|
+| lo que la vida me robo | 7 | 3,106,572,320 | $2.21 | ViX: TV, Deportes y Noticias 70% ($2.35), Vidaa 11% ($1.57), Not Available 8% ($1.43), ViX: Cine y TV Gratis en Español 6% ($2.28), ViX: TV, Sports and News 4% ($2.90) |
+| eve | 12 | 2,169,736,560 | $4.13 | Live TV 55% ($3.74), MovieArk: Stream Movies & Live 36% ($4.57), TCL CHANNEL 4% ($6.50), ViX: TV, Deportes y Noticias 2% ($2.22), Browser TV Web - BrowseHere 2% ($5.89) |
+| brooklyn love stories | 8 | 2,111,762,640 | $3.72 | Live TV 54% ($3.10), MovieArk: Stream Movies & Live 39% ($4.16), TCL CHANNEL 4% ($6.56), Browser TV Web - BrowseHere 2% ($6.57), Not Available 1% ($3.85) |
+| hatchback | 7 | 2,070,447,840 | $3.47 | Live TV 56% ($2.85), MovieArk: Stream Movies & Live 37% ($4.05), TCL CHANNEL 4% ($4.45), Browser TV Web - BrowseHere 2% ($7.30), Not Available 1% ($4.14) |
+| corona | 7 | 2,055,902,000 | $3.99 | Live TV 54% ($3.40), MovieArk: Stream Movies & Live 40% ($4.38), TCL CHANNEL 4% ($6.53), Browser TV Web - BrowseHere 2% ($7.44), Not Available 0% ($3.91) |
+| penance lane | 8 | 2,047,331,120 | $4.01 | Live TV 56% ($3.40), MovieArk: Stream Movies & Live 38% ($4.55), TCL CHANNEL 4% ($6.11), Browser TV Web - BrowseHere 2% ($7.06), Not Available 0% ($3.85) |
+| american apocalypse | 8 | 2,046,553,920 | $3.77 | Live TV 56% ($3.30), MovieArk: Stream Movies & Live 37% ($3.96), TCL CHANNEL 4% ($6.64), Browser TV Web - BrowseHere 2% ($7.78), Not Available 1% ($5.06) |
+| chicken stew | 7 | 1,882,113,200 | $6.19 | TCL CHANNEL 61% ($5.38), Browser TV Web - BrowseHere 27% ($9.37), Live TV 8% ($2.94), MovieArk: Stream Movies & Live 4% ($3.82), Not Available 0% ($4.54) |
+| chicken coop | 7 | 1,858,788,400 | $6.01 | TCL CHANNEL 62% ($5.13), Browser TV Web - BrowseHere 25% ($9.44), Live TV 7% ($3.14), MovieArk: Stream Movies & Live 5% ($3.91), Not Available 0% ($2.72) |
+| humble pie | 7 | 1,786,588,400 | $6.77 | Live TV 32% ($5.10), TCL CHANNEL 31% ($7.50), MovieArk: Stream Movies & Live 23% ($6.93), Browser TV Web - BrowseHere 13% ($8.82), Not Available 0% ($7.03) |

@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
-"""Por titulo: en cuantos pageURL (apps), rutas de venta (publishers), emisores y paises aparece.
+"""Titulos emitidos por mas de un App Name.
 
-El publisher es la ruta de venta (SSP); el pageURL es la app que emite. Un mismo emisor tiene
-varios pageURL (uno por tienda o plataforma), asi que se agrupan en "emisor" por el App Name
-con una tabla de patrones (EMISOR_PATRONES) ampliable a mano.
-
-Escribe en la carpeta de salida:
-    pageurl-emisores.csv       top pageURL por requests: pageURL, App Name, emisor, publishers, requests
-    titulos-pageurl.json       distribucion de titulos por numero de pageURL/emisores y top titulos
+Por titulo (titulo_clave del CSV de relleno) cuenta en cuantos App Name distintos aparece y arma:
+    titulos-appname.json                       distribucion de titulos por numero de App Name y el
+                                               top de titulos con >= 2 App Name (requests, eCPM
+                                               ponderado y reparto por app)
+    graficos-titulos-appname-barras.svg        top --top titulos en >= 2 App Name: barra = eCPM
+                                               ponderado del titulo (eCPM > 0), rellena por app
+                                               segun el % de los requests vendidos del titulo
 
 Uso:
-    python scripts/generar_tabla_pageurl_titulos.py inventory-consolidado-relleno.csv reportes/NN/recursos [--top 200]
-(usa el CSV de relleno porque trae titulo_clave; el consolidado crudo no)
+    python scripts/generar_tabla_pageurl_titulos.py inventory-consolidado-relleno.csv reportes/NN/recursos [--top 10]
 """
 import argparse
 import csv
@@ -19,76 +18,112 @@ import json
 import os
 from collections import Counter, defaultdict
 
-EMISOR_PATRONES = [("vix", "ViX"), ("univision", "ViX"), ("prendetv", "ViX"), ("azteca", "TV Azteca"),
-                   ("roku", "Roku"), ("pluto", "Pluto TV"), ("tubi", "Tubi"), ("plex", "Plex"), ("xumo", "Xumo"),
-                   ("lg channels", "LG Channels"), ("samsung", "Samsung TV Plus"), ("vidaa", "Vidaa"),
-                   ("whalelive", "Zeasn (WhaleLive)"), ("zeasn", "Zeasn (WhaleLive)"), ("caracol", "Caracol"),
-                   ("movieark", "OTTera (pool FAST)"), ("ottera", "OTTera (pool FAST)"), ("freetube", "OTTera (pool FAST)"),
-                   ("browsefree", "OTTera (pool FAST)"), ("browsehere", "OTTera (pool FAST)"), ("coolita", "OTTera (pool FAST)"),
-                   ("live tv", "OTTera (pool FAST)"), ("tcl", "TCL"), ("google tv", "Google TV"), ("filmrise", "FilmRise")]
+INK, INK2, GRID = "#1f2933", "#5f6b76", "#e3e7ea"
+PALETA = ["#2a78d6", "#eb6834", "#2e9e6b", "#8b5cf6", "#d64545", "#0e9aa7", "#a0622d", "#d6409f"]
+OTRAS = "#9aa3ad"
 
 
-def emisor(app, url):
-    s = (app or "").lower() + " " + (url or "").lower()
-    for pat, nombre in EMISOR_PATRONES:
-        if pat in s:
-            return nombre
-    return app if app and app.lower() != "not available" else "(App Name vacío)"
+def esc(s):
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("entrada")
     ap.add_argument("salida_dir")
-    ap.add_argument("--top", type=int, default=200)
+    ap.add_argument("--top", type=int, default=10)
     a = ap.parse_args()
     csv.field_size_limit(10 ** 9)
-    url_req, url_app, url_pubs = Counter(), {}, defaultdict(set)
-    t_urls, t_pubs, t_paises, t_em, t_req = defaultdict(set), defaultdict(set), defaultdict(set), defaultdict(set), Counter()
-    t_em_req = defaultdict(Counter)
+    apps = defaultdict(set)
+    req = Counter()
+    vend = defaultdict(lambda: defaultdict(lambda: [0, 0.0]))   # titulo -> app -> [req vendidos, sum q*e]
     with open(a.entrada, newline="", encoding="utf-8-sig") as f:
         for r in csv.DictReader(f):
-            q = int(r["Total Requests"])
-            url = (r["pageURL"] or "").strip().lower() or "(vacío)"
-            app = (r["App Name"] or "").strip()
-            url_req[url] += q
-            url_app.setdefault(url, app)
-            url_pubs[url].add(r["Publisher"])
             k = r.get("titulo_clave")
             if not k:
                 continue
-            em = emisor(app, url)
-            t_urls[k].add(url)
-            t_pubs[k].add(r["Publisher"])
-            t_paises[k].add(r["Country"])
-            t_em[k].add(em)
-            t_req[k] += q
-            t_em_req[k][em] += q
-    # tabla pageURL -> emisor
-    with open(os.path.join(a.salida_dir, "pageurl-emisores.csv"), "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
-        w.writerow(["pageURL", "App Name", "emisor", "publishers", "n_publishers", "requests"])
-        for url, q in url_req.most_common(a.top):
-            w.writerow([url, url_app[url], emisor(url_app[url], url), " | ".join(sorted(url_pubs[url])), len(url_pubs[url]), q])
-    n = len(t_urls)
-    tot_req = sum(t_req.values())
-
-    def dist(d):
-        c = Counter(min(len(v), 5) for v in d.values())
-        rq = defaultdict(int)
-        for k, v in d.items():
-            rq[min(len(v), 5)] += t_req[k]
-        return [{"n": ("5+" if i == 5 else str(i)), "titulos": c[i], "pct_titulos": round(100 * c[i] / n, 1),
-                 "pct_requests": round(100 * rq[i] / tot_req, 1)} for i in range(1, 6)]
-    top = sorted((k for k in t_urls if len(t_em[k]) >= 2), key=lambda k: -t_req[k])[:15]
+            q = int(r["Total Requests"])
+            e = float(r["eCPM"])
+            app = (r["App Name"] or "").strip() or "Not Available"
+            apps[k].add(app)
+            req[k] += q
+            if q > 0 and e > 0:
+                v = vend[k][app]
+                v[0] += q
+                v[1] += q * e
+    n = len(apps)
+    tot_req = sum(req.values())
+    dist = Counter(min(len(v), 5) for v in apps.values())
+    rq = defaultdict(int)
+    for k, v in apps.items():
+        rq[min(len(v), 5)] += req[k]
+    multi = [k for k in apps if len(apps[k]) >= 2 and sum(v[0] for v in vend[k].values()) > 0]
+    top = sorted(multi, key=lambda k: -req[k])[:a.top]
+    titulos = []
+    for k in top:
+        qv = sum(v[0] for v in vend[k].values())
+        ecpm = sum(v[1] for v in vend[k].values()) / qv
+        por_app = sorted(((app, v[0], v[1] / v[0]) for app, v in vend[k].items()), key=lambda t: -t[1])
+        titulos.append({"titulo": k, "app_names": len(apps[k]), "requests": req[k], "requests_vendidos": qv,
+                        "ecpm_ponderado": round(ecpm, 3),
+                        "apps": [{"app": app, "pct_requests_vendidos": round(100 * q / qv, 1), "ecpm_ponderado": round(e, 3)}
+                                 for app, q, e in por_app]})
     out = {"fuente": a.entrada, "titulos_reales": n, "requests_con_titulo": tot_req,
-           "por_pageurl": dist(t_urls), "por_emisor": dist(t_em),
-           "top_titulos_multi_emisor": [{"titulo": k, "pageurls": len(t_urls[k]), "publishers": len(t_pubs[k]), "emisores": len(t_em[k]),
-                                         "paises": len(t_paises[k]), "requests": t_req[k],
-                                         "emisores_principales": [f"{e} {100 * q / t_req[k]:.0f}%" for e, q in t_em_req[k].most_common(4)]}
-                                        for k in top]}
-    json.dump(out, open(os.path.join(a.salida_dir, "titulos-pageurl.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print(f"-> {a.salida_dir}: {n:,} titulos; {sum(1 for k in t_em if len(t_em[k]) >= 2):,} en >=2 emisores")
+           "por_app_name": [{"n": ("5+" if i == 5 else str(i)), "titulos": dist[i], "pct_titulos": round(100 * dist[i] / n, 1),
+                             "pct_requests": round(100 * rq[i] / tot_req, 1)} for i in range(1, 6)],
+           "top_titulos_multi_app": titulos}
+    json.dump(out, open(os.path.join(a.salida_dir, "titulos-appname.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+    # ---- SVG: barras apiladas por app (altura = eCPM ponderado del titulo)
+    # colores fijos por app, en orden de peso dentro del top; a partir de la 9a app, "Otras"
+    peso = Counter()
+    for t in titulos:
+        for x in t["apps"]:
+            peso[x["app"]] += x["pct_requests_vendidos"] * t["requests_vendidos"]
+    color = {app: PALETA[i] for i, (app, _) in enumerate(peso.most_common(len(PALETA)))}
+    W, H = 1000, 560
+    left, right, top_m, bottom = 60, 30, 100, 120
+    pw, ph = W - left - right, H - top_m - bottom
+    ymax = max(t["ecpm_ponderado"] for t in titulos) * 1.15
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
+         f'font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">',
+         f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
+         f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Top {len(titulos)} títulos emitidos por más de un App Name: eCPM ponderado y reparto por app</text>',
+         f'<text x="16" y="44" font-size="12" fill="{INK2}">Altura = eCPM ponderado del título (filas con eCPM &gt; 0). La barra se reparte por App Name según el % de los requests vendidos del título que cada app aporta.</text>']
+    lx = 16
+    for app, c in list(color.items()) + [("Otras apps", OTRAS)]:
+        o.append(f'<rect x="{lx}" y="58" width="12" height="12" rx="2" fill="{c}"/>')
+        o.append(f'<text x="{lx + 16}" y="68" font-size="11" fill="{INK}">{esc(app[:34])}</text>')
+        lx += 16 + 6.3 * len(app[:34]) + 18
+        if lx > W - 150:
+            break
+    step = 1 if ymax <= 8 else 2
+    v = 0
+    while v < ymax:
+        y = top_m + ph * (1 - v / ymax)
+        o.append(f'<line x1="{left}" y1="{y:.1f}" x2="{left + pw}" y2="{y:.1f}" stroke="{GRID}"/>')
+        o.append(f'<text x="{left - 6}" y="{y + 4:.1f}" text-anchor="end" font-size="10.5" fill="{INK2}">${v}</text>')
+        v += step
+    o.append(f'<text transform="translate(18,{top_m + ph / 2:.1f}) rotate(-90)" text-anchor="middle" fill="{INK}">eCPM ponderado del título ($)</text>')
+    bw = pw / len(titulos)
+    for i, t in enumerate(titulos):
+        x0 = left + bw * (i + 0.15)
+        w = bw * 0.7
+        htot = ph * t["ecpm_ponderado"] / ymax
+        ybase = top_m + ph
+        acum = 0.0
+        for x in t["apps"]:
+            h = htot * x["pct_requests_vendidos"] / 100
+            c = color.get(x["app"], OTRAS)
+            o.append(f'<rect x="{x0:.1f}" y="{ybase - acum - h:.1f}" width="{w:.1f}" height="{max(h - 1, 0):.1f}" fill="{c}"/>')
+            if h >= 14 and x["app"] in color:
+                o.append(f'<text x="{x0 + w / 2:.1f}" y="{ybase - acum - h / 2 + 4:.1f}" text-anchor="middle" font-size="10" fill="#ffffff">{x["pct_requests_vendidos"]:.0f}%</text>')
+            acum += h
+        o.append(f'<text x="{x0 + w / 2:.1f}" y="{ybase - htot - 6:.1f}" text-anchor="middle" font-size="11" font-weight="700" fill="{INK}">${t["ecpm_ponderado"]:.2f}</text>')
+        o.append(f'<text transform="translate({x0 + w / 2:.1f},{ybase + 10}) rotate(35)" font-size="10.5" fill="{INK}">{esc(t["titulo"][:26])}</text>')
+    o.append("</svg>")
+    open(os.path.join(a.salida_dir, "graficos-titulos-appname-barras.svg"), "w", encoding="utf-8").write("\n".join(o))
+    print(f"-> {a.salida_dir}: {n:,} titulos; {len(multi):,} en >=2 App Name; top {len(titulos)}")
 
 
 if __name__ == "__main__":
