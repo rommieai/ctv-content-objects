@@ -81,22 +81,27 @@ def main():
         for x in t["apps"]:
             peso[x["app"]] += x["pct_requests_vendidos"] * t["requests_vendidos"]
     color = {app: PALETA[i] for i, (app, _) in enumerate(peso.most_common(len(PALETA)))}
-    W, H = 1000, 560
-    left, right, top_m, bottom = 60, 30, 100, 120
+    W, H = 1000, 600
+    left, right, top_m, bottom = 60, 30, 130, 120
     pw, ph = W - left - right, H - top_m - bottom
-    ymax = max(t["ecpm_ponderado"] for t in titulos) * 1.15
+    MIN_SHARE = 2.0   # apps con menos del 2% de los requests vendidos del titulo no se dibujan
+    for t in titulos:
+        t["apps_dibujadas"] = [x for x in t["apps"] if x["pct_requests_vendidos"] >= MIN_SHARE][:6]
+    ymax = max(x["ecpm_ponderado"] for t in titulos for x in t["apps_dibujadas"]) * 1.15
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
          f'font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">',
          f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
-         f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Top {len(titulos)} títulos emitidos por más de un App Name: eCPM ponderado y reparto por app</text>',
-         f'<text x="16" y="44" font-size="12" fill="{INK2}">Altura = eCPM ponderado del título (filas con eCPM &gt; 0). La barra se reparte por App Name según el % de los requests vendidos del título que cada app aporta.</text>']
-    lx = 16
+         f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Top {len(titulos)} títulos emitidos por más de un App Name: eCPM ponderado por app para el mismo título</text>',
+         f'<text x="16" y="44" font-size="12" fill="{INK2}">Una barra por App Name dentro de cada título; su altura es el eCPM ponderado de ese título en esa app (filas con eCPM &gt; 0).</text>',
+         f'<text x="16" y="60" font-size="12" fill="{INK2}">Solo apps con ≥ {MIN_SHARE:g}% de los requests vendidos del título. Línea punteada: eCPM ponderado del título en todas sus apps.</text>']
+    lx, ly = 16, 74
     for app, c in list(color.items()) + [("Otras apps", OTRAS)]:
-        o.append(f'<rect x="{lx}" y="58" width="12" height="12" rx="2" fill="{c}"/>')
-        o.append(f'<text x="{lx + 16}" y="68" font-size="11" fill="{INK}">{esc(app[:34])}</text>')
-        lx += 16 + 6.3 * len(app[:34]) + 18
-        if lx > W - 150:
-            break
+        ancho = 16 + 6.3 * len(app[:34]) + 18
+        if lx + ancho > W - 16:
+            lx, ly = 16, ly + 18
+        o.append(f'<rect x="{lx}" y="{ly}" width="12" height="12" rx="2" fill="{c}"/>')
+        o.append(f'<text x="{lx + 16}" y="{ly + 10}" font-size="11" fill="{INK}">{esc(app[:34])}</text>')
+        lx += ancho
     step = 1 if ymax <= 8 else 2
     v = 0
     while v < ymax:
@@ -106,21 +111,23 @@ def main():
         v += step
     o.append(f'<text transform="translate(18,{top_m + ph / 2:.1f}) rotate(-90)" text-anchor="middle" fill="{INK}">eCPM ponderado del título ($)</text>')
     bw = pw / len(titulos)
+    ybase = top_m + ph
     for i, t in enumerate(titulos):
-        x0 = left + bw * (i + 0.15)
-        w = bw * 0.7
-        htot = ph * t["ecpm_ponderado"] / ymax
-        ybase = top_m + ph
-        acum = 0.0
-        for x in t["apps"]:
-            h = htot * x["pct_requests_vendidos"] / 100
+        gx0 = left + bw * (i + 0.08)
+        gw = bw * 0.84
+        apps_t = t["apps_dibujadas"]
+        w = gw / len(apps_t)
+        for j, x in enumerate(apps_t):
+            h = ph * x["ecpm_ponderado"] / ymax
             c = color.get(x["app"], OTRAS)
-            o.append(f'<rect x="{x0:.1f}" y="{ybase - acum - h:.1f}" width="{w:.1f}" height="{max(h - 1, 0):.1f}" fill="{c}"/>')
-            if h >= 14 and x["app"] in color:
-                o.append(f'<text x="{x0 + w / 2:.1f}" y="{ybase - acum - h / 2 + 4:.1f}" text-anchor="middle" font-size="10" fill="#ffffff">{x["pct_requests_vendidos"]:.0f}%</text>')
-            acum += h
-        o.append(f'<text x="{x0 + w / 2:.1f}" y="{ybase - htot - 6:.1f}" text-anchor="middle" font-size="11" font-weight="700" fill="{INK}">${t["ecpm_ponderado"]:.2f}</text>')
-        o.append(f'<text transform="translate({x0 + w / 2:.1f},{ybase + 10}) rotate(35)" font-size="10.5" fill="{INK}">{esc(t["titulo"][:26])}</text>')
+            bx = gx0 + w * j
+            o.append(f'<rect x="{bx + 1:.1f}" y="{ybase - h:.1f}" width="{max(w - 2, 1):.1f}" height="{h:.1f}" rx="2" fill="{c}"/>')
+            o.append(f'<text x="{bx + w / 2:.1f}" y="{ybase - h - 4:.1f}" text-anchor="middle" font-size="{9 if w < 22 else 10}" fill="{INK}">{x["ecpm_ponderado"]:.2f}</text>')
+        yt = ybase - ph * t["ecpm_ponderado"] / ymax
+        o.append(f'<line x1="{gx0:.1f}" y1="{yt:.1f}" x2="{gx0 + gw:.1f}" y2="{yt:.1f}" stroke="{INK2}" stroke-width="1.5" stroke-dasharray="4 3"/>')
+        o.append(f'<text transform="translate({gx0 + gw / 2:.1f},{ybase + 10}) rotate(35)" font-size="10.5" fill="{INK}">{esc(t["titulo"][:26])}</text>')
+        if i < len(titulos) - 1:
+            o.append(f'<line x1="{left + bw * (i + 1):.1f}" y1="{top_m}" x2="{left + bw * (i + 1):.1f}" y2="{ybase}" stroke="{GRID}"/>')
     o.append("</svg>")
     open(os.path.join(a.salida_dir, "graficos-titulos-appname-barras.svg"), "w", encoding="utf-8").write("\n".join(o))
     print(f"-> {a.salida_dir}: {n:,} titulos; {len(multi):,} en >=2 App Name; top {len(titulos)}")

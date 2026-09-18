@@ -173,7 +173,7 @@ Top 12 apps por requests vendidos. Para cada app, barra = eCPM ponderado (eCPM >
 | 4 | 3.3% | 2.1% |
 | 5+ | 14.7% | 79.7% |
 
-**Top 10 títulos (por requests) en dos o más App Name:** altura de la barra = eCPM ponderado del título (eCPM > 0); la barra se reparte por App Name según el % de los requests vendidos del título que aporta cada app.
+**Top 10 títulos (por requests) en dos o más App Name:** una barra por App Name dentro de cada título, con altura = eCPM ponderado de ese título en esa app (eCPM > 0; solo apps con ≥ 2 % de los requests vendidos del título). Línea punteada = eCPM ponderado del título en todas sus apps.
 
 ![títulos en varios App Name: eCPM y reparto por app](recursos/graficos-titulos-appname-barras.svg)
 
