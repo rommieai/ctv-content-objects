@@ -85,6 +85,8 @@ def main():
                                "completitud_promedio": round(sum(pct.values()) / len(CO), 1) if d["filas"] else None,
                                "publishers": sorted(d["publishers"], key=d["publishers"].get, reverse=True)[:4],
                                "apps": sorted(d["apps"], key=d["apps"].get, reverse=True)[:4]})
+    # de mayor a menor completitud promedio; los canales sin filas al final
+    out["canales"].sort(key=lambda d: -(d["completitud_promedio"] if d["completitud_promedio"] is not None else -1))
     json.dump(out, open(os.path.join(a.salida_dir, "graficos-canales-completitud-barras.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
     # ---- SVG

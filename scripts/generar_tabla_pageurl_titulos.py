@@ -76,7 +76,8 @@ def main():
     # ---- SVG: barras agrupadas por app (altura = eCPM ponderado del titulo en esa app)
     MIN_SHARE = 2.0   # apps con menos del 2% de los requests vendidos del titulo no se dibujan
     for t in titulos:
-        t["apps_dibujadas"] = [x for x in t["apps"] if x["pct_requests_vendidos"] >= MIN_SHARE][:5]   # top 5 apps del titulo
+        top5 = [x for x in t["apps"] if x["pct_requests_vendidos"] >= MIN_SHARE][:5]   # top 5 apps del titulo por requests
+        t["apps_dibujadas"] = sorted(top5, key=lambda x: -x["ecpm_ponderado"])           # barras de mayor a menor eCPM
     # solo las apps que se dibujan reciben color (en orden de peso); no hay grupo "otras"
     usadas = Counter()
     for t in titulos:

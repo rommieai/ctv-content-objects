@@ -12,110 +12,6 @@
  ],
  "canales": [
   {
-   "canal": "Caracol",
-   "filas": 12,
-   "requests": 34383840,
-   "pct_llenas": {
-    "contentTitle": 0.0,
-    "contentGenre": 0.0,
-    "contentRating": 0.0,
-    "contentLanguage": 66.7,
-    "contentIsLiveStream": 50.0,
-    "contentCategory": 0.0,
-    "contentLength": 0.0,
-    "contentSeries": 0.0
-   },
-   "completitud_promedio": 14.6,
-   "publishers": [
-    "Caracol via OB"
-   ],
-   "apps": [
-    "ditu por Caracol",
-    "ditu"
-   ]
-  },
-  {
-   "canal": "Win",
-   "filas": 0,
-   "requests": 0,
-   "pct_llenas": {
-    "contentTitle": null,
-    "contentGenre": null,
-    "contentRating": null,
-    "contentLanguage": null,
-    "contentIsLiveStream": null,
-    "contentCategory": null,
-    "contentLength": null,
-    "contentSeries": null
-   },
-   "completitud_promedio": null,
-   "publishers": [],
-   "apps": []
-  },
-  {
-   "canal": "RCN",
-   "filas": 42,
-   "requests": 105527120,
-   "pct_llenas": {
-    "contentTitle": 0.0,
-    "contentGenre": 0.0,
-    "contentRating": 0.0,
-    "contentLanguage": 83.3,
-    "contentIsLiveStream": 28.6,
-    "contentCategory": 0.0,
-    "contentLength": 57.1,
-    "contentSeries": 0.0
-   },
-   "completitud_promedio": 21.1,
-   "publishers": [
-    "RCN via OB"
-   ],
-   "apps": [
-    "Canal RCN",
-    "Not Available"
-   ]
-  },
-  {
-   "canal": "Canal 13",
-   "filas": 8,
-   "requests": 9988800,
-   "pct_llenas": {
-    "contentTitle": 0.0,
-    "contentGenre": 0.0,
-    "contentRating": 0.0,
-    "contentLanguage": 75.0,
-    "contentIsLiveStream": 75.0,
-    "contentCategory": 0.0,
-    "contentLength": 0.0,
-    "contentSeries": 0.0
-   },
-   "completitud_promedio": 18.8,
-   "publishers": [
-    "Canal 13 OB"
-   ],
-   "apps": [
-    "13 GO"
-   ]
-  },
-  {
-   "canal": "Telefe",
-   "filas": 0,
-   "requests": 0,
-   "pct_llenas": {
-    "contentTitle": null,
-    "contentGenre": null,
-    "contentRating": null,
-    "contentLanguage": null,
-    "contentIsLiveStream": null,
-    "contentCategory": null,
-    "contentLength": null,
-    "contentSeries": null
-   },
-   "completitud_promedio": null,
-   "publishers": [],
-   "apps": []
-  },
-  {
    "canal": "Televisa",
    "filas": 40779,
    "requests": 66601273920,
@@ -168,6 +64,110 @@
     "Azteca TV",
     "Pluto TV - Free Movies/Shows"
    ]
+  },
+  {
+   "canal": "RCN",
+   "filas": 42,
+   "requests": 105527120,
+   "pct_llenas": {
+    "contentTitle": 0.0,
+    "contentGenre": 0.0,
+    "contentRating": 0.0,
+    "contentLanguage": 83.3,
+    "contentIsLiveStream": 28.6,
+    "contentCategory": 0.0,
+    "contentLength": 57.1,
+    "contentSeries": 0.0
+   },
+   "completitud_promedio": 21.1,
+   "publishers": [
+    "RCN via OB"
+   ],
+   "apps": [
+    "Canal RCN",
+    "Not Available"
+   ]
+  },
+  {
+   "canal": "Canal 13",
+   "filas": 8,
+   "requests": 9988800,
+   "pct_llenas": {
+    "contentTitle": 0.0,
+    "contentGenre": 0.0,
+    "contentRating": 0.0,
+    "contentLanguage": 75.0,
+    "contentIsLiveStream": 75.0,
+    "contentCategory": 0.0,
+    "contentLength": 0.0,
+    "contentSeries": 0.0
+   },
+   "completitud_promedio": 18.8,
+   "publishers": [
+    "Canal 13 OB"
+   ],
+   "apps": [
+    "13 GO"
+   ]
+  },
+  {
+   "canal": "Caracol",
+   "filas": 12,
+   "requests": 34383840,
+   "pct_llenas": {
+    "contentTitle": 0.0,
+    "contentGenre": 0.0,
+    "contentRating": 0.0,
+    "contentLanguage": 66.7,
+    "contentIsLiveStream": 50.0,
+    "contentCategory": 0.0,
+    "contentLength": 0.0,
+    "contentSeries": 0.0
+   },
+   "completitud_promedio": 14.6,
+   "publishers": [
+    "Caracol via OB"
+   ],
+   "apps": [
+    "ditu por Caracol",
+    "ditu"
+   ]
+  },
+  {
+   "canal": "Win",
+   "filas": 0,
+   "requests": 0,
+   "pct_llenas": {
+    "contentTitle": null,
+    "contentGenre": null,
+    "contentRating": null,
+    "contentLanguage": null,
+    "contentIsLiveStream": null,
+    "contentCategory": null,
+    "contentLength": null,
+    "contentSeries": null
+   },
+   "completitud_promedio": null,
+   "publishers": [],
+   "apps": []
+  },
+  {
+   "canal": "Telefe",
+   "filas": 0,
+   "requests": 0,
+   "pct_llenas": {
+    "contentTitle": null,
+    "contentGenre": null,
+    "contentRating": null,
+    "contentLanguage": null,
+    "contentIsLiveStream": null,
+    "contentCategory": null,
+    "contentLength": null,
+    "contentSeries": null
+   },
+   "completitud_promedio": null,
+   "publishers": [],
+   "apps": []
   }
  ]
 }
