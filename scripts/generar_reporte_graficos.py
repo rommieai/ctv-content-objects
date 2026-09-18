@@ -121,7 +121,7 @@ def main():
         for b_ in tp["por_app_name"]:
             L.append(f"| {b_['n']} | {pct(b_['pct_titulos'])} | {pct(b_['pct_requests'])} |")
         L += [f"\n**Top {len(tp['top_titulos_multi_app'])} títulos (por requests) en dos o más App Name:** una barra por App Name dentro de cada título, "
-              "con altura = eCPM ponderado de ese título en esa app (eCPM > 0; solo apps con ≥ 2 % de los requests vendidos del título). "
+              "con altura = eCPM ponderado de ese título en esa app (eCPM > 0; las 5 apps con más requests vendidos del título). "
               "Línea punteada = eCPM ponderado del título en todas sus apps.\n",
               "![títulos en varios App Name: eCPM y reparto por app](recursos/graficos-titulos-appname-barras.svg)\n",
               "| Título | App Name | Requests | eCPM pond. | Reparto por app (% de requests vendidos, eCPM pond. de la app) |\n|---|---:|---:|---:|---|"]

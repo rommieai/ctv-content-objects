@@ -19,8 +19,7 @@ import os
 from collections import Counter, defaultdict
 
 INK, INK2, GRID = "#1f2933", "#5f6b76", "#e3e7ea"
-PALETA = ["#2a78d6", "#eb6834", "#2e9e6b", "#8b5cf6", "#d64545", "#0e9aa7", "#a0622d", "#d6409f"]
-OTRAS = "#9aa3ad"
+PALETA = ["#2a78d6", "#eb6834", "#2e9e6b", "#8b5cf6", "#d64545", "#0e9aa7", "#a0622d", "#d6409f", "#c9a400", "#4b5563", "#7c3aed", "#0f766e"]
 
 
 def esc(s):
@@ -74,28 +73,28 @@ def main():
            "top_titulos_multi_app": titulos}
     json.dump(out, open(os.path.join(a.salida_dir, "titulos-appname.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
-    # ---- SVG: barras apiladas por app (altura = eCPM ponderado del titulo)
-    # colores fijos por app, en orden de peso dentro del top; a partir de la 9a app, "Otras"
-    peso = Counter()
+    # ---- SVG: barras agrupadas por app (altura = eCPM ponderado del titulo en esa app)
+    MIN_SHARE = 2.0   # apps con menos del 2% de los requests vendidos del titulo no se dibujan
     for t in titulos:
-        for x in t["apps"]:
-            peso[x["app"]] += x["pct_requests_vendidos"] * t["requests_vendidos"]
-    color = {app: PALETA[i] for i, (app, _) in enumerate(peso.most_common(len(PALETA)))}
+        t["apps_dibujadas"] = [x for x in t["apps"] if x["pct_requests_vendidos"] >= MIN_SHARE][:5]   # top 5 apps del titulo
+    # solo las apps que se dibujan reciben color (en orden de peso); no hay grupo "otras"
+    usadas = Counter()
+    for t in titulos:
+        for x in t["apps_dibujadas"]:
+            usadas[x["app"]] += x["pct_requests_vendidos"] * t["requests_vendidos"]
+    color = {app: PALETA[i % len(PALETA)] for i, (app, _) in enumerate(usadas.most_common())}
     W, H = 1000, 600
     left, right, top_m, bottom = 60, 30, 130, 120
     pw, ph = W - left - right, H - top_m - bottom
-    MIN_SHARE = 2.0   # apps con menos del 2% de los requests vendidos del titulo no se dibujan
-    for t in titulos:
-        t["apps_dibujadas"] = [x for x in t["apps"] if x["pct_requests_vendidos"] >= MIN_SHARE][:6]
     ymax = max(x["ecpm_ponderado"] for t in titulos for x in t["apps_dibujadas"]) * 1.15
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
          f'font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">',
          f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
          f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Top {len(titulos)} títulos emitidos por más de un App Name: eCPM ponderado por app para el mismo título</text>',
          f'<text x="16" y="44" font-size="12" fill="{INK2}">Una barra por App Name dentro de cada título; su altura es el eCPM ponderado de ese título en esa app (filas con eCPM &gt; 0).</text>',
-         f'<text x="16" y="60" font-size="12" fill="{INK2}">Solo apps con ≥ {MIN_SHARE:g}% de los requests vendidos del título. Línea punteada: eCPM ponderado del título en todas sus apps.</text>']
+         f'<text x="16" y="60" font-size="12" fill="{INK2}">Las 5 apps con más requests vendidos del título (y al menos el {MIN_SHARE:g}%). Línea punteada: eCPM ponderado del título en todas sus apps.</text>']
     lx, ly = 16, 74
-    for app, c in list(color.items()) + [("Otras apps", OTRAS)]:
+    for app, c in color.items():
         ancho = 16 + 6.3 * len(app[:34]) + 18
         if lx + ancho > W - 16:
             lx, ly = 16, ly + 18
@@ -119,7 +118,7 @@ def main():
         w = gw / len(apps_t)
         for j, x in enumerate(apps_t):
             h = ph * x["ecpm_ponderado"] / ymax
-            c = color.get(x["app"], OTRAS)
+            c = color[x["app"]]
             bx = gx0 + w * j
             o.append(f'<rect x="{bx + 1:.1f}" y="{ybase - h:.1f}" width="{max(w - 2, 1):.1f}" height="{h:.1f}" rx="2" fill="{c}"/>')
             o.append(f'<text x="{bx + w / 2:.1f}" y="{ybase - h - 4:.1f}" text-anchor="middle" font-size="{9 if w < 22 else 10}" fill="{INK}">{x["ecpm_ponderado"]:.2f}</text>')
