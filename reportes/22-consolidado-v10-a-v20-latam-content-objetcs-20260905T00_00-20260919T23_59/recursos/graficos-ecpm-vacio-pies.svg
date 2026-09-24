@@ -1,0 +1,227 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1102" height="800" viewBox="0 0 1102 800" font-family="system-ui,-apple-system,Segoe UI,sans-serif">
+<rect width="1102" height="800" fill="#fcfcfb"/>
+<text x="16" y="24" font-size="17" font-weight="700" fill="#0b0b0b">Reparto del gasto (eCPM × requests / 1000) entre filas llenas y vacías, por columna</text>
+<text x="16" y="44" font-size="12" fill="#52514e">El número del centro es la parte del gasto del grupo que cae en filas donde la columna trae dato útil. Debajo: eCPM ponderado llenas / vacías.</text>
+<circle cx="24" cy="60" r="5" fill="#2a78d6"/><text x="34" y="64" font-size="11.5" fill="#0b0b0b">filas llenas</text>
+<circle cx="140" cy="60" r="5" fill="#eb6834"/><text x="150" y="64" font-size="11.5" fill="#0b0b0b">filas vacías</text>
+<text x="16" y="88" font-size="14" font-weight="600" fill="#0b0b0b">Total consolidado</text>
+<path d="M99.0,148 L99.0,104 A44,44 0 1,1 82.17,107.35 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M99.0,148 L82.17,107.35 A44,44 0 0,1 99.0,104 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="99.0" cy="148" r="24.2" fill="#fcfcfb"/>
+<text x="99.0" y="152" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">94%</text>
+<text x="99.0" y="208" font-size="11" text-anchor="middle" fill="#0b0b0b">App Name</text>
+<text x="99.0" y="222" font-size="10" text-anchor="middle" fill="#52514e">$4.00 / $2.52</text>
+<path d="M217.0,148 L217.0,104 A44,44 0 1,1 178.34,127.00 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M217.0,148 L178.34,127.00 A44,44 0 0,1 217.0,104 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="217.0" cy="148" r="24.2" fill="#fcfcfb"/>
+<text x="217.0" y="152" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">83%</text>
+<text x="217.0" y="208" font-size="11" text-anchor="middle" fill="#0b0b0b">Genre</text>
+<text x="217.0" y="222" font-size="10" text-anchor="middle" fill="#52514e">$3.81 / $4.10</text>
+<path d="M335.0,148 L335.0,104 A44,44 0 1,1 300.06,174.75 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M335.0,148 L300.06,174.75 A44,44 0 0,1 335.0,104 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="335.0" cy="148" r="24.2" fill="#fcfcfb"/>
+<text x="335.0" y="152" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">65%</text>
+<text x="335.0" y="208" font-size="11" text-anchor="middle" fill="#0b0b0b">Title</text>
+<text x="335.0" y="222" font-size="10" text-anchor="middle" fill="#52514e">$3.79 / $3.98</text>
+<path d="M453.0,148 L453.0,104 A44,44 0 1,1 412.63,130.51 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M453.0,148 L412.63,130.51 A44,44 0 0,1 453.0,104 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="453.0" cy="148" r="24.2" fill="#fcfcfb"/>
+<text x="453.0" y="152" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">82%</text>
+<text x="453.0" y="208" font-size="11" text-anchor="middle" fill="#0b0b0b">Rating</text>
+<text x="453.0" y="222" font-size="10" text-anchor="middle" fill="#52514e">$4.00 / $3.31</text>
+<path d="M571.0,148 L571.0,104 A44,44 0 1,1 530.41,164.98 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M571.0,148 L530.41,164.98 A44,44 0 0,1 571.0,104 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="571.0" cy="148" r="24.2" fill="#fcfcfb"/>
+<text x="571.0" y="152" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">69%</text>
+<text x="571.0" y="208" font-size="11" text-anchor="middle" fill="#0b0b0b">Language</text>
+<text x="571.0" y="222" font-size="10" text-anchor="middle" fill="#52514e">$4.04 / $3.50</text>
+<path d="M689.0,148 L689.0,104 A44,44 0 0,1 700.17,190.56 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M689.0,148 L700.17,190.56 A44,44 0 1,1 689.0,104 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="689.0" cy="148" r="24.2" fill="#fcfcfb"/>
+<text x="689.0" y="152" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">46%</text>
+<text x="689.0" y="208" font-size="11" text-anchor="middle" fill="#0b0b0b">LiveStream</text>
+<text x="689.0" y="222" font-size="10" text-anchor="middle" fill="#52514e">$3.86 / $3.85</text>
+<path d="M807.0,148 L807.0,104 A44,44 0 0,1 846.09,168.20 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M807.0,148 L846.09,168.20 A44,44 0 1,1 807.0,104 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="807.0" cy="148" r="24.2" fill="#fcfcfb"/>
+<text x="807.0" y="152" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">33%</text>
+<text x="807.0" y="208" font-size="11" text-anchor="middle" fill="#0b0b0b">Category</text>
+<text x="807.0" y="222" font-size="10" text-anchor="middle" fill="#52514e">$4.20 / $3.71</text>
+<path d="M925.0,148 L925.0,104 A44,44 0 0,1 965.85,164.35 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M925.0,148 L965.85,164.35 A44,44 0 1,1 925.0,104 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="925.0" cy="148" r="24.2" fill="#fcfcfb"/>
+<text x="925.0" y="152" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">31%</text>
+<text x="925.0" y="208" font-size="11" text-anchor="middle" fill="#0b0b0b">Length</text>
+<text x="925.0" y="222" font-size="10" text-anchor="middle" fill="#52514e">$4.44 / $3.64</text>
+<path d="M1043.0,148 L1043.0,104 A44,44 0 0,1 1060.23,107.51 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M1043.0,148 L1060.23,107.51 A44,44 0 1,1 1043.0,104 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="1043.0" cy="148" r="24.2" fill="#fcfcfb"/>
+<text x="1043.0" y="152" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">6%</text>
+<text x="1043.0" y="208" font-size="11" text-anchor="middle" fill="#0b0b0b">Series</text>
+<text x="1043.0" y="222" font-size="10" text-anchor="middle" fill="#52514e">$3.54 / $3.88</text>
+<text x="16" y="268" font-size="14" font-weight="600" fill="#0b0b0b">México</text>
+<path d="M99.0,328 L99.0,284 A44,44 0 1,1 78.95,288.83 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M99.0,328 L78.95,288.83 A44,44 0 0,1 99.0,284 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="99.0" cy="328" r="24.2" fill="#fcfcfb"/>
+<text x="99.0" y="332" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">92%</text>
+<text x="99.0" y="388" font-size="11" text-anchor="middle" fill="#0b0b0b">App Name</text>
+<text x="99.0" y="402" font-size="10" text-anchor="middle" fill="#52514e">$3.41 / $2.09</text>
+<path d="M217.0,328 L217.0,284 A44,44 0 1,1 182.00,301.33 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M217.0,328 L182.00,301.33 A44,44 0 0,1 217.0,284 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="217.0" cy="328" r="24.2" fill="#fcfcfb"/>
+<text x="217.0" y="332" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">85%</text>
+<text x="217.0" y="388" font-size="11" text-anchor="middle" fill="#0b0b0b">Genre</text>
+<text x="217.0" y="402" font-size="10" text-anchor="middle" fill="#52514e">$3.22 / $3.46</text>
+<path d="M335.0,328 L335.0,284 A44,44 0 1,1 328.63,371.54 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M335.0,328 L328.63,371.54 A44,44 0 0,1 335.0,284 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="335.0" cy="328" r="24.2" fill="#fcfcfb"/>
+<text x="335.0" y="332" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">52%</text>
+<text x="335.0" y="388" font-size="11" text-anchor="middle" fill="#0b0b0b">Title</text>
+<text x="335.0" y="402" font-size="10" text-anchor="middle" fill="#52514e">$2.90 / $3.75</text>
+<path d="M453.0,328 L453.0,284 A44,44 0 1,1 417.34,302.22 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M453.0,328 L417.34,302.22 A44,44 0 0,1 453.0,284 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="453.0" cy="328" r="24.2" fill="#fcfcfb"/>
+<text x="453.0" y="332" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">85%</text>
+<text x="453.0" y="388" font-size="11" text-anchor="middle" fill="#0b0b0b">Rating</text>
+<text x="453.0" y="402" font-size="10" text-anchor="middle" fill="#52514e">$3.48 / $2.38</text>
+<path d="M571.0,328 L571.0,284 A44,44 0 1,1 527.00,327.85 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M571.0,328 L527.00,327.85 A44,44 0 0,1 571.0,284 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="571.0" cy="328" r="24.2" fill="#fcfcfb"/>
+<text x="571.0" y="332" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">75%</text>
+<text x="571.0" y="388" font-size="11" text-anchor="middle" fill="#0b0b0b">Language</text>
+<text x="571.0" y="402" font-size="10" text-anchor="middle" fill="#52514e">$3.64 / $2.46</text>
+<path d="M689.0,328 L689.0,284 A44,44 0 1,1 684.26,371.74 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M689.0,328 L684.26,371.74 A44,44 0 0,1 689.0,284 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="689.0" cy="328" r="24.2" fill="#fcfcfb"/>
+<text x="689.0" y="332" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">52%</text>
+<text x="689.0" y="388" font-size="11" text-anchor="middle" fill="#0b0b0b">LiveStream</text>
+<text x="689.0" y="402" font-size="10" text-anchor="middle" fill="#52514e">$3.44 / $3.07</text>
+<path d="M807.0,328 L807.0,284 A44,44 0 0,1 820.30,369.94 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M807.0,328 L820.30,369.94 A44,44 0 1,1 807.0,284 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="807.0" cy="328" r="24.2" fill="#fcfcfb"/>
+<text x="807.0" y="332" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">45%</text>
+<text x="807.0" y="388" font-size="11" text-anchor="middle" fill="#0b0b0b">Category</text>
+<text x="807.0" y="402" font-size="10" text-anchor="middle" fill="#52514e">$4.23 / $2.73</text>
+<path d="M925.0,328 L925.0,284 A44,44 0 0,1 937.14,370.29 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M925.0,328 L937.14,370.29 A44,44 0 1,1 925.0,284 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="925.0" cy="328" r="24.2" fill="#fcfcfb"/>
+<text x="925.0" y="332" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">46%</text>
+<text x="925.0" y="388" font-size="11" text-anchor="middle" fill="#0b0b0b">Length</text>
+<text x="925.0" y="402" font-size="10" text-anchor="middle" fill="#52514e">$4.62 / $2.61</text>
+<path d="M1043.0,328 L1043.0,284 A44,44 0 0,1 1057.03,286.30 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M1043.0,328 L1057.03,286.30 A44,44 0 1,1 1043.0,284 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="1043.0" cy="328" r="24.2" fill="#fcfcfb"/>
+<text x="1043.0" y="332" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">5%</text>
+<text x="1043.0" y="388" font-size="11" text-anchor="middle" fill="#0b0b0b">Series</text>
+<text x="1043.0" y="402" font-size="10" text-anchor="middle" fill="#52514e">$3.62 / $3.23</text>
+<text x="16" y="448" font-size="14" font-weight="600" fill="#0b0b0b">Colombia</text>
+<path d="M99.0,508 L99.0,464 A44,44 0 1,1 69.78,475.10 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M99.0,508 L69.78,475.10 A44,44 0 0,1 99.0,464 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="99.0" cy="508" r="24.2" fill="#fcfcfb"/>
+<text x="99.0" y="512" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">88%</text>
+<text x="99.0" y="568" font-size="11" text-anchor="middle" fill="#0b0b0b">App Name</text>
+<text x="99.0" y="582" font-size="10" text-anchor="middle" fill="#52514e">$3.09 / $4.64</text>
+<path d="M217.0,508 L217.0,464 A44,44 0 1,1 186.65,476.15 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M217.0,508 L186.65,476.15 A44,44 0 0,1 217.0,464 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="217.0" cy="508" r="24.2" fill="#fcfcfb"/>
+<text x="217.0" y="512" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">88%</text>
+<text x="217.0" y="568" font-size="11" text-anchor="middle" fill="#0b0b0b">Genre</text>
+<text x="217.0" y="582" font-size="10" text-anchor="middle" fill="#52514e">$3.34 / $2.52</text>
+<path d="M335.0,508 L335.0,464 A44,44 0 1,1 306.24,474.70 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M335.0,508 L306.24,474.70 A44,44 0 0,1 335.0,464 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="335.0" cy="508" r="24.2" fill="#fcfcfb"/>
+<text x="335.0" y="512" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">89%</text>
+<text x="335.0" y="568" font-size="11" text-anchor="middle" fill="#0b0b0b">Title</text>
+<text x="335.0" y="582" font-size="10" text-anchor="middle" fill="#52514e">$3.25 / $3.00</text>
+<path d="M453.0,508 L453.0,464 A44,44 0 1,1 409.85,499.37 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M453.0,508 L409.85,499.37 A44,44 0 0,1 453.0,464 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="453.0" cy="508" r="24.2" fill="#fcfcfb"/>
+<text x="453.0" y="512" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">78%</text>
+<text x="453.0" y="568" font-size="11" text-anchor="middle" fill="#0b0b0b">Rating</text>
+<text x="453.0" y="582" font-size="10" text-anchor="middle" fill="#52514e">$3.12 / $3.60</text>
+<path d="M571.0,508 L571.0,464 A44,44 0 1,1 567.06,551.82 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M571.0,508 L567.06,551.82 A44,44 0 0,1 571.0,464 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="571.0" cy="508" r="24.2" fill="#fcfcfb"/>
+<text x="571.0" y="512" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">51%</text>
+<text x="571.0" y="568" font-size="11" text-anchor="middle" fill="#0b0b0b">Language</text>
+<text x="571.0" y="582" font-size="10" text-anchor="middle" fill="#52514e">$2.94 / $3.58</text>
+<path d="M689.0,508 L689.0,464 A44,44 0 0,1 705.22,548.90 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M689.0,508 L705.22,548.90 A44,44 0 1,1 689.0,464 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="689.0" cy="508" r="24.2" fill="#fcfcfb"/>
+<text x="689.0" y="512" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">44%</text>
+<text x="689.0" y="568" font-size="11" text-anchor="middle" fill="#0b0b0b">LiveStream</text>
+<text x="689.0" y="582" font-size="10" text-anchor="middle" fill="#52514e">$3.59 / $2.97</text>
+<path d="M807.0,508 L807.0,464 A44,44 0 0,1 845.61,529.11 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M807.0,508 L845.61,529.11 A44,44 0 1,1 807.0,464 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="807.0" cy="508" r="24.2" fill="#fcfcfb"/>
+<text x="807.0" y="512" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">33%</text>
+<text x="807.0" y="568" font-size="11" text-anchor="middle" fill="#0b0b0b">Category</text>
+<text x="807.0" y="582" font-size="10" text-anchor="middle" fill="#52514e">$4.00 / $2.94</text>
+<path d="M925.0,508 L925.0,464 A44,44 0 0,1 965.30,490.35 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M925.0,508 L965.30,490.35 A44,44 0 1,1 925.0,464 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="925.0" cy="508" r="24.2" fill="#fcfcfb"/>
+<text x="925.0" y="512" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">18%</text>
+<text x="925.0" y="568" font-size="11" text-anchor="middle" fill="#0b0b0b">Length</text>
+<text x="925.0" y="582" font-size="10" text-anchor="middle" fill="#52514e">$2.85 / $3.31</text>
+<path d="M1043.0,508 L1043.0,464 A44,44 0 0,1 1074.05,476.83 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M1043.0,508 L1074.05,476.83 A44,44 0 1,1 1043.0,464 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="1043.0" cy="508" r="24.2" fill="#fcfcfb"/>
+<text x="1043.0" y="512" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">12%</text>
+<text x="1043.0" y="568" font-size="11" text-anchor="middle" fill="#0b0b0b">Series</text>
+<text x="1043.0" y="582" font-size="10" text-anchor="middle" fill="#52514e">$2.67 / $3.31</text>
+<text x="16" y="628" font-size="14" font-weight="600" fill="#0b0b0b">Chile</text>
+<path d="M99.0,688 L99.0,644 A44,44 0 1,1 86.59,645.79 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M99.0,688 L86.59,645.79 A44,44 0 0,1 99.0,644 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="99.0" cy="688" r="24.2" fill="#fcfcfb"/>
+<text x="99.0" y="692" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">95%</text>
+<text x="99.0" y="748" font-size="11" text-anchor="middle" fill="#0b0b0b">App Name</text>
+<text x="99.0" y="762" font-size="10" text-anchor="middle" fill="#52514e">$5.35 / $5.19</text>
+<path d="M217.0,688 L217.0,644 A44,44 0 1,1 186.45,656.33 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M217.0,688 L186.45,656.33 A44,44 0 0,1 217.0,644 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="217.0" cy="688" r="24.2" fill="#fcfcfb"/>
+<text x="217.0" y="692" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">88%</text>
+<text x="217.0" y="748" font-size="11" text-anchor="middle" fill="#0b0b0b">Genre</text>
+<text x="217.0" y="762" font-size="10" text-anchor="middle" fill="#52514e">$5.21 / $6.49</text>
+<path d="M335.0,688 L335.0,644 A44,44 0 1,1 307.61,653.56 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M335.0,688 L307.61,653.56 A44,44 0 0,1 335.0,644 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="335.0" cy="688" r="24.2" fill="#fcfcfb"/>
+<text x="335.0" y="692" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">89%</text>
+<text x="335.0" y="748" font-size="11" text-anchor="middle" fill="#0b0b0b">Title</text>
+<text x="335.0" y="762" font-size="10" text-anchor="middle" fill="#52514e">$5.16 / $7.46</text>
+<path d="M453.0,688 L453.0,644 A44,44 0 1,1 415.39,665.16 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M453.0,688 L415.39,665.16 A44,44 0 0,1 453.0,644 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="453.0" cy="688" r="24.2" fill="#fcfcfb"/>
+<text x="453.0" y="692" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">84%</text>
+<text x="453.0" y="748" font-size="11" text-anchor="middle" fill="#0b0b0b">Rating</text>
+<text x="453.0" y="762" font-size="10" text-anchor="middle" fill="#52514e">$5.23 / $5.99</text>
+<path d="M571.0,688 L571.0,644 A44,44 0 1,1 536.41,660.80 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M571.0,688 L536.41,660.80 A44,44 0 0,1 571.0,644 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="571.0" cy="688" r="24.2" fill="#fcfcfb"/>
+<text x="571.0" y="692" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">86%</text>
+<text x="571.0" y="748" font-size="11" text-anchor="middle" fill="#0b0b0b">Language</text>
+<text x="571.0" y="762" font-size="10" text-anchor="middle" fill="#52514e">$5.18 / $6.49</text>
+<path d="M689.0,688 L689.0,644 A44,44 0 0,1 732.73,683.15 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M689.0,688 L732.73,683.15 A44,44 0 1,1 689.0,644 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="689.0" cy="688" r="24.2" fill="#fcfcfb"/>
+<text x="689.0" y="692" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">23%</text>
+<text x="689.0" y="748" font-size="11" text-anchor="middle" fill="#0b0b0b">LiveStream</text>
+<text x="689.0" y="762" font-size="10" text-anchor="middle" fill="#52514e">$5.44 / $5.31</text>
+<path d="M807.0,688 L807.0,644 A44,44 0 0,1 841.27,660.41 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M807.0,688 L841.27,660.41 A44,44 0 1,1 807.0,644 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="807.0" cy="688" r="24.2" fill="#fcfcfb"/>
+<text x="807.0" y="692" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">14%</text>
+<text x="807.0" y="748" font-size="11" text-anchor="middle" fill="#0b0b0b">Category</text>
+<text x="807.0" y="762" font-size="10" text-anchor="middle" fill="#52514e">$4.52 / $5.50</text>
+<path d="M925.0,688 L925.0,644 A44,44 0 0,1 957.78,658.64 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M925.0,688 L957.78,658.64 A44,44 0 1,1 925.0,644 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="925.0" cy="688" r="24.2" fill="#fcfcfb"/>
+<text x="925.0" y="692" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">13%</text>
+<text x="925.0" y="748" font-size="11" text-anchor="middle" fill="#0b0b0b">Length</text>
+<text x="925.0" y="762" font-size="10" text-anchor="middle" fill="#52514e">$4.84 / $5.43</text>
+<path d="M1043.0,688 L1043.0,644 A44,44 0 0,1 1066.03,650.51 Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<path d="M1043.0,688 L1066.03,650.51 A44,44 0 1,1 1043.0,644 Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="1043.0" cy="688" r="24.2" fill="#fcfcfb"/>
+<text x="1043.0" y="692" font-size="12" font-weight="600" text-anchor="middle" fill="#0b0b0b">9%</text>
+<text x="1043.0" y="748" font-size="11" text-anchor="middle" fill="#0b0b0b">Series</text>
+<text x="1043.0" y="762" font-size="10" text-anchor="middle" fill="#52514e">$4.40 / $5.45</text>
+</svg>

@@ -1,0 +1,286 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1056" height="902" viewBox="0 0 1056 902" font-family="system-ui,-apple-system,Segoe UI,sans-serif">
+<rect width="1056" height="902" fill="#fcfcfb"/>
+<text x="0" y="22" font-size="17" font-weight="700" fill="#0b0b0b">¿La completitud de la columna se relaciona con el precio?</text>
+<text x="0" y="42" font-size="12" fill="#52514e">x = % de filas del grupo donde la columna trae dato útil; y = eCPM ponderado de esas filas llenas. Un color por columna; sobre cada punto, su eCPM.</text>
+<rect x="0" y="52" width="1056" height="26" rx="4" fill="#ffffff" stroke="#e1e0d9"/>
+<circle cx="14" cy="65" r="5" fill="#2a78d6"/>
+<text x="24" y="69" font-size="11.5" fill="#0b0b0b">App Name</text>
+<circle cx="116" cy="65" r="5" fill="#eb6834"/>
+<text x="126" y="69" font-size="11.5" fill="#0b0b0b">Genre</text>
+<circle cx="197" cy="65" r="5" fill="#2e9e6b"/>
+<text x="207" y="69" font-size="11.5" fill="#0b0b0b">Title</text>
+<circle cx="278" cy="65" r="5" fill="#8b5cf6"/>
+<text x="288" y="69" font-size="11.5" fill="#0b0b0b">Rating</text>
+<circle cx="366" cy="65" r="5" fill="#d64545"/>
+<text x="376" y="69" font-size="11.5" fill="#0b0b0b">Language</text>
+<circle cx="468" cy="65" r="5" fill="#0e9aa7"/>
+<text x="478" y="69" font-size="11.5" fill="#0b0b0b">LiveStream</text>
+<circle cx="584" cy="65" r="5" fill="#a0622d"/>
+<text x="594" y="69" font-size="11.5" fill="#0b0b0b">Category</text>
+<circle cx="686" cy="65" r="5" fill="#d6409f"/>
+<text x="696" y="69" font-size="11.5" fill="#0b0b0b">Length</text>
+<circle cx="774" cy="65" r="5" fill="#6b7280"/>
+<text x="784" y="69" font-size="11.5" fill="#0b0b0b">Series</text>
+<g transform="translate(0,86)"><rect x="0" y="0" width="520" height="400" fill="#fcfcfb"/>
+<text x="62" y="22" font-size="15" font-weight="600" fill="#0b0b0b">Total consolidado</text>
+<line x1="62.0" y1="82" x2="62.0" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="62.0" y="349" font-size="11" text-anchor="middle" fill="#898781">0%</text>
+<text x="62.0" y="362" font-size="9.5" text-anchor="middle" fill="#898781">0</text>
+<line x1="144.4" y1="82" x2="144.4" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="144.4" y="349" font-size="11" text-anchor="middle" fill="#898781">20%</text>
+<text x="144.4" y="362" font-size="9.5" text-anchor="middle" fill="#898781">254,576</text>
+<line x1="226.8" y1="82" x2="226.8" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="226.8" y="349" font-size="11" text-anchor="middle" fill="#898781">40%</text>
+<text x="226.8" y="362" font-size="9.5" text-anchor="middle" fill="#898781">509,151</text>
+<line x1="309.2" y1="82" x2="309.2" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="309.2" y="349" font-size="11" text-anchor="middle" fill="#898781">60%</text>
+<text x="309.2" y="362" font-size="9.5" text-anchor="middle" fill="#898781">763,727</text>
+<line x1="391.6" y1="82" x2="391.6" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="391.6" y="349" font-size="11" text-anchor="middle" fill="#898781">80%</text>
+<text x="391.6" y="362" font-size="9.5" text-anchor="middle" fill="#898781">1,018,302</text>
+<line x1="474.0" y1="82" x2="474.0" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="474.0" y="349" font-size="11" text-anchor="middle" fill="#898781">100%</text>
+<text x="474.0" y="362" font-size="9.5" text-anchor="middle" fill="#898781">1,272,878</text>
+<line x1="62" y1="334.0" x2="474" y2="334.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="338.0" font-size="11" text-anchor="end" fill="#898781">0</text>
+<line x1="62" y1="286.7" x2="474" y2="286.7" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="290.7" font-size="11" text-anchor="end" fill="#898781">1</text>
+<line x1="62" y1="239.5" x2="474" y2="239.5" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="243.5" font-size="11" text-anchor="end" fill="#898781">2</text>
+<line x1="62" y1="192.2" x2="474" y2="192.2" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="196.2" font-size="11" text-anchor="end" fill="#898781">3</text>
+<line x1="62" y1="145.0" x2="474" y2="145.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="149.0" font-size="11" text-anchor="end" fill="#898781">4</text>
+<line x1="62" y1="97.7" x2="474" y2="97.7" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="101.7" font-size="11" text-anchor="end" fill="#898781">5</text>
+<line x1="62" y1="334" x2="474" y2="334" stroke="#c3c2b7" stroke-width="1"/>
+<line x1="62" y1="82" x2="62" y2="334" stroke="#c3c2b7" stroke-width="1"/>
+<text x="268.0" y="398" font-size="11.5" text-anchor="middle" fill="#52514e">% de filas llenas de la columna</text>
+<text transform="translate(16,208.0) rotate(-90)" font-size="11.5" text-anchor="middle" fill="#52514e">eCPM ponderado de las filas llenas ($)</text>
+<clipPath id="clipfill_6653"><rect x="62" y="82" width="412" height="252"/></clipPath>
+<line clip-path="url(#clipfill_6653)" x1="62.0" y1="143.1" x2="474.0" y2="149.7" stroke="#898781" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="66" y="328" font-size="10.5" fill="#52514e">recta OLS: R² = 0.04, pendiente -0.001 $ por punto de %</text>
+<circle cx="447.8" cy="145.2" r="6" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="437.5" cy="154.1" r="6" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="446.0" cy="155.0" r="6" fill="#2e9e6b" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="370.1" cy="144.7" r="6" fill="#8b5cf6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="334.6" cy="143.1" r="6" fill="#d64545" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="182.5" cy="151.5" r="6" fill="#0e9aa7" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="150.3" cy="135.6" r="6" fill="#a0622d" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="111.6" cy="124.0" r="6" fill="#d6409f" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="88.7" cy="166.5" r="6" fill="#6b7280" stroke="#fcfcfb" stroke-width="2"/>
+<line x1="88.7" y1="160.5" x2="82.0" y2="114.0" stroke="#6b7280" stroke-width="1"/>
+<text x="82.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.54</text>
+<line x1="111.6" y1="118.0" x2="118.0" y2="114.0" stroke="#d6409f" stroke-width="1"/>
+<text x="118.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$4.44</text>
+<line x1="150.3" y1="129.6" x2="154.0" y2="114.0" stroke="#a0622d" stroke-width="1"/>
+<text x="154.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$4.20</text>
+<line x1="182.5" y1="145.5" x2="190.0" y2="114.0" stroke="#0e9aa7" stroke-width="1"/>
+<text x="190.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.86</text>
+<line x1="334.6" y1="137.1" x2="310.0" y2="133.1" stroke="#d64545" stroke-width="1"/>
+<text x="310.0" y="131.1" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$4.04</text>
+<line x1="370.1" y1="138.7" x2="346.0" y2="133.1" stroke="#8b5cf6" stroke-width="1"/>
+<text x="346.0" y="131.1" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$4.00</text>
+<line x1="437.5" y1="148.1" x2="382.0" y2="133.1" stroke="#eb6834" stroke-width="1"/>
+<text x="382.0" y="131.1" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.81</text>
+<line x1="446.0" y1="149.0" x2="418.0" y2="133.1" stroke="#2e9e6b" stroke-width="1"/>
+<text x="418.0" y="131.1" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.79</text>
+<line x1="447.8" y1="139.2" x2="454.0" y2="133.1" stroke="#2a78d6" stroke-width="1"/>
+<text x="454.0" y="131.1" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$4.00</text></g>
+<g transform="translate(536,86)"><rect x="0" y="0" width="520" height="400" fill="#fcfcfb"/>
+<text x="62" y="22" font-size="15" font-weight="600" fill="#0b0b0b">México</text>
+<line x1="62.0" y1="82" x2="62.0" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="62.0" y="349" font-size="11" text-anchor="middle" fill="#898781">0%</text>
+<text x="62.0" y="362" font-size="9.5" text-anchor="middle" fill="#898781">0</text>
+<line x1="144.4" y1="82" x2="144.4" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="144.4" y="349" font-size="11" text-anchor="middle" fill="#898781">20%</text>
+<text x="144.4" y="362" font-size="9.5" text-anchor="middle" fill="#898781">75,212</text>
+<line x1="226.8" y1="82" x2="226.8" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="226.8" y="349" font-size="11" text-anchor="middle" fill="#898781">40%</text>
+<text x="226.8" y="362" font-size="9.5" text-anchor="middle" fill="#898781">150,425</text>
+<line x1="309.2" y1="82" x2="309.2" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="309.2" y="349" font-size="11" text-anchor="middle" fill="#898781">60%</text>
+<text x="309.2" y="362" font-size="9.5" text-anchor="middle" fill="#898781">225,637</text>
+<line x1="391.6" y1="82" x2="391.6" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="391.6" y="349" font-size="11" text-anchor="middle" fill="#898781">80%</text>
+<text x="391.6" y="362" font-size="9.5" text-anchor="middle" fill="#898781">300,850</text>
+<line x1="474.0" y1="82" x2="474.0" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="474.0" y="349" font-size="11" text-anchor="middle" fill="#898781">100%</text>
+<text x="474.0" y="362" font-size="9.5" text-anchor="middle" fill="#898781">376,062</text>
+<line x1="62" y1="334.0" x2="474" y2="334.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="338.0" font-size="11" text-anchor="end" fill="#898781">0</text>
+<line x1="62" y1="288.5" x2="474" y2="288.5" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="292.5" font-size="11" text-anchor="end" fill="#898781">1</text>
+<line x1="62" y1="243.0" x2="474" y2="243.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="247.0" font-size="11" text-anchor="end" fill="#898781">2</text>
+<line x1="62" y1="197.5" x2="474" y2="197.5" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="201.5" font-size="11" text-anchor="end" fill="#898781">3</text>
+<line x1="62" y1="152.1" x2="474" y2="152.1" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="156.1" font-size="11" text-anchor="end" fill="#898781">4</text>
+<line x1="62" y1="106.6" x2="474" y2="106.6" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="110.6" font-size="11" text-anchor="end" fill="#898781">5</text>
+<line x1="62" y1="334" x2="474" y2="334" stroke="#c3c2b7" stroke-width="1"/>
+<line x1="62" y1="82" x2="62" y2="334" stroke="#c3c2b7" stroke-width="1"/>
+<text x="268.0" y="398" font-size="11.5" text-anchor="middle" fill="#52514e">% de filas llenas de la columna</text>
+<text transform="translate(16,208.0) rotate(-90)" font-size="11.5" text-anchor="middle" fill="#52514e">eCPM ponderado de las filas llenas ($)</text>
+<clipPath id="clipfill_792"><rect x="62" y="82" width="412" height="252"/></clipPath>
+<line clip-path="url(#clipfill_792)" x1="62.0" y1="143.5" x2="474.0" y2="193.1" stroke="#898781" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="66" y="328" font-size="10.5" fill="#52514e">recta OLS: R² = 0.50, pendiente -0.011 $ por punto de %</text>
+<circle cx="417.1" cy="179.1" r="6" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="434.0" cy="187.6" r="6" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="422.9" cy="202.1" r="6" fill="#2e9e6b" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="356.7" cy="175.9" r="6" fill="#8b5cf6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="320.4" cy="168.4" r="6" fill="#d64545" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="169.3" cy="177.4" r="6" fill="#0e9aa7" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="163.6" cy="141.5" r="6" fill="#a0622d" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="128.3" cy="124.0" r="6" fill="#d6409f" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="91.9" cy="169.2" r="6" fill="#6b7280" stroke="#fcfcfb" stroke-width="2"/>
+<line x1="91.9" y1="163.2" x2="84.3" y2="114.0" stroke="#6b7280" stroke-width="1"/>
+<text x="84.3" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.62</text>
+<line x1="128.3" y1="118.0" x2="120.3" y2="114.0" stroke="#d6409f" stroke-width="1"/>
+<text x="120.3" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$4.62</text>
+<line x1="163.6" y1="135.5" x2="156.3" y2="114.0" stroke="#a0622d" stroke-width="1"/>
+<text x="156.3" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$4.23</text>
+<line x1="169.3" y1="171.4" x2="192.3" y2="114.0" stroke="#0e9aa7" stroke-width="1"/>
+<text x="192.3" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.44</text>
+<line x1="320.4" y1="162.4" x2="310.0" y2="158.4" stroke="#d64545" stroke-width="1"/>
+<text x="310.0" y="156.4" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.64</text>
+<line x1="356.7" y1="169.9" x2="346.0" y2="158.4" stroke="#8b5cf6" stroke-width="1"/>
+<text x="346.0" y="156.4" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.48</text>
+<line x1="417.1" y1="173.1" x2="382.0" y2="158.4" stroke="#2a78d6" stroke-width="1"/>
+<text x="382.0" y="156.4" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.41</text>
+<line x1="422.9" y1="196.1" x2="418.0" y2="158.4" stroke="#2e9e6b" stroke-width="1"/>
+<text x="418.0" y="156.4" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$2.90</text>
+<line x1="434.0" y1="181.6" x2="454.0" y2="158.4" stroke="#eb6834" stroke-width="1"/>
+<text x="454.0" y="156.4" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.22</text></g>
+<g transform="translate(0,502)"><rect x="0" y="0" width="520" height="400" fill="#fcfcfb"/>
+<text x="62" y="22" font-size="15" font-weight="600" fill="#0b0b0b">Colombia</text>
+<line x1="62.0" y1="82" x2="62.0" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="62.0" y="349" font-size="11" text-anchor="middle" fill="#898781">0%</text>
+<text x="62.0" y="362" font-size="9.5" text-anchor="middle" fill="#898781">0</text>
+<line x1="144.4" y1="82" x2="144.4" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="144.4" y="349" font-size="11" text-anchor="middle" fill="#898781">20%</text>
+<text x="144.4" y="362" font-size="9.5" text-anchor="middle" fill="#898781">26,382</text>
+<line x1="226.8" y1="82" x2="226.8" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="226.8" y="349" font-size="11" text-anchor="middle" fill="#898781">40%</text>
+<text x="226.8" y="362" font-size="9.5" text-anchor="middle" fill="#898781">52,764</text>
+<line x1="309.2" y1="82" x2="309.2" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="309.2" y="349" font-size="11" text-anchor="middle" fill="#898781">60%</text>
+<text x="309.2" y="362" font-size="9.5" text-anchor="middle" fill="#898781">79,147</text>
+<line x1="391.6" y1="82" x2="391.6" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="391.6" y="349" font-size="11" text-anchor="middle" fill="#898781">80%</text>
+<text x="391.6" y="362" font-size="9.5" text-anchor="middle" fill="#898781">105,529</text>
+<line x1="474.0" y1="82" x2="474.0" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="474.0" y="349" font-size="11" text-anchor="middle" fill="#898781">100%</text>
+<text x="474.0" y="362" font-size="9.5" text-anchor="middle" fill="#898781">131,911</text>
+<line x1="62" y1="334.0" x2="474" y2="334.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="338.0" font-size="11" text-anchor="end" fill="#898781">0</text>
+<line x1="62" y1="281.5" x2="474" y2="281.5" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="285.5" font-size="11" text-anchor="end" fill="#898781">1</text>
+<line x1="62" y1="228.9" x2="474" y2="228.9" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="232.9" font-size="11" text-anchor="end" fill="#898781">2</text>
+<line x1="62" y1="176.4" x2="474" y2="176.4" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="180.4" font-size="11" text-anchor="end" fill="#898781">3</text>
+<line x1="62" y1="123.9" x2="474" y2="123.9" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="127.9" font-size="11" text-anchor="end" fill="#898781">4</text>
+<line x1="62" y1="334" x2="474" y2="334" stroke="#c3c2b7" stroke-width="1"/>
+<line x1="62" y1="82" x2="62" y2="334" stroke="#c3c2b7" stroke-width="1"/>
+<text x="268.0" y="398" font-size="11.5" text-anchor="middle" fill="#52514e">% de filas llenas de la columna</text>
+<text transform="translate(16,208.0) rotate(-90)" font-size="11.5" text-anchor="middle" fill="#52514e">eCPM ponderado de las filas llenas ($)</text>
+<clipPath id="clipfill_6612"><rect x="62" y="82" width="412" height="252"/></clipPath>
+<line clip-path="url(#clipfill_6612)" x1="62.0" y1="166.8" x2="474.0" y2="164.7" stroke="#898781" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="66" y="328" font-size="10.5" fill="#52514e">recta OLS: R² = 0.00, pendiente 0.000 $ por punto de %</text>
+<circle cx="463.5" cy="171.5" r="6" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="436.5" cy="158.4" r="6" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="454.3" cy="163.5" r="6" fill="#2e9e6b" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="355.0" cy="169.9" r="6" fill="#8b5cf6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="281.4" cy="179.8" r="6" fill="#d64545" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="170.0" cy="145.5" r="6" fill="#0e9aa7" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="149.4" cy="124.0" r="6" fill="#a0622d" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="106.3" cy="184.4" r="6" fill="#d6409f" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="88.3" cy="193.5" r="6" fill="#6b7280" stroke="#fcfcfb" stroke-width="2"/>
+<line x1="88.3" y1="187.5" x2="82.0" y2="114.0" stroke="#6b7280" stroke-width="1"/>
+<text x="82.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$2.67</text>
+<line x1="106.3" y1="178.4" x2="118.0" y2="114.0" stroke="#d6409f" stroke-width="1"/>
+<text x="118.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$2.85</text>
+<line x1="149.4" y1="118.0" x2="154.0" y2="114.0" stroke="#a0622d" stroke-width="1"/>
+<text x="154.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$4.00</text>
+<line x1="170.0" y1="139.5" x2="190.0" y2="114.0" stroke="#0e9aa7" stroke-width="1"/>
+<text x="190.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.59</text>
+<text x="281.4" y="167.8" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$2.94</text>
+<text x="355.0" y="157.9" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.12</text>
+<line x1="436.5" y1="152.4" x2="382.0" y2="148.4" stroke="#eb6834" stroke-width="1"/>
+<text x="382.0" y="146.4" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.34</text>
+<line x1="454.3" y1="157.5" x2="418.0" y2="148.4" stroke="#2e9e6b" stroke-width="1"/>
+<text x="418.0" y="146.4" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.25</text>
+<line x1="463.5" y1="165.5" x2="454.0" y2="148.4" stroke="#2a78d6" stroke-width="1"/>
+<text x="454.0" y="146.4" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$3.09</text></g>
+<g transform="translate(536,502)"><rect x="0" y="0" width="520" height="400" fill="#fcfcfb"/>
+<text x="62" y="22" font-size="15" font-weight="600" fill="#0b0b0b">Chile</text>
+<line x1="62.0" y1="82" x2="62.0" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="62.0" y="349" font-size="11" text-anchor="middle" fill="#898781">0%</text>
+<text x="62.0" y="362" font-size="9.5" text-anchor="middle" fill="#898781">0</text>
+<line x1="144.4" y1="82" x2="144.4" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="144.4" y="349" font-size="11" text-anchor="middle" fill="#898781">20%</text>
+<text x="144.4" y="362" font-size="9.5" text-anchor="middle" fill="#898781">29,090</text>
+<line x1="226.8" y1="82" x2="226.8" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="226.8" y="349" font-size="11" text-anchor="middle" fill="#898781">40%</text>
+<text x="226.8" y="362" font-size="9.5" text-anchor="middle" fill="#898781">58,180</text>
+<line x1="309.2" y1="82" x2="309.2" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="309.2" y="349" font-size="11" text-anchor="middle" fill="#898781">60%</text>
+<text x="309.2" y="362" font-size="9.5" text-anchor="middle" fill="#898781">87,271</text>
+<line x1="391.6" y1="82" x2="391.6" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="391.6" y="349" font-size="11" text-anchor="middle" fill="#898781">80%</text>
+<text x="391.6" y="362" font-size="9.5" text-anchor="middle" fill="#898781">116,361</text>
+<line x1="474.0" y1="82" x2="474.0" y2="334" stroke="#e1e0d9" stroke-width="1"/>
+<text x="474.0" y="349" font-size="11" text-anchor="middle" fill="#898781">100%</text>
+<text x="474.0" y="362" font-size="9.5" text-anchor="middle" fill="#898781">145,451</text>
+<line x1="62" y1="334.0" x2="474" y2="334.0" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="338.0" font-size="11" text-anchor="end" fill="#898781">0</text>
+<line x1="62" y1="295.4" x2="474" y2="295.4" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="299.4" font-size="11" text-anchor="end" fill="#898781">1</text>
+<line x1="62" y1="256.8" x2="474" y2="256.8" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="260.8" font-size="11" text-anchor="end" fill="#898781">2</text>
+<line x1="62" y1="218.2" x2="474" y2="218.2" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="222.2" font-size="11" text-anchor="end" fill="#898781">3</text>
+<line x1="62" y1="179.6" x2="474" y2="179.6" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="183.6" font-size="11" text-anchor="end" fill="#898781">4</text>
+<line x1="62" y1="141.1" x2="474" y2="141.1" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="145.1" font-size="11" text-anchor="end" fill="#898781">5</text>
+<line x1="62" y1="102.5" x2="474" y2="102.5" stroke="#e1e0d9" stroke-width="1"/>
+<text x="56" y="106.5" font-size="11" text-anchor="end" fill="#898781">6</text>
+<line x1="62" y1="334" x2="474" y2="334" stroke="#c3c2b7" stroke-width="1"/>
+<line x1="62" y1="82" x2="62" y2="334" stroke="#c3c2b7" stroke-width="1"/>
+<text x="268.0" y="398" font-size="11.5" text-anchor="middle" fill="#52514e">% de filas llenas de la columna</text>
+<text transform="translate(16,208.0) rotate(-90)" font-size="11.5" text-anchor="middle" fill="#52514e">eCPM ponderado de las filas llenas ($)</text>
+<clipPath id="clipfill_6425"><rect x="62" y="82" width="412" height="252"/></clipPath>
+<line clip-path="url(#clipfill_6425)" x1="62.0" y1="151.7" x2="474.0" y2="128.1" stroke="#898781" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="66" y="328" font-size="10.5" fill="#52514e">recta OLS: R² = 0.42, pendiente 0.006 $ por punto de %</text>
+<circle cx="456.4" cy="127.7" r="6" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="437.2" cy="132.9" r="6" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="461.9" cy="134.7" r="6" fill="#2e9e6b" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="354.8" cy="132.2" r="6" fill="#8b5cf6" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="313.0" cy="133.9" r="6" fill="#d64545" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="140.3" cy="124.0" r="6" fill="#0e9aa7" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="122.6" cy="159.7" r="6" fill="#a0622d" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="95.6" cy="147.3" r="6" fill="#d6409f" stroke="#fcfcfb" stroke-width="2"/>
+<circle cx="84.7" cy="164.3" r="6" fill="#6b7280" stroke="#fcfcfb" stroke-width="2"/>
+<line x1="84.7" y1="158.3" x2="82.0" y2="114.0" stroke="#6b7280" stroke-width="1"/>
+<text x="82.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$4.40</text>
+<line x1="95.6" y1="141.3" x2="118.0" y2="114.0" stroke="#d6409f" stroke-width="1"/>
+<text x="118.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$4.84</text>
+<line x1="122.6" y1="153.7" x2="154.0" y2="114.0" stroke="#a0622d" stroke-width="1"/>
+<text x="154.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$4.52</text>
+<line x1="140.3" y1="118.0" x2="190.0" y2="114.0" stroke="#0e9aa7" stroke-width="1"/>
+<text x="190.0" y="112.0" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$5.44</text>
+<line x1="313.0" y1="127.9" x2="315.9" y2="122.2" stroke="#d64545" stroke-width="1"/>
+<text x="315.9" y="120.2" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$5.18</text>
+<line x1="354.8" y1="126.2" x2="351.9" y2="122.2" stroke="#8b5cf6" stroke-width="1"/>
+<text x="351.9" y="120.2" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$5.23</text>
+<line x1="437.2" y1="126.9" x2="382.0" y2="117.7" stroke="#eb6834" stroke-width="1"/>
+<text x="382.0" y="115.7" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$5.21</text>
+<line x1="456.4" y1="121.7" x2="418.0" y2="117.7" stroke="#2a78d6" stroke-width="1"/>
+<text x="418.0" y="115.7" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$5.35</text>
+<line x1="461.9" y1="128.7" x2="454.0" y2="117.7" stroke="#2e9e6b" stroke-width="1"/>
+<text x="454.0" y="115.7" font-size="10.5" font-weight="600" text-anchor="middle" fill="#0b0b0b">$5.16</text></g>
+</svg>

@@ -72,7 +72,7 @@ def agregar(csv_path):
     pub = defaultdict(lambda: [0, 0, 0.0])        # requests, requests vendidos, sum q*e
     pp = defaultdict(lambda: [0, 0, 0.0])         # (publisher, pais)
     pais = defaultdict(lambda: [0, 0, 0.0])
-    tot = [0, 0, 0.0]
+    tot = [0, 0, 0.0, 0.0]                         # + sum q*e^2 (para el R2)
     with open(csv_path, newline="", encoding="utf-8-sig") as f:
         for r in csv.DictReader(f):
             q = int(r["Total Requests"])
@@ -84,7 +84,17 @@ def agregar(csv_path):
                 if e > 0:
                     a[1] += q
                     a[2] += q * e
+            if e > 0:
+                tot[3] += q * e * e
     return pub, pp, pais, tot
+
+
+def r2_grupos(grupos, tot):
+    """% de la varianza del eCPM (ponderada por requests, filas con eCPM > 0) que explican las medias
+    de los grupos: sum_g S_g^2/W_g - S^2/W sobre sum q*e^2 - S^2/W."""
+    base = tot[2] ** 2 / tot[1]
+    ssb = sum(g[2] ** 2 / g[1] for g in grupos.values() if g[1]) - base
+    return round(100 * ssb / (tot[3] - base), 1)
 
 
 def ecpm(a):
@@ -203,6 +213,7 @@ def main():
     pubs_sc = [p for p, _ in sorted(pub.items(), key=lambda kv: -kv[1][0])[:20] if pub[p][1] > 0]  # por requests
     res = {"fuente": a.entrada, "total": {"requests": tot[0], "requests_vendidos": tot[1],
                                           "pct_vendido": round(100 * tot[1] / tot[0], 1), "ecpm_ponderado": round(tot[2] / tot[1], 3)},
+           "r2_publisher_pais_pct": r2_grupos(pp, tot),
            "paises": paises,
            "heatmap": {p: {c: ({"ecpm_ponderado": round(ecpm(pp[(p, c)]), 3), "share_trafico_vendido_pct": round(100 * pp[(p, c)][1] / tot[1], 2),
                                "pct_vendido": round(100 * pp[(p, c)][1] / pp[(p, c)][0], 1)} if pp[(p, c)][1] else None)

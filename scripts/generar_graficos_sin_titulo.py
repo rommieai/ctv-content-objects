@@ -46,6 +46,14 @@ def util(c, v):
     return True
 
 
+def R2_FACTORES(r):
+    """Valores (tal como llegan) de cada content object para el R2; genero y rating normalizados."""
+    g = r.get
+    return {"genero": g("genero_normalizado") or "", "rating": g("rating_franja") or "",
+            "livestream": g("contentIsLiveStream") or "", "length": g("contentLength") or "",
+            "categoria": g("contentCategory") or "", "series": g("contentSeries") or ""}
+
+
 def esc(s):
     return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
@@ -61,6 +69,10 @@ def main():
     qe_tot = 0.0
     col = {c: {"con": [0, 0, 0, 0.0], "sin": [0, 0, 0, 0.0]} for c in CO}   # filas, requests, req vendidos, sum q*e
     gen = defaultdict(lambda: [0, 0, 0.0])                                # filas, req vendidos, sum q*e
+    # R2 del eCPM (ponderado por requests, filas vendidas): cuanto explica cada content object solo y
+    # cuanto agrega por encima de la ruta de venta (publisher x pais)
+    r2s = [0, 0.0, 0.0]                                                   # W, S, sum q*e^2
+    r2g = defaultdict(lambda: defaultdict(lambda: [0, 0.0]))              # factor -> valor -> [W, S]
     with open(a.entrada, newline="", encoding="utf-8-sig") as f:
         for r in csv.DictReader(f):
             if util("contentTitle", r["contentTitle"]):
@@ -82,6 +94,18 @@ def main():
                 if vend:
                     t[2] += q
                     t[3] += q * e
+            if vend:
+                ruta = (r["Publisher"], r["Country"])
+                r2s[0] += q
+                r2s[1] += q * e
+                r2s[2] += q * e * e
+                r2g["ruta"][ruta][0] += q
+                r2g["ruta"][ruta][1] += q * e
+                for fac, v in R2_FACTORES(r).items():
+                    for k in ((fac, v), (fac + "+ruta", (ruta, v))):
+                        x = r2g[k[0]][k[1]]
+                        x[0] += q
+                        x[1] += q * e
             g = (r.get("genero_normalizado") or "").split(";")[0].strip() or "(sin género)"
             t = gen[g]
             t[0] += 1
@@ -100,6 +124,14 @@ def main():
         if t[1] > 0:
             out["genero"].append({"genero": g, "filas": t[0], "requests_vendidos": t[1], "share_trafico_vendido_pct": round(100 * t[1] / req_vend, 1),
                                   "ecpm_ponderado": round(t[2] / t[1], 3)})
+    base = r2s[1] ** 2 / r2s[0]
+
+    def r2(fac):
+        return 100 * (sum(S * S / W for W, S in r2g[fac].values()) - base) / (r2s[2] - base)
+    r_ruta = r2("ruta")
+    out["r2"] = {"ruta_publisher_pais_pct": round(r_ruta, 1),
+                 "factores": {fac: {"solo_pct": round(r2(fac), 1), "extra_sobre_ruta_pp": round(r2(fac + "+ruta") - r_ruta, 1)}
+                              for fac in R2_FACTORES({}).keys()}}
     json.dump(out, open(os.path.join(a.salida_dir, "graficos-sin-titulo.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
     # ---- 1. dumbbell: eCPM ponderado con dato vs sin dato, por columna

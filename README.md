@@ -27,7 +27,8 @@ scripts/                          codigo que genera los consolidados y los JSON
                                   y el eCPM ponderado de cada nivel; reemplaza al heatmap
                                   (generar_heatmap_completitud_ecpm.py, ya fuera del pipeline)
   generar_graficos_drivers_ecpm.py  SVG de lo que mueve el eCPM ponderado: heatmap publisher x
-                                  pais y scatter % vendido vs eCPM por publisher (+ JSON)
+                                  pais y scatter % vendido vs eCPM por publisher (+ JSON, con el
+                                  R2 de publisher x pais sobre el eCPM)
   generar_barras_app_completitud.py  barras por app (top 12): eCPM ponderado segun campos llenos
                                   (0-8) del registro, con % de requests vendidos por nivel (+ JSON),
                                   y scatter de todas las apps: eCPM ponderado vs requests totales
@@ -38,7 +39,8 @@ scripts/                          codigo que genera los consolidados y los JSON
                                   barras apiladas de completitud de los 8 content objects y scatter
                                   requests totales vs eCPM ponderado (+ JSON)
   generar_graficos_sin_titulo.py  solo filas sin contentTitle: eCPM ponderado con y sin dato en
-                                  cada columna, y eCPM por genero (+ JSON); usa el CSV antes del relleno
+                                  cada columna, y eCPM por genero (+ JSON, con el R2 de cada content
+                                  object solo y sobre publisher x pais); usa el CSV antes del relleno
   generar_reporte_vacios.py       markdown "content objects cuando X esta vacio" a partir del
                                   JSON de analizar.py --solo-vacios-en X y del JSON completo
   generar_reporte_detallado.py    markdown del detallado por pais (solo tablas) desde los JSON de
@@ -89,7 +91,9 @@ reportes/
   18-enriquecimiento-externo-v18/ relleno de content objects sobre v10-a-v18 (tanda anterior)
   19-validacion-categorias-v18/   validacion de contentCategory sobre v10-a-v18 (tanda anterior)
   20-validacion-genero-series-v18/  lo mismo para contentGenre y contentSeries (tanda anterior)
-  21-consolidado-v10-a-v19/         la version vigente, tres reportes md: detallado por pais
+  21-consolidado-v10-a-v19/         tanda v10 a v19, tres reportes md (misma estructura que 23)
+  22-consolidado-v10-a-v20/         tanda v10 a v20, tres reportes md (misma estructura que 23)
+  23-consolidado-v10-a-v21/         la version vigente, tres reportes md: detallado por pais
                                   (MX/CO/CL) con requests y eCPM ponderado lleno/vacio por
                                   columna; graficas del eCPM lleno/vacio y heatmap; y "que se
                                   puede completar de cada content object" (solo tablas);
@@ -227,9 +231,13 @@ quedan como NULL en BigQuery.
 
 | Reporte | Contenido |
 |---|---|
-| `reportes/21-.../reporte-content-objects-detallado-v19-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v19 (1,158,509 filas; v19 aporto 86,669 combinaciones nuevas). Tablas por pais con % de filas llenas, top 3 referencias, si se puede aumentar el % de filas llenas y el aumento estimado (ganancia del relleno) por columna |
-| `reportes/21-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** graficos SVG sobre v10-a-v19: pies del reparto del gasto entre filas llenas y vacias por columna, scatter fila a fila de campos llenos vs eCPM (log), los drivers del eCPM ponderado (heatmap publisher x pais, scatter % vendido vs eCPM por publisher: la ruta de venta explica ~2/3 de la variacion, los content objects poco) barras por app del eCPM ponderado segun campos llenos (dentro de una app el llenado casi no mueve el precio), titulos emitidos por mas de un App Name (top 10 con eCPM repartido por app) y, por canal (Caracol, RCN, Canal 13, Televisa, TV Azteca), completitud de los content objects y requests vs eCPM ponderado; y, para las filas sin contentTitle, % llenas vs eCPM por columna sin y con relleno y eCPM por genero |
-| `reportes/21-.../reporte-completitud-content-objects-v19.md` | **Vigente:** que se puede completar de cada content object, solo tablas por columna: origen del valor tras el relleno, que mas se puede afinar segun la validacion contra IMDb/Wikidata/IAB y que tan confiable es lo declarado y lo llenado. La version completa (contexto, fuentes con licencias y limites, metodos con candados) esta en `recursos/reporte-completitud-content-objects-v19-completo.md` |
+| `reportes/23-.../reporte-content-objects-detallado-v21-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v21 (1,298,145 filas, 593,279,479,040 requests; v21 aporto 25,267 combinaciones nuevas; solo v21: 512,000 filas, 450,500,254,240 requests). Misma estructura que v19 |
+| `reportes/23-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** las mismas graficas que v19 sobre v10-a-v21 (publisher x pais explica el 66.3 % de la variacion del eCPM ponderado, en `recursos/reporte-drivers-ecpm-publisher-pais.md`) |
+| `reportes/23-.../reporte-completitud-content-objects-v21.md` | **Vigente:** que se puede completar de cada content object sobre v10-a-v21 (version completa en `recursos/reporte-completitud-content-objects-v21-completo.md`) |
+| `reportes/22-.../` | (v10-a-v20) los mismos tres md sobre el consolidado v10 a v20 (1,272,878 filas, 561,740,400,400 requests; v20 aporto 114,369 combinaciones nuevas) |
+| `reportes/21-.../reporte-content-objects-detallado-v19-consolidado.md` | (v10-a-v19) content objects por pais (MX/CO/CL) sobre el consolidado v10 a v19 (1,158,509 filas; v19 aporto 86,669 combinaciones nuevas). Tablas por pais con % de filas llenas, top 3 referencias, si se puede aumentar el % de filas llenas y el aumento estimado (ganancia del relleno) por columna |
+| `reportes/21-.../reporte-graficos-ecpm-vacio.md` | (v10-a-v19) graficos SVG sobre v10-a-v19: pies del reparto del gasto entre filas llenas y vacias por columna, scatter fila a fila de campos llenos vs eCPM (log), los drivers del eCPM ponderado (heatmap publisher x pais, scatter % vendido vs eCPM por publisher: la ruta de venta explica ~2/3 de la variacion, los content objects poco) barras por app del eCPM ponderado segun campos llenos (dentro de una app el llenado casi no mueve el precio), titulos emitidos por mas de un App Name (top 10 con eCPM repartido por app) y, por canal (Caracol, RCN, Canal 13, Televisa, TV Azteca), completitud de los content objects y requests vs eCPM ponderado; y, para las filas sin contentTitle, % llenas vs eCPM por columna sin y con relleno y eCPM por genero |
+| `reportes/21-.../reporte-completitud-content-objects-v19.md` | (v10-a-v19) que se puede completar de cada content object, solo tablas por columna: origen del valor tras el relleno, que mas se puede afinar segun la validacion contra IMDb/Wikidata/IAB y que tan confiable es lo declarado y lo llenado. La version completa (contexto, fuentes con licencias y limites, metodos con candados) esta en `recursos/reporte-completitud-content-objects-v19-completo.md` |
 | `reportes/20-validacion-genero-series-v18/README.md` | (v10-a-v18) validacion de contentGenre y contentSeries sobre v10-a-v18 (consolidado y relleno), con glosario y etiquetas en lenguaje claro; cifras clave v17 vs v18 en el README |
 | `reportes/19-validacion-categorias-v18/README.md` | (v10-a-v18) validacion de contentCategory sobre v10-a-v18 (correctitud y completitud), mismo formato claro; cifras clave v17 vs v18 en el README |
 | `reportes/18-enriquecimiento-externo-v18/reporte-relleno-por-columna.md` | (v10-a-v18) el pipeline de relleno corrido sobre v10-a-v18: % antes/despues y origen del valor por columna |

@@ -1,0 +1,194 @@
+{
+ "fuente": "inventory-consolidado-v10-a-v20.csv",
+ "campos": [
+  "contentTitle",
+  "contentGenre",
+  "contentRating",
+  "contentLanguage",
+  "contentIsLiveStream",
+  "contentCategory",
+  "contentLength",
+  "contentSeries"
+ ],
+ "canales": [
+  {
+   "canal": "Televisa",
+   "filas": 43342,
+   "requests": 74839789680,
+   "requests_vendidos": 65491297520,
+   "pct_vendido": 87.5,
+   "ecpm_ponderado": 2.095,
+   "pct_llenas": {
+    "contentTitle": 75.6,
+    "contentGenre": 96.2,
+    "contentRating": 82.5,
+    "contentLanguage": 57.1,
+    "contentIsLiveStream": 34.7,
+    "contentCategory": 10.9,
+    "contentLength": 38.7,
+    "contentSeries": 0.2
+   },
+   "completitud_promedio": 49.5,
+   "publishers": [
+    "Televisa Univision via SpringServe",
+    "Equativ (Formerly SMART AdServer) - oRTB CTV",
+    "Televisa Univision via OB",
+    "METAX SOFTWARE PTE. LTD. (Exchange)"
+   ],
+   "apps": [
+    "ViX: TV, Sports and News",
+    "ViX: TV, Deportes y Noticias",
+    "ViX: Cine y TV Gratis en Español",
+    "ViX: Cine y TV en Español"
+   ]
+  },
+  {
+   "canal": "TV Azteca",
+   "filas": 2265,
+   "requests": 22518953840,
+   "requests_vendidos": 15770614880,
+   "pct_vendido": 70.0,
+   "ecpm_ponderado": 7.029,
+   "pct_llenas": {
+    "contentTitle": 0.9,
+    "contentGenre": 97.8,
+    "contentRating": 96.6,
+    "contentLanguage": 98.5,
+    "contentIsLiveStream": 0.3,
+    "contentCategory": 0.5,
+    "contentLength": 0.5,
+    "contentSeries": 0.2
+   },
+   "completitud_promedio": 36.9,
+   "publishers": [
+    "TV Azteca - Springserve",
+    "Roku - oRTB",
+    "Equativ (Formerly SMART AdServer) - oRTB CTV"
+   ],
+   "apps": [
+    "Tubi: Free Movies & Live TV",
+    "Azteca TV",
+    "Pluto TV - Free Movies/Shows"
+   ]
+  },
+  {
+   "canal": "RCN",
+   "filas": 43,
+   "requests": 115676160,
+   "requests_vendidos": 115531040,
+   "pct_vendido": 99.9,
+   "ecpm_ponderado": 1.793,
+   "pct_llenas": {
+    "contentTitle": 0.0,
+    "contentGenre": 0.0,
+    "contentRating": 0.0,
+    "contentLanguage": 83.7,
+    "contentIsLiveStream": 30.2,
+    "contentCategory": 0.0,
+    "contentLength": 55.8,
+    "contentSeries": 0.0
+   },
+   "completitud_promedio": 21.2,
+   "publishers": [
+    "RCN via OB"
+   ],
+   "apps": [
+    "Canal RCN",
+    "Not Available"
+   ]
+  },
+  {
+   "canal": "Canal 13",
+   "filas": 8,
+   "requests": 10240960,
+   "requests_vendidos": 0,
+   "pct_vendido": 0.0,
+   "ecpm_ponderado": null,
+   "pct_llenas": {
+    "contentTitle": 0.0,
+    "contentGenre": 0.0,
+    "contentRating": 0.0,
+    "contentLanguage": 75.0,
+    "contentIsLiveStream": 75.0,
+    "contentCategory": 0.0,
+    "contentLength": 0.0,
+    "contentSeries": 0.0
+   },
+   "completitud_promedio": 18.8,
+   "publishers": [
+    "Canal 13 OB"
+   ],
+   "apps": [
+    "13 GO"
+   ]
+  },
+  {
+   "canal": "Caracol",
+   "filas": 12,
+   "requests": 38646560,
+   "requests_vendidos": 38037520,
+   "pct_vendido": 98.4,
+   "ecpm_ponderado": 3.568,
+   "pct_llenas": {
+    "contentTitle": 0.0,
+    "contentGenre": 0.0,
+    "contentRating": 0.0,
+    "contentLanguage": 66.7,
+    "contentIsLiveStream": 50.0,
+    "contentCategory": 0.0,
+    "contentLength": 0.0,
+    "contentSeries": 0.0
+   },
+   "completitud_promedio": 14.6,
+   "publishers": [
+    "Caracol via OB"
+   ],
+   "apps": [
+    "ditu por Caracol",
+    "ditu"
+   ]
+  },
+  {
+   "canal": "Win",
+   "filas": 0,
+   "requests": 0,
+   "requests_vendidos": 0,
+   "pct_vendido": null,
+   "ecpm_ponderado": null,
+   "pct_llenas": {
+    "contentTitle": null,
+    "contentGenre": null,
+    "contentRating": null,
+    "contentLanguage": null,
+    "contentIsLiveStream": null,
+    "contentCategory": null,
+    "contentLength": null,
+    "contentSeries": null
+   },
+   "completitud_promedio": null,
+   "publishers": [],
+   "apps": []
+  },
+  {
+   "canal": "Telefe",
+   "filas": 0,
+   "requests": 0,
+   "requests_vendidos": 0,
+   "pct_vendido": null,
+   "ecpm_ponderado": null,
+   "pct_llenas": {
+    "contentTitle": null,
+    "contentGenre": null,
+    "contentRating": null,
+    "contentLanguage": null,
+    "contentIsLiveStream": null,
+    "contentCategory": null,
+    "contentLength": null,
+    "contentSeries": null
+   },
+   "completitud_promedio": null,
+   "publishers": [],
+   "apps": []
+  }
+ ]
+}

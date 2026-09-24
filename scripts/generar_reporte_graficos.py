@@ -30,6 +30,19 @@ def n(x):
     return f"{x:,}"
 
 
+def r2_texto(st):
+    """Parrafo de la 7.2: R2 del eCPM ponderado de las filas sin titulo por content object (graficos-sin-titulo.json).
+    "solo" = % de la variacion que explican las medias por valor; "extra" = puntos que agrega sobre publisher x pais."""
+    f = st["r2"]["factores"]
+    lider = max(f, key=lambda k: f[k]["extra_sobre_ruta_pp"])
+    resto = max(f[k]["extra_sobre_ruta_pp"] for k in ("livestream", "length", "categoria", "series"))
+    return ("Género normalizado tal como llega. "
+            + ("Es el content object que más separa el precio cuando no hay título: explica " if lider == "genero" else "Explica ")
+            + f"el {f['genero']['solo_pct']:.1f} % de la variación del eCPM ponderado solo y aporta {f['genero']['extra_sobre_ruta_pp']:.1f} "
+            f"puntos más controlando por publisher × país (rating: {f['rating']['solo_pct']:.1f} % y {f['rating']['extra_sobre_ruta_pp']:.1f} puntos; "
+            f"livestream, length, categoría y series: {resto:.1f} puntos o menos).\n")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("carpeta")
@@ -74,8 +87,8 @@ def main():
         drv = json.load(open(pdrv, encoding="utf-8"))
         tot = drv["total"]
         M = [f"# Qué mueve el eCPM ponderado: la ruta de venta (publisher y país) (consolidado v10 a v{V})\n",
-              "Sobre las filas con eCPM > 0 y requests > 0, la combinación publisher × país explica cerca de dos tercios de la "
-              "variación del eCPM ponderado; los content objects, controlando por la ruta, aportan pocos puntos (género y rating "
+              "Sobre las filas con eCPM > 0 y requests > 0, la combinación publisher × país explica el "
+              f"{drv['r2_publisher_pais_pct']:.1f} % de la variación del eCPM ponderado; los content objects, controlando por la ruta, aportan pocos puntos (género y rating "
               "los que más). Generado con `scripts/generar_graficos_drivers_ecpm.py` → `graficos-drivers-ecpm.json`.\n",
               "## 1. eCPM ponderado por publisher y país\n",
               "![eCPM por publisher y país](graficos-drivers-ecpm-heatmap-publisher-pais.svg)\n",
@@ -217,9 +230,7 @@ def main():
             cel.append("—" if df == float("-inf") else f"{'+' if df >= 0 else '−'}${abs(df):.2f}")
             L.append(f"| {c} | " + " | ".join(cel) + " |")
         L += ["\n### 7.2 eCPM ponderado por género en las filas sin título\n",
-              "Género normalizado tal como llega. Es el content object que más separa el precio cuando no hay título: explica el 20.6 % de la "
-              "variación del eCPM ponderado solo y aporta 6.9 puntos más controlando por publisher × país (rating: 17.1 % y 4.7 puntos; "
-              "livestream, length, categoría y series: menos de 1.5 puntos).\n",
+              r2_texto(st),
               "![sin título: eCPM por género](recursos/graficos-sin-titulo-genero.svg)\n",
               "| Género | Filas | % del tráfico vendido sin título | eCPM pond. |\n|---|---:|---:|---:|"]
         for g in sorted([g for g in st["genero"] if g["share_trafico_vendido_pct"] >= 0.5], key=lambda g: -g["ecpm_ponderado"]):

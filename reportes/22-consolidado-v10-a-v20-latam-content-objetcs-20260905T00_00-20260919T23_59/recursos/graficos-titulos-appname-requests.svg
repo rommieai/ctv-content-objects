@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">
+<rect width="1000" height="600" fill="#ffffff"/>
+<text x="16" y="24" font-size="17" font-weight="700" fill="#1f2933">Top 10 títulos emitidos por más de un App Name: requests totales por app para el mismo título</text>
+<text x="16" y="44" font-size="12" fill="#5f6b76">Una barra por App Name dentro de cada título; su altura son los requests totales (vendidos o no) de ese título en esa app, en miles de millones.</text>
+<text x="16" y="60" font-size="12" fill="#5f6b76">Mismos títulos, apps, orden de barras y colores que la gráfica de eCPM. Sobre cada grupo, los requests totales del título en todas sus apps.</text>
+<rect x="16" y="74" width="12" height="12" rx="2" fill="#2a78d6"/>
+<text x="32" y="84" font-size="11" fill="#1f2933">Live TV</text>
+<rect x="94.1" y="74" width="12" height="12" rx="2" fill="#eb6834"/>
+<text x="110.1" y="84" font-size="11" fill="#1f2933">ViX: TV, Deportes y Noticias</text>
+<rect x="304.5" y="74" width="12" height="12" rx="2" fill="#2e9e6b"/>
+<text x="320.5" y="84" font-size="11" fill="#1f2933">MovieArk: Stream Movies &amp; Live</text>
+<rect x="527.5" y="74" width="12" height="12" rx="2" fill="#8b5cf6"/>
+<text x="543.5" y="84" font-size="11" fill="#1f2933">TCL CHANNEL</text>
+<rect x="630.8" y="74" width="12" height="12" rx="2" fill="#d64545"/>
+<text x="646.8" y="84" font-size="11" fill="#1f2933">Vidaa</text>
+<rect x="696.3" y="74" width="12" height="12" rx="2" fill="#0e9aa7"/>
+<text x="712.3" y="84" font-size="11" fill="#1f2933">Browser TV Web - BrowseHere</text>
+<rect x="16" y="92" width="12" height="12" rx="2" fill="#a0622d"/>
+<text x="32" y="102" font-size="11" fill="#1f2933">Not Available</text>
+<rect x="131.89999999999998" y="92" width="12" height="12" rx="2" fill="#d6409f"/>
+<text x="147.89999999999998" y="102" font-size="11" fill="#1f2933">ViX: Cine y TV Gratis en Español</text>
+<rect x="367.5" y="92" width="12" height="12" rx="2" fill="#c9a400"/>
+<text x="383.5" y="102" font-size="11" fill="#1f2933">ViX: TV, Sports and News</text>
+<line x1="60" y1="480.0" x2="970" y2="480.0" stroke="#e3e7ea"/>
+<text x="54" y="484.0" text-anchor="end" font-size="10.5" fill="#5f6b76">0</text>
+<line x1="60" y1="416.6" x2="970" y2="416.6" stroke="#e3e7ea"/>
+<text x="54" y="420.6" text-anchor="end" font-size="10.5" fill="#5f6b76">0.5</text>
+<line x1="60" y1="353.1" x2="970" y2="353.1" stroke="#e3e7ea"/>
+<text x="54" y="357.1" text-anchor="end" font-size="10.5" fill="#5f6b76">1</text>
+<line x1="60" y1="289.7" x2="970" y2="289.7" stroke="#e3e7ea"/>
+<text x="54" y="293.7" text-anchor="end" font-size="10.5" fill="#5f6b76">1.5</text>
+<line x1="60" y1="226.2" x2="970" y2="226.2" stroke="#e3e7ea"/>
+<text x="54" y="230.2" text-anchor="end" font-size="10.5" fill="#5f6b76">2</text>
+<line x1="60" y1="162.8" x2="970" y2="162.8" stroke="#e3e7ea"/>
+<text x="54" y="166.8" text-anchor="end" font-size="10.5" fill="#5f6b76">2.5</text>
+<text transform="translate(18,305.0) rotate(-90)" text-anchor="middle" fill="#1f2933">requests totales del título en la app (miles de millones)</text>
+<rect x="68.3" y="457.8" width="13.3" height="22.2" rx="2" fill="#c9a400"/>
+<text x="74.9" y="453.8" text-anchor="middle" font-size="9" fill="#1f2933">0.18</text>
+<rect x="83.6" y="175.7" width="13.3" height="304.3" rx="2" fill="#eb6834"/>
+<text x="90.2" y="171.7" text-anchor="middle" font-size="9" fill="#1f2933">2.40</text>
+<rect x="98.9" y="454.8" width="13.3" height="25.2" rx="2" fill="#d6409f"/>
+<text x="105.5" y="450.8" text-anchor="middle" font-size="9" fill="#1f2933">0.20</text>
+<rect x="114.1" y="426.8" width="13.3" height="53.2" rx="2" fill="#d64545"/>
+<text x="120.8" y="422.8" text-anchor="middle" font-size="9" fill="#1f2933">0.42</text>
+<rect x="129.4" y="446.8" width="13.3" height="33.2" rx="2" fill="#a0622d"/>
+<text x="136.1" y="442.8" text-anchor="middle" font-size="9" fill="#1f2933">0.26</text>
+<text x="105.5" y="132" text-anchor="middle" font-size="10" fill="#5f6b76">total 3.50</text>
+<text transform="translate(105.5,490) rotate(35)" font-size="10.5" fill="#1f2933">lo que la vida me robo</text>
+<line x1="151.0" y1="130" x2="151.0" y2="480" stroke="#e3e7ea"/>
+<rect x="159.3" y="466.0" width="17.1" height="14.0" rx="2" fill="#0e9aa7"/>
+<text x="167.8" y="462.0" text-anchor="middle" font-size="9" fill="#1f2933">0.11</text>
+<rect x="178.4" y="457.2" width="17.1" height="22.8" rx="2" fill="#8b5cf6"/>
+<text x="186.9" y="453.2" text-anchor="middle" font-size="9" fill="#1f2933">0.18</text>
+<rect x="197.5" y="315.1" width="17.1" height="164.9" rx="2" fill="#2e9e6b"/>
+<text x="206.1" y="311.1" text-anchor="middle" font-size="9" fill="#1f2933">1.30</text>
+<rect x="216.6" y="355.8" width="17.1" height="124.2" rx="2" fill="#2a78d6"/>
+<text x="225.2" y="351.8" text-anchor="middle" font-size="9" fill="#1f2933">0.98</text>
+<text x="196.5" y="132" text-anchor="middle" font-size="10" fill="#5f6b76">total 2.61</text>
+<text transform="translate(196.5,490) rotate(35)" font-size="10.5" fill="#1f2933">hatchback</text>
+<line x1="242.0" y1="130" x2="242.0" y2="480" stroke="#e3e7ea"/>
+<rect x="250.3" y="467.4" width="17.1" height="12.6" rx="2" fill="#8b5cf6"/>
+<text x="258.8" y="463.4" text-anchor="middle" font-size="9" fill="#1f2933">0.10</text>
+<rect x="269.4" y="309.4" width="17.1" height="170.6" rx="2" fill="#2e9e6b"/>
+<text x="277.9" y="305.4" text-anchor="middle" font-size="9" fill="#1f2933">1.34</text>
+<rect x="288.5" y="352.7" width="17.1" height="127.3" rx="2" fill="#2a78d6"/>
+<text x="297.1" y="348.7" text-anchor="middle" font-size="9" fill="#1f2933">1.00</text>
+<rect x="307.6" y="476.3" width="17.1" height="3.7" rx="2" fill="#eb6834"/>
+<text x="316.2" y="472.3" text-anchor="middle" font-size="9" fill="#1f2933">0.03</text>
+<text x="287.5" y="132" text-anchor="middle" font-size="10" fill="#5f6b76">total 2.61</text>
+<text transform="translate(287.5,490) rotate(35)" font-size="10.5" fill="#1f2933">eve</text>
+<line x1="333.0" y1="130" x2="333.0" y2="480" stroke="#e3e7ea"/>
+<rect x="341.3" y="466.9" width="17.1" height="13.1" rx="2" fill="#8b5cf6"/>
+<text x="349.8" y="462.9" text-anchor="middle" font-size="9" fill="#1f2933">0.10</text>
+<rect x="360.4" y="469.8" width="17.1" height="10.2" rx="2" fill="#0e9aa7"/>
+<text x="368.9" y="465.8" text-anchor="middle" font-size="9" fill="#1f2933">0.08</text>
+<rect x="379.5" y="311.2" width="17.1" height="168.8" rx="2" fill="#2e9e6b"/>
+<text x="388.1" y="307.2" text-anchor="middle" font-size="9" fill="#1f2933">1.33</text>
+<rect x="398.6" y="354.1" width="17.1" height="125.9" rx="2" fill="#2a78d6"/>
+<text x="407.2" y="350.1" text-anchor="middle" font-size="9" fill="#1f2933">0.99</text>
+<text x="378.5" y="132" text-anchor="middle" font-size="10" fill="#5f6b76">total 2.55</text>
+<text transform="translate(378.5,490) rotate(35)" font-size="10.5" fill="#1f2933">brooklyn love stories</text>
+<line x1="424.0" y1="130" x2="424.0" y2="480" stroke="#e3e7ea"/>
+<rect x="432.3" y="467.2" width="23.5" height="12.8" rx="2" fill="#8b5cf6"/>
+<text x="444.0" y="463.2" text-anchor="middle" font-size="10" fill="#1f2933">0.10</text>
+<rect x="457.8" y="315.7" width="23.5" height="164.3" rx="2" fill="#2e9e6b"/>
+<text x="469.5" y="311.7" text-anchor="middle" font-size="10" fill="#1f2933">1.29</text>
+<rect x="483.2" y="356.8" width="23.5" height="123.2" rx="2" fill="#2a78d6"/>
+<text x="495.0" y="352.8" text-anchor="middle" font-size="10" fill="#1f2933">0.97</text>
+<text x="469.5" y="132" text-anchor="middle" font-size="10" fill="#5f6b76">total 2.49</text>
+<text transform="translate(469.5,490) rotate(35)" font-size="10.5" fill="#1f2933">corona</text>
+<line x1="515.0" y1="130" x2="515.0" y2="480" stroke="#e3e7ea"/>
+<rect x="523.3" y="467.3" width="23.5" height="12.7" rx="2" fill="#8b5cf6"/>
+<text x="535.0" y="463.3" text-anchor="middle" font-size="10" fill="#1f2933">0.10</text>
+<rect x="548.8" y="315.6" width="23.5" height="164.4" rx="2" fill="#2e9e6b"/>
+<text x="560.5" y="311.6" text-anchor="middle" font-size="10" fill="#1f2933">1.30</text>
+<rect x="574.2" y="356.6" width="23.5" height="123.4" rx="2" fill="#2a78d6"/>
+<text x="586.0" y="352.6" text-anchor="middle" font-size="10" fill="#1f2933">0.97</text>
+<text x="560.5" y="132" text-anchor="middle" font-size="10" fill="#5f6b76">total 2.49</text>
+<text transform="translate(560.5,490) rotate(35)" font-size="10.5" fill="#1f2933">american apocalypse</text>
+<line x1="606.0" y1="130" x2="606.0" y2="480" stroke="#e3e7ea"/>
+<rect x="614.3" y="467.8" width="23.5" height="12.2" rx="2" fill="#8b5cf6"/>
+<text x="626.0" y="463.8" text-anchor="middle" font-size="10" fill="#1f2933">0.10</text>
+<rect x="639.8" y="315.6" width="23.5" height="164.4" rx="2" fill="#2e9e6b"/>
+<text x="651.5" y="311.6" text-anchor="middle" font-size="10" fill="#1f2933">1.30</text>
+<rect x="665.2" y="356.8" width="23.5" height="123.2" rx="2" fill="#2a78d6"/>
+<text x="677.0" y="352.8" text-anchor="middle" font-size="10" fill="#1f2933">0.97</text>
+<text x="651.5" y="132" text-anchor="middle" font-size="10" fill="#5f6b76">total 2.48</text>
+<text transform="translate(651.5,490) rotate(35)" font-size="10.5" fill="#1f2933">penance lane</text>
+<line x1="697.0" y1="130" x2="697.0" y2="480" stroke="#e3e7ea"/>
+<rect x="705.3" y="421.1" width="17.1" height="58.9" rx="2" fill="#0e9aa7"/>
+<text x="713.8" y="417.1" text-anchor="middle" font-size="9" fill="#1f2933">0.46</text>
+<rect x="724.4" y="345.0" width="17.1" height="135.0" rx="2" fill="#8b5cf6"/>
+<text x="732.9" y="341.0" text-anchor="middle" font-size="9" fill="#1f2933">1.06</text>
+<rect x="743.5" y="433.2" width="17.1" height="46.8" rx="2" fill="#2e9e6b"/>
+<text x="752.1" y="429.2" text-anchor="middle" font-size="9" fill="#1f2933">0.37</text>
+<rect x="762.6" y="445.8" width="17.1" height="34.2" rx="2" fill="#2a78d6"/>
+<text x="771.2" y="441.8" text-anchor="middle" font-size="9" fill="#1f2933">0.27</text>
+<text x="742.5" y="132" text-anchor="middle" font-size="10" fill="#5f6b76">total 2.18</text>
+<text transform="translate(742.5,490) rotate(35)" font-size="10.5" fill="#1f2933">chicken stew</text>
+<line x1="788.0" y1="130" x2="788.0" y2="480" stroke="#e3e7ea"/>
+<rect x="796.3" y="459.4" width="17.1" height="20.6" rx="2" fill="#0e9aa7"/>
+<text x="804.8" y="455.4" text-anchor="middle" font-size="9" fill="#1f2933">0.16</text>
+<rect x="815.4" y="443.8" width="17.1" height="36.2" rx="2" fill="#8b5cf6"/>
+<text x="823.9" y="439.8" text-anchor="middle" font-size="9" fill="#1f2933">0.29</text>
+<rect x="834.5" y="378.9" width="17.1" height="101.1" rx="2" fill="#2e9e6b"/>
+<text x="843.1" y="374.9" text-anchor="middle" font-size="9" fill="#1f2933">0.80</text>
+<rect x="853.6" y="406.4" width="17.1" height="73.6" rx="2" fill="#2a78d6"/>
+<text x="862.2" y="402.4" text-anchor="middle" font-size="9" fill="#1f2933">0.58</text>
+<text x="833.5" y="132" text-anchor="middle" font-size="10" fill="#5f6b76">total 1.84</text>
+<text transform="translate(833.5,490) rotate(35)" font-size="10.5" fill="#1f2933">humble pie</text>
+<line x1="879.0" y1="130" x2="879.0" y2="480" stroke="#e3e7ea"/>
+<rect x="887.3" y="468.3" width="13.3" height="11.7" rx="2" fill="#d6409f"/>
+<text x="893.9" y="464.3" text-anchor="middle" font-size="9" fill="#1f2933">0.09</text>
+<rect x="902.6" y="319.1" width="13.3" height="160.9" rx="2" fill="#eb6834"/>
+<text x="909.2" y="315.1" text-anchor="middle" font-size="9" fill="#1f2933">1.27</text>
+<rect x="917.9" y="469.1" width="13.3" height="10.9" rx="2" fill="#c9a400"/>
+<text x="924.5" y="465.1" text-anchor="middle" font-size="9" fill="#1f2933">0.09</text>
+<rect x="933.1" y="462.2" width="13.3" height="17.8" rx="2" fill="#a0622d"/>
+<text x="939.8" y="458.2" text-anchor="middle" font-size="9" fill="#1f2933">0.14</text>
+<rect x="948.4" y="454.0" width="13.3" height="26.0" rx="2" fill="#d64545"/>
+<text x="955.1" y="450.0" text-anchor="middle" font-size="9" fill="#1f2933">0.20</text>
+<text x="924.5" y="132" text-anchor="middle" font-size="10" fill="#5f6b76">total 1.81</text>
+<text transform="translate(924.5,490) rotate(35)" font-size="10.5" fill="#1f2933">mi corazon es tuyo</text>
+</svg>
