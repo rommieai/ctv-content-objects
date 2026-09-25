@@ -33,13 +33,13 @@ scripts/                          codigo que genera los consolidados y los JSON
                                   (0-8) del registro, con % de requests vendidos por nivel (+ JSON),
                                   y scatter de todas las apps: eCPM ponderado vs requests totales
   generar_tabla_pageurl_titulos.py  titulos emitidos por mas de un App Name (variantes de ViX juntas):
-                                  distribucion y grafica de doble eje del top 10 (barras = eCPM
-                                  ponderado del titulo por app; linea = requests totales por app)
+                                  distribucion y grafica de doble eje del top 10 (barras = requests
+                                  totales del titulo por app; linea = eCPM ponderado por app)
   generar_barras_canales_completitud.py  por canal (Caracol, RCN, Canal 13, Televisa, TV Azteca...):
                                   barras apiladas de completitud de los 8 content objects y scatter
                                   requests totales vs eCPM ponderado (+ JSON)
   generar_graficos_sin_titulo.py  solo filas sin contentTitle: eCPM ponderado y requests con y sin dato en
-                                  cada columna, y top 20 generos con eCPM (barras) y requests (linea) (+ JSON, con el R2 de cada content
+                                  cada columna, y top 20 generos con requests (barras) y eCPM (linea) (+ JSON, con el R2 de cada content
                                   object solo y sobre publisher x pais); usa el CSV antes del relleno
   generar_reporte_vacios.py       markdown "content objects cuando X esta vacio" a partir del
                                   JSON de analizar.py --solo-vacios-en X y del JSON completo

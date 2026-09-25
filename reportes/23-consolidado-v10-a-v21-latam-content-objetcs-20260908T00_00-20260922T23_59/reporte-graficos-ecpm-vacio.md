@@ -158,9 +158,9 @@ Un punto por App Name con requests vendidos (222 apps; otras 273 no vendieron na
 | 4 | 3.7% | 2.0% |
 | 5+ | 11.5% | 69.7% |
 
-**Top 10 títulos (por requests) en dos o más App Name:** una barra por App Name dentro de cada título, con altura = eCPM ponderado de ese título en esa app (eCPM > 0; las 5 apps con más requests vendidos del título), en el eje izquierdo. La línea une los requests totales (vendidos o no) de ese título en cada app, en miles de millones, en el eje derecho. Línea punteada = eCPM ponderado del título en todas sus apps; sobre cada grupo, los requests totales del título. Las variantes de ViX (ViX: TV, Deportes y Noticias; ViX: TV, Sports and News; ViX: Cine y TV…; VIX - Filmes e TV) cuentan como una sola app, ViX.
+**Top 10 títulos (por requests) en dos o más App Name:** una barra por App Name dentro de cada título, con altura = requests totales (vendidos o no) de ese título en esa app, en miles de millones, en el eje izquierdo (las 5 apps con más requests vendidos del título, de mayor a menor requests). La línea une el eCPM ponderado (eCPM > 0) de ese título en cada app, en el eje derecho. Línea punteada = eCPM ponderado del título en todas sus apps; sobre cada grupo, los requests totales del título. Las variantes de ViX (ViX: TV, Deportes y Noticias; ViX: TV, Sports and News; ViX: Cine y TV…; VIX - Filmes e TV) cuentan como una sola app, ViX.
 
-![títulos en varios App Name: eCPM (barras) y requests totales (línea) por app](recursos/graficos-titulos-appname-ecpm-requests.svg)
+![títulos en varios App Name: requests totales (barras) y eCPM (línea) por app](recursos/graficos-titulos-appname-requests-ecpm.svg)
 
 | Título | App Name | Requests | eCPM pond. | Reparto por app (% de requests vendidos, eCPM pond. de la app) |
 |---|---:|---:|---:|---|
@@ -258,33 +258,33 @@ Las mismas filas sin título y los mismos dos grupos por columna que en 7.1 (mis
 | contentGenre | 115,160,241,760 | 68.3% | 53,344,731,680 | 31.7% |
 | contentIsLiveStream | 86,685,706,720 | 51.4% | 81,819,266,720 | 48.6% |
 
-### 7.3 eCPM ponderado y requests totales por género en las filas sin título
+### 7.3 Requests totales y eCPM ponderado por género en las filas sin título
 
 Género normalizado tal como llega. Explica el 24.4 % de la variación del eCPM ponderado solo y aporta 2.0 puntos más controlando por publisher × país (rating: 17.2 % y 3.2 puntos; livestream, length, categoría y series: 1.3 puntos o menos).
 
-Top 20 géneros por requests totales. Barras = eCPM ponderado del género (eje izquierdo), de mayor a menor; línea = requests totales (vendidos o no) del género, en miles de millones (eje derecho). Línea punteada = eCPM ponderado de todas las filas sin título.
+Top 20 géneros por requests totales. Barras = requests totales (vendidos o no) del género, en miles de millones (eje izquierdo), de mayor a menor; línea = eCPM ponderado del género (eje derecho). Línea punteada = eCPM ponderado de todas las filas sin título.
 
-![sin título: eCPM y requests por género](recursos/graficos-sin-titulo-genero.svg)
+![sin título: requests y eCPM por género](recursos/graficos-sin-titulo-genero-requests-ecpm.svg)
 
 | Género | Filas | Requests | % vendido | % del tráfico vendido sin título | eCPM pond. |
 |---|---:|---:|---:|---:|---:|
-| concursos | 513 | 821,322,800 | 74.7% | 0.5% | $6.24 |
-| documental | 2,476 | 1,454,175,040 | 56.6% | 0.7% | $5.60 |
-| aventura | 1,309 | 2,461,647,840 | 47.1% | 0.9% | $5.43 |
-| gastronomia | 544 | 1,796,414,560 | 61.6% | 0.9% | $5.25 |
-| noticias | 2,528 | 7,835,973,920 | 86.4% | 5.4% | $5.22 |
-| crimen | 3,456 | 1,003,974,800 | 49.9% | 0.4% | $5.18 |
-| western | 445 | 736,645,920 | 75.8% | 0.4% | $5.09 |
-| pelicula | 2,043 | 1,389,085,520 | 75.1% | 0.8% | $4.74 |
-| drama | 8,356 | 23,087,972,960 | 66.1% | 12.3% | $4.72 |
-| accion | 4,777 | 7,016,618,080 | 75.4% | 4.2% | $4.69 |
-| thriller | 1,925 | 1,153,996,320 | 76.6% | 0.7% | $4.41 |
-| entretenimiento | 3,913 | 15,960,341,920 | 73.7% | 9.5% | $4.28 |
-| terror | 2,186 | 2,079,547,840 | 69.6% | 1.2% | $3.90 |
 | (sin género) | 32,982 | 60,324,150,960 | 71.9% | 34.8% | $3.88 |
-| comedia | 5,594 | 7,252,312,320 | 75.7% | 4.4% | $3.86 |
-| reality | 2,777 | 1,335,986,160 | 59.5% | 0.6% | $3.07 |
-| romance | 2,365 | 3,564,387,280 | 80.0% | 2.3% | $2.96 |
-| animacion | 355 | 1,187,768,560 | 52.8% | 0.5% | $2.92 |
-| musica | 649 | 588,109,360 | 63.2% | 0.3% | $2.64 |
 | deportes | 3,704 | 24,677,548,400 | 92.8% | 18.4% | $1.78 |
+| drama | 8,356 | 23,087,972,960 | 66.1% | 12.3% | $4.72 |
+| entretenimiento | 3,913 | 15,960,341,920 | 73.7% | 9.5% | $4.28 |
+| noticias | 2,528 | 7,835,973,920 | 86.4% | 5.4% | $5.22 |
+| comedia | 5,594 | 7,252,312,320 | 75.7% | 4.4% | $3.86 |
+| accion | 4,777 | 7,016,618,080 | 75.4% | 4.2% | $4.69 |
+| romance | 2,365 | 3,564,387,280 | 80.0% | 2.3% | $2.96 |
+| aventura | 1,309 | 2,461,647,840 | 47.1% | 0.9% | $5.43 |
+| terror | 2,186 | 2,079,547,840 | 69.6% | 1.2% | $3.90 |
+| gastronomia | 544 | 1,796,414,560 | 61.6% | 0.9% | $5.25 |
+| documental | 2,476 | 1,454,175,040 | 56.6% | 0.7% | $5.60 |
+| pelicula | 2,043 | 1,389,085,520 | 75.1% | 0.8% | $4.74 |
+| reality | 2,777 | 1,335,986,160 | 59.5% | 0.6% | $3.07 |
+| animacion | 355 | 1,187,768,560 | 52.8% | 0.5% | $2.92 |
+| thriller | 1,925 | 1,153,996,320 | 76.6% | 0.7% | $4.41 |
+| crimen | 3,456 | 1,003,974,800 | 49.9% | 0.4% | $5.18 |
+| concursos | 513 | 821,322,800 | 74.7% | 0.5% | $6.24 |
+| western | 445 | 736,645,920 | 75.8% | 0.4% | $5.09 |
+| musica | 649 | 588,109,360 | 63.2% | 0.3% | $2.64 |

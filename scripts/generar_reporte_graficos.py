@@ -150,8 +150,17 @@ def main():
               "| App Name distintos por título | % de títulos | % de requests |\n|---:|---:|---:|"]
         for b_ in tp["por_app_name"]:
             L.append(f"| {b_['n']} | {pct(b_['pct_titulos'])} | {pct(b_['pct_requests'])} |")
-        combinada = os.path.exists(os.path.join(R, "graficos-titulos-appname-ecpm-requests.svg"))
-        if combinada:
+        invertida = os.path.exists(os.path.join(R, "graficos-titulos-appname-requests-ecpm.svg"))
+        combinada = invertida or os.path.exists(os.path.join(R, "graficos-titulos-appname-ecpm-requests.svg"))
+        if invertida:
+            L += [f"\n**Top {len(tp['top_titulos_multi_app'])} títulos (por requests) en dos o más App Name:** una barra por App Name dentro de cada título, "
+                  "con altura = requests totales (vendidos o no) de ese título en esa app, en miles de millones, en el eje izquierdo (las 5 apps "
+                  "con más requests vendidos del título, de mayor a menor requests). La línea une el eCPM ponderado (eCPM > 0) de ese título en "
+                  "cada app, en el eje derecho. Línea punteada = eCPM ponderado del título en todas sus apps; sobre cada grupo, los requests "
+                  "totales del título. Las variantes de ViX (ViX: TV, Deportes y Noticias; ViX: TV, Sports and News; ViX: Cine y TV…; "
+                  "VIX - Filmes e TV) cuentan como una sola app, ViX.\n",
+                  "![títulos en varios App Name: requests totales (barras) y eCPM (línea) por app](recursos/graficos-titulos-appname-requests-ecpm.svg)\n"]
+        elif combinada:
             # desde v20: una sola grafica de doble eje (barras = eCPM, linea = requests) y las variantes de ViX juntas
             L += [f"\n**Top {len(tp['top_titulos_multi_app'])} títulos (por requests) en dos o más App Name:** una barra por App Name dentro de cada título, "
                   "con altura = eCPM ponderado de ese título en esa app (eCPM > 0; las 5 apps con más requests vendidos del título), en el eje "
@@ -262,14 +271,13 @@ def main():
             sec_genero = "7.2"
         if "requests" in st["genero"][0]:
             # desde v20: top 20 generos por requests, doble eje (barras = eCPM, linea = requests totales)
-            gs = st["genero"][:20]
-            gs = sorted(gs, key=lambda g: -(g["ecpm_ponderado"] if g["ecpm_ponderado"] is not None else -1))
-            L += [f"\n### {sec_genero} eCPM ponderado y requests totales por género en las filas sin título\n",
+            gs = st["genero"][:20]   # ya viene de mayor a menor requests, el mismo orden de la grafica
+            L += [f"\n### {sec_genero} Requests totales y eCPM ponderado por género en las filas sin título\n",
                   r2_texto(st),
-                  f"Top {len(gs)} géneros por requests totales. Barras = eCPM ponderado del género (eje izquierdo), de mayor a menor; línea = "
-                  "requests totales (vendidos o no) del género, en miles de millones (eje derecho). Línea punteada = eCPM ponderado de "
+                  f"Top {len(gs)} géneros por requests totales. Barras = requests totales (vendidos o no) del género, en miles de millones "
+                  "(eje izquierdo), de mayor a menor; línea = eCPM ponderado del género (eje derecho). Línea punteada = eCPM ponderado de "
                   "todas las filas sin título.\n",
-                  "![sin título: eCPM y requests por género](recursos/graficos-sin-titulo-genero.svg)\n",
+                  "![sin título: requests y eCPM por género](recursos/graficos-sin-titulo-genero-requests-ecpm.svg)\n",
                   "| Género | Filas | Requests | % vendido | % del tráfico vendido sin título | eCPM pond. |\n|---|---:|---:|---:|---:|---:|"]
             for g in gs:
                 L.append(f"| {g['genero']} | {n(g['filas'])} | {n(g['requests'])} | {pct(g['pct_vendido'])} | {pct(g['share_trafico_vendido_pct'])} | "

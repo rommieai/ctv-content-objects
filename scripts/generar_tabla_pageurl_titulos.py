@@ -5,9 +5,9 @@ Por titulo (titulo_clave del CSV de relleno) cuenta en cuantos App Name distinto
     titulos-appname.json                       distribucion de titulos por numero de App Name y el
                                                top de titulos con >= 2 App Name (requests, eCPM
                                                ponderado y reparto por app)
-    graficos-titulos-appname-ecpm-requests.svg top --top titulos en >= 2 App Name, doble eje Y: barra
-                                               por app = eCPM ponderado del titulo en la app (eje
-                                               izquierdo); linea = requests totales del titulo en
+    graficos-titulos-appname-requests-ecpm.svg top --top titulos en >= 2 App Name, doble eje Y: barra
+                                               por app = requests totales del titulo en la app (eje
+                                               izquierdo); linea = eCPM ponderado del titulo en
                                                cada app (eje derecho)
 
 Las variantes de ViX (ViX: TV, Deportes y Noticias, ViX: TV, Sports and News, ViX: Cine y TV..., VIX - Filmes
@@ -38,16 +38,16 @@ def app_canonica(app):
 
 
 def grafica(titulos, color, salida, min_share):
-    """Barras agrupadas por titulo, una por app, con doble eje Y: barras = eCPM ponderado del titulo en la app
-    (eje izquierdo); linea = requests totales del titulo en esa app (eje derecho, miles de millones)."""
+    """Barras agrupadas por titulo, una por app, con doble eje Y: barras = requests totales del titulo en la app
+    (eje izquierdo, miles de millones); linea = eCPM ponderado del titulo en esa app (eje derecho)."""
     W, H = 1040, 620
-    left, right, top_m, bottom = 60, 70, 140, 120
+    left, right, top_m, bottom = 60, 60, 140, 120
     pw, ph = W - left - right, H - top_m - bottom
-    ymax = max(x["ecpm_ponderado"] for t in titulos for x in t["apps_dibujadas"]) * 1.15
     rmax = max(x["requests"] / 1e9 for t in titulos for x in t["apps_dibujadas"]) * 1.15
-    tit = f"Top {len(titulos)} títulos emitidos por más de un App Name: eCPM ponderado y requests totales por app"
-    sub = ["Una barra por App Name dentro de cada título; su altura es el eCPM ponderado de ese título en esa app (filas con eCPM &gt; 0, eje izquierdo).",
-           "La línea une los requests totales (vendidos o no) de ese título en cada app, en miles de millones (eje derecho).",
+    emax = max(x["ecpm_ponderado"] for t in titulos for x in t["apps_dibujadas"]) * 1.15
+    tit = f"Top {len(titulos)} títulos emitidos por más de un App Name: requests totales y eCPM ponderado por app"
+    sub = ["Una barra por App Name dentro de cada título; su altura son los requests totales (vendidos o no) de ese título en esa app, en miles de millones (eje izquierdo).",
+           "La línea une el eCPM ponderado de ese título en cada app (filas con eCPM &gt; 0, eje derecho).",
            f"Las 5 apps con más requests vendidos del título (y al menos el {min_share:g}%). Línea punteada gris: eCPM ponderado del título en todas sus apps."]
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
          f'font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">',
@@ -67,26 +67,25 @@ def grafica(titulos, color, salida, min_share):
         lx, ly = 16, ly + 18
     o.append(f'<line x1="{lx}" y1="{ly + 6}" x2="{lx + 22}" y2="{ly + 6}" stroke="{INK}" stroke-width="2"/>'
              f'<circle cx="{lx + 11}" cy="{ly + 6}" r="3.5" fill="#ffffff" stroke="{INK}" stroke-width="2"/>')
-    o.append(f'<text x="{lx + 28}" y="{ly + 10}" font-size="11" fill="{INK}">requests totales (eje derecho)</text>')
+    o.append(f'<text x="{lx + 28}" y="{ly + 10}" font-size="11" fill="{INK}">eCPM ponderado (eje derecho)</text>')
     ybase = top_m + ph
-    step = 1 if ymax <= 8 else 2
-    v = 0
-    while v < ymax:
-        y = ybase - ph * v / ymax
-        o.append(f'<line x1="{left}" y1="{y:.1f}" x2="{left + pw}" y2="{y:.1f}" stroke="{GRID}"/>')
-        o.append(f'<text x="{left - 6}" y="{y + 4:.1f}" text-anchor="end" font-size="10.5" fill="{INK2}">${v:g}</text>')
-        v += step
     rstep = next(s for s in (0.1, 0.25, 0.5, 1, 2, 5, 10, 20) if rmax / s <= 8)
     v = 0
     while v < rmax:
         y = ybase - ph * v / rmax
-        o.append(f'<line x1="{left + pw}" y1="{y:.1f}" x2="{left + pw + 4}" y2="{y:.1f}" stroke="{INK2}"/>')
-        o.append(f'<text x="{left + pw + 7}" y="{y + 4:.1f}" font-size="10.5" fill="{INK2}">{v:g}</text>')
+        o.append(f'<line x1="{left}" y1="{y:.1f}" x2="{left + pw}" y2="{y:.1f}" stroke="{GRID}"/>')
+        o.append(f'<text x="{left - 6}" y="{y + 4:.1f}" text-anchor="end" font-size="10.5" fill="{INK2}">{v:g}</text>')
         v += rstep
+    v = 0
+    while v < emax:
+        y = ybase - ph * v / emax
+        o.append(f'<line x1="{left + pw}" y1="{y:.1f}" x2="{left + pw + 4}" y2="{y:.1f}" stroke="{INK2}"/>')
+        o.append(f'<text x="{left + pw + 7}" y="{y + 4:.1f}" font-size="10.5" fill="{INK2}">${v:g}</text>')
+        v += 1 if emax <= 10 else 2
     o.append(f'<line x1="{left + pw}" y1="{top_m}" x2="{left + pw}" y2="{ybase}" stroke="{INK2}"/>')
-    o.append(f'<text transform="translate(18,{top_m + ph / 2:.1f}) rotate(-90)" text-anchor="middle" fill="{INK}">eCPM ponderado del título ($)</text>')
-    o.append(f'<text transform="translate({W - 14},{top_m + ph / 2:.1f}) rotate(90)" text-anchor="middle" fill="{INK}">'
+    o.append(f'<text transform="translate(18,{top_m + ph / 2:.1f}) rotate(-90)" text-anchor="middle" fill="{INK}">'
              f'requests totales del título en la app (miles de millones)</text>')
+    o.append(f'<text transform="translate({W - 14},{top_m + ph / 2:.1f}) rotate(90)" text-anchor="middle" fill="{INK}">eCPM ponderado del título ($)</text>')
     bw = pw / len(titulos)
     lineas, etiquetas = [], []
     for i, t in enumerate(titulos):
@@ -96,26 +95,28 @@ def grafica(titulos, color, salida, min_share):
         w = gw / len(apps_t)
         pts = []
         for j, x in enumerate(apps_t):
-            h = ph * x["ecpm_ponderado"] / ymax
+            h = ph * x["requests"] / 1e9 / rmax
             bx = gx0 + w * j
             o.append(f'<rect x="{bx + 1:.1f}" y="{ybase - h:.1f}" width="{max(w - 2, 1):.1f}" height="{h:.1f}" rx="2" fill="{color[x["app"]]}"/>')
-            etiquetas.append(f'<text x="{bx + w / 2:.1f}" y="{ybase - h - 4:.1f}" text-anchor="middle" font-size="{9 if w < 22 else 10}" fill="{INK}" '
-                             f'stroke="#ffffff" stroke-width="3" paint-order="stroke">{x["ecpm_ponderado"]:.2f}</text>')
-            pts.append((bx + w / 2, ybase - ph * (x["requests"] / 1e9) / rmax))
-        yt = ybase - ph * t["ecpm_ponderado"] / ymax
+            etiquetas.append(f'<text x="{bx + w / 2:.1f}" y="{ybase - h - 4:.1f}" text-anchor="middle" font-size="{9 if w < 22 else 10}" fill="{INK2}" '
+                             f'stroke="#ffffff" stroke-width="3" paint-order="stroke">{x["requests"] / 1e9:.2f}</text>')
+            pts.append((bx + w / 2, ybase - ph * x["ecpm_ponderado"] / emax, x["ecpm_ponderado"]))
+        yt = ybase - ph * t["ecpm_ponderado"] / emax
         o.append(f'<line x1="{gx0:.1f}" y1="{yt:.1f}" x2="{gx0 + gw:.1f}" y2="{yt:.1f}" stroke="{INK2}" stroke-width="1.5" stroke-dasharray="4 3"/>')
         lineas.append(pts)
         o.append(f'<text x="{gx0 + gw / 2:.1f}" y="{top_m - 6}" text-anchor="middle" font-size="10" fill="{INK2}">total {t["requests"] / 1e9:.2f}</text>')
         o.append(f'<text transform="translate({gx0 + gw / 2:.1f},{ybase + 10}) rotate(35)" font-size="10.5" fill="{INK}">{esc(t["titulo"][:26])}</text>')
         if i < len(titulos) - 1:
             o.append(f'<line x1="{left + bw * (i + 1):.1f}" y1="{top_m}" x2="{left + bw * (i + 1):.1f}" y2="{ybase}" stroke="{GRID}"/>')
-    # la linea de requests va encima de las barras, un tramo por titulo
+    o += etiquetas
+    # la linea de eCPM va encima de las barras, un tramo por titulo, con el valor sobre cada punto
     for pts in lineas:
         if len(pts) > 1:
-            o.append(f'<polyline points="{" ".join(f"{px:.1f},{py:.1f}" for px, py in pts)}" fill="none" stroke="{INK}" stroke-width="2"/>')
-        for px, py in pts:
+            o.append(f'<polyline points="{" ".join(f"{px:.1f},{py:.1f}" for px, py, _ in pts)}" fill="none" stroke="{INK}" stroke-width="2"/>')
+        for px, py, e in pts:
             o.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="3.5" fill="#ffffff" stroke="{INK}" stroke-width="2"/>')
-    o += etiquetas   # el valor de eCPM de cada barra, por encima de la linea para que se lea
+            o.append(f'<text x="{px:.1f}" y="{py - 7:.1f}" text-anchor="middle" font-size="9.5" font-weight="700" fill="{INK}" '
+                     f'stroke="#ffffff" stroke-width="3" paint-order="stroke">{e:.2f}</text>')
     o.append("</svg>")
     open(salida, "w", encoding="utf-8").write("\n".join(o))
 
@@ -174,14 +175,14 @@ def main():
     MIN_SHARE = 2.0   # apps con menos del 2% de los requests vendidos del titulo no se dibujan
     for t in titulos:
         top5 = [x for x in t["apps"] if x["pct_requests_vendidos"] >= MIN_SHARE][:5]   # top 5 apps del titulo por requests
-        t["apps_dibujadas"] = sorted(top5, key=lambda x: -x["ecpm_ponderado"])           # barras de mayor a menor eCPM
+        t["apps_dibujadas"] = sorted(top5, key=lambda x: -x["requests"])                 # barras de mayor a menor requests
     # solo las apps que se dibujan reciben color (en orden de peso); no hay grupo "otras"
     usadas = Counter()
     for t in titulos:
         for x in t["apps_dibujadas"]:
             usadas[x["app"]] += x["pct_requests_vendidos"] * t["requests_vendidos"]
     color = {app: PALETA[i % len(PALETA)] for i, (app, _) in enumerate(usadas.most_common())}
-    grafica(titulos, color, os.path.join(a.salida_dir, "graficos-titulos-appname-ecpm-requests.svg"), MIN_SHARE)
+    grafica(titulos, color, os.path.join(a.salida_dir, "graficos-titulos-appname-requests-ecpm.svg"), MIN_SHARE)
     print(f"-> {a.salida_dir}: {n:,} titulos; {len(multi):,} en >=2 App Name; top {len(titulos)}")
 
 

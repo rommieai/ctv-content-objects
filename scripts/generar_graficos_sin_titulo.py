@@ -7,9 +7,9 @@ como llega (antes del relleno; el enriquecido solo le agrega genero_normalizado 
                                     dos marcas por columna unidas por una linea del color de la
                                     columna, con el % de filas de cada grupo
   graficos-sin-titulo-con-sin-dato-requests.svg  lo mismo con los requests totales de cada grupo en el eje x
-  graficos-sin-titulo-genero.svg    top 20 generos (normalizados, sin el sufijo "(generico)") por requests
-                                    en las filas sin titulo, doble eje Y: barras = eCPM ponderado,
-                                    linea = requests totales
+  graficos-sin-titulo-genero-requests-ecpm.svg  top 20 generos (normalizados, sin el sufijo "(generico)") por
+                                    requests en las filas sin titulo, doble eje Y: barras = requests
+                                    totales (izquierdo), linea = eCPM ponderado (derecho)
   graficos-sin-titulo.json          los datos de las dos graficas
 
 eCPM ponderado = sum(eCPM x requests) / sum(requests) de las filas con requests > 0 y eCPM > 0.
@@ -223,12 +223,11 @@ def main():
     o.append("</svg>")
     open(os.path.join(a.salida_dir, "graficos-sin-titulo-con-sin-dato-requests.svg"), "w", encoding="utf-8").write("\n".join(o))
 
-    # ---- 2. barras + linea: top 20 generos por requests; barras = eCPM ponderado (eje izquierdo),
-    #      linea = requests totales (eje derecho). Barras de mayor a menor eCPM; sin venta al final.
+    # ---- 2. barras + linea: top 20 generos por requests; barras = requests totales (eje izquierdo),
+    #      linea = eCPM ponderado (eje derecho). Barras de mayor a menor requests.
     gs = out["genero"][:TOP_GENEROS]
-    gs.sort(key=lambda g: -(g["ecpm_ponderado"] if g["ecpm_ponderado"] is not None else -1))
     W2, H2 = 1040, 600
-    left2, right2, top2, bottom2 = 60, 70, 110, 130
+    left2, right2, top2, bottom2 = 60, 60, 110, 130
     pw2, ph2 = W2 - left2 - right2, H2 - top2 - bottom2
     emax = max(g["ecpm_ponderado"] or 0 for g in gs) * 1.15
     rmax = max(g["requests"] for g in gs) / 1e9 * 1.15
@@ -236,28 +235,28 @@ def main():
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W2}" height="{H2}" viewBox="0 0 {W2} {H2}" '
          f'font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">',
          f'<rect width="{W2}" height="{H2}" fill="#ffffff"/>',
-         f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Registros sin contentTitle: eCPM ponderado y requests totales por género</text>',
-         f'<text x="16" y="44" font-size="12" fill="{INK2}">Top {len(gs)} géneros (normalizados, tal como llegan, antes del relleno) por requests totales. Barras: eCPM ponderado (eje izquierdo), de mayor a menor.</text>',
-         f'<text x="16" y="60" font-size="12" fill="{INK2}">Línea: requests totales (vendidos o no) del género, en miles de millones (eje derecho). Línea punteada: ${mu:.2f}, el ponderado de todas las filas sin título.</text>',
-         f'<rect x="16" y="72" width="12" height="12" rx="2" fill="{AZUL}"/><text x="32" y="82" font-size="11" fill="{INK}">eCPM ponderado (eje izquierdo)</text>',
+         f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Registros sin contentTitle: requests totales y eCPM ponderado por género</text>',
+         f'<text x="16" y="44" font-size="12" fill="{INK2}">Top {len(gs)} géneros (normalizados, tal como llegan, antes del relleno) por requests totales. Barras: requests totales (vendidos o no),</text>',
+         f'<text x="16" y="60" font-size="12" fill="{INK2}">en miles de millones (eje izquierdo). Línea: eCPM ponderado del género (eje derecho). Línea punteada: ${mu:.2f}, el ponderado de todas las filas sin título.</text>',
+         f'<rect x="16" y="72" width="12" height="12" rx="2" fill="{AZUL}"/><text x="32" y="82" font-size="11" fill="{INK}">requests totales (eje izquierdo)</text>',
          f'<line x1="210" y1="78" x2="232" y2="78" stroke="{INK}" stroke-width="2"/><circle cx="221" cy="78" r="3.5" fill="#ffffff" stroke="{INK}" stroke-width="2"/>'
-         f'<text x="238" y="82" font-size="11" fill="{INK}">requests totales (eje derecho)</text>']
-    v = 0
-    while v < emax:
-        y = yb - ph2 * v / emax
-        o.append(f'<line x1="{left2}" y1="{y:.1f}" x2="{left2 + pw2}" y2="{y:.1f}" stroke="{GRID}"/>')
-        o.append(f'<text x="{left2 - 6}" y="{y + 4:.1f}" text-anchor="end" font-size="10.5" fill="{INK2}">${v:g}</text>')
-        v += 1 if emax <= 10 else 2
+         f'<text x="238" y="82" font-size="11" fill="{INK}">eCPM ponderado (eje derecho)</text>']
     rstep = next(s for s in (1, 2, 5, 10, 20, 25, 50, 100) if rmax / s <= 8)
     v = 0
     while v < rmax:
         y = yb - ph2 * v / rmax
-        o.append(f'<line x1="{left2 + pw2}" y1="{y:.1f}" x2="{left2 + pw2 + 4}" y2="{y:.1f}" stroke="{INK2}"/>')
-        o.append(f'<text x="{left2 + pw2 + 7}" y="{y + 4:.1f}" font-size="10.5" fill="{INK2}">{v:g}</text>')
+        o.append(f'<line x1="{left2}" y1="{y:.1f}" x2="{left2 + pw2}" y2="{y:.1f}" stroke="{GRID}"/>')
+        o.append(f'<text x="{left2 - 6}" y="{y + 4:.1f}" text-anchor="end" font-size="10.5" fill="{INK2}">{v:g}</text>')
         v += rstep
+    v = 0
+    while v < emax:
+        y = yb - ph2 * v / emax
+        o.append(f'<line x1="{left2 + pw2}" y1="{y:.1f}" x2="{left2 + pw2 + 4}" y2="{y:.1f}" stroke="{INK2}"/>')
+        o.append(f'<text x="{left2 + pw2 + 7}" y="{y + 4:.1f}" font-size="10.5" fill="{INK2}">${v:g}</text>')
+        v += 1 if emax <= 10 else 2
     o.append(f'<line x1="{left2 + pw2}" y1="{top2}" x2="{left2 + pw2}" y2="{yb}" stroke="{INK2}"/>')
-    o.append(f'<text transform="translate(18,{top2 + ph2 / 2:.1f}) rotate(-90)" text-anchor="middle" fill="{INK}">eCPM ponderado ($)</text>')
-    o.append(f'<text transform="translate({W2 - 14},{top2 + ph2 / 2:.1f}) rotate(90)" text-anchor="middle" fill="{INK}">requests totales (miles de millones)</text>')
+    o.append(f'<text transform="translate(18,{top2 + ph2 / 2:.1f}) rotate(-90)" text-anchor="middle" fill="{INK}">requests totales (miles de millones)</text>')
+    o.append(f'<text transform="translate({W2 - 14},{top2 + ph2 / 2:.1f}) rotate(90)" text-anchor="middle" fill="{INK}">eCPM ponderado ($)</text>')
     ym = yb - ph2 * mu / emax
     o.append(f'<line x1="{left2}" y1="{ym:.1f}" x2="{left2 + pw2}" y2="{ym:.1f}" stroke="{INK2}" stroke-dasharray="5 4"/>')
     bw = pw2 / len(gs)
@@ -265,21 +264,21 @@ def main():
     for i, g in enumerate(gs):
         cx = left2 + bw * (i + 0.5)
         w = bw * 0.62
+        h = ph2 * g["requests"] / 1e9 / rmax
+        o.append(f'<rect x="{cx - w / 2:.1f}" y="{yb - h:.1f}" width="{w:.1f}" height="{h:.1f}" rx="2" fill="{AZUL}"/>')
+        etiquetas.append(f'<text x="{cx:.1f}" y="{yb - h - 4:.1f}" text-anchor="middle" font-size="9.5" fill="{INK2}" '
+                         f'stroke="#ffffff" stroke-width="3" paint-order="stroke">{g["requests"] / 1e9:.1f}</text>')
         if g["ecpm_ponderado"] is not None:
-            h = ph2 * g["ecpm_ponderado"] / emax
-            o.append(f'<rect x="{cx - w / 2:.1f}" y="{yb - h:.1f}" width="{w:.1f}" height="{h:.1f}" rx="2" fill="{AZUL}"/>')
-            etiquetas.append(f'<text x="{cx:.1f}" y="{yb - h - 4:.1f}" text-anchor="middle" font-size="10" fill="{INK}" '
-                             f'stroke="#ffffff" stroke-width="3" paint-order="stroke">{g["ecpm_ponderado"]:.2f}</text>')
-        else:
-            etiquetas.append(f'<text x="{cx:.1f}" y="{yb - 6:.1f}" text-anchor="middle" font-size="9.5" fill="{INK2}">sin venta</text>')
-        pts.append((cx, yb - ph2 * g["requests"] / 1e9 / rmax))
+            pts.append((cx, yb - ph2 * g["ecpm_ponderado"] / emax, g["ecpm_ponderado"]))
         o.append(f'<text transform="translate({cx - 3:.1f},{yb + 12}) rotate(40)" font-size="10.5" fill="{INK}">{esc(g["genero"][:24])}</text>')
-    o.append(f'<polyline points="{" ".join(f"{px:.1f},{py:.1f}" for px, py in pts)}" fill="none" stroke="{INK}" stroke-width="2"/>')
-    for px, py in pts:
-        o.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="3.5" fill="#ffffff" stroke="{INK}" stroke-width="2"/>')
     o += etiquetas
+    o.append(f'<polyline points="{" ".join(f"{px:.1f},{py:.1f}" for px, py, _ in pts)}" fill="none" stroke="{INK}" stroke-width="2"/>')
+    for px, py, e in pts:
+        o.append(f'<circle cx="{px:.1f}" cy="{py:.1f}" r="3.5" fill="#ffffff" stroke="{INK}" stroke-width="2"/>')
+        o.append(f'<text x="{px:.1f}" y="{py - 8:.1f}" text-anchor="middle" font-size="10" font-weight="700" fill="{INK}" '
+                 f'stroke="#ffffff" stroke-width="3" paint-order="stroke">{e:.2f}</text>')
     o.append("</svg>")
-    open(os.path.join(a.salida_dir, "graficos-sin-titulo-genero.svg"), "w", encoding="utf-8").write("\n".join(o))
+    open(os.path.join(a.salida_dir, "graficos-sin-titulo-genero-requests-ecpm.svg"), "w", encoding="utf-8").write("\n".join(o))
     print(f"-> {a.salida_dir}: {n_filas:,} filas sin titulo; eCPM {mu:.3f}; top {len(gs)} generos")
 
 
