@@ -150,15 +150,32 @@ def main():
               "| App Name distintos por título | % de títulos | % de requests |\n|---:|---:|---:|"]
         for b_ in tp["por_app_name"]:
             L.append(f"| {b_['n']} | {pct(b_['pct_titulos'])} | {pct(b_['pct_requests'])} |")
-        L += [f"\n**Top {len(tp['top_titulos_multi_app'])} títulos (por requests) en dos o más App Name:** una barra por App Name dentro de cada título, "
-              "con altura = eCPM ponderado de ese título en esa app (eCPM > 0; las 5 apps con más requests vendidos del título). "
-              "Línea punteada = eCPM ponderado del título en todas sus apps.\n",
-              "![títulos en varios App Name: eCPM y reparto por app](recursos/graficos-titulos-appname-barras.svg)\n",
-              "| Título | App Name | Requests | eCPM pond. | Reparto por app (% de requests vendidos, eCPM pond. de la app) |\n|---|---:|---:|---:|---|"]
+        combinada = os.path.exists(os.path.join(R, "graficos-titulos-appname-ecpm-requests.svg"))
+        if combinada:
+            # desde v20: una sola grafica de doble eje (barras = eCPM, linea = requests) y las variantes de ViX juntas
+            L += [f"\n**Top {len(tp['top_titulos_multi_app'])} títulos (por requests) en dos o más App Name:** una barra por App Name dentro de cada título, "
+                  "con altura = eCPM ponderado de ese título en esa app (eCPM > 0; las 5 apps con más requests vendidos del título), en el eje "
+                  "izquierdo. La línea une los requests totales (vendidos o no) de ese título en cada app, en miles de millones, en el eje derecho. "
+                  "Línea punteada = eCPM ponderado del título en todas sus apps; sobre cada grupo, los requests totales del título. Las variantes de "
+                  "ViX (ViX: TV, Deportes y Noticias; ViX: TV, Sports and News; ViX: Cine y TV…; VIX - Filmes e TV) cuentan como una sola app, ViX.\n",
+                  "![títulos en varios App Name: eCPM (barras) y requests totales (línea) por app](recursos/graficos-titulos-appname-ecpm-requests.svg)\n"]
+        else:
+            L += [f"\n**Top {len(tp['top_titulos_multi_app'])} títulos (por requests) en dos o más App Name:** una barra por App Name dentro de cada título, "
+                  "con altura = eCPM ponderado de ese título en esa app (eCPM > 0; las 5 apps con más requests vendidos del título). "
+                  "Línea punteada = eCPM ponderado del título en todas sus apps.\n",
+                  "![títulos en varios App Name: eCPM y reparto por app](recursos/graficos-titulos-appname-barras.svg)\n"]
+        L += ["| Título | App Name | Requests | eCPM pond. | Reparto por app (% de requests vendidos, eCPM pond. de la app) |\n|---|---:|---:|---:|---|"]
         for t_ in tp["top_titulos_multi_app"]:
             reparto = ", ".join(f"{x['app']} {x['pct_requests_vendidos']:.0f}% (${x['ecpm_ponderado']:.2f})" for x in t_["apps"][:5])
             L.append(f"| {t_['titulo']} | {t_['app_names']} | {n(t_['requests'])} | ${t_['ecpm_ponderado']:.2f} | {reparto} |")
-        if os.path.exists(os.path.join(R, "graficos-titulos-appname-requests.svg")):
+        if combinada:
+            L += ["\n| Título | Requests del título | Requests por app (% de los requests del título) |\n|---|---:|---|"]
+            for t_ in tp["top_titulos_multi_app"]:
+                top5 = [x for x in t_["apps"] if x["pct_requests_vendidos"] >= 2.0][:5]
+                reparto = ", ".join(f"{x['app']} {n(x['requests'])} ({100 * x['requests'] / t_['requests']:.0f}%)"
+                                    for x in sorted(top5, key=lambda x: -x["requests"]))
+                L.append(f"| {t_['titulo']} | {n(t_['requests'])} | {reparto} |")
+        elif os.path.exists(os.path.join(R, "graficos-titulos-appname-requests.svg")):
             L += ["\n**Los mismos títulos, con los requests totales en el eje Y:** mismas apps, orden de barras y colores que la gráfica anterior; "
                   "altura = requests totales (vendidos o no) de ese título en esa app, en miles de millones. Sobre cada grupo, los requests "
                   "totales del título en todas sus apps.\n",

@@ -152,21 +152,21 @@ Un punto por App Name con requests vendidos (222 apps; otras 273 no vendieron na
 
 | App Name distintos por título | % de títulos | % de requests |
 |---:|---:|---:|
-| 1 | 49.4% | 6.9% |
-| 2 | 26.2% | 8.1% |
-| 3 | 6.6% | 1.8% |
-| 4 | 4.0% | 2.3% |
-| 5+ | 13.8% | 80.9% |
+| 1 | 49.7% | 6.9% |
+| 2 | 26.2% | 8.3% |
+| 3 | 8.9% | 13.1% |
+| 4 | 3.7% | 2.0% |
+| 5+ | 11.5% | 69.7% |
 
-**Top 10 títulos (por requests) en dos o más App Name:** una barra por App Name dentro de cada título, con altura = eCPM ponderado de ese título en esa app (eCPM > 0; las 5 apps con más requests vendidos del título). Línea punteada = eCPM ponderado del título en todas sus apps.
+**Top 10 títulos (por requests) en dos o más App Name:** una barra por App Name dentro de cada título, con altura = eCPM ponderado de ese título en esa app (eCPM > 0; las 5 apps con más requests vendidos del título), en el eje izquierdo. La línea une los requests totales (vendidos o no) de ese título en cada app, en miles de millones, en el eje derecho. Línea punteada = eCPM ponderado del título en todas sus apps; sobre cada grupo, los requests totales del título. Las variantes de ViX (ViX: TV, Deportes y Noticias; ViX: TV, Sports and News; ViX: Cine y TV…; VIX - Filmes e TV) cuentan como una sola app, ViX.
 
-![títulos en varios App Name: eCPM y reparto por app](recursos/graficos-titulos-appname-barras.svg)
+![títulos en varios App Name: eCPM (barras) y requests totales (línea) por app](recursos/graficos-titulos-appname-ecpm-requests.svg)
 
 | Título | App Name | Requests | eCPM pond. | Reparto por app (% de requests vendidos, eCPM pond. de la app) |
 |---|---:|---:|---:|---|
-| lo que la vida me robo | 7 | 3,511,882,880 | $2.18 | ViX: TV, Deportes y Noticias 70% ($2.35), Vidaa 13% ($1.71), Not Available 8% ($1.43), ViX: Cine y TV Gratis en Español 5% ($2.29), ViX: TV, Sports and News 4% ($2.17) |
+| lo que la vida me robo | 3 | 3,511,882,880 | $2.18 | ViX 79% ($2.33), Vidaa 13% ($1.71), Not Available 8% ($1.43) |
 | hatchback | 7 | 2,815,142,560 | $3.29 | Live TV 56% ($2.60), MovieArk: Stream Movies & Live 33% ($3.75), TCL CHANNEL 7% ($4.36), Browser TV Web - BrowseHere 3% ($7.92), Not Available 0% ($4.14) |
-| eve | 12 | 2,797,905,120 | $3.17 | Live TV 57% ($2.86), MovieArk: Stream Movies & Live 35% ($3.46), TCL CHANNEL 3% ($5.21), ViX: TV, Deportes y Noticias 2% ($2.41), Browser TV Web - BrowseHere 2% ($5.67) |
+| eve | 9 | 2,797,905,120 | $3.17 | Live TV 57% ($2.86), MovieArk: Stream Movies & Live 35% ($3.46), TCL CHANNEL 3% ($5.21), ViX 2% ($2.42), Browser TV Web - BrowseHere 2% ($5.67) |
 | brooklyn love stories | 8 | 2,737,916,400 | $3.38 | Live TV 59% ($2.82), MovieArk: Stream Movies & Live 36% ($3.94), TCL CHANNEL 3% ($6.15), Browser TV Web - BrowseHere 2% ($5.82), Not Available 0% ($3.85) |
 | corona | 7 | 2,677,168,960 | $3.21 | Live TV 60% ($2.70), MovieArk: Stream Movies & Live 34% ($3.70), TCL CHANNEL 3% ($5.51), Browser TV Web - BrowseHere 2% ($6.63), Not Available 0% ($3.91) |
 | american apocalypse | 8 | 2,674,928,800 | $3.16 | Live TV 59% ($2.81), MovieArk: Stream Movies & Live 35% ($3.40), TCL CHANNEL 3% ($5.01), Browser TV Web - BrowseHere 2% ($6.09), Not Available 0% ($5.06) |
@@ -175,15 +175,11 @@ Un punto por App Name con requests vendidos (222 apps; otras 273 no vendieron na
 | humble pie | 7 | 1,922,197,280 | $5.23 | Live TV 47% ($4.17), MovieArk: Stream Movies & Live 27% ($5.73), TCL CHANNEL 16% ($6.19), Browser TV Web - BrowseHere 9% ($7.43), Not Available 0% ($7.03) |
 | chicken stew | 7 | 1,903,984,640 | $5.78 | TCL CHANNEL 55% ($5.40), Browser TV Web - BrowseHere 24% ($9.02), Live TV 13% ($2.78), MovieArk: Stream Movies & Live 7% ($3.29), Not Available 0% ($4.54) |
 
-**Los mismos títulos, con los requests totales en el eje Y:** mismas apps, orden de barras y colores que la gráfica anterior; altura = requests totales (vendidos o no) de ese título en esa app, en miles de millones. Sobre cada grupo, los requests totales del título en todas sus apps.
-
-![títulos en varios App Name: requests totales por app](recursos/graficos-titulos-appname-requests.svg)
-
 | Título | Requests del título | Requests por app (% de los requests del título) |
 |---|---:|---|
-| lo que la vida me robo | 3,511,882,880 | ViX: TV, Deportes y Noticias 2,380,816,320 (68%), Vidaa 473,650,400 (13%), Not Available 261,579,360 (7%), ViX: Cine y TV Gratis en Español 190,794,720 (5%), ViX: TV, Sports and News 163,713,760 (5%) |
+| lo que la vida me robo | 3,511,882,880 | ViX 2,776,653,120 (79%), Vidaa 473,650,400 (13%), Not Available 261,579,360 (7%) |
 | hatchback | 2,815,142,560 | MovieArk: Stream Movies & Live 1,334,235,360 (47%), Live TV 1,125,077,520 (40%), TCL CHANNEL 191,568,480 (7%), Browser TV Web - BrowseHere 119,245,040 (4%) |
-| eve | 2,797,905,120 | MovieArk: Stream Movies & Live 1,380,068,960 (49%), Live TV 1,149,500,960 (41%), TCL CHANNEL 99,131,040 (4%), ViX: TV, Deportes y Noticias 29,376,640 (1%) |
+| eve | 2,797,905,120 | MovieArk: Stream Movies & Live 1,380,068,960 (49%), Live TV 1,149,500,960 (41%), TCL CHANNEL 99,131,040 (4%), ViX 33,724,880 (1%) |
 | brooklyn love stories | 2,737,916,400 | MovieArk: Stream Movies & Live 1,365,519,680 (50%), Live TV 1,139,000,640 (42%), TCL CHANNEL 103,420,800 (4%), Browser TV Web - BrowseHere 85,371,280 (3%) |
 | corona | 2,677,168,960 | MovieArk: Stream Movies & Live 1,330,091,840 (50%), Live TV 1,116,852,160 (42%), TCL CHANNEL 100,840,560 (4%) |
 | american apocalypse | 2,674,928,800 | MovieArk: Stream Movies & Live 1,331,661,600 (50%), Live TV 1,118,762,000 (42%), TCL CHANNEL 99,637,200 (4%) |

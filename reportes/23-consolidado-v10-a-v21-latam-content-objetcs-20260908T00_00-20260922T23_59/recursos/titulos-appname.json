@@ -5,48 +5,48 @@
  "por_app_name": [
   {
    "n": "1",
-   "titulos": 8567,
-   "pct_titulos": 49.4,
+   "titulos": 8613,
+   "pct_titulos": 49.7,
    "pct_requests": 6.9
   },
   {
    "n": "2",
-   "titulos": 4539,
+   "titulos": 4538,
    "pct_titulos": 26.2,
-   "pct_requests": 8.1
+   "pct_requests": 8.3
   },
   {
    "n": "3",
-   "titulos": 1138,
-   "pct_titulos": 6.6,
-   "pct_requests": 1.8
+   "titulos": 1544,
+   "pct_titulos": 8.9,
+   "pct_requests": 13.1
   },
   {
    "n": "4",
-   "titulos": 701,
-   "pct_titulos": 4.0,
-   "pct_requests": 2.3
+   "titulos": 647,
+   "pct_titulos": 3.7,
+   "pct_requests": 2.0
   },
   {
    "n": "5+",
-   "titulos": 2400,
-   "pct_titulos": 13.8,
-   "pct_requests": 80.9
+   "titulos": 2003,
+   "pct_titulos": 11.5,
+   "pct_requests": 69.7
   }
  ],
  "top_titulos_multi_app": [
   {
    "titulo": "lo que la vida me robo",
-   "app_names": 7,
+   "app_names": 3,
    "requests": 3511882880,
    "requests_vendidos": 3424111040,
    "ecpm_ponderado": 2.183,
    "apps": [
     {
-     "app": "ViX: TV, Deportes y Noticias",
-     "requests": 2380816320,
-     "pct_requests_vendidos": 69.5,
-     "ecpm_ponderado": 2.345
+     "app": "ViX",
+     "requests": 2776653120,
+     "pct_requests_vendidos": 79.3,
+     "ecpm_ponderado": 2.333
     },
     {
      "app": "Vidaa",
@@ -59,24 +59,6 @@
      "requests": 261579360,
      "pct_requests_vendidos": 7.5,
      "ecpm_ponderado": 1.433
-    },
-    {
-     "app": "ViX: Cine y TV Gratis en Español",
-     "requests": 190794720,
-     "pct_requests_vendidos": 5.4,
-     "ecpm_ponderado": 2.292
-    },
-    {
-     "app": "ViX: TV, Sports and News",
-     "requests": 163713760,
-     "pct_requests_vendidos": 3.7,
-     "ecpm_ponderado": 2.166
-    },
-    {
-     "app": "ViX: Cine y TV en Español",
-     "requests": 40641440,
-     "pct_requests_vendidos": 0.8,
-     "ecpm_ponderado": 2.415
     }
    ]
   },
@@ -127,7 +109,7 @@
   },
   {
    "titulo": "eve",
-   "app_names": 12,
+   "app_names": 9,
    "requests": 2797905120,
    "requests_vendidos": 1439147920,
    "ecpm_ponderado": 3.172,
@@ -151,10 +133,10 @@
      "ecpm_ponderado": 5.21
     },
     {
-     "app": "ViX: TV, Deportes y Noticias",
-     "requests": 29376640,
-     "pct_requests_vendidos": 2.0,
-     "ecpm_ponderado": 2.413
+     "app": "ViX",
+     "requests": 33724880,
+     "pct_requests_vendidos": 2.1,
+     "ecpm_ponderado": 2.421
     },
     {
      "app": "Browser TV Web - BrowseHere",
@@ -179,24 +161,6 @@
      "requests": 6685920,
      "pct_requests_vendidos": 0.2,
      "ecpm_ponderado": 2.672
-    },
-    {
-     "app": "ViX: Cine y TV Gratis en Español",
-     "requests": 1533280,
-     "pct_requests_vendidos": 0.1,
-     "ecpm_ponderado": 1.625
-    },
-    {
-     "app": "ViX: TV, Sports and News",
-     "requests": 2554640,
-     "pct_requests_vendidos": 0.0,
-     "ecpm_ponderado": 3.172
-    },
-    {
-     "app": "ViX: Cine y TV en Español",
-     "requests": 260320,
-     "pct_requests_vendidos": 0.0,
-     "ecpm_ponderado": 4.935
     }
    ]
   },
