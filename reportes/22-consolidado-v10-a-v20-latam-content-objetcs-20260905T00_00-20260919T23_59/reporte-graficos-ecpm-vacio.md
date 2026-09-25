@@ -206,11 +206,11 @@ Canal = filas cuyo Publisher o App Name lo nombra (Caracol via OB / ditu por Car
 
 *Win y Telefe no aparecen en el consolidado: ningún Publisher ni App Name los nombra.*
 
-## 6. Canales: requests totales vs eCPM ponderado
+## 6. Canales: eCPM ponderado vs requests totales
 
-Un punto por canal (mismos canales y misma definición de la sección 5). x = requests totales del canal en escala logarítmica; y = eCPM ponderado de sus filas con eCPM > 0; un canal con requests pero sin ninguna fila vendida va en $0 con un punto hueco. Junto al punto, requests totales y % de requests vendidos.
+Un punto por canal (mismos canales y misma definición de la sección 5). x = eCPM ponderado de sus filas con eCPM > 0; un canal con requests pero sin ninguna fila vendida va en $0 con un punto hueco; y = requests totales del canal en escala logarítmica. Junto al punto, requests totales y % de requests vendidos.
 
-![canales: requests vs eCPM](recursos/graficos-canales-requests-ecpm.svg)
+![canales: eCPM vs requests](recursos/graficos-canales-ecpm-requests.svg)
 
 | Canal | Requests | Requests vendidos | % vendido | eCPM pond. |
 |---|---:|---:|---:|---:|

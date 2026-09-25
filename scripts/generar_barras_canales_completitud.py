@@ -143,55 +143,54 @@ def main():
         o.append(f'<text x="{x0 + w / 2:.1f}" y="{ybase + 33}" text-anchor="middle" font-size="10.5" fill="{INK2}">{d["filas"]:,} filas</text>')
     o.append("</svg>")
     open(os.path.join(a.salida_dir, "graficos-canales-completitud-barras.svg"), "w", encoding="utf-8").write("\n".join(o))
-    svg_scatter(out, os.path.join(a.salida_dir, "graficos-canales-requests-ecpm.svg"))
+    svg_scatter(out, os.path.join(a.salida_dir, "graficos-canales-ecpm-requests.svg"))
     for d in out["canales"]:
         print(f'{d["canal"]:10} filas {d["filas"]:>7,}  promedio {d["completitud_promedio"]}  eCPM {d["ecpm_ponderado"]}  pubs {d["publishers"][:2]}')
 
 
 def svg_scatter(out, path):
-    """Un punto por canal: requests totales (x, escala log) vs eCPM ponderado (y)."""
+    """Un punto por canal: eCPM ponderado (x) vs requests totales (y, escala log)."""
     import math
     # los canales con requests pero sin ninguna fila vendida (p. ej. Canal 13) van en $0 con un punto hueco
     pts = [d for d in out["canales"] if d["requests"]]
     W, H = 900, 540
-    left, right, top_m, bottom = 64, 40, 86, 70
+    left, right, top_m, bottom = 84, 40, 86, 70
     pw, ph = W - left - right, H - top_m - bottom
-    xs = [math.log10(d["requests"]) for d in pts]
-    lo, hi = math.floor(min(xs)) , math.ceil(max(xs))
-    ymax = max(d["ecpm_ponderado"] or 0 for d in pts) * 1.2
+    ys = [math.log10(d["requests"]) for d in pts]
+    lo, hi = math.floor(min(ys)), math.ceil(max(ys))
+    xmax = max(d["ecpm_ponderado"] or 0 for d in pts) * 1.2
 
-    def X(q):
-        return left + pw * (0.04 + 0.92 * (math.log10(q) - lo) / (hi - lo))   # margen para que el punto no pise el eje
+    def X(e):
+        return left + pw * (0.03 + 0.94 * e / xmax)   # margen para que el punto en $0 no pise el eje
 
-    def Y(e):
-        return top_m + ph * (1 - e / ymax)
+    def Y(q):
+        return top_m + ph * (1 - (0.04 + 0.92 * (math.log10(q) - lo) / (hi - lo)))
     o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" '
          f'font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">',
          f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
-         f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Canales: requests totales vs eCPM ponderado</text>',
-         f'<text x="16" y="44" font-size="12" fill="{INK2}">Un punto por canal (Publisher o App Name que lo nombra). x = requests totales del canal en escala logarítmica;</text>',
-         f'<text x="16" y="60" font-size="12" fill="{INK2}">y = eCPM ponderado de sus filas con eCPM &gt; 0 (punto hueco en $0: canal sin ninguna fila vendida). Junto al punto, requests y % vendidos.</text>']
+         f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Canales: eCPM ponderado vs requests totales</text>',
+         f'<text x="16" y="44" font-size="12" fill="{INK2}">Un punto por canal (Publisher o App Name que lo nombra). x = eCPM ponderado de sus filas con eCPM &gt; 0 (punto hueco en $0: canal sin</text>',
+         f'<text x="16" y="60" font-size="12" fill="{INK2}">ninguna fila vendida); y = requests totales del canal en escala logarítmica. Junto al punto, requests y % vendidos.</text>']
     for k in range(lo, hi + 1):
         q = 10 ** k
-        o.append(f'<line x1="{X(q):.1f}" y1="{top_m}" x2="{X(q):.1f}" y2="{top_m + ph}" stroke="{GRID}"/>')
+        o.append(f'<line x1="{left}" y1="{Y(q):.1f}" x2="{left + pw}" y2="{Y(q):.1f}" stroke="{GRID}"/>')
         lab = {6: "1 M", 7: "10 M", 8: "100 M", 9: "1,000 M", 10: "10,000 M", 11: "100,000 M"}.get(k, f"1e{k}")
-        o.append(f'<text x="{X(q):.1f}" y="{top_m + ph + 18}" text-anchor="middle" font-size="10.5" fill="{INK2}">{lab}</text>')
-    step = 1 if ymax <= 8 else 2
+        o.append(f'<text x="{left - 6}" y="{Y(q) + 4:.1f}" text-anchor="end" font-size="10.5" fill="{INK2}">{lab}</text>')
+    step = 1 if xmax <= 8 else 2
     v = 0
-    while v < ymax:
-        o.append(f'<line x1="{left}" y1="{Y(v):.1f}" x2="{left + pw}" y2="{Y(v):.1f}" stroke="{GRID}"/>')
-        o.append(f'<text x="{left - 6}" y="{Y(v) + 4:.1f}" text-anchor="end" font-size="10.5" fill="{INK2}">${v}</text>')
+    while v < xmax:
+        o.append(f'<line x1="{X(v):.1f}" y1="{top_m}" x2="{X(v):.1f}" y2="{top_m + ph}" stroke="{GRID}"/>')
+        o.append(f'<text x="{X(v):.1f}" y="{top_m + ph + 18}" text-anchor="middle" font-size="10.5" fill="{INK2}">${v}</text>')
         v += step
-    o.append(f'<text x="{left + pw / 2:.1f}" y="{H - 30}" text-anchor="middle" fill="{INK}">requests totales del canal (escala log)</text>')
-    o.append(f'<text transform="translate(18,{top_m + ph / 2:.1f}) rotate(-90)" text-anchor="middle" fill="{INK}">eCPM ponderado ($)</text>')
+    o.append(f'<text x="{left + pw / 2:.1f}" y="{H - 30}" text-anchor="middle" fill="{INK}">eCPM ponderado ($)</text>')
+    o.append(f'<text transform="translate(18,{top_m + ph / 2:.1f}) rotate(-90)" text-anchor="middle" fill="{INK}">requests totales del canal (escala log)</text>')
     for d in pts:
         vendio = d["ecpm_ponderado"] is not None
-        x, y = X(d["requests"]), Y(d["ecpm_ponderado"] if vendio else 0)
+        x, y = X(d["ecpm_ponderado"] if vendio else 0), Y(d["requests"])
         if vendio:
             o.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="8" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>')
         else:
             o.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="7" fill="#ffffff" stroke="#2a78d6" stroke-width="2.5"/>')
-            y -= 14   # la etiqueta sube para no pisar el eje x
         # etiqueta a la derecha del punto, o a la izquierda si queda cerca del borde derecho
         izq = x > left + pw * 0.72
         tx, anc = (x - 12, "end") if izq else (x + 12, "start")
