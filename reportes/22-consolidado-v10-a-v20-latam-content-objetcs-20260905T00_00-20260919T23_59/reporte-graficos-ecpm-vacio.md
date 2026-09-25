@@ -210,7 +210,7 @@ Canal = filas cuyo Publisher o App Name lo nombra (Caracol via OB / ditu por Car
 
 Un punto por canal (mismos canales y misma definición de la sección 5). x = eCPM ponderado de sus filas con eCPM > 0; un canal con requests pero sin ninguna fila vendida va en $0 con un punto hueco; y = requests totales del canal en escala logarítmica. Junto al punto, requests totales y % de requests vendidos.
 
-![canales: eCPM vs requests](recursos/graficos-canales-ecpm-requests.svg)
+![canales: eCPM vs requests](recursos/graficos-canales-ecpm-requests-log1.svg)
 
 | Canal | Requests | Requests vendidos | % vendido | eCPM pond. |
 |---|---:|---:|---:|---:|

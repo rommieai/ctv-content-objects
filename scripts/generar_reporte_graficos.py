@@ -216,12 +216,12 @@ def main():
                      + " | ".join(pct(d["pct_llenas"][c]) for c in cols) + " |")
         L.append("\n*Win y Telefe no aparecen en el consolidado: ningún Publisher ni App Name los nombra.*\n")
         # ---- 6. canales: requests totales vs eCPM ponderado ----
-        if os.path.exists(os.path.join(R, "graficos-canales-ecpm-requests.svg")):
+        if os.path.exists(os.path.join(R, "graficos-canales-ecpm-requests-log1.svg")):
             L += ["## 6. Canales: eCPM ponderado vs requests totales\n",
                   "Un punto por canal (mismos canales y misma definición de la sección 5). x = eCPM ponderado de sus filas con eCPM > 0; "
                   "un canal con requests pero sin ninguna fila vendida va en $0 con un punto hueco; y = requests totales del canal en escala "
                   "logarítmica. Junto al punto, requests totales y % de requests vendidos.\n",
-                  "![canales: eCPM vs requests](recursos/graficos-canales-ecpm-requests.svg)\n"]
+                  "![canales: eCPM vs requests](recursos/graficos-canales-ecpm-requests-log1.svg)\n"]
         else:
             L += ["## 6. Canales: requests totales vs eCPM ponderado\n",
                   "Un punto por canal (mismos canales y misma definición de la sección 5). x = requests totales del canal en escala "

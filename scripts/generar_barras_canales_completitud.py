@@ -143,7 +143,7 @@ def main():
         o.append(f'<text x="{x0 + w / 2:.1f}" y="{ybase + 33}" text-anchor="middle" font-size="10.5" fill="{INK2}">{d["filas"]:,} filas</text>')
     o.append("</svg>")
     open(os.path.join(a.salida_dir, "graficos-canales-completitud-barras.svg"), "w", encoding="utf-8").write("\n".join(o))
-    svg_scatter(out, os.path.join(a.salida_dir, "graficos-canales-ecpm-requests.svg"))
+    svg_scatter(out, os.path.join(a.salida_dir, "graficos-canales-ecpm-requests-log1.svg"))
     for d in out["canales"]:
         print(f'{d["canal"]:10} filas {d["filas"]:>7,}  promedio {d["completitud_promedio"]}  eCPM {d["ecpm_ponderado"]}  pubs {d["publishers"][:2]}')
 
