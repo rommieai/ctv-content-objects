@@ -247,12 +247,40 @@ def main():
             df = dif(d)
             cel.append("—" if df == float("-inf") else f"{'+' if df >= 0 else '−'}${abs(df):.2f}")
             L.append(f"| {c} | " + " | ".join(cel) + " |")
-        L += ["\n### 7.2 eCPM ponderado por género en las filas sin título\n",
-              r2_texto(st),
-              "![sin título: eCPM por género](recursos/graficos-sin-titulo-genero.svg)\n",
-              "| Género | Filas | % del tráfico vendido sin título | eCPM pond. |\n|---|---:|---:|---:|"]
-        for g in sorted([g for g in st["genero"] if g["share_trafico_vendido_pct"] >= 0.5], key=lambda g: -g["ecpm_ponderado"]):
-            L.append(f"| {g['genero']} | {n(g['filas'])} | {pct(g['share_trafico_vendido_pct'])} | ${g['ecpm_ponderado']:.2f} |")
+        if os.path.exists(os.path.join(R, "graficos-sin-titulo-con-sin-dato-requests.svg")):
+            L += ["\n### 7.2 Requests totales con y sin dato en cada columna\n",
+                  "Las mismas filas sin título y los mismos dos grupos por columna que en 7.1 (mismo orden de columnas), con los requests "
+                  "totales (vendidos o no) de cada grupo en el eje x, en miles de millones. En cada columna los dos puntos suman el total "
+                  f"de requests sin título ({n(st['requests'])}).\n",
+                  "![sin título: requests totales con y sin dato por columna](recursos/graficos-sin-titulo-con-sin-dato-requests.svg)\n",
+                  "| Columna | Requests con dato | % requests con dato | Requests sin dato | % requests sin dato |\n|---|---:|---:|---:|---:|"]
+            for c, d in sorted(st["columnas"].items(), key=lambda kv: -dif(kv[1])):
+                L.append(f"| {c} | {n(d['con']['requests'])} | {pct(100 * d['con']['requests'] / st['requests'])} | "
+                         f"{n(d['sin']['requests'])} | {pct(100 * d['sin']['requests'] / st['requests'])} |")
+            sec_genero = "7.3"
+        else:
+            sec_genero = "7.2"
+        if "requests" in st["genero"][0]:
+            # desde v20: top 20 generos por requests, doble eje (barras = eCPM, linea = requests totales)
+            gs = st["genero"][:20]
+            gs = sorted(gs, key=lambda g: -(g["ecpm_ponderado"] if g["ecpm_ponderado"] is not None else -1))
+            L += [f"\n### {sec_genero} eCPM ponderado y requests totales por género en las filas sin título\n",
+                  r2_texto(st),
+                  f"Top {len(gs)} géneros por requests totales. Barras = eCPM ponderado del género (eje izquierdo), de mayor a menor; línea = "
+                  "requests totales (vendidos o no) del género, en miles de millones (eje derecho). Línea punteada = eCPM ponderado de "
+                  "todas las filas sin título.\n",
+                  "![sin título: eCPM y requests por género](recursos/graficos-sin-titulo-genero.svg)\n",
+                  "| Género | Filas | Requests | % vendido | % del tráfico vendido sin título | eCPM pond. |\n|---|---:|---:|---:|---:|---:|"]
+            for g in gs:
+                L.append(f"| {g['genero']} | {n(g['filas'])} | {n(g['requests'])} | {pct(g['pct_vendido'])} | {pct(g['share_trafico_vendido_pct'])} | "
+                         + (f"${g['ecpm_ponderado']:.2f}" if g["ecpm_ponderado"] is not None else "— (sin venta)") + " |")
+        else:
+            L += [f"\n### {sec_genero} eCPM ponderado por género en las filas sin título\n",
+                  r2_texto(st),
+                  "![sin título: eCPM por género](recursos/graficos-sin-titulo-genero.svg)\n",
+                  "| Género | Filas | % del tráfico vendido sin título | eCPM pond. |\n|---|---:|---:|---:|"]
+            for g in sorted([g for g in st["genero"] if g["share_trafico_vendido_pct"] >= 0.5], key=lambda g: -g["ecpm_ponderado"]):
+                L.append(f"| {g['genero']} | {n(g['filas'])} | {pct(g['share_trafico_vendido_pct'])} | ${g['ecpm_ponderado']:.2f} |")
         L.append("")
     out = os.path.join(D, "reporte-graficos-ecpm-vacio.md")
     with open(out, "w", encoding="utf-8", newline="\n") as f:

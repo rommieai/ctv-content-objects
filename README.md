@@ -38,8 +38,8 @@ scripts/                          codigo que genera los consolidados y los JSON
   generar_barras_canales_completitud.py  por canal (Caracol, RCN, Canal 13, Televisa, TV Azteca...):
                                   barras apiladas de completitud de los 8 content objects y scatter
                                   requests totales vs eCPM ponderado (+ JSON)
-  generar_graficos_sin_titulo.py  solo filas sin contentTitle: eCPM ponderado con y sin dato en
-                                  cada columna, y eCPM por genero (+ JSON, con el R2 de cada content
+  generar_graficos_sin_titulo.py  solo filas sin contentTitle: eCPM ponderado y requests con y sin dato en
+                                  cada columna, y top 20 generos con eCPM (barras) y requests (linea) (+ JSON, con el R2 de cada content
                                   object solo y sobre publisher x pais); usa el CSV antes del relleno
   generar_reporte_vacios.py       markdown "content objects cuando X esta vacio" a partir del
                                   JSON de analizar.py --solo-vacios-en X y del JSON completo

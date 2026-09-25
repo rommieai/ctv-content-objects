@@ -242,28 +242,49 @@ Filas sin título del consolidado tal como llega, antes del relleno. Por columna
 | contentGenre | 86.8% | 72.3% | $3.72 | 13.2% | 77.3% | $3.90 | −$0.18 |
 | contentIsLiveStream | 24.1% | 83.6% | $3.03 | 75.9% | 63.6% | $4.82 | −$1.79 |
 
-### 7.2 eCPM ponderado por género en las filas sin título
+### 7.2 Requests totales con y sin dato en cada columna
+
+Las mismas filas sin título y los mismos dos grupos por columna que en 7.1 (mismo orden de columnas), con los requests totales (vendidos o no) de cada grupo en el eje x, en miles de millones. En cada columna los dos puntos suman el total de requests sin título (168,504,973,440).
+
+![sin título: requests totales con y sin dato por columna](recursos/graficos-sin-titulo-con-sin-dato-requests.svg)
+
+| Columna | Requests con dato | % requests con dato | Requests sin dato | % requests sin dato |
+|---|---:|---:|---:|---:|
+| contentLength | 41,266,965,520 | 24.5% | 127,238,007,920 | 75.5% |
+| contentSeries | 5,751,329,520 | 3.4% | 162,753,643,920 | 96.6% |
+| contentCategory | 61,012,936,480 | 36.2% | 107,492,036,960 | 63.8% |
+| contentRating | 111,533,957,760 | 66.2% | 56,971,015,680 | 33.8% |
+| contentLanguage | 124,730,478,400 | 74.0% | 43,774,495,040 | 26.0% |
+| contentGenre | 115,160,241,760 | 68.3% | 53,344,731,680 | 31.7% |
+| contentIsLiveStream | 86,685,706,720 | 51.4% | 81,819,266,720 | 48.6% |
+
+### 7.3 eCPM ponderado y requests totales por género en las filas sin título
 
 Género normalizado tal como llega. Explica el 24.4 % de la variación del eCPM ponderado solo y aporta 2.0 puntos más controlando por publisher × país (rating: 17.2 % y 3.2 puntos; livestream, length, categoría y series: 1.3 puntos o menos).
 
-![sin título: eCPM por género](recursos/graficos-sin-titulo-genero.svg)
+Top 20 géneros por requests totales. Barras = eCPM ponderado del género (eje izquierdo), de mayor a menor; línea = requests totales (vendidos o no) del género, en miles de millones (eje derecho). Línea punteada = eCPM ponderado de todas las filas sin título.
 
-| Género | Filas | % del tráfico vendido sin título | eCPM pond. |
-|---|---:|---:|---:|
-| concursos | 513 | 0.5% | $6.24 |
-| documental | 2,476 | 0.7% | $5.60 |
-| aventura | 1,309 | 0.9% | $5.43 |
-| gastronomia | 544 | 0.9% | $5.25 |
-| noticias | 2,528 | 5.4% | $5.22 |
-| pelicula (generico) | 2,043 | 0.8% | $4.74 |
-| drama | 8,356 | 12.3% | $4.72 |
-| accion | 4,777 | 4.2% | $4.69 |
-| thriller | 1,925 | 0.7% | $4.41 |
-| entretenimiento | 3,913 | 9.5% | $4.28 |
-| terror | 2,186 | 1.2% | $3.90 |
-| (sin género) | 32,982 | 34.8% | $3.88 |
-| comedia | 5,594 | 4.4% | $3.86 |
-| reality | 2,777 | 0.6% | $3.07 |
-| romance | 2,365 | 2.3% | $2.96 |
-| animacion | 355 | 0.5% | $2.92 |
-| deportes | 3,704 | 18.4% | $1.78 |
+![sin título: eCPM y requests por género](recursos/graficos-sin-titulo-genero.svg)
+
+| Género | Filas | Requests | % vendido | % del tráfico vendido sin título | eCPM pond. |
+|---|---:|---:|---:|---:|---:|
+| concursos | 513 | 821,322,800 | 74.7% | 0.5% | $6.24 |
+| documental | 2,476 | 1,454,175,040 | 56.6% | 0.7% | $5.60 |
+| aventura | 1,309 | 2,461,647,840 | 47.1% | 0.9% | $5.43 |
+| gastronomia | 544 | 1,796,414,560 | 61.6% | 0.9% | $5.25 |
+| noticias | 2,528 | 7,835,973,920 | 86.4% | 5.4% | $5.22 |
+| crimen | 3,456 | 1,003,974,800 | 49.9% | 0.4% | $5.18 |
+| western | 445 | 736,645,920 | 75.8% | 0.4% | $5.09 |
+| pelicula | 2,043 | 1,389,085,520 | 75.1% | 0.8% | $4.74 |
+| drama | 8,356 | 23,087,972,960 | 66.1% | 12.3% | $4.72 |
+| accion | 4,777 | 7,016,618,080 | 75.4% | 4.2% | $4.69 |
+| thriller | 1,925 | 1,153,996,320 | 76.6% | 0.7% | $4.41 |
+| entretenimiento | 3,913 | 15,960,341,920 | 73.7% | 9.5% | $4.28 |
+| terror | 2,186 | 2,079,547,840 | 69.6% | 1.2% | $3.90 |
+| (sin género) | 32,982 | 60,324,150,960 | 71.9% | 34.8% | $3.88 |
+| comedia | 5,594 | 7,252,312,320 | 75.7% | 4.4% | $3.86 |
+| reality | 2,777 | 1,335,986,160 | 59.5% | 0.6% | $3.07 |
+| romance | 2,365 | 3,564,387,280 | 80.0% | 2.3% | $2.96 |
+| animacion | 355 | 1,187,768,560 | 52.8% | 0.5% | $2.92 |
+| musica | 649 | 588,109,360 | 63.2% | 0.3% | $2.64 |
+| deportes | 3,704 | 24,677,548,400 | 92.8% | 18.4% | $1.78 |

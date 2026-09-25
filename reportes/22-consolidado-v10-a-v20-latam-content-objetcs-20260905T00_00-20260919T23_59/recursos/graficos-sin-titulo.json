@@ -137,245 +137,315 @@
   {
    "genero": "(sin género)",
    "filas": 32360,
+   "requests": 57943260400,
    "requests_vendidos": 41185450240,
+   "pct_vendido": 71.1,
    "share_trafico_vendido_pct": 37.4,
    "ecpm_ponderado": 4.238
   },
   {
    "genero": "deportes",
    "filas": 3610,
+   "requests": 21103643840,
    "requests_vendidos": 19472950240,
+   "pct_vendido": 92.3,
    "share_trafico_vendido_pct": 17.7,
    "ecpm_ponderado": 1.79
   },
   {
    "genero": "drama",
    "filas": 8227,
+   "requests": 20897932560,
    "requests_vendidos": 12621694640,
+   "pct_vendido": 60.4,
    "share_trafico_vendido_pct": 11.5,
    "ecpm_ponderado": 5.452
   },
   {
    "genero": "entretenimiento",
    "filas": 3808,
+   "requests": 15969619120,
    "requests_vendidos": 11775274160,
+   "pct_vendido": 73.7,
    "share_trafico_vendido_pct": 10.7,
    "ecpm_ponderado": 4.33
   },
   {
    "genero": "noticias",
    "filas": 2437,
+   "requests": 7454753440,
    "requests_vendidos": 6398283040,
+   "pct_vendido": 85.8,
    "share_trafico_vendido_pct": 5.8,
    "ecpm_ponderado": 5.258
   },
   {
    "genero": "comedia",
    "filas": 5495,
+   "requests": 6745655280,
    "requests_vendidos": 3927823360,
+   "pct_vendido": 58.2,
    "share_trafico_vendido_pct": 3.6,
    "ecpm_ponderado": 3.306
   },
   {
    "genero": "accion",
    "filas": 4692,
+   "requests": 6007107040,
    "requests_vendidos": 3442898880,
+   "pct_vendido": 57.3,
    "share_trafico_vendido_pct": 3.1,
    "ecpm_ponderado": 4.669
   },
   {
    "genero": "romance",
    "filas": 2309,
+   "requests": 3448791760,
    "requests_vendidos": 2608974240,
+   "pct_vendido": 75.6,
    "share_trafico_vendido_pct": 2.4,
    "ecpm_ponderado": 2.685
   },
   {
+   "genero": "aventura",
+   "filas": 1274,
+   "requests": 2386531040,
+   "requests_vendidos": 1077046160,
+   "pct_vendido": 45.1,
+   "share_trafico_vendido_pct": 1.0,
+   "ecpm_ponderado": 5.341
+  },
+  {
    "genero": "terror",
    "filas": 2136,
+   "requests": 1957364640,
    "requests_vendidos": 1359671600,
+   "pct_vendido": 69.5,
    "share_trafico_vendido_pct": 1.2,
    "ecpm_ponderado": 4.841
   },
   {
    "genero": "gastronomia",
    "filas": 529,
+   "requests": 1819690880,
    "requests_vendidos": 1146900480,
+   "pct_vendido": 63.0,
    "share_trafico_vendido_pct": 1.0,
    "ecpm_ponderado": 5.184
   },
   {
-   "genero": "aventura",
-   "filas": 1274,
-   "requests_vendidos": 1077046160,
-   "share_trafico_vendido_pct": 1.0,
-   "ecpm_ponderado": 5.341
-  },
-  {
-   "genero": "pelicula (generico)",
-   "filas": 1991,
-   "requests_vendidos": 949898080,
-   "share_trafico_vendido_pct": 0.9,
-   "ecpm_ponderado": 4.46
-  },
-  {
-   "genero": "concursos",
-   "filas": 472,
-   "requests_vendidos": 634026720,
-   "share_trafico_vendido_pct": 0.6,
-   "ecpm_ponderado": 6.238
-  },
-  {
    "genero": "documental",
    "filas": 2408,
+   "requests": 1364902400,
    "requests_vendidos": 592827600,
+   "pct_vendido": 43.4,
    "share_trafico_vendido_pct": 0.5,
    "ecpm_ponderado": 5.923
   },
   {
-   "genero": "animacion",
-   "filas": 339,
-   "requests_vendidos": 567694000,
-   "share_trafico_vendido_pct": 0.5,
-   "ecpm_ponderado": 2.963
+   "genero": "pelicula",
+   "filas": 1991,
+   "requests": 1287367120,
+   "requests_vendidos": 949898080,
+   "pct_vendido": 73.8,
+   "share_trafico_vendido_pct": 0.9,
+   "ecpm_ponderado": 4.46
   },
   {
    "genero": "reality",
    "filas": 2702,
+   "requests": 1229691360,
    "requests_vendidos": 560233360,
+   "pct_vendido": 45.6,
    "share_trafico_vendido_pct": 0.5,
    "ecpm_ponderado": 2.446
   },
   {
+   "genero": "animacion",
+   "filas": 339,
+   "requests": 1102251680,
+   "requests_vendidos": 567694000,
+   "pct_vendido": 51.5,
+   "share_trafico_vendido_pct": 0.5,
+   "ecpm_ponderado": 2.963
+  },
+  {
    "genero": "thriller",
    "filas": 1887,
+   "requests": 981399120,
    "requests_vendidos": 538752480,
+   "pct_vendido": 54.9,
    "share_trafico_vendido_pct": 0.5,
    "ecpm_ponderado": 4.292
   },
   {
-   "genero": "musica",
-   "filas": 649,
-   "requests_vendidos": 371702560,
-   "share_trafico_vendido_pct": 0.3,
-   "ecpm_ponderado": 2.636
-  },
-  {
-   "genero": "religion",
-   "filas": 224,
-   "requests_vendidos": 252938080,
-   "share_trafico_vendido_pct": 0.2,
-   "ecpm_ponderado": 1.628
-  },
-  {
    "genero": "crimen",
    "filas": 3394,
+   "requests": 883261360,
    "requests_vendidos": 193895200,
+   "pct_vendido": 22.0,
    "share_trafico_vendido_pct": 0.2,
    "ecpm_ponderado": 4.771
   },
   {
-   "genero": "lifestyle",
-   "filas": 606,
-   "requests_vendidos": 93002720,
-   "share_trafico_vendido_pct": 0.1,
-   "ecpm_ponderado": 4.147
+   "genero": "concursos",
+   "filas": 472,
+   "requests": 816689760,
+   "requests_vendidos": 634026720,
+   "pct_vendido": 77.6,
+   "share_trafico_vendido_pct": 0.6,
+   "ecpm_ponderado": 6.238
   },
   {
-   "genero": "anime",
-   "filas": 762,
-   "requests_vendidos": 92436800,
-   "share_trafico_vendido_pct": 0.1,
-   "ecpm_ponderado": 7.192
-  },
-  {
-   "genero": "videojuegos",
-   "filas": 331,
-   "requests_vendidos": 80894080,
-   "share_trafico_vendido_pct": 0.1,
-   "ecpm_ponderado": 1.231
-  },
-  {
-   "genero": "telenovela",
-   "filas": 931,
-   "requests_vendidos": 57834400,
-   "share_trafico_vendido_pct": 0.1,
-   "ecpm_ponderado": 2.882
-  },
-  {
-   "genero": "educacion",
-   "filas": 230,
-   "requests_vendidos": 37810880,
-   "share_trafico_vendido_pct": 0.0,
-   "ecpm_ponderado": 4.168
-  },
-  {
-   "genero": "tv/series (generico)",
-   "filas": 692,
-   "requests_vendidos": 20304480,
-   "share_trafico_vendido_pct": 0.0,
-   "ecpm_ponderado": 5.024
-  },
-  {
-   "genero": "misterio",
-   "filas": 804,
-   "requests_vendidos": 14703360,
-   "share_trafico_vendido_pct": 0.0,
-   "ecpm_ponderado": 4.531
-  },
-  {
-   "genero": "infantil-familia",
-   "filas": 616,
-   "requests_vendidos": 12442960,
-   "share_trafico_vendido_pct": 0.0,
-   "ecpm_ponderado": 3.995
-  },
-  {
-   "genero": "sci-fi",
-   "filas": 1050,
-   "requests_vendidos": 12208960,
-   "share_trafico_vendido_pct": 0.0,
-   "ecpm_ponderado": 3.854
-  },
-  {
-   "genero": "viajes",
-   "filas": 218,
-   "requests_vendidos": 5246320,
-   "share_trafico_vendido_pct": 0.0,
-   "ecpm_ponderado": 3.995
+   "genero": "musica",
+   "filas": 649,
+   "requests": 588109360,
+   "requests_vendidos": 371702560,
+   "pct_vendido": 63.2,
+   "share_trafico_vendido_pct": 0.3,
+   "ecpm_ponderado": 2.636
   },
   {
    "genero": "western",
    "filas": 428,
+   "requests": 581664960,
    "requests_vendidos": 2795360,
+   "pct_vendido": 0.5,
    "share_trafico_vendido_pct": 0.0,
    "ecpm_ponderado": 3.331
   },
   {
-   "genero": "talk show",
-   "filas": 182,
-   "requests_vendidos": 2063120,
+   "genero": "infantil-familia",
+   "filas": 616,
+   "requests": 354590880,
+   "requests_vendidos": 12442960,
+   "pct_vendido": 3.5,
    "share_trafico_vendido_pct": 0.0,
-   "ecpm_ponderado": 1.924
+   "ecpm_ponderado": 3.995
+  },
+  {
+   "genero": "anime",
+   "filas": 762,
+   "requests": 338815680,
+   "requests_vendidos": 92436800,
+   "pct_vendido": 27.3,
+   "share_trafico_vendido_pct": 0.1,
+   "ecpm_ponderado": 7.192
+  },
+  {
+   "genero": "telenovela",
+   "filas": 931,
+   "requests": 306597760,
+   "requests_vendidos": 57834400,
+   "pct_vendido": 18.9,
+   "share_trafico_vendido_pct": 0.1,
+   "ecpm_ponderado": 2.882
+  },
+  {
+   "genero": "religion",
+   "filas": 224,
+   "requests": 291309440,
+   "requests_vendidos": 252938080,
+   "pct_vendido": 86.8,
+   "share_trafico_vendido_pct": 0.2,
+   "ecpm_ponderado": 1.628
+  },
+  {
+   "genero": "lifestyle",
+   "filas": 606,
+   "requests": 271084160,
+   "requests_vendidos": 93002720,
+   "pct_vendido": 34.3,
+   "share_trafico_vendido_pct": 0.1,
+   "ecpm_ponderado": 4.147
+  },
+  {
+   "genero": "tv/series",
+   "filas": 692,
+   "requests": 255831280,
+   "requests_vendidos": 20304480,
+   "pct_vendido": 7.9,
+   "share_trafico_vendido_pct": 0.0,
+   "ecpm_ponderado": 5.024
+  },
+  {
+   "genero": "sci-fi",
+   "filas": 1050,
+   "requests": 197775600,
+   "requests_vendidos": 12208960,
+   "pct_vendido": 6.2,
+   "share_trafico_vendido_pct": 0.0,
+   "ecpm_ponderado": 3.854
+  },
+  {
+   "genero": "misterio",
+   "filas": 804,
+   "requests": 125373440,
+   "requests_vendidos": 14703360,
+   "pct_vendido": 11.7,
+   "share_trafico_vendido_pct": 0.0,
+   "ecpm_ponderado": 4.531
   },
   {
    "genero": "fantasia",
    "filas": 473,
+   "requests": 121332400,
    "requests_vendidos": 1112480,
+   "pct_vendido": 0.9,
    "share_trafico_vendido_pct": 0.0,
    "ecpm_ponderado": 2.736
   },
   {
+   "genero": "videojuegos",
+   "filas": 331,
+   "requests": 119675520,
+   "requests_vendidos": 80894080,
+   "pct_vendido": 67.6,
+   "share_trafico_vendido_pct": 0.1,
+   "ecpm_ponderado": 1.231
+  },
+  {
+   "genero": "educacion",
+   "filas": 230,
+   "requests": 98614720,
+   "requests_vendidos": 37810880,
+   "pct_vendido": 38.3,
+   "share_trafico_vendido_pct": 0.0,
+   "ecpm_ponderado": 4.168
+  },
+  {
    "genero": "belico",
    "filas": 150,
+   "requests": 43409200,
    "requests_vendidos": 438960,
+   "pct_vendido": 1.0,
    "share_trafico_vendido_pct": 0.0,
    "ecpm_ponderado": 1.57
   },
   {
+   "genero": "talk show",
+   "filas": 182,
+   "requests": 20627760,
+   "requests_vendidos": 2063120,
+   "pct_vendido": 10.0,
+   "share_trafico_vendido_pct": 0.0,
+   "ecpm_ponderado": 1.924
+  },
+  {
+   "genero": "viajes",
+   "filas": 218,
+   "requests": 17666560,
+   "requests_vendidos": 5246320,
+   "pct_vendido": 29.7,
+   "share_trafico_vendido_pct": 0.0,
+   "ecpm_ponderado": 3.995
+  },
+  {
    "genero": "otros/desconocido",
    "filas": 63,
+   "requests": 6696800,
    "requests_vendidos": 103360,
+   "pct_vendido": 1.5,
    "share_trafico_vendido_pct": 0.0,
    "ecpm_ponderado": 0.448
   }
