@@ -151,18 +151,17 @@ def main():
 def svg_scatter(out, path):
     """Un punto por canal: requests totales (x, escala log) vs eCPM ponderado (y)."""
     import math
-    pts = [d for d in out["canales"] if d["requests"] and d["ecpm_ponderado"] is not None]
-    sin = [d["canal"] for d in out["canales"] if not d["requests"]]
-    sin_venta = [d["canal"] for d in out["canales"] if d["requests"] and d["ecpm_ponderado"] is None]
+    # los canales con requests pero sin ninguna fila vendida (p. ej. Canal 13) van en $0 con un punto hueco
+    pts = [d for d in out["canales"] if d["requests"]]
     W, H = 900, 540
     left, right, top_m, bottom = 64, 40, 86, 70
     pw, ph = W - left - right, H - top_m - bottom
     xs = [math.log10(d["requests"]) for d in pts]
     lo, hi = math.floor(min(xs)) , math.ceil(max(xs))
-    ymax = max(d["ecpm_ponderado"] for d in pts) * 1.2
+    ymax = max(d["ecpm_ponderado"] or 0 for d in pts) * 1.2
 
     def X(q):
-        return left + pw * (math.log10(q) - lo) / (hi - lo)
+        return left + pw * (0.04 + 0.92 * (math.log10(q) - lo) / (hi - lo))   # margen para que el punto no pise el eje
 
     def Y(e):
         return top_m + ph * (1 - e / ymax)
@@ -171,7 +170,7 @@ def svg_scatter(out, path):
          f'<rect width="{W}" height="{H}" fill="#ffffff"/>',
          f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Canales: requests totales vs eCPM ponderado</text>',
          f'<text x="16" y="44" font-size="12" fill="{INK2}">Un punto por canal (Publisher o App Name que lo nombra). x = requests totales del canal en escala logarítmica;</text>',
-         f'<text x="16" y="60" font-size="12" fill="{INK2}">y = eCPM ponderado de sus filas con eCPM &gt; 0. Junto al punto, requests totales y % de requests vendidos.</text>']
+         f'<text x="16" y="60" font-size="12" fill="{INK2}">y = eCPM ponderado de sus filas con eCPM &gt; 0 (punto hueco en $0: canal sin ninguna fila vendida). Junto al punto, requests y % vendidos.</text>']
     for k in range(lo, hi + 1):
         q = 10 ** k
         o.append(f'<line x1="{X(q):.1f}" y1="{top_m}" x2="{X(q):.1f}" y2="{top_m + ph}" stroke="{GRID}"/>')
@@ -186,20 +185,19 @@ def svg_scatter(out, path):
     o.append(f'<text x="{left + pw / 2:.1f}" y="{H - 30}" text-anchor="middle" fill="{INK}">requests totales del canal (escala log)</text>')
     o.append(f'<text transform="translate(18,{top_m + ph / 2:.1f}) rotate(-90)" text-anchor="middle" fill="{INK}">eCPM ponderado ($)</text>')
     for d in pts:
-        x, y = X(d["requests"]), Y(d["ecpm_ponderado"])
-        o.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="8" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>')
+        vendio = d["ecpm_ponderado"] is not None
+        x, y = X(d["requests"]), Y(d["ecpm_ponderado"] if vendio else 0)
+        if vendio:
+            o.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="8" fill="#2a78d6" stroke="#ffffff" stroke-width="2"/>')
+        else:
+            o.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="7" fill="#ffffff" stroke="#2a78d6" stroke-width="2.5"/>')
+            y -= 14   # la etiqueta sube para no pisar el eje x
         # etiqueta a la derecha del punto, o a la izquierda si queda cerca del borde derecho
         izq = x > left + pw * 0.72
         tx, anc = (x - 12, "end") if izq else (x + 12, "start")
-        o.append(f'<text x="{tx:.1f}" y="{y - 2:.1f}" text-anchor="{anc}" font-size="12" font-weight="600" fill="{INK}">{esc(d["canal"])} · ${d["ecpm_ponderado"]:.2f}</text>')
+        ec = f'${d["ecpm_ponderado"]:.2f}' if vendio else "sin venta"
+        o.append(f'<text x="{tx:.1f}" y="{y - 2:.1f}" text-anchor="{anc}" font-size="12" font-weight="600" fill="{INK}">{esc(d["canal"])} · {ec}</text>')
         o.append(f'<text x="{tx:.1f}" y="{y + 12:.1f}" text-anchor="{anc}" font-size="10.5" fill="{INK2}">{d["requests"]:,} req · {d["pct_vendido"]:.0f}% vendidos</text>')
-    notas = []
-    if sin:
-        notas.append(f"Sin filas en el consolidado: {', '.join(sin)}.")
-    if sin_venta:
-        notas.append(f"Con requests pero sin ninguna fila vendida (eCPM > 0), por eso no tienen punto: {', '.join(sin_venta)}.")
-    if notas:
-        o.append(f'<text x="{left}" y="{H - 10}" font-size="10.5" fill="{INK2}">{esc(" ".join(notas))}</text>')
     o.append("</svg>")
     open(path, "w", encoding="utf-8").write("\n".join(o))
 

@@ -209,7 +209,8 @@ def main():
         # ---- 6. canales: requests totales vs eCPM ponderado ----
         L += ["## 6. Canales: requests totales vs eCPM ponderado\n",
               "Un punto por canal (mismos canales y misma definición de la sección 5). x = requests totales del canal en escala "
-              "logarítmica; y = eCPM ponderado de sus filas con eCPM > 0. Junto al punto, requests totales y % de requests vendidos.\n",
+              "logarítmica; y = eCPM ponderado de sus filas con eCPM > 0; un canal con requests pero sin ninguna fila vendida va en $0 con "
+              "un punto hueco. Junto al punto, requests totales y % de requests vendidos.\n",
               "![canales: requests vs eCPM](recursos/graficos-canales-requests-ecpm.svg)\n",
               "| Canal | Requests | Requests vendidos | % vendido | eCPM pond. |\n|---|---:|---:|---:|---:|"]
         for d in sorted(can["canales"], key=lambda d: -d["requests"]):
