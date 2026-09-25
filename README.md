@@ -61,7 +61,7 @@ scripts/                          codigo que genera los consolidados y los JSON
   generar_reporte_genero_series.py  sus dos markdown (genero, series)
 
 reportes/
-  old_reports/                    tandas hasta v17 (v10 a v17), archivadas para no hacer ruido:
+  old_reports/                    tandas hasta v18 (v10 a v18), archivadas para no hacer ruido:
     01-v10/                         primera exploracion (v10): resumen y detallado 18 paises
     02-v11/                         detallado de v11 (18 paises)
     03-consolidado-v10-v11/         comparativo v10 vs v11, unificado y normalizacion
@@ -85,12 +85,12 @@ reportes/
                                     DEMAS columnas en las filas donde ese viene vacio
     15-validacion-categorias-v17/   validacion de contentCategory sobre v10-a-v17
     16-validacion-genero-series-v17/  lo mismo para contentGenre y contentSeries
-  17-consolidado-v10-a-v18/         tanda anterior (v10 a v18, solo tablas): detallado por pais
-                                  (MX/CO/CL), publishers, normalizacion+eCPM, genero/titulo y
-                                  reporte-graficos-ecpm-vacio.md (scatter con R2, pies, heatmap)
-  18-enriquecimiento-externo-v18/ relleno de content objects sobre v10-a-v18 (tanda anterior)
-  19-validacion-categorias-v18/   validacion de contentCategory sobre v10-a-v18 (tanda anterior)
-  20-validacion-genero-series-v18/  lo mismo para contentGenre y contentSeries (tanda anterior)
+    17-consolidado-v10-a-v18/       tanda v10 a v18 (solo tablas): detallado por pais
+                                    (MX/CO/CL), publishers, normalizacion+eCPM, genero/titulo y
+                                    reporte-graficos-ecpm-vacio.md (scatter con R2, pies, heatmap)
+    18-enriquecimiento-externo-v18/ relleno de content objects sobre v10-a-v18
+    19-validacion-categorias-v18/   validacion de contentCategory sobre v10-a-v18
+    20-validacion-genero-series-v18/  lo mismo para contentGenre y contentSeries
   21-consolidado-v10-a-v19/         tanda v10 a v19, tres reportes md (misma estructura que 23)
   22-consolidado-v10-a-v20/         tanda v10 a v20, tres reportes md (misma estructura que 23)
   23-consolidado-v10-a-v21/         la version vigente, tres reportes md: detallado por pais
@@ -182,8 +182,8 @@ instalado (para Wikidata/TVMaze) y descarga los IMDb Non-Commercial Datasets (~7
 `cache-enriquecimiento/` la primera vez; despues solo consulta los titulos nuevos de cada
 tanda (cache en `cache-enriquecimiento/titulos.json`). Ver `reportes/old_reports/08-.../` para el
 detalle de fuentes, licencias y cobertura medida. Los pasos 5 y 6 no consultan nada online
-salvo las taxonomias IAB (~100 KB, GitHub de IAB Tech Lab); ver `reportes/19-.../README.md`
-y `reportes/20-.../README.md`.
+salvo las taxonomias IAB (~100 KB, GitHub de IAB Tech Lab); ver `reportes/old_reports/19-.../README.md`
+y `reportes/old_reports/20-.../README.md`.
 
 El inventario tambien vive en **BigQuery** (proyecto `tudia-tagscreen`, dataset `ctv_inventory`,
 location US) para consultarlo desde Looker Studio. Dos tablas (esquemas en `scripts/bigquery/`):
@@ -238,17 +238,17 @@ quedan como NULL en BigQuery.
 | `reportes/21-.../reporte-content-objects-detallado-v19-consolidado.md` | (v10-a-v19) content objects por pais (MX/CO/CL) sobre el consolidado v10 a v19 (1,158,509 filas; v19 aporto 86,669 combinaciones nuevas). Tablas por pais con % de filas llenas, top 3 referencias, si se puede aumentar el % de filas llenas y el aumento estimado (ganancia del relleno) por columna |
 | `reportes/21-.../reporte-graficos-ecpm-vacio.md` | (v10-a-v19) graficos SVG sobre v10-a-v19: pies del reparto del gasto entre filas llenas y vacias por columna, scatter fila a fila de campos llenos vs eCPM (log), los drivers del eCPM ponderado (heatmap publisher x pais, scatter % vendido vs eCPM por publisher: la ruta de venta explica ~2/3 de la variacion, los content objects poco) barras por app del eCPM ponderado segun campos llenos (dentro de una app el llenado casi no mueve el precio), titulos emitidos por mas de un App Name (top 10 con eCPM repartido por app) y, por canal (Caracol, RCN, Canal 13, Televisa, TV Azteca), completitud de los content objects y requests vs eCPM ponderado; y, para las filas sin contentTitle, % llenas vs eCPM por columna sin y con relleno y eCPM por genero |
 | `reportes/21-.../reporte-completitud-content-objects-v19.md` | (v10-a-v19) que se puede completar de cada content object, solo tablas por columna: origen del valor tras el relleno, que mas se puede afinar segun la validacion contra IMDb/Wikidata/IAB y que tan confiable es lo declarado y lo llenado. La version completa (contexto, fuentes con licencias y limites, metodos con candados) esta en `recursos/reporte-completitud-content-objects-v19-completo.md` |
-| `reportes/20-validacion-genero-series-v18/README.md` | (v10-a-v18) validacion de contentGenre y contentSeries sobre v10-a-v18 (consolidado y relleno), con glosario y etiquetas en lenguaje claro; cifras clave v17 vs v18 en el README |
-| `reportes/19-validacion-categorias-v18/README.md` | (v10-a-v18) validacion de contentCategory sobre v10-a-v18 (correctitud y completitud), mismo formato claro; cifras clave v17 vs v18 en el README |
-| `reportes/18-enriquecimiento-externo-v18/reporte-relleno-por-columna.md` | (v10-a-v18) el pipeline de relleno corrido sobre v10-a-v18: % antes/despues y origen del valor por columna |
+| `reportes/old_reports/20-validacion-genero-series-v18/README.md` | (v10-a-v18) validacion de contentGenre y contentSeries sobre v10-a-v18 (consolidado y relleno), con glosario y etiquetas en lenguaje claro; cifras clave v17 vs v18 en el README |
+| `reportes/old_reports/19-validacion-categorias-v18/README.md` | (v10-a-v18) validacion de contentCategory sobre v10-a-v18 (correctitud y completitud), mismo formato claro; cifras clave v17 vs v18 en el README |
+| `reportes/old_reports/18-enriquecimiento-externo-v18/reporte-relleno-por-columna.md` | (v10-a-v18) el pipeline de relleno corrido sobre v10-a-v18: % antes/despues y origen del valor por columna |
 | `reportes/old_reports/16-validacion-genero-series-v17/README.md` | (v10-a-v17) lo mismo para contentGenre (el 85% de lo evaluable coincide con IMDb/Wikidata y solo 2.7% contradice; el 22% de las filas puede recibir mas generos o uno mas preciso, p. ej. telenovela en 16k filas) y contentSeries (correctitud basica: 2.4% de las series declaradas son peliculas segun IMDb; completitud: 10% del consolidado es serie sin nombre y se le puede proponer uno, 4.2% trae temporada/episodio en el titulo) |
 | `reportes/old_reports/15-validacion-categorias-v17/README.md` | (v10-a-v17) ¿la contentCategory declarada esta bien? (correctitud: 15% de las filas evaluables del consolidado contradicen la evidencia IMDb/Wikidata o su propio genero, casi todo mapeos por defecto de Vidaa, PML, Equativ y METAX; el relleno baja a 6% pero `intra_titulo` propaga el `[IAB12]` de Vidaa al 48% de sus requests) y ¿se puede afinar? (completitud: el 79% de las filas del consolidado puede recibir una categoria IAB 2.2 con forma y/o genero; el relleno esta casi todo en nivel 1-2 y el 69% puede subir) |
 | `reportes/old_reports/14-content-objects-vacios-v17/README.md` | ocho reportes (uno por content object) con la distribucion de las demas columnas en las filas donde ese content object viene vacio, MX/CO/CL, comparado con todo el dataset; el titulo vacio es el 7% de las filas pero el 29.5% de los requests |
-| `reportes/17-.../reporte-content-objects-detallado-v18-consolidado.md` | (v10-a-v18) content objects por pais (MX/CO/CL) sobre el consolidado v10 a v18 (1,071,840 filas; 13.0% de requests de llaves viejas; la escritura nueva ya es el 67% del corte). Tablas por pais con requests y eCPM ponderado de las filas llenas vs vacias por columna |
-| `reportes/17-.../reporte-publishers-v18-consolidado.md` | (v10-a-v18) tabla comparativa por publisher (top 12, con % filas y % requests) |
-| `reportes/17-.../reporte-normalizacion-y-ecpm-v18-consolidado.md` | (v10-a-v18) genero/rating normalizados + inventario monetizado (53.3% del trafico; eCPM 4.04), misma estructura que v17 |
-| `reportes/17-.../reporte-genero-titulo-paises.md` | (v10-a-v18) genero por pais + cuantas filas traen un genero/titulo de verdad (tablas) |
-| `reportes/17-.../reporte-graficos-ecpm-vacio.md` | (v10-a-v18) graficos SVG del eCPM de filas llenas vs vacias por columna (scatter con OLS y R2, completitud vs eCPM, pies del reparto del gasto, heatmap fila a fila de campos llenos vs eCPM) |
+| `reportes/old_reports/17-.../reporte-content-objects-detallado-v18-consolidado.md` | (v10-a-v18) content objects por pais (MX/CO/CL) sobre el consolidado v10 a v18 (1,071,840 filas; 13.0% de requests de llaves viejas; la escritura nueva ya es el 67% del corte). Tablas por pais con requests y eCPM ponderado de las filas llenas vs vacias por columna |
+| `reportes/old_reports/17-.../reporte-publishers-v18-consolidado.md` | (v10-a-v18) tabla comparativa por publisher (top 12, con % filas y % requests) |
+| `reportes/old_reports/17-.../reporte-normalizacion-y-ecpm-v18-consolidado.md` | (v10-a-v18) genero/rating normalizados + inventario monetizado (53.3% del trafico; eCPM 4.04), misma estructura que v17 |
+| `reportes/old_reports/17-.../reporte-genero-titulo-paises.md` | (v10-a-v18) genero por pais + cuantas filas traen un genero/titulo de verdad (tablas) |
+| `reportes/old_reports/17-.../reporte-graficos-ecpm-vacio.md` | (v10-a-v18) graficos SVG del eCPM de filas llenas vs vacias por columna (scatter con OLS y R2, completitud vs eCPM, pies del reparto del gasto, heatmap fila a fila de campos llenos vs eCPM) |
 | `reportes/old_reports/12-.../reporte-content-objects-detallado-v17-consolidado.md` | (v10-a-v17) content objects por pais (MX/CO/CL) sobre el consolidado v10 a v17. La escritura nueva del reporte ya es el 54% del corte y viene mejor poblada (rating 60%, idioma 48% de sus filas); el consolidado por llave ya no deduplica (959k filas, 10.6% de requests de llaves viejas): leer trafico y precio sobre el corte |
 | `reportes/old_reports/12-.../reporte-publishers-v17-consolidado.md` | (v10-a-v17) desglose por publisher (top 12; Roku supera a OTTera como #1 en requests, iion #3, TV Azteca se apaga otra vez, Select Plus vuelve a 12.6 de vitrina) |
 | `reportes/old_reports/12-.../reporte-normalizacion-y-ecpm-v17-consolidado.md` | (v10-a-v17) genero/rating normalizados + inventario monetizado (50.7% del trafico, de vuelta a la banda de 51; eCPM 4.04; Colombia 5.85 quinto corte subiendo; Chile rebota a 6.10; Argentina lidera con 6.25; documental 5.88 al frente del yield con volumen) |
