@@ -107,7 +107,7 @@ def main():
          f'<text x="16" y="24" font-size="17" font-weight="700" fill="{INK}">Completitud de los content objects por canal</text>',
          f'<text x="16" y="44" font-size="12" fill="{INK2}">Cada segmento es una columna: su altura es el % de filas del canal con dato útil en esa columna, dividido entre 8; '
          f'la barra completa es la completitud promedio de las 8 columnas.</text>',
-         f'<text x="16" y="60" font-size="12" fill="{INK2}">Canal = filas cuyo Publisher o App Name lo nombra. Debajo de cada barra, el número de filas del canal en el consolidado.</text>']
+         f'<text x="16" y="60" font-size="12" fill="{INK2}">Canal = filas cuyo Publisher o App Name lo nombra. Segmentos de mayor a menor % de arriba hacia abajo; debajo de cada barra, filas del canal.</text>']
     lx = 16
     for c in CO:
         o.append(f'<rect x="{lx}" y="72" width="12" height="12" rx="2" fill="{C_COL[c]}"/>')
@@ -129,7 +129,8 @@ def main():
             o.append(f'<text x="{x0 + w / 2:.1f}" y="{ybase - 12}" text-anchor="middle" font-size="10.5" fill="{INK2}">sin filas en el consolidado</text>')
         else:
             acum = 0.0
-            for c in CO:
+            # de abajo hacia arriba, de menor a mayor % de filas llenas: la columna mas llena queda arriba
+            for c in sorted(CO, key=lambda c: d["pct_llenas"][c]):
                 h = ph * d["pct_llenas"][c] / 100 / len(CO)
                 if h <= 0:
                     continue

@@ -195,15 +195,15 @@ def main():
         L += ["## 5. Completitud de los content objects por canal\n",
               "Canal = filas cuyo Publisher o App Name lo nombra (Caracol via OB / ditu por Caracol, RCN via OB / Canal RCN, Canal 13 OB, "
               "Televisa Univision via … / ViX, TV Azteca - Springserve / Azteca TV). Cada segmento de la barra es una columna, con altura = "
-              "% de filas del canal con dato útil en esa columna dividido entre 8; la barra completa es la completitud promedio de las 8 "
-              "columnas. Generado con `scripts/generar_barras_canales_completitud.py` → `recursos/graficos-canales-completitud-barras.json`.\n",
+              "% de filas del canal con dato útil en esa columna dividido entre 8, apilados de mayor % (arriba) a menor (abajo); la barra "
+              "completa es la completitud promedio de las 8 columnas. La tabla va ordenada por completitud promedio. Generado con `scripts/generar_barras_canales_completitud.py` → `recursos/graficos-canales-completitud-barras.json`.\n",
               "![completitud por canal](recursos/graficos-canales-completitud-barras.svg)\n",
-              "| Canal | Filas | Requests | Promedio | " + " | ".join(c.replace("content", "") for c in cols) + " |\n|---|---:|---:|---:|" + "---:|" * len(cols)]
+              "| Canal | Promedio | Filas | Requests | " + " | ".join(c.replace("content", "") for c in cols) + " |\n|---|---:|---:|---:|" + "---:|" * len(cols)]
         for d in can["canales"]:
             if not d["filas"]:
-                L.append(f"| {d['canal']} | 0 | 0 | — | " + " | ".join("—" for _ in cols) + " |")
+                L.append(f"| {d['canal']} | — | 0 | 0 | " + " | ".join("—" for _ in cols) + " |")
                 continue
-            L.append(f"| {d['canal']} | {n(d['filas'])} | {n(d['requests'])} | {pct(d['completitud_promedio'])} | "
+            L.append(f"| {d['canal']} | {pct(d['completitud_promedio'])} | {n(d['filas'])} | {n(d['requests'])} | "
                      + " | ".join(pct(d["pct_llenas"][c]) for c in cols) + " |")
         L.append("\n*Win y Telefe no aparecen en el consolidado: ningún Publisher ni App Name los nombra.*\n")
         # ---- 6. canales: requests totales vs eCPM ponderado ----

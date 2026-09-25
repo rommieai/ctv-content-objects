@@ -190,19 +190,19 @@ Un punto por App Name con requests vendidos (222 apps; otras 273 no vendieron na
 
 ## 5. Completitud de los content objects por canal
 
-Canal = filas cuyo Publisher o App Name lo nombra (Caracol via OB / ditu por Caracol, RCN via OB / Canal RCN, Canal 13 OB, Televisa Univision via … / ViX, TV Azteca - Springserve / Azteca TV). Cada segmento de la barra es una columna, con altura = % de filas del canal con dato útil en esa columna dividido entre 8; la barra completa es la completitud promedio de las 8 columnas. Generado con `scripts/generar_barras_canales_completitud.py` → `recursos/graficos-canales-completitud-barras.json`.
+Canal = filas cuyo Publisher o App Name lo nombra (Caracol via OB / ditu por Caracol, RCN via OB / Canal RCN, Canal 13 OB, Televisa Univision via … / ViX, TV Azteca - Springserve / Azteca TV). Cada segmento de la barra es una columna, con altura = % de filas del canal con dato útil en esa columna dividido entre 8, apilados de mayor % (arriba) a menor (abajo); la barra completa es la completitud promedio de las 8 columnas. La tabla va ordenada por completitud promedio. Generado con `scripts/generar_barras_canales_completitud.py` → `recursos/graficos-canales-completitud-barras.json`.
 
 ![completitud por canal](recursos/graficos-canales-completitud-barras.svg)
 
-| Canal | Filas | Requests | Promedio | Title | Genre | Rating | Language | IsLiveStream | Category | Length | Series |
+| Canal | Promedio | Filas | Requests | Title | Genre | Rating | Language | IsLiveStream | Category | Length | Series |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Televisa | 43,706 | 77,794,245,200 | 49.5% | 75.6% | 96.2% | 82.6% | 57.1% | 34.8% | 10.9% | 38.6% | 0.2% |
-| TV Azteca | 2,275 | 29,391,939,040 | 36.9% | 1.2% | 97.8% | 96.4% | 98.5% | 0.4% | 0.6% | 0.5% | 0.2% |
-| RCN | 43 | 118,666,640 | 21.2% | 0.0% | 0.0% | 0.0% | 83.7% | 30.2% | 0.0% | 55.8% | 0.0% |
-| Canal 13 | 8 | 10,106,800 | 18.8% | 0.0% | 0.0% | 0.0% | 75.0% | 75.0% | 0.0% | 0.0% | 0.0% |
-| Caracol | 12 | 50,322,080 | 14.6% | 0.0% | 0.0% | 0.0% | 66.7% | 50.0% | 0.0% | 0.0% | 0.0% |
-| Win | 0 | 0 | — | — | — | — | — | — | — | — | — |
-| Telefe | 0 | 0 | — | — | — | — | — | — | — | — | — |
+| Televisa | 49.5% | 43,706 | 77,794,245,200 | 75.6% | 96.2% | 82.6% | 57.1% | 34.8% | 10.9% | 38.6% | 0.2% |
+| TV Azteca | 36.9% | 2,275 | 29,391,939,040 | 1.2% | 97.8% | 96.4% | 98.5% | 0.4% | 0.6% | 0.5% | 0.2% |
+| RCN | 21.2% | 43 | 118,666,640 | 0.0% | 0.0% | 0.0% | 83.7% | 30.2% | 0.0% | 55.8% | 0.0% |
+| Canal 13 | 18.8% | 8 | 10,106,800 | 0.0% | 0.0% | 0.0% | 75.0% | 75.0% | 0.0% | 0.0% | 0.0% |
+| Caracol | 14.6% | 12 | 50,322,080 | 0.0% | 0.0% | 0.0% | 66.7% | 50.0% | 0.0% | 0.0% | 0.0% |
+| Win | — | 0 | 0 | — | — | — | — | — | — | — | — |
+| Telefe | — | 0 | 0 | — | — | — | — | — | — | — | — |
 
 *Win y Telefe no aparecen en el consolidado: ningún Publisher ni App Name los nombra.*
 
