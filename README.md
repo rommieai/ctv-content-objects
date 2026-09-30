@@ -190,7 +190,7 @@ El inventario tambien vive en **BigQuery** (proyecto `tudia-tagscreen`, dataset 
 location US) para consultarlo desde Looker Studio. Dos tablas (esquemas en `scripts/bigquery/`):
 
 - `consolidado_v10_a_v14` (nombre historico de la primera carga): contiene **solo el corte
-  vigente** (desde 2026-09-24, v21: 512,000 filas, 450,500,254,240 requests), con los 16 campos
+  vigente** (desde 2026-09-30, v22: 512,000 filas, 472,750,396,159 requests), con los 16 campos
   del CSV crudo tal cual (sin normalizar) mas dos columnas para Looker:
   `cal_total_cost` = total_requests * ecpm / 1000 (eCPM ponderado en Looker =
   SUM(cal_total_cost) / SUM(total_requests) * 1000) y `fecha_reporte` (DATE, dia en que se
