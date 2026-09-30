@@ -1,0 +1,77 @@
+{
+  "entrada": "inventory-consolidado-v10-a-v22-enriquecido.csv",
+  "filas": 1344629,
+  "titulos_distintos": 18246,
+  "titulos_nuevos_consultados": 901,
+  "titulos_con_imdb": 8742,
+  "fecha": "2026-09-30 18:14",
+  "columnas": {
+    "contentCategory": {
+      "pct_original": 21.9,
+      "pct_final": 93.0,
+      "origen": {
+        "derivado_tipo": 33.6,
+        "derivado_genero": 26.0,
+        "original": 21.9,
+        "intra_titulo": 11.6,
+        "sin_dato": 7.0
+      }
+    },
+    "contentSeries": {
+      "pct_original": 6.6,
+      "pct_final": 14.2,
+      "origen": {
+        "sin_dato": 85.8,
+        "imdb": 6.9,
+        "original": 6.6,
+        "intra_titulo": 0.7
+      }
+    },
+    "contentLength": {
+      "pct_original": 12.6,
+      "pct_final": 49.4,
+      "origen": {
+        "sin_dato": 50.6,
+        "intra_titulo": 36.8,
+        "original": 12.6
+      }
+    },
+    "contentLanguage": {
+      "pct_original": 67.0,
+      "pct_final": 67.0,
+      "origen": {
+        "original": 67.0,
+        "sin_dato": 33.0
+      }
+    },
+    "contentIsLiveStream": {
+      "pct_original": 29.5,
+      "pct_final": 48.7,
+      "origen": {
+        "sin_dato": 51.3,
+        "original": 29.5,
+        "app_semantica": 19.2
+      }
+    },
+    "contentRating": {
+      "pct_original": 75.1,
+      "pct_final": 82.2,
+      "origen": {
+        "original": 75.1,
+        "sin_dato": 17.8,
+        "intra_titulo": 7.0,
+        "wikidata": 0.1
+      }
+    },
+    "contentGenre": {
+      "pct_original": 90.8,
+      "pct_final": 96.8,
+      "origen": {
+        "original": 90.8,
+        "intra_titulo": 3.6,
+        "sin_dato": 3.2,
+        "imdb": 2.3
+      }
+    }
+  }
+}

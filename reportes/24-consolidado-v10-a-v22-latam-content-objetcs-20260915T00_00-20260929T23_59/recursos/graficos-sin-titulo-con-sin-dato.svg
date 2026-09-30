@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="558" viewBox="0 0 900 558" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">
+<rect width="900" height="558" fill="#ffffff"/>
+<text x="16" y="24" font-size="17" font-weight="700" fill="#1f2933">Registros sin contentTitle: eCPM ponderado con y sin dato en cada columna</text>
+<text x="16" y="44" font-size="12" fill="#5f6b76">95,807 filas sin título del consolidado tal como llega, antes del relleno (170,121,993,329 requests; 74.0% vendidos; eCPM ponderado $3.92).</text>
+<text x="16" y="60" font-size="12" fill="#5f6b76">Por columna, esas filas se parten en dos grupos: las que traen dato útil y las que la traen vacía. Bajo cada eCPM, el % de las filas sin título en ese grupo.</text>
+<text x="16" y="76" font-size="12" fill="#5f6b76">Columnas ordenadas por la diferencia (con dato − sin dato), de mayor a menor. Línea punteada: eCPM ponderado de todas las filas sin título.</text>
+<circle cx="24" cy="96" r="6" fill="#5f6b76"/><text x="36" y="100" font-size="11" fill="#1f2933">con dato en la columna</text>
+<circle cx="190" cy="96" r="5" fill="#ffffff" stroke="#5f6b76" stroke-width="2.5"/><text x="202" y="100" font-size="11" fill="#1f2933">columna vacía</text>
+<line x1="120.0" y1="116" x2="120.0" y2="508" stroke="#e3e7ea"/>
+<text x="120.0" y="524" text-anchor="middle" font-size="10.5" fill="#5f6b76">$0</text>
+<line x1="237.3" y1="116" x2="237.3" y2="508" stroke="#e3e7ea"/>
+<text x="237.3" y="524" text-anchor="middle" font-size="10.5" fill="#5f6b76">$1</text>
+<line x1="354.5" y1="116" x2="354.5" y2="508" stroke="#e3e7ea"/>
+<text x="354.5" y="524" text-anchor="middle" font-size="10.5" fill="#5f6b76">$2</text>
+<line x1="471.8" y1="116" x2="471.8" y2="508" stroke="#e3e7ea"/>
+<text x="471.8" y="524" text-anchor="middle" font-size="10.5" fill="#5f6b76">$3</text>
+<line x1="589.0" y1="116" x2="589.0" y2="508" stroke="#e3e7ea"/>
+<text x="589.0" y="524" text-anchor="middle" font-size="10.5" fill="#5f6b76">$4</text>
+<line x1="706.3" y1="116" x2="706.3" y2="508" stroke="#e3e7ea"/>
+<text x="706.3" y="524" text-anchor="middle" font-size="10.5" fill="#5f6b76">$5</text>
+<line x1="823.5" y1="116" x2="823.5" y2="508" stroke="#e3e7ea"/>
+<text x="823.5" y="524" text-anchor="middle" font-size="10.5" fill="#5f6b76">$6</text>
+<line x1="579.6" y1="116" x2="579.6" y2="508" stroke="#5f6b76" stroke-dasharray="5 4"/>
+<text x="490.0" y="550" text-anchor="middle" fill="#1f2933">eCPM ponderado ($)</text>
+<text x="108" y="144.0" text-anchor="end" font-size="12" font-weight="600" fill="#1f2933">Length</text>
+<line x1="763.5" y1="140.0" x2="537.3" y2="140.0" stroke="#d6409f" stroke-width="3" stroke-opacity="0.55"/>
+<circle cx="537.3" cy="140.0" r="6" fill="#ffffff" stroke="#d6409f" stroke-width="3"/>
+<circle cx="763.5" cy="140.0" r="7.5" fill="#d6409f" stroke="#ffffff" stroke-width="2"/>
+<text x="776.5" y="141.0" text-anchor="start" font-size="11.5" font-weight="700" fill="#1f2933">$5.49</text>
+<text x="776.5" y="155.0" text-anchor="start" font-size="10" fill="#5f6b76">55.1% de las filas</text>
+<text x="524.3" y="141.0" text-anchor="end" font-size="11.5" font-weight="700" fill="#1f2933">$3.56</text>
+<text x="524.3" y="155.0" text-anchor="end" font-size="10" fill="#5f6b76">44.9% de las filas</text>
+<text x="108" y="200.0" text-anchor="end" font-size="12" font-weight="600" fill="#1f2933">Series</text>
+<line x1="749.4" y1="196.0" x2="576.2" y2="196.0" stroke="#6b7280" stroke-width="3" stroke-opacity="0.55"/>
+<circle cx="576.2" cy="196.0" r="6" fill="#ffffff" stroke="#6b7280" stroke-width="3"/>
+<circle cx="749.4" cy="196.0" r="7.5" fill="#6b7280" stroke="#ffffff" stroke-width="2"/>
+<text x="762.4" y="197.0" text-anchor="start" font-size="11.5" font-weight="700" fill="#1f2933">$5.37</text>
+<text x="762.4" y="211.0" text-anchor="start" font-size="10" fill="#5f6b76">6.7% de las filas</text>
+<text x="563.2" y="197.0" text-anchor="end" font-size="11.5" font-weight="700" fill="#1f2933">$3.89</text>
+<text x="563.2" y="211.0" text-anchor="end" font-size="10" fill="#5f6b76">93.3% de las filas</text>
+<text x="108" y="256.0" text-anchor="end" font-size="12" font-weight="600" fill="#1f2933">Category</text>
+<line x1="644.5" y1="252.0" x2="556.5" y2="252.0" stroke="#a0622d" stroke-width="3" stroke-opacity="0.55"/>
+<circle cx="556.5" cy="252.0" r="6" fill="#ffffff" stroke="#a0622d" stroke-width="3"/>
+<circle cx="644.5" cy="252.0" r="7.5" fill="#a0622d" stroke="#ffffff" stroke-width="2"/>
+<text x="657.5" y="253.0" text-anchor="start" font-size="11.5" font-weight="700" fill="#1f2933">$4.47</text>
+<text x="657.5" y="267.0" text-anchor="start" font-size="10" fill="#5f6b76">51.3% de las filas</text>
+<text x="543.5" y="253.0" text-anchor="end" font-size="11.5" font-weight="700" fill="#1f2933">$3.72</text>
+<text x="543.5" y="267.0" text-anchor="end" font-size="10" fill="#5f6b76">48.7% de las filas</text>
+<text x="108" y="312.0" text-anchor="end" font-size="12" font-weight="600" fill="#1f2933">Rating</text>
+<line x1="609.4" y1="308.0" x2="525.5" y2="308.0" stroke="#8b5cf6" stroke-width="3" stroke-opacity="0.55"/>
+<circle cx="525.5" cy="308.0" r="6" fill="#ffffff" stroke="#8b5cf6" stroke-width="3"/>
+<circle cx="609.4" cy="308.0" r="7.5" fill="#8b5cf6" stroke="#ffffff" stroke-width="2"/>
+<text x="622.4" y="309.0" text-anchor="start" font-size="11.5" font-weight="700" fill="#1f2933">$4.17</text>
+<text x="622.4" y="323.0" text-anchor="start" font-size="10" fill="#5f6b76">82.0% de las filas</text>
+<text x="512.5" y="309.0" text-anchor="end" font-size="11.5" font-weight="700" fill="#1f2933">$3.46</text>
+<text x="512.5" y="323.0" text-anchor="end" font-size="10" fill="#5f6b76">18.0% de las filas</text>
+<text x="108" y="368.0" text-anchor="end" font-size="12" font-weight="600" fill="#1f2933">Language</text>
+<line x1="588.7" y1="364.0" x2="554.1" y2="364.0" stroke="#d64545" stroke-width="3" stroke-opacity="0.55"/>
+<circle cx="554.1" cy="364.0" r="6" fill="#ffffff" stroke="#d64545" stroke-width="3"/>
+<circle cx="588.7" cy="364.0" r="7.5" fill="#d64545" stroke="#ffffff" stroke-width="2"/>
+<text x="601.7" y="365.0" text-anchor="start" font-size="11.5" font-weight="700" fill="#1f2933">$4.00</text>
+<text x="601.7" y="379.0" text-anchor="start" font-size="10" fill="#5f6b76">82.5% de las filas</text>
+<text x="541.1" y="365.0" text-anchor="end" font-size="11.5" font-weight="700" fill="#1f2933">$3.70</text>
+<text x="541.1" y="379.0" text-anchor="end" font-size="10" fill="#5f6b76">17.5% de las filas</text>
+<text x="108" y="424.0" text-anchor="end" font-size="12" font-weight="600" fill="#1f2933">Genre</text>
+<line x1="571.2" y1="420.0" x2="596.4" y2="420.0" stroke="#eb6834" stroke-width="3" stroke-opacity="0.55"/>
+<circle cx="596.4" cy="420.0" r="6" fill="#ffffff" stroke="#eb6834" stroke-width="3"/>
+<circle cx="571.2" cy="420.0" r="7.5" fill="#eb6834" stroke="#ffffff" stroke-width="2"/>
+<text x="558.2" y="421.0" text-anchor="end" font-size="11.5" font-weight="700" fill="#1f2933">$3.85</text>
+<text x="558.2" y="435.0" text-anchor="end" font-size="10" fill="#5f6b76">86.4% de las filas</text>
+<text x="609.4" y="421.0" text-anchor="start" font-size="11.5" font-weight="700" fill="#1f2933">$4.06</text>
+<text x="609.4" y="435.0" text-anchor="start" font-size="10" fill="#5f6b76">13.6% de las filas</text>
+<text x="108" y="480.0" text-anchor="end" font-size="12" font-weight="600" fill="#1f2933">LiveStream</text>
+<line x1="482.2" y1="476.0" x2="691.4" y2="476.0" stroke="#0e9aa7" stroke-width="3" stroke-opacity="0.55"/>
+<circle cx="691.4" cy="476.0" r="6" fill="#ffffff" stroke="#0e9aa7" stroke-width="3"/>
+<circle cx="482.2" cy="476.0" r="7.5" fill="#0e9aa7" stroke="#ffffff" stroke-width="2"/>
+<text x="469.2" y="477.0" text-anchor="end" font-size="11.5" font-weight="700" fill="#1f2933">$3.09</text>
+<text x="469.2" y="491.0" text-anchor="end" font-size="10" fill="#5f6b76">24.0% de las filas</text>
+<text x="704.4" y="477.0" text-anchor="start" font-size="11.5" font-weight="700" fill="#1f2933">$4.87</text>
+<text x="704.4" y="491.0" text-anchor="start" font-size="10" fill="#5f6b76">76.0% de las filas</text>
+</svg>

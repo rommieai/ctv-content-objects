@@ -1,0 +1,1512 @@
+{
+ "apps_con_venta": 215,
+ "apps_sin_venta": 311,
+ "ecpm_ponderado_total": 3.666,
+ "apps": [
+  {
+   "app": "MovieArk: Stream Movies & Live",
+   "requests": 121544000268,
+   "requests_vendidos": 34182687990,
+   "pct_vendido": 28.1,
+   "ecpm_ponderado": 3.516
+  },
+  {
+   "app": "Live TV",
+   "requests": 118133895374,
+   "requests_vendidos": 76402994415,
+   "pct_vendido": 64.7,
+   "ecpm_ponderado": 2.713
+  },
+  {
+   "app": "The Roku Channel",
+   "requests": 70144669120,
+   "requests_vendidos": 45547882080,
+   "pct_vendido": 64.9,
+   "ecpm_ponderado": 5.427
+  },
+  {
+   "app": "TCL CHANNEL",
+   "requests": 59826199635,
+   "requests_vendidos": 32284774977,
+   "pct_vendido": 54.0,
+   "ecpm_ponderado": 5.028
+  },
+  {
+   "app": "Not Available",
+   "requests": 51254931694,
+   "requests_vendidos": 35304985621,
+   "pct_vendido": 68.9,
+   "ecpm_ponderado": 2.412
+  },
+  {
+   "app": "Browser TV Web - BrowseHere",
+   "requests": 35523674400,
+   "requests_vendidos": 17977146850,
+   "pct_vendido": 50.6,
+   "ecpm_ponderado": 6.817
+  },
+  {
+   "app": "ViX: TV, Deportes y Noticias",
+   "requests": 33388946080,
+   "requests_vendidos": 31307503360,
+   "pct_vendido": 93.8,
+   "ecpm_ponderado": 2.496
+  },
+  {
+   "app": "Tubi: Free Movies & Live TV",
+   "requests": 33123806640,
+   "requests_vendidos": 30956420880,
+   "pct_vendido": 93.5,
+   "ecpm_ponderado": 5.27
+  },
+  {
+   "app": "ViX: TV, Sports and News",
+   "requests": 25329596000,
+   "requests_vendidos": 20463539600,
+   "pct_vendido": 80.8,
+   "ecpm_ponderado": 1.705
+  },
+  {
+   "app": "Coolita Channel",
+   "requests": 20954327200,
+   "requests_vendidos": 14211811040,
+   "pct_vendido": 67.8,
+   "ecpm_ponderado": 3.757
+  },
+  {
+   "app": "Vidaa",
+   "requests": 10922747520,
+   "requests_vendidos": 8981181040,
+   "pct_vendido": 82.2,
+   "ecpm_ponderado": 1.531
+  },
+  {
+   "app": "WhaleLive",
+   "requests": 9688168160,
+   "requests_vendidos": 9536067200,
+   "pct_vendido": 98.4,
+   "ecpm_ponderado": 2.732
+  },
+  {
+   "app": "ViX: Cine y TV Gratis en Español",
+   "requests": 5189121280,
+   "requests_vendidos": 3904404080,
+   "pct_vendido": 75.2,
+   "ecpm_ponderado": 2.073
+  },
+  {
+   "app": "Tubi - Free Movies & TV",
+   "requests": 4207978400,
+   "requests_vendidos": 2788000,
+   "pct_vendido": 0.1,
+   "ecpm_ponderado": 17.008
+  },
+  {
+   "app": "SAMSUNG TV PLUS",
+   "requests": 1839782256,
+   "requests_vendidos": 1300940560,
+   "pct_vendido": 70.7,
+   "ecpm_ponderado": 3.349
+  },
+  {
+   "app": "Azteca TV",
+   "requests": 1772482320,
+   "requests_vendidos": 1735972800,
+   "pct_vendido": 97.9,
+   "ecpm_ponderado": 3.263
+  },
+  {
+   "app": "ViX: Cine y TV en Español",
+   "requests": 1493455322,
+   "requests_vendidos": 1345183360,
+   "pct_vendido": 90.1,
+   "ecpm_ponderado": 1.26
+  },
+  {
+   "app": "VIX - Filmes e TV",
+   "requests": 1420540800,
+   "requests_vendidos": 1341820320,
+   "pct_vendido": 94.5,
+   "ecpm_ponderado": 1.837
+  },
+  {
+   "app": "Open Browser - TV Web Browser",
+   "requests": 1284842240,
+   "requests_vendidos": 1147602720,
+   "pct_vendido": 89.3,
+   "ecpm_ponderado": 4.681
+  },
+  {
+   "app": "Metax TV - Live TV & Movies",
+   "requests": 1170132960,
+   "requests_vendidos": 885154720,
+   "pct_vendido": 75.6,
+   "ecpm_ponderado": 6.198
+  },
+  {
+   "app": "Ottera",
+   "requests": 1042680078,
+   "requests_vendidos": 560734050,
+   "pct_vendido": 53.8,
+   "ecpm_ponderado": 5.699
+  },
+  {
+   "app": "Plex: Find Movies & TV Shows",
+   "requests": 892932609,
+   "requests_vendidos": 133700407,
+   "pct_vendido": 15.0,
+   "ecpm_ponderado": 4.202
+  },
+  {
+   "app": "PlutoTV: Stream Free Movies/TV",
+   "requests": 871783680,
+   "requests_vendidos": 349538080,
+   "pct_vendido": 40.1,
+   "ecpm_ponderado": 12.743
+  },
+  {
+   "app": "Plex - Free Movies & TV",
+   "requests": 822726064,
+   "requests_vendidos": 195805910,
+   "pct_vendido": 23.8,
+   "ecpm_ponderado": 4.361
+  },
+  {
+   "app": "FreeTV: Películas, Series y TV",
+   "requests": 786245680,
+   "requests_vendidos": 450527200,
+   "pct_vendido": 57.3,
+   "ecpm_ponderado": 3.378
+  },
+  {
+   "app": "LG",
+   "requests": 732972603,
+   "requests_vendidos": 208795969,
+   "pct_vendido": 28.5,
+   "ecpm_ponderado": 4.353
+  },
+  {
+   "app": "Free Games by PlayWorks",
+   "requests": 731371296,
+   "requests_vendidos": 208453622,
+   "pct_vendido": 28.5,
+   "ecpm_ponderado": 4.357
+  },
+  {
+   "app": "Pluto TV - Free Movies/Shows",
+   "requests": 700195600,
+   "requests_vendidos": 166139120,
+   "pct_vendido": 23.7,
+   "ecpm_ponderado": 12.443
+  },
+  {
+   "app": "Univision App: Univision & Unimas Free",
+   "requests": 675471920,
+   "requests_vendidos": 659515360,
+   "pct_vendido": 97.6,
+   "ecpm_ponderado": 0.883
+  },
+  {
+   "app": "FreeTube- Search & Watch Free",
+   "requests": 632685198,
+   "requests_vendidos": 209555874,
+   "pct_vendido": 33.1,
+   "ecpm_ponderado": 2.508
+  },
+  {
+   "app": "Xiaomi TV+: Watch Live TV",
+   "requests": 526253523,
+   "requests_vendidos": 126690870,
+   "pct_vendido": 24.1,
+   "ecpm_ponderado": 4.287
+  },
+  {
+   "app": "Roku",
+   "requests": 394485580,
+   "requests_vendidos": 146327952,
+   "pct_vendido": 37.1,
+   "ecpm_ponderado": 2.92
+  },
+  {
+   "app": "Runtime",
+   "requests": 331582720,
+   "requests_vendidos": 43683680,
+   "pct_vendido": 13.2,
+   "ecpm_ponderado": 3.421
+  },
+  {
+   "app": "Samsung",
+   "requests": 285457338,
+   "requests_vendidos": 30018210,
+   "pct_vendido": 10.5,
+   "ecpm_ponderado": 3.713
+  },
+  {
+   "app": "Pluto TV",
+   "requests": 262068032,
+   "requests_vendidos": 110040800,
+   "pct_vendido": 42.0,
+   "ecpm_ponderado": 9.19
+  },
+  {
+   "app": "Canela.TV",
+   "requests": 246328160,
+   "requests_vendidos": 33470240,
+   "pct_vendido": 13.6,
+   "ecpm_ponderado": 3.463
+  },
+  {
+   "app": "Tubi: Free Movies & TV",
+   "requests": 206366726,
+   "requests_vendidos": 6087520,
+   "pct_vendido": 2.9,
+   "ecpm_ponderado": 5.166
+  },
+  {
+   "app": "WatchFree+",
+   "requests": 171090320,
+   "requests_vendidos": 750400,
+   "pct_vendido": 0.4,
+   "ecpm_ponderado": 9.076
+  },
+  {
+   "app": "Whale TV+",
+   "requests": 144251520,
+   "requests_vendidos": 92442080,
+   "pct_vendido": 64.1,
+   "ecpm_ponderado": 3.13
+  },
+  {
+   "app": "Plex: Stream Movies & TV",
+   "requests": 118014563,
+   "requests_vendidos": 13385193,
+   "pct_vendido": 11.3,
+   "ecpm_ponderado": 4.692
+  },
+  {
+   "app": "Canal RCN",
+   "requests": 114807920,
+   "requests_vendidos": 114662800,
+   "pct_vendido": 99.9,
+   "ecpm_ponderado": 1.352
+  },
+  {
+   "app": "Free Movies Plus",
+   "requests": 94803520,
+   "requests_vendidos": 1038880,
+   "pct_vendido": 1.1,
+   "ecpm_ponderado": 9.091
+  },
+  {
+   "app": "Tubi - Free Movies ＆ TV",
+   "requests": 93372080,
+   "requests_vendidos": 5419360,
+   "pct_vendido": 5.8,
+   "ecpm_ponderado": 7.19
+  },
+  {
+   "app": "Hisense Channels",
+   "requests": 91359840,
+   "requests_vendidos": 70751040,
+   "pct_vendido": 77.4,
+   "ecpm_ponderado": 1.22
+  },
+  {
+   "app": "HappyKids - Kids TV Shows and Movies",
+   "requests": 86174400,
+   "requests_vendidos": 55063360,
+   "pct_vendido": 63.9,
+   "ecpm_ponderado": 11.265
+  },
+  {
+   "app": "Atmosphere TV",
+   "requests": 85161120,
+   "requests_vendidos": 72805920,
+   "pct_vendido": 85.5,
+   "ecpm_ponderado": 6.714
+  },
+  {
+   "app": "Viki: Asian Dramas & Movies",
+   "requests": 65708880,
+   "requests_vendidos": 38354960,
+   "pct_vendido": 58.4,
+   "ecpm_ponderado": 4.352
+  },
+  {
+   "app": "ditu por Caracol",
+   "requests": 55757760,
+   "requests_vendidos": 54922560,
+   "pct_vendido": 98.5,
+   "ecpm_ponderado": 2.746
+  },
+  {
+   "app": "FreeTV",
+   "requests": 47664880,
+   "requests_vendidos": 756160,
+   "pct_vendido": 1.6,
+   "ecpm_ponderado": 5.395
+  },
+  {
+   "app": "TCL tv+",
+   "requests": 46729840,
+   "requests_vendidos": 8059280,
+   "pct_vendido": 17.2,
+   "ecpm_ponderado": 11.333
+  },
+  {
+   "app": "Plex",
+   "requests": 46586946,
+   "requests_vendidos": 4910848,
+   "pct_vendido": 10.5,
+   "ecpm_ponderado": 2.983
+  },
+  {
+   "app": "Drag Racing",
+   "requests": 44304093,
+   "requests_vendidos": 29981120,
+   "pct_vendido": 67.7,
+   "ecpm_ponderado": 2.94
+  },
+  {
+   "app": "LG Channels",
+   "requests": 41247906,
+   "requests_vendidos": 25352960,
+   "pct_vendido": 61.5,
+   "ecpm_ponderado": 2.975
+  },
+  {
+   "app": "Temple Maze",
+   "requests": 40250540,
+   "requests_vendidos": 21197440,
+   "pct_vendido": 52.7,
+   "ecpm_ponderado": 3.064
+  },
+  {
+   "app": "PAC-MAN",
+   "requests": 39355798,
+   "requests_vendidos": 21455600,
+   "pct_vendido": 54.5,
+   "ecpm_ponderado": 2.687
+  },
+  {
+   "app": "MLB",
+   "requests": 38131600,
+   "requests_vendidos": 1555120,
+   "pct_vendido": 4.1,
+   "ecpm_ponderado": 11.699
+  },
+  {
+   "app": "Christmas Plus - Free Holiday Movies & Music",
+   "requests": 34089600,
+   "requests_vendidos": 147360,
+   "pct_vendido": 0.4,
+   "ecpm_ponderado": 8.209
+  },
+  {
+   "app": "Fawesome - Free Movies and TV Shows",
+   "requests": 33810020,
+   "requests_vendidos": 3411520,
+   "pct_vendido": 10.1,
+   "ecpm_ponderado": 13.063
+  },
+  {
+   "app": "Xumo Play",
+   "requests": 31212720,
+   "requests_vendidos": 2780960,
+   "pct_vendido": 8.9,
+   "ecpm_ponderado": 7.792
+  },
+  {
+   "app": "Jelly Blast",
+   "requests": 30292970,
+   "requests_vendidos": 17679360,
+   "pct_vendido": 58.4,
+   "ecpm_ponderado": 3.679
+  },
+  {
+   "app": "Minecraft with Eystreem",
+   "requests": 28332876,
+   "requests_vendidos": 9267188,
+   "pct_vendido": 32.7,
+   "ecpm_ponderado": 2.761
+  },
+  {
+   "app": "Haystack Local & World News",
+   "requests": 26193600,
+   "requests_vendidos": 14520000,
+   "pct_vendido": 55.4,
+   "ecpm_ponderado": 6.067
+  },
+  {
+   "app": "Univision Now: Live TV",
+   "requests": 25125040,
+   "requests_vendidos": 21180080,
+   "pct_vendido": 84.3,
+   "ecpm_ponderado": 9.253
+  },
+  {
+   "app": "Pixel Dash–Fun PLATFORMER GAME",
+   "requests": 25075882,
+   "requests_vendidos": 2037840,
+   "pct_vendido": 8.1,
+   "ecpm_ponderado": 2.756
+  },
+  {
+   "app": "Viki",
+   "requests": 24446800,
+   "requests_vendidos": 16185520,
+   "pct_vendido": 66.2,
+   "ecpm_ponderado": 3.394
+  },
+  {
+   "app": "SpongeBob SquarePants Bounce",
+   "requests": 24313482,
+   "requests_vendidos": 6961484,
+   "pct_vendido": 28.6,
+   "ecpm_ponderado": 2.169
+  },
+  {
+   "app": "Neon Rider",
+   "requests": 24221062,
+   "requests_vendidos": 7298000,
+   "pct_vendido": 30.1,
+   "ecpm_ponderado": 3.276
+  },
+  {
+   "app": "Plex: Find Movies and TV Shows",
+   "requests": 23373111,
+   "requests_vendidos": 2059035,
+   "pct_vendido": 8.8,
+   "ecpm_ponderado": 3.884
+  },
+  {
+   "app": "Univision App: Stream TV Shows",
+   "requests": 22356320,
+   "requests_vendidos": 1379520,
+   "pct_vendido": 6.2,
+   "ecpm_ponderado": 10.287
+  },
+  {
+   "app": "ViX",
+   "requests": 19785040,
+   "requests_vendidos": 5619040,
+   "pct_vendido": 28.4,
+   "ecpm_ponderado": 3.046
+  },
+  {
+   "app": "Philo",
+   "requests": 18349200,
+   "requests_vendidos": 3586080,
+   "pct_vendido": 19.5,
+   "ecpm_ponderado": 9.04
+  },
+  {
+   "app": "Minecraft with Milo and Chip",
+   "requests": 18291280,
+   "requests_vendidos": 9940480,
+   "pct_vendido": 54.3,
+   "ecpm_ponderado": 2.846
+  },
+  {
+   "app": "Google TV Home",
+   "requests": 16820000,
+   "requests_vendidos": 1878400,
+   "pct_vendido": 11.2,
+   "ecpm_ponderado": 14.463
+  },
+  {
+   "app": "Haystack News: Local TV News",
+   "requests": 16240320,
+   "requests_vendidos": 3460080,
+   "pct_vendido": 21.3,
+   "ecpm_ponderado": 6.628
+  },
+  {
+   "app": "Mau McMahon",
+   "requests": 14977760,
+   "requests_vendidos": 4217440,
+   "pct_vendido": 28.2,
+   "ecpm_ponderado": 1.079
+  },
+  {
+   "app": "Telly – The Smartest TV",
+   "requests": 14855200,
+   "requests_vendidos": 11392160,
+   "pct_vendido": 76.7,
+   "ecpm_ponderado": 4.957
+  },
+  {
+   "app": "Dirt Rider",
+   "requests": 13808880,
+   "requests_vendidos": 9707200,
+   "pct_vendido": 70.3,
+   "ecpm_ponderado": 2.775
+  },
+  {
+   "app": "Bloomberg: Business News Daily",
+   "requests": 13408640,
+   "requests_vendidos": 3232400,
+   "pct_vendido": 24.1,
+   "ecpm_ponderado": 19.127
+  },
+  {
+   "app": "tvplus",
+   "requests": 13388000,
+   "requests_vendidos": 2230720,
+   "pct_vendido": 16.7,
+   "ecpm_ponderado": 3.257
+  },
+  {
+   "app": "OnDemandKorea",
+   "requests": 12551760,
+   "requests_vendidos": 2235600,
+   "pct_vendido": 17.8,
+   "ecpm_ponderado": 4.625
+  },
+  {
+   "app": "13 GO",
+   "requests": 12187680,
+   "requests_vendidos": 713120,
+   "pct_vendido": 5.9,
+   "ecpm_ponderado": 0.578
+  },
+  {
+   "app": "Fawesome: Watch Free Movies & TV",
+   "requests": 11821480,
+   "requests_vendidos": 185120,
+   "pct_vendido": 1.6,
+   "ecpm_ponderado": 7.244
+  },
+  {
+   "app": "Tetris – Original Puzzle GAME",
+   "requests": 11334428,
+   "requests_vendidos": 2879680,
+   "pct_vendido": 25.4,
+   "ecpm_ponderado": 2.82
+  },
+  {
+   "app": "Egg Tycoon",
+   "requests": 11097840,
+   "requests_vendidos": 6084000,
+   "pct_vendido": 54.8,
+   "ecpm_ponderado": 2.856
+  },
+  {
+   "app": "Spizee",
+   "requests": 9787680,
+   "requests_vendidos": 963680,
+   "pct_vendido": 9.8,
+   "ecpm_ponderado": 4.939
+  },
+  {
+   "app": "Bloomberg",
+   "requests": 8955520,
+   "requests_vendidos": 1586640,
+   "pct_vendido": 17.7,
+   "ecpm_ponderado": 3.615
+  },
+  {
+   "app": "Philo: Live TV, Movies, Shows and Free Channels",
+   "requests": 8477760,
+   "requests_vendidos": 2463360,
+   "pct_vendido": 29.1,
+   "ecpm_ponderado": 7.217
+  },
+  {
+   "app": "DGO",
+   "requests": 7933760,
+   "requests_vendidos": 205920,
+   "pct_vendido": 2.6,
+   "ecpm_ponderado": 3.846
+  },
+  {
+   "app": "Hill Rider",
+   "requests": 7834080,
+   "requests_vendidos": 1481280,
+   "pct_vendido": 18.9,
+   "ecpm_ponderado": 1.784
+  },
+  {
+   "app": "Fawesome - Free Awesome TV & Movies",
+   "requests": 7672800,
+   "requests_vendidos": 54240,
+   "pct_vendido": 0.7,
+   "ecpm_ponderado": 12.0
+  },
+  {
+   "app": "Super Maze! – Ultimate Puzzle",
+   "requests": 7436302,
+   "requests_vendidos": 2071760,
+   "pct_vendido": 27.9,
+   "ecpm_ponderado": 2.041
+  },
+  {
+   "app": "Action Movies & TV by Fawesome",
+   "requests": 7284336,
+   "requests_vendidos": 47200,
+   "pct_vendido": 0.6,
+   "ecpm_ponderado": 5.0
+  },
+  {
+   "app": "Cards Online",
+   "requests": 7178211,
+   "requests_vendidos": 1533440,
+   "pct_vendido": 21.4,
+   "ecpm_ponderado": 3.336
+  },
+  {
+   "app": "Philo: Shows, Movies, Live TV.",
+   "requests": 6942480,
+   "requests_vendidos": 34800,
+   "pct_vendido": 0.5,
+   "ecpm_ponderado": 14.706
+  },
+  {
+   "app": "ditu",
+   "requests": 6765120,
+   "requests_vendidos": 6323200,
+   "pct_vendido": 93.5,
+   "ecpm_ponderado": 0.433
+  },
+  {
+   "app": "Multimedios.com",
+   "requests": 6188800,
+   "requests_vendidos": 4821120,
+   "pct_vendido": 77.9,
+   "ecpm_ponderado": 1.824
+  },
+  {
+   "app": "Ben Azelart",
+   "requests": 6171520,
+   "requests_vendidos": 177840,
+   "pct_vendido": 2.9,
+   "ecpm_ponderado": 2.985
+  },
+  {
+   "app": "Doodle Jump",
+   "requests": 6036282,
+   "requests_vendidos": 1675280,
+   "pct_vendido": 27.8,
+   "ecpm_ponderado": 1.84
+  },
+  {
+   "app": "Solitaire Classic",
+   "requests": 5924542,
+   "requests_vendidos": 1466880,
+   "pct_vendido": 24.8,
+   "ecpm_ponderado": 3.334
+  },
+  {
+   "app": "Bloomberg: Finance Market News",
+   "requests": 5839760,
+   "requests_vendidos": 334000,
+   "pct_vendido": 5.7,
+   "ecpm_ponderado": 8.359
+  },
+  {
+   "app": "The CW",
+   "requests": 5136960,
+   "requests_vendidos": 4814560,
+   "pct_vendido": 93.7,
+   "ecpm_ponderado": 5.828
+  },
+  {
+   "app": "WeatherNation",
+   "requests": 5009440,
+   "requests_vendidos": 2113600,
+   "pct_vendido": 42.2,
+   "ecpm_ponderado": 8.417
+  },
+  {
+   "app": "Pro Racer",
+   "requests": 4927066,
+   "requests_vendidos": 960000,
+   "pct_vendido": 19.5,
+   "ecpm_ponderado": 2.029
+  },
+  {
+   "app": "GAIArt",
+   "requests": 4888800,
+   "requests_vendidos": 870560,
+   "pct_vendido": 17.8,
+   "ecpm_ponderado": 2.823
+  },
+  {
+   "app": "Viki: Asian Dramas, Movies, TV",
+   "requests": 4452240,
+   "requests_vendidos": 76560,
+   "pct_vendido": 1.7,
+   "ecpm_ponderado": 1.64
+  },
+  {
+   "app": "Gallina Pintadita",
+   "requests": 4286320,
+   "requests_vendidos": 2168640,
+   "pct_vendido": 50.6,
+   "ecpm_ponderado": 10.626
+  },
+  {
+   "app": "SSundee TV",
+   "requests": 3977816,
+   "requests_vendidos": 765920,
+   "pct_vendido": 19.3,
+   "ecpm_ponderado": 3.639
+  },
+  {
+   "app": "Sling TV - Live Sports, News, Shows + Freestream",
+   "requests": 3694560,
+   "requests_vendidos": 1333280,
+   "pct_vendido": 36.1,
+   "ecpm_ponderado": 18.061
+  },
+  {
+   "app": "Trivia Crack",
+   "requests": 3663106,
+   "requests_vendidos": 88240,
+   "pct_vendido": 2.4,
+   "ecpm_ponderado": 1.537
+  },
+  {
+   "app": "FilmRise Español",
+   "requests": 3651680,
+   "requests_vendidos": 416480,
+   "pct_vendido": 11.4,
+   "ecpm_ponderado": 8.613
+  },
+  {
+   "app": "Tycoon Empire",
+   "requests": 3609760,
+   "requests_vendidos": 1413760,
+   "pct_vendido": 39.2,
+   "ecpm_ponderado": 1.762
+  },
+  {
+   "app": "Spanish Movies & TV by Fawesome",
+   "requests": 3548148,
+   "requests_vendidos": 322560,
+   "pct_vendido": 9.1,
+   "ecpm_ponderado": 7.673
+  },
+  {
+   "app": "Sort It",
+   "requests": 3444320,
+   "requests_vendidos": 104320,
+   "pct_vendido": 3.0,
+   "ecpm_ponderado": 1.602
+  },
+  {
+   "app": "Chess Online",
+   "requests": 3406880,
+   "requests_vendidos": 817440,
+   "pct_vendido": 24.0,
+   "ecpm_ponderado": 2.061
+  },
+  {
+   "app": "Tennis Channel",
+   "requests": 3241920,
+   "requests_vendidos": 996000,
+   "pct_vendido": 30.7,
+   "ecpm_ponderado": 8.266
+  },
+  {
+   "app": "Karla Bustillos",
+   "requests": 3067120,
+   "requests_vendidos": 932720,
+   "pct_vendido": 30.4,
+   "ecpm_ponderado": 1.39
+  },
+  {
+   "app": "Burger!",
+   "requests": 2994098,
+   "requests_vendidos": 585920,
+   "pct_vendido": 19.6,
+   "ecpm_ponderado": 2.234
+  },
+  {
+   "app": "SSundee SSteps Up",
+   "requests": 2963196,
+   "requests_vendidos": 56080,
+   "pct_vendido": 1.9,
+   "ecpm_ponderado": 1.912
+  },
+  {
+   "app": "Haystack News: Free Local & World News",
+   "requests": 2942720,
+   "requests_vendidos": 760640,
+   "pct_vendido": 25.8,
+   "ecpm_ponderado": 5.499
+  },
+  {
+   "app": "Unroll Ball",
+   "requests": 2596168,
+   "requests_vendidos": 461200,
+   "pct_vendido": 17.8,
+   "ecpm_ponderado": 4.46
+  },
+  {
+   "app": "Chess!",
+   "requests": 2511200,
+   "requests_vendidos": 686560,
+   "pct_vendido": 27.3,
+   "ecpm_ponderado": 2.208
+  },
+  {
+   "app": "Busy Bus",
+   "requests": 2325600,
+   "requests_vendidos": 138240,
+   "pct_vendido": 5.9,
+   "ecpm_ponderado": 1.801
+  },
+  {
+   "app": "Twitch: Live Streaming",
+   "requests": 2179280,
+   "requests_vendidos": 1459840,
+   "pct_vendido": 67.0,
+   "ecpm_ponderado": 1.898
+  },
+  {
+   "app": "Haunted Castle",
+   "requests": 2172880,
+   "requests_vendidos": 116080,
+   "pct_vendido": 5.3,
+   "ecpm_ponderado": 1.657
+  },
+  {
+   "app": "Stick Ninja",
+   "requests": 2154088,
+   "requests_vendidos": 504240,
+   "pct_vendido": 23.4,
+   "ecpm_ponderado": 1.512
+  },
+  {
+   "app": "Frndly TV",
+   "requests": 2078880,
+   "requests_vendidos": 321440,
+   "pct_vendido": 15.5,
+   "ecpm_ponderado": 10.204
+  },
+  {
+   "app": "Cake Puzzle",
+   "requests": 2077240,
+   "requests_vendidos": 260080,
+   "pct_vendido": 12.5,
+   "ecpm_ponderado": 1.579
+  },
+  {
+   "app": "iQIYI Video – Dramas & Movies",
+   "requests": 2070000,
+   "requests_vendidos": 1416240,
+   "pct_vendido": 68.4,
+   "ecpm_ponderado": 3.614
+  },
+  {
+   "app": "Coin Town",
+   "requests": 2038544,
+   "requests_vendidos": 393680,
+   "pct_vendido": 19.3,
+   "ecpm_ponderado": 2.137
+  },
+  {
+   "app": "DIRECTV",
+   "requests": 1966880,
+   "requests_vendidos": 120960,
+   "pct_vendido": 6.1,
+   "ecpm_ponderado": 8.981
+  },
+  {
+   "app": "Pool Club",
+   "requests": 1944720,
+   "requests_vendidos": 562320,
+   "pct_vendido": 28.9,
+   "ecpm_ponderado": 2.349
+  },
+  {
+   "app": "2048 Merge Challenge",
+   "requests": 1823040,
+   "requests_vendidos": 286800,
+   "pct_vendido": 15.7,
+   "ecpm_ponderado": 1.159
+  },
+  {
+   "app": "Ball Breaker",
+   "requests": 1800344,
+   "requests_vendidos": 370480,
+   "pct_vendido": 20.6,
+   "ecpm_ponderado": 4.146
+  },
+  {
+   "app": "Sweet Sugar",
+   "requests": 1760400,
+   "requests_vendidos": 544720,
+   "pct_vendido": 30.9,
+   "ecpm_ponderado": 3.197
+  },
+  {
+   "app": "Link",
+   "requests": 1752512,
+   "requests_vendidos": 169600,
+   "pct_vendido": 9.7,
+   "ecpm_ponderado": 3.064
+  },
+  {
+   "app": "Forge Labs",
+   "requests": 1705360,
+   "requests_vendidos": 80720,
+   "pct_vendido": 4.7,
+   "ecpm_ponderado": 1.558
+  },
+  {
+   "app": "Snake",
+   "requests": 1688320,
+   "requests_vendidos": 271200,
+   "pct_vendido": 16.1,
+   "ecpm_ponderado": 1.845
+  },
+  {
+   "app": "Bubble Pop",
+   "requests": 1685920,
+   "requests_vendidos": 178240,
+   "pct_vendido": 10.6,
+   "ecpm_ponderado": 2.603
+  },
+  {
+   "app": "OnDemandKorea: Korean Movies",
+   "requests": 1682400,
+   "requests_vendidos": 340800,
+   "pct_vendido": 20.3,
+   "ecpm_ponderado": 4.752
+  },
+  {
+   "app": "Best of Gaming Animation",
+   "requests": 1605440,
+   "requests_vendidos": 55040,
+   "pct_vendido": 3.4,
+   "ecpm_ponderado": 1.529
+  },
+  {
+   "app": "The Weather Channel",
+   "requests": 1576080,
+   "requests_vendidos": 109440,
+   "pct_vendido": 6.9,
+   "ecpm_ponderado": 5.734
+  },
+  {
+   "app": "Sling: Live TV + Freestream",
+   "requests": 1484640,
+   "requests_vendidos": 86880,
+   "pct_vendido": 5.9,
+   "ecpm_ponderado": 14.919
+  },
+  {
+   "app": "EYstreem",
+   "requests": 1471120,
+   "requests_vendidos": 236480,
+   "pct_vendido": 16.1,
+   "ecpm_ponderado": 1.287
+  },
+  {
+   "app": "SSundee",
+   "requests": 1410080,
+   "requests_vendidos": 338400,
+   "pct_vendido": 24.0,
+   "ecpm_ponderado": 1.484
+  },
+  {
+   "app": "TVN",
+   "requests": 1403840,
+   "requests_vendidos": 1403840,
+   "pct_vendido": 100.0,
+   "ecpm_ponderado": 5.017
+  },
+  {
+   "app": "Solitaire Scorpion",
+   "requests": 1385096,
+   "requests_vendidos": 178960,
+   "pct_vendido": 12.9,
+   "ecpm_ponderado": 2.81
+  },
+  {
+   "app": "TVN Pass",
+   "requests": 1337840,
+   "requests_vendidos": 255520,
+   "pct_vendido": 19.1,
+   "ecpm_ponderado": 1.05
+  },
+  {
+   "app": "Canela TV",
+   "requests": 1332000,
+   "requests_vendidos": 377760,
+   "pct_vendido": 28.4,
+   "ecpm_ponderado": 2.18
+  },
+  {
+   "app": "Solitaire Clash",
+   "requests": 1306800,
+   "requests_vendidos": 216080,
+   "pct_vendido": 16.5,
+   "ecpm_ponderado": 1.0
+  },
+  {
+   "app": "Sling TV",
+   "requests": 1283440,
+   "requests_vendidos": 110560,
+   "pct_vendido": 8.6,
+   "ecpm_ponderado": 25.6
+  },
+  {
+   "app": "2048 World Soccer Cup",
+   "requests": 1259929,
+   "requests_vendidos": 158080,
+   "pct_vendido": 12.5,
+   "ecpm_ponderado": 3.175
+  },
+  {
+   "app": "Minecraft with Firelight",
+   "requests": 1226176,
+   "requests_vendidos": 233680,
+   "pct_vendido": 19.1,
+   "ecpm_ponderado": 1.358
+  },
+  {
+   "app": "Tennis Channel",
+   "requests": 1201440,
+   "requests_vendidos": 104320,
+   "pct_vendido": 8.7,
+   "ecpm_ponderado": 7.492
+  },
+  {
+   "app": "Haystack",
+   "requests": 1198240,
+   "requests_vendidos": 110080,
+   "pct_vendido": 9.2,
+   "ecpm_ponderado": 7.715
+  },
+  {
+   "app": "FreeTV: Movies, Series & Live TV",
+   "requests": 1185760,
+   "requests_vendidos": 36640,
+   "pct_vendido": 3.1,
+   "ecpm_ponderado": 3.0
+  },
+  {
+   "app": "Wheel of Fortune",
+   "requests": 1156800,
+   "requests_vendidos": 610720,
+   "pct_vendido": 52.8,
+   "ecpm_ponderado": 3.494
+  },
+  {
+   "app": "Knife Smash",
+   "requests": 1073120,
+   "requests_vendidos": 240000,
+   "pct_vendido": 22.4,
+   "ecpm_ponderado": 4.612
+  },
+  {
+   "app": "Minecraft Tips and Tricks",
+   "requests": 1044000,
+   "requests_vendidos": 82400,
+   "pct_vendido": 7.9,
+   "ecpm_ponderado": 3.851
+  },
+  {
+   "app": "Bruno & Joel RANDOM",
+   "requests": 1038640,
+   "requests_vendidos": 247440,
+   "pct_vendido": 23.8,
+   "ecpm_ponderado": 1.175
+  },
+  {
+   "app": "Road Fury",
+   "requests": 1021044,
+   "requests_vendidos": 143040,
+   "pct_vendido": 14.0,
+   "ecpm_ponderado": 4.597
+  },
+  {
+   "app": "WeTV: Asian & Local Drama",
+   "requests": 958160,
+   "requests_vendidos": 669760,
+   "pct_vendido": 69.9,
+   "ecpm_ponderado": 0.58
+  },
+  {
+   "app": "Solitaire Towers",
+   "requests": 940472,
+   "requests_vendidos": 323680,
+   "pct_vendido": 34.4,
+   "ecpm_ponderado": 1.639
+  },
+  {
+   "app": "FreeMovie Browser Like Chrome",
+   "requests": 910720,
+   "requests_vendidos": 72800,
+   "pct_vendido": 8.0,
+   "ecpm_ponderado": 2.244
+  },
+  {
+   "app": "Roblox Tips and Tricks",
+   "requests": 845280,
+   "requests_vendidos": 49280,
+   "pct_vendido": 5.8,
+   "ecpm_ponderado": 11.542
+  },
+  {
+   "app": "Haystack News: Free Local ＆ World News",
+   "requests": 809600,
+   "requests_vendidos": 328480,
+   "pct_vendido": 40.6,
+   "ecpm_ponderado": 5.578
+  },
+  {
+   "app": "KREW",
+   "requests": 797600,
+   "requests_vendidos": 393280,
+   "pct_vendido": 49.3,
+   "ecpm_ponderado": 1.476
+  },
+  {
+   "app": "Tile Match",
+   "requests": 751360,
+   "requests_vendidos": 59840,
+   "pct_vendido": 8.0,
+   "ecpm_ponderado": 2.089
+  },
+  {
+   "app": "Bloo",
+   "requests": 747600,
+   "requests_vendidos": 51120,
+   "pct_vendido": 6.8,
+   "ecpm_ponderado": 1.03
+  },
+  {
+   "app": "Milo And Chip",
+   "requests": 737120,
+   "requests_vendidos": 139440,
+   "pct_vendido": 18.9,
+   "ecpm_ponderado": 4.717
+  },
+  {
+   "app": "Juan De Dios Pantoja",
+   "requests": 708480,
+   "requests_vendidos": 178640,
+   "pct_vendido": 25.2,
+   "ecpm_ponderado": 1.673
+  },
+  {
+   "app": "Asteroids",
+   "requests": 682160,
+   "requests_vendidos": 46240,
+   "pct_vendido": 6.8,
+   "ecpm_ponderado": 1.543
+  },
+  {
+   "app": "Court TV",
+   "requests": 669760,
+   "requests_vendidos": 141120,
+   "pct_vendido": 21.1,
+   "ecpm_ponderado": 7.121
+  },
+  {
+   "app": "Slots World",
+   "requests": 665760,
+   "requests_vendidos": 78640,
+   "pct_vendido": 11.8,
+   "ecpm_ponderado": 4.561
+  },
+  {
+   "app": "Spectrum TV",
+   "requests": 656160,
+   "requests_vendidos": 47040,
+   "pct_vendido": 7.2,
+   "ecpm_ponderado": 14.0
+  },
+  {
+   "app": "Juan De Dios",
+   "requests": 647680,
+   "requests_vendidos": 403280,
+   "pct_vendido": 62.3,
+   "ecpm_ponderado": 1.426
+  },
+  {
+   "app": "izzi go",
+   "requests": 632800,
+   "requests_vendidos": 632800,
+   "pct_vendido": 100.0,
+   "ecpm_ponderado": 1.379
+  },
+  {
+   "app": "Firelight",
+   "requests": 629600,
+   "requests_vendidos": 72480,
+   "pct_vendido": 11.5,
+   "ecpm_ponderado": 2.42
+  },
+  {
+   "app": "Fire TV",
+   "requests": 627920,
+   "requests_vendidos": 162400,
+   "pct_vendido": 25.9,
+   "ecpm_ponderado": 4.112
+  },
+  {
+   "app": "Arizona's Family +",
+   "requests": 608800,
+   "requests_vendidos": 86720,
+   "pct_vendido": 14.2,
+   "ecpm_ponderado": 0.274
+  },
+  {
+   "app": "xNestorio Minecraft",
+   "requests": 608640,
+   "requests_vendidos": 102560,
+   "pct_vendido": 16.9,
+   "ecpm_ponderado": 2.08
+  },
+  {
+   "app": "Mongo",
+   "requests": 565760,
+   "requests_vendidos": 173760,
+   "pct_vendido": 30.7,
+   "ecpm_ponderado": 2.187
+  },
+  {
+   "app": "WatchFreeFlix",
+   "requests": 563356,
+   "requests_vendidos": 207738,
+   "pct_vendido": 36.9,
+   "ecpm_ponderado": 12.081
+  },
+  {
+   "app": "Solitaire Pyramid",
+   "requests": 558560,
+   "requests_vendidos": 57360,
+   "pct_vendido": 10.3,
+   "ecpm_ponderado": 1.01
+  },
+  {
+   "app": "KTLA+ Los Angeles News",
+   "requests": 551360,
+   "requests_vendidos": 73440,
+   "pct_vendido": 13.3,
+   "ecpm_ponderado": 14.396
+  },
+  {
+   "app": "Canela",
+   "requests": 540320,
+   "requests_vendidos": 66720,
+   "pct_vendido": 12.3,
+   "ecpm_ponderado": 1.922
+  },
+  {
+   "app": "CBS",
+   "requests": 501200,
+   "requests_vendidos": 52400,
+   "pct_vendido": 10.5,
+   "ecpm_ponderado": 7.673
+  },
+  {
+   "app": "Doodle Jump Christmas",
+   "requests": 495520,
+   "requests_vendidos": 36480,
+   "pct_vendido": 7.4,
+   "ecpm_ponderado": 1.634
+  },
+  {
+   "app": "MiCHV",
+   "requests": 495040,
+   "requests_vendidos": 145440,
+   "pct_vendido": 29.4,
+   "ecpm_ponderado": 3.409
+  },
+  {
+   "app": "Jexs",
+   "requests": 480880,
+   "requests_vendidos": 315760,
+   "pct_vendido": 65.7,
+   "ecpm_ponderado": 2.563
+  },
+  {
+   "app": "Annoying Orange!",
+   "requests": 451680,
+   "requests_vendidos": 43040,
+   "pct_vendido": 9.5,
+   "ecpm_ponderado": 1.06
+  },
+  {
+   "app": "DanTDM",
+   "requests": 409280,
+   "requests_vendidos": 74480,
+   "pct_vendido": 18.2,
+   "ecpm_ponderado": 3.724
+  },
+  {
+   "app": "CheapPickle",
+   "requests": 405760,
+   "requests_vendidos": 47360,
+   "pct_vendido": 11.7,
+   "ecpm_ponderado": 4.23
+  },
+  {
+   "app": "FOX LOCAL: Free Live News",
+   "requests": 376480,
+   "requests_vendidos": 256320,
+   "pct_vendido": 68.1,
+   "ecpm_ponderado": 11.406
+  },
+  {
+   "app": "América tvGO",
+   "requests": 363840,
+   "requests_vendidos": 363840,
+   "pct_vendido": 100.0,
+   "ecpm_ponderado": 8.0
+  },
+  {
+   "app": "Space Invaders",
+   "requests": 310160,
+   "requests_vendidos": 66800,
+   "pct_vendido": 21.5,
+   "ecpm_ponderado": 1.727
+  },
+  {
+   "app": "TVN PASS",
+   "requests": 279520,
+   "requests_vendidos": 279520,
+   "pct_vendido": 100.0,
+   "ecpm_ponderado": 0.536
+  },
+  {
+   "app": "DAZN",
+   "requests": 274320,
+   "requests_vendidos": 33040,
+   "pct_vendido": 12.0,
+   "ecpm_ponderado": 0.447
+  },
+  {
+   "app": "Ryan and Friends",
+   "requests": 270720,
+   "requests_vendidos": 38560,
+   "pct_vendido": 14.2,
+   "ecpm_ponderado": 10.427
+  },
+  {
+   "app": "PelisTime",
+   "requests": 212320,
+   "requests_vendidos": 130240,
+   "pct_vendido": 61.3,
+   "ecpm_ponderado": 0.299
+  },
+  {
+   "app": "Wordlefull Puzzle",
+   "requests": 182240,
+   "requests_vendidos": 32960,
+   "pct_vendido": 18.1,
+   "ecpm_ponderado": 0.964
+  },
+  {
+   "app": "Jordan and Salish Matter",
+   "requests": 180667,
+   "requests_vendidos": 59467,
+   "pct_vendido": 32.9,
+   "ecpm_ponderado": 3.771
+  },
+  {
+   "app": "Radios del Peru FM en Vivo",
+   "requests": 177120,
+   "requests_vendidos": 97680,
+   "pct_vendido": 55.1,
+   "ecpm_ponderado": 0.12
+  },
+  {
+   "app": "YouCut - Video Editor & Maker",
+   "requests": 176480,
+   "requests_vendidos": 133600,
+   "pct_vendido": 75.7,
+   "ecpm_ponderado": 0.02
+  },
+  {
+   "app": "Rakuten Viki - Free TV Drama & Movies",
+   "requests": 176160,
+   "requests_vendidos": 39840,
+   "pct_vendido": 22.6,
+   "ecpm_ponderado": 2.43
+  },
+  {
+   "app": "13 NEWS KOLD",
+   "requests": 168640,
+   "requests_vendidos": 168640,
+   "pct_vendido": 100.0,
+   "ecpm_ponderado": 4.421
+  },
+  {
+   "app": "Law by Mike",
+   "requests": 146320,
+   "requests_vendidos": 58720,
+   "pct_vendido": 40.1,
+   "ecpm_ponderado": 1.8
+  },
+  {
+   "app": "RAWWFishing",
+   "requests": 131360,
+   "requests_vendidos": 131360,
+   "pct_vendido": 100.0,
+   "ecpm_ponderado": 1.798
+  },
+  {
+   "app": "Fawesome",
+   "requests": 119200,
+   "requests_vendidos": 80640,
+   "pct_vendido": 67.7,
+   "ecpm_ponderado": 7.947
+  },
+  {
+   "app": "Like Nastya +",
+   "requests": 107360,
+   "requests_vendidos": 33440,
+   "pct_vendido": 31.1,
+   "ecpm_ponderado": 0.878
+  },
+  {
+   "app": "ABC7 Sarasota",
+   "requests": 92800,
+   "requests_vendidos": 49600,
+   "pct_vendido": 53.4,
+   "ecpm_ponderado": 4.249
+  },
+  {
+   "app": "KOSA FIRST ALERT 7",
+   "requests": 82560,
+   "requests_vendidos": 82560,
+   "pct_vendido": 100.0,
+   "ecpm_ponderado": 2.663
+  },
+  {
+   "app": "Fandango",
+   "requests": 65760,
+   "requests_vendidos": 32640,
+   "pct_vendido": 49.6,
+   "ecpm_ponderado": 9.494
+  },
+  {
+   "app": "WFSB",
+   "requests": 33120,
+   "requests_vendidos": 33120,
+   "pct_vendido": 100.0,
+   "ecpm_ponderado": 6.624
+  },
+  {
+   "app": "Blippi",
+   "requests": 31840,
+   "requests_vendidos": 31840,
+   "pct_vendido": 100.0,
+   "ecpm_ponderado": 7.177
+  },
+  {
+   "app": "Rebecca Zamolo",
+   "requests": 29600,
+   "requests_vendidos": 29600,
+   "pct_vendido": 100.0,
+   "ecpm_ponderado": 1.72
+  }
+ ]
+}
