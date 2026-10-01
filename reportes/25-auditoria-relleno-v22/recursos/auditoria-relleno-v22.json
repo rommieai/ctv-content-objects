@@ -1,0 +1,856 @@
+{
+  "entrada": "inventory-consolidado-v10-a-v22-relleno.csv",
+  "filas": 1344629,
+  "requests": 622384767599,
+  "origen": {
+    "contentCategory": {
+      "derivado_genero": {
+        "filas": 349587,
+        "req": 157021985057,
+        "vend": 103757666887
+      },
+      "sin_dato": {
+        "filas": 94557,
+        "req": 73003901481,
+        "vend": 51328630825
+      },
+      "original": {
+        "filas": 293828,
+        "req": 178035595511,
+        "vend": 99641907055
+      },
+      "intra_titulo": {
+        "filas": 155345,
+        "req": 39516678850,
+        "vend": 25765434231
+      },
+      "derivado_tipo": {
+        "filas": 451312,
+        "req": 174806606700,
+        "vend": 92837896272
+      }
+    },
+    "contentSeries": {
+      "sin_dato": {
+        "filas": 1153251,
+        "req": 534389177075,
+        "vend": 314802017462
+      },
+      "imdb": {
+        "filas": 93342,
+        "req": 51213891732,
+        "vend": 37538876755
+      },
+      "original": {
+        "filas": 88555,
+        "req": 33345645857,
+        "vend": 19073101255
+      },
+      "intra_titulo": {
+        "filas": 9481,
+        "req": 3436052935,
+        "vend": 1917539798
+      }
+    },
+    "contentLength": {
+      "sin_dato": {
+        "filas": 679989,
+        "req": 300696683577,
+        "vend": 186242051179
+      },
+      "original": {
+        "filas": 169578,
+        "req": 130867109417,
+        "vend": 85622172524
+      },
+      "intra_titulo": {
+        "filas": 495062,
+        "req": 190820974605,
+        "vend": 101467311567
+      }
+    },
+    "contentIsLiveStream": {
+      "sin_dato": {
+        "filas": 690386,
+        "req": 279178077110,
+        "vend": 149225895676
+      },
+      "original": {
+        "filas": 396487,
+        "req": 240077081338,
+        "vend": 147905630381
+      },
+      "app_semantica": {
+        "filas": 257756,
+        "req": 103129609151,
+        "vend": 76200009213
+      }
+    },
+    "contentRating": {
+      "original": {
+        "filas": 1010473,
+        "req": 487082466048,
+        "vend": 297922496401
+      },
+      "sin_dato": {
+        "filas": 238906,
+        "req": 110904310747,
+        "vend": 65934532218
+      },
+      "intra_titulo": {
+        "filas": 94263,
+        "req": 24215380363,
+        "vend": 9401581593
+      },
+      "wikidata": {
+        "filas": 987,
+        "req": 182610441,
+        "vend": 72925058
+      }
+    },
+    "contentGenre": {
+      "original": {
+        "filas": 1221062,
+        "req": 532796304602,
+        "vend": 315151494398
+      },
+      "sin_dato": {
+        "filas": 43631,
+        "req": 64776778559,
+        "vend": 47045320000
+      },
+      "imdb": {
+        "filas": 31144,
+        "req": 8743431816,
+        "vend": 3434918457
+      },
+      "intra_titulo": {
+        "filas": 48792,
+        "req": 16068252622,
+        "vend": 7699802415
+      }
+    }
+  },
+  "enmascaramiento_intra": {
+    "contentCategory": {
+      "evaluadas_filas": 215368,
+      "evaluadas_req": 70937342450,
+      "predichas_filas": 100034,
+      "predichas_req": 34233009146,
+      "exacto_filas": 50324,
+      "exacto_req": 23017974003,
+      "misma_vertical_filas": 70515,
+      "misma_vertical_req": 27156958506,
+      "exacto_pct_filas": 50.3,
+      "exacto_pct_req": 67.2,
+      "misma_vertical_pct_filas": 70.5,
+      "misma_vertical_pct_req": 79.3,
+      "cobertura_pct_filas": 46.4
+    },
+    "contentSeries": {
+      "evaluadas_filas": 51170,
+      "evaluadas_req": 18277751100,
+      "predichas_filas": 32009,
+      "predichas_req": 15284217531,
+      "exacto_filas": 31801,
+      "exacto_req": 15248410255,
+      "exacto_pct_filas": 99.4,
+      "exacto_pct_req": 99.8,
+      "cobertura_pct_filas": 62.6
+    },
+    "contentLength": {
+      "evaluadas_filas": 97072,
+      "evaluadas_req": 47242656078,
+      "predichas_filas": 81539,
+      "predichas_req": 40463506383,
+      "exacto_filas": 79265,
+      "exacto_req": 39699917884,
+      "exacto_pct_filas": 97.2,
+      "exacto_pct_req": 98.1,
+      "cobertura_pct_filas": 84.0
+    },
+    "contentRating": {
+      "evaluadas_filas": 867838,
+      "evaluadas_req": 310962606993,
+      "predichas_filas": 375919,
+      "predichas_req": 142374961979,
+      "exacto_filas": 344653,
+      "exacto_req": 139202942887,
+      "exacto_pct_filas": 91.7,
+      "exacto_pct_req": 97.8,
+      "cobertura_pct_filas": 43.3
+    },
+    "contentGenre": {
+      "evaluadas_filas": 1057126,
+      "evaluadas_req": 348080553731,
+      "predichas_filas": 96094,
+      "predichas_req": 12215929404,
+      "exacto_filas": 88154,
+      "exacto_req": 11654858412,
+      "comparte_genero_filas": 85270,
+      "comparte_genero_req": 11239135699,
+      "exacto_pct_filas": 91.7,
+      "exacto_pct_req": 95.4,
+      "comparte_genero_pct_filas": 88.7,
+      "comparte_genero_pct_req": 92.0,
+      "cobertura_pct_filas": 9.1
+    }
+  },
+  "enmascaramiento_derivado_genero": {
+    "evaluadas_filas": 223908,
+    "evaluadas_req": 151421049296,
+    "mapa_generico_IAB1_filas": 155540,
+    "mapa_generico_IAB1_req": 106927263135,
+    "misma_vertical_filas": 190727,
+    "misma_vertical_req": 129936411904,
+    "mapa_especifico_filas": 68368,
+    "mapa_especifico_req": 44493786161,
+    "exacto_filas": 99216,
+    "exacto_req": 41018387187,
+    "mapa_generico_IAB1_pct_filas": 69.5,
+    "mapa_generico_IAB1_pct_req": 70.6,
+    "misma_vertical_pct_filas": 85.2,
+    "misma_vertical_pct_req": 85.8,
+    "mapa_especifico_pct_filas": 30.5,
+    "mapa_especifico_pct_req": 29.4,
+    "exacto_pct_filas": 44.3,
+    "exacto_pct_req": 27.1
+  },
+  "categoria_generica_req": {
+    "IAB1 generico|derivado_genero": 70439483887,
+    "especifico|derivado_genero": 86582501170,
+    "especifico|intra_titulo": 36618078167,
+    "especifico|derivado_tipo": 174806606700,
+    "IAB1 generico|intra_titulo": 2898600683
+  },
+  "imdb_tipo_vs_marca_serie": {
+    "A": {
+      "titulos_marca_en_titulo": 77,
+      "imdb_pelicula_marca_en_titulo": 1,
+      "titulos_serie_declarada_2+_rutas": 154,
+      "imdb_pelicula_serie_declarada_2+_rutas": 113
+    },
+    "B": {
+      "titulos_marca_en_titulo": 46,
+      "imdb_pelicula_marca_en_titulo": 17,
+      "titulos_serie_declarada_2+_rutas": 473,
+      "imdb_pelicula_serie_declarada_2+_rutas": 380
+    },
+    "C": {
+      "titulos_marca_en_titulo": 40,
+      "imdb_pelicula_marca_en_titulo": 4,
+      "titulos_serie_declarada_2+_rutas": 95,
+      "imdb_pelicula_serie_declarada_2+_rutas": 78
+    },
+    "D": {
+      "titulos_serie_declarada_2+_rutas": 278,
+      "imdb_pelicula_serie_declarada_2+_rutas": 226,
+      "titulos_marca_en_titulo": 17,
+      "imdb_pelicula_marca_en_titulo": 7
+    }
+  },
+  "riesgo_externo": {
+    "contentSeries": {
+      "alto_riesgo(2+ candidatos y <100 votos)": {
+        "filas": 11506,
+        "req": 2621825290
+      },
+      "candidatos:1": {
+        "filas": 55968,
+        "req": 37364640418
+      },
+      "candidatos:10+": {
+        "filas": 13090,
+        "req": 3353591286
+      },
+      "candidatos:2-4": {
+        "filas": 16876,
+        "req": 7668894783
+      },
+      "candidatos:5-9": {
+        "filas": 7408,
+        "req": 2826765245
+      },
+      "confianza:A": {
+        "filas": 55968,
+        "req": 37364640418
+      },
+      "confianza:B": {
+        "filas": 37374,
+        "req": 13849251314
+      },
+      "palabras_titulo:1": {
+        "filas": 19959,
+        "req": 6459720635
+      },
+      "palabras_titulo:2": {
+        "filas": 33997,
+        "req": 13175200116
+      },
+      "palabras_titulo:3+": {
+        "filas": 39386,
+        "req": 31578970981
+      },
+      "votos:0": {
+        "filas": 8794,
+        "req": 3216746377
+      },
+      "votos:1-99": {
+        "filas": 35545,
+        "req": 15314529958
+      },
+      "votos:100-999": {
+        "filas": 27309,
+        "req": 19886927253
+      },
+      "votos:1000+": {
+        "filas": 21694,
+        "req": 12795688144
+      }
+    },
+    "contentCategory": {
+      "alto_riesgo(2+ candidatos y <100 votos)": {
+        "filas": 70031,
+        "req": 24839125194
+      },
+      "candidatos:1": {
+        "filas": 241417,
+        "req": 96214143747
+      },
+      "candidatos:10+": {
+        "filas": 90744,
+        "req": 33717859291
+      },
+      "candidatos:2-4": {
+        "filas": 69817,
+        "req": 24596803219
+      },
+      "candidatos:5-9": {
+        "filas": 49334,
+        "req": 20277800443
+      },
+      "confianza:A": {
+        "filas": 241417,
+        "req": 96214143747
+      },
+      "confianza:B": {
+        "filas": 209895,
+        "req": 78592462953
+      },
+      "palabras_titulo:1": {
+        "filas": 105902,
+        "req": 43439416823
+      },
+      "palabras_titulo:2": {
+        "filas": 141432,
+        "req": 51922748005
+      },
+      "palabras_titulo:3+": {
+        "filas": 203978,
+        "req": 79444441872
+      },
+      "votos:0": {
+        "filas": 57494,
+        "req": 20904123497
+      },
+      "votos:1-99": {
+        "filas": 116023,
+        "req": 40923621687
+      },
+      "votos:100-999": {
+        "filas": 155391,
+        "req": 68727225146
+      },
+      "votos:1000+": {
+        "filas": 122404,
+        "req": 44251636370
+      }
+    },
+    "contentGenre": {
+      "alto_riesgo(2+ candidatos y <100 votos)": {
+        "filas": 4707,
+        "req": 1799966075
+      },
+      "candidatos:1": {
+        "filas": 17555,
+        "req": 4930577958
+      },
+      "candidatos:10+": {
+        "filas": 5687,
+        "req": 1360296045
+      },
+      "candidatos:2-4": {
+        "filas": 4515,
+        "req": 842673306
+      },
+      "candidatos:5-9": {
+        "filas": 3387,
+        "req": 1609884507
+      },
+      "confianza:A": {
+        "filas": 17555,
+        "req": 4930577958
+      },
+      "confianza:B": {
+        "filas": 13589,
+        "req": 3812853858
+      },
+      "palabras_titulo:1": {
+        "filas": 7321,
+        "req": 1720355008
+      },
+      "palabras_titulo:2": {
+        "filas": 10071,
+        "req": 2760259797
+      },
+      "palabras_titulo:3+": {
+        "filas": 13752,
+        "req": 4262817011
+      },
+      "votos:0": {
+        "filas": 4402,
+        "req": 1813257283
+      },
+      "votos:1-99": {
+        "filas": 8661,
+        "req": 1891608415
+      },
+      "votos:100-999": {
+        "filas": 8328,
+        "req": 2243546247
+      },
+      "votos:1000+": {
+        "filas": 9753,
+        "req": 2795019871
+      }
+    },
+    "contentRating": {
+      "candidatos:1": {
+        "filas": 242,
+        "req": 73099153
+      },
+      "candidatos:10+": {
+        "filas": 449,
+        "req": 81587279
+      },
+      "candidatos:2-4": {
+        "filas": 149,
+        "req": 12572372
+      },
+      "candidatos:5-9": {
+        "filas": 147,
+        "req": 15351637
+      },
+      "confianza:A": {
+        "filas": 242,
+        "req": 73099153
+      },
+      "confianza:B": {
+        "filas": 745,
+        "req": 109511288
+      },
+      "palabras_titulo:1": {
+        "filas": 356,
+        "req": 93554958
+      },
+      "palabras_titulo:2": {
+        "filas": 300,
+        "req": 52461953
+      },
+      "palabras_titulo:3+": {
+        "filas": 331,
+        "req": 36593530
+      },
+      "votos:100-999": {
+        "filas": 55,
+        "req": 16526367
+      },
+      "votos:1000+": {
+        "filas": 932,
+        "req": 166084074
+      }
+    }
+  },
+  "homonimos_intra": {
+    "titulos_sospechosos": 70,
+    "titulos_con_2+_publishers": 5482,
+    "filas_titulo_sospechoso": 26045,
+    "contentLength_intra_filas": 11180,
+    "contentLength_intra_req": 7195782959,
+    "contentSeries_intra_filas": 3071,
+    "contentSeries_intra_req": 980151179,
+    "contentRating_intra_filas": 478,
+    "contentRating_intra_req": 110037393,
+    "contentCategory_intra_filas": 1636,
+    "contentCategory_intra_req": 179591046,
+    "total_intra": {
+      "contentCategory_intra_filas": 155345,
+      "contentLength_intra_filas": 495062,
+      "contentRating_intra_filas": 94263,
+      "contentSeries_intra_filas": 9481,
+      "contentGenre_intra_filas": 48792
+    },
+    "ejemplos": [
+      {
+        "titulo": "penance lane",
+        "pub_a": "Select Plus PTE LTD (CTV)",
+        "generos_a": [
+          "drama"
+        ],
+        "pub_b": "AWG Media",
+        "generos_b": [
+          "terror"
+        ]
+      },
+      {
+        "titulo": "eve",
+        "pub_a": "Select Plus PTE LTD (CTV)",
+        "generos_a": [
+          "terror"
+        ],
+        "pub_b": "Televisa Univision via SpringServe",
+        "generos_b": [
+          "drama"
+        ]
+      },
+      {
+        "titulo": "blue bloods",
+        "pub_a": "Runn TV (Springserve)",
+        "generos_a": [
+          "crimen"
+        ],
+        "pub_b": "OTTera.tv",
+        "generos_b": [
+          "drama"
+        ]
+      },
+      {
+        "titulo": "el peso del amor",
+        "pub_a": "Select Plus PTE LTD (CTV)",
+        "generos_a": [
+          "comedia"
+        ],
+        "pub_b": "Televisa Univision via SpringServe",
+        "generos_b": [
+          "drama"
+        ]
+      },
+      {
+        "titulo": "ace tv",
+        "pub_a": "Vidaa",
+        "generos_a": [
+          "deportes"
+        ],
+        "pub_b": "iion Pty Ltd",
+        "generos_b": [
+          "noticias"
+        ]
+      },
+      {
+        "titulo": "locked in hellsend",
+        "pub_a": "Select Plus PTE LTD (CTV)",
+        "generos_a": [
+          "deportes"
+        ],
+        "pub_b": "OTTera.tv",
+        "generos_b": [
+          "accion",
+          "aventura"
+        ]
+      },
+      {
+        "titulo": "c4 en alerta",
+        "pub_a": "iion Pty Ltd",
+        "generos_a": [
+          "crimen",
+          "misterio",
+          "reality"
+        ],
+        "pub_b": "EXTE - Rich Audience (oRTB)",
+        "generos_b": [
+          "noticias"
+        ]
+      },
+      {
+        "titulo": "los archivos del fbi",
+        "pub_a": "OTTera.tv",
+        "generos_a": [
+          "crimen",
+          "documental"
+        ],
+        "pub_b": "Televisa Univision via SpringServe",
+        "generos_b": [
+          "reality"
+        ]
+      },
+      {
+        "titulo": "robocar poli",
+        "pub_a": "NEW ID Co., Ltd.",
+        "generos_a": [
+          "animacion",
+          "infantil-familia"
+        ],
+        "pub_b": "iion Pty Ltd",
+        "generos_b": [
+          "otros/desconocido"
+        ]
+      },
+      {
+        "titulo": "english tv",
+        "pub_a": "METAX SOFTWARE PTE. LTD.",
+        "generos_a": [
+          "educacion"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "infantil-familia"
+        ]
+      },
+      {
+        "titulo": "rain",
+        "pub_a": "iion Pty Ltd",
+        "generos_a": [
+          "entretenimiento",
+          "musica"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "lifestyle"
+        ]
+      },
+      {
+        "titulo": "mountain",
+        "pub_a": "iion Pty Ltd",
+        "generos_a": [
+          "entretenimiento",
+          "musica"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "lifestyle"
+        ]
+      },
+      {
+        "titulo": "lake",
+        "pub_a": "iion Pty Ltd",
+        "generos_a": [
+          "entretenimiento",
+          "musica"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "lifestyle"
+        ]
+      },
+      {
+        "titulo": "waking up",
+        "pub_a": "OTTera.tv",
+        "generos_a": [
+          "entretenimiento",
+          "musica"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "lifestyle"
+        ]
+      },
+      {
+        "titulo": "eating",
+        "pub_a": "OTTera.tv",
+        "generos_a": [
+          "entretenimiento",
+          "gastronomia"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "lifestyle"
+        ]
+      },
+      {
+        "titulo": "focus",
+        "pub_a": "iion Pty Ltd",
+        "generos_a": [
+          "entretenimiento",
+          "musica"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "lifestyle"
+        ]
+      },
+      {
+        "titulo": "falling asleep",
+        "pub_a": "OTTera.tv",
+        "generos_a": [
+          "entretenimiento",
+          "musica"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "lifestyle"
+        ]
+      },
+      {
+        "titulo": "stressed",
+        "pub_a": "iion Pty Ltd",
+        "generos_a": [
+          "entretenimiento",
+          "musica"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "lifestyle"
+        ]
+      },
+      {
+        "titulo": "como dice el dicho",
+        "pub_a": "Vidaa",
+        "generos_a": [
+          "drama"
+        ],
+        "pub_b": "TCL ADS - Springserve",
+        "generos_b": [
+          "entretenimiento"
+        ]
+      },
+      {
+        "titulo": "exhaustion",
+        "pub_a": "iion Pty Ltd",
+        "generos_a": [
+          "entretenimiento",
+          "musica"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "lifestyle"
+        ]
+      },
+      {
+        "titulo": "current",
+        "pub_a": "iion Pty Ltd",
+        "generos_a": [
+          "entretenimiento",
+          "musica"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "lifestyle"
+        ]
+      },
+      {
+        "titulo": "cine de oro",
+        "pub_a": "Vidaa",
+        "generos_a": [
+          "accion",
+          "aventura",
+          "comedia"
+        ],
+        "pub_b": "TCL ADS - Springserve",
+        "generos_b": [
+          "entretenimiento"
+        ]
+      },
+      {
+        "titulo": "surfing favela",
+        "pub_a": "Coocaa, a SKYWORTH company",
+        "generos_a": [
+          "deportes"
+        ],
+        "pub_b": "Select Plus PTE LTD (CTV)",
+        "generos_b": [
+          "documental"
+        ]
+      },
+      {
+        "titulo": "super mario bros wonder",
+        "pub_a": "Coocaa, a SKYWORTH company",
+        "generos_a": [
+          "deportes",
+          "videojuegos"
+        ],
+        "pub_b": "iion Pty Ltd",
+        "generos_b": [
+          "aventura"
+        ]
+      },
+      {
+        "titulo": "test my ride",
+        "pub_a": "Coocaa, a SKYWORTH company",
+        "generos_a": [
+          "deportes",
+          "videojuegos"
+        ],
+        "pub_b": "iion Pty Ltd",
+        "generos_b": [
+          "reality"
+        ]
+      }
+    ]
+  },
+  "rating_wikidata_por_pais": {
+    "Mexico": {
+      "filas": 466,
+      "req": 127128049
+    },
+    "Colombia": {
+      "filas": 72,
+      "req": 11871148
+    },
+    "Argentina": {
+      "filas": 180,
+      "req": 21542570
+    },
+    "Chile": {
+      "filas": 111,
+      "req": 10544032
+    },
+    "Ecuador": {
+      "filas": 25,
+      "req": 1800080
+    },
+    "Peru": {
+      "filas": 69,
+      "req": 5341442
+    },
+    "Uruguay": {
+      "filas": 7,
+      "req": 591840
+    },
+    "Venezuela": {
+      "filas": 14,
+      "req": 788400
+    },
+    "Costa Rica": {
+      "filas": 12,
+      "req": 943680
+    },
+    "Panama": {
+      "filas": 7,
+      "req": 438720
+    },
+    "Dominican Republic": {
+      "filas": 10,
+      "req": 481120
+    },
+    "Paraguay": {
+      "filas": 4,
+      "req": 309440
+    },
+    "Guatemala": {
+      "filas": 4,
+      "req": 492080
+    },
+    "Honduras": {
+      "filas": 3,
+      "req": 195600
+    },
+    "Bolivia": {
+      "filas": 2,
+      "req": 99200
+    },
+    "El Salvador": {
+      "filas": 1,
+      "req": 43040
+    }
+  }
+}

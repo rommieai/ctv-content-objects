@@ -462,6 +462,83 @@ def runtime_a_bucket(minutos, buckets):
 
 
 # ----------------------------------------------------------------------------
+# 7. Afinado de la categoria generica
+# ----------------------------------------------------------------------------
+CATEGORIA_GENERICA = {"IAB1": None, "IAB1-22": None, "IAB1-5": "pelicula", "IAB1-7": "tv"}
+MAX_CODIGOS_AFINADO = 3
+
+
+class AfinadorCategoria:
+    """[IAB1-5] dice "pelicula" pero no de que genero. IAB 1.0 no tiene codigos de genero; IAB 2.2
+    si (Movies > Drama Movies = 333, Television > Drama TV = 647...). Para las filas cuya categoria
+    se RELLENO con un codigo generico, se conservan esos codigos y se agregan (hasta 3) los de
+    genero de 2.2 que correspondan:
+
+      genero  el contentGenre de la propia fila (lo declara el vendedor para esa ruta: no tiene
+              riesgo de homonimo); si no trae un genero comparable, los generos IMDb (match A/B)
+              y despues los de Wikidata
+      forma   la del codigo generico ([IAB1-5] -> pelicula, [IAB1-7] -> tv); con [IAB1] sale del
+              titulo (season/episodio -> tv), del tipo IMDb o del genero (telenovela -> tv); si no
+              se sabe, se agregan las dos (Drama Movies + Drama TV), como ya hacen algunos vendedores
+
+    El resultado mezcla taxonomias en la misma lista ([IAB1-5, 333]); el origen del afinado queda
+    en contentCategory_afinado_origen (genero_declarado | imdb | wikidata)."""
+
+    def __init__(self, cache_dir):
+        from validar_categorias import (Taxonomias, GENERO_DATASET, IMDB_GENERO, IMDB_GENERO_EXTRA,
+                                        WIKIDATA_GENERO, FORMA_IMDB, forma_por_titulo)
+        self.tax = Taxonomias(cache_dir)
+        self.GENERO_DATASET, self.IMDB_GENERO, self.IMDB_GENERO_EXTRA = GENERO_DATASET, IMDB_GENERO, IMDB_GENERO_EXTRA
+        self.WIKIDATA_GENERO, self.FORMA_IMDB, self.forma_por_titulo = WIKIDATA_GENERO, FORMA_IMDB, forma_por_titulo
+
+    def _generos(self, generos_fila, imdb, wd):
+        decl = [self.GENERO_DATASET.get(g, {}).get("genero") for g in generos_fila]
+        decl = [g for g in decl if g]
+        if decl:
+            return list(dict.fromkeys(decl)), "genero_declarado"
+        ext = []
+        for g in imdb.get("generos", []):
+            ext += [x for x in (self.IMDB_GENERO.get(g), self.IMDB_GENERO_EXTRA.get(g)) if x]
+        ext = [g for g in ext if g not in ("deportes", "noticias", "musica")]
+        if ext:
+            return list(dict.fromkeys(ext)), "imdb"
+        for g in wd.get("generos", []):
+            low = g.lower()
+            for kw, gc in self.WIKIDATA_GENERO:
+                if kw in low:
+                    ext.append(gc)
+                    break
+        ext = [g for g in ext if g not in ("deportes", "noticias", "musica")]
+        return (list(dict.fromkeys(ext)), "wikidata") if ext else ([], "")
+
+    def __call__(self, valor, generos_fila, imdb, wd, titulo):
+        codigos = [x.strip() for x in (valor or "").strip().strip("[]").split(",") if x.strip()]
+        if not codigos or any(x.upper() not in CATEGORIA_GENERICA for x in codigos):
+            return None, ""
+        gens, fuente = self._generos(generos_fila, imdb, wd)
+        if not gens:
+            return None, ""
+        formas = {CATEGORIA_GENERICA[x.upper()] for x in codigos} - {None}
+        if len(formas) != 1:
+            f = self.forma_por_titulo(titulo) or self.FORMA_IMDB.get(imdb.get("tipo", ""))
+            if not f:
+                f = next((self.GENERO_DATASET.get(g, {}).get("forma") for g in generos_fila
+                          if self.GENERO_DATASET.get(g, {}).get("forma") in ("pelicula", "tv")), None)
+            formas = {f} if f else {"pelicula", "tv"}
+        extra = []
+        for g in gens:
+            for f in ("pelicula", "tv"):
+                if f in formas:
+                    i = (self.tax.gen_movie if f == "pelicula" else self.tax.gen_tv).get(g)
+                    if i and i not in extra:
+                        extra.append(i)
+        extra = extra[:MAX_CODIGOS_AFINADO]
+        if not extra:
+            return None, ""
+        return "[" + ", ".join(codigos + extra) + "]", fuente
+
+
+# ----------------------------------------------------------------------------
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("entrada")
@@ -634,10 +711,13 @@ def main():
 
     # --- pasada 2: rellenar --------------------------------------------------------------
     stats = {c: Counter() for c in OBJETIVO}
+    stats["_afinado"] = Counter()
     salida_cols = list(columnas) + ["titulo_clave", "ext_imdb_id", "ext_tipo", "ext_anio",
                                     "ext_runtime_min", "ext_confianza"]
     for c in OBJETIVO:
         salida_cols += [c + "_relleno", c + "_origen"]
+    salida_cols += ["contentCategory_afinado_origen"]
+    afinar = AfinadorCategoria(args.cache_dir)
 
     def intra(c, k):
         """Escalon intra_titulo: ¿alguna fila hermana (mismo titulo) trae el dato?
@@ -763,6 +843,15 @@ def main():
                 d[c + "_relleno"] = val or ""
                 d[c + "_origen"] = org
                 stats[c][org or "sin_dato"] += 1
+            # Categoria generica rellenada ([IAB1], [IAB1-5], [IAB1-7]) en una fila con titulo:
+            # se conservan esos codigos y se agregan los de genero de IAB 2.2 que apliquen.
+            d["contentCategory_afinado_origen"] = ""
+            if k and d["contentCategory_origen"] not in ("", "original"):
+                nuevo, fuente = afinar(d["contentCategory_relleno"], generos_fila, imdb, wd, d.get("contentTitle", ""))
+                if nuevo:
+                    d["contentCategory_relleno"] = nuevo
+                    d["contentCategory_afinado_origen"] = fuente
+                    stats["_afinado"][fuente] += 1
             w.writerow(d)
 
     resumen = {"entrada": args.entrada, "filas": n, "titulos_distintos": len(claves),
@@ -777,6 +866,10 @@ def main():
             "pct_original": round(100 * s["original"] / n, 1),
             "pct_final": round(100 * lleno / n, 1),
             "origen": {k: round(100 * v / n, 1) for k, v in s.most_common()}}
+    resumen["contentCategory_afinado"] = {
+        "nota": "filas con categoria generica rellenada ([IAB1], [IAB1-5], [IAB1-7]) y titulo, a las que se "
+                "agregaron codigos de genero de IAB 2.2 (se conservan los genericos), por fuente del genero",
+        "pct_filas": {k: round(100 * v / n, 1) for k, v in stats["_afinado"].most_common()}}
     json.dump(resumen, open(args.salida_json, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
     for c in OBJETIVO:
         r = resumen["columnas"][c]

@@ -50,7 +50,9 @@ scripts/                          codigo que genera los consolidados y los JSON
                                   metodos y fuentes" desde el JSON del relleno y las validaciones
   enriquecer_externo.py           rellena content objects vacios: intra-titulo, IMDb offline,
                                   Wikidata/TVMaze (cache incremental). Sin defaults por app ni
-                                  relleno de contentLanguage desde 2026-09-17
+                                  relleno de contentLanguage desde 2026-09-17; desde 2026-10-01 a la
+                                  categoria generica rellenada ([IAB1]/[IAB1-5]/[IAB1-7]) le agrega
+                                  codigos de genero IAB 2.2 (contentCategory_afinado_origen)
   validar_categorias.py           valida contentCategory contra IMDb/Wikidata (cache) y las
                                   taxonomias IAB oficiales: correctitud de lo lleno y
                                   categoria mas fina alcanzable por fila
@@ -59,6 +61,14 @@ scripts/                          codigo que genera los consolidados y los JSON
                                   contentSeries (correctitud basica + que filas son serie sin
                                   decirlo, nombre propuesto, temporada/episodio del titulo)
   generar_reporte_genero_series.py  sus dos markdown (genero, series)
+  auditar_relleno.py              auditoria del relleno: prueba de enmascaramiento de intra_titulo,
+                                  chequeo del tipo IMDb con marcas de serie, señales de homonimo y
+                                  rating por pais (JSON)
+  generar_muestra_revision.py     muestra de filas con valores rellenados (cuotas por campo y metodo,
+                                  proporcional a requests) y la pagina HTML local para revisarlas a mano
+                                  (plantilla en scripts/plantillas/revision-manual.html)
+  calcular_precision_revision.py  precision por campo y metodo con IC 95% (Wilson) desde los JSON
+                                  exportados por la pagina; acuerdo entre revisores
 
 reportes/
   old_reports/                    tandas hasta v20 (v10 a v20), archivadas para no hacer ruido:
@@ -94,6 +104,8 @@ reportes/
     21-consolidado-v10-a-v19/       tanda v10 a v19, tres reportes md (misma estructura que 24)
     22-consolidado-v10-a-v20/       tanda v10 a v20, tres reportes md (misma estructura que 24)
   23-consolidado-v10-a-v21/         tanda v10 a v21, tres reportes md (misma estructura que 24)
+  25-auditoria-relleno-v22/         ¿lo rellenado esta bien y es util? enmascaramiento, homonimos,
+                                  bases para contrastar, pagina de revision manual (recursos/revision-manual-v22.html)
   24-consolidado-v10-a-v22/         la version vigente, tres reportes md: detallado por pais
                                   (MX/CO/CL) con requests y eCPM ponderado lleno/vacio por
                                   columna; graficas del eCPM lleno/vacio y heatmap; y "que se
@@ -232,6 +244,7 @@ quedan como NULL en BigQuery.
 
 | Reporte | Contenido |
 |---|---|
+| `reportes/25-auditoria-relleno-v22/reporte-auditoria-relleno-v22.md` | Auditoria del relleno sobre v10-a-v22: intra_titulo acierta 92-99% al enmascarar (categoria 50%); lo que depende del match IMDb por titulo es el 33% de los requests y el 62% de eso tiene señales de homonimo; bases para contrastar por ID (TMDB, Wikidata, TVMaze), candados anti-homonimos, pagina HTML de revision manual con 500 filas y campos OpenRTB 2.6 que se pueden llenar |
 | `reportes/24-.../reporte-content-objects-detallado-v22-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v22 (1,344,629 filas, 622,384,767,599 requests; v22 aporto 46,484 combinaciones nuevas; solo v22: 512,000 filas, 472,750,396,159 requests). Misma estructura que v19 |
 | `reportes/24-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** las mismas graficas que v19 sobre v10-a-v22 (publisher x pais explica el 63.8 % de la variacion del eCPM ponderado, en `recursos/reporte-drivers-ecpm-publisher-pais.md`) |
 | `reportes/24-.../reporte-completitud-content-objects-v22.md` | **Vigente:** que se puede completar de cada content object sobre v10-a-v22 (version completa en `recursos/reporte-completitud-content-objects-v22-completo.md`) |

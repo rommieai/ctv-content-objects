@@ -35,9 +35,9 @@ Contexto, fuentes, métodos y límites: `recursos/reporte-completitud-content-ob
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide con la evidencia (`coincide`) | 19.5% | 41.3% |
-| Compatible (genérica, no contradice) (`compatible`) | 50.1% | 44.6% |
-| Contradice la evidencia (`contradice`) | 12.5% | 4.7% |
+| Coincide con la evidencia (`coincide`) | 19.5% | 58.0% |
+| Compatible (genérica, no contradice) (`compatible`) | 50.1% | 20.4% |
+| Contradice la evidencia (`contradice`) | 12.5% | 12.2% |
 | No se pudo evaluar (`no_evaluable`) | 18.0% | 9.4% |
 
 ## contentGenre

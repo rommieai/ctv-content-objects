@@ -1,6 +1,6 @@
 # Qué se puede completar de cada content object: métodos y fuentes (consolidado v10 a v22)
 
-**Fuente:** `inventory-consolidado-v10-a-v22.csv` — 1,344,629 filas únicas, 622,384,767,599 requests (métricas del corte v22). **Relleno:** `inventory-consolidado-v10-a-v22-relleno.csv` (no versionado), generado con `scripts/enriquecer_externo.py --wikidata`, corrida del 2026-09-30 18:14 → `recursos/reporte-relleno-v22.json`. Títulos distintos: 18,246; con match en IMDb: 8,742; consultados por primera vez en esta corrida: 901.
+**Fuente:** `inventory-consolidado-v10-a-v22.csv` — 1,344,629 filas únicas, 622,384,767,599 requests (métricas del corte v22). **Relleno:** `inventory-consolidado-v10-a-v22-relleno.csv` (no versionado), generado con `scripts/enriquecer_externo.py --wikidata`, corrida del 2026-10-01 08:09 → `recursos/reporte-relleno-v22.json`. Títulos distintos: 18,246; con match en IMDb: 8,742; consultados por primera vez en esta corrida: 0.
 **Validaciones:** `scripts/validar_categorias.py` y `scripts/validar_genero_series.py` sobre el consolidado y sobre el relleno (`recursos/validacion-*.json`, con muestras CSV para revisión manual en la misma carpeta). Tablas generadas con `scripts/generar_reporte_completitud.py`.
 
 ## Cómo leer este reporte
@@ -93,9 +93,9 @@ Categorías más propuestas: `Movies > Drama Movies | Television > Drama TV` 5.2
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide con la evidencia (`coincide`) | 19.5% | 41.3% |
-| Compatible (genérica, no contradice) (`compatible`) | 50.1% | 44.6% |
-| Contradice la evidencia (`contradice`) | 12.5% | 4.7% |
+| Coincide con la evidencia (`coincide`) | 19.5% | 58.0% |
+| Compatible (genérica, no contradice) (`compatible`) | 50.1% | 20.4% |
+| Contradice la evidencia (`contradice`) | 12.5% | 12.2% |
 | No se pudo evaluar (`no_evaluable`) | 18.0% | 9.4% |
 
 **Límites:** el consolidado mezcla tres taxonomías (1.0, 2.2, 3.0) y texto libre (`[sports]`, `[Live]`); lo declarado es en su mayoría genérico (nivel 1, solo la vertical). Los valores por defecto que declaran algunas apps (`[IAB12]` de Vidaa, `[IAB1]` de OTTera) son correctos como vertical pero no como género, y `intra_titulo` los propaga. Un match IMDb de confianza B acierta ~75 %, así que parte de las "contradicciones" son matches equivocados; se separan con `genero_vs_imdb` en el CSV fila a fila.

@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revisión de content objects</title>
+<style>
+:root {
+  --bg: #f6f7f9; --card: #ffffff; --ink: #1f2933; --ink2: #5f6b76; --line: #e3e7ea;
+  --fill-bg: #fff4e0; --fill-line: #e08a00; --fill-ink: #7a4a00;
+  --ok: #1e8a4c; --ok-bg: #e3f5ea; --bad: #c62f2f; --bad-bg: #fde8e8; --unk: #6b5ba8; --unk-bg: #eeeafb;
+  --accent: #2a78d6; --empty: #9aa5ae;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14181c; --card: #1d2227; --ink: #e6e9ec; --ink2: #9aa5ae; --line: #2e353b;
+    --fill-bg: #3a2c12; --fill-line: #f0a020; --fill-ink: #ffd590;
+    --ok: #4cc27f; --ok-bg: #173527; --bad: #f07070; --bad-bg: #3d1d1d; --unk: #b3a6f0; --unk-bg: #2a2540;
+    --accent: #6aa8f0; --empty: #6b7680;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+header { position: sticky; top: 0; z-index: 5; background: var(--card); border-bottom: 1px solid var(--line); padding: 12px 16px; }
+.wrap { max-width: 1100px; margin: 0 auto; }
+h1 { font-size: 18px; margin: 0 0 8px; }
+.barra { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.progreso { flex: 1 1 220px; min-width: 0; }
+.progreso .pista { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+.progreso .lleno { height: 100%; background: var(--ok); width: 0; transition: width .2s; }
+.progreso small { color: var(--ink2); }
+input[type=text], select { max-width: 100%; min-width: 0; font: inherit; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); }
+button { font: inherit; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+button:hover { border-color: var(--accent); }
+button.primario { background: var(--accent); border-color: var(--accent); color: #fff; }
+main { padding: 16px; }
+details.ayuda { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; }
+details.ayuda summary { cursor: pointer; font-weight: 600; }
+details.ayuda li { margin: 4px 0; }
+.leyenda { display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 0 0 14px; color: var(--ink2); font-size: 13px; align-items: center; }
+.muestra { display: inline-block; padding: 1px 8px; border-radius: 4px; }
+.muestra.llenado { background: var(--fill-bg); border-left: 4px solid var(--fill-line); color: var(--fill-ink); font-weight: 600; }
+.muestra.vendedor { border: 1px solid var(--line); }
+.muestra.vacio { color: var(--empty); font-style: italic; }
+.filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; align-items: center; }
+.tarjeta { scroll-margin-top: 120px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 14px; overflow: hidden; }
+.tarjeta.completa { border-color: var(--ok); }
+.cabeza { padding: 12px 14px; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; }
+.cabeza .num { color: var(--ink2); font-variant-numeric: tabular-nums; }
+.cabeza .titulo { font-size: 17px; font-weight: 700; }
+.cabeza .contexto { color: var(--ink2); font-size: 13px; width: 100%; }
+.cabeza .enlaces { font-size: 13px; width: 100%; }
+.cabeza a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; }
+td { padding: 8px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.campo { width: 170px; color: var(--ink2); font-size: 13px; }
+tr.llenado td { background: var(--fill-bg); }
+tr.llenado td.campo { border-left: 4px solid var(--fill-line); color: var(--fill-ink); font-weight: 600; }
+.etiqueta { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .03em; padding: 1px 6px; border-radius: 3px; background: var(--fill-line); color: #fff; margin-left: 4px; vertical-align: 1px; }
+.valor { font-weight: 600; word-break: break-word; }
+.vacio { color: var(--empty); font-style: italic; font-weight: 400; }
+.sig { color: var(--ink2); font-size: 13px; margin-top: 2px; }
+.sig .cod { font-family: ui-monospace, Consolas, monospace; font-size: 12px; background: var(--line); padding: 0 4px; border-radius: 3px; color: var(--ink); }
+.sig .en { opacity: .8; }
+.antes { color: var(--ink2); font-size: 12px; margin-top: 2px; }
+td.veredicto { width: 0; padding: 0; }
+.botones { display: flex; gap: 6px; flex-wrap: wrap; }
+@media (min-width: 721px) { .botones { flex-wrap: nowrap; } }
+.botones button { padding: 4px 10px; font-size: 13px; }
+.botones button.sel-correcto { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); font-weight: 700; }
+.botones button.sel-incorrecto { background: var(--bad-bg); border-color: var(--bad); color: var(--bad); font-weight: 700; }
+.botones button.sel-no_se_sabe { background: var(--unk-bg); border-color: var(--unk); color: var(--unk); font-weight: 700; }
+.correccion { margin-top: 6px; width: 100%; }
+.unidad { padding: 8px 0; border-top: 1px dashed var(--fill-line); display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: flex-start; justify-content: space-between; }
+.unidad:first-of-type { border-top: 0; padding-top: 2px; }
+.unidad .que { flex: 1 1 260px; min-width: 0; }
+.unidad .que .valor { font-size: 15px; }
+.agregado { display: inline-block; font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 3px; background: var(--accent); color: #fff; margin-left: 6px; vertical-align: 1px; }
+.unidad .acc { flex: 0 0 auto; }
+.extra { margin: 0; padding: 10px 14px; border-top: 1px solid var(--line); background: var(--bg); }
+.extra summary { cursor: pointer; font-weight: 600; font-size: 14px; }
+.extra .sub { color: var(--ink2); font-size: 12px; font-weight: 400; }
+.extra dl { display: grid; grid-template-columns: 170px 1fr; gap: 4px 12px; margin: 10px 0 6px; font-size: 13px; }
+.extra dt { color: var(--ink2); }
+.extra dd { margin: 0; word-break: break-word; }
+.extra details { margin-top: 8px; }
+.extra .ficha { margin-top: 0; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; }
+@media (max-width: 720px) { .extra dl { grid-template-columns: 1fr; } .extra dt { margin-top: 4px; } }
+.notas { padding: 10px 14px; border-top: 1px solid var(--line); }
+.notas input { width: 100%; }
+.paginas { display: flex; gap: 6px; align-items: center; justify-content: center; margin: 18px 0 30px; flex-wrap: wrap; }
+.aviso { background: var(--bad-bg); color: var(--bad); padding: 8px 12px; border-radius: 6px; margin-bottom: 12px; display: none; }
+.toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 6px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.toast.ver { opacity: .95; }
+@media (max-width: 720px) {
+  td { display: block; width: auto !important; border-bottom: 0; padding: 4px 14px; }
+  tr { display: block; border-bottom: 1px solid var(--line); padding: 6px 0; }
+  td.veredicto { white-space: normal; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Revisión de content objects llenados</h1>
+    <div class="barra">
+      <label>Revisor: <input type="text" id="revisor" placeholder="tu nombre" size="14"></label>
+      <div class="progreso"><div class="pista"><div class="lleno" id="barra"></div></div><small id="txtProgreso"></small></div>
+      <button class="primario" id="btnExportar" title="Descarga un archivo con todos tus veredictos">Exportar revisión</button>
+      <button id="btnImportar" title="Carga una revisión exportada antes para seguir donde ibas">Importar</button>
+      <input type="file" id="archivo" accept=".json" hidden>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <div class="aviso" id="aviso">Este navegador no permite guardar el avance automáticamente. Usa <b>Exportar revisión</b> seguido para no perder lo revisado.</div>
+
+  <details class="ayuda" open>
+    <summary>Cómo revisar</summary>
+    <ul>
+      <li>Cada tarjeta es una fila real del inventario: un título emitido por una app en un país. Los campos en <span class="muestra llenado">naranja</span> son los que <b>llenamos de más</b> (el vendedor no los mandó). Solo esos se revisan.</li>
+      <li>Pregunta para cada campo naranja: <b>¿este valor es correcto para lo que esta app emite con este título?</b> Usa el botón <i>Buscar</i> (Google con el título y la app) y, si aparece, la ficha IMDb de referencia.</li>
+      <li><b>Correcto</b>: el valor describe bien el contenido. <b>Incorrecto</b>: no lo describe (si sabes el valor bueno, escríbelo). <b>No se sabe</b>: no encontraste cómo comprobarlo; no cuenta como correcto.</li>
+      <li>Los códigos (IAB, clasificación por edad, en vivo) ya vienen traducidos debajo del valor. <b>Cuando un campo trae varios valores</b> (varios códigos de categoría o varios géneros) se juzga <b>cada uno por separado</b>: puede que «Películas» esté bien y «Películas de terror» no. Los marcados <span class="agregado" style="margin:0">MÁS ESPECÍFICO</span> son códigos de género que se agregaron a una categoría genérica.</li>
+      <li>Si la tarjeta trae <b>Información extra</b> (de IMDb / Wikidata), es solo de referencia: no llena ninguna columna. Arriba de ese apartado va la pregunta <b>¿la ficha IMDb es la misma obra que emite la app?</b>: es opcional, pero ayuda mucho a medir los homónimos.</li>
+      <li>El avance se guarda solo en este navegador. Al terminar, o al final del día, pulsa <b>Exportar revisión</b> y entrega el archivo: ese archivo es el registro.</li>
+    </ul>
+  </details>
+
+  <div class="leyenda">
+    <span><span class="muestra llenado">Valor llenado</span> se revisa</span>
+    <span><span class="muestra vendedor">Valor del vendedor</span> contexto, no se revisa</span>
+    <span><span class="muestra vacio">vacío</span> no vino ni se llenó</span>
+  </div>
+
+  <div class="filtros">
+    <select id="fEstado">
+      <option value="todos">Todas las tarjetas</option>
+      <option value="pendientes">Con campos pendientes</option>
+      <option value="revisadas">Revisadas</option>
+    </select>
+    <select id="fCampo"><option value="">Cualquier campo llenado</option></select>
+    <input type="text" id="fBuscar" placeholder="Buscar título o app…">
+    <button id="btnSiguiente">Ir al siguiente pendiente</button>
+  </div>
+
+  <div id="lista"></div>
+  <div class="paginas" id="paginas"></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+const DATOS = /*__DATOS__*/null;
+const CLAVE = "revision-content-objects:" + DATOS.meta.version;
+const POR_PAGINA = 20;
+let estado = { revisor: "", v: {}, notas: {} };   // v["id|campo"] = {veredicto, correcto, ts}
+let pagina = 0;
+let guardable = true;
+
+function leer() {
+  try { const s = localStorage.getItem(CLAVE); if (s) estado = Object.assign(estado, JSON.parse(s)); }
+  catch (e) { guardable = false; }
+}
+function guardar() {
+  if (!guardable) return;
+  try { localStorage.setItem(CLAVE, JSON.stringify(estado)); }
+  catch (e) { guardable = false; document.getElementById("aviso").style.display = "block"; }
+}
+function toast(t) {
+  const el = document.getElementById("toast"); el.textContent = t; el.classList.add("ver");
+  clearTimeout(toast._t); toast._t = setTimeout(() => el.classList.remove("ver"), 1800);
+}
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmt = n => n.toLocaleString("es-MX");
+const unidades = r => r.campos.filter(c => c.llenado).flatMap(c => c.unidades.map(u => ({ ...u, campo: c.campo, nombre: c.nombre, riesgo: c.riesgo, valor_campo: c.valor })));
+const claveU = (r, u) => r.id + "|" + u.campo + "|" + u.valor;
+const pendientes = r => unidades(r).filter(u => !(estado.v[claveU(r, u)] || {}).veredicto).length;
+const TOTAL = DATOS.registros.reduce((s, r) => s + unidades(r).length, 0);
+const CLAVES = new Set(DATOS.registros.flatMap(r => unidades(r).map(u => claveU(r, u))));
+
+function sigTexto(c) {
+  const s = c.significado;
+  return s && s.texto ? `<div class="sig">${esc(s.texto)}</div>` : "";
+}
+function sigIab(x) {
+  return `<div class="sig">${esc(x.es)}` + (x.en && x.en !== x.es ? ` <span class="en">(${esc(x.en)}${x.tax ? " · " + esc(x.tax) : ""})</span>` :
+    (x.tax ? ` <span class="en">(${esc(x.tax)})</span>` : "")) + `</div>`;
+}
+function significado(c) {
+  const s = c.significado;
+  if (!s) return "";
+  if (s.iab) return s.iab.map(x => `<div class="sig"><span class="cod">${esc(x.codigo)}</span> ${esc(x.es)}` +
+      (x.en && x.en !== x.es ? ` <span class="en">(${esc(x.en)}${x.tax ? " · " + esc(x.tax) : ""})</span>` : (x.tax ? ` <span class="en">(${esc(x.tax)})</span>` : "")) + `</div>`).join("");
+  return sigTexto(c);
+}
+function botones(k) {
+  const v = estado.v[k] || {};
+  const b = (cod, txt) => `<button data-k="${esc(k)}" data-v="${cod}" class="${v.veredicto === cod ? "sel-" + cod : ""}">${txt}</button>`;
+  return `<div class="botones">${b("correcto", "✓ Correcto")}${b("incorrecto", "✗ Incorrecto")}${b("no_se_sabe", "? No se sabe")}</div>` +
+    (v.veredicto === "incorrecto" ? `<input type="text" class="correccion" data-corr="${esc(k)}" placeholder="valor correcto (opcional)" value="${esc(v.correcto || "")}">` : "");
+}
+
+function filaCampo(r, c) {
+  const val = c.valor ? `<span class="valor">${esc(c.valor)}</span>` : `<span class="vacio">vacío</span>`;
+  if (!c.llenado) {
+    return `<tr><td class="campo">${esc(c.nombre)}</td><td>${val}${significado(c)}</td></tr>`;
+  }
+  const antes = c.original ? `<div class="antes">El vendedor mandó: ${esc(c.original)}</div>` : `<div class="antes">El vendedor no mandó nada</div>`;
+  const iab = c.significado && c.significado.iab ? Object.fromEntries(c.significado.iab.map(x => [x.codigo, x])) : {};
+  const varias = c.unidades.length > 1;
+  const filas = c.unidades.map(u => {
+    const k = r.id + "|" + c.campo + "|" + u.valor;
+    const que = iab[u.valor] ? `<span class="valor">${esc(u.valor)}</span>${u.agregado ? '<span class="agregado">MÁS ESPECÍFICO</span>' : ""}${sigIab(iab[u.valor])}`
+      : `<span class="valor">${esc(u.valor)}</span>${varias ? "" : sigTexto(c)}`;
+    return `<div class="unidad"><div class="que">${que}</div><div class="acc">${botones(k)}</div></div>`;
+  }).join("");
+  return `<tr class="llenado"><td class="campo">${esc(c.nombre)}<span class="etiqueta">LLENADO</span>${varias ? `<div class="antes">${c.unidades.length} valores: juzga cada uno</div>` : ""}</td>
+    <td>${filas}${antes}</td></tr>`;
+}
+
+const ETIQ_EXTRA = [["titulo_imdb", "Título en IMDb"], ["titulo_original", "Título original"], ["tipo", "Tipo"],
+  ["anio_inicio", "Año"], ["anio_fin", "Año de fin (series)"], ["duracion_min", "Duración (min)"], ["generos_imdb", "Géneros IMDb"],
+  ["calificacion", "Calificación IMDb"]];
+const ETIQ_WD = [["pais", "País de origen"], ["idioma_original", "Idioma original"], ["estreno", "Estreno"], ["director", "Dirección"],
+  ["reparto", "Reparto"], ["productora", "Productora"], ["cadena", "Cadena original"], ["temporadas", "Temporadas"],
+  ["episodios", "Episodios"], ["tmdb_pelicula", "ID TMDB (película)"], ["tmdb_serie", "ID TMDB (serie)"]];
+function extra(r) {
+  const x = r.extra;
+  if (!x) return "";
+  const fila = (k, n, val) => val ? `<dt>${n}</dt><dd>${esc(val)}</dd>` : "";
+  let dl = ETIQ_EXTRA.map(([k, n]) => fila(k, n, k === "calificacion" && x.calificacion ? `${x.calificacion} / 10 (${fmt(+x.votos)} votos)` : x[k])).join("");
+  dl += ETIQ_WD.map(([k, n]) => fila(k, n, (x.wikidata || {})[k])).join("");
+  const k = r.id + "|_ficha_externa|" + x.imdb_id;
+  const titulo = [x.titulo_imdb, [x.tipo, x.anio_inicio].filter(Boolean).join(", ")].filter(Boolean).join(" — ");
+  return `<div class="extra">
+    <div class="ficha"><span><b>Opcional:</b> ¿la ficha IMDb <b>${esc(titulo)}</b> es la misma obra que emite la app?</span>${botones(k).replace("✓ Correcto", "✓ Sí, es la misma").replace("✗ Incorrecto", "✗ No, es otra")}</div>
+    <details><summary>Información extra de IMDb / Wikidata <span class="sub">— referencia, no llena ninguna columna</span></summary>
+    <dl>${dl}</dl></details>
+  </div>`;
+}
+
+function tarjeta(r) {
+  const p = pendientes(r);
+  const a = r.ayuda;
+  return `<section class="tarjeta ${p === 0 ? "completa" : ""}" id="r${r.id}">
+    <div class="cabeza"><span class="num">#${r.id}</span><span class="titulo">${esc(r.titulo)}</span>
+      <span class="num">${p === 0 ? "✓ revisada" : p + " pendiente" + (p > 1 ? "s" : "")}</span>
+      <div class="contexto">App: <b>${esc(r.app || "—")}</b> · ${esc(r.publisher)} · ${esc(r.pais)} · ${fmt(r.requests)} requests${r.bundle ? " · " + esc(r.bundle) : ""}</div>
+      <div class="enlaces"><a href="${esc(a.busqueda)}" target="_blank" rel="noopener">Buscar</a>${a.imdb ? ` · <a href="${esc(a.imdb)}" target="_blank" rel="noopener">Ficha IMDb de referencia: ${esc(a.imdb_texto)}</a>` : ""}</div>
+    </div>
+    <table>${r.campos.map(c => filaCampo(r, c)).join("")}</table>
+    ${extra(r)}
+    <div class="notas"><input type="text" data-nota="${r.id}" placeholder="Notas (opcional)" value="${esc(estado.notas[r.id] || "")}"></div>
+  </section>`;
+}
+
+function filtrados() {
+  const e = document.getElementById("fEstado").value, f = document.getElementById("fCampo").value;
+  const q = document.getElementById("fBuscar").value.trim().toLowerCase();
+  return DATOS.registros.filter(r =>
+    (e === "todos" || (e === "pendientes" ? pendientes(r) > 0 : pendientes(r) === 0)) &&
+    (!f || (f === "_extra" ? !!r.extra : unidades(r).some(u => u.campo === f))) &&
+    (!q || (r.titulo + " " + r.app).toLowerCase().includes(q)));
+}
+
+function pintar() {
+  const lista = filtrados(), n = Math.max(1, Math.ceil(lista.length / POR_PAGINA));
+  pagina = Math.min(pagina, n - 1);
+  document.getElementById("lista").innerHTML = lista.slice(pagina * POR_PAGINA, (pagina + 1) * POR_PAGINA).map(tarjeta).join("") ||
+    `<p style="color:var(--ink2)">No hay tarjetas con este filtro.</p>`;
+  const pg = document.getElementById("paginas");
+  pg.innerHTML = `<button ${pagina === 0 ? "disabled" : ""} data-pag="${pagina - 1}">‹ Anterior</button>
+    <span>Página ${pagina + 1} de ${n} · ${lista.length} tarjetas</span>
+    <button ${pagina >= n - 1 ? "disabled" : ""} data-pag="${pagina + 1}">Siguiente ›</button>`;
+  progreso();
+}
+function progreso() {
+  const hechos = Object.entries(estado.v).filter(([k, x]) => x.veredicto && CLAVES.has(k)).length;
+  document.getElementById("barra").style.width = (100 * hechos / TOTAL) + "%";
+  document.getElementById("txtProgreso").textContent = `${hechos} de ${TOTAL} valores revisados · ${DATOS.registros.length} tarjetas`;
+}
+
+document.addEventListener("click", ev => {
+  const t = ev.target;
+  if (t.dataset.k) {
+    const k = t.dataset.k, prev = estado.v[k] || {};
+    estado.v[k] = { ...prev, veredicto: prev.veredicto === t.dataset.v ? "" : t.dataset.v, ts: new Date().toISOString() };
+    guardar();
+    const id = +k.split("|")[0], r = DATOS.registros.find(x => x.id === id);
+    const abierto = !!document.querySelector("#r" + id + " .extra details[open]");
+    document.getElementById("r" + id).outerHTML = tarjeta(r);
+    if (abierto) document.querySelector("#r" + id + " .extra details").open = true;
+    progreso();
+  } else if (t.dataset.pag !== undefined) {
+    pagina = +t.dataset.pag; pintar(); window.scrollTo(0, 0);
+  }
+});
+document.addEventListener("input", ev => {
+  const t = ev.target;
+  if (t.dataset.corr) { estado.v[t.dataset.corr] = { ...(estado.v[t.dataset.corr] || {}), correcto: t.value }; guardar(); }
+  else if (t.dataset.nota) { estado.notas[t.dataset.nota] = t.value; guardar(); }
+  else if (t.id === "revisor") { estado.revisor = t.value; guardar(); }
+  else if (t.id === "fBuscar") { pagina = 0; pintar(); }
+});
+["fEstado", "fCampo"].forEach(id => document.getElementById(id).addEventListener("change", () => { pagina = 0; pintar(); }));
+
+document.getElementById("btnSiguiente").addEventListener("click", () => {
+  const r = DATOS.registros.find(x => pendientes(x) > 0);
+  if (!r) { toast("No quedan pendientes 🎉"); return; }
+  document.getElementById("fEstado").value = "todos"; document.getElementById("fCampo").value = ""; document.getElementById("fBuscar").value = "";
+  pagina = Math.floor(DATOS.registros.indexOf(r) / POR_PAGINA); pintar();
+  document.getElementById("r" + r.id).scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+document.getElementById("btnExportar").addEventListener("click", () => {
+  const items = [];
+  const item = (r, campo, valor, estrato, extraCampos) => {
+    const v = estado.v[r.id + "|" + campo + "|" + valor] || {};
+    items.push({ id: r.id, titulo: r.titulo, app: r.app, publisher: r.publisher, pais: r.pais, requests: r.requests,
+      campo, valor, estrato, ...extraCampos,
+      veredicto: v.veredicto || "", valor_correcto: v.correcto || "", fecha: v.ts || "", nota: estado.notas[r.id] || "" });
+  };
+  for (const r of DATOS.registros) {
+    for (const u of unidades(r)) item(r, u.campo, u.valor, u.estrato, { agregado: !!u.agregado, valor_campo: u.valor_campo, riesgo: u.riesgo });
+    if (r.extra) item(r, "_ficha_externa", r.extra.imdb_id, "_ficha_externa", {});
+  }
+  const salida = { version: DATOS.meta.version, revisor: estado.revisor, exportado: new Date().toISOString(),
+    totales_estrato: DATOS.meta.totales_estrato, items };
+  const blob = new Blob([JSON.stringify(salida, null, 1)], { type: "application/json" });
+  const a = document.createElement("a");
+  const quien = (estado.revisor || "revisor").replace(/[^\w-]+/g, "_");
+  a.href = URL.createObjectURL(blob); a.download = `${DATOS.meta.version}-${quien}-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  toast("Revisión exportada");
+});
+document.getElementById("btnImportar").addEventListener("click", () => document.getElementById("archivo").click());
+document.getElementById("archivo").addEventListener("change", ev => {
+  const f = ev.target.files[0]; if (!f) return;
+  f.text().then(txt => {
+    const d = JSON.parse(txt);
+    if (d.version !== DATOS.meta.version) { toast("Ese archivo es de otra muestra"); return; }
+    for (const it of d.items) if (it.veredicto) estado.v[it.id + "|" + it.campo + "|" + it.valor] = { veredicto: it.veredicto, correcto: it.valor_correcto, ts: it.fecha };
+    for (const it of d.items) if (it.nota) estado.notas[it.id] = it.nota;
+    if (d.revisor && !estado.revisor) estado.revisor = d.revisor;
+    guardar(); document.getElementById("revisor").value = estado.revisor; pintar(); toast("Revisión importada");
+  }).catch(() => toast("No se pudo leer el archivo"));
+  ev.target.value = "";
+});
+
+leer();
+if (!guardable) document.getElementById("aviso").style.display = "block";
+document.getElementById("revisor").value = estado.revisor;
+const campos = new Map();
+DATOS.registros.forEach(r => unidades(r).forEach(u => campos.set(u.campo, u.nombre)));
+document.getElementById("fCampo").innerHTML += [...campos].map(([k, n]) => `<option value="${k}">${n}</option>`).join("") +
+  `<option value="_extra">Con información extra de IMDb</option>`;
+pintar();
+</script>
+</body>
+</html>
