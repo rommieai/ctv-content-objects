@@ -12,6 +12,10 @@ y la data agregada en JSON sí.
 
 ```
 scripts/                          codigo que genera los consolidados y los JSON
+  descargar_pubmatic.py           bot (Playwright) que genera y baja el CSV crudo desde PubMatic Media Console
+                                  con las credenciales de .env; con --tanda lanza correr_tanda.py
+  tanda_programada.bat            lo que corre la tarea programada de Windows "CTV tanda PubMatic" (lunes y
+                                  jueves, 2 pm): descarga + tanda + BigQuery + commit y push; log en logs/
   correr_tanda.py                 corre la tanda completa desde el CSV crudo: chequeos, todos los pasos
                                   de abajo, archivado de la tanda vieja, README y, con --bigquery /
                                   --commit / --push, la recarga de BigQuery y el commit
