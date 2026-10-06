@@ -1,6 +1,12 @@
 # Los CSV de inventario y derivados no se versionan (100+ MB cada uno)
 *.csv
 
+# Logs y archivos de trabajo de scripts/correr_tanda.py
+/logs/
+
+# Credenciales del bot de descarga (usar .env.example como plantilla)
+.env
+
 # Artefactos de compilacion
 *.aux
 *.log
