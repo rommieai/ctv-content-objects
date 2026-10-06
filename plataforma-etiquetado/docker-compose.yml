@@ -1,0 +1,14 @@
+services:
+  etiquetas-ctv:
+    build: .
+    container_name: etiquetas-ctv
+    restart: always
+    volumes:
+      # SQLite: datos importados + usuarios + etiquetas (no se versiona)
+      - ./data:/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    external: true
