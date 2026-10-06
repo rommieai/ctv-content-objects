@@ -1,11 +1,11 @@
 # Qué se puede completar de cada content object: métodos y fuentes (consolidado v10 a v22)
 
-**Fuente:** `inventory-consolidado-v10-a-v22.csv` — 1,344,629 filas únicas, 622,384,767,599 requests (métricas del corte v22). **Relleno:** `inventory-consolidado-v10-a-v22-relleno.csv` (no versionado), generado con `scripts/enriquecer_externo.py --wikidata`, corrida del 2026-10-01 08:09 → `recursos/reporte-relleno-v22.json`. Títulos distintos: 18,246; con match en IMDb: 8,742; consultados por primera vez en esta corrida: 0.
+**Fuente:** `inventory-consolidado-v10-a-v22.csv` — 1,344,629 filas únicas, 622,384,767,599 requests (métricas del corte v22). **Relleno:** `inventory-consolidado-v10-a-v22-relleno.csv` (no versionado), generado con `scripts/enriquecer_externo.py --wikidata`, corrida del 2026-10-06 16:01 → `recursos/reporte-relleno-v22.json`. Títulos distintos: 18,246; con match en IMDb: 8,753; consultados por primera vez en esta corrida: 0.
 **Validaciones:** `scripts/validar_categorias.py` y `scripts/validar_genero_series.py` sobre el consolidado y sobre el relleno (`recursos/validacion-*.json`, con muestras CSV para revisión manual en la misma carpeta). Tablas generadas con `scripts/generar_reporte_completitud.py`.
 
 ## Cómo leer este reporte
 
-- Cada fila del consolidado es una **combinación** de 14 dimensiones (país × publisher × app × género × …), no un programa. El mismo contenido llega por varias rutas de venta y cada ruta manda la metadata que quiere: por eso la respuesta a un vacío muchas veces ya está escrita en otra fila del mismo título.
+- Cada fila del consolidado es una **combinación** de 14 dimensiones (país × publisher × app × género × …), no un programa. El mismo contenido llega por varias rutas de venta y cada ruta manda la metadata que quiere: lo que una ruta declara describe a esa ruta, así que el relleno solo usa lo que describe al contenido (el match IMDb del título y el género de la propia fila).
 - Una celda cuenta como **llena** solo si trae dato útil: no cuentan los centinelas (`Not Available`, `Unknown`, `[-7]`, el MD5 de cadena vacía, macros sin reemplazar).
 - Los % son sobre el total de filas del consolidado (y, cuando se indica, sobre el total de requests). "Hoy" es como llega; "tras el relleno" es después de correr el pipeline con los candados por defecto.
 - **Se puede completar** tiene dos lecturas: (1) lo que el pipeline **ya llena** automáticamente (tabla de orígenes por columna) y (2) lo que la validación contra fuentes abiertas dice que **se podría afinar o corregir** además (nivel de detalle alcanzable, géneros adicionales, nombre de serie proponible). Lo segundo no se escribe al CSV: son propuestas fila a fila en los `validacion-*.json` y en los CSV `*-filas.csv` de la raíz.
@@ -14,7 +14,6 @@
 
 | Fuente | Qué aporta | Cómo se usa | Licencia / límite |
 |---|---|---|---|
-| **El propio consolidado** (otras filas del mismo título) | Categoría, serie, duración, rating, género | Se normaliza el título a `titulo_clave` (url-decode, mojibake, sin ": trailer", "season N", SxxEyy) y se agrupan las filas por título | Sin costo. Es la fuente más precisa (mismo contenido, otra ruta) y la que más aporta |
 | **Semántica de apps curada a mano** (`cache-enriquecimiento/semantica_apps.csv`) | Modo de entrega (lineal / VOD) por app | Ficha de tienda y evidencia del dataset, revisada a mano; solo las filas con `aplicar=si` rellenan | 16 apps revisadas; solo 2 (Live TV de TCL, Coolita Channel) son lineales puras y se aplican |
 | **IMDb Non-Commercial Datasets** (`title.basics`, `title.akas` es/pt/en, `title.ratings`, `title.episode`) | Tipo (película / serie / corto…), géneros, título canónico, año, duración | Match offline por título normalizado y alias en español/portugués/inglés; confianza A–D (A ≈ 90 %+, B ≈ 75 %; se usa hasta B) | Solo uso no comercial; ~750 MB descargados a `cache-enriquecimiento/imdb/` |
 | **Wikidata** (SPARQL, vía el id IMDb `P345`) | Duración (`P2047`), géneros (`P136`, p. ej. telenovela), clasificación (`P3834`, rara). Trae también el idioma original (`P364`), que **no se usa** | Solo para títulos con match IMDb; resultado cacheado por título | CC0, sin API key |
@@ -27,26 +26,26 @@
 
 | Método (`origen`) | Qué hace | Candado | Columnas donde aplica |
 |---|---|---|---|
-| `intra_titulo` | Copia el valor que otra fila del **mismo título** ya trae (misma película, otra ruta de venta) | El valor debe dominar ≥ 80 % de las filas con dato de ese título; en contentSeries además ≥ 30 filas y ≥ 2 publishers | category, series, length, rating, genre |
 | `imdb` | Match del título contra IMDb: tipo, géneros, título canónico | Confianza A o B | series (tvSeries → título canónico), genre |
 | `wikidata` | Duración, géneros y clasificación del ítem ligado al id IMDb | Solo títulos con match IMDb | rating (y genre vía telenovela) |
-| `derivado_genero` | Traduce el género de la misma fila a categoría IAB (mapa aprendido de las filas que traen ambas columnas: deportes → `[IAB17]`, noticias → `[IAB12]`…) | Solo géneros que definen vertical | category |
-| `derivado_tipo` | Desempata con el tipo IMDb cuando el género no define categoría: movie → `[IAB1-5]`, tvSeries → `[IAB1-7]` | Match IMDb A/B | category |
+| `derivado_tipo` | El tipo IMDb decide la categoría y tiene prioridad sobre el género: movie → `[IAB1-5]`, tvSeries → `[IAB1-7]` | Match IMDb A/B | category |
+| `derivado_genero` | Traduce el género de la misma fila a categoría IAB (deportes → `[IAB17]`, noticias → `[IAB12]`…) | Solo si no hay match IMDb A/B, o si los géneros IMDb confirman la vertical (Sport / News / Music) | category |
 | `app_semantica` | Modo de entrega según la app: lineal pura → 1, VOD pura → 0 | Solo apps con `aplicar=si` en la tabla curada | livestream |
 | *(retirados el 2026-09-17)* | `app_default` (copiar el valor constante de la app) en todas las columnas: describe al vendedor, no al contenido. Todo relleno de contentLanguage. El tipo IMDb como señal de livestream | | |
+| *(retirado el 2026-10-06)* | `intra_titulo` (copiar el valor que otra fila del mismo título ya trae) en todas las columnas: propagaba los valores por defecto de los vendedores (el `[IAB12]` que Vidaa manda en casi todas sus filas llegaba a las telenovelas de ViX) | | |
 
 ## Resumen: cuánto viene lleno hoy y cuánto queda tras el relleno
 
 | Columna | Hoy (% filas) | Hoy (% requests) | Tras el relleno (% filas) | Ganancia | Sigue vacío | Método que más aporta |
 |---|---:|---:|---:|---:|---:|---|
-| contentGenre | 90.8% | 85.6% | 96.8% | +6.0 pp | 3.2% | Copiado de otra ruta del mismo título (`intra_titulo`) |
+| contentGenre | 90.8% | 85.6% | 93.4% | +2.6 pp | 6.6% | IMDb (`imdb`) |
 | contentTitle | 93.0% | 72.7% | 93.0% | — | 7.0% | No se rellena (ver abajo) |
-| contentRating | 75.2% | 78.3% | 82.2% | +7.1 pp | 17.8% | Copiado de otra ruta del mismo título (`intra_titulo`) |
+| contentRating | 75.2% | 78.3% | 75.3% | +0.2 pp | 24.7% | Wikidata (`wikidata`) |
 | contentLanguage | 67.0% | 67.8% | 67.0% | — | 33.0% | No se rellena (ver abajo) |
 | contentIsLiveStream | 29.5% | 38.6% | 48.7% | +19.2 pp | 51.3% | Semántica de la app (curada a mano) (`app_semantica`) |
-| contentCategory | 21.9% | 28.6% | 93.0% | +71.1 pp | 7.0% | Derivado del tipo IMDb (película / serie) (`derivado_tipo`) |
-| contentLength | 12.6% | 21.0% | 49.4% | +36.8 pp | 50.6% | Copiado de otra ruta del mismo título (`intra_titulo`) |
-| contentSeries | 6.8% | 6.2% | 14.2% | +7.6 pp | 85.8% | IMDb (`imdb`) |
+| contentCategory | 21.9% | 28.6% | 91.8% | +69.9 pp | 8.2% | Derivado del tipo IMDb (película / serie) (`derivado_tipo`) |
+| contentLength | 12.6% | 21.0% | 12.6% | +0.0 pp | 87.4% | — (`—`) |
+| contentSeries | 6.8% | 6.2% | 13.8% | +7.2 pp | 86.2% | IMDb (`imdb`) |
 
 *contentIsTitlePresent y Publisher vienen al 100 % y no entran. "Ganancia" son puntos porcentuales de filas del consolidado.*
 
@@ -54,17 +53,16 @@
 
 **Hoy:** 21.9% de las filas y 28.6% de los requests traen dato útil. Top 3 referencias: *[-7] 78.1%*, [IAB1] 5.2%, [IAB1-22] 3.0%.
 
-**Tras el relleno:** 93.0% de las filas (de 21.9%). Origen del valor final, sobre todas las filas del consolidado:
+**Tras el relleno:** 91.8% de las filas (de 21.9%). Origen del valor final, sobre todas las filas del consolidado:
 
 | Origen | % filas |
 |---|---:|
 | Venía del vendedor (`original`) | 21.9% |
-| Copiado de otra ruta del mismo título (`intra_titulo`) | 11.6% |
-| Derivado del género (`derivado_genero`) | 26.0% |
-| Derivado del tipo IMDb (película / serie) (`derivado_tipo`) | 33.6% |
-| Sigue vacío (`sin_dato`) | 7.0% |
+| Derivado del género (`derivado_genero`) | 29.8% |
+| Derivado del tipo IMDb (película / serie) (`derivado_tipo`) | 40.1% |
+| Sigue vacío (`sin_dato`) | 8.2% |
 
-**Método y fuentes:** tres escalones. `intra_titulo` copia la categoría que otra ruta del mismo título ya manda (Vidaa o Equativ suelen mandarla; OTTera y TCL mandan `[-7]`). `derivado_genero` traduce el contentGenre de la misma fila con el mapa IAB 1.0 aprendido del propio dataset (~150k filas traen ambas columnas). `derivado_tipo` usa el tipo IMDb para separar película (`[IAB1-5]`) de serie (`[IAB1-7]`). La validación va un paso más allá y propone, con la taxonomía 2.2, la categoría más fina que la evidencia permite (forma + género).
+**Método y fuentes:** dos escalones. `derivado_tipo`: si el título tiene match IMDb (A/B), el tipo IMDb decide entre película (`[IAB1-5]`) y serie (`[IAB1-7]`), y tiene prioridad sobre el género (la vertical del género solo se conserva si los géneros IMDb la confirman: Sport, News, Music). `derivado_genero`: sin match, se traduce el contentGenre de la misma fila con el mapa IAB 1.0. La validación va un paso más allá y propone, con la taxonomía 2.2, la categoría más fina que la evidencia permite (forma + género).
 
 **Qué más se puede afinar (validación del consolidado contra IMDb / Wikidata / taxonomías IAB):**
 
@@ -93,27 +91,26 @@ Categorías más propuestas: `Movies > Drama Movies | Television > Drama TV` 5.2
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide con la evidencia (`coincide`) | 19.5% | 58.0% |
-| Compatible (genérica, no contradice) (`compatible`) | 50.1% | 20.4% |
-| Contradice la evidencia (`contradice`) | 12.5% | 12.2% |
-| No se pudo evaluar (`no_evaluable`) | 18.0% | 9.4% |
+| Coincide con la evidencia (`coincide`) | 19.5% | 60.7% |
+| Compatible (genérica, no contradice) (`compatible`) | 50.1% | 19.4% |
+| Contradice la evidencia (`contradice`) | 12.5% | 11.5% |
+| No se pudo evaluar (`no_evaluable`) | 18.0% | 8.4% |
 
-**Límites:** el consolidado mezcla tres taxonomías (1.0, 2.2, 3.0) y texto libre (`[sports]`, `[Live]`); lo declarado es en su mayoría genérico (nivel 1, solo la vertical). Los valores por defecto que declaran algunas apps (`[IAB12]` de Vidaa, `[IAB1]` de OTTera) son correctos como vertical pero no como género, y `intra_titulo` los propaga. Un match IMDb de confianza B acierta ~75 %, así que parte de las "contradicciones" son matches equivocados; se separan con `genero_vs_imdb` en el CSV fila a fila.
+**Límites:** el consolidado mezcla tres taxonomías (1.0, 2.2, 3.0) y texto libre (`[sports]`, `[Live]`); lo declarado es en su mayoría genérico (nivel 1, solo la vertical). Los valores por defecto que declaran algunas apps (`[IAB12]` de Vidaa, `[IAB1]` de OTTera) no describen al contenido (Vidaa manda `[IAB12]` en telenovelas y películas); por eso ya no se copian entre rutas (`intra_titulo`, retirado el 2026-10-06). Un match IMDb de confianza B acierta ~75 %, así que parte de las "contradicciones" son matches equivocados; se separan con `genero_vs_imdb` en el CSV fila a fila.
 
 ## contentGenre
 
 **Hoy:** 90.8% de las filas y 85.6% de los requests traen dato útil. Top 3 referencias: Drama 11.0%, *N/A 9.2%*, drama 4.8%.
 
-**Tras el relleno:** 96.8% de las filas (de 90.8%). Origen del valor final, sobre todas las filas del consolidado:
+**Tras el relleno:** 93.4% de las filas (de 90.8%). Origen del valor final, sobre todas las filas del consolidado:
 
 | Origen | % filas |
 |---|---:|
 | Venía del vendedor (`original`) | 90.8% |
-| Copiado de otra ruta del mismo título (`intra_titulo`) | 3.6% |
-| IMDb (`imdb`) | 2.3% |
-| Sigue vacío (`sin_dato`) | 3.2% |
+| IMDb (`imdb`) | 2.6% |
+| Sigue vacío (`sin_dato`) | 6.6% |
 
-**Método y fuentes:** `intra_titulo` como en las demás columnas; para lo que sigue vacío, los géneros del match IMDb (`title.basics`, hasta tres) traducidos al vocabulario canónico del proyecto (`norm_genre`), y los géneros de Wikidata (`P136`) para lo que IMDb no expresa (telenovela, holiday). La validación compara cada género declarado con IMDb/Wikidata por *conceptos* (thriller/misterio/crimen → crimen-misterio, anime → animación) y propone géneros adicionales o más precisos.
+**Método y fuentes:** los géneros del match IMDb (`title.basics`, hasta tres) traducidos al vocabulario canónico del proyecto (`norm_genre`), y los géneros de Wikidata (`P136`) para lo que IMDb no expresa (telenovela, holiday). La validación compara cada género declarado con IMDb/Wikidata por *conceptos* (thriller/misterio/crimen → crimen-misterio, anime → animación) y propone géneros adicionales o más precisos.
 
 **Qué más se puede afinar (validación del consolidado):**
 
@@ -141,11 +138,11 @@ Combinaciones más propuestas: `drama,romance` 1.0%; `drama` 0.9%; `drama,comedi
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide (`coincide`) | 41.2% | 41.3% |
-| Parecido (género vecino) (`afin`) | 2.6% | 2.5% |
+| Coincide (`coincide`) | 41.2% | 42.9% |
+| Parecido (género vecino) (`afin`) | 2.6% | 2.6% |
 | Acierta en parte (`parcial`) | 2.8% | 2.7% |
-| Contradice (`contradice`) | 1.7% | 1.6% |
-| No se pudo evaluar (`no_evaluable`) | 51.6% | 51.9% |
+| Contradice (`contradice`) | 1.7% | 1.8% |
+| No se pudo evaluar (`no_evaluable`) | 51.6% | 50.1% |
 
 **Límites:** es la columna que mejor viene (>90 %), así que el margen es afinar, no llenar. El vocabulario del vendedor es libre (`Drama` y `drama` son valores distintos en la fuente; `entertainment`, `other`, `movies` no son géneros comparables) y géneros que IMDb no maneja (lifestyle, viajes, religión, videojuegos) no se pueden juzgar. Solo la mitad de las filas tiene match externo; el resto queda como "no evaluable".
 
@@ -153,16 +150,15 @@ Combinaciones más propuestas: `drama,romance` 1.0%; `drama` 0.9%; `drama,comedi
 
 **Hoy:** 6.8% de las filas y 6.2% de los requests traen dato útil. Top 3 referencias: *N/A 92.5%*, *md5-vacío 0.7%*, VOD 0.6%.
 
-**Tras el relleno:** 14.2% de las filas (de 6.6%). Origen del valor final, sobre todas las filas del consolidado:
+**Tras el relleno:** 13.8% de las filas (de 6.6%). Origen del valor final, sobre todas las filas del consolidado:
 
 | Origen | % filas |
 |---|---:|
 | Venía del vendedor (`original`) | 6.6% |
-| Copiado de otra ruta del mismo título (`intra_titulo`) | 0.7% |
-| IMDb (`imdb`) | 6.9% |
-| Sigue vacío (`sin_dato`) | 85.8% |
+| IMDb (`imdb`) | 7.2% |
+| Sigue vacío (`sin_dato`) | 86.2% |
 
-**Método y fuentes:** el pipeline llena solo lo seguro: `imdb` cuando el match (A/B) dice tvSeries o tvMiniSeries, con el título canónico de IMDb; `intra_titulo` cuando otras rutas del mismo título nombran la serie (≥ 30 filas y ≥ 2 publishers, porque un episodio puede llamarse igual que una película). La validación identifica además qué filas **son** serie sin decirlo (IMDb, el título con "season N" / S01E03 / "ep N", o las otras rutas) y propone un nombre: el título sin sufijos de temporada/episodio, el que traen las otras rutas, o el canónico IMDb.
+**Método y fuentes:** el pipeline llena solo lo seguro: `imdb` cuando el match (A/B) dice tvSeries o tvMiniSeries, con el título canónico de IMDb. La validación identifica además qué filas **son** serie sin decirlo (IMDb, el título con "season N" / S01E03 / "ep N", o las otras rutas) y propone un nombre: el título sin sufijos de temporada/episodio, el que traen las otras rutas, o el canónico IMDb.
 
 **Qué es cada fila según la evidencia (consolidado):**
 
@@ -200,10 +196,10 @@ Nombres de serie más propuestos (`[titulo]` = del propio título sin sufijos, `
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide (`coincide`) | 2.4% | 56.3% |
-| Es serie, pero con otro nombre (compatible) (`otro_nombre`) | 4.7% | 2.0% |
+| Coincide (`coincide`) | 2.4% | 58.4% |
+| Es serie, pero con otro nombre (compatible) (`otro_nombre`) | 4.7% | 2.3% |
 | IMDb dice que es película (`contradice`) | 2.7% | 1.3% |
-| No se pudo evaluar (`no_evaluable`) | 90.2% | 40.3% |
+| No se pudo evaluar (`no_evaluable`) | 90.2% | 38.0% |
 
 **Límites:** la mayor parte del vacío es correcta: las películas no pertenecen a ninguna serie. Casi la mitad de las filas no tiene evidencia (títulos sin match, placeholders como `roku` / `epg`). Roku manda un hash MD5 en vez del nombre y algunos vendedores mandan `VOD` o macros sin reemplazar; todo eso cuenta como vacío.
 
@@ -211,15 +207,14 @@ Nombres de serie más propuestos (`[titulo]` = del propio título sin sufijos, `
 
 **Hoy:** 12.6% de las filas y 21.0% de los requests traen dato útil. Top 3 referencias: *N/A 87.4%*, 5 3.5%, 6 3.4%.
 
-**Tras el relleno:** 49.4% de las filas (de 12.6%). Origen del valor final, sobre todas las filas del consolidado:
+**Tras el relleno:** 12.6% de las filas (de 12.6%). Origen del valor final, sobre todas las filas del consolidado:
 
 | Origen | % filas |
 |---|---:|
 | Venía del vendedor (`original`) | 12.6% |
-| Copiado de otra ruta del mismo título (`intra_titulo`) | 36.8% |
-| Sigue vacío (`sin_dato`) | 50.6% |
+| Sigue vacío (`sin_dato`) | 87.4% |
 
-**Método y fuentes:** solo `intra_titulo` (otra ruta del mismo título trae el código). IMDb (`runtimeMinutes`) y Wikidata (`P2047`) traen la duración en minutos de la mayoría de los títulos con match, pero esa duración solo se escribe con `--length-desde-runtime`, apagado por defecto.
+**Método y fuentes:** no se rellena. IMDb (`runtimeMinutes`) y Wikidata (`P2047`) traen la duración en minutos de la mayoría de los títulos con match, pero esa duración solo se escribe con `--length-desde-runtime`, apagado por defecto.
 
 **Límites:** contentLength no es una duración: es un **código 1–8** (rangos de duración; el mapa por defecto del pipeline es 1: ≤ 1 min, 2: ≤ 5, 3: ≤ 15, 4: ≤ 30, 5: ≤ 60, 6: ≤ 120, 7: ≤ 180, 8: más). Mientras PubMatic no confirme los cortes de cada código, convertir minutos a código es una suposición y por eso no se aplica. Con esa confirmación, el runtime externo cubriría buena parte de lo que sigue vacío (títulos con match IMDb).
 
@@ -249,16 +244,15 @@ Nombres de serie más propuestos (`[titulo]` = del propio título sin sufijos, `
 
 **Hoy:** 75.2% de las filas y 78.3% de los requests traen dato útil. Top 3 referencias: *N/A 24.8%*, Adults 10.7%, Teen Plus 9.8%.
 
-**Tras el relleno:** 82.2% de las filas (de 75.1%). Origen del valor final, sobre todas las filas del consolidado:
+**Tras el relleno:** 75.3% de las filas (de 75.1%). Origen del valor final, sobre todas las filas del consolidado:
 
 | Origen | % filas |
 |---|---:|
 | Venía del vendedor (`original`) | 75.1% |
-| Copiado de otra ruta del mismo título (`intra_titulo`) | 7.0% |
 | Wikidata (`wikidata`) | 0.1% |
-| Sigue vacío (`sin_dato`) | 17.8% |
+| Sigue vacío (`sin_dato`) | 24.7% |
 
-**Método y fuentes:** `intra_titulo` (canonizando la escala nueva: `All Ages` = g, `Teen` = tv-pg, `Teen Plus` = tv-14, `Adults` = tv-ma, `Unrated` = nr) y, marginalmente, la clasificación de Wikidata (`P3834`).
+**Método y fuentes:** solo la clasificación de Wikidata (`P3834`), que casi nunca viene.
 
 **Límites:** no hay fuente abierta de clasificaciones por edad con cobertura: los datasets públicos de IMDb no traen la Parental Guide y en Wikidata `P3834` es rara. Lo que queda vacío son títulos que ninguna ruta clasifica; solo el vendedor puede completarlo. El consolidado mezcla dos escalas (`tv-14` y `Teen Plus` para el mismo título); `rating_franja` de `normalizar_monetizar.py` las unifica en franjas de edad.
 
@@ -266,6 +260,6 @@ Nombres de serie más propuestos (`[titulo]` = del propio título sin sufijos, `
 
 **Hoy:** 93.0% de las filas y 72.7% de los requests traen algo. Top 3 referencias: *N/A 7.0%*, roku 0.2%, {{content_title}} 0.2%.
 
-**Método y fuentes:** no se rellena. El título es la **llave** de todo lo demás: es lo que se normaliza (`titulo_clave`) y se busca en IMDb/Wikidata, y es lo que agrupa las rutas de venta para `intra_titulo`. Lo que sí se hace es medir cuánto de lo "lleno" es un título de verdad: se descuentan placeholders (`roku`, `epg`, `vod`), nombres de canal (`las estrellas`, `canal 5`), slugs técnicos (`*_trailer`), macros sin reemplazar (`{{content_title}}`), texto sin letras o de una o dos letras y encoding roto (en esta tanda, 1,161,941 filas, 86.4% del consolidado, pasan el filtro).
+**Método y fuentes:** no se rellena. El título es la **llave** de todo lo demás: es lo que se normaliza (`titulo_clave`) y se busca en IMDb/Wikidata. Lo que sí se hace es medir cuánto de lo "lleno" es un título de verdad: se descuentan placeholders (`roku`, `epg`, `vod`), nombres de canal (`las estrellas`, `canal 5`), slugs técnicos (`*_trailer`), macros sin reemplazar (`{{content_title}}`), texto sin letras o de una o dos letras y encoding roto (en esta tanda, 1,161,941 filas, 86.4% del consolidado, pasan el filtro).
 
 **Límites:** sin título no hay nada que cruzar afuera: una fila vacía en contentTitle solo la puede completar el vendedor. Y el vacío pesa más en tráfico que en catálogo (27.3% de los requests vs 7.0% de las filas): son pocas combinaciones con muchos requests.

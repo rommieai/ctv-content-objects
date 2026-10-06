@@ -24,7 +24,7 @@ import argparse
 import json
 import os
 
-ORIGEN = {"original": "Venía del vendedor", "intra_titulo": "Copiado de otra ruta del mismo título",
+ORIGEN = {"original": "Venía del vendedor", "intra_titulo": "Copiado de otra ruta del mismo título (retirado)",
           "app_default": "Valor habitual de la app", "imdb": "IMDb", "wikidata": "Wikidata", "tvmaze": "TVMaze",
           "derivado_genero": "Derivado del género", "derivado_tipo": "Derivado del tipo IMDb (película / serie)",
           "app_semantica": "Semántica de la app (curada a mano)", "sin_dato": "Sigue vacío"}
@@ -142,8 +142,8 @@ def main():
          "(`recursos/validacion-*.json`, con muestras CSV para revisión manual en la misma carpeta). Tablas generadas con `scripts/generar_reporte_completitud.py`.\n",
          "## Cómo leer este reporte\n",
          "- Cada fila del consolidado es una **combinación** de 14 dimensiones (país × publisher × app × género × …), no un programa. "
-         "El mismo contenido llega por varias rutas de venta y cada ruta manda la metadata que quiere: por eso la respuesta a un vacío "
-         "muchas veces ya está escrita en otra fila del mismo título.",
+         "El mismo contenido llega por varias rutas de venta y cada ruta manda la metadata que quiere: lo que una ruta declara describe a esa ruta, "
+         "así que el relleno solo usa lo que describe al contenido (el match IMDb del título y el género de la propia fila).",
          "- Una celda cuenta como **llena** solo si trae dato útil: no cuentan los centinelas (`Not Available`, `Unknown`, `[-7]`, el MD5 de "
          "cadena vacía, macros sin reemplazar).",
          "- Los % son sobre el total de filas del consolidado (y, cuando se indica, sobre el total de requests). \"Hoy\" es como llega; "
@@ -154,7 +154,6 @@ def main():
          "y en los CSV `*-filas.csv` de la raíz.\n",
          "## Fuentes\n",
          "| Fuente | Qué aporta | Cómo se usa | Licencia / límite |\n|---|---|---|---|",
-         "| **El propio consolidado** (otras filas del mismo título) | Categoría, serie, duración, rating, género | Se normaliza el título a `titulo_clave` (url-decode, mojibake, sin \": trailer\", \"season N\", SxxEyy) y se agrupan las filas por título | Sin costo. Es la fuente más precisa (mismo contenido, otra ruta) y la que más aporta |",
          "| **Semántica de apps curada a mano** (`cache-enriquecimiento/semantica_apps.csv`) | Modo de entrega (lineal / VOD) por app | Ficha de tienda y evidencia del dataset, revisada a mano; solo las filas con `aplicar=si` rellenan | 16 apps revisadas; solo 2 (Live TV de TCL, Coolita Channel) son lineales puras y se aplican |",
          "| **IMDb Non-Commercial Datasets** (`title.basics`, `title.akas` es/pt/en, `title.ratings`, `title.episode`) | Tipo (película / serie / corto…), géneros, título canónico, año, duración | Match offline por título normalizado y alias en español/portugués/inglés; confianza A–D (A ≈ 90 %+, B ≈ 75 %; se usa hasta B) | Solo uso no comercial; ~750 MB descargados a `cache-enriquecimiento/imdb/` |",
          "| **Wikidata** (SPARQL, vía el id IMDb `P345`) | Duración (`P2047`), géneros (`P136`, p. ej. telenovela), clasificación (`P3834`, rara). Trae también el idioma original (`P364`), que **no se usa** | Solo para títulos con match IMDb; resultado cacheado por título | CC0, sin API key |",
@@ -163,13 +162,13 @@ def main():
          "\n*Cache incremental: `cache-enriquecimiento/titulos.json` guarda el resultado de cada título; en cada tanda solo se consultan los títulos nuevos.*\n",
          "## Métodos (en orden: el primero que llena gana, y queda anotado en `<columna>_origen`)\n",
          "| Método (`origen`) | Qué hace | Candado | Columnas donde aplica |\n|---|---|---|---|",
-         "| `intra_titulo` | Copia el valor que otra fila del **mismo título** ya trae (misma película, otra ruta de venta) | El valor debe dominar ≥ 80 % de las filas con dato de ese título; en contentSeries además ≥ 30 filas y ≥ 2 publishers | category, series, length, rating, genre |",
          "| `imdb` | Match del título contra IMDb: tipo, géneros, título canónico | Confianza A o B | series (tvSeries → título canónico), genre |",
          "| `wikidata` | Duración, géneros y clasificación del ítem ligado al id IMDb | Solo títulos con match IMDb | rating (y genre vía telenovela) |",
-         "| `derivado_genero` | Traduce el género de la misma fila a categoría IAB (mapa aprendido de las filas que traen ambas columnas: deportes → `[IAB17]`, noticias → `[IAB12]`…) | Solo géneros que definen vertical | category |",
-         "| `derivado_tipo` | Desempata con el tipo IMDb cuando el género no define categoría: movie → `[IAB1-5]`, tvSeries → `[IAB1-7]` | Match IMDb A/B | category |",
+         "| `derivado_tipo` | El tipo IMDb decide la categoría y tiene prioridad sobre el género: movie → `[IAB1-5]`, tvSeries → `[IAB1-7]` | Match IMDb A/B | category |",
+         "| `derivado_genero` | Traduce el género de la misma fila a categoría IAB (deportes → `[IAB17]`, noticias → `[IAB12]`…) | Solo si no hay match IMDb A/B, o si los géneros IMDb confirman la vertical (Sport / News / Music) | category |",
          "| `app_semantica` | Modo de entrega según la app: lineal pura → 1, VOD pura → 0 | Solo apps con `aplicar=si` en la tabla curada | livestream |",
          "| *(retirados el 2026-09-17)* | `app_default` (copiar el valor constante de la app) en todas las columnas: describe al vendedor, no al contenido. Todo relleno de contentLanguage. El tipo IMDb como señal de livestream | | |",
+         "| *(retirado el 2026-10-06)* | `intra_titulo` (copiar el valor que otra fila del mismo título ya trae) en todas las columnas: propagaba los valores por defecto de los vendedores (el `[IAB12]` que Vidaa manda en casi todas sus filas llegaba a las telenovelas de ViX) | | |",
          "\n## Resumen: cuánto viene lleno hoy y cuánto queda tras el relleno\n",
          "| Columna | Hoy (% filas) | Hoy (% requests) | Tras el relleno (% filas) | Ganancia | Sigue vacío | Método que más aporta |\n|---|---:|---:|---:|---:|---:|---|"]
     for c in ["contentGenre", "contentTitle", "contentRating", "contentLanguage", "contentIsLiveStream",
@@ -221,12 +220,12 @@ def main():
     extra += veredictos(catc["correctitud"]["veredicto_total"], catr["correctitud"]["veredicto_total"], VER_CAT)
     extra.append("")
     bloque("contentCategory",
-           "tres escalones. `intra_titulo` copia la categoría que otra ruta del mismo título ya manda (Vidaa o Equativ suelen mandarla; OTTera y TCL mandan `[-7]`). "
-           "`derivado_genero` traduce el contentGenre de la misma fila "
-           "con el mapa IAB 1.0 aprendido del propio dataset (~150k filas traen ambas columnas). `derivado_tipo` usa el tipo IMDb para separar película (`[IAB1-5]`) de serie (`[IAB1-7]`). "
+           "dos escalones. `derivado_tipo`: si el título tiene match IMDb (A/B), el tipo IMDb decide entre película (`[IAB1-5]`) y serie (`[IAB1-7]`), y tiene prioridad sobre el género "
+           "(la vertical del género solo se conserva si los géneros IMDb la confirman: Sport, News, Music). `derivado_genero`: sin match, se traduce el contentGenre de la misma fila "
+           "con el mapa IAB 1.0. "
            "La validación va un paso más allá y propone, con la taxonomía 2.2, la categoría más fina que la evidencia permite (forma + género).",
            "el consolidado mezcla tres taxonomías (1.0, 2.2, 3.0) y texto libre (`[sports]`, `[Live]`); lo declarado es en su mayoría genérico (nivel 1, solo la vertical). "
-           "Los valores por defecto que declaran algunas apps (`[IAB12]` de Vidaa, `[IAB1]` de OTTera) son correctos como vertical pero no como género, y `intra_titulo` los propaga. "
+           "Los valores por defecto que declaran algunas apps (`[IAB12]` de Vidaa, `[IAB1]` de OTTera) no describen al contenido (Vidaa manda `[IAB12]` en telenovelas y películas); por eso ya no se copian entre rutas (`intra_titulo`, retirado el 2026-10-06). "
            "Un match IMDb de confianza B acierta ~75 %, así que parte de las \"contradicciones\" son matches equivocados; se separan con `genero_vs_imdb` en el CSV fila a fila.",
            extra)
 
@@ -246,7 +245,7 @@ def main():
     extra += veredictos(gc["veredicto"], gr["veredicto"], VER_GEN)
     extra.append("")
     bloque("contentGenre",
-           "`intra_titulo` como en las demás columnas; para lo que sigue vacío, los géneros del match IMDb (`title.basics`, hasta tres) traducidos al vocabulario "
+           "los géneros del match IMDb (`title.basics`, hasta tres) traducidos al vocabulario "
            "canónico del proyecto (`norm_genre`), y los géneros de Wikidata (`P136`) para lo que IMDb no expresa (telenovela, holiday). La validación compara cada género declarado "
            "con IMDb/Wikidata por *conceptos* (thriller/misterio/crimen → crimen-misterio, anime → animación) y propone géneros adicionales o más precisos.",
            "es la columna que mejor viene (>90 %), así que el margen es afinar, no llenar. El vocabulario del vendedor es libre (`Drama` y `drama` son valores distintos en la fuente; "
@@ -274,8 +273,8 @@ def main():
     extra += veredictos(sc["veredicto"], sr["veredicto"], VER_SER)
     extra.append("")
     bloque("contentSeries",
-           "el pipeline llena solo lo seguro: `imdb` cuando el match (A/B) dice tvSeries o tvMiniSeries, con el título canónico de IMDb; `intra_titulo` cuando otras rutas del mismo "
-           "título nombran la serie (≥ 30 filas y ≥ 2 publishers, porque un episodio puede llamarse igual que una película). La validación identifica además qué filas **son** serie "
+           "el pipeline llena solo lo seguro: `imdb` cuando el match (A/B) dice tvSeries o tvMiniSeries, con el título canónico de IMDb. "
+           "La validación identifica además qué filas **son** serie "
            "sin decirlo (IMDb, el título con \"season N\" / S01E03 / \"ep N\", o las otras rutas) y propone un nombre: el título sin sufijos de temporada/episodio, el que traen las otras rutas, o el canónico IMDb.",
            "la mayor parte del vacío es correcta: las películas no pertenecen a ninguna serie. Casi la mitad de las filas no tiene evidencia (títulos sin match, placeholders como `roku` / `epg`). "
            "Roku manda un hash MD5 en vez del nombre y algunos vendedores mandan `VOD` o macros sin reemplazar; todo eso cuenta como vacío.",
@@ -283,7 +282,7 @@ def main():
 
     # ---- contentLength ----
     bloque("contentLength",
-           "solo `intra_titulo` (otra ruta del mismo título trae el código). IMDb (`runtimeMinutes`) y Wikidata (`P2047`) traen la duración en minutos de la mayoría de los "
+           "no se rellena. IMDb (`runtimeMinutes`) y Wikidata (`P2047`) traen la duración en minutos de la mayoría de los "
            "títulos con match, pero esa duración solo se escribe con `--length-desde-runtime`, apagado por defecto.",
            "contentLength no es una duración: es un **código 1–8** (rangos de duración; el mapa por defecto del pipeline es 1: ≤ 1 min, 2: ≤ 5, 3: ≤ 15, 4: ≤ 30, 5: ≤ 60, 6: ≤ 120, 7: ≤ 180, 8: más). "
            "Mientras PubMatic no confirme los cortes de cada código, convertir minutos a código es una suposición y por eso no se aplica. Con esa confirmación, el runtime externo cubriría "
@@ -306,8 +305,7 @@ def main():
 
     # ---- contentRating ----
     bloque("contentRating",
-           "`intra_titulo` (canonizando la escala nueva: `All Ages` = g, `Teen` = tv-pg, `Teen Plus` = tv-14, `Adults` = tv-ma, `Unrated` = nr) y, marginalmente, la "
-           "clasificación de Wikidata (`P3834`).",
+           "solo la clasificación de Wikidata (`P3834`), que casi nunca viene.",
            "no hay fuente abierta de clasificaciones por edad con cobertura: los datasets públicos de IMDb no traen la Parental Guide y en Wikidata `P3834` es rara. Lo que queda vacío "
            "son títulos que ninguna ruta clasifica; solo el vendedor puede completarlo. El consolidado mezcla dos escalas (`tv-14` y `Teen Plus` para el mismo título); `rating_franja` "
            "de `normalizar_monetizar.py` las unifica en franjas de edad.")
@@ -317,8 +315,8 @@ def main():
     reales = catc["meta"]["filas_con_titulo_real"]
     L.append("## contentTitle\n")
     L.append(f"**Hoy:** {pct(hf)} de las filas y {pct(hr)} de los requests traen algo. Top 3 referencias: {top3(cols['contentTitle'])}.\n")
-    L.append("**Método y fuentes:** no se rellena. El título es la **llave** de todo lo demás: es lo que se normaliza (`titulo_clave`) y se busca en IMDb/Wikidata, y es lo que agrupa las rutas "
-             "de venta para `intra_titulo`. Lo que sí se hace es medir cuánto de lo \"lleno\" es un título de verdad: se descuentan placeholders (`roku`, `epg`, `vod`), nombres de canal "
+    L.append("**Método y fuentes:** no se rellena. El título es la **llave** de todo lo demás: es lo que se normaliza (`titulo_clave`) y se busca en IMDb/Wikidata. "
+             "Lo que sí se hace es medir cuánto de lo \"lleno\" es un título de verdad: se descuentan placeholders (`roku`, `epg`, `vod`), nombres de canal "
              "(`las estrellas`, `canal 5`), slugs técnicos (`*_trailer`), macros sin reemplazar (`{{content_title}}`), texto sin letras o de una o dos letras y encoding roto "
              f"(en esta tanda, {n(reales)} filas, {pct(100 * reales / filas)} del consolidado, pasan el filtro).\n")
     L.append("**Límites:** sin título no hay nada que cruzar afuera: una fila vacía en contentTitle solo la puede completar el vendedor. Y el vacío pesa más en tráfico que en catálogo "

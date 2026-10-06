@@ -4,15 +4,14 @@ Contexto, fuentes, métodos y límites: `recursos/reporte-completitud-content-ob
 
 ## contentCategory
 
-**Tras el relleno:** 93.0% de las filas (de 21.9%). Origen del valor final, sobre todas las filas del consolidado:
+**Tras el relleno:** 91.8% de las filas (de 21.9%). Origen del valor final, sobre todas las filas del consolidado:
 
 | Origen | % filas |
 |---|---:|
 | Venía del vendedor (`original`) | 21.9% |
-| Copiado de otra ruta del mismo título (`intra_titulo`) | 11.6% |
-| Derivado del género (`derivado_genero`) | 26.0% |
-| Derivado del tipo IMDb (película / serie) (`derivado_tipo`) | 33.6% |
-| Sigue vacío (`sin_dato`) | 7.0% |
+| Derivado del género (`derivado_genero`) | 29.8% |
+| Derivado del tipo IMDb (película / serie) (`derivado_tipo`) | 40.1% |
+| Sigue vacío (`sin_dato`) | 8.2% |
 
 **Qué más se puede afinar (validación del consolidado contra IMDb / Wikidata / taxonomías IAB):**
 
@@ -35,21 +34,20 @@ Contexto, fuentes, métodos y límites: `recursos/reporte-completitud-content-ob
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide con la evidencia (`coincide`) | 19.5% | 58.0% |
-| Compatible (genérica, no contradice) (`compatible`) | 50.1% | 20.4% |
-| Contradice la evidencia (`contradice`) | 12.5% | 12.2% |
-| No se pudo evaluar (`no_evaluable`) | 18.0% | 9.4% |
+| Coincide con la evidencia (`coincide`) | 19.5% | 60.7% |
+| Compatible (genérica, no contradice) (`compatible`) | 50.1% | 19.4% |
+| Contradice la evidencia (`contradice`) | 12.5% | 11.5% |
+| No se pudo evaluar (`no_evaluable`) | 18.0% | 8.4% |
 
 ## contentGenre
 
-**Tras el relleno:** 96.8% de las filas (de 90.8%). Origen del valor final, sobre todas las filas del consolidado:
+**Tras el relleno:** 93.4% de las filas (de 90.8%). Origen del valor final, sobre todas las filas del consolidado:
 
 | Origen | % filas |
 |---|---:|
 | Venía del vendedor (`original`) | 90.8% |
-| Copiado de otra ruta del mismo título (`intra_titulo`) | 3.6% |
-| IMDb (`imdb`) | 2.3% |
-| Sigue vacío (`sin_dato`) | 3.2% |
+| IMDb (`imdb`) | 2.6% |
+| Sigue vacío (`sin_dato`) | 6.6% |
 
 **Qué más se puede afinar (validación del consolidado):**
 
@@ -73,22 +71,21 @@ Contexto, fuentes, métodos y límites: `recursos/reporte-completitud-content-ob
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide (`coincide`) | 41.2% | 41.3% |
-| Parecido (género vecino) (`afin`) | 2.6% | 2.5% |
+| Coincide (`coincide`) | 41.2% | 42.9% |
+| Parecido (género vecino) (`afin`) | 2.6% | 2.6% |
 | Acierta en parte (`parcial`) | 2.8% | 2.7% |
-| Contradice (`contradice`) | 1.7% | 1.6% |
-| No se pudo evaluar (`no_evaluable`) | 51.6% | 51.9% |
+| Contradice (`contradice`) | 1.7% | 1.8% |
+| No se pudo evaluar (`no_evaluable`) | 51.6% | 50.1% |
 
 ## contentSeries
 
-**Tras el relleno:** 14.2% de las filas (de 6.6%). Origen del valor final, sobre todas las filas del consolidado:
+**Tras el relleno:** 13.8% de las filas (de 6.6%). Origen del valor final, sobre todas las filas del consolidado:
 
 | Origen | % filas |
 |---|---:|
 | Venía del vendedor (`original`) | 6.6% |
-| Copiado de otra ruta del mismo título (`intra_titulo`) | 0.7% |
-| IMDb (`imdb`) | 6.9% |
-| Sigue vacío (`sin_dato`) | 85.8% |
+| IMDb (`imdb`) | 7.2% |
+| Sigue vacío (`sin_dato`) | 86.2% |
 
 **Qué es cada fila según la evidencia (consolidado):**
 
@@ -124,20 +121,19 @@ Contexto, fuentes, métodos y límites: `recursos/reporte-completitud-content-ob
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide (`coincide`) | 2.4% | 56.3% |
-| Es serie, pero con otro nombre (compatible) (`otro_nombre`) | 4.7% | 2.0% |
+| Coincide (`coincide`) | 2.4% | 58.4% |
+| Es serie, pero con otro nombre (compatible) (`otro_nombre`) | 4.7% | 2.3% |
 | IMDb dice que es película (`contradice`) | 2.7% | 1.3% |
-| No se pudo evaluar (`no_evaluable`) | 90.2% | 40.3% |
+| No se pudo evaluar (`no_evaluable`) | 90.2% | 38.0% |
 
 ## contentLength
 
-**Tras el relleno:** 49.4% de las filas (de 12.6%). Origen del valor final, sobre todas las filas del consolidado:
+**Tras el relleno:** 12.6% de las filas (de 12.6%). Origen del valor final, sobre todas las filas del consolidado:
 
 | Origen | % filas |
 |---|---:|
 | Venía del vendedor (`original`) | 12.6% |
-| Copiado de otra ruta del mismo título (`intra_titulo`) | 36.8% |
-| Sigue vacío (`sin_dato`) | 50.6% |
+| Sigue vacío (`sin_dato`) | 87.4% |
 
 ## contentLanguage
 
@@ -155,14 +151,13 @@ Contexto, fuentes, métodos y límites: `recursos/reporte-completitud-content-ob
 
 ## contentRating
 
-**Tras el relleno:** 82.2% de las filas (de 75.1%). Origen del valor final, sobre todas las filas del consolidado:
+**Tras el relleno:** 75.3% de las filas (de 75.1%). Origen del valor final, sobre todas las filas del consolidado:
 
 | Origen | % filas |
 |---|---:|
 | Venía del vendedor (`original`) | 75.1% |
-| Copiado de otra ruta del mismo título (`intra_titulo`) | 7.0% |
 | Wikidata (`wikidata`) | 0.1% |
-| Sigue vacío (`sin_dato`) | 17.8% |
+| Sigue vacío (`sin_dato`) | 24.7% |
 
 ## contentTitle
 
