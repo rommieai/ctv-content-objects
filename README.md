@@ -55,11 +55,15 @@ scripts/                          codigo que genera los consolidados y los JSON
   generar_reporte_graficos.py     markdown del reporte de graficas desde los JSON de R2 y heatmap
   generar_reporte_completitud.py  markdown "que se puede completar de cada content object:
                                   metodos y fuentes" desde el JSON del relleno y las validaciones
-  enriquecer_externo.py           rellena content objects vacios: intra-titulo, IMDb offline,
-                                  Wikidata/TVMaze (cache incremental). Sin defaults por app ni
-                                  relleno de contentLanguage desde 2026-09-17; desde 2026-10-01 a la
-                                  categoria generica rellenada ([IAB1]/[IAB1-5]/[IAB1-7]) le agrega
-                                  codigos de genero IAB 2.2 (contentCategory_afinado_origen)
+  enriquecer_externo.py           rellena content objects vacios: IMDb offline, Wikidata/TVMaze
+                                  (cache incremental) y el genero de la propia fila. Sin defaults
+                                  por app ni relleno de contentLanguage desde 2026-09-17; desde
+                                  2026-10-01 a la categoria generica rellenada ([IAB1]/[IAB1-5]/
+                                  [IAB1-7]) le agrega codigos de genero IAB 2.2
+                                  (contentCategory_afinado_origen); desde 2026-10-06 sin intra_titulo
+                                  (copiar el valor de otra ruta del mismo titulo propagaba defaults
+                                  de vendedor, p. ej. el [IAB12] de Vidaa) y, en contentCategory, el
+                                  tipo IMDb tiene prioridad sobre el genero
   validar_categorias.py           valida contentCategory contra IMDb/Wikidata (cache) y las
                                   taxonomias IAB oficiales: correctitud de lo lleno y
                                   categoria mas fina alcanzable por fila

@@ -3,36 +3,33 @@
   "filas": 1344629,
   "titulos_distintos": 18246,
   "titulos_nuevos_consultados": 0,
-  "titulos_con_imdb": 8742,
-  "fecha": "2026-10-01 08:09",
+  "titulos_con_imdb": 8753,
+  "fecha": "2026-10-06 16:01",
   "columnas": {
     "contentCategory": {
       "pct_original": 21.9,
-      "pct_final": 93.0,
+      "pct_final": 91.8,
       "origen": {
-        "derivado_tipo": 33.6,
-        "derivado_genero": 26.0,
+        "derivado_tipo": 40.1,
+        "derivado_genero": 29.8,
         "original": 21.9,
-        "intra_titulo": 11.6,
-        "sin_dato": 7.0
+        "sin_dato": 8.2
       }
     },
     "contentSeries": {
       "pct_original": 6.6,
-      "pct_final": 14.2,
+      "pct_final": 13.8,
       "origen": {
-        "sin_dato": 85.8,
-        "imdb": 6.9,
-        "original": 6.6,
-        "intra_titulo": 0.7
+        "sin_dato": 86.2,
+        "imdb": 7.2,
+        "original": 6.6
       }
     },
     "contentLength": {
       "pct_original": 12.6,
-      "pct_final": 49.4,
+      "pct_final": 12.6,
       "origen": {
-        "sin_dato": 50.6,
-        "intra_titulo": 36.8,
+        "sin_dato": 87.4,
         "original": 12.6
       }
     },
@@ -55,29 +52,27 @@
     },
     "contentRating": {
       "pct_original": 75.1,
-      "pct_final": 82.2,
+      "pct_final": 75.3,
       "origen": {
         "original": 75.1,
-        "sin_dato": 17.8,
-        "intra_titulo": 7.0,
+        "sin_dato": 24.7,
         "wikidata": 0.1
       }
     },
     "contentGenre": {
       "pct_original": 90.8,
-      "pct_final": 96.8,
+      "pct_final": 93.4,
       "origen": {
         "original": 90.8,
-        "intra_titulo": 3.6,
-        "sin_dato": 3.2,
-        "imdb": 2.3
+        "sin_dato": 6.6,
+        "imdb": 2.6
       }
     }
   },
   "contentCategory_afinado": {
     "nota": "filas con categoria generica rellenada ([IAB1], [IAB1-5], [IAB1-7]) y titulo, a las que se agregaron codigos de genero de IAB 2.2 (se conservan los genericos), por fuente del genero",
     "pct_filas": {
-      "genero_declarado": 47.9,
+      "genero_declarado": 48.7,
       "imdb": 3.6,
       "wikidata": 0.0
     }

@@ -5,7 +5,7 @@ Toma el consolidado (idealmente el *enriquecido*, que ya trae genero_normalizado
 rating_franja) y produce un CSV con, para cada columna objetivo, dos columnas nuevas:
 
     <col>_relleno   valor final (el original si venia, o el inferido)
-    <col>_origen    de donde salio: original | intra_titulo | imdb | tvmaze | wikidata |
+    <col>_origen    de donde salio: original | imdb | tvmaze | wikidata |
                     derivado_genero | derivado_tipo | app_semantica | (vacio)
 
 Columnas objetivo: contentCategory, contentSeries, contentLength, contentIsLiveStream,
@@ -18,8 +18,11 @@ Etapas (en orden; la primera que llena gana):
      quitar ": trailer", "season N", "episodio N", SxxEyy, puntuacion). Solo se
      buscan los titulos que pasan el filtro de "titulo de verdad" de
      analizar_genero_titulo_paises.clasificar_titulo.
-  1. intra_titulo: el mismo titulo_clave trae el dato en otra fila del consolidado
-     (se exige que el valor dominante cubra >= --umbral-intra de las filas con dato).
+  1. (retirado 2026-10-06) intra_titulo: copiar el valor que otra fila del mismo
+     titulo_clave ya trae. Se quito porque propagaba los valores por defecto de los
+     vendedores: Vidaa manda [IAB12] (News) en el 98% de sus filas, sean telenovelas o
+     peliculas, y como aporta la mayoria de las filas con dato de un titulo ganaba el
+     candado del 80% ("mi corazon es tuyo" quedaba como noticias en las rutas de ViX).
   2. (retirado 2026-09-17) app_default: copiar el valor constante que manda una app.
      Se quito porque su confiabilidad no se puede justificar: un valor por defecto del
      vendedor describe al vendedor, no al contenido.
@@ -31,46 +34,32 @@ Etapas (en orden; la primera que llena gana):
      Sin API key, CC BY-SA, ~20 req/10 s.
   5. wikidata (--wikidata): via IMDb id (P345) -> idioma original (P364), duracion
      (P2047), generos (P136), clasificacion (P3834, rara). CC0, sin API key.
-  6. derivados: contentCategory desde el genero (mapa IAB 1.0) y el tipo IMDb,
-     contentSeries desde el tipo (tvSeries -> titulo canonico), contentLength desde
-     el runtime (requiere --length-desde-runtime, ver docstring de BUCKETS).
+  6. derivados: contentCategory desde el tipo IMDb (tiene prioridad) y el genero
+     (mapa IAB 1.0), contentSeries desde el tipo (tvSeries -> titulo canonico),
+     contentLength desde el runtime (requiere --length-desde-runtime, ver docstring
+     de BUCKETS).
      contentIsLiveStream es caso aparte (mide modo de entrega, no contenido): solo
      la semantica de la app validada a mano (cache-dir/semantica_apps.csv, columna
-     "aplicar"). Ni intra_titulo (propagaria el "1" default, salvo flag explicito)
-     ni el tipo IMDb (una pelicula en canal lineal es livestream=1; retirado
-     2026-09-17) se usan.
+     "aplicar"). El tipo IMDb (una pelicula en canal lineal es livestream=1;
+     retirado 2026-09-17) no se usa.
 
-COMO FUNCIONA, CON UN EJEMPLO REAL (contentCategory: 23% -> 95%)
-----------------------------------------------------------------
-La idea central: cada fila del consolidado NO es un programa, es una COMBINACION de
-14 dimensiones (pais x publisher x app x genero x ...). El mismo contenido llega por
-muchas rutas de venta a la vez, y cada ruta manda la metadata como quiere. El titulo
-"ideas en 5 minutos" aparece en 10+ filas:
+COMO FUNCIONA (contentCategory)
+-------------------------------
+Cada fila del consolidado NO es un programa, es una COMBINACION de 14 dimensiones
+(pais x publisher x app x genero x ...). El mismo contenido llega por muchas rutas de
+venta a la vez, y cada ruta manda la metadata como quiere. Solo se rellena con lo que
+describe al CONTENIDO (el match IMDb del titulo y el genero de la propia fila), nunca
+con lo que otra ruta declara. Escalones (el primero que aplica gana, y queda anotado
+en <col>_origen):
 
-    Mexico/Panama via Vidaa, Equativ, Stingray  -> contentCategory = [IAB1-6] (Musica)
-    Argentina    via OTTera/TCL                 -> contentCategory = [-7]     (basura)
-
-El "vacio" no es que nadie sepa la categoria: es que ESA ruta la descarta. La
-respuesta correcta ya esta escrita en otra fila del mismo titulo. De ahi los
-escalones (el primero que aplica gana, y queda anotado en <col>_origen):
-
-  original       (23.0%) la fila ya lo traia; nunca se toca.
-  intra_titulo  (+12.0%) otra fila del MISMO TITULO lo trae -> se copia el [IAB1-6]
-                         de Vidaa a las filas de OTTera. Candado: el valor debe
-                         dominar >= 80% de las filas con dato de ese titulo.
-  (app_default, retirado 2026-09-17: copiaba el valor constante de la app.)
-  derivado_*    (+52.1%) la fila vacia en category casi siempre esta LLENA en
-                         contentGenre (99% de fill): deportes -> [IAB17], noticias ->
-                         [IAB12]... (mapa aprendido de las ~149k filas que traen
-                         ambas columnas). Y para generos que no definen categoria
-                         (un drama puede ser pelicula o serie), desempata el tipo
-                         del match IMDb: movie -> [IAB1-5], tvSeries -> [IAB1-7].
-
-  intra_titulo copia ENTRE FILAS DEL MISMO TITULO (misma pelicula, distinta ruta):
-  el mismo contenido, otra ruta de venta.
-
-De todo lo rellenado, ~2/3 sale del propio dataset (intra + derivado del genero) y ~1/3 depende del match externo (el tipo IMDb para separar
-pelicula/serie y corregir livestream, el titulo canonico para series).
+  original         la fila ya lo traia; nunca se toca.
+  derivado_tipo    hay match IMDb confiable (A/B): manda IMDb. movie -> [IAB1-5],
+                   tvSeries -> [IAB1-7]. Unica excepcion: si el genero de la fila es
+                   deportes / noticias / musica y los generos IMDb lo confirman
+                   (Sport / News / Music), queda esa vertical (derivado_genero).
+  derivado_genero  sin match IMDb: el contentGenre de la MISMA fila (lleno en el 99%):
+                   deportes -> [IAB17], noticias -> [IAB12]...; genero sin categoria
+                   propia -> [IAB1] generico.
 
 Cache incremental: --cache-dir/titulos.json guarda el resultado de cada titulo_clave;
 en corridas siguientes solo se consultan los titulos nuevos. Asi el mismo comando
@@ -107,6 +96,7 @@ SENT = {"not available", "not applicable", "unknown", "n/a", "null", "undefined"
 MD5_VACIO = "d41d8cd98f00b204e9800998ecf8427e"
 OBJETIVO = ["contentCategory", "contentSeries", "contentLength", "contentLanguage",
             "contentIsLiveStream", "contentRating", "contentGenre"]
+# (Usados por las validaciones y la auditoria; el relleno ya no copia entre filas.)
 # Desde el corte v16 parte de las filas trae el idioma como nombre completo ("English")
 # en vez del codigo ISO 639-1 ("en") que usa el resto del dataset. Para aprender los
 # valores de un titulo/app (pasada 1) se canonizan al codigo: si no, "en" x3 + "English"
@@ -196,7 +186,7 @@ def normalizar_titulo(t):
       - mojibake:    "Do�a B�rbara" (cp1252 mal decodificado) -> "Doña Bárbara"
       - sufijos:     ": trailer", "temporada 8", "episodio 79", "S01E03" fuera
       - minusculas, sin acentos, sin puntuacion, espacios colapsados
-    El resultado es la llave del cache y de los indices intra-dataset e IMDb
+    El resultado es la llave del cache y del indice IMDb
     (18,374 titulos crudos -> ~14,100 claves)."""
     s = t.strip()
     if "%" in s:
@@ -433,6 +423,10 @@ IAB_POR_TIPO = {"movie": "[IAB1-5]", "tvMovie": "[IAB1-5]", "video": "[IAB1-5]",
                 "short": "[IAB1-5]", "tvSeries": "[IAB1-7]", "tvMiniSeries": "[IAB1-7]",
                 "tvSpecial": "[IAB1-7]", "tvShort": "[IAB1-7]"}
 IAB_DEFAULT_ENTRETENIMIENTO = "[IAB1]"
+# Con match IMDb manda el tipo (pelicula / serie). La vertical del genero de la fila solo
+# se conserva si los generos IMDb la confirman: "bbc news" (tvSeries, News) sigue en
+# [IAB12]; una pelicula que una ruta etiqueta "sports" sin que IMDb lo diga va a [IAB1-5].
+GENERO_CONFIRMA_IMDB = {"deportes": {"Sport"}, "noticias": {"News"}, "musica": {"Music", "Musical"}}
 
 # contentLength en estas exportaciones NO viene en segundos: es un codigo 1..8 del
 # reporte cuya semantica no es la duracion (calibrado contra el runtime de IMDb, todos
@@ -545,20 +539,10 @@ def main():
     ap.add_argument("salida_csv")
     ap.add_argument("salida_json")
     ap.add_argument("--cache-dir", default="cache-enriquecimiento")
-    ap.add_argument("--umbral-intra", type=float, default=0.8)
-    ap.add_argument("--intra-livestream", action="store_true",
-                    help="permitir intra_titulo en contentIsLiveStream (desaconsejado: como "
-                         "todo lo declarado es '1', solo propaga el default del vendedor)")
     ap.add_argument("--semantica-apps", default="",
                     help="CSV con el veredicto de entrega por app (bundle,app_name,veredicto,"
                          "aplicar,...); default: <cache-dir>/semantica_apps.csv si existe. "
                          "Solo filas con aplicar=si rellenan: lineal->1, vod->0")
-    ap.add_argument("--min-filas-serie", type=int, default=30,
-                    help="intra_titulo en contentSeries: minimo de filas con dato del titulo "
-                         "(evita propagar el nombre de una serie cuyo EPISODIO se llama igual "
-                         "que una pelicula: 'abandoned' -> FBI por 3 filas)")
-    ap.add_argument("--min-rutas-serie", type=int, default=2,
-                    help="intra_titulo en contentSeries: minimo de publishers distintos con dato")
     ap.add_argument("--sin-imdb", action="store_true")
     ap.add_argument("--imdb-max-dias", type=int, default=7)
     ap.add_argument("--tvmaze", action="store_true")
@@ -604,10 +588,9 @@ def main():
               file=sys.stderr)
 
     # =========================================================================
-    # PASADA 1 — aprender del propio dataset (aqui no se rellena nada todavia).
-    # Se leen las 648k filas y se construyen dos "memorias":
-    #   conocido[col][titulo] = Counter de valores que ese titulo trae en las filas
-    #                           donde SI viene el dato  -> alimenta intra_titulo
+    # PASADA 1 — leer las filas y calcular el titulo_clave de cada una. No se aprende
+    # nada de las demas filas: (2026-09-17) ya no hay defaults por app y (2026-10-06)
+    # ya no hay intra_titulo; el valor que manda otra ruta describe a esa ruta.
     # =========================================================================
     filas = []
     with open(args.entrada, encoding="utf-8-sig", newline="") as f:
@@ -619,26 +602,13 @@ def main():
     n = len(filas)
     print(f"{n} filas leidas", file=sys.stderr)
 
-    conocido = {c: defaultdict(Counter) for c in OBJETIVO}
-    rutas_serie = defaultdict(set)   # titulo_clave -> publishers que traen contentSeries
     claves = {}
     for d in filas:
         t = (d.get("contentTitle") or "").strip()
         k = normalizar_titulo(t) if titulo_real(t) else ""
         d["titulo_clave"] = k
-        app = f'{d.get("Publisher", "")}|{d.get("App Name", "")}'
-        for c in OBJETIVO:
-            if es_propagable(c, d.get(c)):
-                v = canon_valor(c, d[c])
-                if k:
-                    conocido[c][k][v] += 1
-                    if c == "contentSeries":
-                        rutas_serie[k].add(d.get("Publisher", ""))
         if k:
             claves[k] = claves.get(k, 0) + 1
-
-    # (2026-09-17) Ya no se aprenden defaults por app: el valor constante de un
-    # vendedor describe al vendedor, no al contenido, y no se puede justificar.
 
     # =========================================================================
     # FUENTES EXTERNAS — se consultan POR TITULO DISTINTO (14 mil claves), nunca
@@ -719,30 +689,11 @@ def main():
     salida_cols += ["contentCategory_afinado_origen"]
     afinar = AfinadorCategoria(args.cache_dir)
 
-    def intra(c, k):
-        """Escalon intra_titulo: ¿alguna fila hermana (mismo titulo) trae el dato?
-
-        Devuelve el valor dominante SOLO si cubre >= 80% (umbral-intra) de las filas
-        con dato de ese titulo. El candado importa: si "memorias adolescentes" trae
-        es en 3 filas y en en 1 (75%), no se rellena — la mezcla es informacion
-        (pistas de audio distintas), no ruido, y copiar seria adivinar."""
-        cnt = conocido[c].get(k)
-        if not cnt:
-            return None
-        if c == "contentSeries":
-            # Candado extra: el titulo de una PELICULA puede coincidir con el de un
-            # EPISODIO de una serie que si manda contentSeries ("abandoned" -> FBI,
-            # 3 filas de una ruta). Se exige evidencia minima en filas y en rutas.
-            if sum(cnt.values()) < args.min_filas_serie or                     len(rutas_serie.get(k, ())) < args.min_rutas_serie:
-                return None
-        v, m = cnt.most_common(1)[0]
-        return v if m / sum(cnt.values()) >= args.umbral_intra else None
-
     # =========================================================================
     # PASADA 2 — rellenar fila por fila. Para cada columna vacia se prueban las
     # fuentes EN ORDEN (la primera que da valor gana) y el origen queda anotado
     # en <col>_origen para poder filtrar por confianza despues:
-    #   original -> intra_titulo -> fuente externa / derivado
+    #   original -> fuente externa / derivado
     #   (contentLanguage: solo original; nunca se rellena)
     # =========================================================================
     with open(args.salida_csv, "w", encoding="utf-8", newline="") as f:
@@ -750,7 +701,6 @@ def main():
         w.writeheader()
         for d in filas:
             k = d["titulo_clave"]
-            app = f'{d.get("Publisher", "")}|{d.get("App Name", "")}'
             ext = cache.get(k, {}) if k else {}
             imdb = ext.get("imdb") or {}
             tvm = ext.get("tvmaze") or {}
@@ -777,32 +727,24 @@ def main():
                     val, org = None, ""
                     if c == "contentLanguage":
                         # No hay forma de asumir el idioma en que se EMITE un programa:
-                        # ni las otras rutas del mismo titulo (pistas de audio distintas)
-                        # ni el idioma original de la obra (Wikidata/TVMaze) lo prueban.
+                        # el idioma original de la obra (Wikidata/TVMaze) no lo prueba.
                         stats[c]["sin_dato"] += 1
                         d[c + "_relleno"], d[c + "_origen"] = "", ""
                         continue
-                    v = intra(c, k) if k else None
                     if c == "contentIsLiveStream":
                         # contentIsLiveStream mide el MODO DE ENTREGA (lineal vs
                         # on-demand), no que es el contenido: una pelicula vieja en un
                         # canal lineal FAST va programada en horario -> livestream=1.
                         # Unica fuente: la semantica de la app validada a mano
                         # (semantica_apps.csv: una app 100% lineal como "Live TV" -> 1).
-                        # intra_titulo solo con su flag (propagar el "1" declarado no
-                        # agrega informacion: todo lo declarado es 1). El tipo IMDb
-                        # ("movie" -> 0) se retiro (2026-09-17): confunde contenido con
-                        # modo de entrega.
+                        # El tipo IMDb ("movie" -> 0) se retiro (2026-09-17): confunde
+                        # contenido con modo de entrega.
                         if (d.get("pageURL") or "").strip().lower() in sem_bundle:
                             val, org = sem_bundle[d["pageURL"].strip().lower()], "app_semantica"
                         elif (d.get("App Name") or "").strip().lower() in sem_app:
                             val, org = sem_app[d["App Name"].strip().lower()], "app_semantica"
-                        if not val and not args.intra_livestream:
-                            v = None   # intra apagado para esta columna por defecto
                     if val:
                         pass
-                    elif v:
-                        val, org = v, "intra_titulo"
                     elif c == "contentLength" and args.length_desde_runtime and d["ext_runtime_min"]:
                         b = runtime_a_bucket(d["ext_runtime_min"], buckets)
                         if b:
@@ -817,18 +759,24 @@ def main():
                     elif c == "contentRating" and wd.get("rating"):
                         val, org = wd["rating"][0], "wikidata"
                     elif c == "contentCategory":
-                        # La columna vacia se deriva de OTRA columna de la MISMA fila:
-                        # contentGenre esta lleno en el 99% de las filas y el mapa
-                        # genero->IAB se aprendio de las filas que traen ambas.
-                        # 1) generos inequivocos (deportes->[IAB17], noticias->[IAB12])
-                        # 2) genero ambiguo (drama = pelicula o serie?) -> desempata
-                        #    el tipo IMDb: movie->[IAB1-5], tvSeries->[IAB1-7]
-                        # 3) queda genero pero sin tipo -> [IAB1] generico
+                        # 1) hay match IMDb confiable (A/B): manda el tipo IMDb,
+                        #    movie->[IAB1-5], tvSeries->[IAB1-7]. La vertical del genero
+                        #    de la fila (deportes, noticias, musica) solo se conserva si
+                        #    los generos IMDb la confirman.
+                        # 2) sin match: el contentGenre de la MISMA fila (lleno en el
+                        #    99%): deportes->[IAB17], noticias->[IAB12]...
+                        # 3) queda genero pero sin categoria propia -> [IAB1] generico
                         codes = [GENERO_IAB[g] for g in generos_fila if g in GENERO_IAB]
-                        if codes:
+                        if tipo in IAB_POR_TIPO:
+                            gi = set(imdb.get("generos", []))
+                            conf = [GENERO_IAB[g] for g in generos_fila
+                                    if gi & GENERO_CONFIRMA_IMDB.get(g, set())]
+                            if conf:
+                                val, org = conf[0], "derivado_genero"
+                            else:
+                                val, org = IAB_POR_TIPO[tipo], "derivado_tipo"
+                        elif codes:
                             val, org = codes[0], "derivado_genero"
-                        elif tipo in IAB_POR_TIPO:
-                            val, org = IAB_POR_TIPO[tipo], "derivado_tipo"
                         elif generos_fila:
                             val, org = IAB_DEFAULT_ENTRETENIMIENTO, "derivado_genero"
                     elif c == "contentSeries":

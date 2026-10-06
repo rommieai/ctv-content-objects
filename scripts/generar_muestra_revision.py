@@ -44,9 +44,7 @@ NOMBRE_CAMPO = {"contentGenre": "Género", "contentCategory": "Categoría (IAB)"
                 "contentLength": "Duración (código)", "contentLanguage": "Idioma"}
 # cuota de valores llenados a revisar por estrato (columna|origen)
 CUOTAS = {"contentCategory|derivado_tipo": 55, "contentCategory|derivado_genero": 55,
-          "contentCategory|intra_titulo": 45, "contentSeries|imdb": 55, "contentSeries|intra_titulo": 45,
-          "contentGenre|imdb": 55, "contentGenre|intra_titulo": 50, "contentRating|intra_titulo": 50,
-          "contentRating|wikidata": 30, "contentLength|intra_titulo": 35,
+          "contentSeries|imdb": 55, "contentGenre|imdb": 55, "contentRating|wikidata": 30,
           "contentIsLiveStream|app_semantica": 30,
           "contentCategory_afinado|genero_declarado": 60, "contentCategory_afinado|imdb": 50,
           "contentCategory_afinado|wikidata": 15}
