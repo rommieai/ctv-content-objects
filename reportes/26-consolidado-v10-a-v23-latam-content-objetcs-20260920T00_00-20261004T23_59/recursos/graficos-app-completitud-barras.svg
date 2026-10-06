@@ -1,0 +1,482 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1156" height="1004" viewBox="0 0 1156 1004" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">
+<rect width="1156" height="1004" fill="#ffffff"/>
+<text x="16" y="24" font-size="17" font-weight="700" fill="#1f2933">eCPM ponderado por app según cuántos content objects trae el registro</text>
+<text x="16" y="42" font-size="12" fill="#5f6b76">Top 12 apps por requests vendidos. Barra = eCPM ponderado (eCPM &gt; 0) de los registros con ese número de campos llenos; debajo, % de los requests vendidos de la app en ese nivel.</text>
+<text x="16" y="58" font-size="12" fill="#5f6b76">Sin barra: el nivel tiene menos del 2% de los requests vendidos de la app. Línea punteada: eCPM ponderado de toda la app.</text>
+<text x="60" y="100" font-size="13" font-weight="700" fill="#1f2933">Live TV</text>
+<text x="60" y="113" font-size="10.5" fill="#5f6b76">eCPM $2.77 · 19.7% del tráfico vendido · vende 61% de sus requests</text>
+<line x1="60" y1="270.0" x2="382" y2="270.0" stroke="#e3e7ea"/>
+<text x="55" y="274.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="60" y1="240.0" x2="382" y2="240.0" stroke="#e3e7ea"/>
+<text x="55" y="244.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="60" y1="210.1" x2="382" y2="210.1" stroke="#e3e7ea"/>
+<text x="55" y="214.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="60" y1="180.1" x2="382" y2="180.1" stroke="#e3e7ea"/>
+<text x="55" y="184.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="60" y1="150.1" x2="382" y2="150.1" stroke="#e3e7ea"/>
+<text x="55" y="154.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="60" y1="120.2" x2="382" y2="120.2" stroke="#e3e7ea"/>
+<text x="55" y="124.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="77.9" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="113.7" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="113.7" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="149.4" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<rect x="136.6" y="228.6" width="25.8" height="41.4" rx="3" fill="#2a78d6"/>
+<text x="149.4" y="224.6" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.76</text>
+<text x="149.4" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">8%</text>
+<text x="185.2" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<rect x="172.3" y="230.2" width="25.8" height="39.8" rx="3" fill="#2a78d6"/>
+<text x="185.2" y="226.2" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.66</text>
+<text x="185.2" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">42%</text>
+<text x="221.0" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<rect x="208.1" y="228.3" width="25.8" height="41.7" rx="3" fill="#2a78d6"/>
+<text x="221.0" y="224.3" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.78</text>
+<text x="221.0" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">45%</text>
+<text x="256.8" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<rect x="243.9" y="223.4" width="25.8" height="46.6" rx="3" fill="#2a78d6"/>
+<text x="256.8" y="219.4" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$3.11</text>
+<text x="256.8" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">3%</text>
+<text x="292.6" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<text x="292.6" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="328.3" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="364.1" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<line x1="60" y1="228.5" x2="382" y2="228.5" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="221.0" y="310" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+<text x="440" y="100" font-size="13" font-weight="700" fill="#1f2933">The Roku Channel</text>
+<text x="440" y="113" font-size="10.5" fill="#5f6b76">eCPM $5.36 · 14.1% del tráfico vendido · vende 74% de sus requests</text>
+<line x1="440" y1="270.0" x2="762" y2="270.0" stroke="#e3e7ea"/>
+<text x="435" y="274.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="440" y1="240.0" x2="762" y2="240.0" stroke="#e3e7ea"/>
+<text x="435" y="244.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="440" y1="210.1" x2="762" y2="210.1" stroke="#e3e7ea"/>
+<text x="435" y="214.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="440" y1="180.1" x2="762" y2="180.1" stroke="#e3e7ea"/>
+<text x="435" y="184.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="440" y1="150.1" x2="762" y2="150.1" stroke="#e3e7ea"/>
+<text x="435" y="154.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="440" y1="120.2" x2="762" y2="120.2" stroke="#e3e7ea"/>
+<text x="435" y="124.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="457.9" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="493.7" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="529.4" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<text x="565.2" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<text x="565.2" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="601.0" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<rect x="588.1" y="184.7" width="25.8" height="85.3" rx="3" fill="#2a78d6"/>
+<text x="601.0" y="180.7" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$5.69</text>
+<text x="601.0" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">2%</text>
+<text x="636.8" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<rect x="623.9" y="191.1" width="25.8" height="78.9" rx="3" fill="#2a78d6"/>
+<text x="636.8" y="187.1" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$5.27</text>
+<text x="636.8" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">6%</text>
+<text x="672.6" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<rect x="659.7" y="188.5" width="25.8" height="81.5" rx="3" fill="#2a78d6"/>
+<text x="672.6" y="184.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$5.44</text>
+<text x="672.6" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">43%</text>
+<text x="708.3" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<rect x="695.5" y="190.9" width="25.8" height="79.1" rx="3" fill="#2a78d6"/>
+<text x="708.3" y="186.9" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$5.28</text>
+<text x="708.3" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">49%</text>
+<text x="744.1" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<text x="744.1" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<line x1="440" y1="189.6" x2="762" y2="189.6" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="601.0" y="310" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+<text x="820" y="100" font-size="13" font-weight="700" fill="#1f2933">Tubi</text>
+<text x="820" y="113" font-size="10.5" fill="#5f6b76">eCPM $5.24 · 9.5% del tráfico vendido · vende 94% de sus requests</text>
+<line x1="820" y1="270.0" x2="1142" y2="270.0" stroke="#e3e7ea"/>
+<text x="815" y="274.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="820" y1="240.0" x2="1142" y2="240.0" stroke="#e3e7ea"/>
+<text x="815" y="244.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="820" y1="210.1" x2="1142" y2="210.1" stroke="#e3e7ea"/>
+<text x="815" y="214.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="820" y1="180.1" x2="1142" y2="180.1" stroke="#e3e7ea"/>
+<text x="815" y="184.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="820" y1="150.1" x2="1142" y2="150.1" stroke="#e3e7ea"/>
+<text x="815" y="154.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="820" y1="120.2" x2="1142" y2="120.2" stroke="#e3e7ea"/>
+<text x="815" y="124.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="837.9" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<rect x="825.0" y="190.5" width="25.8" height="79.5" rx="3" fill="#2a78d6"/>
+<text x="837.9" y="186.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$5.31</text>
+<text x="837.9" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">2%</text>
+<text x="873.7" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<rect x="860.8" y="150.9" width="25.8" height="119.1" rx="3" fill="#2a78d6"/>
+<text x="873.7" y="146.9" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$7.95</text>
+<text x="873.7" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">5%</text>
+<text x="909.4" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<rect x="896.6" y="192.7" width="25.8" height="77.3" rx="3" fill="#2a78d6"/>
+<text x="909.4" y="188.7" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$5.16</text>
+<text x="909.4" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">28%</text>
+<text x="945.2" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<rect x="932.3" y="194.0" width="25.8" height="76.0" rx="3" fill="#2a78d6"/>
+<text x="945.2" y="190.0" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$5.07</text>
+<text x="945.2" y="297" text-anchor="middle" font-size="9" fill="#5f6b76">65%</text>
+<text x="981.0" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<text x="1016.8" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<text x="1052.6" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<text x="1088.3" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="1124.1" y="284" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<line x1="820" y1="191.4" x2="1142" y2="191.4" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="981.0" y="310" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+<text x="60" y="330" font-size="13" font-weight="700" fill="#1f2933">(App Name vacío)</text>
+<text x="60" y="343" font-size="10.5" fill="#5f6b76">eCPM $2.42 · 9.3% del tráfico vendido · vende 67% de sus requests</text>
+<line x1="60" y1="500.0" x2="382" y2="500.0" stroke="#e3e7ea"/>
+<text x="55" y="504.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="60" y1="470.0" x2="382" y2="470.0" stroke="#e3e7ea"/>
+<text x="55" y="474.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="60" y1="440.1" x2="382" y2="440.1" stroke="#e3e7ea"/>
+<text x="55" y="444.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="60" y1="410.1" x2="382" y2="410.1" stroke="#e3e7ea"/>
+<text x="55" y="414.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="60" y1="380.1" x2="382" y2="380.1" stroke="#e3e7ea"/>
+<text x="55" y="384.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="60" y1="350.2" x2="382" y2="350.2" stroke="#e3e7ea"/>
+<text x="55" y="354.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="77.9" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="77.9" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="113.7" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="113.7" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="149.4" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<rect x="136.6" y="458.7" width="25.8" height="41.3" rx="3" fill="#2a78d6"/>
+<text x="149.4" y="454.7" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.76</text>
+<text x="149.4" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">9%</text>
+<text x="185.2" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<rect x="172.3" y="447.8" width="25.8" height="52.2" rx="3" fill="#2a78d6"/>
+<text x="185.2" y="443.8" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$3.48</text>
+<text x="185.2" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">5%</text>
+<text x="221.0" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<rect x="208.1" y="458.7" width="25.8" height="41.3" rx="3" fill="#2a78d6"/>
+<text x="221.0" y="454.7" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.76</text>
+<text x="221.0" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">28%</text>
+<text x="256.8" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<rect x="243.9" y="466.6" width="25.8" height="33.4" rx="3" fill="#2a78d6"/>
+<text x="256.8" y="462.6" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.23</text>
+<text x="256.8" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">31%</text>
+<text x="292.6" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<rect x="279.7" y="473.5" width="25.8" height="26.5" rx="3" fill="#2a78d6"/>
+<text x="292.6" y="469.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$1.77</text>
+<text x="292.6" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">19%</text>
+<text x="328.3" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<rect x="315.5" y="459.7" width="25.8" height="40.3" rx="3" fill="#2a78d6"/>
+<text x="328.3" y="455.7" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.69</text>
+<text x="328.3" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">5%</text>
+<text x="364.1" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<text x="364.1" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<line x1="60" y1="463.7" x2="382" y2="463.7" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="221.0" y="540" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+<text x="440" y="330" font-size="13" font-weight="700" fill="#1f2933">TCL CHANNEL</text>
+<text x="440" y="343" font-size="10.5" fill="#5f6b76">eCPM $4.81 · 8.5% del tráfico vendido · vende 54% de sus requests</text>
+<line x1="440" y1="500.0" x2="762" y2="500.0" stroke="#e3e7ea"/>
+<text x="435" y="504.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="440" y1="470.0" x2="762" y2="470.0" stroke="#e3e7ea"/>
+<text x="435" y="474.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="440" y1="440.1" x2="762" y2="440.1" stroke="#e3e7ea"/>
+<text x="435" y="444.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="440" y1="410.1" x2="762" y2="410.1" stroke="#e3e7ea"/>
+<text x="435" y="414.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="440" y1="380.1" x2="762" y2="380.1" stroke="#e3e7ea"/>
+<text x="435" y="384.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="440" y1="350.2" x2="762" y2="350.2" stroke="#e3e7ea"/>
+<text x="435" y="354.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="457.9" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<rect x="445.0" y="423.4" width="25.8" height="76.6" rx="3" fill="#2a78d6"/>
+<text x="457.9" y="419.4" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$5.11</text>
+<text x="457.9" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">19%</text>
+<text x="493.7" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="493.7" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="529.4" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<rect x="516.6" y="407.0" width="25.8" height="93.0" rx="3" fill="#2a78d6"/>
+<text x="529.4" y="403.0" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$6.21</text>
+<text x="529.4" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">7%</text>
+<text x="565.2" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<rect x="552.3" y="433.3" width="25.8" height="66.7" rx="3" fill="#2a78d6"/>
+<text x="565.2" y="429.3" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$4.45</text>
+<text x="565.2" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">21%</text>
+<text x="601.0" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<rect x="588.1" y="438.4" width="25.8" height="61.6" rx="3" fill="#2a78d6"/>
+<text x="601.0" y="434.4" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$4.11</text>
+<text x="601.0" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">12%</text>
+<text x="636.8" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<rect x="623.9" y="426.5" width="25.8" height="73.5" rx="3" fill="#2a78d6"/>
+<text x="636.8" y="422.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$4.90</text>
+<text x="636.8" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">38%</text>
+<text x="672.6" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<rect x="659.7" y="445.2" width="25.8" height="54.8" rx="3" fill="#2a78d6"/>
+<text x="672.6" y="441.2" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$3.66</text>
+<text x="672.6" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">2%</text>
+<text x="708.3" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="744.1" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<line x1="440" y1="427.9" x2="762" y2="427.9" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="601.0" y="540" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+<text x="820" y="330" font-size="13" font-weight="700" fill="#1f2933">MovieArk</text>
+<text x="820" y="343" font-size="10.5" fill="#5f6b76">eCPM $3.67 · 8.0% del tráfico vendido · vende 26% de sus requests</text>
+<line x1="820" y1="500.0" x2="1142" y2="500.0" stroke="#e3e7ea"/>
+<text x="815" y="504.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="820" y1="470.0" x2="1142" y2="470.0" stroke="#e3e7ea"/>
+<text x="815" y="474.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="820" y1="440.1" x2="1142" y2="440.1" stroke="#e3e7ea"/>
+<text x="815" y="444.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="820" y1="410.1" x2="1142" y2="410.1" stroke="#e3e7ea"/>
+<text x="815" y="414.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="820" y1="380.1" x2="1142" y2="380.1" stroke="#e3e7ea"/>
+<text x="815" y="384.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="820" y1="350.2" x2="1142" y2="350.2" stroke="#e3e7ea"/>
+<text x="815" y="354.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="837.9" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="837.9" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="873.7" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="873.7" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="909.4" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<rect x="896.6" y="453.3" width="25.8" height="46.7" rx="3" fill="#2a78d6"/>
+<text x="909.4" y="449.3" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$3.12</text>
+<text x="909.4" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">11%</text>
+<text x="945.2" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<rect x="932.3" y="453.6" width="25.8" height="46.4" rx="3" fill="#2a78d6"/>
+<text x="945.2" y="449.6" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$3.09</text>
+<text x="945.2" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">45%</text>
+<text x="981.0" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<rect x="968.1" y="434.9" width="25.8" height="65.1" rx="3" fill="#2a78d6"/>
+<text x="981.0" y="430.9" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$4.34</text>
+<text x="981.0" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">38%</text>
+<text x="1016.8" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<rect x="1003.9" y="422.0" width="25.8" height="78.0" rx="3" fill="#2a78d6"/>
+<text x="1016.8" y="418.0" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$5.21</text>
+<text x="1016.8" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">2%</text>
+<text x="1052.6" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<text x="1052.6" y="527" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="1088.3" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="1124.1" y="514" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<line x1="820" y1="444.9" x2="1142" y2="444.9" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="981.0" y="540" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+<text x="60" y="560" font-size="13" font-weight="700" fill="#1f2933">ViX Deportes y Noticias</text>
+<text x="60" y="573" font-size="10.5" fill="#5f6b76">eCPM $2.46 · 7.6% del tráfico vendido · vende 93% de sus requests</text>
+<line x1="60" y1="730.0" x2="382" y2="730.0" stroke="#e3e7ea"/>
+<text x="55" y="734.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="60" y1="700.0" x2="382" y2="700.0" stroke="#e3e7ea"/>
+<text x="55" y="704.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="60" y1="670.1" x2="382" y2="670.1" stroke="#e3e7ea"/>
+<text x="55" y="674.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="60" y1="640.1" x2="382" y2="640.1" stroke="#e3e7ea"/>
+<text x="55" y="644.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="60" y1="610.1" x2="382" y2="610.1" stroke="#e3e7ea"/>
+<text x="55" y="614.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="60" y1="580.2" x2="382" y2="580.2" stroke="#e3e7ea"/>
+<text x="55" y="584.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="77.9" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="77.9" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="113.7" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<rect x="100.8" y="678.6" width="25.8" height="51.4" rx="3" fill="#2a78d6"/>
+<text x="113.7" y="674.6" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$3.43</text>
+<text x="113.7" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">2%</text>
+<text x="149.4" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<rect x="136.6" y="687.5" width="25.8" height="42.5" rx="3" fill="#2a78d6"/>
+<text x="149.4" y="683.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.84</text>
+<text x="149.4" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">9%</text>
+<text x="185.2" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<rect x="172.3" y="685.2" width="25.8" height="44.8" rx="3" fill="#2a78d6"/>
+<text x="185.2" y="681.2" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.99</text>
+<text x="185.2" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">21%</text>
+<text x="221.0" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<rect x="208.1" y="696.9" width="25.8" height="33.1" rx="3" fill="#2a78d6"/>
+<text x="221.0" y="692.9" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.21</text>
+<text x="221.0" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">63%</text>
+<text x="256.8" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<text x="256.8" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="292.6" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<rect x="279.7" y="695.5" width="25.8" height="34.5" rx="3" fill="#2a78d6"/>
+<text x="292.6" y="691.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.31</text>
+<text x="292.6" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">4%</text>
+<text x="328.3" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="364.1" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<line x1="60" y1="693.2" x2="382" y2="693.2" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="221.0" y="770" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+<text x="440" y="560" font-size="13" font-weight="700" fill="#1f2933">ViX Sports and News</text>
+<text x="440" y="573" font-size="10.5" fill="#5f6b76">eCPM $1.61 · 5.6% del tráfico vendido · vende 81% de sus requests</text>
+<line x1="440" y1="730.0" x2="762" y2="730.0" stroke="#e3e7ea"/>
+<text x="435" y="734.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="440" y1="700.0" x2="762" y2="700.0" stroke="#e3e7ea"/>
+<text x="435" y="704.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="440" y1="670.1" x2="762" y2="670.1" stroke="#e3e7ea"/>
+<text x="435" y="674.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="440" y1="640.1" x2="762" y2="640.1" stroke="#e3e7ea"/>
+<text x="435" y="644.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="440" y1="610.1" x2="762" y2="610.1" stroke="#e3e7ea"/>
+<text x="435" y="614.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="440" y1="580.2" x2="762" y2="580.2" stroke="#e3e7ea"/>
+<text x="435" y="584.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="457.9" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="457.9" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="493.7" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="493.7" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="529.4" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<rect x="516.6" y="709.5" width="25.8" height="20.5" rx="3" fill="#2a78d6"/>
+<text x="529.4" y="705.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$1.37</text>
+<text x="529.4" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">29%</text>
+<text x="565.2" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<rect x="552.3" y="707.8" width="25.8" height="22.2" rx="3" fill="#2a78d6"/>
+<text x="565.2" y="703.8" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$1.48</text>
+<text x="565.2" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">45%</text>
+<text x="601.0" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<rect x="588.1" y="701.9" width="25.8" height="28.1" rx="3" fill="#2a78d6"/>
+<text x="601.0" y="697.9" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$1.87</text>
+<text x="601.0" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">14%</text>
+<text x="636.8" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<rect x="623.9" y="692.5" width="25.8" height="37.5" rx="3" fill="#2a78d6"/>
+<text x="636.8" y="688.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.51</text>
+<text x="636.8" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">10%</text>
+<text x="672.6" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<text x="672.6" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="708.3" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="708.3" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="744.1" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<line x1="440" y1="705.8" x2="762" y2="705.8" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="601.0" y="770" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+<text x="820" y="560" font-size="13" font-weight="700" fill="#1f2933">BrowseHere</text>
+<text x="820" y="573" font-size="10.5" fill="#5f6b76">eCPM $7.25 · 4.8% del tráfico vendido · vende 51% de sus requests</text>
+<line x1="820" y1="730.0" x2="1142" y2="730.0" stroke="#e3e7ea"/>
+<text x="815" y="734.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="820" y1="700.0" x2="1142" y2="700.0" stroke="#e3e7ea"/>
+<text x="815" y="704.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="820" y1="670.1" x2="1142" y2="670.1" stroke="#e3e7ea"/>
+<text x="815" y="674.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="820" y1="640.1" x2="1142" y2="640.1" stroke="#e3e7ea"/>
+<text x="815" y="644.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="820" y1="610.1" x2="1142" y2="610.1" stroke="#e3e7ea"/>
+<text x="815" y="614.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="820" y1="580.2" x2="1142" y2="580.2" stroke="#e3e7ea"/>
+<text x="815" y="584.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="837.9" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<rect x="825.0" y="641.4" width="25.8" height="88.6" rx="3" fill="#2a78d6"/>
+<text x="837.9" y="637.4" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$5.92</text>
+<text x="837.9" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">23%</text>
+<text x="873.7" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="873.7" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="909.4" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<rect x="896.6" y="637.4" width="25.8" height="92.6" rx="3" fill="#2a78d6"/>
+<text x="909.4" y="633.4" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$6.18</text>
+<text x="909.4" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">3%</text>
+<text x="945.2" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<rect x="932.3" y="609.3" width="25.8" height="120.7" rx="3" fill="#2a78d6"/>
+<text x="945.2" y="605.3" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$8.05</text>
+<text x="945.2" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">17%</text>
+<text x="981.0" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<rect x="968.1" y="625.1" width="25.8" height="104.9" rx="3" fill="#2a78d6"/>
+<text x="981.0" y="621.1" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$7.00</text>
+<text x="981.0" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">34%</text>
+<text x="1016.8" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<rect x="1003.9" y="601.2" width="25.8" height="128.8" rx="3" fill="#2a78d6"/>
+<text x="1016.8" y="597.2" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$8.60</text>
+<text x="1016.8" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">22%</text>
+<text x="1052.6" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<text x="1052.6" y="757" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="1088.3" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="1124.1" y="744" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<line x1="820" y1="621.4" x2="1142" y2="621.4" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="981.0" y="770" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+<text x="60" y="790" font-size="13" font-weight="700" fill="#1f2933">Coolita Channel</text>
+<text x="60" y="803" font-size="10.5" fill="#5f6b76">eCPM $4.12 · 4.2% del tráfico vendido · vende 68% de sus requests</text>
+<line x1="60" y1="960.0" x2="382" y2="960.0" stroke="#e3e7ea"/>
+<text x="55" y="964.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="60" y1="930.0" x2="382" y2="930.0" stroke="#e3e7ea"/>
+<text x="55" y="934.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="60" y1="900.1" x2="382" y2="900.1" stroke="#e3e7ea"/>
+<text x="55" y="904.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="60" y1="870.1" x2="382" y2="870.1" stroke="#e3e7ea"/>
+<text x="55" y="874.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="60" y1="840.1" x2="382" y2="840.1" stroke="#e3e7ea"/>
+<text x="55" y="844.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="60" y1="810.2" x2="382" y2="810.2" stroke="#e3e7ea"/>
+<text x="55" y="814.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="77.9" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="113.7" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="113.7" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="149.4" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<text x="185.2" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<text x="221.0" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<text x="221.0" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="256.8" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<text x="256.8" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="292.6" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<rect x="279.7" y="915.3" width="25.8" height="44.7" rx="3" fill="#2a78d6"/>
+<text x="292.6" y="911.3" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.98</text>
+<text x="292.6" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">10%</text>
+<text x="328.3" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<rect x="315.5" y="894.0" width="25.8" height="66.0" rx="3" fill="#2a78d6"/>
+<text x="328.3" y="890.0" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$4.41</text>
+<text x="328.3" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">22%</text>
+<text x="364.1" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<rect x="351.2" y="896.3" width="25.8" height="63.7" rx="3" fill="#2a78d6"/>
+<text x="364.1" y="892.3" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$4.25</text>
+<text x="364.1" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">66%</text>
+<line x1="60" y1="898.2" x2="382" y2="898.2" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="221.0" y="1000" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+<text x="440" y="790" font-size="13" font-weight="700" fill="#1f2933">WhaleLive</text>
+<text x="440" y="803" font-size="10.5" fill="#5f6b76">eCPM $2.72 · 2.2% del tráfico vendido · vende 98% de sus requests</text>
+<line x1="440" y1="960.0" x2="762" y2="960.0" stroke="#e3e7ea"/>
+<text x="435" y="964.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="440" y1="930.0" x2="762" y2="930.0" stroke="#e3e7ea"/>
+<text x="435" y="934.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="440" y1="900.1" x2="762" y2="900.1" stroke="#e3e7ea"/>
+<text x="435" y="904.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="440" y1="870.1" x2="762" y2="870.1" stroke="#e3e7ea"/>
+<text x="435" y="874.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="440" y1="840.1" x2="762" y2="840.1" stroke="#e3e7ea"/>
+<text x="435" y="844.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="440" y1="810.2" x2="762" y2="810.2" stroke="#e3e7ea"/>
+<text x="435" y="814.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="457.9" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="493.7" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="529.4" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<rect x="516.6" y="919.4" width="25.8" height="40.6" rx="3" fill="#2a78d6"/>
+<text x="529.4" y="915.4" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$2.71</text>
+<text x="529.4" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">97%</text>
+<text x="565.2" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<text x="565.2" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="601.0" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<text x="601.0" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="636.8" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<text x="672.6" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<text x="708.3" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="744.1" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<line x1="440" y1="919.3" x2="762" y2="919.3" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="601.0" y="1000" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+<text x="820" y="790" font-size="13" font-weight="700" fill="#1f2933">Vidaa</text>
+<text x="820" y="803" font-size="10.5" fill="#5f6b76">eCPM $1.44 · 2.2% del tráfico vendido · vende 80% de sus requests</text>
+<line x1="820" y1="960.0" x2="1142" y2="960.0" stroke="#e3e7ea"/>
+<text x="815" y="964.0" text-anchor="end" font-size="10" fill="#5f6b76">$0</text>
+<line x1="820" y1="930.0" x2="1142" y2="930.0" stroke="#e3e7ea"/>
+<text x="815" y="934.0" text-anchor="end" font-size="10" fill="#5f6b76">$2</text>
+<line x1="820" y1="900.1" x2="1142" y2="900.1" stroke="#e3e7ea"/>
+<text x="815" y="904.1" text-anchor="end" font-size="10" fill="#5f6b76">$4</text>
+<line x1="820" y1="870.1" x2="1142" y2="870.1" stroke="#e3e7ea"/>
+<text x="815" y="874.1" text-anchor="end" font-size="10" fill="#5f6b76">$6</text>
+<line x1="820" y1="840.1" x2="1142" y2="840.1" stroke="#e3e7ea"/>
+<text x="815" y="844.1" text-anchor="end" font-size="10" fill="#5f6b76">$8</text>
+<line x1="820" y1="810.2" x2="1142" y2="810.2" stroke="#e3e7ea"/>
+<text x="815" y="814.2" text-anchor="end" font-size="10" fill="#5f6b76">$10</text>
+<text x="837.9" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">0</text>
+<text x="873.7" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">1</text>
+<text x="873.7" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="909.4" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">2</text>
+<text x="909.4" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">&lt;2%</text>
+<text x="945.2" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">3</text>
+<rect x="932.3" y="941.6" width="25.8" height="18.4" rx="3" fill="#2a78d6"/>
+<text x="945.2" y="937.6" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$1.23</text>
+<text x="945.2" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">6%</text>
+<text x="981.0" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">4</text>
+<rect x="968.1" y="938.5" width="25.8" height="21.5" rx="3" fill="#2a78d6"/>
+<text x="981.0" y="934.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$1.43</text>
+<text x="981.0" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">7%</text>
+<text x="1016.8" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">5</text>
+<rect x="1003.9" y="937.8" width="25.8" height="22.2" rx="3" fill="#2a78d6"/>
+<text x="1016.8" y="933.8" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$1.48</text>
+<text x="1016.8" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">70%</text>
+<text x="1052.6" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">6</text>
+<rect x="1039.7" y="940.0" width="25.8" height="20.0" rx="3" fill="#2a78d6"/>
+<text x="1052.6" y="936.0" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933">$1.34</text>
+<text x="1052.6" y="987" text-anchor="middle" font-size="9" fill="#5f6b76">16%</text>
+<text x="1088.3" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">7</text>
+<text x="1124.1" y="974" text-anchor="middle" font-size="10.5" fill="#5f6b76">8</text>
+<line x1="820" y1="938.5" x2="1142" y2="938.5" stroke="#5f6b76" stroke-dasharray="4 3"/>
+<text x="981.0" y="1000" text-anchor="middle" font-size="10" fill="#1f2933">content objects con dato útil (de 8)</text>
+</svg>

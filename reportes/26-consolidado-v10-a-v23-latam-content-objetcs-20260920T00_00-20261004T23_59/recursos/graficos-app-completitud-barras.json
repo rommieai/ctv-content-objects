@@ -1,0 +1,760 @@
+{
+ "fuente": "inventory-consolidado-v10-a-v23.csv",
+ "campos": [
+  "contentGenre",
+  "contentCategory",
+  "contentSeries",
+  "contentLength",
+  "contentLanguage",
+  "contentIsLiveStream",
+  "contentTitle",
+  "contentRating"
+ ],
+ "min_share_pct": 2.0,
+ "apps": {
+  "Live TV": {
+   "requests": 117784218089,
+   "pct_vendido": 60.8,
+   "share_trafico_vendido_pct": 19.69,
+   "ecpm_ponderado": 2.773,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 10,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 3.185
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 1182,
+     "pct_requests_vendidos": 1.4,
+     "ecpm_ponderado": 4.717
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 12117,
+     "pct_requests_vendidos": 7.8,
+     "ecpm_ponderado": 2.763
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 27680,
+     "pct_requests_vendidos": 41.8,
+     "ecpm_ponderado": 2.657
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 45296,
+     "pct_requests_vendidos": 45.2,
+     "ecpm_ponderado": 2.78
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 3867,
+     "pct_requests_vendidos": 3.3,
+     "ecpm_ponderado": 3.109
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 905,
+     "pct_requests_vendidos": 0.5,
+     "ecpm_ponderado": 4.093
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 65,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 6.112
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 5,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 8.955
+    }
+   ]
+  },
+  "The Roku Channel": {
+   "requests": 69589898560,
+   "pct_vendido": 73.8,
+   "share_trafico_vendido_pct": 14.11,
+   "ecpm_ponderado": 5.364,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 6,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 4.473
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 8,
+     "pct_requests_vendidos": 0.1,
+     "ecpm_ponderado": 7.274
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 95,
+     "pct_requests_vendidos": 2.4,
+     "ecpm_ponderado": 5.691
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 88,
+     "pct_requests_vendidos": 5.6,
+     "ecpm_ponderado": 5.268
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 202,
+     "pct_requests_vendidos": 42.7,
+     "ecpm_ponderado": 5.439
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 152,
+     "pct_requests_vendidos": 49.1,
+     "ecpm_ponderado": 5.282
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 678,
+     "pct_requests_vendidos": 0.1,
+     "ecpm_ponderado": 8.604
+    }
+   ]
+  },
+  "Tubi: Free Movies & Live TV": {
+   "requests": 36641484720,
+   "pct_vendido": 94.0,
+   "share_trafico_vendido_pct": 9.47,
+   "ecpm_ponderado": 5.243,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 1,
+     "pct_requests_vendidos": 2.3,
+     "ecpm_ponderado": 5.307
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 3,
+     "pct_requests_vendidos": 4.9,
+     "ecpm_ponderado": 7.951
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 7,
+     "pct_requests_vendidos": 27.8,
+     "ecpm_ponderado": 5.159
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 85,
+     "pct_requests_vendidos": 65.0,
+     "ecpm_ponderado": 5.074
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 1,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 5.0
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    }
+   ]
+  },
+  "Not Available": {
+   "requests": 51035749192,
+   "pct_vendido": 66.6,
+   "share_trafico_vendido_pct": 9.34,
+   "ecpm_ponderado": 2.421,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 16,
+     "pct_requests_vendidos": 0.1,
+     "ecpm_ponderado": 2.131
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 150,
+     "pct_requests_vendidos": 0.9,
+     "ecpm_ponderado": 1.603
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 360,
+     "pct_requests_vendidos": 8.6,
+     "ecpm_ponderado": 2.758
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 1701,
+     "pct_requests_vendidos": 5.4,
+     "ecpm_ponderado": 3.483
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 4889,
+     "pct_requests_vendidos": 28.0,
+     "ecpm_ponderado": 2.758
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 5415,
+     "pct_requests_vendidos": 31.1,
+     "ecpm_ponderado": 2.23
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 3198,
+     "pct_requests_vendidos": 19.3,
+     "ecpm_ponderado": 1.767
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 1658,
+     "pct_requests_vendidos": 5.3,
+     "ecpm_ponderado": 2.688
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 653,
+     "pct_requests_vendidos": 1.4,
+     "ecpm_ponderado": 2.308
+    }
+   ]
+  },
+  "TCL CHANNEL": {
+   "requests": 57127452994,
+   "pct_vendido": 53.9,
+   "share_trafico_vendido_pct": 8.47,
+   "ecpm_ponderado": 4.81,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 28,
+     "pct_requests_vendidos": 18.8,
+     "ecpm_ponderado": 5.11
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 213,
+     "pct_requests_vendidos": 0.9,
+     "ecpm_ponderado": 4.516
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 1782,
+     "pct_requests_vendidos": 6.9,
+     "ecpm_ponderado": 6.207
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 5469,
+     "pct_requests_vendidos": 21.4,
+     "ecpm_ponderado": 4.449
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 3095,
+     "pct_requests_vendidos": 11.5,
+     "ecpm_ponderado": 4.112
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 13919,
+     "pct_requests_vendidos": 38.0,
+     "ecpm_ponderado": 4.903
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 1073,
+     "pct_requests_vendidos": 2.5,
+     "ecpm_ponderado": 3.659
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 58,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 2.972
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 8,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 10.885
+    }
+   ]
+  },
+  "MovieArk: Stream Movies & Live": {
+   "requests": 110454354536,
+   "pct_vendido": 26.3,
+   "share_trafico_vendido_pct": 8.0,
+   "ecpm_ponderado": 3.675,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 22,
+     "pct_requests_vendidos": 1.6,
+     "ecpm_ponderado": 5.149
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 1651,
+     "pct_requests_vendidos": 1.6,
+     "ecpm_ponderado": 3.931
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 10625,
+     "pct_requests_vendidos": 11.3,
+     "ecpm_ponderado": 3.118
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 24421,
+     "pct_requests_vendidos": 44.7,
+     "ecpm_ponderado": 3.094
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 27807,
+     "pct_requests_vendidos": 38.3,
+     "ecpm_ponderado": 4.343
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 1339,
+     "pct_requests_vendidos": 2.3,
+     "ecpm_ponderado": 5.207
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 99,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 5.201
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 2,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 4.566
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    }
+   ]
+  },
+  "ViX: TV, Deportes y Noticias": {
+   "requests": 29512002560,
+   "pct_vendido": 93.3,
+   "share_trafico_vendido_pct": 7.57,
+   "ecpm_ponderado": 2.455,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 6,
+     "pct_requests_vendidos": 0.1,
+     "ecpm_ponderado": 2.124
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 70,
+     "pct_requests_vendidos": 2.0,
+     "ecpm_ponderado": 3.428
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 564,
+     "pct_requests_vendidos": 8.6,
+     "ecpm_ponderado": 2.838
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 1155,
+     "pct_requests_vendidos": 20.9,
+     "ecpm_ponderado": 2.988
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 2241,
+     "pct_requests_vendidos": 62.9,
+     "ecpm_ponderado": 2.208
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 265,
+     "pct_requests_vendidos": 1.4,
+     "ecpm_ponderado": 2.347
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 298,
+     "pct_requests_vendidos": 4.3,
+     "ecpm_ponderado": 2.305
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 1,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 3.0
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    }
+   ]
+  },
+  "ViX: TV, Sports and News": {
+   "requests": 25264532160,
+   "pct_vendido": 80.9,
+   "share_trafico_vendido_pct": 5.62,
+   "ecpm_ponderado": 1.613,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 9,
+     "pct_requests_vendidos": 0.1,
+     "ecpm_ponderado": 1.464
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 56,
+     "pct_requests_vendidos": 1.8,
+     "ecpm_ponderado": 1.602
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 336,
+     "pct_requests_vendidos": 28.6,
+     "ecpm_ponderado": 1.369
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 774,
+     "pct_requests_vendidos": 44.9,
+     "ecpm_ponderado": 1.48
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 1318,
+     "pct_requests_vendidos": 14.3,
+     "ecpm_ponderado": 1.874
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 2143,
+     "pct_requests_vendidos": 10.1,
+     "ecpm_ponderado": 2.506
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 64,
+     "pct_requests_vendidos": 0.1,
+     "ecpm_ponderado": 2.324
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 129,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 2.515
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    }
+   ]
+  },
+  "Browser TV Web - BrowseHere": {
+   "requests": 34008242774,
+   "pct_vendido": 50.9,
+   "share_trafico_vendido_pct": 4.76,
+   "ecpm_ponderado": 7.247,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 36,
+     "pct_requests_vendidos": 23.3,
+     "ecpm_ponderado": 5.916
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 19,
+     "pct_requests_vendidos": 0.1,
+     "ecpm_ponderado": 3.059
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 377,
+     "pct_requests_vendidos": 3.4,
+     "ecpm_ponderado": 6.177
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 1446,
+     "pct_requests_vendidos": 16.8,
+     "ecpm_ponderado": 8.055
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 10482,
+     "pct_requests_vendidos": 33.5,
+     "ecpm_ponderado": 6.999
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 1854,
+     "pct_requests_vendidos": 22.3,
+     "ecpm_ponderado": 8.597
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 67,
+     "pct_requests_vendidos": 0.6,
+     "ecpm_ponderado": 6.536
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 7,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 12.95
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    }
+   ]
+  },
+  "Coolita Channel": {
+   "requests": 22053887040,
+   "pct_vendido": 68.4,
+   "share_trafico_vendido_pct": 4.15,
+   "ecpm_ponderado": 4.124,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 3,
+     "pct_requests_vendidos": 0.3,
+     "ecpm_ponderado": 2.995
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 30,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 2.326
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 252,
+     "pct_requests_vendidos": 1.8,
+     "ecpm_ponderado": 2.557
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 1279,
+     "pct_requests_vendidos": 9.7,
+     "ecpm_ponderado": 2.981
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 1416,
+     "pct_requests_vendidos": 21.5,
+     "ecpm_ponderado": 4.406
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 4556,
+     "pct_requests_vendidos": 66.5,
+     "ecpm_ponderado": 4.253
+    }
+   ]
+  },
+  "WhaleLive": {
+   "requests": 8040404960,
+   "pct_vendido": 97.9,
+   "share_trafico_vendido_pct": 2.16,
+   "ecpm_ponderado": 2.719,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 1,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 2.12
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 6,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 2.812
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 35,
+     "pct_requests_vendidos": 97.1,
+     "ecpm_ponderado": 2.712
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 12,
+     "pct_requests_vendidos": 1.9,
+     "ecpm_ponderado": 3.314
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 351,
+     "pct_requests_vendidos": 0.9,
+     "ecpm_ponderado": 2.232
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    }
+   ]
+  },
+  "Vidaa": {
+   "requests": 9745525040,
+   "pct_vendido": 80.4,
+   "share_trafico_vendido_pct": 2.16,
+   "ecpm_ponderado": 1.436,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 4,
+     "pct_requests_vendidos": 0.1,
+     "ecpm_ponderado": 0.516
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 26,
+     "pct_requests_vendidos": 0.3,
+     "ecpm_ponderado": 0.809
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 632,
+     "pct_requests_vendidos": 6.0,
+     "ecpm_ponderado": 1.229
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 1006,
+     "pct_requests_vendidos": 7.4,
+     "ecpm_ponderado": 1.432
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 1828,
+     "pct_requests_vendidos": 70.3,
+     "ecpm_ponderado": 1.481
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 376,
+     "pct_requests_vendidos": 15.9,
+     "ecpm_ponderado": 1.337
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 9,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 0.465
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 0,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": null
+    }
+   ]
+  }
+ }
+}

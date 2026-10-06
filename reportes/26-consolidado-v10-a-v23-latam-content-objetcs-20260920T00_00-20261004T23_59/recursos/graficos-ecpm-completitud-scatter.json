@@ -1,0 +1,439 @@
+{
+ "fuente": "inventory-consolidado-v10-a-v23.csv",
+ "campos": [
+  "contentGenre",
+  "contentCategory",
+  "contentSeries",
+  "contentLength",
+  "contentLanguage",
+  "contentIsLiveStream",
+  "contentTitle",
+  "contentRating"
+ ],
+ "muestra_por_nivel": {
+  "top_requests": 40,
+  "azar": 300
+ },
+ "grupos": {
+  "(todos)": {
+   "filas": 1377006,
+   "requests": 604322292147,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 1992,
+     "pct_filas": 0.14,
+     "requests": 13197267994,
+     "pct_requests": 2.18,
+     "pct_req_monetizado": 89.49,
+     "ecpm_ponderado": 5.326,
+     "filas_vendidas": 263,
+     "puntos_dibujados": 263
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 26712,
+     "pct_filas": 1.94,
+     "requests": 10582895076,
+     "pct_requests": 1.75,
+     "pct_req_monetizado": 52.33,
+     "ecpm_ponderado": 4.806,
+     "filas_vendidas": 4033,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 146983,
+     "pct_filas": 10.67,
+     "requests": 64432286939,
+     "pct_requests": 10.66,
+     "pct_req_monetizado": 65.42,
+     "ecpm_ponderado": 3.324,
+     "filas_vendidas": 27347,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 324002,
+     "pct_filas": 23.53,
+     "requests": 146045447752,
+     "pct_requests": 24.17,
+     "pct_req_monetizado": 66.95,
+     "ecpm_ponderado": 3.449,
+     "filas_vendidas": 66522,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 441271,
+     "pct_filas": 32.05,
+     "requests": 167868637786,
+     "pct_requests": 27.78,
+     "pct_req_monetizado": 52.08,
+     "ecpm_ponderado": 3.209,
+     "filas_vendidas": 100807,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 297346,
+     "pct_filas": 21.59,
+     "requests": 95339188060,
+     "pct_requests": 15.78,
+     "pct_req_monetizado": 43.75,
+     "ecpm_ponderado": 3.932,
+     "filas_vendidas": 34172,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 74170,
+     "pct_filas": 5.39,
+     "requests": 52975734186,
+     "pct_requests": 8.77,
+     "pct_req_monetizado": 67.4,
+     "ecpm_ponderado": 4.39,
+     "filas_vendidas": 11960,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 30743,
+     "pct_filas": 2.23,
+     "requests": 37894045366,
+     "pct_requests": 6.27,
+     "pct_req_monetizado": 80.61,
+     "ecpm_ponderado": 5.023,
+     "filas_vendidas": 4768,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 33787,
+     "pct_filas": 2.45,
+     "requests": 15986788988,
+     "pct_requests": 2.65,
+     "pct_req_monetizado": 68.93,
+     "ecpm_ponderado": 4.184,
+     "filas_vendidas": 6343,
+     "puntos_dibujados": 340
+    }
+   ]
+  },
+  "Mexico": {
+   "filas": 408487,
+   "requests": 356582562883,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 602,
+     "pct_filas": 0.15,
+     "requests": 2413903143,
+     "pct_requests": 0.68,
+     "pct_req_monetizado": 82.45,
+     "ecpm_ponderado": 4.036,
+     "filas_vendidas": 46,
+     "puntos_dibujados": 46
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 11653,
+     "pct_filas": 2.85,
+     "requests": 6719015048,
+     "pct_requests": 1.88,
+     "pct_req_monetizado": 54.94,
+     "ecpm_ponderado": 4.667,
+     "filas_vendidas": 1927,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 54767,
+     "pct_filas": 13.41,
+     "requests": 43297157056,
+     "pct_requests": 12.14,
+     "pct_req_monetizado": 75.62,
+     "ecpm_ponderado": 2.909,
+     "filas_vendidas": 12443,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 90938,
+     "pct_filas": 22.26,
+     "requests": 90761228071,
+     "pct_requests": 25.45,
+     "pct_req_monetizado": 77.83,
+     "ecpm_ponderado": 3.251,
+     "filas_vendidas": 25113,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 123901,
+     "pct_filas": 30.33,
+     "requests": 96889699186,
+     "pct_requests": 27.17,
+     "pct_req_monetizado": 57.0,
+     "ecpm_ponderado": 2.346,
+     "filas_vendidas": 27378,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 73969,
+     "pct_filas": 18.11,
+     "requests": 40253095744,
+     "pct_requests": 11.29,
+     "pct_req_monetizado": 53.39,
+     "ecpm_ponderado": 2.257,
+     "filas_vendidas": 9721,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 32235,
+     "pct_filas": 7.89,
+     "requests": 41777346776,
+     "pct_requests": 11.72,
+     "pct_req_monetizado": 72.69,
+     "ecpm_ponderado": 4.401,
+     "filas_vendidas": 4456,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 14437,
+     "pct_filas": 3.53,
+     "requests": 31835893911,
+     "pct_requests": 8.93,
+     "pct_req_monetizado": 85.61,
+     "ecpm_ponderado": 5.079,
+     "filas_vendidas": 2294,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 5985,
+     "pct_filas": 1.47,
+     "requests": 2635223948,
+     "pct_requests": 0.74,
+     "pct_req_monetizado": 75.22,
+     "ecpm_ponderado": 2.637,
+     "filas_vendidas": 1400,
+     "puntos_dibujados": 340
+    }
+   ]
+  },
+  "Colombia": {
+   "filas": 143820,
+   "requests": 46852688092,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 216,
+     "pct_filas": 0.15,
+     "requests": 559460069,
+     "pct_requests": 1.19,
+     "pct_req_monetizado": 71.04,
+     "ecpm_ponderado": 5.139,
+     "filas_vendidas": 37,
+     "puntos_dibujados": 37
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 3264,
+     "pct_filas": 2.27,
+     "requests": 822269145,
+     "pct_requests": 1.76,
+     "pct_req_monetizado": 41.22,
+     "ecpm_ponderado": 4.031,
+     "filas_vendidas": 384,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 18828,
+     "pct_filas": 13.09,
+     "requests": 4314590431,
+     "pct_requests": 9.21,
+     "pct_req_monetizado": 49.08,
+     "ecpm_ponderado": 3.516,
+     "filas_vendidas": 2981,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 45418,
+     "pct_filas": 31.58,
+     "requests": 14906176066,
+     "pct_requests": 31.81,
+     "pct_req_monetizado": 57.28,
+     "ecpm_ponderado": 2.615,
+     "filas_vendidas": 8404,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 35361,
+     "pct_filas": 24.59,
+     "requests": 12287164879,
+     "pct_requests": 26.23,
+     "pct_req_monetizado": 38.7,
+     "ecpm_ponderado": 2.079,
+     "filas_vendidas": 9187,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 27450,
+     "pct_filas": 19.09,
+     "requests": 8262326157,
+     "pct_requests": 17.63,
+     "pct_req_monetizado": 30.36,
+     "ecpm_ponderado": 3.619,
+     "filas_vendidas": 2392,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 6992,
+     "pct_filas": 4.86,
+     "requests": 2061133153,
+     "pct_requests": 4.4,
+     "pct_req_monetizado": 43.53,
+     "ecpm_ponderado": 4.429,
+     "filas_vendidas": 1387,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 2600,
+     "pct_filas": 1.81,
+     "requests": 1040351872,
+     "pct_requests": 2.22,
+     "pct_req_monetizado": 71.44,
+     "ecpm_ponderado": 3.514,
+     "filas_vendidas": 645,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 3691,
+     "pct_filas": 2.57,
+     "requests": 2599216320,
+     "pct_requests": 5.55,
+     "pct_req_monetizado": 76.39,
+     "ecpm_ponderado": 3.412,
+     "filas_vendidas": 858,
+     "puntos_dibujados": 340
+    }
+   ]
+  },
+  "Chile": {
+   "filas": 153686,
+   "requests": 37076365652,
+   "niveles": [
+    {
+     "campos_llenos": 0,
+     "filas": 146,
+     "pct_filas": 0.09,
+     "requests": 698483787,
+     "pct_requests": 1.88,
+     "pct_req_monetizado": 57.01,
+     "ecpm_ponderado": 6.595,
+     "filas_vendidas": 16,
+     "puntos_dibujados": 16
+    },
+    {
+     "campos_llenos": 1,
+     "filas": 2646,
+     "pct_filas": 1.72,
+     "requests": 351197304,
+     "pct_requests": 0.95,
+     "pct_req_monetizado": 15.83,
+     "ecpm_ponderado": 4.75,
+     "filas_vendidas": 409,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 2,
+     "filas": 22273,
+     "pct_filas": 14.49,
+     "requests": 2622467030,
+     "pct_requests": 7.07,
+     "pct_req_monetizado": 27.95,
+     "ecpm_ponderado": 6.944,
+     "filas_vendidas": 3229,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 3,
+     "filas": 44193,
+     "pct_filas": 28.76,
+     "requests": 7536806535,
+     "pct_requests": 20.33,
+     "pct_req_monetizado": 22.71,
+     "ecpm_ponderado": 4.713,
+     "filas_vendidas": 6646,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 4,
+     "filas": 52589,
+     "pct_filas": 34.22,
+     "requests": 15523857454,
+     "pct_requests": 41.87,
+     "pct_req_monetizado": 58.75,
+     "ecpm_ponderado": 5.308,
+     "filas_vendidas": 16451,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 5,
+     "filas": 21395,
+     "pct_filas": 13.92,
+     "requests": 6588752729,
+     "pct_requests": 17.77,
+     "pct_req_monetizado": 29.85,
+     "ecpm_ponderado": 7.494,
+     "filas_vendidas": 2123,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 6,
+     "filas": 5221,
+     "pct_filas": 3.4,
+     "requests": 1440775013,
+     "pct_requests": 3.89,
+     "pct_req_monetizado": 35.18,
+     "ecpm_ponderado": 5.333,
+     "filas_vendidas": 976,
+     "puntos_dibujados": 340
+    },
+    {
+     "campos_llenos": 7,
+     "filas": 1961,
+     "pct_filas": 1.28,
+     "requests": 662160120,
+     "pct_requests": 1.79,
+     "pct_req_monetizado": 51.57,
+     "ecpm_ponderado": 6.447,
+     "filas_vendidas": 253,
+     "puntos_dibujados": 253
+    },
+    {
+     "campos_llenos": 8,
+     "filas": 3262,
+     "pct_filas": 2.12,
+     "requests": 1651865680,
+     "pct_requests": 4.46,
+     "pct_req_monetizado": 58.47,
+     "ecpm_ponderado": 6.504,
+     "filas_vendidas": 661,
+     "puntos_dibujados": 340
+    }
+   ]
+  }
+ }
+}

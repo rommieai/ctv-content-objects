@@ -1,0 +1,85 @@
+{
+  "entrada": "inventory-consolidado-v10-a-v23-enriquecido.csv",
+  "filas": 1377006,
+  "titulos_distintos": 18851,
+  "titulos_nuevos_consultados": 605,
+  "titulos_con_imdb": 8951,
+  "fecha": "2026-10-05 23:45",
+  "columnas": {
+    "contentCategory": {
+      "pct_original": 21.9,
+      "pct_final": 92.9,
+      "origen": {
+        "derivado_tipo": 33.5,
+        "derivado_genero": 26.0,
+        "original": 21.9,
+        "intra_titulo": 11.5,
+        "sin_dato": 7.1
+      }
+    },
+    "contentSeries": {
+      "pct_original": 6.7,
+      "pct_final": 14.3,
+      "origen": {
+        "sin_dato": 85.7,
+        "imdb": 6.9,
+        "original": 6.7,
+        "intra_titulo": 0.8
+      }
+    },
+    "contentLength": {
+      "pct_original": 12.9,
+      "pct_final": 49.6,
+      "origen": {
+        "sin_dato": 50.4,
+        "intra_titulo": 36.7,
+        "original": 12.9
+      }
+    },
+    "contentLanguage": {
+      "pct_original": 67.3,
+      "pct_final": 67.3,
+      "origen": {
+        "original": 67.3,
+        "sin_dato": 32.7
+      }
+    },
+    "contentIsLiveStream": {
+      "pct_original": 29.6,
+      "pct_final": 48.8,
+      "origen": {
+        "sin_dato": 51.2,
+        "original": 29.6,
+        "app_semantica": 19.1
+      }
+    },
+    "contentRating": {
+      "pct_original": 75.3,
+      "pct_final": 82.3,
+      "origen": {
+        "original": 75.3,
+        "sin_dato": 17.7,
+        "intra_titulo": 6.9,
+        "wikidata": 0.1
+      }
+    },
+    "contentGenre": {
+      "pct_original": 90.7,
+      "pct_final": 96.7,
+      "origen": {
+        "original": 90.7,
+        "intra_titulo": 3.7,
+        "sin_dato": 3.3,
+        "imdb": 2.3
+      }
+    }
+  },
+  "contentCategory_afinado": {
+    "nota": "filas con categoria generica rellenada ([IAB1], [IAB1-5], [IAB1-7]) y titulo, a las que se agregaron codigos de genero de IAB 2.2 (se conservan los genericos), por fuente del genero",
+    "pct_filas": {
+      "genero_declarado": 47.7,
+      "imdb": 3.7,
+      "wikidata": 0.0
+    }
+  }
+}
