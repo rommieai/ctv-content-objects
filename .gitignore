@@ -7,6 +7,10 @@
 # Credenciales del bot de descarga (usar .env.example como plantilla)
 .env
 
+# Videos de trabajo (grabaciones de reuniones, cientos de MB)
+*.mkv
+*.mp4
+
 # Artefactos de compilacion
 *.aux
 *.log
