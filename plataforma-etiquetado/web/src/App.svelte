@@ -3,8 +3,9 @@
   import Login from "./lib/Login.svelte";
   import Revision from "./lib/Revision.svelte";
   import Resultados from "./lib/Resultados.svelte";
+  import Deals from "./lib/Deals.svelte";
 
-  type Vista = Ambito | "resultados";
+  type Vista = Ambito | "resultados" | "deals";
   let yo = $state<Usuario | null>(null);
   let cargando = $state(true);
   let opciones = $state<Opciones | null>(null);
@@ -12,7 +13,7 @@
 
   function leerVista(): Vista {
     const h = location.hash.slice(1);
-    return h === "completo" || h === "resultados" ? h : "muestra";
+    return h === "completo" || h === "resultados" || h === "deals" ? h : "muestra";
   }
   $effect(() => { history.replaceState(null, "", "#" + vista); });
   $effect(() => { if (yo && yo.rol !== "admin") vista = "muestra"; });
@@ -44,6 +45,7 @@
         {#if yo.rol === "admin"}
           <button class:activa={vista === "completo"} onclick={() => (vista = "completo")}>Datos completos</button>
           <button class:activa={vista === "resultados"} onclick={() => (vista = "resultados")}>Resultados</button>
+          <button class:activa={vista === "deals"} onclick={() => (vista = "deals")}>Deals</button>
         {/if}
       </div>
       <span class="quien">{yo.nombre} · {yo.rol === "admin" ? "administración" : "revisión de la muestra"}
@@ -52,6 +54,8 @@
   </nav>
   {#if vista === "resultados"}
     <Resultados />
+  {:else if vista === "deals"}
+    <Deals />
   {:else}
     {#key vista}
       <Revision ambito={vista} {opciones} admin={yo.rol === "admin"} />

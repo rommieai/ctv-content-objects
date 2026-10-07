@@ -16,6 +16,7 @@ En producción: **https://etiquetas-ctv.tricarro.com** (proxy host en Nginx Prox
 | Importador CSV → SQLite | TypeScript, csv-parse | `server/src/importar.ts` |
 | Usuarios (CLI) | scrypt, sesiones en cookie httpOnly | `server/src/usuarios.ts` |
 | Front | Svelte 5 (runes) + Vite + TS | `web/src` |
+| Armador de deals (pestaña *Deals*) | consultas sobre `deals.db` + bot Playwright | `server/src/deals.ts`, `pubmatic.ts`, `web/src/lib/Deals.svelte` |
 | Taxonomías IAB 1.0 / 2.2 / 3.0 | TSV oficiales del IAB Tech Lab | `iab/` |
 
 La base (`data/etiquetas.db`, ~560 MB, no se versiona) tiene:
@@ -35,6 +36,28 @@ La base (`data/etiquetas.db`, ~560 MB, no se versiona) tiene:
 
 El JSON de la muestra que se descarga en *Resultados* tiene el formato que exportaba la página
 anterior, así que `scripts/calcular_precision_revision.py` lo lee sin cambios.
+
+## Armador de deals
+
+Pestaña *Deals* (solo admin). Se elige país, género y/o categoría y compara, sobre el corte vigente, lo
+que alcanzan los **filtros nativos de PubMatic** (solo lo que el publisher declara) contra **nuestra
+recomendación**: una regla `Title is [lista]` con los títulos que la base enriquecida clasifica así.
+Muestra requests, % vendido y eCPM histórico de cada camino, por publisher y por título. Desde ahí se
+descarga el CSV de títulos o se crea el deal en PubMatic.
+
+- **Datos**: `data/deals.db` (~40 MB), que genera `scripts/exportar_deals_db.py` desde el relleno y el
+  corte de cada tanda (`scripts/correr_tanda.py --deals` lo genera y lo sube a la VM si el `.env` de la
+  raíz trae `DEALS_DESTINO` y `DEALS_LLAVE_SSH`). El servidor lo relee solo cuando cambia; sin el archivo
+  la pestaña avisa que no hay datos.
+- **Crear en PubMatic**: un bot (Playwright, Chromium sin ventana dentro del contenedor) inicia sesión con
+  la cuenta de `.env` (ver `.env.example`), llena el asistente de Auction Package Deal (DSP y buyer del
+  `.env`, video en CTV, países, CSV de títulos; sin fee, First Price, piso por defecto), lo crea y **lo
+  pausa enseguida**, porque en PubMatic un deal nace Live. La web devuelve el enlace al deal.
+- Las creaciones se encolan (todos usan la misma cuenta) y quedan en la tabla `deals_trabajos`. Si un
+  deal se crea y no se logra pausar, queda marcado «SIN PAUSAR»: hay que pausarlo a mano en PubMatic.
+- `DEALS_ENSAYO=1` hace que el bot recorra todo y se detenga en el resumen, sin crear nada.
+- Límites de PubMatic que respeta: 10,000 valores por deal y 500 KB por CSV. Dos reglas de contenido se
+  unen con AND, por eso la recomendación va sola en su deal y no junto al filtro nativo.
 
 ## Despliegue
 
