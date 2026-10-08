@@ -284,8 +284,9 @@
             <button type="button" onclick={() => (extras = extras.filter((_, j) => j !== i))}>Quitar</button>
           </div>
         {/each}
-        <div><button type="button" disabled={extras.length >= cupoExtras} onclick={() => (extras = [...extras, { senal: "", operador: "is", texto: "" }])}>Agregar señal de PubMatic</button>
-          <small class="nota">Máximo {opciones.max_senales ?? 3} en total{idioma ? " (el idioma ya ocupa una)" : ""}: es lo que PubMatic admite en una regla.</small></div>
+        {#if extras.length < cupoExtras}
+          <div><button type="button" onclick={() => (extras = [...extras, { senal: "", operador: "is", texto: "" }])}>Agregar señal de PubMatic</button></div>
+        {/if}
         {#if extras.length}
           <small class="nota">El reporte no trae estas señales, así que no se puede saber cuánto inventario las cumple: la comparación no las cuenta
             y el deal real alcanzará <b>menos</b> de lo que se muestra. En PubMatic van todas en una segunda regla, unidas entre sí y a la lista de títulos con «y».</small>
