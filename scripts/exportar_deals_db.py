@@ -3,11 +3,11 @@
 
 La web no lee los CSV: lee esta base chica, que se regenera en cada tanda y se copia a la VM.
 
-  base         el corte vigente agregado por pais x publisher x titulo x atributos (requests, vendidos,
-               gasto): sobre esto se mide el alcance de cada camino
-  titulo_attr  que generos y categorias le reconoce nuestra base a cada titulo (todo el consolidado
+  base         el corte vigente agregado por pais x publisher x titulo x lo que el publisher declara en
+               cada content object (requests, vendidos, gasto): sobre esto se mide el alcance de cada camino
+  titulo_attr  que genero, categoria, serie, rating, duracion y en vivo le reconoce nuestra base a cada titulo (todo el consolidado
                relleno, solo origenes confiables, atributo dominante): de aqui salen las listas de titulos
-  valores      generos y categorias disponibles por pais, para los selectores
+  valores      valores disponibles de cada content object por pais, para los selectores
   meta         de que archivos salio y cuando
 
 Los criterios son los de scripts/compilar_deal.py (mismo dominio minimo y mismos origenes).
@@ -37,10 +37,41 @@ from correr_tanda import RE_CRUDO, crudos, ventana_texto  # noqa: E402
 
 DOMINIO = 0.6
 CONF_IMDB = {"A"}
+RE_HASH = re.compile(r"^[0-9a-f]{32}$")
 
 
 def titulo_util(t):
     return t if es_util("contentTitle", t) and clasificar_titulo(t) not in TITULO_NO_SIRVE and len(t) <= MAX_LARGO else ""
+
+
+def uno(col):
+    """Extractor de una columna de valor unico: {valor} si trae dato util."""
+    return lambda v: {v.strip()} if es_util(col, v) else set()
+
+
+def series(v):
+    """Nombre de la serie, sin macros sin reemplazar ni nombres hasheados (no le dicen nada a quien arma el deal)."""
+    v = v.strip()
+    if not es_util("contentSeries", v) or "{{" in v or "[CONTENT" in v.upper() or RE_HASH.match(v.lower()) or ";" in v:
+        return set()
+    return {v}
+
+
+# Content objects del reporte: (tipo, columna del CSV, columna en la tabla base, extractor, se puede enriquecer).
+# Los enriquecibles tienen ademas su lista de titulos (titulo_attr); idioma y "trae titulo" solo valen como vienen:
+# el idioma nunca se rellena y sin titulo no hay nada que reconocer.
+ATRIBUTOS = [
+    ("genero", "contentGenre", "gen_decl", generos, True),
+    ("categoria", "contentCategory", "cat_decl", codigos, True),
+    ("serie", "contentSeries", "ser_decl", series, True),
+    ("rating", "contentRating", "rat_decl", uno("contentRating"), True),
+    ("duracion", "contentLength", "len_decl", uno("contentLength"), True),
+    ("envivo", "contentIsLiveStream", "live_decl", uno("contentIsLiveStream"), True),
+    ("idioma", "contentLanguage", "lang_decl", uno("contentLanguage"), False),
+    ("con_titulo", "contentIsTitlePresent", "tit_decl", uno("contentIsTitlePresent"), False),
+]
+# Origenes del relleno que se dan por buenos para armar listas (los que dependen del match IMDb, solo con confianza A)
+ORIGEN_FIABLE = ORIGEN_OK | {"app_semantica", "corregido_imdb", "corregido_genero"}
 
 
 def lista(vals):
@@ -73,8 +104,9 @@ def main():
 
     csv.field_size_limit(10**9)
     base = defaultdict(lambda: [0, 0, 0.0, 0])                  # llave -> [req, vendidos, gasto, filas]
-    evid = {"genero": defaultdict(Counter), "categoria": defaultdict(Counter)}
-    con_dato = {"genero": Counter(), "categoria": Counter()}
+    enriquecibles = [t for t, _, _, _, enr in ATRIBUTOS if enr]
+    evid = {t: defaultdict(Counter) for t in enriquecibles}     # tipo -> titulo -> requests por valor reconocido
+    con_dato = {t: Counter() for t in enriquecibles}
     valores = Counter()
     with open(relleno, newline="", encoding="utf-8-sig") as f:
         r = csv.reader(f)
@@ -82,32 +114,31 @@ def main():
 
         def enriq(row, col, extraer):
             org = row[ix[col + "_origen"]]
-            fiable = org in ORIGEN_OK or (org in ORIGEN_IMDB and row[ix["ext_confianza"]] in CONF_IMDB)
+            fiable = org in ORIGEN_FIABLE or (org in ORIGEN_IMDB and row[ix["ext_confianza"]] in CONF_IMDB)
             return extraer(row[ix[col + "_relleno"]]) if fiable else set()
         for row in r:
             q, e = int(row[ix["Total Requests"]]), float(row[ix["eCPM"]])
             t = titulo_util(row[ix["contentTitle"]])
-            ge, ce = enriq(row, "contentGenre", generos), enriq(row, "contentCategory", codigos)
+            reconocidos = {tipo: enriq(row, col, extraer) for tipo, col, _, extraer, enr in ATRIBUTOS if enr}
             if t:
-                for tipo, vals in (("genero", ge), ("categoria", ce)):
+                for tipo, vals in reconocidos.items():
                     if vals:
                         con_dato[tipo][t] += q
                         for v in vals:
                             evid[tipo][t][v] += q
             if tuple(row[:N_DIMS]) not in vigentes:
                 continue
-            gd, cd = generos(row[ix["contentGenre"]]), codigos(row[ix["contentCategory"]])
             pais = row[ix["Country"]]
-            x = base[(pais, row[ix["Publisher"]], t, lista(gd), lista(cd), lista(ge), lista(ce))]
+            declarados = [extraer(row[ix[col]]) for _, col, _, extraer, _ in ATRIBUTOS]
+            x = base[(pais, row[ix["Publisher"]], t, *(lista(d) for d in declarados))]
             x[0] += q
             x[3] += 1
             if e > 0 and q > 0:
                 x[1] += q
                 x[2] += q * e
-            for v in gd | ge:
-                valores[("genero", v, pais)] += q
-            for v in cd | ce:
-                valores[("categoria", v, pais)] += q
+            for (tipo, *_), d in zip(ATRIBUTOS, declarados):
+                for v in d | reconocidos.get(tipo, set()):
+                    valores[(tipo, v, pais)] += q
 
     os.makedirs(os.path.dirname(a.salida), exist_ok=True)
     tmp = a.salida + ".tmp"
@@ -116,15 +147,14 @@ def main():
     db = sqlite3.connect(tmp)
     db.executescript("""
         CREATE TABLE meta (clave TEXT PRIMARY KEY, valor TEXT NOT NULL);
-        CREATE TABLE base (pais TEXT NOT NULL, publisher TEXT NOT NULL, titulo TEXT NOT NULL, gen_decl TEXT NOT NULL,
-            cat_decl TEXT NOT NULL, gen_enr TEXT NOT NULL, cat_enr TEXT NOT NULL, req INTEGER NOT NULL,
-            vend INTEGER NOT NULL, gasto REAL NOT NULL, filas INTEGER NOT NULL);
+        CREATE TABLE base (pais TEXT NOT NULL, publisher TEXT NOT NULL, titulo TEXT NOT NULL,
+            {cols}, req INTEGER NOT NULL, vend INTEGER NOT NULL, gasto REAL NOT NULL, filas INTEGER NOT NULL);
         CREATE TABLE titulo_attr (tipo TEXT NOT NULL, valor TEXT NOT NULL, titulo TEXT NOT NULL,
             PRIMARY KEY (tipo, valor, titulo)) WITHOUT ROWID;
         CREATE TABLE valores (tipo TEXT NOT NULL, valor TEXT NOT NULL, pais TEXT NOT NULL, req INTEGER NOT NULL,
             PRIMARY KEY (tipo, valor, pais)) WITHOUT ROWID;
-    """)
-    db.executemany("INSERT INTO base VALUES (?,?,?,?,?,?,?,?,?,?,?)", ((*k, *v) for k, v in base.items()))
+    """.replace("{cols}", ", ".join(f"{c} TEXT NOT NULL" for _, _, c, _, _ in ATRIBUTOS)))
+    db.executemany(f"INSERT INTO base VALUES ({','.join('?' * (3 + len(ATRIBUTOS) + 4))})", ((*k, *v) for k, v in base.items()))
     attr = [(tipo, v, t) for tipo in evid for t, c in evid[tipo].items() for v, q in c.items()
             if q > 0 and q >= DOMINIO * con_dato[tipo][t]]
     db.executemany("INSERT INTO titulo_attr VALUES (?,?,?)", attr)
@@ -132,7 +162,8 @@ def main():
     db.executescript("CREATE INDEX idx_base_pais ON base(pais); CREATE INDEX idx_base_titulo ON base(titulo);")
     meta = {"version": str(version), "ventana": ventana_texto(m.group(3), m.group(4)), "corte": os.path.basename(corte),
             "relleno": os.path.basename(relleno), "generado": datetime.now().isoformat(timespec="seconds"),
-            "dominio": str(DOMINIO), "confianza_imdb": ",".join(sorted(CONF_IMDB)),
+            "dominio": str(DOMINIO), "esquema": "2",
+            "atributos": ",".join(t for t, *_ in ATRIBUTOS), "enriquecibles": ",".join(enriquecibles), "confianza_imdb": ",".join(sorted(CONF_IMDB)),
             "requests": str(sum(v[0] for v in base.values())), "filas_corte": str(sum(v[3] for v in base.values()))}
     db.executemany("INSERT INTO meta VALUES (?,?)", meta.items())
     db.commit()
