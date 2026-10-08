@@ -86,6 +86,29 @@ descarga el CSV de títulos o se crea el deal en PubMatic.
 - `deals.db` de una versión anterior (sin las columnas de los content objects nuevos) sigue funcionando: la
   pestaña ofrece solo género y categoría hasta que se regenere con `scripts/exportar_deals_db.py`.
 
+## AI Deals
+
+Segunda pestaña de deals (admin y perfil `deals`): el deal se arma a partir del brief de la campaña.
+
+- **Entradas:** brief (texto), DSP (lista de PubMatic, `server/src/dsps.ts`), ID de la cuenta en el DSP (seat ID),
+  CPM, tipo de campaña (solo Connected TV) y formato (solo Video).
+- **Content objects:** `server/src/ai.ts` le pasa a Claude (`claude-opus-5-5`, salida estructurada) el brief y el
+  catálogo del corte vigente (países, géneros, categorías IAB, clasificaciones e idiomas con su peso en
+  requests). Devuelve un plan con valores de ese catálogo: países, 1 a 4 géneros, y categoría, clasificación o
+  idioma solo si el brief los pide, más una explicación y las palabras clave del nombre. Necesita
+  `ANTHROPIC_API_KEY` en el `.env`.
+- **CPM:** se reparte mitad y mitad: transaction fee fijo y Media CPM a precio fijo (CPM 4 = $2 + $2). Se
+  admite de $1 a $20 (la puja no baja de $0.50 y PubMatic no deja un fee fijo mayor a $10).
+- **Nombre:** palabras clave del brief + `ctv-video` + DSP + CPM + fecha y hora, en minúsculas con guiones.
+- **En PubMatic:** el bot elige el DSP y el buyer por su seat ID (si no existe en ese DSP, falla sin crear
+  nada), y aplica los content objects igual que la pestaña Deals: lista de títulos que la base clasifica así,
+  más la regla de idioma. Varios valores de un mismo content object se suman (OR); entre content objects
+  distintos se cruzan (AND). El deal queda en pausa.
+- **Salida:** nombre del deal, ID (PM-…) y CPM. El brief y el plan quedan en `deals_trabajos`
+  (`tipo = 'ai'`, `brief`, `plan`, `dsp`, `cuenta`, `cpm`).
+- Rutas: `GET /api/admin/deals/ai/opciones`, `POST /api/admin/deals/ai/plan` (lee el brief, no crea nada) y
+  `POST /api/admin/deals/ai/crear`.
+
 ## Despliegue
 
 ```bash

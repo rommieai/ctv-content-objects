@@ -4,8 +4,9 @@
   import Revision from "./lib/Revision.svelte";
   import Resultados from "./lib/Resultados.svelte";
   import Deals from "./lib/Deals.svelte";
+  import AiDeals from "./lib/AiDeals.svelte";
 
-  type Vista = Ambito | "resultados" | "deals";
+  type Vista = Ambito | "resultados" | "deals" | "aideals";
   let yo = $state<Usuario | null>(null);
   let cargando = $state(true);
   let opciones = $state<Opciones | null>(null);
@@ -13,10 +14,15 @@
 
   function leerVista(): Vista {
     const h = location.hash.slice(1);
-    return h === "completo" || h === "resultados" || h === "deals" ? h : "muestra";
+    return h === "completo" || h === "resultados" || h === "deals" || h === "aideals" ? h : "muestra";
   }
   $effect(() => { history.replaceState(null, "", "#" + vista); });
-  $effect(() => { if (yo && yo.rol !== "admin") vista = yo.rol === "deals" ? "deals" : "muestra"; });
+  // el perfil deals solo ve las dos pestañas de deals; el revisor, solo la muestra
+  $effect(() => {
+    if (!yo || yo.rol === "admin") return;
+    if (yo.rol === "deals") { if (vista !== "deals" && vista !== "aideals") vista = "deals"; }
+    else vista = "muestra";
+  });
 
   async function iniciar() {
     try {
@@ -48,6 +54,7 @@
         {/if}
         {#if yo.rol !== "revisor"}
           <button class:activa={vista === "deals"} onclick={() => (vista = "deals")}>Deals</button>
+          <button class:activa={vista === "aideals"} onclick={() => (vista = "aideals")}>AI Deals</button>
         {/if}
       </div>
       <span class="quien">{yo.nombre} · {yo.rol === "admin" ? "administración" : yo.rol === "deals" ? "deals" : "revisión de la muestra"}
@@ -58,6 +65,8 @@
     <Resultados />
   {:else if vista === "deals"}
     <Deals />
+  {:else if vista === "aideals"}
+    <AiDeals />
   {:else if opciones}
     {#key vista}
       <Revision ambito={vista} {opciones} admin={yo.rol === "admin"} />

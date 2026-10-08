@@ -49,7 +49,11 @@ export interface SenalRegla {
   operador: "is" | "is any" | "contains";
   valores: string[];                           // vacío con "is any"
 }
-export interface PedidoDeal { nombre: string; paises: string[]; titulosCsv: string; condiciones: Condiciones; senales: SenalRegla[] }
+export interface PedidoDeal {
+  nombre: string; paises: string[]; titulosCsv: string; condiciones: Condiciones; senales: SenalRegla[];
+  // AI Deals elige el DSP y la cuenta (seat ID) en cada deal; sin ellos se usan los del .env
+  dsp?: string; seat?: string;
+}
 export interface DealCreado { id: number | null; pmId: string; enlace: string; estado: string; resumen: string }
 
 const pm = (page: Page, id: string) => page.locator(`[data-pm-id="${id}"]`);
@@ -67,6 +71,22 @@ async function entrar(page: Page) {
     const aviso = page.locator(".okta-form-infobox-error, .o-form-error-container").first();
     throw new Error("El login de PubMatic no pasó: " + ((await aviso.count()) ? (await aviso.innerText()).trim() : "¿clave vencida o verificación adicional?"));
   }
+}
+
+/** Elige el buyer por su seat ID (el ID de la cuenta en el DSP): el buscador de PubMatic lo encuentra solo si es exacto. */
+async function elegirBuyerPorSeat(page: Page, seat: string, dsp: string) {
+  await pm(page, "buyer-select").locator("hls-select-trigger").click();
+  await page.waitForTimeout(2500);
+  await page.locator('input[placeholder="Search"]:visible').last().fill(seat);
+  await page.waitForTimeout(3000);
+  const lista = page.locator("hls-select-list").last();
+  if (!(await lista.getByText(seat, { exact: true }).count())) {
+    throw new Error(`PubMatic no tiene una cuenta con el ID ${seat} en ${dsp}. No se creó nada`);
+  }
+  await lista.locator('[data-pm-id="available-buyer-checkbox"] label').first().click();
+  await page.waitForTimeout(800);
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(1000);
 }
 
 async function elegir(page: Page, selectPm: string, opcion: string) {
@@ -238,6 +258,8 @@ function comprobarResumen(resumen: string, p: PedidoDeal) {
   const c = p.condiciones, faltan: string[] = [];
   const debe = (trozo: string, que: string) => { if (!resumen.includes(trozo)) faltan.push(que); };
   debe(p.nombre, "el nombre");
+  if (p.dsp) debe(`DSP | ${p.dsp}`, "el DSP");
+  if (p.seat) debe(`-${p.seat}`, "la cuenta del DSP");
   for (const pais of p.paises) debe(pais, pais);
   debe(p.senales.length ? "2 Rules" : "1 Rule", p.senales.length ? "las dos reglas de contenido" : "la regla de títulos");
   debe(`Auction Type | ${c.subasta === "fixed" ? "Fixed Price" : "First Price"}`, "el tipo de subasta");
@@ -314,8 +336,10 @@ export async function crearDeal(p: PedidoDeal, paso: (msg: string) => void): Pro
     await pm(page, "input-deal-name").locator("input").waitFor({ state: "visible", timeout: 60_000 });
     await page.waitForTimeout(4000);
     await pm(page, "input-deal-name").locator("input").fill(p.nombre);
-    await elegir(page, "dsp-select", PUBMATIC.dsp);
-    await elegir(page, "buyer-select", PUBMATIC.buyer);
+    const dsp = p.dsp ?? PUBMATIC.dsp;
+    await elegir(page, "dsp-select", dsp);
+    if (p.seat) await elegirBuyerPorSeat(page, p.seat, dsp);
+    else await elegir(page, "buyer-select", PUBMATIC.buyer);
     await condiciones(page, p.condiciones);
 
     paso("Inventario: Video en CTV");

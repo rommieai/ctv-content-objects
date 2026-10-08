@@ -9,6 +9,8 @@ import { existsSync, statSync } from "node:fs";
 import Database from "better-sqlite3";
 import type { Hono } from "hono";
 import { significadoCategoria } from "./significados.js";
+import { aiConfigurado, ErrorAi, interpretarBrief, type Catalogo, type PlanBrief } from "./ai.js";
+import { DSPS } from "./dsps.js";
 import { crearDeal, DealSinPausar, PUBMATIC, pubmaticConfigurado, type Condiciones, type SenalRegla } from "./pubmatic.js";
 
 const RUTA = process.env.DEALS_DB ?? "/data/deals.db";
@@ -113,10 +115,14 @@ function leerFiltro(d: Db, b: any): Filtro | string {
   const existe = d.prepare("SELECT 1 FROM valores WHERE tipo = ? AND valor = ? LIMIT 1");
   const f = { paises, titulo: String(b?.titulo ?? "").trim().slice(0, 80), extras: [] as SenalExtra[] } as Filtro;
   for (const a of ATRIBUTOS) {
-    const v = String(b?.[a.tipo] ?? "").trim();
-    if (v && !cols.has(a.col)) return "La base de deals cargada es de una versión anterior y no trae ese content object: hay que regenerar deals.db";
-    if (v && (("formato" in a && !a.formato.test(v)) || !existe.get(datoDe(a), v))) return `Valor desconocido para ${a.tipo}`;
-    f[a.tipo] = v;
+    // un content object puede traer varios valores separados por "|" (cualquiera de ellos): así los arma AI Deals
+    const partes = [...new Set(String(b?.[a.tipo] ?? "").split("|").map(x => x.trim()).filter(Boolean))];
+    if (partes.length && !cols.has(a.col)) return "La base de deals cargada es de una versión anterior y no trae ese content object: hay que regenerar deals.db";
+    if (partes.length > 8) return `Demasiados valores para ${a.tipo}`;
+    for (const v of partes) {
+      if (("formato" in a && !a.formato.test(v)) || !existe.get(datoDe(a), v)) return `Valor desconocido para ${a.tipo}`;
+    }
+    f[a.tipo] = partes.join("|");
   }
   if (f.titulo && f.titulo.length < 3) return "Para buscar por título escribe al menos 3 letras";
   if (!f.titulo && !ATRIBUTOS.some(a => f[a.tipo])) return "Elige al menos un content object del reporte (género, categoría, serie…)";
@@ -142,12 +148,13 @@ function marcada(f: Filtro) {
   for (const a of ATRIBUTOS) {
     const v = f[a.tipo];
     if (!v) continue;
-    const declara = `b.${a.col} LIKE @l_${a.tipo} ESCAPE '\\'`;
-    args[`l_${a.tipo}`] = `%;${escaparLike(v)};%`;
+    // varios valores separados por "|" = cualquiera de ellos
+    const partes = v.split("|");
+    partes.forEach((x, i) => { args[`l_${a.tipo}_${i}`] = `%;${escaparLike(x)};%`; args[`v_${a.tipo}_${i}`] = x; });
+    const declara = "(" + partes.map((_, i) => `b.${a.col} LIKE @l_${a.tipo}_${i} ESCAPE '\\'`).join(" OR ") + ")";
     nat.push(declara);
     if (a.enriquecible) {
-      lst.push(`EXISTS (SELECT 1 FROM titulo_attr t WHERE t.tipo = '${datoDe(a)}' AND t.valor = @v_${a.tipo} AND t.titulo = b.titulo)`);
-      args[`v_${a.tipo}`] = v;
+      lst.push(`EXISTS (SELECT 1 FROM titulo_attr t WHERE t.tipo = '${datoDe(a)}' AND t.valor IN (${partes.map((_, i) => `@v_${a.tipo}_${i}`).join(", ")}) AND t.titulo = b.titulo)`);
     } else lst.push(declara);
   }
   if (f.titulo) {
@@ -169,6 +176,8 @@ function titulosDe(d: Db, f: Filtro) {
   const lineas: string[] = [];
   let bytes = 12, reqDentro = 0;
   for (const t of todos) {
+    // PubMatic rechaza el archivo entero («invalid expressions») si un valor trae tres signos de exclamación seguidos
+    if (/!!!|[\r\n]/.test(t.titulo)) continue;
     const linea = `"${t.titulo.replaceAll('"', '""')}"\r\n`, peso = Buffer.byteLength(linea);
     if (lineas.length >= MAX_VALORES || bytes + peso > MAX_BYTES) break;
     lineas.push(linea); bytes += peso; reqDentro += t.req;
@@ -213,7 +222,7 @@ interface Trabajo {
   id: number; usuario_id: number; nombre: string; filtro: string; estado: string; detalle: string;
   pm_id: string; enlace: string; titulos: number; creado: string; actualizado: string;
 }
-const cola: { id: number; nombre: string; paises: string[]; csv: string; condiciones: Condiciones; senales: SenalRegla[] }[] = [];
+const cola: { id: number; nombre: string; paises: string[]; csv: string; condiciones: Condiciones; senales: SenalRegla[]; dsp?: string; seat?: string }[] = [];
 
 /**
  * Señales que van tal cual a PubMatic en una segunda regla, unida con AND a la lista de títulos: las que solo
@@ -264,7 +273,8 @@ export function rutasDeals(app: Hono<any>, db: Db) {
     creado TEXT NOT NULL, actualizado TEXT NOT NULL)`);
   // condiciones comerciales pedidas (JSON) y lo que PubMatic mostró en su resumen; la tabla ya existía sin ellas
   const columnas = new Set((db.prepare("PRAGMA table_info(deals_trabajos)").all() as { name: string }[]).map(x => x.name));
-  for (const col of ["condiciones", "resumen_pm"]) if (!columnas.has(col)) db.exec(`ALTER TABLE deals_trabajos ADD COLUMN ${col} TEXT NOT NULL DEFAULT ''`);
+  // AI Deals guarda además de dónde salió el deal: el brief, el plan que eligió el modelo, el DSP, la cuenta y el CPM
+  for (const col of ["condiciones", "resumen_pm", "tipo", "brief", "plan", "dsp", "cuenta", "cpm"]) if (!columnas.has(col)) db.exec(`ALTER TABLE deals_trabajos ADD COLUMN ${col} TEXT NOT NULL DEFAULT ''`);
   const guardarResumen = db.prepare("UPDATE deals_trabajos SET resumen_pm = ? WHERE id = ?");
   // Si el servidor se reinició a medias no se sabe en qué quedó el deal: que alguien lo revise en PubMatic
   db.prepare(`UPDATE deals_trabajos SET estado = 'error', detalle = 'El servidor se reinició mientras corría. Revisa en PubMatic > Deals si el deal se creó y si está en pausa.'
@@ -279,7 +289,7 @@ export function rutasDeals(app: Hono<any>, db: Db) {
       const { id } = t;
       try {
         marcar.run("corriendo", "Empezando", "", "", ahora(), id);
-        const r = await crearDeal({ nombre: t.nombre, paises: t.paises, titulosCsv: t.csv, condiciones: t.condiciones, senales: t.senales },
+        const r = await crearDeal({ nombre: t.nombre, paises: t.paises, titulosCsv: t.csv, condiciones: t.condiciones, senales: t.senales, dsp: t.dsp, seat: t.seat },
           msg => marcar.run("corriendo", msg, "", "", ahora(), id));
         guardarResumen.run(r.resumen, id);
         if (r.estado === "ensayo") marcar.run("error", "Ensayo: el bot recorrió todo el asistente y se detuvo en el resumen. No se creó nada.", "", "", ahora(), id);
@@ -349,7 +359,8 @@ export function rutasDeals(app: Hono<any>, db: Db) {
 
   app.get("/api/admin/deals/trabajos", c => c.json({
     trabajos: (db.prepare(`SELECT t.*, u.nombre AS de FROM deals_trabajos t JOIN usuarios u ON u.id = t.usuario_id ORDER BY t.id DESC LIMIT 30`).all() as (Trabajo & { de: string })[])
-      .map(t => ({ ...t, filtro: JSON.parse(t.filtro), condiciones: (t as any).condiciones ? JSON.parse((t as any).condiciones) : null })),
+      .map(t => ({ ...t, filtro: JSON.parse(t.filtro), condiciones: (t as any).condiciones ? JSON.parse((t as any).condiciones) : null,
+        plan: (t as any).plan ? JSON.parse((t as any).plan) : null })),
   }));
 
   app.post("/api/admin/deals/crear", async c => {
@@ -374,5 +385,139 @@ export function rutasDeals(app: Hono<any>, db: Db) {
     cola.push({ id, nombre, paises: f.paises, csv: t.csv, condiciones: cond, senales: senalesDe(f) });
     void atender();
     return c.json({ id });
+  });
+
+  // ---- AI Deals: el brief de la campaña decide los content objects; el CPM se reparte 50/50 entre fee y puja
+  const CAMPANAS = ["Connected TV (CTV)"], FORMATOS = ["Video"];   // por ahora las únicas que arma el bot
+  const CPM_MIN = 1, CPM_MAX = 20;   // mitad y mitad: la puja no baja del piso de $0.50 y el fee fijo no pasa de $10
+  const RE_CUENTA = /^[A-Za-z0-9][A-Za-z0-9._-]{1,39}$/;
+
+  /** Los campos que llena la persona: brief, DSP, cuenta, CPM, tipo de campaña y formato. */
+  function leerEntradaAi(b: any) {
+    const brief = String(b?.brief ?? "").trim();
+    if (brief.length < 20) return "Escribe el brief de la campaña (al menos un par de frases)";
+    if (brief.length > 6000) return "El brief es demasiado largo (máximo 6,000 caracteres)";
+    const dsp = String(b?.dsp ?? "").trim();
+    if (!(DSPS as readonly string[]).includes(dsp)) return "Elige el DSP de la lista";
+    const cuenta = String(b?.cuenta ?? "").trim();
+    if (!RE_CUENTA.test(cuenta)) return "Escribe el ID de la cuenta en el DSP (seat ID)";
+    const cpm = Number(b?.cpm);
+    if (!Number.isFinite(cpm)) return "Escribe el CPM en dólares";
+    if (Math.abs(Math.round(cpm * 100) - cpm * 100) > 1e-6) return "El CPM admite máximo dos decimales";
+    if (cpm < CPM_MIN || cpm > CPM_MAX) return `El CPM debe estar entre $${CPM_MIN} y $${CPM_MAX}`;
+    if (!CAMPANAS.includes(String(b?.campana ?? ""))) return "Tipo de campaña no disponible";
+    if (!FORMATOS.includes(String(b?.formato ?? ""))) return "Formato no disponible";
+    return { brief, dsp, cuenta, cpm: Math.round(cpm * 100) / 100 };
+  }
+
+  /** CPM total -> mitad fee fijo y mitad Media CPM a precio fijo (como se configura a mano en PubMatic). */
+  function condicionesDeCpm(cpm: number): Condiciones {
+    const fee = Math.round(cpm * 50) / 100;
+    return { inicio: "", fin: "", fee: "fijo", feeValor: fee, subasta: "fixed", mediaCpm: Math.round((cpm - fee) * 100) / 100 };
+  }
+
+  /** Lo que el modelo puede elegir: lo que hay en el corte vigente, con su peso en requests. */
+  function catalogoAi(d: Db): Catalogo {
+    const total = (d.prepare("SELECT SUM(req) r FROM base").get() as { r: number }).r || 1;
+    const de = (tipo: string, n: number, formato?: RegExp) => (d.prepare("SELECT valor, SUM(req) r FROM valores WHERE tipo = ? GROUP BY valor ORDER BY r DESC").all(tipo) as { valor: string; r: number }[])
+      .filter(x => !formato || formato.test(x.valor)).slice(0, n).map(x => ({ valor: x.valor, pct: 100 * x.r / total }));
+    return {
+      paises: (d.prepare("SELECT pais valor, SUM(req) r FROM base GROUP BY pais ORDER BY r DESC").all() as { valor: string; r: number }[])
+        .map(x => ({ valor: x.valor, pct: 100 * x.r / total })),
+      generos: de("genero", 40).filter(x => !["otros/desconocido"].includes(x.valor)),
+      categorias: de("categoria", 30, /^IAB\d/).map(x => ({ ...x, nombre: significadoCategoria(`[${x.valor}]`)[0]?.es || undefined })),
+      ratings: de("rating", 5), idiomas: de("idioma", 12),
+    };
+  }
+
+  /** El plan del modelo como filtro del armador: varios valores de un mismo content object van unidos con "|". */
+  const filtroDePlan = (d: Db, plan: PlanBrief) => leerFiltro(d, {
+    paises: plan.paises, genero: plan.generos.join("|"), categoria: plan.categorias.join("|"), rating: plan.ratings.join("|"), idioma: plan.idioma,
+  });
+
+  function leerPlan(x: any): PlanBrief | string {
+    const textos = (v: unknown, n: number) => (Array.isArray(v) ? v : []).map(y => String(y).trim()).filter(Boolean).slice(0, n);
+    const plan: PlanBrief = {
+      paises: textos(x?.paises, 20), generos: textos(x?.generos, 8), categorias: textos(x?.categorias, 8), ratings: textos(x?.ratings, 8),
+      idioma: String(x?.idioma ?? "").trim(), palabras_clave: textos(x?.palabras_clave, 4).map(k => k.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")).filter(Boolean),
+      razon: String(x?.razon ?? "").slice(0, 900),
+    };
+    return plan.paises.length ? plan : "El plan no trae países";
+  }
+
+  /** Nombre genérico del deal: palabras clave del brief + lo que se llenó, en minúsculas y con guiones. */
+  function nombreAi(plan: PlanBrief, dsp: string, cpm: number) {
+    const limpio = (t: string) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    const claves = (plan.palabras_clave.length ? plan.palabras_clave : plan.generos).slice(0, 4).map(limpio).filter(Boolean);
+    const hoy = new Date().toISOString().replace(/[-:T]/g, "").slice(4, 12);   // MMDDHHmm: evita repetir nombres
+    return [...claves, "ctv", "video", limpio(dsp), `${String(cpm).replace(".", "-")}usd`, hoy].join("-").slice(0, 100);
+  }
+
+  /** Lo que se muestra antes de crear: qué eligió el modelo y cuánto inventario hay detrás. */
+  function vistaPlan(d: Db, plan: PlanBrief, f: Filtro, dsp: string, cpm: number) {
+    const sim = simular(d, f), cond = condicionesDeCpm(cpm);
+    return {
+      plan, filtro: f, nombre: nombreAi(plan, dsp, cpm), cpm, fee: cond.feeValor, media_cpm: cond.mediaCpm,
+      nativo: sim.nativo, recomendado: sim.recomendado, lista: sim.lista,
+      titulos: { total: sim.titulos.total, en_csv: sim.titulos.en_csv, top: sim.titulos.top },
+      categorias: plan.categorias.map(c => ({ valor: c, nombre: significadoCategoria(`[${c}]`)[0]?.es ?? "" })),
+    };
+  }
+
+  app.get("/api/admin/deals/ai/opciones", c => {
+    const d = base();
+    return c.json({
+      dsps: DSPS, dsp_defecto: PUBMATIC.dsp, campanas: CAMPANAS, formatos: FORMATOS, cpm: { min: CPM_MIN, max: CPM_MAX },
+      meta: d ? metaDe(d) : null,
+      configurado: { datos: !!d, ai: aiConfigurado(), pubmatic: pubmaticConfigurado(), ensayo: PUBMATIC.ensayo },
+    });
+  });
+
+  app.post("/api/admin/deals/ai/plan", async c => {
+    const d = base();
+    if (!d) return c.json({ error: "Todavía no se ha cargado la base de deals (deals.db)" }, 503);
+    if (!aiConfigurado()) return c.json({ error: "El servidor no tiene configurada la llave de la API de Anthropic (ANTHROPIC_API_KEY)" }, 503);
+    const e = leerEntradaAi(await c.req.json().catch(() => null));
+    if (typeof e === "string") return c.json({ error: e }, 400);
+    let plan: PlanBrief;
+    try {
+      plan = await interpretarBrief(e.brief, catalogoAi(d));
+    } catch (err) {
+      if (err instanceof ErrorAi) return c.json({ error: err.message }, 502);
+      console.error("ai deals:", err);
+      return c.json({ error: "No se pudo interpretar el brief" }, 500);
+    }
+    if (!plan.generos.length && !plan.categorias.length && !plan.ratings.length && !plan.idioma) {
+      return c.json({ error: "El modelo no encontró en el brief ningún content object con el cual filtrar. Describe mejor el producto, el público o el tipo de contenido." }, 422);
+    }
+    const f = filtroDePlan(d, plan);
+    if (typeof f === "string") return c.json({ error: f }, 502);
+    return c.json(vistaPlan(d, plan, f, e.dsp, e.cpm));
+  });
+
+  app.post("/api/admin/deals/ai/crear", async c => {
+    const d = base();
+    if (!d) return c.json({ error: "Todavía no se ha cargado la base de deals (deals.db)" }, 503);
+    if (!pubmaticConfigurado()) return c.json({ error: "El servidor no tiene configuradas las credenciales de PubMatic" }, 503);
+    const b = await c.req.json().catch(() => null);
+    const e = leerEntradaAi(b);
+    if (typeof e === "string") return c.json({ error: e }, 400);
+    const plan = leerPlan(b?.plan);
+    if (typeof plan === "string") return c.json({ error: plan }, 400);
+    const f = filtroDePlan(d, plan);   // vuelve a validar contra el catálogo lo que manda el navegador
+    if (typeof f === "string") return c.json({ error: f }, 400);
+    if (b?.confirmo !== true) return c.json({ error: "Falta confirmar la creación" }, 400);
+    const t = titulosDe(d, f);
+    if (!t.dentro) return c.json({ error: "Con esos content objects no hay títulos en el inventario: no hay con qué armar el deal" }, 400);
+    const nombre = nombreAi(plan, e.dsp, e.cpm), cond = condicionesDeCpm(e.cpm);
+    if (db.prepare("SELECT 1 FROM deals_trabajos WHERE nombre = ? AND estado IN ('en_cola', 'corriendo', 'listo', 'sin_pausar')").get(nombre)) {
+      return c.json({ error: "Ya se está creando un deal con ese nombre; espera un minuto e intenta de nuevo" }, 409);
+    }
+    const id = Number(db.prepare(`INSERT INTO deals_trabajos (usuario_id, nombre, filtro, condiciones, estado, detalle, titulos, creado, actualizado, tipo, brief, plan, dsp, cuenta, cpm)
+      VALUES (?, ?, ?, ?, 'en_cola', 'En cola', ?, ?, ?, 'ai', ?, ?, ?, ?, ?)`).run(c.get("u").id, nombre, JSON.stringify(f), JSON.stringify(cond), t.dentro, ahora(), ahora(),
+      e.brief, JSON.stringify(plan), e.dsp, e.cuenta, String(e.cpm)).lastInsertRowid);
+    cola.push({ id, nombre, paises: f.paises, csv: t.csv, condiciones: cond, senales: senalesDe(f), dsp: e.dsp, seat: e.cuenta });
+    void atender();
+    return c.json({ id, nombre });
   });
 }
