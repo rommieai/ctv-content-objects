@@ -59,6 +59,17 @@ export interface DealCreado { id: number | null; pmId: string; enlace: string; e
 const pm = (page: Page, id: string) => page.locator(`[data-pm-id="${id}"]`);
 const texto = async (page: Page) => (await page.innerText("body")).split("\n").map(l => l.trim()).filter(Boolean).join(" | ");
 
+/** page.goto que aguanta la redirección que PubMatic deja en curso después del login («interrupted by another navigation»). */
+async function ir(page: Page, url: string) {
+  for (let intento = 0; ; intento++) {
+    try { await page.goto(url, { waitUntil: "domcontentloaded" }); return; } catch (e) {
+      if (intento >= 2 || !String((e as Error).message).includes("interrupted by another navigation")) throw e;
+      await page.waitForLoadState("domcontentloaded").catch(() => {});
+      await page.waitForTimeout(1500);
+    }
+  }
+}
+
 async function entrar(page: Page) {
   // sin sesión PubMatic manda al login de publisher; la cuenta es de Media Console (demand)
   await page.goto(LOGIN, { waitUntil: "domcontentloaded" });
@@ -224,11 +235,14 @@ async function agregarSenal(page: Page, s: SenalRegla, primera: boolean) {
     for (const valor of s.valores) {
       const buscador = page.locator('input[placeholder^="Search available"]:visible').last();
       await buscador.fill(valor);
-      await page.waitForTimeout(1000);
-      // la lista de disponibles es la primera del diálogo; cada renglón es una casilla con el nombre (y a veces una descripción)
-      const renglon = page.locator("hls-inline-select-list").first().getByText(valor, { exact: true });
-      if (!(await renglon.count())) throw new Error(`PubMatic no tiene la categoría estandarizada "${valor}" en ${s.nombre}. No se creó nada`);
-      await renglon.first().click();
+      // cada renglón de la lista de disponibles es una casilla con el nombre (y a veces una descripción); la búsqueda
+      // puede tardar, y detrás del diálogo quedan otras listas (la de la regla de títulos): se espera el renglón visible
+      const renglon = page.locator("hls-inline-select-list:visible").getByText(valor, { exact: true }).first();
+      try { await renglon.waitFor({ state: "visible", timeout: 10_000 }); } catch {
+        console.error(`deal: ${s.nombre} sin "${valor}"; listas visibles ->`, (await page.locator("hls-inline-select-list:visible").allInnerTexts()).map(t => t.replace(/\s+/g, " ").slice(0, 150)));
+        throw new Error(`PubMatic no tiene la categoría estandarizada "${valor}" en ${s.nombre}. No se creó nada`);
+      }
+      await renglon.click();
       await page.waitForTimeout(500);
       const pasar = pm(page, "move-to-target").last();   // flecha que pasa lo marcado a la lista de seleccionados
       if (await pasar.isDisabled()) throw new Error(`No se pudo marcar "${valor}" en ${s.nombre}. No se creó nada`);
@@ -254,14 +268,14 @@ async function agregarSenal(page: Page, s: SenalRegla, primera: boolean) {
 }
 
 /** Lo que el resumen de PubMatic debe decir para que el deal sea el pedido. */
-function comprobarResumen(resumen: string, p: PedidoDeal) {
+function comprobarResumen(resumen: string, p: PedidoDeal, reglas: number) {
   const c = p.condiciones, faltan: string[] = [];
   const debe = (trozo: string, que: string) => { if (!resumen.includes(trozo)) faltan.push(que); };
   debe(p.nombre, "el nombre");
   if (p.dsp) debe(`DSP | ${p.dsp}`, "el DSP");
   if (p.seat) debe(`-${p.seat}`, "la cuenta del DSP");
   for (const pais of p.paises) debe(pais, pais);
-  debe(p.senales.length ? "2 Rules" : "1 Rule", p.senales.length ? "las dos reglas de contenido" : "la regla de títulos");
+  debe(reglas === 2 ? "2 Rules" : "1 Rule", reglas === 2 ? "las dos reglas de contenido" : "la regla de contenido");
   debe(`Auction Type | ${c.subasta === "fixed" ? "Fixed Price" : "First Price"}`, "el tipo de subasta");
   debe(`Transaction Fee | ${c.fee === "no" ? "No" : "Yes"}`, "el transaction fee");
   const n = (x: number) => String(Number(x.toFixed(2)));
@@ -283,7 +297,7 @@ async function siguiente(page: Page, trozo: string) {
 }
 
 async function filaDeal(page: Page, nombre: string): Promise<{ fila: Locator; estado: string; pmId: string }> {
-  await page.goto(`${BASE}/deals`, { waitUntil: "domcontentloaded" });
+  await ir(page, `${BASE}/deals`);
   await page.getByText(nombre, { exact: true }).first().waitFor({ state: "visible", timeout: 60_000 });
   await page.waitForTimeout(3000);
   const fila = page.locator("tbody tr").filter({ has: page.getByText(nombre, { exact: true }) }).first();
@@ -326,13 +340,13 @@ export async function crearDeal(p: PedidoDeal, paso: (msg: string) => void): Pro
 
     paso("Iniciando sesión en PubMatic");
     await entrar(page);
-    await page.goto(`${BASE}/deals`, { waitUntil: "domcontentloaded" });
+    await ir(page, `${BASE}/deals`);
     await page.locator("tbody tr").first().waitFor({ state: "attached", timeout: 60_000 }).catch(() => {});
     await page.waitForTimeout(4000);
     if (await page.getByText(p.nombre, { exact: true }).count()) throw new Error(`Ya existe un deal llamado ${p.nombre} en PubMatic`);
 
     paso("Configuración: nombre, DSP, buyer y condiciones");
-    await page.goto(`${BASE}/deal/create/general`, { waitUntil: "domcontentloaded" });
+    await ir(page, `${BASE}/deal/create/general`);
     await pm(page, "input-deal-name").locator("input").waitFor({ state: "visible", timeout: 60_000 });
     await page.waitForTimeout(4000);
     await pm(page, "input-deal-name").locator("input").fill(p.nombre);
@@ -383,15 +397,22 @@ export async function crearDeal(p: PedidoDeal, paso: (msg: string) => void): Pro
     await guardar.click();
     await page.waitForTimeout(2500);
 
+    let reglas = 1;   // reglas de contenido que debe mostrar el resumen
     if (p.senales.length) {
-      // segunda regla, unida con AND a la lista de títulos: las señales que van tal cual, la estandarizada al final
+      // unidas con AND a la lista de títulos: las señales que van tal cual, la estandarizada al final
       paso(`Targeting: ${p.senales.length} señal${p.senales.length > 1 ? "es" : ""} de contenido adicional${p.senales.length > 1 ? "es" : ""}`);
       const orden = [...p.senales].sort((a, b) => Number(a.modo === "estandar") - Number(b.modo === "estandar"));
-      for (let i = 0; i < orden.length; i++) await agregarSenal(page, orden[i], i === 0);
-      const reglas = (await texto(page)).split("define their values.").pop()!.split("30 Day Projection")[0];
-      console.log(`deal ${p.nombre}: reglas en PubMatic -> ${reglas.slice(0, 200)} … ${reglas.slice(-600)}`);
+      const reglasDe = async () => (await texto(page)).split("define their values.").pop()!.split("30 Day Projection")[0];
+      // Una lista corta PubMatic no la deja como lista subida («Download All»): la muestra como una regla normal
+      // (Title:is a,b), y las reglas normales se unen entre sí con OR. Ahí las señales van dentro de la misma regla
+      // del título, que es donde se unen con AND; solo con la lista subida van en una regla aparte.
+      const listaSubida = (await reglasDe()).includes("Download All");
+      for (let i = 0; i < orden.length; i++) await agregarSenal(page, orden[i], listaSubida && i === 0);
+      if (listaSubida) reglas = 2;
+      const armado = await reglasDe();
+      console.log(`deal ${p.nombre}: reglas en PubMatic -> ${armado.slice(0, 200)} … ${armado.slice(-600)}`);
       // tiene que quedar: lista de títulos AND (señal AND señal…), sin ningún OR
-      const cola = reglas.split("Download All").pop() ?? "";
+      const cola = armado.split("Download All").pop() ?? "";
       if (!cola.includes("| AND |") || cola.includes("| OR |")) throw new Error("PubMatic no unió las señales adicionales con AND a la lista de títulos. No se creó nada");
     }
 
@@ -402,7 +423,7 @@ export async function crearDeal(p: PedidoDeal, paso: (msg: string) => void): Pro
     // la parte de Configuration del resumen, tal como la muestra PubMatic: queda guardada con el trabajo
     const condicionesPm = resumen.split("Configuration | ").pop()!.split(" | Inventory | ")[0].replaceAll(" | ", " · ");
     console.log(`deal ${p.nombre}: resumen de PubMatic -> ${condicionesPm}`);
-    comprobarResumen(resumen, p);
+    comprobarResumen(resumen, p, reglas);
 
     if (PUBMATIC.ensayo) return { id: null, pmId: "", enlace: "", estado: "ensayo", resumen: condicionesPm };
 
