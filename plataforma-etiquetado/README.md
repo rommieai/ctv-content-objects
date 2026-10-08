@@ -52,8 +52,16 @@ descarga el CSV de títulos o se crea el deal en PubMatic.
   la pestaña avisa que no hay datos.
 - **Crear en PubMatic**: un bot (Playwright, Chromium sin ventana dentro del contenedor) inicia sesión con
   la cuenta de `.env` (ver `.env.example`), llena el asistente de Auction Package Deal (DSP y buyer del
-  `.env`, video en CTV, países, CSV de títulos; sin fee, First Price, piso por defecto), lo crea y **lo
-  pausa enseguida**, porque en PubMatic un deal nace Live. La web devuelve el enlace al deal.
+  `.env`, video en CTV, países, CSV de títulos), lo crea y **lo pausa enseguida**, porque en PubMatic un
+  deal nace Live. La web devuelve el enlace al deal.
+- **Condiciones del deal** (se llenan en la sección 3 y el bot las pone tal cual en el paso Configuration):
+  Transaction Date (desde / hasta, o sin fecha de fin), Transaction Fee (no, o sí con CPM Fixed en USD o
+  Percentage) y Auction Type con su Media CPM (Fixed Price: obligatorio; First Price: piso opcional). Por
+  defecto: sin fee, First Price, piso de PubMatic, desde hoy y sin fin. Las fechas se eligen en el
+  calendario de PubMatic (sus campos no aceptan texto). Antes de crear, el bot comprueba que el resumen de
+  PubMatic diga lo mismo que se pidió, y lo que PubMatic mostró queda guardado con el trabajo
+  (`deals_trabajos.resumen_pm`). Los límites los valida PubMatic (p. ej. fee fijo máximo de $10): si rechaza
+  algo, el trabajo falla con ese mensaje y no se crea nada.
 - Las creaciones se encolan (todos usan la misma cuenta) y quedan en la tabla `deals_trabajos`. Si un
   deal se crea y no se logra pausar, queda marcado «SIN PAUSAR»: hay que pausarlo a mano en PubMatic.
 - `DEALS_ENSAYO=1` hace que el bot recorra todo y se detenga en el resumen, sin crear nada.

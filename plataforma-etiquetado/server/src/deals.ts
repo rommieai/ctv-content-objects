@@ -9,7 +9,7 @@ import { existsSync, statSync } from "node:fs";
 import Database from "better-sqlite3";
 import type { Hono } from "hono";
 import { significadoCategoria } from "./significados.js";
-import { crearDeal, DealSinPausar, PUBMATIC, pubmaticConfigurado } from "./pubmatic.js";
+import { crearDeal, DealSinPausar, PUBMATIC, pubmaticConfigurado, type Condiciones } from "./pubmatic.js";
 
 const RUTA = process.env.DEALS_DB ?? "/data/deals.db";
 const MAX_VALORES = 10_000;       // valores por deal en la carga por CSV de PubMatic
@@ -122,8 +122,37 @@ interface Trabajo {
   id: number; usuario_id: number; nombre: string; filtro: string; estado: string; detalle: string;
   pm_id: string; enlace: string; titulos: number; creado: string; actualizado: string;
 }
-const cola: { id: number; nombre: string; paises: string[]; csv: string }[] = [];
+const cola: { id: number; nombre: string; paises: string[]; csv: string; condiciones: Condiciones }[] = [];
 let corriendo = false;
+
+const RE_FECHA = /^\d{4}-\d{2}-\d{2}$/;
+const esFecha = (s: string) => RE_FECHA.test(s) && !Number.isNaN(Date.parse(s + "T00:00:00Z")) && new Date(s + "T00:00:00Z").toISOString().slice(0, 10) === s;
+const SIN_CONDICIONES: Condiciones = { inicio: "", fin: "", fee: "no", feeValor: 0, subasta: "first", mediaCpm: null };
+
+/** Condiciones comerciales pedidas desde la web. Los límites finos (fee máximo, etc.) los valida PubMatic al llenar el asistente. */
+function leerCondiciones(b: any): Condiciones | string {
+  const x = b?.condiciones;
+  if (x === undefined || x === null) return SIN_CONDICIONES;
+  const inicio = String(x.inicio ?? "").trim(), fin = String(x.fin ?? "").trim();
+  // PubMatic trabaja en hora del Pacífico: se admite desde "ayer" de aquí para no rechazar por el cambio de día
+  const ayer = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
+  if (inicio && !esFecha(inicio)) return "Fecha de inicio inválida";
+  if (fin && !esFecha(fin)) return "Fecha de fin inválida";
+  if (inicio && inicio < ayer) return "La fecha de inicio ya pasó";
+  if (fin && fin < (inicio || ayer)) return "La fecha de fin debe ser posterior a la de inicio";
+  const fee = String(x.fee ?? "no");
+  if (fee !== "no" && fee !== "fijo" && fee !== "porcentaje") return "Transaction fee inválido";
+  const feeValor = fee === "no" ? 0 : Number(x.feeValor);
+  if (fee === "fijo" && !(feeValor > 0 && feeValor <= 1000)) return "El transaction fee fijo debe ser un CPM en dólares mayor que 0";
+  if (fee === "porcentaje" && !(feeValor > 0 && feeValor <= 100)) return "El transaction fee en porcentaje debe estar entre 0 y 100";
+  const subasta = String(x.subasta ?? "first");
+  if (subasta !== "first" && subasta !== "fixed") return "Tipo de subasta inválido";
+  const vacio = x.mediaCpm === null || x.mediaCpm === undefined || x.mediaCpm === "";
+  const mediaCpm = vacio ? null : Number(x.mediaCpm);
+  if (mediaCpm !== null && !(mediaCpm > 0 && mediaCpm <= 1000)) return "El Media CPM debe ser un valor en dólares mayor que 0";
+  if (subasta === "fixed" && mediaCpm === null) return "Fixed Price necesita un Media CPM";
+  return { inicio, fin, fee, feeValor, subasta, mediaCpm };
+}
 
 export function rutasDeals(app: Hono<any>, db: Db) {
   db.exec(`CREATE TABLE IF NOT EXISTS deals_trabajos (
@@ -131,6 +160,10 @@ export function rutasDeals(app: Hono<any>, db: Db) {
     estado TEXT NOT NULL CHECK (estado IN ('en_cola', 'corriendo', 'listo', 'error', 'sin_pausar')),
     detalle TEXT NOT NULL DEFAULT '', pm_id TEXT NOT NULL DEFAULT '', enlace TEXT NOT NULL DEFAULT '', titulos INTEGER NOT NULL DEFAULT 0,
     creado TEXT NOT NULL, actualizado TEXT NOT NULL)`);
+  // condiciones comerciales pedidas (JSON) y lo que PubMatic mostró en su resumen; la tabla ya existía sin ellas
+  const columnas = new Set((db.prepare("PRAGMA table_info(deals_trabajos)").all() as { name: string }[]).map(x => x.name));
+  for (const col of ["condiciones", "resumen_pm"]) if (!columnas.has(col)) db.exec(`ALTER TABLE deals_trabajos ADD COLUMN ${col} TEXT NOT NULL DEFAULT ''`);
+  const guardarResumen = db.prepare("UPDATE deals_trabajos SET resumen_pm = ? WHERE id = ?");
   // Si el servidor se reinició a medias no se sabe en qué quedó el deal: que alguien lo revise en PubMatic
   db.prepare(`UPDATE deals_trabajos SET estado = 'error', detalle = 'El servidor se reinició mientras corría. Revisa en PubMatic > Deals si el deal se creó y si está en pausa.'
     WHERE estado IN ('en_cola', 'corriendo')`).run();
@@ -144,7 +177,9 @@ export function rutasDeals(app: Hono<any>, db: Db) {
       const { id } = t;
       try {
         marcar.run("corriendo", "Empezando", "", "", ahora(), id);
-        const r = await crearDeal({ nombre: t.nombre, paises: t.paises, titulosCsv: t.csv }, msg => marcar.run("corriendo", msg, "", "", ahora(), id));
+        const r = await crearDeal({ nombre: t.nombre, paises: t.paises, titulosCsv: t.csv, condiciones: t.condiciones },
+          msg => marcar.run("corriendo", msg, "", "", ahora(), id));
+        guardarResumen.run(r.resumen, id);
         if (r.estado === "ensayo") marcar.run("error", "Ensayo: el bot recorrió todo el asistente y se detuvo en el resumen. No se creó nada.", "", "", ahora(), id);
         else marcar.run("listo", `Creado y en pausa (${r.estado})`, r.pmId, r.enlace, ahora(), id);
       } catch (e) {
@@ -199,7 +234,7 @@ export function rutasDeals(app: Hono<any>, db: Db) {
 
   app.get("/api/admin/deals/trabajos", c => c.json({
     trabajos: (db.prepare(`SELECT t.*, u.nombre AS de FROM deals_trabajos t JOIN usuarios u ON u.id = t.usuario_id ORDER BY t.id DESC LIMIT 30`).all() as (Trabajo & { de: string })[])
-      .map(t => ({ ...t, filtro: JSON.parse(t.filtro) })),
+      .map(t => ({ ...t, filtro: JSON.parse(t.filtro), condiciones: (t as any).condiciones ? JSON.parse((t as any).condiciones) : null })),
   }));
 
   app.post("/api/admin/deals/crear", async c => {
@@ -211,15 +246,17 @@ export function rutasDeals(app: Hono<any>, db: Db) {
     if (typeof f === "string") return c.json({ error: f }, 400);
     const nombre = String(b?.nombre ?? "").trim();
     if (!RE_NOMBRE.test(nombre)) return c.json({ error: "Nombre del deal: de 3 a 100 caracteres, solo letras, números, espacios, punto, guion y guion bajo" }, 400);
+    const cond = leerCondiciones(b);
+    if (typeof cond === "string") return c.json({ error: cond }, 400);
     if (b?.confirmo !== true) return c.json({ error: "Falta confirmar la creación" }, 400);
     if (db.prepare("SELECT 1 FROM deals_trabajos WHERE nombre = ? AND estado IN ('en_cola', 'corriendo', 'listo', 'sin_pausar')").get(nombre)) {
       return c.json({ error: "Ya se creó (o se está creando) un deal con ese nombre" }, 409);
     }
     const t = titulosDe(d, f);
     if (!t.dentro) return c.json({ error: "Ese filtro no tiene títulos que recomendar" }, 400);
-    const id = Number(db.prepare(`INSERT INTO deals_trabajos (usuario_id, nombre, filtro, estado, detalle, titulos, creado, actualizado)
-      VALUES (?, ?, ?, 'en_cola', 'En cola', ?, ?, ?)`).run(c.get("u").id, nombre, JSON.stringify(f), t.dentro, ahora(), ahora()).lastInsertRowid);
-    cola.push({ id, nombre, paises: f.paises, csv: t.csv });
+    const id = Number(db.prepare(`INSERT INTO deals_trabajos (usuario_id, nombre, filtro, condiciones, estado, detalle, titulos, creado, actualizado)
+      VALUES (?, ?, ?, ?, 'en_cola', 'En cola', ?, ?, ?)`).run(c.get("u").id, nombre, JSON.stringify(f), JSON.stringify(cond), t.dentro, ahora(), ahora()).lastInsertRowid);
+    cola.push({ id, nombre, paises: f.paises, csv: t.csv, condiciones: cond });
     void atender();
     return c.json({ id });
   });
