@@ -186,7 +186,7 @@ function simular(d: Db, f: Filtro) {
   const publishers = (d.prepare(`SELECT publisher,
       SUM(req) x_req, SUM(vend) x_vend, SUM(gasto) x_gasto,
       SUM(CASE WHEN nat THEN req END) n_req, SUM(CASE WHEN nat THEN vend END) n_vend, SUM(CASE WHEN nat THEN gasto END) n_gasto
-    FROM ${sql} WHERE nat OR lst GROUP BY publisher ORDER BY x_req DESC LIMIT 15`).all(args) as any[])
+    FROM ${sql} WHERE nat OR lst GROUP BY publisher ORDER BY x_req DESC LIMIT 10`).all(args) as any[])
     .map(p => ({
       publisher: p.publisher,
       recomendado: medida({ filas: 0, req: p.x_req ?? 0, vend: p.x_vend ?? 0, gasto: p.x_gasto ?? 0 }, tot("x").req),
@@ -198,7 +198,7 @@ function simular(d: Db, f: Filtro) {
     lista: medida(tot("l"), u.req), solo_lista: medida(tot("s"), u.req), solo_nativo: medida(tot("o"), u.req),
     titulos: {
       total: t.todos.length, en_csv: t.dentro, requests_en_csv: t.reqDentro, bytes_csv: Buffer.byteLength(t.csv),
-      top: t.todos.slice(0, 40).map(x => ({ titulo: x.titulo, requests: x.req, pct_vendido: x.req ? x.vend / x.req : null, ecpm: x.vend ? x.gasto / x.vend : null })),
+      top: t.todos.slice(0, 10).map(x => ({ titulo: x.titulo, requests: x.req, pct_vendido: x.req ? x.vend / x.req : null, ecpm: x.vend ? x.gasto / x.vend : null })),
     },
     publishers,
   };

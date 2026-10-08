@@ -66,6 +66,7 @@
   let errorCrear = $state("");
   let trabajos = $state<Trabajo[]>([]);
 
+  const TOP = 10;   // filas que se muestran en «Por dónde se vende» y en los títulos de la lista
   const pc = (x: number | null | undefined) => (x === null || x === undefined ? "—" : `${(100 * x).toFixed(1)}%`);
   const usd = (x: number | null | undefined) => (x === null || x === undefined ? "—" : `$${x.toFixed(2)}`);
   const fecha = (s: string) => new Date(s).toLocaleString("es-MX", { dateStyle: "medium", timeStyle: "short" });
@@ -198,7 +199,7 @@
           {/each}
         </div>
       </div>
-      <h3 class="sub">Content objects del reporte <small>cambian los números de la comparación</small></h3>
+      <h3 class="sub">Content objects del reporte</h3>
       <div class="dos">
         <label class="campo"><span class="etq">Género</span>
           <select bind:value={genero}>
@@ -252,14 +253,9 @@
           </label>
         {/if}
       </div>
-      {#if opciones.atributos}
-        <small class="nota">Género, categoría, serie, clasificación, duración y en vivo entran en la recomendación también por la lista de
-          títulos, aunque el publisher no los declare. El idioma nunca se rellena: filtra igual en los dos caminos y va al deal como regla.
-          La duración llega como un código del 1 al 8, no en minutos.</small>
-      {/if}
 
       {#if opciones.senales_pubmatic}
-        <h3 class="sub">Señales que solo existen en PubMatic <small>van al deal, no cambian los números</small></h3>
+        <h3 class="sub">Otras señales</h3>
         {#each extras as e, i (i)}
           {@const def = esPm(e.senal)}
           <div class="extra">
@@ -336,12 +332,12 @@
           <li>El eCPM es lo que se pagó en esa ventana, no el precio de tu deal: ese lo fijas en PubMatic.</li>
         </ul>
 
-        <h3>Por dónde se vende (el precio lo pone la ruta, no el título)</h3>
+        <h3>Por dónde se vende</h3>
         <div class="scroll">
           <table>
             <thead><tr><th>Publisher</th><th>Requests de la recomendación</th><th>% de la recomendación</th><th>Vendido</th><th>eCPM histórico</th></tr></thead>
             <tbody>
-              {#each sim.publishers.filter(p => p.recomendado.requests) as p (p.publisher)}
+              {#each sim.publishers.filter(p => p.recomendado.requests).slice(0, TOP) as p (p.publisher)}
                 <tr><td>{p.publisher}</td><td>{fmt(p.recomendado.requests)}</td><td>{pc(p.recomendado.pct_universo)}</td>
                   <td>{pc(p.recomendado.pct_vendido)}</td><td>{usd(p.recomendado.ecpm)}</td></tr>
               {/each}
@@ -352,9 +348,9 @@
         <h3>Títulos con más requests de la lista</h3>
         <div class="scroll">
           <table>
-            <thead><tr><th>Título (como llega en el bid request)</th><th>Requests</th><th>Vendido</th><th>eCPM histórico</th></tr></thead>
+            <thead><tr><th>Título</th><th>Requests</th><th>Vendido</th><th>eCPM histórico</th></tr></thead>
             <tbody>
-              {#each sim.titulos.top as t (t.titulo)}
+              {#each sim.titulos.top.slice(0, TOP) as t (t.titulo)}
                 <tr><td>{t.titulo}</td><td>{fmt(t.requests)}</td><td>{pc(t.pct_vendido)}</td><td>{usd(t.ecpm)}</td></tr>
               {/each}
             </tbody>
@@ -476,7 +472,6 @@
   h2 { font-size: 17px; margin: 0 0 12px; }
   h3 { font-size: 14px; margin: 18px 0 8px; }
   h3.sub { margin: 6px 0 0; }
-  h3.sub small { font-weight: 400; color: var(--ink2); margin-left: 6px; }
   .etq i { font-style: normal; opacity: .7; font-size: 11px; margin-left: 4px; }
   .campo input[type=text], .campo select { width: 100%; }
   .extra { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 2fr) auto; gap: 8px; align-items: center; }
