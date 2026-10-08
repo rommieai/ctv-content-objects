@@ -14,10 +14,16 @@
       top: { titulo: string; requests: number; pct_vendido: number | null; ecpm: number | null }[] };
     publishers: { publisher: string; recomendado: Medida; nativo: Medida }[];
   }
+  // Condiciones comerciales del deal: lo que se llena en el paso Configuration de PubMatic. Montos en USD.
+  interface Condiciones {
+    inicio: string; fin: string; fee: "no" | "fijo" | "porcentaje"; feeValor: number;
+    subasta: "first" | "fixed"; mediaCpm: number | null;
+  }
   interface Trabajo {
     id: number; nombre: string; estado: "en_cola" | "corriendo" | "listo" | "error" | "sin_pausar"; detalle: string;
     pm_id: string; enlace: string; titulos: number; creado: string; de: string;
     filtro: { paises: string[]; genero: string; categoria: string };
+    condiciones: Condiciones | null; resumen_pm: string;
   }
 
   let opciones = $state<OpcionesDeals | null>(null);
@@ -29,6 +35,14 @@
   let calculando = $state(false);
   let nombre = $state("");
   let confirmo = $state(false);
+  // condiciones del deal (paso Configuration de PubMatic)
+  let inicio = $state("");
+  let fin = $state("");
+  let sinFin = $state(true);
+  let fee = $state<Condiciones["fee"]>("no");
+  let feeValor = $state<number | null>(null);
+  let subasta = $state<Condiciones["subasta"]>("first");
+  let mediaCpm = $state<number | null>(null);
   let creando = $state(false);
   let errorCrear = $state("");
   let trabajos = $state<Trabajo[]>([]);
@@ -50,6 +64,27 @@
   const viejo = $derived(!!sim && JSON.stringify(sim.filtro) !== JSON.stringify(filtro()));
   const ganancia = $derived(sim && sim.nativo.requests ? sim.recomendado.requests / sim.nativo.requests - 1 : null);
   const activos = $derived(trabajos.some(t => t.estado === "en_cola" || t.estado === "corriendo"));
+  const positivo = (x: number | null) => typeof x === "number" && x > 0;
+  // por qué no se puede crear todavía con las condiciones escritas ("" = todo bien)
+  const faltaCondicion = $derived(
+    fee !== "no" && !positivo(feeValor) ? "Escribe el valor del transaction fee."
+    : fee === "porcentaje" && (feeValor ?? 0) > 100 ? "El transaction fee en porcentaje no puede pasar de 100."
+    : subasta === "fixed" && !positivo(mediaCpm) ? "Fixed Price necesita un Media CPM."
+    : mediaCpm !== null && !positivo(mediaCpm) ? "El Media CPM debe ser mayor que 0."
+    : !sinFin && !fin ? "Elige la fecha de fin o marca «Sin fecha de fin»."
+    : !sinFin && fin && inicio && fin < inicio ? "La fecha de fin debe ser posterior a la de inicio."
+    : "");
+  const condiciones = (): Condiciones => ({
+    inicio, fin: sinFin ? "" : fin, fee, feeValor: fee === "no" ? 0 : feeValor ?? 0, subasta, mediaCpm: positivo(mediaCpm) ? mediaCpm : null,
+  });
+  const dia = (iso: string) => `${iso.slice(8, 10)}/${iso.slice(5, 7)}/${iso.slice(0, 4)}`;
+  function textoCondiciones(c: Condiciones) {
+    return [
+      c.subasta === "fixed" ? `Fixed Price · Media CPM ${usd(c.mediaCpm)}` : c.mediaCpm ? `First Price · piso ${usd(c.mediaCpm)}` : "First Price",
+      c.fee === "no" ? "sin fee" : c.fee === "fijo" ? `fee ${usd(c.feeValor)} CPM` : `fee ${c.feeValor}%`,
+      `${c.inicio ? dia(c.inicio) : "desde hoy"} → ${c.fin ? dia(c.fin) : "sin fin"}`,
+    ].join(" · ");
+  }
 
   api<OpcionesDeals>("/api/admin/deals/opciones").then(o => (opciones = o)).catch(e => (error = e.message));
   const cargarTrabajos = () => api<{ trabajos: Trabajo[] }>("/api/admin/deals/trabajos").then(r => (trabajos = r.trabajos)).catch(() => {});
@@ -86,7 +121,7 @@
   async function crear() {
     creando = true; errorCrear = "";
     try {
-      await api("/api/admin/deals/crear", { metodo: "POST", cuerpo: { ...sim!.filtro, nombre, confirmo: true } });
+      await api("/api/admin/deals/crear", { metodo: "POST", cuerpo: { ...sim!.filtro, nombre, condiciones: condiciones(), confirmo: true } });
       confirmo = false;
       await cargarTrabajos();
     } catch (e) { errorCrear = (e as Error).message; }
@@ -195,13 +230,66 @@
         <h2>3. Llevar la recomendación a PubMatic</h2>
         <p class="nota">Se crea un Auction Package Deal con {opciones.pubmatic.dsp} · {opciones.pubmatic.buyer}, video en CTV,
           {sim.filtro.paises.join(", ")} y la regla Title is con {fmt(sim.titulos.en_csv)} títulos ({fmt(sim.lista.requests)} requests de la
-          recomendación; los otros {fmt(sim.solo_nativo.requests)} piden un segundo deal con los filtros de PubMatic). Sin transaction fee, First Price y el piso
-          por defecto de PubMatic. <b>Queda en pausa</b>: el precio y la activación los decides tú en PubMatic.</p>
+          recomendación; los otros {fmt(sim.solo_nativo.requests)} piden un segundo deal con los filtros de PubMatic). Las condiciones de abajo
+          se llenan tal cual en PubMatic. <b>Queda en pausa</b>: la activación la decides tú en PubMatic.</p>
         <div class="crear">
           <label class="campo"><span class="etq">Nombre del deal</span><input type="text" bind:value={nombre} maxlength="100" /></label>
+
+          <fieldset>
+            <legend>Transaction Date</legend>
+            <div class="linea">
+              <label class="campo"><span class="etq">Desde</span><input type="date" bind:value={inicio} /></label>
+              <label class="campo"><span class="etq">Hasta</span><input type="date" bind:value={fin} min={inicio || undefined} disabled={sinFin} /></label>
+              <label class="marca"><input type="checkbox" bind:checked={sinFin} /> Sin fecha de fin (Ongoing)</label>
+            </div>
+            <small class="nota">Sin «Desde», el deal arranca hoy. PubMatic usa hora del Pacífico.</small>
+          </fieldset>
+
+          <fieldset>
+            <legend>Transaction Fee</legend>
+            <div class="linea">
+              <div class="opciones">
+                <button type="button" class:sel={fee === "no"} onclick={() => (fee = "no")}>No</button>
+                <button type="button" class:sel={fee !== "no"} onclick={() => { if (fee === "no") fee = "fijo"; }}>Sí</button>
+              </div>
+              {#if fee !== "no"}
+                <div class="campo"><span class="etq">CPM</span>
+                  <div class="opciones">
+                    <button type="button" class:sel={fee === "fijo"} onclick={() => (fee = "fijo")}>Fixed</button>
+                    <button type="button" class:sel={fee === "porcentaje"} onclick={() => (fee = "porcentaje")}>Percentage</button>
+                  </div>
+                </div>
+                <label class="campo"><span class="etq">{fee === "fijo" ? "USD por mil" : "Porcentaje"}</span>
+                  <span class="monto"><span>{fee === "fijo" ? "$" : "%"}</span>
+                    <input type="number" bind:value={feeValor} min="0" max={fee === "fijo" ? undefined : 100} step="0.01" placeholder="0.00" /></span>
+                </label>
+              {/if}
+            </div>
+            {#if fee === "fijo"}<small class="nota">PubMatic admite hasta $10 de fee fijo.</small>{/if}
+          </fieldset>
+
+          <fieldset>
+            <legend>Auction Type y Media CPM</legend>
+            <div class="linea">
+              <div class="opciones">
+                <button type="button" class:sel={subasta === "first"} onclick={() => (subasta = "first")}>First Price</button>
+                <button type="button" class:sel={subasta === "fixed"} onclick={() => (subasta = "fixed")}>Fixed Price</button>
+              </div>
+              <label class="campo"><span class="etq">{subasta === "fixed" ? "Media CPM (USD)" : "Piso de media, opcional (USD)"}</span>
+                <span class="monto"><span>$</span>
+                  <input type="number" bind:value={mediaCpm} min="0" step="0.01" placeholder={subasta === "fixed" ? "0.00" : "piso por defecto"} /></span>
+              </label>
+            </div>
+            <small class="nota">{subasta === "fixed"
+              ? "Fixed Price: el comprador paga exactamente ese Media CPM."
+              : "First Price: gana la puja más alta. Sin piso, PubMatic usa el suyo por defecto ($0.50)."}</small>
+          </fieldset>
+
+          <p class="resumen-cond"><b>Se creará con:</b> {textoCondiciones(condiciones())}</p>
+          {#if faltaCondicion}<small class="nota falta">{faltaCondicion}</small>{/if}
           <label class="confirmo"><input type="checkbox" bind:checked={confirmo} /> Entiendo que esto crea un deal real en la cuenta de PubMatic</label>
           <div class="botones">
-            <button class="primario" disabled={viejo || creando || !confirmo || !nombre.trim() || !opciones.pubmatic.configurado || !sim.titulos.en_csv} onclick={crear}>
+            <button class="primario" disabled={viejo || creando || !confirmo || !nombre.trim() || !!faltaCondicion || !opciones.pubmatic.configurado || !sim.titulos.en_csv} onclick={crear}>
               {creando ? "Enviando…" : "Crear en PubMatic (en pausa)"}</button>
             <button disabled={viejo || !sim.titulos.en_csv} onclick={descargar}>Descargar el CSV de títulos</button>
           </div>
@@ -217,15 +305,17 @@
         <h2>Deals creados desde aquí</h2>
         <div class="scroll">
           <table>
-            <thead><tr><th>Deal</th><th>Filtros</th><th>Títulos</th><th>Estado</th><th>Quién</th><th>Cuándo</th></tr></thead>
+            <thead><tr><th>Deal</th><th>Filtros</th><th>Condiciones</th><th>Títulos</th><th>Estado</th><th>Quién</th><th>Cuándo</th></tr></thead>
             <tbody>
               {#each trabajos as t (t.id)}
                 <tr>
                   <td>{#if t.enlace}<a href={t.enlace} target="_blank" rel="noopener">{t.nombre}</a>{:else}{t.nombre}{/if}
                     {#if t.pm_id}<br /><small>{t.pm_id}</small>{/if}</td>
                   <td class="izq">{[t.filtro.genero && mayus(t.filtro.genero), t.filtro.categoria, t.filtro.paises.join(", ")].filter(Boolean).join(" · ")}</td>
+                  <td class="izq">{t.condiciones ? textoCondiciones(t.condiciones) : "First Price · sin fee · sin fin"}</td>
                   <td>{fmt(t.titulos)}</td>
-                  <td class="izq"><span class="estado {t.estado}">{ESTADO[t.estado]}</span>{#if t.estado !== "listo"}<br /><small>{t.detalle}</small>{/if}</td>
+                  <td class="izq"><span class="estado {t.estado}">{ESTADO[t.estado]}</span>{#if t.estado !== "listo"}<br /><small>{t.detalle}</small>{/if}
+                    {#if t.resumen_pm}<br /><small title="Lo que mostró el resumen de PubMatic">PubMatic: {t.resumen_pm.split(" · Auction Type · ")[1] ? "Auction Type · " + t.resumen_pm.split(" · Auction Type · ")[1] : t.resumen_pm}</small>{/if}</td>
                   <td class="izq">{t.de}</td><td>{fecha(t.creado)}</td>
                 </tr>
               {/each}
@@ -271,8 +361,26 @@
   th:first-child, td:first-child, td.izq { text-align: left; white-space: normal; }
   th { color: var(--ink2); font-weight: 600; }
   tr:last-child td { border-bottom: 0; }
-  .crear { display: grid; gap: 10px; max-width: 560px; }
+  .crear { display: grid; gap: 12px; max-width: 680px; }
   .crear input[type=text] { width: 100%; }
+  fieldset { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px 12px; margin: 0; display: grid; gap: 8px; min-width: 0; }
+  legend { font-size: 13px; font-weight: 600; color: var(--ink2); padding: 0 6px; }
+  .linea { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; }
+  .opciones { display: flex; }
+  .opciones button { border-radius: 0; padding: 6px 12px; font-size: 14px; }
+  .opciones button:first-child { border-radius: 6px 0 0 6px; }
+  .opciones button:last-child { border-radius: 0 6px 6px 0; margin-left: -1px; }
+  .opciones button.sel { background: var(--accent-fuerte); border-color: var(--accent); color: #fff; font-weight: 600; }
+  .crear input[type=date], .crear input[type=number] {
+    font: inherit; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink);
+    min-width: 0; max-width: 100%;
+  }
+  .crear input[type=number] { width: 150px; font-variant-numeric: tabular-nums; }
+  .crear input:disabled { opacity: .45; }
+  .monto { display: flex; align-items: center; gap: 6px; color: var(--ink2); }
+  .marca { display: flex; gap: 6px; align-items: center; font-size: 14px; padding-bottom: 6px; }
+  .resumen-cond { margin: 0; font-size: 14px; }
+  .falta { color: var(--bad); }
   .confirmo { display: flex; gap: 8px; align-items: center; font-size: 14px; }
   .botones { display: flex; flex-wrap: wrap; gap: 8px; }
   .aviso { background: var(--bad-bg); color: var(--bad); padding: 8px 12px; border-radius: 6px; }
