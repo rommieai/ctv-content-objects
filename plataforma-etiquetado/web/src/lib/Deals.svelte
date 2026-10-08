@@ -236,13 +236,13 @@
               {#each valoresDe("envivo") as v (v.valor)}<option value={v.valor}>{etiquetaValor(v)}</option>{/each}
             </select>
           </label>
-          <label class="campo"><span class="etq">Idioma <i>solo lo declarado</i></span>
+          <label class="campo"><span class="etq">Idioma</span>
             <select bind:value={idioma}>
               <option value="">(cualquiera)</option>
               {#each valoresDe("idioma") as v (v.valor)}<option value={v.valor}>{v.valor}</option>{/each}
             </select>
           </label>
-          <label class="campo"><span class="etq">Trae título <i>solo lo declarado</i></span>
+          <label class="campo"><span class="etq">Trae título</span>
             <select bind:value={conTitulo}>
               <option value="">(cualquiera)</option>
               {#each valoresDe("con_titulo") as v (v.valor)}<option value={v.valor}>{etiquetaValor(v)}</option>{/each}
@@ -459,7 +459,6 @@
   h2 { font-size: 17px; margin: 0 0 12px; }
   h3 { font-size: 14px; margin: 18px 0 8px; }
   h3.sub { margin: 6px 0 0; }
-  .etq i { font-style: normal; opacity: .7; font-size: 11px; margin-left: 4px; }
   .campo input[type=text], .campo select { width: 100%; }
   .extra { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 2fr) auto; gap: 8px; align-items: center; }
   .extra input[type=text], .extra select { width: 100%; }
