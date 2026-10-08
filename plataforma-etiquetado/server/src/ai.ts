@@ -1,14 +1,23 @@
 // AI Deals: lee el brief de una campaña y elige los content objects con los que se arma el deal.
 //
-// Claude recibe el brief y el catálogo de lo que hay en el corte vigente (países, géneros, categorías,
+// El modelo recibe el brief y el catálogo de lo que hay en el corte vigente (países, géneros, categorías,
 // clasificaciones e idiomas, con su peso en requests) y devuelve un plan con valores de ese catálogo. La salida
 // es estructurada: el esquema solo admite valores que existen, así que el plan siempre se puede simular y crear.
+//
+// Dos proveedores: Claude (ANTHROPIC_API_KEY) o un modelo abierto servido por Groq (GROQ_API_KEY, tiene capa
+// gratuita). Si están las dos llaves manda Claude, salvo que AI_DEALS_PROVEEDOR diga otra cosa.
 import Anthropic from "@anthropic-ai/sdk";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
 import { z } from "zod";
 
-const MODELO = process.env.AI_DEALS_MODELO ?? "claude-opus-5-5";
-export const aiConfigurado = () => !!(process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN);
+const HAY_ANTHROPIC = !!(process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN);
+// con la llave de respaldo se sigue cuando la principal se queda sin cupo
+const LLAVES_GROQ = [process.env.GROQ_API_KEY, process.env.GROQ_API_KEY_BACKUP].filter((x): x is string => !!x);
+const PROVEEDOR = process.env.AI_DEALS_PROVEEDOR === "groq" || process.env.AI_DEALS_PROVEEDOR === "anthropic"
+  ? process.env.AI_DEALS_PROVEEDOR : HAY_ANTHROPIC || !LLAVES_GROQ.length ? "anthropic" : "groq";
+const MODELO = process.env.AI_DEALS_MODELO ?? (PROVEEDOR === "groq" ? "openai/gpt-oss-120b" : "claude-opus-5-5");
+const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
+export const aiConfigurado = () => (PROVEEDOR === "groq" ? LLAVES_GROQ.length > 0 : HAY_ANTHROPIC);
 
 export interface ValorCatalogo { valor: string; nombre?: string; pct: number }
 export interface Catalogo {
@@ -47,7 +56,36 @@ const lista = (titulo: string, vs: ValorCatalogo[]) =>
 const enumDe = (vs: string[]) => z.enum(vs as [string, ...string[]]);
 const slug = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-/** Pide a Claude el plan de content objects para un brief. Lanza ErrorAi con un mensaje para mostrar en pantalla. */
+/** El plan con Groq (API compatible con OpenAI): salida JSON atada al esquema. Devuelve lo que mandó el modelo, sin validar. */
+async function pedirAGroq(usuario: string, esquema: unknown): Promise<unknown> {
+  for (const [i, llave] of LLAVES_GROQ.entries()) {
+    let r: Response;
+    try {
+      r = await fetch(GROQ_URL, {
+        method: "POST", headers: { Authorization: `Bearer ${llave}`, "Content-Type": "application/json" }, signal: AbortSignal.timeout(90_000),
+        body: JSON.stringify({
+          model: MODELO, temperature: 0.2, max_completion_tokens: 3000,
+          response_format: { type: "json_schema", json_schema: { name: "plan", strict: true, schema: esquema } },
+          messages: [{ role: "system", content: SISTEMA }, { role: "user", content: usuario }],
+        }),
+      });
+    } catch { throw new ErrorAi("No se pudo conectar con la API de Groq"); }
+    if (r.ok) {
+      const j = await r.json().catch(() => null) as { choices?: { message?: { content?: string } }[] } | null;
+      try { return JSON.parse(j?.choices?.[0]?.message?.content ?? ""); } catch { return null; }
+    }
+    const sinCupo = r.status === 401 || r.status === 403 || r.status === 429;
+    if (sinCupo && i < LLAVES_GROQ.length - 1) continue;
+    console.error(`ai deals (groq ${r.status}):`, (await r.text().catch(() => "")).slice(0, 300));
+    if (r.status === 401 || r.status === 403) throw new ErrorAi("La llave de la API de Groq no es válida");
+    if (r.status === 429) throw new ErrorAi("Groq está limitando las solicitudes (la capa gratuita tiene tope por minuto y por día); intenta de nuevo en un momento");
+    if (r.status === 413) throw new ErrorAi("El brief es demasiado largo para el límite por minuto de Groq; acórtalo e intenta de nuevo");
+    throw new ErrorAi(`La API de Groq respondió con error ${r.status}`);
+  }
+  throw new ErrorAi("El servidor no tiene configurada la llave de la API de Groq");
+}
+
+/** Pide al modelo el plan de content objects para un brief. Lanza ErrorAi con un mensaje para mostrar en pantalla. */
 export async function interpretarBrief(brief: string, cat: Catalogo): Promise<PlanBrief> {
   const Plan = z.object({
     paises: z.array(enumDe(cat.paises.map(x => x.valor))),
@@ -63,26 +101,10 @@ export async function interpretarBrief(brief: string, cat: Catalogo): Promise<Pl
     lista("Clasificaciones", cat.ratings), lista("Idiomas", cat.idiomas),
   ].join("\n\n");
 
-  const client = new Anthropic();
-  let respuesta;
-  try {
-    respuesta = await client.messages.parse({
-      model: MODELO,
-      max_tokens: 16000,
-      thinking: { type: "adaptive" },
-      output_config: { effort: "medium", format: zodOutputFormat(Plan) },
-      system: SISTEMA,
-      messages: [{ role: "user", content: `<catalogo>\n${catalogo}\n</catalogo>\n\n<brief>\n${brief}\n</brief>` }],
-    });
-  } catch (e) {
-    if (e instanceof Anthropic.AuthenticationError) throw new ErrorAi("La llave de la API de Anthropic no es válida");
-    if (e instanceof Anthropic.RateLimitError) throw new ErrorAi("La API de Anthropic está limitando las solicitudes; intenta de nuevo en un momento");
-    if (e instanceof Anthropic.APIConnectionError) throw new ErrorAi("No se pudo conectar con la API de Anthropic");
-    if (e instanceof Anthropic.APIError) throw new ErrorAi(`La API de Anthropic respondió con error ${e.status ?? ""}`.trim());
-    throw e;
-  }
-  if (respuesta.stop_reason === "refusal") throw new ErrorAi("El modelo no quiso procesar ese brief. Revisa el texto e intenta de nuevo");
-  const p = respuesta.parsed_output;
+  const usuario = `<catalogo>\n${catalogo}\n</catalogo>\n\n<brief>\n${brief}\n</brief>`;
+  const p = PROVEEDOR === "groq"
+    ? Plan.safeParse(await pedirAGroq(usuario, z.toJSONSchema(Plan))).data
+    : await pedirAClaude(usuario, Plan);
   if (!p) throw new ErrorAi("El modelo no devolvió un plan que se pudiera leer. Intenta de nuevo");
 
   const unicos = <T>(xs: T[], n: number) => [...new Set(xs)].slice(0, n);
@@ -96,4 +118,27 @@ export async function interpretarBrief(brief: string, cat: Catalogo): Promise<Pl
     palabras_clave: unicos(p.palabras_clave.map(slug).filter(Boolean), MAX.palabras_clave),
     razon: p.razon.trim().slice(0, 900),
   };
+}
+
+async function pedirAClaude<T extends z.ZodType>(usuario: string, Plan: T): Promise<z.infer<T> | null> {
+  const client = new Anthropic();
+  let respuesta;
+  try {
+    respuesta = await client.messages.parse({
+      model: MODELO,
+      max_tokens: 16000,
+      thinking: { type: "adaptive" },
+      output_config: { effort: "medium", format: zodOutputFormat(Plan) },
+      system: SISTEMA,
+      messages: [{ role: "user", content: usuario }],
+    });
+  } catch (e) {
+    if (e instanceof Anthropic.AuthenticationError) throw new ErrorAi("La llave de la API de Anthropic no es válida");
+    if (e instanceof Anthropic.RateLimitError) throw new ErrorAi("La API de Anthropic está limitando las solicitudes; intenta de nuevo en un momento");
+    if (e instanceof Anthropic.APIConnectionError) throw new ErrorAi("No se pudo conectar con la API de Anthropic");
+    if (e instanceof Anthropic.APIError) throw new ErrorAi(`La API de Anthropic respondió con error ${e.status ?? ""}`.trim());
+    throw e;
+  }
+  if (respuesta.stop_reason === "refusal") throw new ErrorAi("El modelo no quiso procesar ese brief. Revisa el texto e intenta de nuevo");
+  return (respuesta.parsed_output ?? null) as z.infer<T> | null;
 }

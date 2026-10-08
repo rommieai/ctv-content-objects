@@ -100,7 +100,7 @@
   {#if error}<div class="aviso">{error}</div>{/if}
   {#if opciones}
     {#if !opciones.configurado.datos}<div class="aviso">Todavía no se ha cargado la base de deals (deals.db).</div>{/if}
-    {#if !opciones.configurado.ai}<div class="aviso">Este servidor no tiene la llave de la API de Anthropic (ANTHROPIC_API_KEY): no puede leer el brief.</div>{/if}
+    {#if !opciones.configurado.ai}<div class="aviso">Este servidor no tiene la llave del modelo que lee el brief (ANTHROPIC_API_KEY o GROQ_API_KEY).</div>{/if}
 
     <section class="caja">
       <h2>1. La campaña</h2>

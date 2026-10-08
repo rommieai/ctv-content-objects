@@ -92,11 +92,13 @@ Segunda pestaña de deals (admin y perfil `deals`): el deal se arma a partir del
 
 - **Entradas:** brief (texto), DSP (lista de PubMatic, `server/src/dsps.ts`), ID de la cuenta en el DSP (seat ID),
   CPM, tipo de campaña (solo Connected TV) y formato (solo Video).
-- **Content objects:** `server/src/ai.ts` le pasa a Claude (`claude-opus-5-5`, salida estructurada) el brief y el
+- **Content objects:** `server/src/ai.ts` le pasa al modelo (salida estructurada) el brief y el
   catálogo del corte vigente (países, géneros, categorías IAB, clasificaciones e idiomas con su peso en
   requests). Devuelve un plan con valores de ese catálogo: países, 1 a 4 géneros, y categoría, clasificación o
-  idioma solo si el brief los pide, más una explicación y las palabras clave del nombre. Necesita
-  `ANTHROPIC_API_KEY` en el `.env`.
+  idioma solo si el brief los pide, más una explicación y las palabras clave del nombre. El modelo es
+  Claude (`claude-opus-5-5`, con `ANTHROPIC_API_KEY`) o `openai/gpt-oss-120b` servido por Groq (con
+  `GROQ_API_KEY`, capa gratuita: 1,000 solicitudes al día y 8,000 tokens por minuto). Si están las dos
+  llaves se usa Claude, salvo `AI_DEALS_PROVEEDOR=groq`.
 - **CPM:** se reparte mitad y mitad: transaction fee fijo y Media CPM a precio fijo (CPM 4 = $2 + $2). Se
   admite de $1 a $20 (la puja no baja de $0.50 y PubMatic no deja un fee fijo mayor a $10).
 - **Nombre:** palabras clave del brief + `ctv-video` + DSP + CPM + fecha y hora, en minúsculas con guiones.

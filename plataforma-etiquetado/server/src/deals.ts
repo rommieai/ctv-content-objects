@@ -476,7 +476,7 @@ export function rutasDeals(app: Hono<any>, db: Db) {
   app.post("/api/admin/deals/ai/plan", async c => {
     const d = base();
     if (!d) return c.json({ error: "Todavía no se ha cargado la base de deals (deals.db)" }, 503);
-    if (!aiConfigurado()) return c.json({ error: "El servidor no tiene configurada la llave de la API de Anthropic (ANTHROPIC_API_KEY)" }, 503);
+    if (!aiConfigurado()) return c.json({ error: "El servidor no tiene configurada la llave del modelo que lee el brief (ANTHROPIC_API_KEY o GROQ_API_KEY)" }, 503);
     const e = leerEntradaAi(await c.req.json().catch(() => null));
     if (typeof e === "string") return c.json({ error: e }, 400);
     let plan: PlanBrief;
