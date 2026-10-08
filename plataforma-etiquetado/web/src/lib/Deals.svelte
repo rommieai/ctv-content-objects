@@ -9,11 +9,11 @@
   interface SenalRegla { nombre: string; modo: "manual" | "estandar"; operador: string; valores: string[] }
   // Los content objects del reporte por los que se filtra, más búsqueda por título y señales solo-PubMatic
   interface FiltroDeal {
-    paises: string[]; genero: string; categoria: string; serie?: string; rating?: string; duracion?: string; envivo?: string;
+    paises: string[]; genero: string; categoria: string; categoria_num?: string; serie?: string; rating?: string; duracion?: string; envivo?: string;
     idioma?: string; con_titulo?: string; titulo?: string; extras?: Extra[];
   }
   interface OpcionesDeals {
-    meta: Record<string, string>; paises: { pais: string; requests: number }[]; generos: Valor[]; categorias: Valor[];
+    meta: Record<string, string>; paises: { pais: string; requests: number }[]; generos: Valor[]; categorias: Valor[]; categorias_num?: Valor[];
     atributos?: Record<string, Valor[]>; enriquecibles?: string[]; senales_pubmatic?: SenalPm[]; max_senales?: number;
     pubmatic: { configurado: boolean; dsp: string; buyer: string; ensayo: boolean };
   }
@@ -41,6 +41,7 @@
   let paises = $state<string[]>(["Mexico"]);
   let genero = $state("");
   let categoria = $state("");
+  let categoriaNum = $state("");   // código numérico de IAB 2.2 / 3.0
   let serie = $state("");
   let rating = $state("");
   let duracion = $state("");
@@ -77,17 +78,17 @@
   const extrasListos = (): Extra[] => extras.filter(e => e.senal && (e.operador === "is any" || partir(e.texto).length))
     .map(e => ({ senal: e.senal, operador: e.operador, valores: e.operador === "is any" ? [] : partir(e.texto) }));
   const filtro = (): FiltroDeal => ({
-    paises, genero, categoria, serie: serie.trim(), rating, duracion, envivo, idioma, con_titulo: conTitulo, titulo: titulo.trim(), extras: extrasListos(),
+    paises, genero, categoria, categoria_num: categoriaNum, serie: serie.trim(), rating, duracion, envivo, idioma, con_titulo: conTitulo, titulo: titulo.trim(), extras: extrasListos(),
   });
   // misma forma sin importar el orden de las llaves, para saber si lo calculado sigue correspondiendo a lo elegido
-  const CAMPOS_FILTRO = ["genero", "categoria", "serie", "rating", "duracion", "envivo", "idioma", "con_titulo", "titulo"] as const;
+  const CAMPOS_FILTRO = ["genero", "categoria", "categoria_num", "serie", "rating", "duracion", "envivo", "idioma", "con_titulo", "titulo"] as const;
   const clave = (f: FiltroDeal) => JSON.stringify([f.paises, CAMPOS_FILTRO.map(k => f[k] ?? ""), (f.extras ?? []).map(e => [e.senal, e.operador, e.valores])]);
   const SENAL_PM: Record<string, string> = {
-    genero: "Genre", categoria: "Category", serie: "Series", rating: "Content Rating", duracion: "Length", envivo: "Live Stream",
+    genero: "Genre", categoria: "Category", categoria_num: "Category", serie: "Series", rating: "Content Rating", duracion: "Length", envivo: "Live Stream",
     idioma: "Language", con_titulo: "Title present",
   };
   const NOMBRE_CAMPO: Record<string, string> = {
-    genero: "Género", categoria: "Categoría IAB", serie: "Serie", rating: "Clasificación", duracion: "Duración", envivo: "En vivo",
+    genero: "Género", categoria: "Categoría IAB", categoria_num: "Categoría IAB 2.2 / 3.0", serie: "Serie", rating: "Clasificación", duracion: "Duración", envivo: "En vivo",
     idioma: "Idioma", con_titulo: "Trae título", titulo: "Título contiene",
   };
   /** Los filtros del reporte como los pondría alguien a mano en PubMatic. */
@@ -109,7 +110,8 @@
 
   const generos = $derived(opciones?.generos.filter(enPaises) ?? []);
   const categorias = $derived(opciones?.categorias.filter(enPaises) ?? []);
-  const algunFiltro = $derived(!!(genero || categoria || serie.trim() || rating || duracion || envivo || idioma || conTitulo || titulo.trim().length >= 3));
+  const categoriasNum = $derived(opciones?.categorias_num?.filter(enPaises) ?? []);
+  const algunFiltro = $derived(!!(genero || categoria || categoriaNum || serie.trim() || rating || duracion || envivo || idioma || conTitulo || titulo.trim().length >= 3));
   const listo = $derived(paises.length > 0 && algunFiltro);
   // lo que se calculó ya no corresponde a lo que está elegido
   const viejo = $derived(!!sim && clave(sim.filtro) !== clave(filtro()));
@@ -214,6 +216,14 @@
             {#each categorias as c (c.valor)}<option value={c.valor}>{c.valor}{c.nombre ? ` · ${c.nombre}` : ""}</option>{/each}
           </select>
         </label>
+        {#if opciones.categorias_num}
+          <label class="campo"><span class="etq">Categoría IAB 2.2 / 3.0</span>
+            <select bind:value={categoriaNum}>
+              <option value="">(cualquiera)</option>
+              {#each categoriasNum as c (c.valor)}<option value={c.valor}>{c.valor}{c.nombre ? ` · ${c.nombre}` : ""}</option>{/each}
+            </select>
+          </label>
+        {/if}
         {#if opciones.atributos}
           <label class="campo"><span class="etq">Serie</span>
             <input type="text" list="deals-series" bind:value={serie} placeholder="(cualquiera) — escribe para buscar" />
