@@ -108,7 +108,7 @@
   let irA: number | null = null;
   async function siguiente() {
     const { posicion } = await api("/api/siguiente");
-    if (posicion < 0) { toast("No quedan pendientes 🎉"); return; }
+    if (posicion < 0) { toast("No quedan pendientes"); return; }
     irA = posicion; // la muestra se ordena por número: la posición da la página y el lugar en ella
     qEscrito = "";
     const antes = JSON.stringify(f);
@@ -145,11 +145,11 @@
     <details class="ayuda" open={!prog?.hechos}>
       <summary>Cómo revisar</summary>
       <ul>
-        <li>Cada tarjeta es una fila real del inventario: un título emitido por una app en un país. Los campos en <span class="muestra-chip llenado">naranja</span> son los que <b>llenamos de más</b> (el vendedor no los mandó). Los campos en <span class="muestra-chip corregido">morado</span> son los que <b>corregimos</b>: el vendedor mandó un valor, lo consideramos equivocado y lo reemplazamos (abajo del campo dice qué mandó). Solo esos dos se revisan.</li>
-        <li>Pregunta para cada campo naranja o morado: <b>¿este valor es correcto para lo que esta app emite con este título?</b> Usa <i>Buscar</i> (Google con el título y la app) y, si aparece, la ficha IMDb de referencia.</li>
+        <li>Cada tarjeta es una fila real del inventario: un título emitido por una app en un país. Los campos en <span class="muestra-chip llenado">naranja</span> son los que <b>llenamos de más</b> (el vendedor no los mandó). Los campos en <span class="muestra-chip corregido">rosa</span> son los que <b>corregimos</b>: el vendedor mandó un valor, lo consideramos equivocado y lo reemplazamos (abajo del campo dice qué mandó). Solo esos dos se revisan.</li>
+        <li>Pregunta para cada campo naranja o rosa: <b>¿este valor es correcto para lo que esta app emite con este título?</b> Usa <i>Buscar</i> (Google con el título y la app) y, si aparece, la ficha IMDb de referencia.</li>
         <li><b>Correcto</b>: el valor describe bien el contenido. <b>Incorrecto</b>: no lo describe (si sabes el valor bueno, escríbelo). <b>No se sabe</b>: no encontraste cómo comprobarlo; no cuenta como correcto.</li>
         <li>Cuando un campo trae varios valores (varios códigos de categoría o varios géneros) se juzga <b>cada uno por separado</b>. Los marcados <b>MÁS ESPECÍFICO</b> son códigos de género que se agregaron a una categoría genérica.</li>
-        <li>Los valores que <b>ya venían del vendedor</b> no se revisan, pero si ves uno equivocado márcalo con <b>⚑ Está mal</b>. Y si llenamos o cambiamos un campo cuando lo correcto era lo que venía (o dejarlo vacío), usa <b>↩ Lo correcto era lo que venía antes</b>. Ambas son opcionales y no cuentan para el avance.</li>
+        <li>Los valores que <b>ya venían del vendedor</b> no se revisan, pero si ves uno equivocado márcalo con <b>Está mal</b>. Y si llenamos o cambiamos un campo cuando lo correcto era lo que venía (o dejarlo vacío), usa <b>Lo correcto era lo que venía antes</b>. Ambas son opcionales y no cuentan para el avance.</li>
         <li>La pregunta <b>¿la ficha IMDb es la misma obra que emite la app?</b> es opcional, pero ayuda mucho a medir los homónimos.</li>
         <li>Todo se guarda solo, en tu usuario, al momento de marcar. Puedes cerrar y seguir después desde cualquier equipo.</li>
       </ul>

@@ -43,7 +43,7 @@
     <span class="num">{r.muestra_id !== null ? `#${r.muestra_id}` : `fila ${fmt(r.fila_id)}`}</span>
     <span class="titulo">{r.titulo || "(sin título)"}</span>
     {#if r.muestra_id !== null && mostrarFila}<span class="chip">EN LA MUESTRA</span>{/if}
-    <span class="num">{pend === 0 ? "✓ revisada" : `${pend} pendiente${pend > 1 ? "s" : ""}`}</span>
+    <span class="num">{pend === 0 ? "Revisada" : `${pend} pendiente${pend > 1 ? "s" : ""}`}</span>
     <div class="contexto">App: <b>{r.app || "—"}</b> · {r.publisher} · {r.pais} · {fmt(r.requests)} requests{r.bundle ? " · " + r.bundle : ""}</div>
     <div class="enlaces">
       <a href={r.ayuda.busqueda} target="_blank" rel="noopener">Buscar</a>
@@ -68,7 +68,7 @@
                 {@const k = `_original:${c.campo}|${c.valor}`}
                 <div class="acc">
                   <button class="bandera" class:activa={!!r.etiquetas[k]} title="Marca este valor del vendedor como incorrecto"
-                    onclick={() => onveredicto(r, `_original:${c.campo}`, c.valor, r.etiquetas[k] ? "" : "incorrecto")}>⚑ Está mal</button>
+                    onclick={() => onveredicto(r, `_original:${c.campo}`, c.valor, r.etiquetas[k] ? "" : "incorrecto")}>Está mal</button>
                   {#if r.etiquetas[k]}
                     <input type="text" class="correccion" placeholder="valor correcto (opcional)" value={r.etiquetas[k].correcto}
                       oninput={ev => oncorreccion(r, `_original:${c.campo}`, c.valor, ev.currentTarget.value)} />
@@ -106,7 +106,7 @@
             <div class="antes previo">
               <span>{c.original ? `El vendedor mandó: ${c.original}` : "El vendedor no mandó nada"}</span>
               <button class="bandera" class:activa={!!r.etiquetas[`_previo:${c.campo}|${c.original}`]} title="No debimos cambiarlo: lo correcto era lo que venía del vendedor"
-                onclick={() => onveredicto(r, `_previo:${c.campo}`, c.original, r.etiquetas[`_previo:${c.campo}|${c.original}`] ? "" : "correcto")}>↩ Lo correcto era lo que venía antes</button>
+                onclick={() => onveredicto(r, `_previo:${c.campo}`, c.original, r.etiquetas[`_previo:${c.campo}|${c.original}`] ? "" : "correcto")}>Lo correcto era lo que venía antes</button>
             </div>
           </td>
         </tr>

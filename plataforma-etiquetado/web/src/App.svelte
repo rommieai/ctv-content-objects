@@ -39,7 +39,7 @@
 {:else if opciones}
   <nav>
     <div class="wrap fila">
-      <strong class="marca">🏷️ Etiquetas CTV</strong>
+      <strong class="marca">CTV by <b>TagScreen</b></strong>
       <div class="pestanas">
         <button class:activa={vista === "muestra"} onclick={() => (vista = "muestra")}>Muestra ({opciones.tarjetas_muestra})</button>
         {#if yo.rol === "admin"}
@@ -65,12 +65,13 @@
 
 <style>
   .centro { text-align: center; margin-top: 20vh; color: var(--ink2); }
-  nav { background: var(--card); border-bottom: 1px solid var(--line); padding: 8px 16px; }
+  nav { background: rgba(8, 0, 23, .6); border-bottom: 1px solid var(--line); padding: 8px 16px; }
   .fila { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
-  .marca { font-size: 16px; }
+  .marca { font-size: 16px; font-weight: 300; color: var(--ink2); }
+  .marca b { font-weight: 800; color: transparent; background: linear-gradient(90deg, #a357fa, #d9c8fa 67%); -webkit-background-clip: text; background-clip: text; }
   .pestanas { display: flex; gap: 4px; flex-wrap: wrap; flex: 1 1 auto; }
-  .pestanas button { border-color: transparent; background: none; }
-  .pestanas button.activa { background: var(--bg); border-color: var(--line); font-weight: 700; }
+  .pestanas button { border-color: transparent; background: none; color: var(--ink2); }
+  .pestanas button.activa { background: var(--accent-bg); border-color: var(--accent); color: #fff; font-weight: 700; }
   .quien { color: var(--ink2); font-size: 13px; display: flex; gap: 8px; align-items: center; }
   .quien button { padding: 3px 10px; font-size: 13px; }
 </style>
