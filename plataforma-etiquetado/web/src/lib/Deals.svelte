@@ -9,7 +9,7 @@
   }
   interface Simulacion {
     filtro: { paises: string[]; genero: string; categoria: string };
-    universo: Medida; nativo: Medida; recomendado: Medida; union: Medida; solo_recomendado: Medida; solo_nativo: Medida;
+    universo: Medida; nativo: Medida; recomendado: Medida; lista: Medida; solo_lista: Medida; solo_nativo: Medida;
     titulos: { total: number; en_csv: number; requests_en_csv: number; bytes_csv: number;
       top: { titulo: string; requests: number; pct_vendido: number | null; ecpm: number | null }[] };
     publishers: { publisher: string; recomendado: Medida; nativo: Medida }[];
@@ -144,7 +144,8 @@
           </div>
           <div class="camino recomendado">
             <h3>Con nuestra recomendación</h3>
-            <p class="como">Title is [{fmt(sim.titulos.en_csv)} títulos que nuestra base clasifica así]: entra aunque el publisher no lo declare.</p>
+            <p class="como">Lo mismo que alcanzan los filtros, más Title is [{fmt(sim.titulos.en_csv)} títulos que nuestra base clasifica así]:
+              entra lo que el publisher declara y también lo que no declara.</p>
             <div class="grande">{fmt(sim.recomendado.requests)}</div>
             <small>requests · {pc(sim.recomendado.pct_universo)} de {sim.filtro.paises.join(", ")}
               {#if ganancia !== null}· <b class={ganancia >= 0 ? "sube" : "baja"}>{ganancia >= 0 ? "+" : ""}{(100 * ganancia).toFixed(0)}%</b> contra los filtros{/if}</small>
@@ -152,9 +153,12 @@
           </div>
         </div>
         <ul class="nota lista">
-          <li>La recomendación alcanza {fmt(sim.solo_recomendado.requests)} requests que los filtros no ven (eCPM histórico {usd(sim.solo_recomendado.ecpm)}).</li>
+          <li>La lista de títulos alcanza {fmt(sim.lista.requests)} requests; {fmt(sim.solo_lista.requests)} de ellos no los ven los filtros
+            (eCPM histórico {usd(sim.solo_lista.ecpm)}): eso es lo que la recomendación agrega.</li>
           <li>Los filtros alcanzan {fmt(sim.solo_nativo.requests)} requests que la lista no cubre, casi siempre porque vienen sin título.
-            En PubMatic dos reglas de contenido se unen con «y», así que para tener los dos harían falta dos deals.</li>
+            También cuentan en la recomendación.</li>
+          <li>En PubMatic dos reglas de contenido se unen con «y», así que la recomendación completa son <b>dos deals</b>: uno con la lista de
+            títulos (el que se crea abajo) y otro con los filtros de PubMatic.</li>
           {#if sim.titulos.total > sim.titulos.en_csv}
             <li>La lista tiene {fmt(sim.titulos.total)} títulos; al CSV solo le caben {fmt(sim.titulos.en_csv)} (tope de PubMatic), los de más requests.</li>
           {/if}
@@ -190,7 +194,8 @@
       <section class="caja" class:viejo>
         <h2>3. Llevar la recomendación a PubMatic</h2>
         <p class="nota">Se crea un Auction Package Deal con {opciones.pubmatic.dsp} · {opciones.pubmatic.buyer}, video en CTV,
-          {sim.filtro.paises.join(", ")} y la regla Title is con {fmt(sim.titulos.en_csv)} títulos. Sin transaction fee, First Price y el piso
+          {sim.filtro.paises.join(", ")} y la regla Title is con {fmt(sim.titulos.en_csv)} títulos ({fmt(sim.lista.requests)} requests de la
+          recomendación; los otros {fmt(sim.solo_nativo.requests)} piden un segundo deal con los filtros de PubMatic). Sin transaction fee, First Price y el piso
           por defecto de PubMatic. <b>Queda en pausa</b>: el precio y la activación los decides tú en PubMatic.</p>
         <div class="crear">
           <label class="campo"><span class="etq">Nombre del deal</span><input type="text" bind:value={nombre} maxlength="100" /></label>
@@ -252,7 +257,7 @@
   .caja > button.primario { justify-self: start; }
   .caminos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
   .camino { border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: grid; gap: 4px; align-content: start; }
-  .camino.recomendado { border-color: var(--fill-line); background: var(--fill-bg); }
+  .camino.recomendado { border-color: var(--accent); background: var(--accent-bg); box-shadow: 0 0 20px 2px rgba(163, 87, 250, .2); }
   .camino h3 { margin: 0; }
   .como { margin: 0 0 8px; font-size: 13px; color: var(--ink2); }
   .grande { font-size: 26px; font-weight: 700; font-variant-numeric: tabular-nums; }

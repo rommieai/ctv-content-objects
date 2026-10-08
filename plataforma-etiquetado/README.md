@@ -41,7 +41,8 @@ anterior, así que `scripts/calcular_precision_revision.py` lo lee sin cambios.
 
 Pestaña *Deals* (solo admin). Se elige país, género y/o categoría y compara, sobre el corte vigente, lo
 que alcanzan los **filtros nativos de PubMatic** (solo lo que el publisher declara) contra **nuestra
-recomendación**: una regla `Title is [lista]` con los títulos que la base enriquecida clasifica así.
+recomendación**: eso mismo más una regla `Title is [lista]` con los títulos que la base enriquecida
+clasifica así (la unión de los dos; lo que viene sin título solo lo alcanzan los filtros nativos).
 Muestra requests, % vendido y eCPM histórico de cada camino, por publisher y por título. Desde ahí se
 descarga el CSV de títulos o se crea el deal en PubMatic.
 
@@ -57,7 +58,8 @@ descarga el CSV de títulos o se crea el deal en PubMatic.
   deal se crea y no se logra pausar, queda marcado «SIN PAUSAR»: hay que pausarlo a mano en PubMatic.
 - `DEALS_ENSAYO=1` hace que el bot recorra todo y se detenga en el resumen, sin crear nada.
 - Límites de PubMatic que respeta: 10,000 valores por deal y 500 KB por CSV. Dos reglas de contenido se
-  unen con AND, por eso la recomendación va sola en su deal y no junto al filtro nativo.
+  unen con AND, por eso la recomendación completa son dos deals: el de la lista de títulos (el que crea
+  el bot) y otro con los filtros nativos, que se arma a mano en PubMatic.
 
 ## Despliegue
 

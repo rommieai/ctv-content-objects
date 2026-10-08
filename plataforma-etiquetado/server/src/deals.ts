@@ -94,19 +94,21 @@ function simular(d: Db, f: Filtro) {
     ${suma("lst AND NOT nat", "s")}, ${suma("nat AND NOT lst", "o")} FROM ${sql}`).get(args) as Record<string, number>;
   const tot = (pre: string): Tot => ({ filas: r[`${pre}_filas`], req: r[`${pre}_req`] ?? 0, vend: r[`${pre}_vend`] ?? 0, gasto: r[`${pre}_gasto`] ?? 0 });
   const u = tot("u"), t = titulosDe(d, f);
-  // El precio lo fija la ruta de venta: por publisher, lo que alcanza cada camino y a qué eCPM histórico
+  // La recomendación es la unión: lo que ya alcanzan los filtros nativos (incluye lo que viene sin título, que
+  // ninguna lista puede cubrir) más lo que agrega la lista de títulos. El precio lo fija la ruta de venta: por
+  // publisher, lo que alcanza cada camino y a qué eCPM histórico
   const publishers = (d.prepare(`SELECT publisher,
-      SUM(CASE WHEN lst THEN req END) l_req, SUM(CASE WHEN lst THEN vend END) l_vend, SUM(CASE WHEN lst THEN gasto END) l_gasto,
+      SUM(req) x_req, SUM(vend) x_vend, SUM(gasto) x_gasto,
       SUM(CASE WHEN nat THEN req END) n_req, SUM(CASE WHEN nat THEN vend END) n_vend, SUM(CASE WHEN nat THEN gasto END) n_gasto
-    FROM ${sql} WHERE nat OR lst GROUP BY publisher ORDER BY COALESCE(l_req, 0) DESC, COALESCE(n_req, 0) DESC LIMIT 15`).all(args) as any[])
+    FROM ${sql} WHERE nat OR lst GROUP BY publisher ORDER BY x_req DESC LIMIT 15`).all(args) as any[])
     .map(p => ({
       publisher: p.publisher,
-      recomendado: medida({ filas: 0, req: p.l_req ?? 0, vend: p.l_vend ?? 0, gasto: p.l_gasto ?? 0 }, t.todos.reduce((s, x) => s + x.req, 0)),
+      recomendado: medida({ filas: 0, req: p.x_req ?? 0, vend: p.x_vend ?? 0, gasto: p.x_gasto ?? 0 }, tot("x").req),
       nativo: medida({ filas: 0, req: p.n_req ?? 0, vend: p.n_vend ?? 0, gasto: p.n_gasto ?? 0 }, tot("n").req),
     }));
   return {
-    filtro: f, universo: medida(u, u.req), nativo: medida(tot("n"), u.req), recomendado: medida(tot("l"), u.req),
-    union: medida(tot("x"), u.req), solo_recomendado: medida(tot("s"), u.req), solo_nativo: medida(tot("o"), u.req),
+    filtro: f, universo: medida(u, u.req), nativo: medida(tot("n"), u.req), recomendado: medida(tot("x"), u.req),
+    lista: medida(tot("l"), u.req), solo_lista: medida(tot("s"), u.req), solo_nativo: medida(tot("o"), u.req),
     titulos: {
       total: t.todos.length, en_csv: t.dentro, requests_en_csv: t.reqDentro, bytes_csv: Buffer.byteLength(t.csv),
       top: t.todos.slice(0, 40).map(x => ({ titulo: x.titulo, requests: x.req, pct_vendido: x.req ? x.vend / x.req : null, ecpm: x.vend ? x.gasto / x.vend : null })),
