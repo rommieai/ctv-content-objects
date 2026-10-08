@@ -145,8 +145,8 @@
     <details class="ayuda" open={!prog?.hechos}>
       <summary>Cómo revisar</summary>
       <ul>
-        <li>Cada tarjeta es una fila real del inventario: un título emitido por una app en un país. Los campos en <span class="muestra-chip llenado">naranja</span> son los que <b>llenamos de más</b> (el vendedor no los mandó). Solo esos se revisan.</li>
-        <li>Pregunta para cada campo naranja: <b>¿este valor es correcto para lo que esta app emite con este título?</b> Usa <i>Buscar</i> (Google con el título y la app) y, si aparece, la ficha IMDb de referencia.</li>
+        <li>Cada tarjeta es una fila real del inventario: un título emitido por una app en un país. Los campos en <span class="muestra-chip llenado">naranja</span> son los que <b>llenamos de más</b> (el vendedor no los mandó). Los campos en <span class="muestra-chip corregido">morado</span> son los que <b>corregimos</b>: el vendedor mandó un valor, lo consideramos equivocado y lo reemplazamos (abajo del campo dice qué mandó). Solo esos dos se revisan.</li>
+        <li>Pregunta para cada campo naranja o morado: <b>¿este valor es correcto para lo que esta app emite con este título?</b> Usa <i>Buscar</i> (Google con el título y la app) y, si aparece, la ficha IMDb de referencia.</li>
         <li><b>Correcto</b>: el valor describe bien el contenido. <b>Incorrecto</b>: no lo describe (si sabes el valor bueno, escríbelo). <b>No se sabe</b>: no encontraste cómo comprobarlo; no cuenta como correcto.</li>
         <li>Cuando un campo trae varios valores (varios códigos de categoría o varios géneros) se juzga <b>cada uno por separado</b>. Los marcados <b>MÁS ESPECÍFICO</b> son códigos de género que se agregaron a una categoría genérica.</li>
         <li>Los valores que <b>ya venían del vendedor</b> no se revisan, pero si ves uno equivocado márcalo con <b>⚑ Está mal</b>. Y si llenamos o cambiamos un campo cuando lo correcto era lo que venía (o dejarlo vacío), usa <b>↩ Lo correcto era lo que venía antes</b>. Ambas son opcionales y no cuentan para el avance.</li>
@@ -158,6 +158,7 @@
 
   <div class="leyenda">
     <span><span class="muestra-chip llenado">Valor llenado</span> se revisa</span>
+    <span><span class="muestra-chip corregido">Valor corregido</span> el vendedor mandó otro; se revisa</span>
     <span><span class="muestra-chip vendedor">Valor del vendedor</span> contexto, no se revisa</span>
     <span><span class="muestra-chip vacio">vacío</span> no vino ni se llenó</span>
   </div>

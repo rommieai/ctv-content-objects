@@ -8,9 +8,11 @@ Contexto, fuentes, métodos y límites: `recursos/reporte-completitud-content-ob
 
 | Origen | % filas |
 |---|---:|
-| Venía del vendedor (`original`) | 21.9% |
-| Derivado del género (`derivado_genero`) | 29.8% |
+| Venía del vendedor (`original`) | 20.0% |
+| Derivado del género (`derivado_genero`) | 29.9% |
 | Derivado del tipo IMDb (película / serie) (`derivado_tipo`) | 40.1% |
+| Venía del vendedor y se corrigió con IMDb (match A) (`corregido_imdb`) | 0.7% |
+| Venía del vendedor y se corrigió con el género de la fila (`corregido_genero`) | 1.1% |
 | Sigue vacío (`sin_dato`) | 8.2% |
 
 **Qué más se puede afinar (validación del consolidado contra IMDb / Wikidata / taxonomías IAB):**
@@ -34,9 +36,9 @@ Contexto, fuentes, métodos y límites: `recursos/reporte-completitud-content-ob
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide con la evidencia (`coincide`) | 19.5% | 60.7% |
+| Coincide con la evidencia (`coincide`) | 19.5% | 62.6% |
 | Compatible (genérica, no contradice) (`compatible`) | 50.1% | 19.4% |
-| Contradice la evidencia (`contradice`) | 12.5% | 11.5% |
+| Contradice la evidencia (`contradice`) | 12.5% | 9.5% |
 | No se pudo evaluar (`no_evaluable`) | 18.0% | 8.4% |
 
 ## contentGenre
@@ -45,8 +47,9 @@ Contexto, fuentes, métodos y límites: `recursos/reporte-completitud-content-ob
 
 | Origen | % filas |
 |---|---:|
-| Venía del vendedor (`original`) | 90.8% |
+| Venía del vendedor (`original`) | 89.8% |
 | IMDb (`imdb`) | 2.6% |
+| Venía del vendedor y se corrigió con IMDb (match A) (`corregido_imdb`) | 1.0% |
 | Sigue vacío (`sin_dato`) | 6.6% |
 
 **Qué más se puede afinar (validación del consolidado):**
@@ -71,10 +74,10 @@ Contexto, fuentes, métodos y límites: `recursos/reporte-completitud-content-ob
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide (`coincide`) | 41.2% | 42.9% |
+| Coincide (`coincide`) | 41.2% | 43.9% |
 | Parecido (género vecino) (`afin`) | 2.6% | 2.6% |
 | Acierta en parte (`parcial`) | 2.8% | 2.7% |
-| Contradice (`contradice`) | 1.7% | 1.8% |
+| Contradice (`contradice`) | 1.7% | 0.7% |
 | No se pudo evaluar (`no_evaluable`) | 51.6% | 50.1% |
 
 ## contentSeries

@@ -28,7 +28,9 @@ NOMBRE = {"contentGenre": "Género", "contentCategory": "Categoría", "contentSe
           "contentRating": "Clasificación por edad", "contentIsLiveStream": "En vivo / lineal",
           "contentLength": "Duración (código)", "contentCategory_afinado": "Categoría (código más específico agregado)",
           "_ficha_externa": "La ficha IMDb es la misma obra (pregunta opcional)"}
-METODO = {"intra_titulo": "copiado de otra ruta del mismo título", "derivado_genero": "derivado del género",
+METODO = {"corregido_imdb": "corregido con IMDb (venía del vendedor)",
+          "corregido_genero": "corregido con el género de la fila (venía del vendedor)",
+          "intra_titulo": "copiado de otra ruta del mismo título", "derivado_genero": "derivado del género",
           "derivado_tipo": "tipo película/serie de IMDb", "imdb": "IMDb", "wikidata": "Wikidata",
           "app_semantica": "semántica de la app", "genero_declarado": "género declarado por el vendedor"}
 
