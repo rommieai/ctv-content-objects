@@ -7,9 +7,9 @@
   } = $props();
 
   const opciones = $derived([
-    ["correcto", ficha ? "✓ Sí, es la misma" : "✓ Correcto"],
-    ["incorrecto", ficha ? "✗ No, es otra" : "✗ Incorrecto"],
-    ["no_se_sabe", "? No se sabe"],
+    ["correcto", ficha ? "Sí, es la misma" : "Correcto"],
+    ["incorrecto", ficha ? "No, es otra" : "Incorrecto"],
+    ["no_se_sabe", "No se sabe"],
   ]);
 </script>
 

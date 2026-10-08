@@ -1,37 +1,34 @@
+/* Tema TagScreen: fondo oscuro morado, acento violeta, Inter. Un solo tema (oscuro), como el dashboard. */
 :root {
-  --bg: #f6f7f9; --card: #ffffff; --ink: #1f2933; --ink2: #5f6b76; --line: #e3e7ea;
-  --fill-bg: #fff4e0; --fill-line: #e08a00; --fill-ink: #7a4a00;
-  --fix-bg: #efe9fb; --fix-line: #7b4fc9; --fix-ink: #4a2a8a;
-  --ok: #1e8a4c; --ok-bg: #e3f5ea; --bad: #c62f2f; --bad-bg: #fde8e8; --unk: #6b5ba8; --unk-bg: #eeeafb;
-  --accent: #2a78d6; --empty: #9aa5ae;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #14181c; --card: #1d2227; --ink: #e6e9ec; --ink2: #9aa5ae; --line: #2e353b;
-    --fill-bg: #3a2c12; --fill-line: #f0a020; --fill-ink: #ffd590;
-    --fix-bg: #2b2244; --fix-line: #a384ee; --fix-ink: #d6c6ff;
-    --ok: #4cc27f; --ok-bg: #173527; --bad: #f07070; --bad-bg: #3d1d1d; --unk: #b3a6f0; --unk-bg: #2a2540;
-    --accent: #6aa8f0; --empty: #6b7680;
-    color-scheme: dark;
-  }
+  --bg: #0c0420; --card: #1a0d3d; --ink: #efe8ff; --ink2: #b9a8dc; --line: rgba(163, 87, 250, .28);
+  --fill-bg: rgba(255, 184, 61, .12); --fill-line: #ffb83d; --fill-ink: #ffd590;
+  --fix-bg: rgba(255, 61, 202, .12); --fix-line: #ff3dca; --fix-ink: #ff9be3;
+  --ok: #3ddc97; --ok-bg: rgba(61, 220, 151, .14); --bad: #ff6b81; --bad-bg: rgba(255, 107, 129, .14);
+  --unk: #c8acff; --unk-bg: rgba(200, 172, 255, .14);
+  --accent: #a357fa; --accent-fuerte: #8a38f5; --accent-bg: rgba(163, 87, 250, .14); --lila: #d9c8fa; --empty: #7d6ea3;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-a { color: var(--accent); }
+html { background: #2f1651; }
+body {
+  margin: 0; min-height: 100vh; background: linear-gradient(359deg, #2f1651 .01%, #080017 90.9%) fixed; color: var(--ink);
+  font: 15px/1.45 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased;
+}
+a { color: var(--lila); }
 .wrap { max-width: 1100px; margin: 0 auto; }
 input[type=text], input[type=password], select {
   max-width: 100%; min-width: 0; font: inherit; padding: 6px 8px; border: 1px solid var(--line);
   border-radius: 6px; background: var(--card); color: var(--ink);
 }
 button { font: inherit; padding: 6px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
-button:hover:not(:disabled) { border-color: var(--accent); }
+button:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-bg); }
 button:disabled { opacity: .5; cursor: default; }
-button.primario { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.primario { background: var(--accent-fuerte); border-color: var(--accent); color: #fff; font-weight: 600; }
+button.primario:hover:not(:disabled) { background: var(--accent); box-shadow: 0 0 10px rgba(163, 87, 250, .5); }
 .muestra-chip { display: inline-block; padding: 1px 8px; border-radius: 4px; }
 .muestra-chip.llenado { background: var(--fill-bg); border-left: 4px solid var(--fill-line); color: var(--fill-ink); font-weight: 600; }
 .muestra-chip.corregido { background: var(--fix-bg); border-left: 4px solid var(--fix-line); color: var(--fix-ink); font-weight: 600; }
 .muestra-chip.vendedor { border: 1px solid var(--line); }
 .muestra-chip.vacio { color: var(--empty); font-style: italic; }
-.toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 6px; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 20; }
+.toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--lila); color: #15072b; font-weight: 600; padding: 8px 14px; border-radius: 6px; opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 20; }
 .toast.ver { opacity: .95; }
