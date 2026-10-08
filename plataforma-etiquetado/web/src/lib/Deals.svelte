@@ -66,6 +66,8 @@
   let errorCrear = $state("");
   let trabajos = $state<Trabajo[]>([]);
 
+  // el último día de la ventana del corte: "20 sep–4 oct 2026" -> "4 oct 2026"
+  const actualizado = $derived((opciones?.meta.ventana ?? "").split("–").pop()!.trim());
   const TOP = 10;   // filas que se muestran en «Por dónde se vende» y en los títulos de la lista
   const pc = (x: number | null | undefined) => (x === null || x === undefined ? "—" : `${(100 * x).toFixed(1)}%`);
   const usd = (x: number | null | undefined) => (x === null || x === undefined ? "—" : `$${x.toFixed(2)}`);
@@ -186,8 +188,7 @@
   <h1>Armador de deals</h1>
   {#if error}<div class="aviso">{error}</div>{/if}
   {#if opciones}
-    <p class="nota">Datos del corte v{opciones.meta.version} ({opciones.meta.ventana}), {fmt(+opciones.meta.requests)} requests.
-      Todo lo que se muestra es histórico: lo que pasó en esa ventana, no una promesa de lo que va a pasar.</p>
+    <p class="nota">Recomendaciones basadas en los datos históricos; los datos actuales pueden variar. Última actualización: {actualizado}.</p>
 
     <section class="caja">
       <h2>1. ¿Qué inventario quieres?</h2>
