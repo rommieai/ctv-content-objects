@@ -68,9 +68,12 @@ interface Tot { filas: number; req: number; vend: number; gasto: number }
 // publisher (formato ';valor;'). Los enriquecibles tienen además lista de títulos en titulo_attr: en la
 // recomendación entran por título aunque el publisher no los declare. Idioma y «trae título» solo valen como
 // vienen (el idioma nunca se rellena), así que filtran igual en los dos caminos.
+// La categoría tiene dos filtros sobre el mismo dato (`dato` = el tipo en valores y titulo_attr): los códigos
+// IAB 1.0 («IAB1-5») y los numéricos de IAB 2.2 / 3.0 («333»). Son taxonomías distintas y no se cruzan.
 const ATRIBUTOS = [
   { tipo: "genero", col: "gen_decl", enriquecible: true },
-  { tipo: "categoria", col: "cat_decl", enriquecible: true },
+  { tipo: "categoria", col: "cat_decl", enriquecible: true, formato: /^IAB\d/ },
+  { tipo: "categoria_num", col: "cat_decl", enriquecible: true, dato: "categoria", formato: /^\d+$/ },
   { tipo: "serie", col: "ser_decl", enriquecible: true },
   { tipo: "rating", col: "rat_decl", enriquecible: true },
   { tipo: "duracion", col: "len_decl", enriquecible: true },
@@ -81,6 +84,7 @@ const ATRIBUTOS = [
 type Tipo = typeof ATRIBUTOS[number]["tipo"];
 type Filtro = { paises: string[]; titulo: string; extras: SenalExtra[] } & Record<Tipo, string>;
 const escaparLike = (v: string) => v.replace(/[\\%_]/g, "\\$&");
+const datoDe = (a: typeof ATRIBUTOS[number]) => ("dato" in a ? a.dato : a.tipo);
 
 // La base de datos se reemplaza en cada tanda: se reabre cuando cambia el archivo
 let datos: { db: Db; mtime: number } | null = null;
@@ -111,7 +115,7 @@ function leerFiltro(d: Db, b: any): Filtro | string {
   for (const a of ATRIBUTOS) {
     const v = String(b?.[a.tipo] ?? "").trim();
     if (v && !cols.has(a.col)) return "La base de deals cargada es de una versión anterior y no trae ese content object: hay que regenerar deals.db";
-    if (v && !existe.get(a.tipo, v)) return `Valor desconocido para ${a.tipo}`;
+    if (v && (("formato" in a && !a.formato.test(v)) || !existe.get(datoDe(a), v))) return `Valor desconocido para ${a.tipo}`;
     f[a.tipo] = v;
   }
   if (f.titulo && f.titulo.length < 3) return "Para buscar por título escribe al menos 3 letras";
@@ -142,7 +146,7 @@ function marcada(f: Filtro) {
     args[`l_${a.tipo}`] = `%;${escaparLike(v)};%`;
     nat.push(declara);
     if (a.enriquecible) {
-      lst.push(`EXISTS (SELECT 1 FROM titulo_attr t WHERE t.tipo = '${a.tipo}' AND t.valor = @v_${a.tipo} AND t.titulo = b.titulo)`);
+      lst.push(`EXISTS (SELECT 1 FROM titulo_attr t WHERE t.tipo = '${datoDe(a)}' AND t.valor = @v_${a.tipo} AND t.titulo = b.titulo)`);
       args[`v_${a.tipo}`] = v;
     } else lst.push(declara);
   }
@@ -308,16 +312,18 @@ export function rutasDeals(app: Hono<any>, db: Db) {
       envivo: { "1": "Sí, en vivo", "0": "No" }, con_titulo: { true: "Sí", false: "No" },
     };
     // los demás content objects del reporte (si la base cargada ya los trae); la serie se recorta a las de más requests
-    const otros = Object.fromEntries(ATRIBUTOS.filter(a => a.tipo !== "genero" && a.tipo !== "categoria" && cols.has(a.col)).map(a => [a.tipo,
+    const otros = Object.fromEntries(ATRIBUTOS.filter(a => a.tipo !== "genero" && datoDe(a) !== "categoria" && cols.has(a.col)).map(a => [a.tipo,
       juntar(a.tipo).filter(x => a.tipo !== "rating" || x.requests >= 0.0005 * total)   // sin la cola de clasificaciones sueltas de cada país
         .slice(0, a.tipo === "serie" ? 600 : 60).map(x => ({ ...x, nombre: ETIQUETA[a.tipo]?.[x.valor] ?? "" }))]));
+    const categorias = juntar("categoria").map(x => {
+      const s = significadoCategoria(`[${x.valor}]`)[0];
+      return { ...x, nombre: s ? s.es || s.en : "" };
+    });
     return c.json({
       atributos: otros, enriquecibles: ATRIBUTOS.filter(a => a.enriquecible).map(a => a.tipo), senales_pubmatic: SENALES_PUBMATIC,
       meta: metaDe(d), paises, generos: juntar("genero"),
-      categorias: juntar("categoria").filter(x => /^IAB\d/.test(x.valor)).map(x => {
-        const s = significadoCategoria(`[${x.valor}]`)[0];
-        return { ...x, nombre: s ? s.es || s.en : "" };
-      }),
+      categorias: categorias.filter(x => /^IAB\d/.test(x.valor)),
+      categorias_num: categorias.filter(x => /^\d+$/.test(x.valor)),
       max_senales: MAX_SENALES,
       pubmatic: { configurado: pubmaticConfigurado(), dsp: PUBMATIC.dsp, buyer: PUBMATIC.buyer, ensayo: PUBMATIC.ensayo },
     });
