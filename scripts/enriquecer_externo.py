@@ -6,7 +6,13 @@ rating_franja) y produce un CSV con, para cada columna objetivo, dos columnas nu
 
     <col>_relleno   valor final (el original si venia, o el inferido)
     <col>_origen    de donde salio: original | imdb | tvmaze | wikidata |
-                    derivado_genero | derivado_tipo | app_semantica | (vacio)
+                    derivado_genero | derivado_tipo | app_semantica |
+                    corregido_imdb | corregido_genero | (vacio)
+
+y, desde 2026-10-06, CORRIGE lo que el vendedor mando mal en contentCategory y
+contentGenre (ver "CORRECCION DE LO DECLARADO" abajo): la columna original no se
+toca, el valor corregido va en <col>_relleno con origen corregido_*, y el motivo
+queda en contentCategory_correccion / contentGenre_correccion.
 
 Columnas objetivo: contentCategory, contentSeries, contentLength, contentIsLiveStream,
 contentRating, contentGenre. contentLanguage se conserva en la salida (columnas
@@ -60,6 +66,24 @@ en <col>_origen):
   derivado_genero  sin match IMDb: el contentGenre de la MISMA fila (lleno en el 99%):
                    deportes -> [IAB17], noticias -> [IAB12]...; genero sin categoria
                    propia -> [IAB1] generico.
+
+CORRECCION DE LO DECLARADO (contentCategory y contentGenre)
+----------------------------------------------------------
+Una celda llena tambien puede estar mal (Vidaa manda [IAB12] News en telenovelas). Se
+reemplaza solo cuando CONTRADICE la evidencia, nunca por ser generica (afinar no es
+corregir), con las mismas reglas de las validaciones (validar_categorias.veredicto_fila
+y validar_genero_series):
+
+  corregido_imdb    match IMDb de confianza A (candidato unico y genero compatible con
+                    el titulo). Categoria: la vertical, la forma (pelicula/serie) o el
+                    genero del codigo chocan con IMDb/Wikidata. Genero: ninguno de los
+                    generos declarados coincide ni es afin a los de IMDb.
+  corregido_genero  solo categoria, sin match A: el codigo dice noticias o deportes y
+                    el contentGenre de la MISMA fila es ficcion (drama, comedia...).
+
+El valor nuevo es el que el relleno habria puesto si la celda viniera vacia (tipo IMDb /
+genero + codigos de genero IAB 2.2); si ese valor tambien choca con la evidencia, no se
+corrige. La confianza B (~75%) no corrige.
 
 Cache incremental: --cache-dir/titulos.json guarda el resultado de cada titulo_clave;
 en corridas siguientes solo se consultan los titulos nuevos. Asi el mismo comando
@@ -427,6 +451,31 @@ IAB_DEFAULT_ENTRETENIMIENTO = "[IAB1]"
 # se conserva si los generos IMDb la confirman: "bbc news" (tvSeries, News) sigue en
 # [IAB12]; una pelicula que una ruta etiqueta "sports" sin que IMDb lo diga va a [IAB1-5].
 GENERO_CONFIRMA_IMDB = {"deportes": {"Sport"}, "noticias": {"News"}, "musica": {"Music", "Musical"}}
+IAB_POR_FORMA = {"pelicula": "[IAB1-5]", "tv": "[IAB1-7]"}
+# Correccion de lo declarado: solo con el mejor nivel de match IMDb; sin match, solo
+# cuando el codigo declara una de estas verticales y el genero de la fila la desmiente.
+CONFIANZA_CORRECCION = {"A"}
+VERTICALES_CORREGIBLES = {"vertical:noticias", "vertical:deportes"}
+
+
+def derivar_categoria(generos_fila, tipo, generos_imdb, forma=None):
+    """Categoria IAB 1.0 de una fila a partir de su evidencia -> (valor, origen).
+    1) hay match IMDb confiable: manda el tipo IMDb (o `forma`, si el titulo crudo trae
+       temporada/episodio), movie->[IAB1-5], tvSeries->[IAB1-7]. La vertical del genero de
+       la fila (deportes, noticias, musica) solo se conserva si los generos IMDb la confirman.
+    2) sin match: el contentGenre de la MISMA fila: deportes->[IAB17], noticias->[IAB12]...
+    3) queda genero pero sin categoria propia -> [IAB1] generico"""
+    por_tipo = IAB_POR_FORMA.get(forma) or IAB_POR_TIPO.get(tipo)
+    if por_tipo:
+        gi = set(generos_imdb or [])
+        conf = [GENERO_IAB[g] for g in generos_fila if gi & GENERO_CONFIRMA_IMDB.get(g, set())]
+        return (conf[0], "derivado_genero") if conf else (por_tipo, "derivado_tipo")
+    codes = [GENERO_IAB[g] for g in generos_fila if g in GENERO_IAB]
+    if codes:
+        return codes[0], "derivado_genero"
+    if generos_fila:
+        return IAB_DEFAULT_ENTRETENIMIENTO, "derivado_genero"
+    return None, ""
 
 # contentLength en estas exportaciones NO viene en segundos: es un codigo 1..8 del
 # reporte cuya semantica no es la duracion (calibrado contra el runtime de IMDb, todos
@@ -686,8 +735,62 @@ def main():
                                     "ext_runtime_min", "ext_confianza"]
     for c in OBJETIVO:
         salida_cols += [c + "_relleno", c + "_origen"]
-    salida_cols += ["contentCategory_afinado_origen"]
+    salida_cols += ["contentCategory_afinado_origen", "contentCategory_correccion", "contentGenre_correccion"]
     afinar = AfinadorCategoria(args.cache_dir)
+    from validar_categorias import (parse_categoria, evidencia_externa, evidencia_interna,
+                                    veredicto_fila, forma_por_titulo)
+    from validar_genero_series import generos_esperados, CONCEPTO, AFINES
+    tax = afinar.tax
+    nodos_cache = {}
+
+    def nodos_de(v):
+        if v not in nodos_cache:
+            nodos_cache[v] = [tax.nodo(t) for t in parse_categoria(v)]
+        return nodos_cache[v]
+
+    def corregir_genero(generos_fila, rec):
+        """Genero declarado que contradice a IMDb (match A) -> (valor, lista canonica, motivo)."""
+        ge = generos_esperados(rec, CONFIANZA_CORRECCION) if rec else None
+        if not ge or not ge["conceptos"]:
+            return None
+        decl = list(dict.fromkeys(CONCEPTO[g] for g in generos_fila if g in CONCEPTO))
+        if not decl or any(c in ge["conceptos"] for c in decl):
+            return None
+        choques = [c for c in decl if not (AFINES.get(c, set()) & ge["conceptos"])]
+        if not choques:
+            return None
+        nuevos = list(dict.fromkeys(IMDB_GENERO_MAP[g] for g in ge["imdb"] if g in IMDB_GENERO_MAP))
+        if not nuevos:
+            return None
+        return ",".join(nuevos), nuevos, ";".join(f"{c}!={','.join(sorted(ge['conceptos']))}" for c in choques)
+
+    def corregir_categoria(d, k, rec, generos_fila, generos_ef, tipo, imdb, wd):
+        """Categoria declarada que contradice la evidencia -> (valor, origen, motivo)."""
+        titulo = d.get("contentTitle", "")
+        nodos = nodos_de(d["contentCategory"].strip())
+        inte = evidencia_interna(generos_fila, d.get("contentGenre") or "")
+        ext = evidencia_externa(rec, CONFIANZA_CORRECCION, forma_por_titulo(titulo)) if rec else None
+        _, ver, det, _ = veredicto_fila(nodos, ext, inte)
+        if ver != "contradice":
+            return None
+        if ext:
+            org = "corregido_imdb"
+            nuevo, _ = derivar_categoria(generos_ef, tipo, imdb.get("generos"), ext["forma"])
+            gens_afinado = []            # los codigos de genero salen de IMDb, no de lo declarado
+        else:
+            if not (set(det.split(";")) & VERTICALES_CORREGIBLES):
+                return None
+            org = "corregido_genero"
+            # el genero de la fila desmiente la vertical declarada: no puede volver a darla
+            gens = [g for g in generos_ef if g not in ("noticias", "deportes")] or generos_ef
+            nuevo, _ = derivar_categoria(gens, tipo, imdb.get("generos"))
+            gens_afinado = generos_ef
+        if not nuevo:
+            return None
+        nuevo = afinar(nuevo, gens_afinado, imdb, wd, titulo)[0] or nuevo
+        if veredicto_fila(nodos_de(nuevo), ext, inte)[1] == "contradice":
+            return None                  # el reemplazo tampoco cuadra con la evidencia
+        return nuevo, org, det
 
     # =========================================================================
     # PASADA 2 — rellenar fila por fila. Para cada columna vacia se prueban las
@@ -720,9 +823,23 @@ def main():
             generos_fila = [g for g in (d.get("genero_normalizado") or "").split(";") if g] \
                 if tiene_genero_norm else norm_genre(d.get("contentGenre") or "")[0]
 
+            # Correccion de lo declarado: primero el genero, porque la categoria se deriva de el
+            rec = cache.get(k) if k else None
+            d["contentCategory_correccion"] = d["contentGenre_correccion"] = ""
+            gen_corr = corregir_genero(generos_fila, rec) if es_util("contentGenre", d.get("contentGenre")) else None
+            generos_ef = gen_corr[1] if gen_corr else generos_fila
+
             for c in OBJETIVO:
                 if es_util(c, d.get(c)):
                     val, org = d[c].strip(), "original"
+                    corr = None
+                    if c == "contentGenre" and gen_corr:
+                        corr = (gen_corr[0], "corregido_imdb", gen_corr[2])
+                    elif c == "contentCategory":
+                        corr = corregir_categoria(d, k, rec, generos_fila, generos_ef, tipo, imdb, wd)
+                    if corr:
+                        val, org = corr[0], corr[1]
+                        d[c + "_correccion"] = corr[2]
                 else:
                     val, org = None, ""
                     if c == "contentLanguage":
@@ -759,26 +876,7 @@ def main():
                     elif c == "contentRating" and wd.get("rating"):
                         val, org = wd["rating"][0], "wikidata"
                     elif c == "contentCategory":
-                        # 1) hay match IMDb confiable (A/B): manda el tipo IMDb,
-                        #    movie->[IAB1-5], tvSeries->[IAB1-7]. La vertical del genero
-                        #    de la fila (deportes, noticias, musica) solo se conserva si
-                        #    los generos IMDb la confirman.
-                        # 2) sin match: el contentGenre de la MISMA fila (lleno en el
-                        #    99%): deportes->[IAB17], noticias->[IAB12]...
-                        # 3) queda genero pero sin categoria propia -> [IAB1] generico
-                        codes = [GENERO_IAB[g] for g in generos_fila if g in GENERO_IAB]
-                        if tipo in IAB_POR_TIPO:
-                            gi = set(imdb.get("generos", []))
-                            conf = [GENERO_IAB[g] for g in generos_fila
-                                    if gi & GENERO_CONFIRMA_IMDB.get(g, set())]
-                            if conf:
-                                val, org = conf[0], "derivado_genero"
-                            else:
-                                val, org = IAB_POR_TIPO[tipo], "derivado_tipo"
-                        elif codes:
-                            val, org = codes[0], "derivado_genero"
-                        elif generos_fila:
-                            val, org = IAB_DEFAULT_ENTRETENIMIENTO, "derivado_genero"
+                        val, org = derivar_categoria(generos_ef, tipo, imdb.get("generos"))
                     elif c == "contentSeries":
                         # Si IMDb dice que el titulo ES una serie, el nombre de la
                         # serie es el propio titulo canonico ("40 y 20" -> "40 and
@@ -794,7 +892,8 @@ def main():
             # Categoria generica rellenada ([IAB1], [IAB1-5], [IAB1-7]) en una fila con titulo:
             # se conservan esos codigos y se agregan los de genero de IAB 2.2 que apliquen.
             d["contentCategory_afinado_origen"] = ""
-            if k and d["contentCategory_origen"] not in ("", "original"):
+            if k and d["contentCategory_origen"] not in ("", "original") and \
+                    not d["contentCategory_origen"].startswith("corregido"):
                 nuevo, fuente = afinar(d["contentCategory_relleno"], generos_fila, imdb, wd, d.get("contentTitle", ""))
                 if nuevo:
                     d["contentCategory_relleno"] = nuevo
@@ -811,7 +910,10 @@ def main():
         s = stats[c]
         lleno = n - s["sin_dato"]
         resumen["columnas"][c] = {
-            "pct_original": round(100 * s["original"] / n, 1),
+            # "original" = la celda venia llena (lo corregido tambien venia, pero mal)
+            "pct_original": round(100 * (s["original"] + s["corregido_imdb"] + s["corregido_genero"]) / n, 1),
+            "pct_corregido": round(100 * (s["corregido_imdb"] + s["corregido_genero"]) / n, 2),
+            "filas_corregidas": {k: v for k, v in s.items() if k.startswith("corregido")},
             "pct_final": round(100 * lleno / n, 1),
             "origen": {k: round(100 * v / n, 1) for k, v in s.most_common()}}
     resumen["contentCategory_afinado"] = {

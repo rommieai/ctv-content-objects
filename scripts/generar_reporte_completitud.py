@@ -27,9 +27,11 @@ import os
 ORIGEN = {"original": "Venía del vendedor", "intra_titulo": "Copiado de otra ruta del mismo título (retirado)",
           "app_default": "Valor habitual de la app", "imdb": "IMDb", "wikidata": "Wikidata", "tvmaze": "TVMaze",
           "derivado_genero": "Derivado del género", "derivado_tipo": "Derivado del tipo IMDb (película / serie)",
-          "app_semantica": "Semántica de la app (curada a mano)", "sin_dato": "Sigue vacío"}
+          "app_semantica": "Semántica de la app (curada a mano)", "sin_dato": "Sigue vacío",
+          "corregido_imdb": "Venía del vendedor y se corrigió con IMDb (match A)",
+          "corregido_genero": "Venía del vendedor y se corrigió con el género de la fila"}
 ORDEN_ORIGEN = ["original", "intra_titulo", "app_default", "imdb", "wikidata", "tvmaze", "derivado_genero",
-                "derivado_tipo", "app_semantica", "sin_dato"]
+                "derivado_tipo", "app_semantica", "corregido_imdb", "corregido_genero", "sin_dato"]
 MEJORA_CAT = [("rellena", "Se puede llenar (estaba vacía)"), ("sube", "Se puede afinar (estaba llena, pero genérica)"),
               ("corrige", "Se puede corregir (estaba incorrecta)"), ("mantiene", "Se queda igual (ya está bien)"),
               ("sin_propuesta", "Sin propuesta (vacía y sin evidencia)"),
@@ -167,6 +169,8 @@ def main():
          "| `derivado_tipo` | El tipo IMDb decide la categoría y tiene prioridad sobre el género: movie → `[IAB1-5]`, tvSeries → `[IAB1-7]` | Match IMDb A/B | category |",
          "| `derivado_genero` | Traduce el género de la misma fila a categoría IAB (deportes → `[IAB17]`, noticias → `[IAB12]`…) | Solo si no hay match IMDb A/B, o si los géneros IMDb confirman la vertical (Sport / News / Music) | category |",
          "| `app_semantica` | Modo de entrega según la app: lineal pura → 1, VOD pura → 0 | Solo apps con `aplicar=si` en la tabla curada | livestream |",
+         "| `corregido_imdb` | **Corrige** un valor que el vendedor sí mandó cuando contradice a IMDb/Wikidata (vertical, película/serie o género). La columna original no se toca; el motivo queda en `<columna>_correccion` | Match IMDb de confianza A; el reemplazo no puede contradecir la evidencia | category, genre |",
+         "| `corregido_genero` | **Corrige** una categoría declarada como noticias o deportes cuando el género de la misma fila es ficción (el `[IAB12]` de Vidaa en una telenovela) | Solo sin match A y solo esas dos verticales | category |",
          "| *(retirados el 2026-09-17)* | `app_default` (copiar el valor constante de la app) en todas las columnas: describe al vendedor, no al contenido. Todo relleno de contentLanguage. El tipo IMDb como señal de livestream | | |",
          "| *(retirado el 2026-10-06)* | `intra_titulo` (copiar el valor que otra fila del mismo título ya trae) en todas las columnas: propagaba los valores por defecto de los vendedores (el `[IAB12]` que Vidaa manda en casi todas sus filas llegaba a las telenovelas de ViX) | | |",
          "\n## Resumen: cuánto viene lleno hoy y cuánto queda tras el relleno\n",

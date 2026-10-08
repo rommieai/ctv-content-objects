@@ -84,7 +84,7 @@ function conEtiquetas(regs: Registro[], uid: number, admin: boolean) {
 }
 
 // ---- Consultas del consolidado completo
-const ORIGENES_EXTERNOS = "('imdb','wikidata','tvmaze','derivado_tipo')";
+const ORIGENES_EXTERNOS = "('imdb','wikidata','tvmaze','derivado_tipo','corregido_imdb')";
 const SQL_EXTRA = `(ext_imdb_id <> '' AND (${CAMPOS.map(c => `"${c}_origen" IN ${ORIGENES_EXTERNOS}`).join(" OR ")}
   OR contentCategory_afinado_origen IN ('imdb','wikidata')))`;
 const SQL_MIAS = "(SELECT COUNT(*) FROM etiquetas e WHERE e.usuario_id = @u AND e.fila_id = filas.id AND substr(e.campo, 1, 1) <> '_')";

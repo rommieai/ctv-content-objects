@@ -4,20 +4,29 @@
   "titulos_distintos": 18246,
   "titulos_nuevos_consultados": 0,
   "titulos_con_imdb": 8753,
-  "fecha": "2026-10-06 16:01",
+  "fecha": "2026-10-06 16:38",
   "columnas": {
     "contentCategory": {
       "pct_original": 21.9,
+      "pct_corregido": 1.85,
+      "filas_corregidas": {
+        "corregido_genero": 14996,
+        "corregido_imdb": 9876
+      },
       "pct_final": 91.8,
       "origen": {
         "derivado_tipo": 40.1,
-        "derivado_genero": 29.8,
-        "original": 21.9,
-        "sin_dato": 8.2
+        "derivado_genero": 29.9,
+        "original": 20.0,
+        "sin_dato": 8.2,
+        "corregido_genero": 1.1,
+        "corregido_imdb": 0.7
       }
     },
     "contentSeries": {
       "pct_original": 6.6,
+      "pct_corregido": 0.0,
+      "filas_corregidas": {},
       "pct_final": 13.8,
       "origen": {
         "sin_dato": 86.2,
@@ -27,6 +36,8 @@
     },
     "contentLength": {
       "pct_original": 12.6,
+      "pct_corregido": 0.0,
+      "filas_corregidas": {},
       "pct_final": 12.6,
       "origen": {
         "sin_dato": 87.4,
@@ -35,6 +46,8 @@
     },
     "contentLanguage": {
       "pct_original": 67.0,
+      "pct_corregido": 0.0,
+      "filas_corregidas": {},
       "pct_final": 67.0,
       "origen": {
         "original": 67.0,
@@ -43,6 +56,8 @@
     },
     "contentIsLiveStream": {
       "pct_original": 29.5,
+      "pct_corregido": 0.0,
+      "filas_corregidas": {},
       "pct_final": 48.7,
       "origen": {
         "sin_dato": 51.3,
@@ -52,6 +67,8 @@
     },
     "contentRating": {
       "pct_original": 75.1,
+      "pct_corregido": 0.0,
+      "filas_corregidas": {},
       "pct_final": 75.3,
       "origen": {
         "original": 75.1,
@@ -61,11 +78,16 @@
     },
     "contentGenre": {
       "pct_original": 90.8,
+      "pct_corregido": 1.0,
+      "filas_corregidas": {
+        "corregido_imdb": 13446
+      },
       "pct_final": 93.4,
       "origen": {
-        "original": 90.8,
+        "original": 89.8,
         "sin_dato": 6.6,
-        "imdb": 2.6
+        "imdb": 2.6,
+        "corregido_imdb": 1.0
       }
     }
   },

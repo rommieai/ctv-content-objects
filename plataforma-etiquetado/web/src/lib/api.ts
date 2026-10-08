@@ -2,7 +2,7 @@ export interface Usuario { id: number; usuario: string; nombre: string; rol: "ad
 export interface Iab { codigo: string; es: string; en: string; tax: string }
 export interface Unidad { valor: string; agregado: boolean; estrato: string }
 export interface Campo {
-  campo: string; nombre: string; valor: string; llenado: boolean; original: string; riesgo: string;
+  campo: string; nombre: string; valor: string; llenado: boolean; corregido?: boolean; original: string; riesgo: string;
   unidades: Unidad[]; significado: { iab: Iab[] } | { texto: string } | null;
 }
 export interface Etiqueta { veredicto: string; correcto: string; ts: string }
@@ -38,6 +38,7 @@ export const llavesUnidades = (r: Registro) =>
 export const pendientesDe = (r: Registro) => llavesUnidades(r).filter(k => !r.etiquetas[k]?.veredicto).length;
 
 const METODO: Record<string, string> = {
+  corregido_imdb: "corregido con IMDb (venía del vendedor)", corregido_genero: "corregido con el género de la fila (venía del vendedor)",
   intra_titulo: "copiado de otra ruta del mismo título", derivado_genero: "derivado del género",
   derivado_tipo: "tipo película/serie de IMDb", imdb: "IMDb", wikidata: "Wikidata", tvmaze: "TVmaze",
   app_semantica: "semántica de la app", genero_declarado: "género declarado por el vendedor",
@@ -47,6 +48,7 @@ const CAMPO: Record<string, string> = {
   contentIsLiveStream: "En vivo", contentLength: "Duración", contentLanguage: "Idioma",
   contentCategory_afinado: "Categoría (código específico)", _ficha_externa: "Ficha IMDb = misma obra",
 };
+export const nombreCampo = (c: string) => CAMPO[c] ?? c;
 export function nombreEstrato(e: string) {
   const [c, m] = e.split("|");
   if (c === "_original") return `${CAMPO[m] ?? m} · valor del vendedor marcado mal`;

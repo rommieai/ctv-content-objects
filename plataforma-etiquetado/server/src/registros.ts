@@ -10,7 +10,7 @@ export const NOMBRE_CAMPO: Record<string, string> = {
   contentRating: "Clasificación por edad", contentIsLiveStream: "En vivo / lineal",
   contentLength: "Duración (código)", contentLanguage: "Idioma",
 };
-const EXTERNO = new Set(["imdb", "wikidata", "tvmaze", "derivado_tipo"]);
+const EXTERNO = new Set(["imdb", "wikidata", "tvmaze", "derivado_tipo", "corregido_imdb"]);
 const SENT = new Set(["not available", "not applicable", "unknown", "n/a", "null", "undefined", "none", "-", ""]);
 const MD5_VACIO = "d41d8cd98f00b204e9800998ecf8427e";
 export const FICHA = "_ficha_externa";
@@ -23,7 +23,7 @@ export const PREVIO = "_previo:";
 export type Fila = Record<string, any>;
 export interface Unidad { valor: string; agregado: boolean; estrato: string }
 export interface Campo {
-  campo: string; nombre: string; valor: string; llenado: boolean; original: string;
+  campo: string; nombre: string; valor: string; llenado: boolean; corregido: boolean; original: string;
   riesgo: string; unidades: Unidad[]; significado: Significado;
 }
 export interface Registro {
@@ -73,7 +73,7 @@ export function construirCampos(f: Fila): Campo[] {
       }
     }
     return {
-      campo: c, nombre: NOMBRE_CAMPO[c], valor, llenado: lleno, original: String(f[c] ?? "").trim(),
+      campo: c, nombre: NOMBRE_CAMPO[c], valor, llenado: lleno, corregido: o.startsWith("corregido"), original: String(f[c] ?? "").trim(),
       riesgo: "", unidades, significado: sig,
     };
   });

@@ -81,8 +81,8 @@
       {:else}
         {@const mapa = iabDe(c)}
         {@const varias = c.unidades.length > 1}
-        <tr class="llenado">
-          <td class="campo">{c.nombre}<span class="etiqueta">LLENADO</span>
+        <tr class="llenado" class:corregido={c.corregido}>
+          <td class="campo">{c.nombre}<span class="etiqueta">{c.corregido ? "CORREGIDO" : "LLENADO"}</span>
             {#if varias}<div class="antes">{c.unidades.length} valores: juzga cada uno</div>{/if}
           </td>
           <td>
@@ -160,6 +160,11 @@
   td.campo { width: 170px; color: var(--ink2); font-size: 13px; }
   tr.llenado td { background: var(--fill-bg); }
   tr.llenado td.campo { border-left: 4px solid var(--fill-line); color: var(--fill-ink); font-weight: 600; }
+  tr.corregido td { background: var(--fix-bg); }
+  tr.corregido td.campo { border-left-color: var(--fix-line); color: var(--fix-ink); }
+  tr.corregido .etiqueta { background: var(--fix-line); }
+  tr.corregido .unidad { border-top-color: var(--fix-line); }
+  tr.corregido .previo span { color: var(--fix-ink); font-weight: 600; }
   .etiqueta { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .03em; padding: 1px 6px; border-radius: 3px; background: var(--fill-line); color: #fff; margin-left: 4px; vertical-align: 1px; }
   .valor { font-weight: 600; word-break: break-word; }
   .vacio { color: var(--empty); font-style: italic; font-weight: 400; }

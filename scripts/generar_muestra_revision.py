@@ -46,9 +46,12 @@ NOMBRE_CAMPO = {"contentGenre": "Género", "contentCategory": "Categoría (IAB)"
 CUOTAS = {"contentCategory|derivado_tipo": 55, "contentCategory|derivado_genero": 55,
           "contentSeries|imdb": 55, "contentGenre|imdb": 55, "contentRating|wikidata": 30,
           "contentIsLiveStream|app_semantica": 30,
+          # correctitud: valores que el vendedor mando y se reemplazaron (origen corregido_*)
+          "contentCategory|corregido_imdb": 60, "contentCategory|corregido_genero": 60,
+          "contentGenre|corregido_imdb": 60,
           "contentCategory_afinado|genero_declarado": 60, "contentCategory_afinado|imdb": 50,
           "contentCategory_afinado|wikidata": 15}
-EXTERNO = {"imdb", "wikidata", "tvmaze", "derivado_tipo"}
+EXTERNO = {"imdb", "wikidata", "tvmaze", "derivado_tipo", "corregido_imdb"}
 
 # ---------------------------------------------------------------------------------------------
 # Significados
@@ -387,6 +390,7 @@ def main():
                 else:
                     unidades.append({"valor": valor, "agregado": False, "estrato": est})
             campos.append({"campo": c, "nombre": NOMBRE_CAMPO[c], "valor": valor, "llenado": lleno,
+                           "corregido": o.startswith("corregido"),
                            "original": d[c].strip(), "riesgo": riesgo(o, k) if lleno else "",
                            "unidades": unidades, "significado": sig})
         q = urllib.parse.quote_plus(f'"{tl}" {d["App Name"]}')

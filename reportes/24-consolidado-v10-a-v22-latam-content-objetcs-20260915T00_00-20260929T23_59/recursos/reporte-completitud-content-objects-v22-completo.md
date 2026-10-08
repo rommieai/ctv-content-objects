@@ -1,6 +1,6 @@
 # Qué se puede completar de cada content object: métodos y fuentes (consolidado v10 a v22)
 
-**Fuente:** `inventory-consolidado-v10-a-v22.csv` — 1,344,629 filas únicas, 622,384,767,599 requests (métricas del corte v22). **Relleno:** `inventory-consolidado-v10-a-v22-relleno.csv` (no versionado), generado con `scripts/enriquecer_externo.py --wikidata`, corrida del 2026-10-06 16:01 → `recursos/reporte-relleno-v22.json`. Títulos distintos: 18,246; con match en IMDb: 8,753; consultados por primera vez en esta corrida: 0.
+**Fuente:** `inventory-consolidado-v10-a-v22.csv` — 1,344,629 filas únicas, 622,384,767,599 requests (métricas del corte v22). **Relleno:** `inventory-consolidado-v10-a-v22-relleno.csv` (no versionado), generado con `scripts/enriquecer_externo.py --wikidata`, corrida del 2026-10-06 16:38 → `recursos/reporte-relleno-v22.json`. Títulos distintos: 18,246; con match en IMDb: 8,753; consultados por primera vez en esta corrida: 0.
 **Validaciones:** `scripts/validar_categorias.py` y `scripts/validar_genero_series.py` sobre el consolidado y sobre el relleno (`recursos/validacion-*.json`, con muestras CSV para revisión manual en la misma carpeta). Tablas generadas con `scripts/generar_reporte_completitud.py`.
 
 ## Cómo leer este reporte
@@ -31,6 +31,8 @@
 | `derivado_tipo` | El tipo IMDb decide la categoría y tiene prioridad sobre el género: movie → `[IAB1-5]`, tvSeries → `[IAB1-7]` | Match IMDb A/B | category |
 | `derivado_genero` | Traduce el género de la misma fila a categoría IAB (deportes → `[IAB17]`, noticias → `[IAB12]`…) | Solo si no hay match IMDb A/B, o si los géneros IMDb confirman la vertical (Sport / News / Music) | category |
 | `app_semantica` | Modo de entrega según la app: lineal pura → 1, VOD pura → 0 | Solo apps con `aplicar=si` en la tabla curada | livestream |
+| `corregido_imdb` | **Corrige** un valor que el vendedor sí mandó cuando contradice a IMDb/Wikidata (vertical, película/serie o género). La columna original no se toca; el motivo queda en `<columna>_correccion` | Match IMDb de confianza A; el reemplazo no puede contradecir la evidencia | category, genre |
+| `corregido_genero` | **Corrige** una categoría declarada como noticias o deportes cuando el género de la misma fila es ficción (el `[IAB12]` de Vidaa en una telenovela) | Solo sin match A y solo esas dos verticales | category |
 | *(retirados el 2026-09-17)* | `app_default` (copiar el valor constante de la app) en todas las columnas: describe al vendedor, no al contenido. Todo relleno de contentLanguage. El tipo IMDb como señal de livestream | | |
 | *(retirado el 2026-10-06)* | `intra_titulo` (copiar el valor que otra fila del mismo título ya trae) en todas las columnas: propagaba los valores por defecto de los vendedores (el `[IAB12]` que Vidaa manda en casi todas sus filas llegaba a las telenovelas de ViX) | | |
 
@@ -57,9 +59,11 @@
 
 | Origen | % filas |
 |---|---:|
-| Venía del vendedor (`original`) | 21.9% |
-| Derivado del género (`derivado_genero`) | 29.8% |
+| Venía del vendedor (`original`) | 20.0% |
+| Derivado del género (`derivado_genero`) | 29.9% |
 | Derivado del tipo IMDb (película / serie) (`derivado_tipo`) | 40.1% |
+| Venía del vendedor y se corrigió con IMDb (match A) (`corregido_imdb`) | 0.7% |
+| Venía del vendedor y se corrigió con el género de la fila (`corregido_genero`) | 1.1% |
 | Sigue vacío (`sin_dato`) | 8.2% |
 
 **Método y fuentes:** dos escalones. `derivado_tipo`: si el título tiene match IMDb (A/B), el tipo IMDb decide entre película (`[IAB1-5]`) y serie (`[IAB1-7]`), y tiene prioridad sobre el género (la vertical del género solo se conserva si los géneros IMDb la confirman: Sport, News, Music). `derivado_genero`: sin match, se traduce el contentGenre de la misma fila con el mapa IAB 1.0. La validación va un paso más allá y propone, con la taxonomía 2.2, la categoría más fina que la evidencia permite (forma + género).
@@ -91,9 +95,9 @@ Categorías más propuestas: `Movies > Drama Movies | Television > Drama TV` 5.2
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide con la evidencia (`coincide`) | 19.5% | 60.7% |
+| Coincide con la evidencia (`coincide`) | 19.5% | 62.6% |
 | Compatible (genérica, no contradice) (`compatible`) | 50.1% | 19.4% |
-| Contradice la evidencia (`contradice`) | 12.5% | 11.5% |
+| Contradice la evidencia (`contradice`) | 12.5% | 9.5% |
 | No se pudo evaluar (`no_evaluable`) | 18.0% | 8.4% |
 
 **Límites:** el consolidado mezcla tres taxonomías (1.0, 2.2, 3.0) y texto libre (`[sports]`, `[Live]`); lo declarado es en su mayoría genérico (nivel 1, solo la vertical). Los valores por defecto que declaran algunas apps (`[IAB12]` de Vidaa, `[IAB1]` de OTTera) no describen al contenido (Vidaa manda `[IAB12]` en telenovelas y películas); por eso ya no se copian entre rutas (`intra_titulo`, retirado el 2026-10-06). Un match IMDb de confianza B acierta ~75 %, así que parte de las "contradicciones" son matches equivocados; se separan con `genero_vs_imdb` en el CSV fila a fila.
@@ -106,8 +110,9 @@ Categorías más propuestas: `Movies > Drama Movies | Television > Drama TV` 5.2
 
 | Origen | % filas |
 |---|---:|
-| Venía del vendedor (`original`) | 90.8% |
+| Venía del vendedor (`original`) | 89.8% |
 | IMDb (`imdb`) | 2.6% |
+| Venía del vendedor y se corrigió con IMDb (match A) (`corregido_imdb`) | 1.0% |
 | Sigue vacío (`sin_dato`) | 6.6% |
 
 **Método y fuentes:** los géneros del match IMDb (`title.basics`, hasta tres) traducidos al vocabulario canónico del proyecto (`norm_genre`), y los géneros de Wikidata (`P136`) para lo que IMDb no expresa (telenovela, holiday). La validación compara cada género declarado con IMDb/Wikidata por *conceptos* (thriller/misterio/crimen → crimen-misterio, anime → animación) y propone géneros adicionales o más precisos.
@@ -138,10 +143,10 @@ Combinaciones más propuestas: `drama,romance` 1.0%; `drama` 0.9%; `drama,comedi
 
 | Veredicto | Consolidado (tal como llega) | Relleno (tras el pipeline) |
 |---|---:|---:|
-| Coincide (`coincide`) | 41.2% | 42.9% |
+| Coincide (`coincide`) | 41.2% | 43.9% |
 | Parecido (género vecino) (`afin`) | 2.6% | 2.6% |
 | Acierta en parte (`parcial`) | 2.8% | 2.7% |
-| Contradice (`contradice`) | 1.7% | 1.8% |
+| Contradice (`contradice`) | 1.7% | 0.7% |
 | No se pudo evaluar (`no_evaluable`) | 51.6% | 50.1% |
 
 **Límites:** es la columna que mejor viene (>90 %), así que el margen es afinar, no llenar. El vocabulario del vendedor es libre (`Drama` y `drama` son valores distintos en la fuente; `entertainment`, `other`, `movies` no son géneros comparables) y géneros que IMDb no maneja (lifestyle, viajes, religión, videojuegos) no se pueden juzgar. Solo la mitad de las filas tiene match externo; el resto queda como "no evaluable".
