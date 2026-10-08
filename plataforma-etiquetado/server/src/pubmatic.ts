@@ -42,7 +42,14 @@ export interface Condiciones {
   subasta: "first" | "fixed";            // Auction Type
   mediaCpm: number | null;               // Fixed Price: Media CPM (obligatorio). First Price: Custom Media Floor (opcional)
 }
-export interface PedidoDeal { nombre: string; paises: string[]; titulosCsv: string; condiciones: Condiciones }
+/** Una señal de contenido que va tal cual a PubMatic, además de la lista de títulos (segunda regla del deal). */
+export interface SenalRegla {
+  nombre: string;                              // como aparece en el selector de PubMatic: "Channel", "Language"…
+  modo: "manual" | "estandar";                 // Manual Entry (texto libre) o Standardized Categories (lista cerrada de PubMatic)
+  operador: "is" | "is any" | "contains";
+  valores: string[];                           // vacío con "is any"
+}
+export interface PedidoDeal { nombre: string; paises: string[]; titulosCsv: string; condiciones: Condiciones; senales: SenalRegla[] }
 export interface DealCreado { id: number | null; pmId: string; enlace: string; estado: string; resumen: string }
 
 const pm = (page: Page, id: string) => page.locator(`[data-pm-id="${id}"]`);
@@ -164,13 +171,75 @@ async function condiciones(page: Page, c: Condiciones) {
   if (await page.getByRole("button", { name: "Next" }).isDisabled()) throw new Error("PubMatic no deja avanzar con esas condiciones. No se creó nada");
 }
 
+/**
+ * Agrega una señal de contenido y la guarda en el formulario. La primera abre una regla nueva (Add Rule); las
+ * demás van a esa misma regla (Add Content Signal).
+ *
+ * Cómo une PubMatic las cosas (comprobado en el asistente): las señales de una regla van con AND; las reglas
+ * normales van con OR entre sí; la regla de una lista subida por CSV va con AND contra lo que sigue. Por eso
+ * todas las señales adicionales van en UNA regla, detrás de la lista de títulos. Una regla admite 3 señales como
+ * máximo y, después de una categoría estandarizada, ya no deja agregar más: esa va siempre al final.
+ */
+async function agregarSenal(page: Page, s: SenalRegla, primera: boolean) {
+  const boton = page.getByText(primera ? "Add Rule" : "Add Content Signal").last();
+  if (await boton.isDisabled()) throw new Error(`PubMatic no deja agregar más señales a la regla (iba ${s.nombre}). No se creó nada`);
+  await boton.click();
+  await page.waitForTimeout(1500);
+  await pm(page, "select-parameter").last().locator("hls-select-trigger").click();
+  await page.waitForTimeout(1000);
+  await page.locator('input[placeholder="Search"]:visible').last().fill(s.nombre);
+  await page.waitForTimeout(1500);
+  const opcion = page.getByText(s.nombre, { exact: true });
+  if (!(await opcion.count())) throw new Error(`PubMatic no ofrece la señal "${s.nombre}". No se creó nada`);
+  await opcion.last().click();
+  await page.waitForTimeout(1500);
+  // Genre, Content Rating y Language abren un submenú: lista cerrada de PubMatic o texto libre
+  const modo = page.getByText(s.modo === "estandar" ? "Standardized Categories" : "Manual Entry", { exact: true });
+  if ((await modo.count()) && (await modo.first().isVisible())) {
+    await modo.first().click();
+    await page.waitForTimeout(1500);
+  } else if (s.modo === "estandar") throw new Error(`La señal "${s.nombre}" no tiene categorías estandarizadas en PubMatic. No se creó nada`);
+
+  if (s.modo === "estandar") {
+    for (const valor of s.valores) {
+      const buscador = page.locator('input[placeholder^="Search available"]:visible').last();
+      await buscador.fill(valor);
+      await page.waitForTimeout(1000);
+      // la lista de disponibles es la primera del diálogo; cada renglón es una casilla con el nombre (y a veces una descripción)
+      const renglon = page.locator("hls-inline-select-list").first().getByText(valor, { exact: true });
+      if (!(await renglon.count())) throw new Error(`PubMatic no tiene la categoría estandarizada "${valor}" en ${s.nombre}. No se creó nada`);
+      await renglon.first().click();
+      await page.waitForTimeout(500);
+      const pasar = pm(page, "move-to-target").last();   // flecha que pasa lo marcado a la lista de seleccionados
+      if (await pasar.isDisabled()) throw new Error(`No se pudo marcar "${valor}" en ${s.nombre}. No se creó nada`);
+      await pasar.click();
+      await page.waitForTimeout(800);
+    }
+  } else {
+    if (s.operador !== "is") {
+      await pm(page, "select-operation").last().locator("hls-select-trigger").click();
+      await page.waitForTimeout(800);
+      await page.locator("hls-select-list").last().getByText(s.operador, { exact: true }).first().click();
+      await page.waitForTimeout(800);
+    }
+    if (s.operador !== "is any") {
+      await page.locator("textarea:visible").last().fill(s.valores.join(","));
+      await page.waitForTimeout(800);
+    }
+  }
+  const guardar = page.getByRole("button", { name: "Save" }).last();
+  if (await guardar.isDisabled()) throw new Error(`PubMatic no aceptó la señal ${s.nombre} (${s.valores.join(", ") || s.operador}). No se creó nada`);
+  await guardar.click();
+  await page.waitForTimeout(2500);
+}
+
 /** Lo que el resumen de PubMatic debe decir para que el deal sea el pedido. */
 function comprobarResumen(resumen: string, p: PedidoDeal) {
   const c = p.condiciones, faltan: string[] = [];
   const debe = (trozo: string, que: string) => { if (!resumen.includes(trozo)) faltan.push(que); };
   debe(p.nombre, "el nombre");
   for (const pais of p.paises) debe(pais, pais);
-  debe("1 Rule", "la regla de títulos");
+  debe(p.senales.length ? "2 Rules" : "1 Rule", p.senales.length ? "las dos reglas de contenido" : "la regla de títulos");
   debe(`Auction Type | ${c.subasta === "fixed" ? "Fixed Price" : "First Price"}`, "el tipo de subasta");
   debe(`Transaction Fee | ${c.fee === "no" ? "No" : "Yes"}`, "el transaction fee");
   const n = (x: number) => String(Number(x.toFixed(2)));
@@ -289,6 +358,18 @@ export async function crearDeal(p: PedidoDeal, paso: (msg: string) => void): Pro
     if (await guardar.isDisabled()) throw new Error("PubMatic no aceptó el CSV de títulos");
     await guardar.click();
     await page.waitForTimeout(2500);
+
+    if (p.senales.length) {
+      // segunda regla, unida con AND a la lista de títulos: las señales que van tal cual, la estandarizada al final
+      paso(`Targeting: ${p.senales.length} señal${p.senales.length > 1 ? "es" : ""} de contenido adicional${p.senales.length > 1 ? "es" : ""}`);
+      const orden = [...p.senales].sort((a, b) => Number(a.modo === "estandar") - Number(b.modo === "estandar"));
+      for (let i = 0; i < orden.length; i++) await agregarSenal(page, orden[i], i === 0);
+      const reglas = (await texto(page)).split("define their values.").pop()!.split("30 Day Projection")[0];
+      console.log(`deal ${p.nombre}: reglas en PubMatic -> ${reglas.slice(0, 200)} … ${reglas.slice(-600)}`);
+      // tiene que quedar: lista de títulos AND (señal AND señal…), sin ningún OR
+      const cola = reglas.split("Download All").pop() ?? "";
+      if (!cola.includes("| AND |") || cola.includes("| OR |")) throw new Error("PubMatic no unió las señales adicionales con AND a la lista de títulos. No se creó nada");
+    }
 
     paso("Revisando el resumen");
     await siguiente(page, "/deal/create/summary");

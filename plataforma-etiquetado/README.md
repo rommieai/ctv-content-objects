@@ -39,14 +39,25 @@ anterior, así que `scripts/calcular_precision_revision.py` lo lee sin cambios.
 
 ## Armador de deals
 
-Pestaña *Deals* (solo admin). Se elige país, género y/o categoría y compara, sobre el corte vigente, lo
+Pestaña *Deals* (solo admin). Se elige país y los content objects del reporte y compara, sobre el corte vigente, lo
 que alcanzan los **filtros nativos de PubMatic** (solo lo que el publisher declara) contra **nuestra
 recomendación**: eso mismo más una regla `Title is [lista]` con los títulos que la base enriquecida
 clasifica así (la unión de los dos; lo que viene sin título solo lo alcanzan los filtros nativos).
 Muestra requests, % vendido y eCPM histórico de cada camino, por publisher y por título. Desde ahí se
 descarga el CSV de títulos o se crea el deal en PubMatic.
 
-- **Datos**: `data/deals.db` (~40 MB), que genera `scripts/exportar_deals_db.py` desde el relleno y el
+- **Content objects del reporte** (cambian los números): género, categoría IAB, serie, clasificación, duración
+  (el código 1-8 del reporte) y en vivo entran en la recomendación también por la lista de títulos, aunque el
+  publisher no los declare. El idioma y «trae título» solo valen como vienen (el idioma nunca se rellena):
+  filtran igual en los dos caminos, y el idioma va además al deal como señal (`Language`, categoría
+  estandarizada de PubMatic). «Título contiene» busca en el título que manda el publisher.
+- **Señales que solo existen en PubMatic** (no cambian los números; solo van al deal): canal, cadena,
+  temporada, episodio, palabras clave, productora y su dominio, ID, calificación de usuarios, calidad de
+  producción, tipo de contenido, clasificación IQG, relación con la fuente y si se puede incrustar. En
+  PubMatic todas son texto libre con operador `is`, `contains` o `is any`; las que son códigos de OpenRTB se
+  ofrecen aquí como lista. Como el reporte no las trae, el deal real alcanza menos de lo que muestra la
+  comparación.
+- **Datos**: `data/deals.db` (~60 MB), que genera `scripts/exportar_deals_db.py` desde el relleno y el
   corte de cada tanda (`scripts/correr_tanda.py --deals` lo genera y lo sube a la VM si el `.env` de la
   raíz trae `DEALS_DESTINO` y `DEALS_LLAVE_SSH`). El servidor lo relee solo cuando cambia; sin el archivo
   la pestaña avisa que no hay datos.
@@ -65,9 +76,15 @@ descarga el CSV de títulos o se crea el deal en PubMatic.
 - Las creaciones se encolan (todos usan la misma cuenta) y quedan en la tabla `deals_trabajos`. Si un
   deal se crea y no se logra pausar, queda marcado «SIN PAUSAR»: hay que pausarlo a mano en PubMatic.
 - `DEALS_ENSAYO=1` hace que el bot recorra todo y se detenga en el resumen, sin crear nada.
-- Límites de PubMatic que respeta: 10,000 valores por deal y 500 KB por CSV. Dos reglas de contenido se
-  unen con AND, por eso la recomendación completa son dos deals: el de la lista de títulos (el que crea
-  el bot) y otro con los filtros nativos, que se arma a mano en PubMatic.
+- Límites de PubMatic que respeta: 10,000 valores por deal y 500 KB por CSV, y 3 señales por regla.
+- **Cómo une PubMatic las reglas de contenido** (comprobado en el asistente): las señales de una misma regla
+  van con AND; las reglas normales van con OR entre sí; la regla de una lista **subida por CSV** va con AND
+  contra lo que sigue; y después de una categoría estandarizada no deja agregar más señales a la regla. Por
+  eso el deal que crea el bot es `lista de títulos AND (señal AND señal AND idioma)`: las señales adicionales
+  van todas en una segunda regla (máximo 3, el idioma cuenta y va al final). La recomendación completa
+  siguen siendo dos deals: el de la lista de títulos (el que crea el bot) y otro con los filtros nativos.
+- `deals.db` de una versión anterior (sin las columnas de los content objects nuevos) sigue funcionando: la
+  pestaña ofrece solo género y categoría hasta que se regenere con `scripts/exportar_deals_db.py`.
 
 ## Despliegue
 

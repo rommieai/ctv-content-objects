@@ -9,16 +9,78 @@ import { existsSync, statSync } from "node:fs";
 import Database from "better-sqlite3";
 import type { Hono } from "hono";
 import { significadoCategoria } from "./significados.js";
-import { crearDeal, DealSinPausar, PUBMATIC, pubmaticConfigurado, type Condiciones } from "./pubmatic.js";
+import { crearDeal, DealSinPausar, PUBMATIC, pubmaticConfigurado, type Condiciones, type SenalRegla } from "./pubmatic.js";
 
 const RUTA = process.env.DEALS_DB ?? "/data/deals.db";
 const MAX_VALORES = 10_000;       // valores por deal en la carga por CSV de PubMatic
 const MAX_BYTES = 500 * 1000;     // tamaño máximo del CSV
+const MAX_SENALES = 3;            // señales que PubMatic admite en una misma regla de contenido
 const RE_NOMBRE = /^[A-Za-z0-9][A-Za-z0-9 ._-]{2,99}$/;
+
+// Señales de contenido que PubMatic deja filtrar al armar el deal pero que el reporte no trae: no se puede medir
+// cuánto inventario tienen, así que no cambian los números de la comparación; solo viajan al deal, en una segunda
+// regla. `opciones` son los valores de OpenRTB cuando la señal es un código; sin opciones es texto libre.
+const SENALES_PUBMATIC = [
+  { nombre: "Channel", es: "Canal", ayuda: "Canal en el que va el contenido" },
+  { nombre: "Network", es: "Cadena / network", ayuda: "Cadena a la que pertenece el canal" },
+  { nombre: "Season", es: "Temporada", ayuda: "Ej. Season 3" },
+  { nombre: "Episode", es: "Episodio", ayuda: "Número de episodio" },
+  { nombre: "Keywords", es: "Palabras clave", ayuda: "Palabras clave que describen el contenido" },
+  { nombre: "Producer Name", es: "Productora", ayuda: "Ej. Warner Bros" },
+  { nombre: "Producer Domain", es: "Dominio de la productora", ayuda: "Ej. warnerbros.com" },
+  { nombre: "ID", es: "ID del contenido", ayuda: "Identificador único del contenido" },
+  { nombre: "User Rating", es: "Calificación de usuarios", ayuda: "Número de likes, estrellas, etc." },
+  { nombre: "Production Quality", es: "Calidad de producción", ayuda: "", opciones: [["1", "Profesional"], ["2", "Semiprofesional (prosumer)"], ["3", "Generado por usuarios (UGC)"], ["0", "Desconocida"]] },
+  { nombre: "Context", es: "Tipo de contenido", ayuda: "", opciones: [["1", "Video"], ["2", "Juego"], ["3", "Música"], ["4", "Aplicación"], ["5", "Texto"], ["6", "Otro"], ["7", "Desconocido"]] },
+  { nombre: "QA Media Rating", es: "Clasificación IQG", ayuda: "", opciones: [["1", "Todo público"], ["2", "Mayores de 12"], ["3", "Adultos"]] },
+  { nombre: "Source Relationship", es: "Relación con la fuente", ayuda: "", opciones: [["1", "Directa"], ["0", "Indirecta"]] },
+  { nombre: "Embeddable", es: "Se puede incrustar", ayuda: "", opciones: [["1", "Sí"], ["0", "No"]] },
+] as { nombre: string; es: string; ayuda: string; opciones?: [string, string][] }[];
+const OPERADORES = ["is", "contains", "is any"] as const;
+export interface SenalExtra { senal: string; operador: typeof OPERADORES[number]; valores: string[] }
+
+/** Señales solo-PubMatic pedidas desde la web: [{ senal, operador, valores }]. */
+function leerExtras(x: unknown): SenalExtra[] | string {
+  if (x === undefined || x === null) return [];
+  if (!Array.isArray(x) || x.length > SENALES_PUBMATIC.length) return "Señales de PubMatic inválidas";
+  const out: SenalExtra[] = [];
+  for (const e of x) {
+    const def = SENALES_PUBMATIC.find(s => s.nombre === String(e?.senal ?? ""));
+    if (!def) return "Señal de PubMatic desconocida";
+    if (out.some(o => o.senal === def.nombre)) return `La señal ${def.es} está repetida`;
+    const operador = String(e?.operador ?? "is") as SenalExtra["operador"];
+    if (!OPERADORES.includes(operador) || (def.opciones && operador === "contains")) return `Operador inválido en ${def.es}`;
+    const crudos: string[] = (Array.isArray(e?.valores) ? e.valores : String(e?.valores ?? "").split(/[,\n]/)).map((v: unknown) => String(v).trim());
+    const valores = [...new Set(crudos.filter(Boolean))];
+    if (operador === "is any") { out.push({ senal: def.nombre, operador, valores: [] }); continue; }
+    if (!valores.length) return `Falta el valor de ${def.es}`;
+    if (valores.length > 200 || valores.some(v => v.length > 120)) return `Demasiados valores (o muy largos) en ${def.es}`;
+    if (def.opciones && valores.some(v => !def.opciones!.some(([cod]) => cod === v))) return `Valor inválido en ${def.es}`;
+    out.push({ senal: def.nombre, operador, valores });
+  }
+  return out;
+}
 
 type Db = InstanceType<typeof Database>;
 interface Tot { filas: number; req: number; vend: number; gasto: number }
-interface Filtro { paises: string[]; genero: string; categoria: string }
+
+// Content objects del reporte por los que se puede filtrar. `col` es la columna de `base` con lo que declara el
+// publisher (formato ';valor;'). Los enriquecibles tienen además lista de títulos en titulo_attr: en la
+// recomendación entran por título aunque el publisher no los declare. Idioma y «trae título» solo valen como
+// vienen (el idioma nunca se rellena), así que filtran igual en los dos caminos.
+const ATRIBUTOS = [
+  { tipo: "genero", col: "gen_decl", enriquecible: true },
+  { tipo: "categoria", col: "cat_decl", enriquecible: true },
+  { tipo: "serie", col: "ser_decl", enriquecible: true },
+  { tipo: "rating", col: "rat_decl", enriquecible: true },
+  { tipo: "duracion", col: "len_decl", enriquecible: true },
+  { tipo: "envivo", col: "live_decl", enriquecible: true },
+  { tipo: "idioma", col: "lang_decl", enriquecible: false },
+  { tipo: "con_titulo", col: "tit_decl", enriquecible: false },
+] as const;
+type Tipo = typeof ATRIBUTOS[number]["tipo"];
+type Filtro = { paises: string[]; titulo: string; extras: SenalExtra[] } & Record<Tipo, string>;
+const escaparLike = (v: string) => v.replace(/[\\%_]/g, "\\$&");
 
 // La base de datos se reemplaza en cada tanda: se reabre cuando cambia el archivo
 let datos: { db: Db; mtime: number } | null = null;
@@ -42,13 +104,30 @@ function leerFiltro(d: Db, b: any): Filtro | string {
   const paisesOk = new Set((d.prepare("SELECT DISTINCT pais FROM valores").all() as { pais: string }[]).map(x => x.pais));
   const pedidos: string[] = (Array.isArray(b?.paises) ? b.paises : []).map((x: unknown) => String(x));
   const paises = [...new Set(pedidos)].filter(p => paisesOk.has(p));
-  const genero = String(b?.genero ?? "").trim(), categoria = String(b?.categoria ?? "").trim();
   if (!paises.length) return "Elige al menos un país";
-  if (!genero && !categoria) return "Elige un género, una categoría o los dos";
+  const cols = columnasBase(d);
   const existe = d.prepare("SELECT 1 FROM valores WHERE tipo = ? AND valor = ? LIMIT 1");
-  if (genero && !existe.get("genero", genero)) return "Género desconocido";
-  if (categoria && !existe.get("categoria", categoria)) return "Categoría desconocida";
-  return { paises, genero, categoria };
+  const f = { paises, titulo: String(b?.titulo ?? "").trim().slice(0, 80), extras: [] as SenalExtra[] } as Filtro;
+  for (const a of ATRIBUTOS) {
+    const v = String(b?.[a.tipo] ?? "").trim();
+    if (v && !cols.has(a.col)) return "La base de deals cargada es de una versión anterior y no trae ese content object: hay que regenerar deals.db";
+    if (v && !existe.get(a.tipo, v)) return `Valor desconocido para ${a.tipo}`;
+    f[a.tipo] = v;
+  }
+  if (f.titulo && f.titulo.length < 3) return "Para buscar por título escribe al menos 3 letras";
+  if (!f.titulo && !ATRIBUTOS.some(a => f[a.tipo])) return "Elige al menos un content object del reporte (género, categoría, serie…)";
+  const extras = leerExtras(b?.extras);
+  if (typeof extras === "string") return extras;
+  f.extras = extras;
+  if (senalesDe(f).length > MAX_SENALES) return `PubMatic admite máximo ${MAX_SENALES} señales en la regla que acompaña a la lista de títulos (el idioma cuenta como una)`;
+  return f;
+}
+
+const cacheColumnas = new WeakMap<Db, Set<string>>();
+function columnasBase(d: Db) {
+  let c = cacheColumnas.get(d);
+  if (!c) cacheColumnas.set(d, c = new Set((d.prepare("PRAGMA table_info(base)").all() as { name: string }[]).map(x => x.name)));
+  return c;
 }
 
 /** Subconsulta con cada grupo del corte marcado: nat = lo alcanza el filtro nativo, lst = está en nuestra lista. */
@@ -56,15 +135,22 @@ function marcada(f: Filtro) {
   const args: Record<string, string> = {};
   f.paises.forEach((p, i) => { args[`p${i}`] = p; });
   const nat: string[] = [], lst = ["b.titulo <> ''"];
-  if (f.genero) {
-    nat.push("b.gen_decl LIKE @gl");
-    lst.push("EXISTS (SELECT 1 FROM titulo_attr t WHERE t.tipo = 'genero' AND t.valor = @g AND t.titulo = b.titulo)");
-    args.g = f.genero; args.gl = `%;${f.genero};%`;
+  for (const a of ATRIBUTOS) {
+    const v = f[a.tipo];
+    if (!v) continue;
+    const declara = `b.${a.col} LIKE @l_${a.tipo} ESCAPE '\\'`;
+    args[`l_${a.tipo}`] = `%;${escaparLike(v)};%`;
+    nat.push(declara);
+    if (a.enriquecible) {
+      lst.push(`EXISTS (SELECT 1 FROM titulo_attr t WHERE t.tipo = '${a.tipo}' AND t.valor = @v_${a.tipo} AND t.titulo = b.titulo)`);
+      args[`v_${a.tipo}`] = v;
+    } else lst.push(declara);
   }
-  if (f.categoria) {
-    nat.push("b.cat_decl LIKE @cl");
-    lst.push("EXISTS (SELECT 1 FROM titulo_attr t WHERE t.tipo = 'categoria' AND t.valor = @c AND t.titulo = b.titulo)");
-    args.c = f.categoria; args.cl = `%;${f.categoria};%`;
+  if (f.titulo) {
+    // el título siempre viene del publisher: filtra igual en los dos caminos
+    const contiene = "b.titulo LIKE @tq ESCAPE '\\'";
+    args.tq = `%${escaparLike(f.titulo)}%`;
+    nat.push(contiene); lst.push(contiene);
   }
   const sql = `(SELECT b.publisher, b.titulo, b.req, b.vend, b.gasto, b.filas, (${nat.join(" AND ")}) AS nat, (${lst.join(" AND ")}) AS lst
     FROM base b WHERE b.pais IN (${f.paises.map((_, i) => `@p${i}`).join(", ")}))`;
@@ -107,6 +193,7 @@ function simular(d: Db, f: Filtro) {
       nativo: medida({ filas: 0, req: p.n_req ?? 0, vend: p.n_vend ?? 0, gasto: p.n_gasto ?? 0 }, tot("n").req),
     }));
   return {
+    senales: senalesDe(f),
     filtro: f, universo: medida(u, u.req), nativo: medida(tot("n"), u.req), recomendado: medida(tot("x"), u.req),
     lista: medida(tot("l"), u.req), solo_lista: medida(tot("s"), u.req), solo_nativo: medida(tot("o"), u.req),
     titulos: {
@@ -122,7 +209,18 @@ interface Trabajo {
   id: number; usuario_id: number; nombre: string; filtro: string; estado: string; detalle: string;
   pm_id: string; enlace: string; titulos: number; creado: string; actualizado: string;
 }
-const cola: { id: number; nombre: string; paises: string[]; csv: string; condiciones: Condiciones }[] = [];
+const cola: { id: number; nombre: string; paises: string[]; csv: string; condiciones: Condiciones; senales: SenalRegla[] }[] = [];
+
+/**
+ * Señales que van tal cual a PubMatic en una segunda regla, unida con AND a la lista de títulos: las que solo
+ * existen en PubMatic y el idioma (el reporte lo trae con los nombres estandarizados de PubMatic y nunca se
+ * rellena). La estandarizada va al final: después de ella PubMatic no deja agregar más señales a la regla.
+ */
+function senalesDe(f: Filtro): SenalRegla[] {
+  const out: SenalRegla[] = f.extras.map(e => ({ nombre: e.senal, modo: "manual", operador: e.operador, valores: e.valores }));
+  if (f.idioma) out.push({ nombre: "Language", modo: "estandar", operador: "is", valores: [f.idioma] });
+  return out;
+}
 let corriendo = false;
 
 const RE_FECHA = /^\d{4}-\d{2}-\d{2}$/;
@@ -177,7 +275,7 @@ export function rutasDeals(app: Hono<any>, db: Db) {
       const { id } = t;
       try {
         marcar.run("corriendo", "Empezando", "", "", ahora(), id);
-        const r = await crearDeal({ nombre: t.nombre, paises: t.paises, titulosCsv: t.csv, condiciones: t.condiciones },
+        const r = await crearDeal({ nombre: t.nombre, paises: t.paises, titulosCsv: t.csv, condiciones: t.condiciones, senales: t.senales },
           msg => marcar.run("corriendo", msg, "", "", ahora(), id));
         guardarResumen.run(r.resumen, id);
         if (r.estado === "ensayo") marcar.run("error", "Ensayo: el bot recorrió todo el asistente y se detuvo en el resumen. No se creó nada.", "", "", ahora(), id);
@@ -204,12 +302,23 @@ export function rutasDeals(app: Hono<any>, db: Db) {
       return [...m.values()].sort((a, b) => b.requests - a.requests);
     };
     const paises = d.prepare("SELECT pais, SUM(req) requests FROM base GROUP BY pais ORDER BY requests DESC").all();
+    const cols = columnasBase(d);
+    const total = (paises as { requests: number }[]).reduce((t, x) => t + x.requests, 0);
+    const ETIQUETA: Record<string, Record<string, string>> = {
+      envivo: { "1": "Sí, en vivo", "0": "No" }, con_titulo: { true: "Sí", false: "No" },
+    };
+    // los demás content objects del reporte (si la base cargada ya los trae); la serie se recorta a las de más requests
+    const otros = Object.fromEntries(ATRIBUTOS.filter(a => a.tipo !== "genero" && a.tipo !== "categoria" && cols.has(a.col)).map(a => [a.tipo,
+      juntar(a.tipo).filter(x => a.tipo !== "rating" || x.requests >= 0.0005 * total)   // sin la cola de clasificaciones sueltas de cada país
+        .slice(0, a.tipo === "serie" ? 600 : 60).map(x => ({ ...x, nombre: ETIQUETA[a.tipo]?.[x.valor] ?? "" }))]));
     return c.json({
+      atributos: otros, enriquecibles: ATRIBUTOS.filter(a => a.enriquecible).map(a => a.tipo), senales_pubmatic: SENALES_PUBMATIC,
       meta: metaDe(d), paises, generos: juntar("genero"),
       categorias: juntar("categoria").filter(x => /^IAB\d/.test(x.valor)).map(x => {
         const s = significadoCategoria(`[${x.valor}]`)[0];
         return { ...x, nombre: s ? s.es || s.en : "" };
       }),
+      max_senales: MAX_SENALES,
       pubmatic: { configurado: pubmaticConfigurado(), dsp: PUBMATIC.dsp, buyer: PUBMATIC.buyer, ensayo: PUBMATIC.ensayo },
     });
   });
@@ -256,7 +365,7 @@ export function rutasDeals(app: Hono<any>, db: Db) {
     if (!t.dentro) return c.json({ error: "Ese filtro no tiene títulos que recomendar" }, 400);
     const id = Number(db.prepare(`INSERT INTO deals_trabajos (usuario_id, nombre, filtro, condiciones, estado, detalle, titulos, creado, actualizado)
       VALUES (?, ?, ?, ?, 'en_cola', 'En cola', ?, ?, ?)`).run(c.get("u").id, nombre, JSON.stringify(f), JSON.stringify(cond), t.dentro, ahora(), ahora()).lastInsertRowid);
-    cola.push({ id, nombre, paises: f.paises, csv: t.csv, condiciones: cond });
+    cola.push({ id, nombre, paises: f.paises, csv: t.csv, condiciones: cond, senales: senalesDe(f) });
     void atender();
     return c.json({ id });
   });
