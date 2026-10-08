@@ -1,0 +1,3748 @@
+{
+ "meta": {
+  "archivo": "inventory-consolidado-v10-a-v24.csv",
+  "nombre": "consolidado",
+  "columna": "contentCategory",
+  "filas": 1396663,
+  "requests": 583047756539,
+  "filas_con_categoria": 309066,
+  "pct_filas_con_categoria": 22.13,
+  "requests_con_categoria": 177246006598,
+  "pct_requests_con_categoria": 30.4,
+  "filas_con_titulo_real": 1201816,
+  "filas_con_match_externo": 673723,
+  "pct_filas_con_match_externo": 48.24,
+  "titulos_distintos": 19182,
+  "titulos_en_cache": 19182,
+  "confianza_min": "B",
+  "taxonomias": {
+   "1.0": 392,
+   "2.2": 1196,
+   "3.0": 703
+  },
+  "fecha": "2026-10-08 15:03",
+  "paises": [
+   "Mexico",
+   "Colombia",
+   "Chile"
+  ],
+  "publishers_top": [
+   "iion Pty Ltd",
+   "OTTera.tv",
+   "TCL ADs (APAC)",
+   "TCL ADS - Springserve",
+   "Select Plus PTE LTD (CTV)",
+   "Equativ (Formerly SMART AdServer) - oRTB CTV",
+   "METAX SOFTWARE PTE. LTD. (Exchange)",
+   "Vidaa",
+   "PML Digital",
+   "AWG Media",
+   "Televisa Univision via SpringServe",
+   "Roku - oRTB"
+  ]
+ },
+ "correctitud": {
+  "formato": {
+   "estandar": {
+    "filas": 256976,
+    "requests": 165184844874,
+    "pct_filas": 83.15,
+    "pct_requests": 93.2
+   },
+   "no_estandar": {
+    "filas": 42185,
+    "requests": 11029645981,
+    "pct_filas": 13.65,
+    "pct_requests": 6.22
+   },
+   "texto_libre": {
+    "filas": 9788,
+    "requests": 1024716943,
+    "pct_filas": 3.17,
+    "pct_requests": 0.58
+   },
+   "estandar;texto_libre": {
+    "filas": 114,
+    "requests": 6579280,
+    "pct_filas": 0.04,
+    "pct_requests": 0.0
+   },
+   "estandar;no_estandar;texto_libre": {
+    "filas": 3,
+    "requests": 219520,
+    "pct_filas": 0.0,
+    "pct_requests": 0.0
+   }
+  },
+  "taxonomia": {
+   "1.0": {
+    "filas": 270507,
+    "requests": 171690802444,
+    "pct_filas": 87.52,
+    "pct_requests": 96.87
+   },
+   "2.2": {
+    "filas": 28654,
+    "requests": 4523688411,
+    "pct_filas": 9.27,
+    "pct_requests": 2.55
+   },
+   "ninguna": {
+    "filas": 9788,
+    "requests": 1024716943,
+    "pct_filas": 3.17,
+    "pct_requests": 0.58
+   },
+   "1.0;ninguna": {
+    "filas": 108,
+    "requests": 6270880,
+    "pct_filas": 0.03,
+    "pct_requests": 0.0
+   },
+   "2.2;ninguna": {
+    "filas": 9,
+    "requests": 527920,
+    "pct_filas": 0.0,
+    "pct_requests": 0.0
+   }
+  },
+  "valores_top": {
+   "[IAB1]": {
+    "filas": 72181,
+    "requests": 20307618245,
+    "pct_filas": 23.35,
+    "pct_requests": 11.46
+   },
+   "[IAB1-22]": {
+    "filas": 41432,
+    "requests": 8937879694,
+    "pct_filas": 13.41,
+    "pct_requests": 5.04
+   },
+   "[IAB12]": {
+    "filas": 29408,
+    "requests": 18115778410,
+    "pct_filas": 9.52,
+    "pct_requests": 10.22
+   },
+   "[IAB1-5]": {
+    "filas": 21002,
+    "requests": 8024771236,
+    "pct_filas": 6.8,
+    "pct_requests": 4.53
+   },
+   "[IAB1, IAB1-5]": {
+    "filas": 14516,
+    "requests": 3499998240,
+    "pct_filas": 4.7,
+    "pct_requests": 1.97
+   },
+   "[IAB17]": {
+    "filas": 14157,
+    "requests": 7163409072,
+    "pct_filas": 4.58,
+    "pct_requests": 4.04
+   },
+   "[IAB1-5, IAB1-7]": {
+    "filas": 13433,
+    "requests": 24433760973,
+    "pct_filas": 4.35,
+    "pct_requests": 13.79
+   },
+   "[IAB1-7]": {
+    "filas": 13369,
+    "requests": 33566326912,
+    "pct_filas": 4.33,
+    "pct_requests": 18.94
+   },
+   "[sports]": {
+    "filas": 5807,
+    "requests": 350325520,
+    "pct_filas": 1.88,
+    "pct_requests": 0.2
+   },
+   "[IAB1-7, IAB17-12]": {
+    "filas": 5702,
+    "requests": 3443726080,
+    "pct_filas": 1.84,
+    "pct_requests": 1.94
+   },
+   "[640]": {
+    "filas": 5654,
+    "requests": 712596512,
+    "pct_filas": 1.83,
+    "pct_requests": 0.4
+   },
+   "[IAB1-6]": {
+    "filas": 5233,
+    "requests": 2773714252,
+    "pct_filas": 1.69,
+    "pct_requests": 1.56
+   },
+   "[IAB1, IAB1-5, IAB1-7]": {
+    "filas": 4632,
+    "requests": 571694235,
+    "pct_filas": 1.5,
+    "pct_requests": 0.32
+   },
+   "[IAB17-1]": {
+    "filas": 3176,
+    "requests": 1942419840,
+    "pct_filas": 1.03,
+    "pct_requests": 1.1
+   },
+   "[IAB9-30]": {
+    "filas": 3028,
+    "requests": 668282945,
+    "pct_filas": 0.98,
+    "pct_requests": 0.38
+   },
+   "[Live]": {
+    "filas": 2561,
+    "requests": 567344821,
+    "pct_filas": 0.83,
+    "pct_requests": 0.32
+   },
+   "[325]": {
+    "filas": 2540,
+    "requests": 404113920,
+    "pct_filas": 0.82,
+    "pct_requests": 0.23
+   },
+   "[324]": {
+    "filas": 2339,
+    "requests": 215842829,
+    "pct_filas": 0.76,
+    "pct_requests": 0.12
+   },
+   "[647]": {
+    "filas": 2310,
+    "requests": 240477769,
+    "pct_filas": 0.75,
+    "pct_requests": 0.14
+   },
+   "[330, 646]": {
+    "filas": 1622,
+    "requests": 385477680,
+    "pct_filas": 0.52,
+    "pct_requests": 0.22
+   },
+   "[IAB20]": {
+    "filas": 1598,
+    "requests": 895619862,
+    "pct_filas": 0.52,
+    "pct_requests": 0.51
+   },
+   "[333, 647]": {
+    "filas": 1490,
+    "requests": 254300880,
+    "pct_filas": 0.48,
+    "pct_requests": 0.14
+   },
+   "[IAB1, IAB1-4, IAB16]": {
+    "filas": 1487,
+    "requests": 81598720,
+    "pct_filas": 0.48,
+    "pct_requests": 0.05
+   },
+   "[1004, 651]": {
+    "filas": 1266,
+    "requests": 170425520,
+    "pct_filas": 0.41,
+    "pct_requests": 0.1
+   },
+   "[IAB1-5, IAB1-7, IAB11, IAB12]": {
+    "filas": 1177,
+    "requests": 3477534080,
+    "pct_filas": 0.38,
+    "pct_requests": 1.96
+   },
+   "[336]": {
+    "filas": 1109,
+    "requests": 162778000,
+    "pct_filas": 0.36,
+    "pct_requests": 0.09
+   },
+   "[IAB18]": {
+    "filas": 1093,
+    "requests": 489461520,
+    "pct_filas": 0.35,
+    "pct_requests": 0.28
+   },
+   "[331, 380]": {
+    "filas": 987,
+    "requests": 419640080,
+    "pct_filas": 0.32,
+    "pct_requests": 0.24
+   },
+   "[IAB1, IAB1-4, IAB1-5]": {
+    "filas": 962,
+    "requests": 78947360,
+    "pct_filas": 0.31,
+    "pct_requests": 0.04
+   },
+   "[IAB9]": {
+    "filas": 872,
+    "requests": 541574960,
+    "pct_filas": 0.28,
+    "pct_requests": 0.31
+   },
+   "[IAB1, IAB15]": {
+    "filas": 856,
+    "requests": 51800320,
+    "pct_filas": 0.28,
+    "pct_requests": 0.03
+   },
+   "[IAB1, IAB1-4, IAB17]": {
+    "filas": 835,
+    "requests": 52979280,
+    "pct_filas": 0.27,
+    "pct_requests": 0.03
+   },
+   "[332, 648]": {
+    "filas": 819,
+    "requests": 101339200,
+    "pct_filas": 0.26,
+    "pct_requests": 0.06
+   },
+   "[246, 335, 652]": {
+    "filas": 803,
+    "requests": 117239280,
+    "pct_filas": 0.26,
+    "pct_requests": 0.07
+   },
+   "[IAB8]": {
+    "filas": 801,
+    "requests": 546328652,
+    "pct_filas": 0.26,
+    "pct_requests": 0.31
+   },
+   "[IAB1-1]": {
+    "filas": 758,
+    "requests": 637544609,
+    "pct_filas": 0.25,
+    "pct_requests": 0.36
+   },
+   "[IAB1, IAB9]": {
+    "filas": 748,
+    "requests": 33135360,
+    "pct_filas": 0.24,
+    "pct_requests": 0.02
+   },
+   "[646]": {
+    "filas": 745,
+    "requests": 71060130,
+    "pct_filas": 0.24,
+    "pct_requests": 0.04
+   },
+   "[Entertainment]": {
+    "filas": 745,
+    "requests": 45055600,
+    "pct_filas": 0.24,
+    "pct_requests": 0.03
+   },
+   "[IAB3]": {
+    "filas": 742,
+    "requests": 269494240,
+    "pct_filas": 0.24,
+    "pct_requests": 0.15
+   }
+  },
+  "evidencia": {
+   "interna": {
+    "filas": 150635,
+    "requests": 94354342152,
+    "pct_filas": 48.74,
+    "pct_requests": 53.23
+   },
+   "externa": {
+    "filas": 102324,
+    "requests": 28862688474,
+    "pct_filas": 33.11,
+    "pct_requests": 16.28
+   },
+   "ninguna": {
+    "filas": 56107,
+    "requests": 54028975972,
+    "pct_filas": 18.15,
+    "pct_requests": 30.48
+   }
+  },
+  "veredicto_total": {
+   "compatible": {
+    "filas": 153497,
+    "requests": 68691096904,
+    "pct_filas": 49.66,
+    "pct_requests": 38.75
+   },
+   "coincide": {
+    "filas": 61060,
+    "requests": 34776939548,
+    "pct_filas": 19.76,
+    "pct_requests": 19.62
+   },
+   "no_evaluable": {
+    "filas": 56107,
+    "requests": 54028975972,
+    "pct_filas": 18.15,
+    "pct_requests": 30.48
+   },
+   "contradice": {
+    "filas": 38402,
+    "requests": 19748994174,
+    "pct_filas": 12.43,
+    "pct_requests": 11.14
+   }
+  },
+  "veredicto": {
+   "interna|compatible": {
+    "filas": 87428,
+    "requests": 54606646687,
+    "pct_filas": 28.29,
+    "pct_requests": 30.81
+   },
+   "externa|compatible": {
+    "filas": 66069,
+    "requests": 14084450217,
+    "pct_filas": 21.38,
+    "pct_requests": 7.95
+   },
+   "ninguna|no_evaluable": {
+    "filas": 56107,
+    "requests": 54028975972,
+    "pct_filas": 18.15,
+    "pct_requests": 30.48
+   },
+   "interna|coincide": {
+    "filas": 43980,
+    "requests": 30011059805,
+    "pct_filas": 14.23,
+    "pct_requests": 16.93
+   },
+   "interna|contradice": {
+    "filas": 19227,
+    "requests": 9736635660,
+    "pct_filas": 6.22,
+    "pct_requests": 5.49
+   },
+   "externa|contradice": {
+    "filas": 19175,
+    "requests": 10012358514,
+    "pct_filas": 6.2,
+    "pct_requests": 5.65
+   },
+   "externa|coincide": {
+    "filas": 17080,
+    "requests": 4765879743,
+    "pct_filas": 5.53,
+    "pct_requests": 2.69
+   }
+  },
+  "contradice_tipo": {
+   "externa|vertical": {
+    "filas": 14546,
+    "requests": 7993985210,
+    "pct_filas": 4.71,
+    "pct_requests": 4.51
+   },
+   "interna|vertical": {
+    "filas": 13347,
+    "requests": 7935781688,
+    "pct_filas": 4.32,
+    "pct_requests": 4.48
+   },
+   "externa|forma": {
+    "filas": 4086,
+    "requests": 1903548744,
+    "pct_filas": 1.32,
+    "pct_requests": 1.07
+   },
+   "interna|genero": {
+    "filas": 2454,
+    "requests": 242658640,
+    "pct_filas": 0.79,
+    "pct_requests": 0.14
+   },
+   "interna|sub": {
+    "filas": 1816,
+    "requests": 957303840,
+    "pct_filas": 0.59,
+    "pct_requests": 0.54
+   },
+   "interna|forma": {
+    "filas": 1610,
+    "requests": 600891492,
+    "pct_filas": 0.52,
+    "pct_requests": 0.34
+   },
+   "externa|genero": {
+    "filas": 397,
+    "requests": 26417360,
+    "pct_filas": 0.13,
+    "pct_requests": 0.01
+   },
+   "externa|sub": {
+    "filas": 146,
+    "requests": 88407200,
+    "pct_filas": 0.05,
+    "pct_requests": 0.05
+   }
+  },
+  "contradice_externa_por_genero_vs_imdb": {
+   "coincide": {
+    "filas": 17350,
+    "requests": 9321021554,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "sin_genero_declarado": {
+    "filas": 1313,
+    "requests": 619786080,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "no_coincide": {
+    "filas": 512,
+    "requests": 71550880,
+    "pct_filas": null,
+    "pct_requests": null
+   }
+  },
+  "ext_confianza": {
+   "A": {
+    "filas": 55839,
+    "requests": 16405624489,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "B": {
+    "filas": 46485,
+    "requests": 12457063985,
+    "pct_filas": null,
+    "pct_requests": null
+   }
+  },
+  "conflicto_intra_titulo": {
+   "titulos_con_categoria": 13365,
+   "titulos_conflicto_vertical": 3990,
+   "titulos_conflicto_forma": 207,
+   "filas_en_titulos_con_conflicto": {
+    "vertical": 134771,
+    "forma": 3363
+   },
+   "filas_minoritarias": {
+    "vertical": {
+     "filas": 15177,
+     "requests": 4578103995,
+     "pct_filas": 4.91,
+     "pct_requests": 2.58
+    },
+    "forma": {
+     "filas": 607,
+     "requests": 64688187,
+     "pct_filas": 0.2,
+     "pct_requests": 0.04
+    },
+    "vertical;forma": {
+     "filas": 4,
+     "requests": 860744,
+     "pct_filas": 0.0,
+     "pct_requests": 0.0
+    }
+   },
+   "ejemplos_vertical": {
+    "transplant": {
+     "tecnologia": 729,
+     "entretenimiento": 729
+    },
+    "chicken stew": {
+     "entretenimiento": 691,
+     "familia": 136,
+     "deportes": 38
+    },
+    "golden edge": {
+     "noticias": 485,
+     "entretenimiento": 54
+    },
+    "eve": {
+     "entretenimiento": 420,
+     "noticias": 31,
+     "deportes": 62,
+     "videojuegos": 6,
+     "tecnologia": 6,
+     "musica": 6
+    },
+    "brooklyn love stories": {
+     "entretenimiento": 443,
+     "deportes": 56,
+     "videojuegos": 6,
+     "tecnologia": 6,
+     "musica": 5
+    },
+    "american apocalypse": {
+     "entretenimiento": 438,
+     "deportes": 50,
+     "videojuegos": 6,
+     "tecnologia": 6,
+     "musica": 6
+    },
+    "forest frenzy of boonie bears": {
+     "entretenimiento": 371,
+     "familia": 77,
+     "deportes": 25
+    },
+    "hatchback": {
+     "entretenimiento": 398,
+     "deportes": 51,
+     "videojuegos": 6,
+     "tecnologia": 6,
+     "musica": 6
+    },
+    "corona": {
+     "entretenimiento": 397,
+     "deportes": 51,
+     "videojuegos": 6,
+     "tecnologia": 6,
+     "musica": 6
+    },
+    "goal tv": {
+     "deportes": 424,
+     "entretenimiento": 30
+    },
+    "live news": {
+     "entretenimiento": 376,
+     "noticias": 54,
+     "familia": 3,
+     "hogar": 7,
+     "deportes": 9,
+     "mascotas": 1,
+     "viajes": 1
+    },
+    "best pets of the month": {
+     "mascotas": 220,
+     "entretenimiento": 220
+    },
+    "penance lane": {
+     "entretenimiento": 364,
+     "deportes": 52,
+     "videojuegos": 6,
+     "tecnologia": 6,
+     "musica": 6
+    },
+    "best fails of the month": {
+     "deportes": 296,
+     "entretenimiento": 137
+    },
+    "your local and world news": {
+     "noticias": 305,
+     "finanzas": 52,
+     "entretenimiento": 21,
+     "tecnologia": 4,
+     "ciencia": 2
+    }
+   },
+   "ejemplos_forma": {
+    "live news": {
+     "tv": 336,
+     "pelicula": 40
+    },
+    "grandes parejas": {
+     "tv": 178,
+     "pelicula": 8
+    },
+    "cine de oro": {
+     "pelicula": 158,
+     "tv": 1
+    },
+    "como dice el dicho": {
+     "tv": 118,
+     "pelicula": 21
+    },
+    "super mario bros wonder": {
+     "tv": 135,
+     "pelicula": 2
+    },
+    "las 3 marias": {
+     "tv": 129,
+     "pelicula": 7
+    },
+    "rebelde": {
+     "tv": 120,
+     "pelicula": 6
+    },
+    "galanes": {
+     "tv": 108,
+     "pelicula": 15
+    },
+    "jajaja": {
+     "tv": 109,
+     "pelicula": 12
+    },
+    "freetv clasico": {
+     "pelicula": 63,
+     "tv": 1
+    },
+    "freetv sureno": {
+     "pelicula": 58,
+     "tv": 1
+    },
+    "descendientes del sol": {
+     "tv": 53,
+     "pelicula": 2
+    },
+    "hi vida": {
+     "pelicula": 36,
+     "tv": 9
+    },
+    "freetv live": {
+     "pelicula": 39,
+     "tv": 1
+    },
+    "el peso del amor": {
+     "tv": 16,
+     "pelicula": 23
+    }
+   }
+  },
+  "por_pais": {
+   "Mexico": {
+    "filas": 106209,
+    "requests": 125251135402,
+    "desglose": {
+     "interna|compatible": {
+      "filas": 33888,
+      "requests": 40206178035,
+      "pct_filas": 31.91,
+      "pct_requests": 32.1
+     },
+     "ninguna|no_evaluable": {
+      "filas": 20055,
+      "requests": 42393719365,
+      "pct_filas": 18.88,
+      "pct_requests": 33.85
+     },
+     "externa|compatible": {
+      "filas": 15629,
+      "requests": 5085582053,
+      "pct_filas": 14.72,
+      "pct_requests": 4.06
+     },
+     "interna|coincide": {
+      "filas": 10686,
+      "requests": 19297627299,
+      "pct_filas": 10.06,
+      "pct_requests": 15.41
+     },
+     "interna|contradice": {
+      "filas": 9543,
+      "requests": 7514364674,
+      "pct_filas": 8.99,
+      "pct_requests": 6.0
+     },
+     "externa|contradice": {
+      "filas": 8585,
+      "requests": 8445946184,
+      "pct_filas": 8.08,
+      "pct_requests": 6.74
+     },
+     "externa|coincide": {
+      "filas": 7823,
+      "requests": 2307717792,
+      "pct_filas": 7.37,
+      "pct_requests": 1.84
+     }
+    }
+   },
+   "Colombia": {
+    "filas": 31958,
+    "requests": 9384023185,
+    "desglose": {
+     "interna|compatible": {
+      "filas": 8524,
+      "requests": 2660502274,
+      "pct_filas": 26.67,
+      "pct_requests": 28.35
+     },
+     "externa|compatible": {
+      "filas": 7550,
+      "requests": 1527480769,
+      "pct_filas": 23.62,
+      "pct_requests": 16.28
+     },
+     "ninguna|no_evaluable": {
+      "filas": 4998,
+      "requests": 1919448210,
+      "pct_filas": 15.64,
+      "pct_requests": 20.45
+     },
+     "interna|coincide": {
+      "filas": 4753,
+      "requests": 1994481770,
+      "pct_filas": 14.87,
+      "pct_requests": 21.25
+     },
+     "externa|coincide": {
+      "filas": 2726,
+      "requests": 572607762,
+      "pct_filas": 8.53,
+      "pct_requests": 6.1
+     },
+     "externa|contradice": {
+      "filas": 1965,
+      "requests": 277509920,
+      "pct_filas": 6.15,
+      "pct_requests": 2.96
+     },
+     "interna|contradice": {
+      "filas": 1442,
+      "requests": 431992480,
+      "pct_filas": 4.51,
+      "pct_requests": 4.6
+     }
+    }
+   },
+   "Chile": {
+    "filas": 23567,
+    "requests": 7293656085,
+    "desglose": {
+     "interna|compatible": {
+      "filas": 6485,
+      "requests": 2116250011,
+      "pct_filas": 27.52,
+      "pct_requests": 29.01
+     },
+     "externa|compatible": {
+      "filas": 5302,
+      "requests": 1960018731,
+      "pct_filas": 22.5,
+      "pct_requests": 26.87
+     },
+     "interna|coincide": {
+      "filas": 4349,
+      "requests": 1278544004,
+      "pct_filas": 18.45,
+      "pct_requests": 17.53
+     },
+     "ninguna|no_evaluable": {
+      "filas": 4205,
+      "requests": 1221385099,
+      "pct_filas": 17.84,
+      "pct_requests": 16.75
+     },
+     "externa|coincide": {
+      "filas": 1504,
+      "requests": 327679200,
+      "pct_filas": 6.38,
+      "pct_requests": 4.49
+     },
+     "interna|contradice": {
+      "filas": 973,
+      "requests": 256633840,
+      "pct_filas": 4.13,
+      "pct_requests": 3.52
+     },
+     "externa|contradice": {
+      "filas": 749,
+      "requests": 133145200,
+      "pct_filas": 3.18,
+      "pct_requests": 1.83
+     }
+    }
+   }
+  },
+  "por_publisher": {
+   "iion Pty Ltd": {
+    "filas": 2046,
+    "requests": 1334741013,
+    "desglose": {
+     "ninguna|no_evaluable": {
+      "filas": 969,
+      "requests": 900300326,
+      "pct_filas": 47.36,
+      "pct_requests": 67.45
+     },
+     "interna|compatible": {
+      "filas": 572,
+      "requests": 380808274,
+      "pct_filas": 27.96,
+      "pct_requests": 28.53
+     },
+     "externa|compatible": {
+      "filas": 171,
+      "requests": 22447868,
+      "pct_filas": 8.36,
+      "pct_requests": 1.68
+     },
+     "interna|coincide": {
+      "filas": 150,
+      "requests": 20097865,
+      "pct_filas": 7.33,
+      "pct_requests": 1.51
+     },
+     "interna|contradice": {
+      "filas": 82,
+      "requests": 4845768,
+      "pct_filas": 4.01,
+      "pct_requests": 0.36
+     },
+     "externa|coincide": {
+      "filas": 66,
+      "requests": 4061598,
+      "pct_filas": 3.23,
+      "pct_requests": 0.3
+     },
+     "externa|contradice": {
+      "filas": 36,
+      "requests": 2179314,
+      "pct_filas": 1.76,
+      "pct_requests": 0.16
+     }
+    }
+   },
+   "OTTera.tv": {
+    "filas": 99810,
+    "requests": 22285594640,
+    "desglose": {
+     "externa|compatible": {
+      "filas": 51380,
+      "requests": 11390137280,
+      "pct_filas": 51.48,
+      "pct_requests": 51.11
+     },
+     "interna|compatible": {
+      "filas": 32188,
+      "requests": 6208293280,
+      "pct_filas": 32.25,
+      "pct_requests": 27.86
+     },
+     "ninguna|no_evaluable": {
+      "filas": 11164,
+      "requests": 3897328240,
+      "pct_filas": 11.19,
+      "pct_requests": 17.49
+     },
+     "externa|coincide": {
+      "filas": 3932,
+      "requests": 656309040,
+      "pct_filas": 3.94,
+      "pct_requests": 2.94
+     },
+     "externa|contradice": {
+      "filas": 565,
+      "requests": 71240960,
+      "pct_filas": 0.57,
+      "pct_requests": 0.32
+     },
+     "interna|contradice": {
+      "filas": 323,
+      "requests": 25084800,
+      "pct_filas": 0.32,
+      "pct_requests": 0.11
+     },
+     "interna|coincide": {
+      "filas": 258,
+      "requests": 37201040,
+      "pct_filas": 0.26,
+      "pct_requests": 0.17
+     }
+    }
+   },
+   "TCL ADs (APAC)": {
+    "filas": 1510,
+    "requests": 330104000,
+    "desglose": {
+     "ninguna|no_evaluable": {
+      "filas": 1077,
+      "requests": 269638160,
+      "pct_filas": 71.32,
+      "pct_requests": 81.68
+     },
+     "interna|compatible": {
+      "filas": 194,
+      "requests": 24867200,
+      "pct_filas": 12.85,
+      "pct_requests": 7.53
+     },
+     "interna|coincide": {
+      "filas": 83,
+      "requests": 9790800,
+      "pct_filas": 5.5,
+      "pct_requests": 2.97
+     },
+     "externa|compatible": {
+      "filas": 82,
+      "requests": 21161920,
+      "pct_filas": 5.43,
+      "pct_requests": 6.41
+     },
+     "interna|contradice": {
+      "filas": 41,
+      "requests": 3078800,
+      "pct_filas": 2.72,
+      "pct_requests": 0.93
+     },
+     "externa|coincide": {
+      "filas": 26,
+      "requests": 1219760,
+      "pct_filas": 1.72,
+      "pct_requests": 0.37
+     },
+     "externa|contradice": {
+      "filas": 7,
+      "requests": 347360,
+      "pct_filas": 0.46,
+      "pct_requests": 0.11
+     }
+    }
+   },
+   "TCL ADS - Springserve": {
+    "filas": 1277,
+    "requests": 332359440,
+    "desglose": {
+     "ninguna|no_evaluable": {
+      "filas": 899,
+      "requests": 278673280,
+      "pct_filas": 70.4,
+      "pct_requests": 83.85
+     },
+     "interna|compatible": {
+      "filas": 175,
+      "requests": 24770800,
+      "pct_filas": 13.7,
+      "pct_requests": 7.45
+     },
+     "externa|compatible": {
+      "filas": 100,
+      "requests": 12621440,
+      "pct_filas": 7.83,
+      "pct_requests": 3.8
+     },
+     "interna|coincide": {
+      "filas": 45,
+      "requests": 11928480,
+      "pct_filas": 3.52,
+      "pct_requests": 3.59
+     },
+     "externa|coincide": {
+      "filas": 32,
+      "requests": 1596720,
+      "pct_filas": 2.51,
+      "pct_requests": 0.48
+     },
+     "interna|contradice": {
+      "filas": 20,
+      "requests": 2276160,
+      "pct_filas": 1.57,
+      "pct_requests": 0.68
+     },
+     "externa|contradice": {
+      "filas": 6,
+      "requests": 492560,
+      "pct_filas": 0.47,
+      "pct_requests": 0.15
+     }
+    }
+   },
+   "Select Plus PTE LTD (CTV)": {
+    "filas": 235,
+    "requests": 11744960,
+    "desglose": {
+     "externa|contradice": {
+      "filas": 176,
+      "requests": 8799200,
+      "pct_filas": 74.89,
+      "pct_requests": 74.92
+     },
+     "interna|contradice": {
+      "filas": 34,
+      "requests": 1406400,
+      "pct_filas": 14.47,
+      "pct_requests": 11.97
+     },
+     "externa|compatible": {
+      "filas": 11,
+      "requests": 596000,
+      "pct_filas": 4.68,
+      "pct_requests": 5.07
+     },
+     "interna|compatible": {
+      "filas": 7,
+      "requests": 265280,
+      "pct_filas": 2.98,
+      "pct_requests": 2.26
+     },
+     "ninguna|no_evaluable": {
+      "filas": 5,
+      "requests": 607680,
+      "pct_filas": 2.13,
+      "pct_requests": 5.17
+     },
+     "externa|coincide": {
+      "filas": 2,
+      "requests": 70400,
+      "pct_filas": 0.85,
+      "pct_requests": 0.6
+     }
+    }
+   },
+   "Equativ (Formerly SMART AdServer) - oRTB CTV": {
+    "filas": 9128,
+    "requests": 1731676640,
+    "desglose": {
+     "interna|compatible": {
+      "filas": 2237,
+      "requests": 411585040,
+      "pct_filas": 24.51,
+      "pct_requests": 23.77
+     },
+     "ninguna|no_evaluable": {
+      "filas": 2098,
+      "requests": 309015120,
+      "pct_filas": 22.98,
+      "pct_requests": 17.84
+     },
+     "interna|contradice": {
+      "filas": 1833,
+      "requests": 288909440,
+      "pct_filas": 20.08,
+      "pct_requests": 16.68
+     },
+     "externa|contradice": {
+      "filas": 1110,
+      "requests": 227162080,
+      "pct_filas": 12.16,
+      "pct_requests": 13.12
+     },
+     "interna|coincide": {
+      "filas": 1014,
+      "requests": 255901840,
+      "pct_filas": 11.11,
+      "pct_requests": 14.78
+     },
+     "externa|coincide": {
+      "filas": 527,
+      "requests": 185521600,
+      "pct_filas": 5.77,
+      "pct_requests": 10.71
+     },
+     "externa|compatible": {
+      "filas": 309,
+      "requests": 53581520,
+      "pct_filas": 3.39,
+      "pct_requests": 3.09
+     }
+    }
+   },
+   "METAX SOFTWARE PTE. LTD. (Exchange)": {
+    "filas": 25438,
+    "requests": 4643971200,
+    "desglose": {
+     "interna|compatible": {
+      "filas": 7065,
+      "requests": 1181529440,
+      "pct_filas": 27.77,
+      "pct_requests": 25.44
+     },
+     "externa|coincide": {
+      "filas": 6137,
+      "requests": 624159120,
+      "pct_filas": 24.13,
+      "pct_requests": 13.44
+     },
+     "externa|compatible": {
+      "filas": 4420,
+      "requests": 395658480,
+      "pct_filas": 17.38,
+      "pct_requests": 8.52
+     },
+     "externa|contradice": {
+      "filas": 2729,
+      "requests": 1424764480,
+      "pct_filas": 10.73,
+      "pct_requests": 30.68
+     },
+     "ninguna|no_evaluable": {
+      "filas": 2328,
+      "requests": 702737200,
+      "pct_filas": 9.15,
+      "pct_requests": 15.13
+     },
+     "interna|contradice": {
+      "filas": 1436,
+      "requests": 70218480,
+      "pct_filas": 5.65,
+      "pct_requests": 1.51
+     },
+     "interna|coincide": {
+      "filas": 1323,
+      "requests": 244904000,
+      "pct_filas": 5.2,
+      "pct_requests": 5.27
+     }
+    }
+   },
+   "Vidaa": {
+    "filas": 23334,
+    "requests": 18480560400,
+    "desglose": {
+     "externa|contradice": {
+      "filas": 6244,
+      "requests": 5209511680,
+      "pct_filas": 26.76,
+      "pct_requests": 28.19
+     },
+     "interna|compatible": {
+      "filas": 5400,
+      "requests": 3313563120,
+      "pct_filas": 23.14,
+      "pct_requests": 17.93
+     },
+     "ninguna|no_evaluable": {
+      "filas": 4925,
+      "requests": 3630217280,
+      "pct_filas": 21.11,
+      "pct_requests": 19.64
+     },
+     "interna|contradice": {
+      "filas": 3135,
+      "requests": 1754944320,
+      "pct_filas": 13.44,
+      "pct_requests": 9.5
+     },
+     "interna|coincide": {
+      "filas": 2036,
+      "requests": 3529400720,
+      "pct_filas": 8.73,
+      "pct_requests": 19.1
+     },
+     "externa|compatible": {
+      "filas": 1260,
+      "requests": 496438160,
+      "pct_filas": 5.4,
+      "pct_requests": 2.69
+     },
+     "externa|coincide": {
+      "filas": 334,
+      "requests": 546485120,
+      "pct_filas": 1.43,
+      "pct_requests": 2.96
+     }
+    }
+   },
+   "PML Digital": {
+    "filas": 6310,
+    "requests": 432940320,
+    "desglose": {
+     "externa|contradice": {
+      "filas": 3148,
+      "requests": 188055360,
+      "pct_filas": 49.89,
+      "pct_requests": 43.44
+     },
+     "interna|contradice": {
+      "filas": 1144,
+      "requests": 70037040,
+      "pct_filas": 18.13,
+      "pct_requests": 16.18
+     },
+     "ninguna|no_evaluable": {
+      "filas": 793,
+      "requests": 97792880,
+      "pct_filas": 12.57,
+      "pct_requests": 22.59
+     },
+     "interna|compatible": {
+      "filas": 468,
+      "requests": 29185600,
+      "pct_filas": 7.42,
+      "pct_requests": 6.74
+     },
+     "externa|compatible": {
+      "filas": 463,
+      "requests": 29187760,
+      "pct_filas": 7.34,
+      "pct_requests": 6.74
+     },
+     "externa|coincide": {
+      "filas": 229,
+      "requests": 14950560,
+      "pct_filas": 3.63,
+      "pct_requests": 3.45
+     },
+     "interna|coincide": {
+      "filas": 65,
+      "requests": 3731120,
+      "pct_filas": 1.03,
+      "pct_requests": 0.86
+     }
+    }
+   },
+   "AWG Media": {
+    "filas": 22262,
+    "requests": 4581196400,
+    "desglose": {
+     "interna|compatible": {
+      "filas": 7508,
+      "requests": 1626096560,
+      "pct_filas": 33.73,
+      "pct_requests": 35.5
+     },
+     "interna|coincide": {
+      "filas": 5432,
+      "requests": 635832800,
+      "pct_filas": 24.4,
+      "pct_requests": 13.88
+     },
+     "ninguna|no_evaluable": {
+      "filas": 4191,
+      "requests": 1098914640,
+      "pct_filas": 18.83,
+      "pct_requests": 23.99
+     },
+     "externa|coincide": {
+      "filas": 1951,
+      "requests": 652498080,
+      "pct_filas": 8.76,
+      "pct_requests": 14.24
+     },
+     "externa|compatible": {
+      "filas": 1349,
+      "requests": 358702720,
+      "pct_filas": 6.06,
+      "pct_requests": 7.83
+     },
+     "interna|contradice": {
+      "filas": 1235,
+      "requests": 128551280,
+      "pct_filas": 5.55,
+      "pct_requests": 2.81
+     },
+     "externa|contradice": {
+      "filas": 596,
+      "requests": 80600320,
+      "pct_filas": 2.68,
+      "pct_requests": 1.76
+     }
+    }
+   },
+   "Roku - oRTB": {
+    "filas": 17533,
+    "requests": 80079233840,
+    "desglose": {
+     "interna|compatible": {
+      "filas": 8833,
+      "requests": 29778894960,
+      "pct_filas": 50.38,
+      "pct_requests": 37.19
+     },
+     "ninguna|no_evaluable": {
+      "filas": 3682,
+      "requests": 32420213600,
+      "pct_filas": 21.0,
+      "pct_requests": 40.49
+     },
+     "interna|coincide": {
+      "filas": 2644,
+      "requests": 13433291120,
+      "pct_filas": 15.08,
+      "pct_requests": 16.77
+     },
+     "interna|contradice": {
+      "filas": 2374,
+      "requests": 4446834160,
+      "pct_filas": 13.54,
+      "pct_requests": 5.55
+     }
+    }
+   }
+  },
+  "por_origen": {},
+  "contradicciones_top_titulos": [
+   {
+    "titulo": "lo que la vida me robo",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,romance,telenovela",
+    "imdb": "tt3223004",
+    "imdb_titulo": "Lo que la vida me robó",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 224,
+    "requests": 832790640
+   },
+   {
+    "titulo": "transplant s4 ep 3 home",
+    "declarado": "[IAB1-7, IAB19-29]",
+    "esperado": "tv/drama",
+    "imdb": "tt10936342",
+    "imdb_titulo": "Transplant",
+    "genero_declarado": "Not Applicable",
+    "genero_vs_imdb": "sin_genero_declarado",
+    "evidencia": "externa",
+    "detalle": "vertical:tecnologia",
+    "publisher": "Coocaa, a SKYWORTH company",
+    "filas": 729,
+    "requests": 441621760
+   },
+   {
+    "titulo": "mi corazon es tuyo",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia,romance,telenovela",
+    "imdb": "tt3825904",
+    "imdb_titulo": "Mi corazón es tuyo",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 185,
+    "requests": 420768320
+   },
+   {
+    "titulo": "la rosa de guadalupe",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,telenovela",
+    "imdb": "tt1192302",
+    "imdb_titulo": "The Rose of Guadalupe",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 304,
+    "requests": 419851840
+   },
+   {
+    "titulo": "la fea mas bella",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia,drama,romance",
+    "imdb": "tt0497152",
+    "imdb_titulo": "La fea más bella",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 116,
+    "requests": 369360400
+   },
+   {
+    "titulo": "amores verdaderos",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,romance,telenovela",
+    "imdb": "tt2320524",
+    "imdb_titulo": "True Love",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 197,
+    "requests": 355848800
+   },
+   {
+    "titulo": "jajaja",
+    "declarado": "[IAB1-7]",
+    "esperado": "pelicula/comedia,drama,romance",
+    "imdb": "tt1452626",
+    "imdb_titulo": "Hahaha",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "forma:tv!=pelicula",
+    "publisher": "Vidaa",
+    "filas": 142,
+    "requests": 282639520
+   },
+   {
+    "titulo": "la familia p luche",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia",
+    "imdb": "tt1244672",
+    "imdb_titulo": "La familia P. Luche",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 106,
+    "requests": 215116880
+   },
+   {
+    "titulo": "rubi 2005",
+    "declarado": "[IAB12]",
+    "esperado": "genero:drama",
+    "imdb": "",
+    "imdb_titulo": "",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "no_comparable",
+    "evidencia": "interna",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 107,
+    "requests": 210879040
+   },
+   {
+    "titulo": "destilando amor",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,telenovela",
+    "imdb": "tt0940629",
+    "imdb_titulo": "Destilando amor",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 175,
+    "requests": 194415520
+   },
+   {
+    "titulo": "soy tu duena",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,romance,telenovela",
+    "imdb": "tt1630269",
+    "imdb_titulo": "Soy tu dueña",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 114,
+    "requests": 179038480
+   },
+   {
+    "titulo": "amor real",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,romance,telenovela",
+    "imdb": "tt0341281",
+    "imdb_titulo": "Amor real",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 142,
+    "requests": 176366000
+   },
+   {
+    "titulo": "porque el amor manda",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia,drama,telenovela",
+    "imdb": "tt2401754",
+    "imdb_titulo": "Porque el amor manda",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 118,
+    "requests": 171958400
+   },
+   {
+    "titulo": "la que no podia amar",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,romance,telenovela",
+    "imdb": "tt2012381",
+    "imdb_titulo": "The One Who Couldn't Love",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 135,
+    "requests": 171725840
+   },
+   {
+    "titulo": "hasta que el dinero nos separe",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia,drama,romance",
+    "imdb": "tt0815736",
+    "imdb_titulo": "Until Money Do Us Part",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 132,
+    "requests": 168354640
+   },
+   {
+    "titulo": "corazon indomable",
+    "declarado": "[IAB12]",
+    "esperado": "pelicula/comedia,drama,romance",
+    "imdb": "tt0108451",
+    "imdb_titulo": "Untamed Heart",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 119,
+    "requests": 156450480
+   },
+   {
+    "titulo": "nosotros los guapos",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia",
+    "imdb": "tt7112114",
+    "imdb_titulo": "Nosotros los guapos",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 128,
+    "requests": 148990080
+   },
+   {
+    "titulo": "la vecina",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia,drama,romance",
+    "imdb": "tt4696338",
+    "imdb_titulo": "La vecina",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 107,
+    "requests": 148647680
+   },
+   {
+    "titulo": "vecinos",
+    "declarado": "[IAB12]",
+    "esperado": "?/comedia,romance",
+    "imdb": "tt0011508",
+    "imdb_titulo": "Neighbors",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 130,
+    "requests": 147060080
+   },
+   {
+    "titulo": "para volver a amar",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,telenovela",
+    "imdb": "tt1699171",
+    "imdb_titulo": "Para volver a amar",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 140,
+    "requests": 137171120
+   },
+   {
+    "titulo": "rebelde hd",
+    "declarado": "[IAB12]",
+    "esperado": "genero:drama",
+    "imdb": "",
+    "imdb_titulo": "",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "no_comparable",
+    "evidencia": "interna",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 126,
+    "requests": 133498000
+   },
+   {
+    "titulo": "fuego en la sangre",
+    "declarado": "[IAB12]",
+    "esperado": "?/drama",
+    "imdb": "tt0117005",
+    "imdb_titulo": "Masseuse",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 51,
+    "requests": 132370080
+   },
+   {
+    "titulo": "40 y 20",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia",
+    "imdb": "tt5711512",
+    "imdb_titulo": "40 and 20",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 123,
+    "requests": 130903040
+   },
+   {
+    "titulo": "sortilegio",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,romance,telenovela",
+    "imdb": "tt1439031",
+    "imdb_titulo": "Sortilegio",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 160,
+    "requests": 130020800
+   },
+   {
+    "titulo": "atrevete a sonar",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,romance,telenovela",
+    "imdb": "tt1364356",
+    "imdb_titulo": "Atrévete a soñar",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 62,
+    "requests": 108851680
+   },
+   {
+    "titulo": "abismo de pasion",
+    "declarado": "[IAB12]",
+    "esperado": "pelicula/drama",
+    "imdb": "tt0034946",
+    "imdb_titulo": "Kings Row",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 101,
+    "requests": 107370960
+   },
+   {
+    "titulo": "la gata",
+    "declarado": "[IAB12]",
+    "esperado": "tv/accion-aventura,drama,infantil-familia",
+    "imdb": "tt3596316",
+    "imdb_titulo": "The Stray Cat",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 86,
+    "requests": 98456400
+   },
+   {
+    "titulo": "manana es para siempre",
+    "declarado": "[IAB12]",
+    "esperado": "pelicula/accion-aventura,crimen-misterio,drama",
+    "imdb": "tt0039041",
+    "imdb_titulo": "Tomorrow Is Forever",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 109,
+    "requests": 94627760
+   },
+   {
+    "titulo": "acelerados",
+    "declarado": "[IAB1-6]",
+    "esperado": "tv/deportes",
+    "imdb": "tt7057612",
+    "imdb_titulo": "Acelerados",
+    "genero_declarado": "Sports",
+    "genero_vs_imdb": "sin_genero_declarado",
+    "evidencia": "externa",
+    "detalle": "vertical:musica",
+    "publisher": "Vidaa",
+    "filas": 15,
+    "requests": 90538160
+   },
+   {
+    "titulo": "true beauty",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia,drama,romance",
+    "imdb": "tt13274038",
+    "imdb_titulo": "True Beauty",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 124,
+    "requests": 88981920
+   },
+   {
+    "titulo": "cuando me enamoro se detiene el tiempo",
+    "declarado": "[IAB12]",
+    "esperado": "genero:drama",
+    "imdb": "",
+    "imdb_titulo": "",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "no_comparable",
+    "evidencia": "interna",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 111,
+    "requests": 88798000
+   },
+   {
+    "titulo": "la usurpadora 1998",
+    "declarado": "[IAB12]",
+    "esperado": "genero:drama",
+    "imdb": "",
+    "imdb_titulo": "",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "no_comparable",
+    "evidencia": "interna",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 93,
+    "requests": 74345040
+   },
+   {
+    "titulo": "por amar sin ley",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,telenovela",
+    "imdb": "tt7907384",
+    "imdb_titulo": "Laws of Love",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 99,
+    "requests": 73764320
+   },
+   {
+    "titulo": "las hijas de la senora garcia",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,telenovela",
+    "imdb": "tt32872848",
+    "imdb_titulo": "Mrs. Garcia and Her Daughters",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 106,
+    "requests": 71638480
+   },
+   {
+    "titulo": "maria de todos los angeles",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia",
+    "imdb": "tt1487513",
+    "imdb_titulo": "María de todos los Ángeles",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 48,
+    "requests": 70090160
+   },
+   {
+    "titulo": "amor bravio",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,romance,telenovela",
+    "imdb": "tt2266983",
+    "imdb_titulo": "Valiant Love",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 126,
+    "requests": 69049120
+   },
+   {
+    "titulo": "un refugio para el amor",
+    "declarado": "[IAB12]",
+    "esperado": "tv/drama,romance,telenovela",
+    "imdb": "tt2186523",
+    "imdb_titulo": "A Shelter for Love",
+    "genero_declarado": "Drama",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 79,
+    "requests": 68512000
+   },
+   {
+    "titulo": "una familia con suerte",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia,drama,infantil-familia",
+    "imdb": "tt1853455",
+    "imdb_titulo": "Una familia con suerte",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 87,
+    "requests": 68343840
+   },
+   {
+    "titulo": "que pobres tan ricos",
+    "declarado": "[IAB12]",
+    "esperado": "tv/comedia,telenovela",
+    "imdb": "tt3307334",
+    "imdb_titulo": "Qué pobres tan ricos",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "coincide",
+    "evidencia": "externa",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 51,
+    "requests": 64281360
+   },
+   {
+    "titulo": "por ella soy eva",
+    "declarado": "[IAB12]",
+    "esperado": "genero:comedia",
+    "imdb": "tt2206767",
+    "imdb_titulo": "Por ella soy Eva",
+    "genero_declarado": "Comedy",
+    "genero_vs_imdb": "no_comparable",
+    "evidencia": "interna",
+    "detalle": "vertical:noticias",
+    "publisher": "Vidaa",
+    "filas": 59,
+    "requests": 63219840
+   }
+  ],
+  "contradicciones_top_pares": {
+   "[IAB12] -> tv/drama,romance,telenovela": {
+    "filas": 2366,
+    "requests": 2307280960,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> genero:drama": {
+    "filas": 2206,
+    "requests": 1416456160,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> tv/drama,telenovela": {
+    "filas": 1889,
+    "requests": 1158401040,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB17-1] -> genero:deportes": {
+    "filas": 1633,
+    "requests": 922297120,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> genero:comedia": {
+    "filas": 1048,
+    "requests": 484560560,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> tv/comedia,drama,romance": {
+    "filas": 814,
+    "requests": 727843760,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB9-30] -> genero:deportes": {
+    "filas": 803,
+    "requests": 240576560,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB1-7, IAB19-29] -> tv/drama": {
+    "filas": 729,
+    "requests": 441621760,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[647] -> genero:crimen-misterio": {
+    "filas": 657,
+    "requests": 49921920,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB1, IAB9] -> genero:accion-aventura": {
+    "filas": 626,
+    "requests": 27078240,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB1-5] -> genero:talk show": {
+    "filas": 616,
+    "requests": 440575520,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB1, IAB1-5] -> tv/drama,romance,telenovela": {
+    "filas": 609,
+    "requests": 551814560,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[325, 640] -> genero:crimen-misterio": {
+    "filas": 589,
+    "requests": 75125360,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB17] -> genero:comedia": {
+    "filas": 541,
+    "requests": 26090720,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB1, IAB1-4, IAB17] -> genero:comedia": {
+    "filas": 540,
+    "requests": 35597600,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> genero:accion-aventura": {
+    "filas": 539,
+    "requests": 173015360,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB1, IAB1-5] -> tv/drama,telenovela": {
+    "filas": 458,
+    "requests": 225182800,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> tv/comedia": {
+    "filas": 447,
+    "requests": 501098160,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[325] -> genero:crimen-misterio": {
+    "filas": 447,
+    "requests": 58857360,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB9-30] -> genero:accion-aventura": {
+    "filas": 443,
+    "requests": 94516888,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB1, IAB1-4, IAB16] -> genero:comedia": {
+    "filas": 427,
+    "requests": 19939120,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> genero:crimen-misterio": {
+    "filas": 371,
+    "requests": 69593760,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[sports] -> pelicula/drama": {
+    "filas": 356,
+    "requests": 21619200,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[sports] -> genero:drama": {
+    "filas": 332,
+    "requests": 19714800,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> pelicula/comedia,drama,romance": {
+    "filas": 297,
+    "requests": 254491840,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[sports] -> pelicula/crimen-misterio,drama": {
+    "filas": 293,
+    "requests": 18889520,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB1, IAB15] -> genero:accion-aventura": {
+    "filas": 293,
+    "requests": 15874480,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB1-1] -> genero:comedia": {
+    "filas": 292,
+    "requests": 176373440,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> tv/comedia,drama,telenovela": {
+    "filas": 273,
+    "requests": 229053840,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[246, 335, 652] -> genero:fantasia,sci-fi": {
+    "filas": 272,
+    "requests": 17039760,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> tv/comedia,romance,telenovela": {
+    "filas": 265,
+    "requests": 381839760,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[647] -> genero:accion-aventura": {
+    "filas": 253,
+    "requests": 17090080,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> pelicula/accion-aventura,crimen-misterio,drama": {
+    "filas": 249,
+    "requests": 153386320,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> pelicula/drama": {
+    "filas": 234,
+    "requests": 144249840,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB1, IAB1-5] -> tv/comedia": {
+    "filas": 231,
+    "requests": 117556240,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> genero:terror": {
+    "filas": 231,
+    "requests": 69754560,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[1004, 651] -> genero:concursos": {
+    "filas": 223,
+    "requests": 25595360,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB1, IAB1-5] -> tv/comedia,drama,romance": {
+    "filas": 221,
+    "requests": 184033760,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> genero:romance": {
+    "filas": 221,
+    "requests": 36394480,
+    "pct_filas": null,
+    "pct_requests": null
+   },
+   "[IAB12] -> tv/comedia,drama,infantil-familia": {
+    "filas": 219,
+    "requests": 97870480,
+    "pct_filas": null,
+    "pct_requests": null
+   }
+  },
+  "genero_vs_imdb": {
+   "total": {
+    "coincide": {
+     "filas": 544987,
+     "requests": 166896828496,
+     "pct_filas": 80.89,
+     "pct_requests": 77.42
+    },
+    "sin_genero_declarado": {
+     "filas": 73182,
+     "requests": 16646412834,
+     "pct_filas": 10.86,
+     "pct_requests": 7.72
+    },
+    "no_coincide": {
+     "filas": 55427,
+     "requests": 32018388688,
+     "pct_filas": 8.23,
+     "pct_requests": 14.85
+    },
+    "no_comparable": {
+     "filas": 127,
+     "requests": 10185764,
+     "pct_filas": 0.02,
+     "pct_requests": 0.0
+    }
+   },
+   "por_publisher": {
+    "iion Pty Ltd": {
+     "coincide": {
+      "filas": 118711,
+      "requests": 37317403918,
+      "pct_filas": 79.52,
+      "pct_requests": 73.52
+     },
+     "sin_genero_declarado": {
+      "filas": 16895,
+      "requests": 3811013285,
+      "pct_filas": 11.32,
+      "pct_requests": 7.51
+     },
+     "no_coincide": {
+      "filas": 13655,
+      "requests": 9628691992,
+      "pct_filas": 9.15,
+      "pct_requests": 18.97
+     },
+     "no_comparable": {
+      "filas": 21,
+      "requests": 1291044,
+      "pct_filas": 0.01,
+      "pct_requests": 0.0
+     }
+    },
+    "OTTera.tv": {
+     "coincide": {
+      "filas": 118652,
+      "requests": 31010471360,
+      "pct_filas": 82.77,
+      "pct_requests": 76.62
+     },
+     "sin_genero_declarado": {
+      "filas": 14934,
+      "requests": 3450882400,
+      "pct_filas": 10.42,
+      "pct_requests": 8.53
+     },
+     "no_coincide": {
+      "filas": 9750,
+      "requests": 6009752000,
+      "pct_filas": 6.8,
+      "pct_requests": 14.85
+     },
+     "no_comparable": {
+      "filas": 10,
+      "requests": 707840,
+      "pct_filas": 0.01,
+      "pct_requests": 0.0
+     }
+    },
+    "TCL ADs (APAC)": {
+     "coincide": {
+      "filas": 78869,
+      "requests": 16863544160,
+      "pct_filas": 82.49,
+      "pct_requests": 75.71
+     },
+     "sin_genero_declarado": {
+      "filas": 8478,
+      "requests": 1559521360,
+      "pct_filas": 8.87,
+      "pct_requests": 7.0
+     },
+     "no_coincide": {
+      "filas": 8257,
+      "requests": 3850333280,
+      "pct_filas": 8.64,
+      "pct_requests": 17.29
+     },
+     "no_comparable": {
+      "filas": 4,
+      "requests": 191840,
+      "pct_filas": 0.0,
+      "pct_requests": 0.0
+     }
+    },
+    "TCL ADS - Springserve": {
+     "coincide": {
+      "filas": 74395,
+      "requests": 21093226880,
+      "pct_filas": 81.44,
+      "pct_requests": 74.87
+     },
+     "sin_genero_declarado": {
+      "filas": 9759,
+      "requests": 2508756160,
+      "pct_filas": 10.68,
+      "pct_requests": 8.91
+     },
+     "no_coincide": {
+      "filas": 7190,
+      "requests": 4568908320,
+      "pct_filas": 7.87,
+      "pct_requests": 16.22
+     },
+     "no_comparable": {
+      "filas": 8,
+      "requests": 423520,
+      "pct_filas": 0.01,
+      "pct_requests": 0.0
+     }
+    },
+    "Select Plus PTE LTD (CTV)": {
+     "coincide": {
+      "filas": 52704,
+      "requests": 18086996160,
+      "pct_filas": 76.33,
+      "pct_requests": 71.15
+     },
+     "no_coincide": {
+      "filas": 10576,
+      "requests": 5869321120,
+      "pct_filas": 15.32,
+      "pct_requests": 23.09
+     },
+     "sin_genero_declarado": {
+      "filas": 5766,
+      "requests": 1464275600,
+      "pct_filas": 8.35,
+      "pct_requests": 5.76
+     },
+     "no_comparable": {
+      "filas": 6,
+      "requests": 323040,
+      "pct_filas": 0.01,
+      "pct_requests": 0.0
+     }
+    },
+    "Equativ (Formerly SMART AdServer) - oRTB CTV": {
+     "coincide": {
+      "filas": 14038,
+      "requests": 11801926320,
+      "pct_filas": 88.85,
+      "pct_requests": 97.47
+     },
+     "sin_genero_declarado": {
+      "filas": 1173,
+      "requests": 262333280,
+      "pct_filas": 7.42,
+      "pct_requests": 2.17
+     },
+     "no_coincide": {
+      "filas": 581,
+      "requests": 40434800,
+      "pct_filas": 3.68,
+      "pct_requests": 0.33
+     },
+     "no_comparable": {
+      "filas": 8,
+      "requests": 3148160,
+      "pct_filas": 0.05,
+      "pct_requests": 0.03
+     }
+    },
+    "METAX SOFTWARE PTE. LTD. (Exchange)": {
+     "coincide": {
+      "filas": 16992,
+      "requests": 2639301520,
+      "pct_filas": 86.51,
+      "pct_requests": 90.43
+     },
+     "no_coincide": {
+      "filas": 1575,
+      "requests": 160498320,
+      "pct_filas": 8.02,
+      "pct_requests": 5.5
+     },
+     "sin_genero_declarado": {
+      "filas": 1074,
+      "requests": 118760720,
+      "pct_filas": 5.47,
+      "pct_requests": 4.07
+     }
+    },
+    "Vidaa": {
+     "coincide": {
+      "filas": 7933,
+      "requests": 5816522080,
+      "pct_filas": 78.95,
+      "pct_requests": 89.81
+     },
+     "sin_genero_declarado": {
+      "filas": 2004,
+      "requests": 651844320,
+      "pct_filas": 19.94,
+      "pct_requests": 10.07
+     },
+     "no_coincide": {
+      "filas": 84,
+      "requests": 6080640,
+      "pct_filas": 0.84,
+      "pct_requests": 0.09
+     },
+     "no_comparable": {
+      "filas": 27,
+      "requests": 1736560,
+      "pct_filas": 0.27,
+      "pct_requests": 0.03
+     }
+    },
+    "PML Digital": {
+     "coincide": {
+      "filas": 13353,
+      "requests": 5660478800,
+      "pct_filas": 87.98,
+      "pct_requests": 77.2
+     },
+     "no_coincide": {
+      "filas": 943,
+      "requests": 1459571920,
+      "pct_filas": 6.21,
+      "pct_requests": 19.91
+     },
+     "sin_genero_declarado": {
+      "filas": 879,
+      "requests": 212105760,
+      "pct_filas": 5.79,
+      "pct_requests": 2.89
+     },
+     "no_comparable": {
+      "filas": 2,
+      "requests": 121760,
+      "pct_filas": 0.01,
+      "pct_requests": 0.0
+     }
+    },
+    "AWG Media": {
+     "coincide": {
+      "filas": 3123,
+      "requests": 994216560,
+      "pct_filas": 72.31,
+      "pct_requests": 82.6
+     },
+     "sin_genero_declarado": {
+      "filas": 1086,
+      "requests": 188929440,
+      "pct_filas": 25.14,
+      "pct_requests": 15.7
+     },
+     "no_coincide": {
+      "filas": 110,
+      "requests": 20517200,
+      "pct_filas": 2.55,
+      "pct_requests": 1.7
+     }
+    },
+    "Televisa Univision via SpringServe": {
+     "coincide": {
+      "filas": 9060,
+      "requests": 8408383520,
+      "pct_filas": 96.96,
+      "pct_requests": 97.92
+     },
+     "sin_genero_declarado": {
+      "filas": 233,
+      "requests": 172938880,
+      "pct_filas": 2.49,
+      "pct_requests": 2.01
+     },
+     "no_coincide": {
+      "filas": 51,
+      "requests": 5477440,
+      "pct_filas": 0.55,
+      "pct_requests": 0.06
+     }
+    }
+   }
+  }
+ },
+ "completitud": {
+  "estado": {
+   "vacia": {
+    "filas": 1087597,
+    "requests": 405801749941,
+    "pct_filas": 77.87,
+    "pct_requests": 69.6
+   },
+   "llena": {
+    "filas": 270664,
+    "requests": 157497012424,
+    "pct_filas": 19.38,
+    "pct_requests": 27.01
+   },
+   "contradicha": {
+    "filas": 38402,
+    "requests": 19748994174,
+    "pct_filas": 2.75,
+    "pct_requests": 3.39
+   }
+  },
+  "nivel_actual": {
+   "vacia|0": {
+    "filas": 1087597,
+    "requests": 405801749941,
+    "pct_filas": 77.87,
+    "pct_requests": 69.6
+   },
+   "llena|1": {
+    "filas": 165297,
+    "requests": 64738726485,
+    "pct_filas": 11.84,
+    "pct_requests": 11.1
+   },
+   "llena|2": {
+    "filas": 85416,
+    "requests": 88033707319,
+    "pct_filas": 6.12,
+    "pct_requests": 15.1
+   },
+   "contradicha|1": {
+    "filas": 23093,
+    "requests": 11507203768,
+    "pct_filas": 1.65,
+    "pct_requests": 1.97
+   },
+   "llena|3": {
+    "filas": 15409,
+    "requests": 2738350670,
+    "pct_filas": 1.1,
+    "pct_requests": 0.47
+   },
+   "contradicha|2": {
+    "filas": 12202,
+    "requests": 7958780966,
+    "pct_filas": 0.87,
+    "pct_requests": 1.37
+   },
+   "llena|0": {
+    "filas": 4542,
+    "requests": 1986227950,
+    "pct_filas": 0.33,
+    "pct_requests": 0.34
+   },
+   "contradicha|3": {
+    "filas": 3107,
+    "requests": 283009440,
+    "pct_filas": 0.22,
+    "pct_requests": 0.05
+   }
+  },
+  "nivel_propuesto": {
+   "3": {
+    "filas": 625430,
+    "requests": 218858460299,
+    "pct_filas": 44.78,
+    "pct_requests": 37.54
+   },
+   "2": {
+    "filas": 474006,
+    "requests": 219622315612,
+    "pct_filas": 33.94,
+    "pct_requests": 37.67
+   },
+   "1": {
+    "filas": 189280,
+    "requests": 77678002811,
+    "pct_filas": 13.55,
+    "pct_requests": 13.32
+   },
+   "0": {
+    "filas": 107947,
+    "requests": 66888977817,
+    "pct_filas": 7.73,
+    "pct_requests": 11.47
+   }
+  },
+  "matriz": {
+   "vacia|0->3": {
+    "filas": 490687,
+    "requests": 165330239524,
+    "pct_filas": 35.13,
+    "pct_requests": 28.36
+   },
+   "vacia|0->2": {
+    "filas": 358267,
+    "requests": 132313357941,
+    "pct_filas": 25.65,
+    "pct_requests": 22.69
+   },
+   "vacia|0->1": {
+    "filas": 131619,
+    "requests": 41552319116,
+    "pct_filas": 9.42,
+    "pct_requests": 7.13
+   },
+   "vacia|0->0": {
+    "filas": 107024,
+    "requests": 66605833360,
+    "pct_filas": 7.66,
+    "pct_requests": 11.42
+   },
+   "llena|1->3": {
+    "filas": 55394,
+    "requests": 12316397464,
+    "pct_filas": 3.97,
+    "pct_requests": 2.11
+   },
+   "llena|1->2": {
+    "filas": 55161,
+    "requests": 18069541966,
+    "pct_filas": 3.95,
+    "pct_requests": 3.1
+   },
+   "llena|1->1": {
+    "filas": 54742,
+    "requests": 34352787055,
+    "pct_filas": 3.92,
+    "pct_requests": 5.89
+   },
+   "llena|2->2": {
+    "filas": 42822,
+    "requests": 59571907125,
+    "pct_filas": 3.07,
+    "pct_requests": 10.22
+   },
+   "llena|2->3": {
+    "filas": 42594,
+    "requests": 28461800194,
+    "pct_filas": 3.05,
+    "pct_requests": 4.88
+   },
+   "llena|3->3": {
+    "filas": 15409,
+    "requests": 2738350670,
+    "pct_filas": 1.1,
+    "pct_requests": 0.47
+   },
+   "contradicha|1->3": {
+    "filas": 13316,
+    "requests": 7336320400,
+    "pct_filas": 0.95,
+    "pct_requests": 1.26
+   },
+   "contradicha|1->2": {
+    "filas": 8950,
+    "requests": 3884343208,
+    "pct_filas": 0.64,
+    "pct_requests": 0.67
+   },
+   "contradicha|2->3": {
+    "filas": 6789,
+    "requests": 2531821714,
+    "pct_filas": 0.49,
+    "pct_requests": 0.43
+   },
+   "contradicha|2->2": {
+    "filas": 5127,
+    "requests": 5387382372,
+    "pct_filas": 0.37,
+    "pct_requests": 0.92
+   },
+   "contradicha|3->2": {
+    "filas": 2686,
+    "requests": 255916400,
+    "pct_filas": 0.19,
+    "pct_requests": 0.04
+   },
+   "llena|0->1": {
+    "filas": 1758,
+    "requests": 1444004000,
+    "pct_filas": 0.13,
+    "pct_requests": 0.25
+   },
+   "llena|0->2": {
+    "filas": 993,
+    "requests": 139866600,
+    "pct_filas": 0.07,
+    "pct_requests": 0.02
+   },
+   "llena|0->0": {
+    "filas": 923,
+    "requests": 283144457,
+    "pct_filas": 0.07,
+    "pct_requests": 0.05
+   },
+   "llena|0->3": {
+    "filas": 868,
+    "requests": 119212893,
+    "pct_filas": 0.06,
+    "pct_requests": 0.02
+   },
+   "contradicha|1->1": {
+    "filas": 827,
+    "requests": 286540160,
+    "pct_filas": 0.06,
+    "pct_requests": 0.05
+   },
+   "contradicha|3->3": {
+    "filas": 373,
+    "requests": 24317440,
+    "pct_filas": 0.03,
+    "pct_requests": 0.0
+   },
+   "contradicha|2->1": {
+    "filas": 286,
+    "requests": 39576880,
+    "pct_filas": 0.02,
+    "pct_requests": 0.01
+   },
+   "contradicha|3->1": {
+    "filas": 48,
+    "requests": 2775600,
+    "pct_filas": 0.0,
+    "pct_requests": 0.0
+   }
+  },
+  "mejora": {
+   "rellena": {
+    "filas": 980573,
+    "requests": 339195916581,
+    "pct_filas": 70.21,
+    "pct_requests": 58.18
+   },
+   "sube": {
+    "filas": 156768,
+    "requests": 60550823117,
+    "pct_filas": 11.22,
+    "pct_requests": 10.39
+   },
+   "mantiene": {
+    "filas": 113896,
+    "requests": 96946189307,
+    "pct_filas": 8.15,
+    "pct_requests": 16.63
+   },
+   "sin_propuesta": {
+    "filas": 107024,
+    "requests": 66605833360,
+    "pct_filas": 7.66,
+    "pct_requests": 11.42
+   },
+   "corrige": {
+    "filas": 38402,
+    "requests": 19748994174,
+    "pct_filas": 2.75,
+    "pct_requests": 3.39
+   }
+  },
+  "evidencia": {
+   "externa": {
+    "filas": 673723,
+    "requests": 215571815782,
+    "pct_filas": 48.24,
+    "pct_requests": 36.97
+   },
+   "interna": {
+    "filas": 478652,
+    "requests": 226876110288,
+    "pct_filas": 34.27,
+    "pct_requests": 38.91
+   },
+   "ninguna": {
+    "filas": 225485,
+    "requests": 132422939257,
+    "pct_filas": 16.14,
+    "pct_requests": 22.71
+   },
+   "serie": {
+    "filas": 18803,
+    "requests": 8176891212,
+    "pct_filas": 1.35,
+    "pct_requests": 1.4
+   }
+  },
+  "forma_origen": {
+   "sin_forma": {
+    "filas": 643540,
+    "requests": 304347646780,
+    "pct_filas": 46.08,
+    "pct_requests": 52.2
+   },
+   "imdb": {
+    "filas": 545331,
+    "requests": 181206769926,
+    "pct_filas": 39.05,
+    "pct_requests": 31.08
+   },
+   "titulo": {
+    "filas": 65816,
+    "requests": 15893695343,
+    "pct_filas": 4.71,
+    "pct_requests": 2.73
+   },
+   "contentSeries": {
+    "filas": 65213,
+    "requests": 27214707057,
+    "pct_filas": 4.67,
+    "pct_requests": 4.67
+   },
+   "declarado": {
+    "filas": 42698,
+    "requests": 46525790463,
+    "pct_filas": 3.06,
+    "pct_requests": 7.98
+   },
+   "genero": {
+    "filas": 34065,
+    "requests": 7859146970,
+    "pct_filas": 2.44,
+    "pct_requests": 1.35
+   }
+  },
+  "por_pais": {
+   "Mexico": {
+    "rellena": {
+     "filas": 264548,
+     "requests": 181178845314,
+     "pct_filas": 63.92,
+     "pct_requests": 52.45
+    },
+    "sube": {
+     "filas": 48578,
+     "requests": 33312395903,
+     "pct_filas": 11.74,
+     "pct_requests": 9.64
+    },
+    "sin_propuesta": {
+     "filas": 43138,
+     "requests": 38976566322,
+     "pct_filas": 10.42,
+     "pct_requests": 11.28
+    },
+    "mantiene": {
+     "filas": 39503,
+     "requests": 75978428641,
+     "pct_filas": 9.54,
+     "pct_requests": 22.0
+    },
+    "corrige": {
+     "filas": 18128,
+     "requests": 15960310858,
+     "pct_filas": 4.38,
+     "pct_requests": 4.62
+    }
+   },
+   "Colombia": {
+    "rellena": {
+     "filas": 103185,
+     "requests": 31485481581,
+     "pct_filas": 70.66,
+     "pct_requests": 70.31
+    },
+    "sube": {
+     "filas": 16751,
+     "requests": 5029650113,
+     "pct_filas": 11.47,
+     "pct_requests": 11.23
+    },
+    "mantiene": {
+     "filas": 11800,
+     "requests": 3644870672,
+     "pct_filas": 8.08,
+     "pct_requests": 8.14
+    },
+    "sin_propuesta": {
+     "filas": 10877,
+     "requests": 3911958390,
+     "pct_filas": 7.45,
+     "pct_requests": 8.74
+    },
+    "corrige": {
+     "filas": 3407,
+     "requests": 709502400,
+     "pct_filas": 2.33,
+     "pct_requests": 1.58
+    }
+   },
+   "Chile": {
+    "rellena": {
+     "filas": 121935,
+     "requests": 26021865800,
+     "pct_filas": 78.51,
+     "pct_requests": 72.0
+    },
+    "sube": {
+     "filas": 12848,
+     "requests": 4627657489,
+     "pct_filas": 8.27,
+     "pct_requests": 12.8
+    },
+    "sin_propuesta": {
+     "filas": 9805,
+     "requests": 2826440410,
+     "pct_filas": 6.31,
+     "pct_requests": 7.82
+    },
+    "mantiene": {
+     "filas": 8997,
+     "requests": 2276219556,
+     "pct_filas": 5.79,
+     "pct_requests": 6.3
+    },
+    "corrige": {
+     "filas": 1722,
+     "requests": 389779040,
+     "pct_filas": 1.11,
+     "pct_requests": 1.08
+    }
+   }
+  },
+  "por_publisher": {
+   "iion Pty Ltd": {
+    "rellena": {
+     "filas": 247987,
+     "requests": 77304169695,
+     "pct_filas": 89.32,
+     "pct_requests": 88.34
+    },
+    "sin_propuesta": {
+     "filas": 27598,
+     "requests": 8868061641,
+     "pct_filas": 9.94,
+     "pct_requests": 10.13
+    },
+    "mantiene": {
+     "filas": 1139,
+     "requests": 924190697,
+     "pct_filas": 0.41,
+     "pct_requests": 1.06
+    },
+    "sube": {
+     "filas": 789,
+     "requests": 403525234,
+     "pct_filas": 0.28,
+     "pct_requests": 0.46
+    },
+    "corrige": {
+     "filas": 118,
+     "requests": 7025082,
+     "pct_filas": 0.04,
+     "pct_requests": 0.01
+    }
+   },
+   "OTTera.tv": {
+    "rellena": {
+     "filas": 152753,
+     "requests": 44139375360,
+     "pct_filas": 57.52,
+     "pct_requests": 60.9
+    },
+    "sube": {
+     "filas": 79782,
+     "requests": 17046463280,
+     "pct_filas": 30.04,
+     "pct_requests": 23.52
+    },
+    "mantiene": {
+     "filas": 19140,
+     "requests": 5142805600,
+     "pct_filas": 7.21,
+     "pct_requests": 7.1
+    },
+    "sin_propuesta": {
+     "filas": 13002,
+     "requests": 6055647280,
+     "pct_filas": 4.9,
+     "pct_requests": 8.35
+    },
+    "corrige": {
+     "filas": 888,
+     "requests": 96325760,
+     "pct_filas": 0.33,
+     "pct_requests": 0.13
+    }
+   },
+   "TCL ADs (APAC)": {
+    "rellena": {
+     "filas": 155425,
+     "requests": 34475258160,
+     "pct_filas": 92.65,
+     "pct_requests": 88.39
+    },
+    "sin_propuesta": {
+     "filas": 10826,
+     "requests": 4200163840,
+     "pct_filas": 6.45,
+     "pct_requests": 10.77
+    },
+    "sube": {
+     "filas": 1000,
+     "requests": 197134560,
+     "pct_filas": 0.6,
+     "pct_requests": 0.51
+    },
+    "mantiene": {
+     "filas": 462,
+     "requests": 129543280,
+     "pct_filas": 0.28,
+     "pct_requests": 0.33
+    },
+    "corrige": {
+     "filas": 48,
+     "requests": 3426160,
+     "pct_filas": 0.03,
+     "pct_requests": 0.01
+    }
+   },
+   "TCL ADS - Springserve": {
+    "rellena": {
+     "filas": 152454,
+     "requests": 44945261680,
+     "pct_filas": 91.71,
+     "pct_requests": 80.38
+    },
+    "sin_propuesta": {
+     "filas": 12511,
+     "requests": 10641347520,
+     "pct_filas": 7.53,
+     "pct_requests": 19.03
+    },
+    "sube": {
+     "filas": 880,
+     "requests": 181998080,
+     "pct_filas": 0.53,
+     "pct_requests": 0.33
+    },
+    "mantiene": {
+     "filas": 371,
+     "requests": 147592640,
+     "pct_filas": 0.22,
+     "pct_requests": 0.26
+    },
+    "corrige": {
+     "filas": 26,
+     "requests": 2768720,
+     "pct_filas": 0.02,
+     "pct_requests": 0.0
+    }
+   },
+   "Select Plus PTE LTD (CTV)": {
+    "rellena": {
+     "filas": 114544,
+     "requests": 36070692640,
+     "pct_filas": 91.93,
+     "pct_requests": 92.5
+    },
+    "sin_propuesta": {
+     "filas": 9825,
+     "requests": 2913119600,
+     "pct_filas": 7.88,
+     "pct_requests": 7.47
+    },
+    "corrige": {
+     "filas": 210,
+     "requests": 10205600,
+     "pct_filas": 0.17,
+     "pct_requests": 0.03
+    },
+    "sube": {
+     "filas": 15,
+     "requests": 729440,
+     "pct_filas": 0.01,
+     "pct_requests": 0.0
+    },
+    "mantiene": {
+     "filas": 10,
+     "requests": 809920,
+     "pct_filas": 0.01,
+     "pct_requests": 0.0
+    }
+   },
+   "Equativ (Formerly SMART AdServer) - oRTB CTV": {
+    "rellena": {
+     "filas": 23822,
+     "requests": 17110994000,
+     "pct_filas": 66.59,
+     "pct_requests": 85.61
+    },
+    "mantiene": {
+     "filas": 3630,
+     "requests": 669016960,
+     "pct_filas": 10.15,
+     "pct_requests": 3.35
+    },
+    "corrige": {
+     "filas": 2943,
+     "requests": 516071520,
+     "pct_filas": 8.23,
+     "pct_requests": 2.58
+    },
+    "sin_propuesta": {
+     "filas": 2826,
+     "requests": 1143892560,
+     "pct_filas": 7.9,
+     "pct_requests": 5.72
+    },
+    "sube": {
+     "filas": 2555,
+     "requests": 546588160,
+     "pct_filas": 7.14,
+     "pct_requests": 2.73
+    }
+   },
+   "METAX SOFTWARE PTE. LTD. (Exchange)": {
+    "sube": {
+     "filas": 15724,
+     "requests": 1986791040,
+     "pct_filas": 44.52,
+     "pct_requests": 36.59
+    },
+    "rellena": {
+     "filas": 8880,
+     "requests": 685486560,
+     "pct_filas": 25.14,
+     "pct_requests": 12.63
+    },
+    "mantiene": {
+     "filas": 5549,
+     "requests": 1162197200,
+     "pct_filas": 15.71,
+     "pct_requests": 21.4
+    },
+    "corrige": {
+     "filas": 4165,
+     "requests": 1494982960,
+     "pct_filas": 11.79,
+     "pct_requests": 27.53
+    },
+    "sin_propuesta": {
+     "filas": 1003,
+     "requests": 100111280,
+     "pct_filas": 2.84,
+     "pct_requests": 1.84
+    }
+   },
+   "Vidaa": {
+    "corrige": {
+     "filas": 9379,
+     "requests": 6964456000,
+     "pct_filas": 32.81,
+     "pct_requests": 36.61
+    },
+    "mantiene": {
+     "filas": 8789,
+     "requests": 6987970560,
+     "pct_filas": 30.74,
+     "pct_requests": 36.73
+    },
+    "sube": {
+     "filas": 5166,
+     "requests": 4528133840,
+     "pct_filas": 18.07,
+     "pct_requests": 23.8
+    },
+    "rellena": {
+     "filas": 3833,
+     "requests": 394749520,
+     "pct_filas": 13.41,
+     "pct_requests": 2.08
+    },
+    "sin_propuesta": {
+     "filas": 1422,
+     "requests": 147416080,
+     "pct_filas": 4.97,
+     "pct_requests": 0.77
+    }
+   },
+   "PML Digital": {
+    "rellena": {
+     "filas": 20172,
+     "requests": 10603780080,
+     "pct_filas": 73.2,
+     "pct_requests": 90.64
+    },
+    "corrige": {
+     "filas": 4292,
+     "requests": 258092400,
+     "pct_filas": 15.57,
+     "pct_requests": 2.21
+    },
+    "sube": {
+     "filas": 1191,
+     "requests": 104028000,
+     "pct_filas": 4.32,
+     "pct_requests": 0.89
+    },
+    "sin_propuesta": {
+     "filas": 1077,
+     "requests": 662241440,
+     "pct_filas": 3.91,
+     "pct_requests": 5.66
+    },
+    "mantiene": {
+     "filas": 827,
+     "requests": 70819920,
+     "pct_filas": 3.0,
+     "pct_requests": 0.61
+    }
+   },
+   "AWG Media": {
+    "sube": {
+     "filas": 11198,
+     "requests": 2637304960,
+     "pct_filas": 44.23,
+     "pct_requests": 37.98
+    },
+    "mantiene": {
+     "filas": 9233,
+     "requests": 1734739840,
+     "pct_filas": 36.47,
+     "pct_requests": 24.98
+    },
+    "rellena": {
+     "filas": 2737,
+     "requests": 2307672800,
+     "pct_filas": 10.81,
+     "pct_requests": 33.23
+    },
+    "corrige": {
+     "filas": 1831,
+     "requests": 209151600,
+     "pct_filas": 7.23,
+     "pct_requests": 3.01
+    },
+    "sin_propuesta": {
+     "filas": 316,
+     "requests": 54953920,
+     "pct_filas": 1.25,
+     "pct_requests": 0.79
+    }
+   },
+   "Televisa Univision via SpringServe": {
+    "rellena": {
+     "filas": 16256,
+     "requests": 23902334320,
+     "pct_filas": 85.54,
+     "pct_requests": 93.39
+    },
+    "sin_propuesta": {
+     "filas": 2747,
+     "requests": 1692626080,
+     "pct_filas": 14.46,
+     "pct_requests": 6.61
+    }
+   },
+   "Roku - oRTB": {
+    "mantiene": {
+     "filas": 9272,
+     "requests": 59730591600,
+     "pct_filas": 51.66,
+     "pct_requests": 73.2
+    },
+    "sube": {
+     "filas": 5887,
+     "requests": 15901808080,
+     "pct_filas": 32.8,
+     "pct_requests": 19.49
+    },
+    "corrige": {
+     "filas": 2374,
+     "requests": 4446834160,
+     "pct_filas": 13.23,
+     "pct_requests": 5.45
+    },
+    "rellena": {
+     "filas": 300,
+     "requests": 1386262880,
+     "pct_filas": 1.67,
+     "pct_requests": 1.7
+    },
+    "sin_propuesta": {
+     "filas": 114,
+     "requests": 137243680,
+     "pct_filas": 0.64,
+     "pct_requests": 0.17
+    }
+   }
+  },
+  "por_origen": {},
+  "propuestas_top": {
+   "Movies > Drama Movies | Television > Drama TV": {
+    "filas": 72661,
+    "requests": 41791390991,
+    "pct_filas": 5.2,
+    "pct_requests": 7.17
+   },
+   "Movies > Drama Movies": {
+    "filas": 69852,
+    "requests": 18541605754,
+    "pct_filas": 5.0,
+    "pct_requests": 3.18
+   },
+   "Movies > Documentary Movies | Television > Factual TV": {
+    "filas": 53488,
+    "requests": 13445064329,
+    "pct_filas": 3.83,
+    "pct_requests": 2.31
+   },
+   "Movies > Horror Movies": {
+    "filas": 52718,
+    "requests": 19576219698,
+    "pct_filas": 3.77,
+    "pct_requests": 3.36
+   },
+   "Movies > Crime and Mystery Movies": {
+    "filas": 47150,
+    "requests": 15575839313,
+    "pct_filas": 3.38,
+    "pct_requests": 2.67
+   },
+   "Television": {
+    "filas": 46880,
+    "requests": 13970186075,
+    "pct_filas": 3.36,
+    "pct_requests": 2.4
+   },
+   "Movies > Documentary Movies": {
+    "filas": 34679,
+    "requests": 9314510004,
+    "pct_filas": 2.48,
+    "pct_requests": 1.6
+   },
+   "Movies > Action and Adventure Movies": {
+    "filas": 28169,
+    "requests": 15768598102,
+    "pct_filas": 2.02,
+    "pct_requests": 2.7
+   },
+   "Movies > Comedy Movies": {
+    "filas": 25578,
+    "requests": 9792039889,
+    "pct_filas": 1.83,
+    "pct_requests": 1.68
+   },
+   "Television > Drama TV": {
+    "filas": 25153,
+    "requests": 14551224849,
+    "pct_filas": 1.8,
+    "pct_requests": 2.5
+   },
+   "Music and Audio": {
+    "filas": 23796,
+    "requests": 2643728631,
+    "pct_filas": 1.7,
+    "pct_requests": 0.45
+   },
+   "Movies > Comedy Movies | Television > Comedy TV": {
+    "filas": 23551,
+    "requests": 10384339977,
+    "pct_filas": 1.69,
+    "pct_requests": 1.78
+   },
+   "Sports": {
+    "filas": 21159,
+    "requests": 15660102515,
+    "pct_filas": 1.51,
+    "pct_requests": 2.69
+   },
+   "Movies > Horror Movies | Movies > Crime and Mystery Movies": {
+    "filas": 19267,
+    "requests": 5522081898,
+    "pct_filas": 1.38,
+    "pct_requests": 0.95
+   },
+   "Movies": {
+    "filas": 18713,
+    "requests": 4006852136,
+    "pct_filas": 1.34,
+    "pct_requests": 0.69
+   },
+   "Movies > Crime and Mystery Movies | Movies > Drama Movies": {
+    "filas": 18274,
+    "requests": 6468029261,
+    "pct_filas": 1.31,
+    "pct_requests": 1.11
+   },
+   "Movies > Drama Movies | Movies > Crime and Mystery Movies": {
+    "filas": 18016,
+    "requests": 8386794971,
+    "pct_filas": 1.29,
+    "pct_requests": 1.44
+   },
+   "Television > Drama TV | Television > Soap Opera TV": {
+    "filas": 17448,
+    "requests": 14901117264,
+    "pct_filas": 1.25,
+    "pct_requests": 2.56
+   },
+   "Movies > Drama Movies | Movies > Romance Movies": {
+    "filas": 16279,
+    "requests": 6068995674,
+    "pct_filas": 1.17,
+    "pct_requests": 1.04
+   },
+   "Television > Animation TV": {
+    "filas": 16259,
+    "requests": 5841434619,
+    "pct_filas": 1.16,
+    "pct_requests": 1.0
+   },
+   "Television > Comedy TV": {
+    "filas": 14616,
+    "requests": 9981357486,
+    "pct_filas": 1.05,
+    "pct_requests": 1.71
+   },
+   "Movies > Comedy Movies | Movies > Drama Movies": {
+    "filas": 14307,
+    "requests": 4771323253,
+    "pct_filas": 1.02,
+    "pct_requests": 0.82
+   },
+   "Television > Reality TV": {
+    "filas": 13351,
+    "requests": 7055743421,
+    "pct_filas": 0.96,
+    "pct_requests": 1.21
+   },
+   "Movies > Documentary Movies | Movies > Drama Movies": {
+    "filas": 12299,
+    "requests": 3342737220,
+    "pct_filas": 0.88,
+    "pct_requests": 0.57
+   },
+   "News and Politics": {
+    "filas": 11710,
+    "requests": 4328109066,
+    "pct_filas": 0.84,
+    "pct_requests": 0.74
+   },
+   "Movies > Romance Movies": {
+    "filas": 11678,
+    "requests": 6101109488,
+    "pct_filas": 0.84,
+    "pct_requests": 1.05
+   },
+   "Movies > Comedy Movies | Movies > Drama Movies | Movies > Romance Movies": {
+    "filas": 11497,
+    "requests": 3242269297,
+    "pct_filas": 0.82,
+    "pct_requests": 0.56
+   },
+   "Movies > Action and Adventure Movies | Movies > Crime and Mystery Movies": {
+    "filas": 11119,
+    "requests": 2095361793,
+    "pct_filas": 0.8,
+    "pct_requests": 0.36
+   },
+   "Television > Factual TV": {
+    "filas": 10922,
+    "requests": 3394885586,
+    "pct_filas": 0.78,
+    "pct_requests": 0.58
+   },
+   "Movies > Drama Movies | Movies > Horror Movies | Movies > Crime and Mystery Movies": {
+    "filas": 10175,
+    "requests": 2653408836,
+    "pct_filas": 0.73,
+    "pct_requests": 0.46
+   },
+   "Movies > Action and Adventure Movies | Movies > Drama Movies": {
+    "filas": 9970,
+    "requests": 1953247035,
+    "pct_filas": 0.71,
+    "pct_requests": 0.34
+   },
+   "Movies > Family and Children Movies | Television > Children's TV": {
+    "filas": 9642,
+    "requests": 3255122319,
+    "pct_filas": 0.69,
+    "pct_requests": 0.56
+   },
+   "Television > Animation TV | Television > Comedy TV": {
+    "filas": 9588,
+    "requests": 1867247804,
+    "pct_filas": 0.69,
+    "pct_requests": 0.32
+   },
+   "Movies > Action and Adventure Movies | Movies > Crime and Mystery Movies | Movies > Drama Movies": {
+    "filas": 9502,
+    "requests": 1934519846,
+    "pct_filas": 0.68,
+    "pct_requests": 0.33
+   },
+   "Movies > Comedy Movies | Television > Comedy TV | Movies > Drama Movies | Television > Drama TV": {
+    "filas": 7674,
+    "requests": 1647269107,
+    "pct_filas": 0.55,
+    "pct_requests": 0.28
+   },
+   "Movies > Drama Movies | Television > Drama TV | Movies > Romance Movies": {
+    "filas": 6885,
+    "requests": 1418935395,
+    "pct_filas": 0.49,
+    "pct_requests": 0.24
+   },
+   "Movies > Comedy Movies | Movies > Romance Movies": {
+    "filas": 6596,
+    "requests": 1709342578,
+    "pct_filas": 0.47,
+    "pct_requests": 0.29
+   },
+   "Television > Comedy TV | Television > Drama TV": {
+    "filas": 6132,
+    "requests": 1906018821,
+    "pct_filas": 0.44,
+    "pct_requests": 0.33
+   },
+   "Movies > Science Fiction Movies | Television > Science Fiction TV": {
+    "filas": 6026,
+    "requests": 1400613331,
+    "pct_filas": 0.43,
+    "pct_requests": 0.24
+   },
+   "Movies > Animation Movies | Television > Animation TV": {
+    "filas": 5545,
+    "requests": 4071367889,
+    "pct_filas": 0.4,
+    "pct_requests": 0.7
+   }
+  },
+  "reglas": {
+   "externa|entretenimiento|pelicula|imdb": {
+    "filas": 451971,
+    "requests": 137685082428,
+    "pct_filas": 32.36,
+    "pct_requests": 23.61
+   },
+   "interna|entretenimiento|-|-": {
+    "filas": 263599,
+    "requests": 108305238582,
+    "pct_filas": 18.87,
+    "pct_requests": 18.58
+   },
+   "externa|entretenimiento|-|-": {
+    "filas": 90167,
+    "requests": 25603192084,
+    "pct_filas": 6.46,
+    "pct_requests": 4.39
+   },
+   "externa|entretenimiento|tv|imdb": {
+    "filas": 74769,
+    "requests": 40200361535,
+    "pct_filas": 5.35,
+    "pct_requests": 6.89
+   },
+   "interna|entretenimiento|tv|titulo": {
+    "filas": 29404,
+    "requests": 7106142084,
+    "pct_filas": 2.11,
+    "pct_requests": 1.22
+   },
+   "externa|entretenimiento|tv|titulo": {
+    "filas": 26765,
+    "requests": 6873848683,
+    "pct_filas": 1.92,
+    "pct_requests": 1.18
+   },
+   "interna|entretenimiento|tv|contentSeries": {
+    "filas": 22912,
+    "requests": 10714319653,
+    "pct_filas": 1.64,
+    "pct_requests": 1.84
+   },
+   "interna|deportes|-|-": {
+    "filas": 18536,
+    "requests": 20064975841,
+    "pct_filas": 1.33,
+    "pct_requests": 3.44
+   },
+   "ninguna|entretenimiento|pelicula|genero": {
+    "filas": 15380,
+    "requests": 3275080855,
+    "pct_filas": 1.1,
+    "pct_requests": 0.56
+   },
+   "serie|entretenimiento|tv|contentSeries": {
+    "filas": 15267,
+    "requests": 5143829127,
+    "pct_filas": 1.09,
+    "pct_requests": 0.88
+   },
+   "interna|musica|-|-": {
+    "filas": 13236,
+    "requests": 1435958400,
+    "pct_filas": 0.95,
+    "pct_requests": 0.25
+   },
+   "interna|entretenimiento|tv|genero": {
+    "filas": 11758,
+    "requests": 3780469400,
+    "pct_filas": 0.84,
+    "pct_requests": 0.65
+   },
+   "interna|entretenimiento|pelicula|declarado": {
+    "filas": 9352,
+    "requests": 5369874662,
+    "pct_filas": 0.67,
+    "pct_requests": 0.92
+   },
+   "interna|noticias|-|-": {
+    "filas": 8948,
+    "requests": 3976358135,
+    "pct_filas": 0.64,
+    "pct_requests": 0.68
+   },
+   "ninguna|entretenimiento|tv|titulo": {
+    "filas": 6770,
+    "requests": 1114563515,
+    "pct_filas": 0.48,
+    "pct_requests": 0.19
+   },
+   "externa|deportes|pelicula|imdb": {
+    "filas": 5297,
+    "requests": 726657209,
+    "pct_filas": 0.38,
+    "pct_requests": 0.12
+   },
+   "externa|musica|-|-": {
+    "filas": 4614,
+    "requests": 596142418,
+    "pct_filas": 0.33,
+    "pct_requests": 0.1
+   },
+   "externa|musica|pelicula|imdb": {
+    "filas": 4027,
+    "requests": 422459743,
+    "pct_filas": 0.29,
+    "pct_requests": 0.07
+   },
+   "interna|deportes|tv|contentSeries": {
+    "filas": 4013,
+    "requests": 1829230480,
+    "pct_filas": 0.29,
+    "pct_requests": 0.31
+   },
+   "interna|viajes|-|-": {
+    "filas": 3949,
+    "requests": 328544960,
+    "pct_filas": 0.28,
+    "pct_requests": 0.06
+   },
+   "interna|entretenimiento|tv|declarado": {
+    "filas": 3908,
+    "requests": 11622930461,
+    "pct_filas": 0.28,
+    "pct_requests": 1.99
+   },
+   "externa|deportes|tv|imdb": {
+    "filas": 2736,
+    "requests": 917882361,
+    "pct_filas": 0.2,
+    "pct_requests": 0.16
+   },
+   "externa|entretenimiento|pelicula|declarado": {
+    "filas": 2217,
+    "requests": 480403840,
+    "pct_filas": 0.16,
+    "pct_requests": 0.08
+   },
+   "interna|entretenimiento|pelicula|genero": {
+    "filas": 2205,
+    "requests": 159588320,
+    "pct_filas": 0.16,
+    "pct_requests": 0.03
+   },
+   "interna|videojuegos|-|-": {
+    "filas": 2120,
+    "requests": 593348693,
+    "pct_filas": 0.15,
+    "pct_requests": 0.1
+   },
+   "interna|gastronomia|-|-": {
+    "filas": 1753,
+    "requests": 390364553,
+    "pct_filas": 0.13,
+    "pct_requests": 0.07
+   },
+   "externa|noticias|tv|imdb": {
+    "filas": 1497,
+    "requests": 232547089,
+    "pct_filas": 0.11,
+    "pct_requests": 0.04
+   },
+   "interna|educacion|-|-": {
+    "filas": 1242,
+    "requests": 172546079,
+    "pct_filas": 0.09,
+    "pct_requests": 0.03
+   },
+   "ninguna|entretenimiento|tv|genero": {
+    "filas": 1139,
+    "requests": 83935680,
+    "pct_filas": 0.08,
+    "pct_requests": 0.01
+   },
+   "interna|religion|-|-": {
+    "filas": 1056,
+    "requests": 104268388,
+    "pct_filas": 0.08,
+    "pct_requests": 0.02
+   },
+   "externa|entretenimiento|pelicula|genero": {
+    "filas": 869,
+    "requests": 164528420,
+    "pct_filas": 0.06,
+    "pct_requests": 0.03
+   },
+   "externa|musica|tv|imdb": {
+    "filas": 849,
+    "requests": 100011961,
+    "pct_filas": 0.06,
+    "pct_requests": 0.02
+   },
+   "externa|entretenimiento|tv|contentSeries": {
+    "filas": 670,
+    "requests": 268233922,
+    "pct_filas": 0.05,
+    "pct_requests": 0.05
+   },
+   "interna|gastronomia|tv|contentSeries": {
+    "filas": 670,
+    "requests": 46066160,
+    "pct_filas": 0.05,
+    "pct_requests": 0.01
+   },
+   "interna|noticias|tv|genero": {
+    "filas": 633,
+    "requests": 73301440,
+    "pct_filas": 0.05,
+    "pct_requests": 0.01
+   },
+   "externa|deportes|-|-": {
+    "filas": 585,
+    "requests": 61146133,
+    "pct_filas": 0.04,
+    "pct_requests": 0.01
+   },
+   "interna|viajes|tv|contentSeries": {
+    "filas": 497,
+    "requests": 44299040,
+    "pct_filas": 0.04,
+    "pct_requests": 0.01
+   },
+   "interna|videojuegos|tv|contentSeries": {
+    "filas": 415,
+    "requests": 77914080,
+    "pct_filas": 0.03,
+    "pct_requests": 0.01
+   },
+   "interna|deportes|tv|genero": {
+    "filas": 297,
+    "requests": 18147280,
+    "pct_filas": 0.02,
+    "pct_requests": 0.0
+   },
+   "externa|viajes|-|-": {
+    "filas": 296,
+    "requests": 17724800,
+    "pct_filas": 0.02,
+    "pct_requests": 0.0
+   }
+  }
+ }
+}

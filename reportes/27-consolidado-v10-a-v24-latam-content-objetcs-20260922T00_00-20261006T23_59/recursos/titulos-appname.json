@@ -1,0 +1,489 @@
+{
+ "fuente": "inventory-consolidado-v10-a-v24-relleno.csv",
+ "titulos_reales": 19182,
+ "requests_con_titulo": 350525559598,
+ "por_app_name": [
+  {
+   "n": "1",
+   "titulos": 9763,
+   "pct_titulos": 50.9,
+   "pct_requests": 7.2
+  },
+  {
+   "n": "2",
+   "titulos": 4927,
+   "pct_titulos": 25.7,
+   "pct_requests": 8.7
+  },
+  {
+   "n": "3",
+   "titulos": 1703,
+   "pct_titulos": 8.9,
+   "pct_requests": 11.2
+  },
+  {
+   "n": "4",
+   "titulos": 719,
+   "pct_titulos": 3.7,
+   "pct_requests": 2.0
+  },
+  {
+   "n": "5+",
+   "titulos": 2070,
+   "pct_titulos": 10.8,
+   "pct_requests": 70.8
+  }
+ ],
+ "top_titulos_multi_app": [
+  {
+   "titulo": "eve",
+   "app_names": 9,
+   "requests": 2780449036,
+   "requests_vendidos": 1407920466,
+   "ecpm_ponderado": 3.113,
+   "apps": [
+    {
+     "app": "Live TV",
+     "requests": 1323531235,
+     "pct_requests_vendidos": 64.9,
+     "ecpm_ponderado": 2.809
+    },
+    {
+     "app": "MovieArk: Stream Movies & Live",
+     "requests": 1203369294,
+     "pct_requests_vendidos": 28.7,
+     "ecpm_ponderado": 3.677
+    },
+    {
+     "app": "TCL CHANNEL",
+     "requests": 94992756,
+     "pct_requests_vendidos": 2.8,
+     "ecpm_ponderado": 3.768
+    },
+    {
+     "app": "Browser TV Web - BrowseHere",
+     "requests": 83531141,
+     "pct_requests_vendidos": 1.4,
+     "ecpm_ponderado": 5.631
+    },
+    {
+     "app": "ViX",
+     "requests": 25445520,
+     "pct_requests_vendidos": 1.4,
+     "ecpm_ponderado": 2.068
+    },
+    {
+     "app": "Not Available",
+     "requests": 25511520,
+     "pct_requests_vendidos": 0.4,
+     "ecpm_ponderado": 3.369
+    },
+    {
+     "app": "Vidaa",
+     "requests": 4767520,
+     "pct_requests_vendidos": 0.3,
+     "ecpm_ponderado": 1.535
+    },
+    {
+     "app": "FreeTube- Search & Watch Free",
+     "requests": 6641490,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 2.527
+    }
+   ]
+  },
+  {
+   "titulo": "lo que la vida me robo",
+   "app_names": 3,
+   "requests": 2777928908,
+   "requests_vendidos": 2689025040,
+   "ecpm_ponderado": 2.05,
+   "apps": [
+    {
+     "app": "ViX",
+     "requests": 2091103228,
+     "pct_requests_vendidos": 75.5,
+     "ecpm_ponderado": 2.204
+    },
+    {
+     "app": "Vidaa",
+     "requests": 432284080,
+     "pct_requests_vendidos": 15.2,
+     "ecpm_ponderado": 1.685
+    },
+    {
+     "app": "Not Available",
+     "requests": 254541600,
+     "pct_requests_vendidos": 9.2,
+     "ecpm_ponderado": 1.388
+    }
+   ]
+  },
+  {
+   "titulo": "brooklyn love stories",
+   "app_names": 8,
+   "requests": 2722997189,
+   "requests_vendidos": 1356187820,
+   "ecpm_ponderado": 3.138,
+   "apps": [
+    {
+     "app": "Live TV",
+     "requests": 1313019217,
+     "pct_requests_vendidos": 67.3,
+     "ecpm_ponderado": 2.77
+    },
+    {
+     "app": "MovieArk: Stream Movies & Live",
+     "requests": 1184935510,
+     "pct_requests_vendidos": 27.7,
+     "ecpm_ponderado": 3.608
+    },
+    {
+     "app": "TCL CHANNEL",
+     "requests": 99593343,
+     "pct_requests_vendidos": 2.3,
+     "ecpm_ponderado": 4.302
+    },
+    {
+     "app": "Browser TV Web - BrowseHere",
+     "requests": 81929521,
+     "pct_requests_vendidos": 2.1,
+     "ecpm_ponderado": 7.448
+    },
+    {
+     "app": "Not Available",
+     "requests": 24128640,
+     "pct_requests_vendidos": 0.4,
+     "ecpm_ponderado": 3.854
+    },
+    {
+     "app": "FreeTube- Search & Watch Free",
+     "requests": 7600878,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 2.56
+    }
+   ]
+  },
+  {
+   "titulo": "hatchback",
+   "app_names": 7,
+   "requests": 2691351044,
+   "requests_vendidos": 1403191762,
+   "ecpm_ponderado": 3.564,
+   "apps": [
+    {
+     "app": "Live TV",
+     "requests": 1297486297,
+     "pct_requests_vendidos": 63.8,
+     "ecpm_ponderado": 2.707
+    },
+    {
+     "app": "MovieArk: Stream Movies & Live",
+     "requests": 1161503946,
+     "pct_requests_vendidos": 31.1,
+     "ecpm_ponderado": 5.149
+    },
+    {
+     "app": "TCL CHANNEL",
+     "requests": 104700252,
+     "pct_requests_vendidos": 2.8,
+     "ecpm_ponderado": 3.61
+    },
+    {
+     "app": "Browser TV Web - BrowseHere",
+     "requests": 83855625,
+     "pct_requests_vendidos": 1.7,
+     "ecpm_ponderado": 6.619
+    },
+    {
+     "app": "Not Available",
+     "requests": 23995200,
+     "pct_requests_vendidos": 0.4,
+     "ecpm_ponderado": 4.136
+    },
+    {
+     "app": "FreeTube- Search & Watch Free",
+     "requests": 7103644,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 2.708
+    }
+   ]
+  },
+  {
+   "titulo": "corona",
+   "app_names": 7,
+   "requests": 2681264608,
+   "requests_vendidos": 1373939054,
+   "ecpm_ponderado": 3.344,
+   "apps": [
+    {
+     "app": "Live TV",
+     "requests": 1292712807,
+     "pct_requests_vendidos": 66.7,
+     "ecpm_ponderado": 2.864
+    },
+    {
+     "app": "MovieArk: Stream Movies & Live",
+     "requests": 1157696226,
+     "pct_requests_vendidos": 27.6,
+     "ecpm_ponderado": 4.257
+    },
+    {
+     "app": "TCL CHANNEL",
+     "requests": 101745033,
+     "pct_requests_vendidos": 3.3,
+     "ecpm_ponderado": 3.686
+    },
+    {
+     "app": "Browser TV Web - BrowseHere",
+     "requests": 84941776,
+     "pct_requests_vendidos": 1.8,
+     "ecpm_ponderado": 6.447
+    },
+    {
+     "app": "Not Available",
+     "requests": 24204800,
+     "pct_requests_vendidos": 0.3,
+     "ecpm_ponderado": 3.907
+    },
+    {
+     "app": "FreeTube- Search & Watch Free",
+     "requests": 7251326,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 2.483
+    }
+   ]
+  },
+  {
+   "titulo": "penance lane",
+   "app_names": 8,
+   "requests": 2668543832,
+   "requests_vendidos": 1326072381,
+   "ecpm_ponderado": 3.204,
+   "apps": [
+    {
+     "app": "Live TV",
+     "requests": 1291250267,
+     "pct_requests_vendidos": 67.2,
+     "ecpm_ponderado": 2.9
+    },
+    {
+     "app": "MovieArk: Stream Movies & Live",
+     "requests": 1158782762,
+     "pct_requests_vendidos": 28.0,
+     "ecpm_ponderado": 3.75
+    },
+    {
+     "app": "TCL CHANNEL",
+     "requests": 94178742,
+     "pct_requests_vendidos": 2.6,
+     "ecpm_ponderado": 3.948
+    },
+    {
+     "app": "Browser TV Web - BrowseHere",
+     "requests": 78742277,
+     "pct_requests_vendidos": 1.7,
+     "ecpm_ponderado": 5.033
+    },
+    {
+     "app": "Not Available",
+     "requests": 26402480,
+     "pct_requests_vendidos": 0.4,
+     "ecpm_ponderado": 3.769
+    },
+    {
+     "app": "FreeTube- Search & Watch Free",
+     "requests": 6275144,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 2.411
+    },
+    {
+     "app": "Ottera",
+     "requests": 348960,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 3.166
+    }
+   ]
+  },
+  {
+   "titulo": "american apocalypse",
+   "app_names": 8,
+   "requests": 2662543505,
+   "requests_vendidos": 1353804651,
+   "ecpm_ponderado": 3.167,
+   "apps": [
+    {
+     "app": "Live TV",
+     "requests": 1291179482,
+     "pct_requests_vendidos": 66.3,
+     "ecpm_ponderado": 2.923
+    },
+    {
+     "app": "MovieArk: Stream Movies & Live",
+     "requests": 1160966488,
+     "pct_requests_vendidos": 28.7,
+     "ecpm_ponderado": 3.503
+    },
+    {
+     "app": "TCL CHANNEL",
+     "requests": 91722165,
+     "pct_requests_vendidos": 2.7,
+     "ecpm_ponderado": 3.665
+    },
+    {
+     "app": "Browser TV Web - BrowseHere",
+     "requests": 76661220,
+     "pct_requests_vendidos": 1.6,
+     "ecpm_ponderado": 5.835
+    },
+    {
+     "app": "Not Available",
+     "requests": 24343440,
+     "pct_requests_vendidos": 0.5,
+     "ecpm_ponderado": 5.058
+    },
+    {
+     "app": "FreeTube- Search & Watch Free",
+     "requests": 6167830,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 2.543
+    }
+   ]
+  },
+  {
+   "titulo": "la mujer del anarquista",
+   "app_names": 7,
+   "requests": 2315188857,
+   "requests_vendidos": 1297217737,
+   "ecpm_ponderado": 5.116,
+   "apps": [
+    {
+     "app": "Live TV",
+     "requests": 776413377,
+     "pct_requests_vendidos": 40.7,
+     "ecpm_ponderado": 4.316
+    },
+    {
+     "app": "TCL CHANNEL",
+     "requests": 553521714,
+     "pct_requests_vendidos": 28.6,
+     "ecpm_ponderado": 4.668
+    },
+    {
+     "app": "MovieArk: Stream Movies & Live",
+     "requests": 690470464,
+     "pct_requests_vendidos": 17.2,
+     "ecpm_ponderado": 6.211
+    },
+    {
+     "app": "Browser TV Web - BrowseHere",
+     "requests": 277439510,
+     "pct_requests_vendidos": 13.3,
+     "ecpm_ponderado": 7.092
+    },
+    {
+     "app": "Not Available",
+     "requests": 14182000,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 6.383
+    },
+    {
+     "app": "FreeTube- Search & Watch Free",
+     "requests": 1997312,
+     "pct_requests_vendidos": 0.0,
+     "ecpm_ponderado": 6.024
+    }
+   ]
+  },
+  {
+   "titulo": "rollers",
+   "app_names": 7,
+   "requests": 2254249285,
+   "requests_vendidos": 1333552992,
+   "ecpm_ponderado": 4.325,
+   "apps": [
+    {
+     "app": "TCL CHANNEL",
+     "requests": 690676722,
+     "pct_requests_vendidos": 34.6,
+     "ecpm_ponderado": 4.377
+    },
+    {
+     "app": "Live TV",
+     "requests": 648112727,
+     "pct_requests_vendidos": 33.8,
+     "ecpm_ponderado": 2.857
+    },
+    {
+     "app": "Browser TV Web - BrowseHere",
+     "requests": 314633580,
+     "pct_requests_vendidos": 16.4,
+     "ecpm_ponderado": 7.647
+    },
+    {
+     "app": "MovieArk: Stream Movies & Live",
+     "requests": 579126626,
+     "pct_requests_vendidos": 14.8,
+     "ecpm_ponderado": 3.908
+    },
+    {
+     "app": "Not Available",
+     "requests": 12039200,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 2.861
+    },
+    {
+     "app": "FreeTube- Search & Watch Free",
+     "requests": 3482030,
+     "pct_requests_vendidos": 0.1,
+     "ecpm_ponderado": 2.424
+    }
+   ]
+  },
+  {
+   "titulo": "haus of horror",
+   "app_names": 7,
+   "requests": 1961102918,
+   "requests_vendidos": 1156918252,
+   "ecpm_ponderado": 4.019,
+   "apps": [
+    {
+     "app": "Live TV",
+     "requests": 611086847,
+     "pct_requests_vendidos": 36.3,
+     "ecpm_ponderado": 2.805
+    },
+    {
+     "app": "TCL CHANNEL",
+     "requests": 516937515,
+     "pct_requests_vendidos": 31.6,
+     "ecpm_ponderado": 3.633
+    },
+    {
+     "app": "Browser TV Web - BrowseHere",
+     "requests": 261298840,
+     "pct_requests_vendidos": 16.4,
+     "ecpm_ponderado": 7.269
+    },
+    {
+     "app": "MovieArk: Stream Movies & Live",
+     "requests": 550862848,
+     "pct_requests_vendidos": 15.5,
+     "ecpm_ponderado": 4.226
+    },
+    {
+     "app": "Not Available",
+     "requests": 11504000,
+     "pct_requests_vendidos": 0.2,
+     "ecpm_ponderado": 4.48
+    },
+    {
+     "app": "FreeTube- Search & Watch Free",
+     "requests": 3334148,
+     "pct_requests_vendidos": 0.1,
+     "ecpm_ponderado": 2.244
+    }
+   ]
+  }
+ ]
+}

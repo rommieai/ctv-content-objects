@@ -1,0 +1,102 @@
+{
+  "entrada": "inventory-consolidado-v10-a-v24-enriquecido.csv",
+  "filas": 1396663,
+  "titulos_distintos": 19182,
+  "titulos_nuevos_consultados": 331,
+  "titulos_con_imdb": 9048,
+  "fecha": "2026-10-08 14:40",
+  "columnas": {
+    "contentCategory": {
+      "pct_original": 22.1,
+      "pct_corregido": 1.85,
+      "filas_corregidas": {
+        "corregido_genero": 15622,
+        "corregido_imdb": 10283
+      },
+      "pct_final": 91.8,
+      "origen": {
+        "derivado_tipo": 40.0,
+        "derivado_genero": 29.7,
+        "original": 20.3,
+        "sin_dato": 8.2,
+        "corregido_genero": 1.1,
+        "corregido_imdb": 0.7
+      }
+    },
+    "contentSeries": {
+      "pct_original": 6.8,
+      "pct_corregido": 0.0,
+      "filas_corregidas": {},
+      "pct_final": 14.0,
+      "origen": {
+        "sin_dato": 86.0,
+        "imdb": 7.1,
+        "original": 6.8
+      }
+    },
+    "contentLength": {
+      "pct_original": 13.1,
+      "pct_corregido": 0.0,
+      "filas_corregidas": {},
+      "pct_final": 13.1,
+      "origen": {
+        "sin_dato": 86.9,
+        "original": 13.1
+      }
+    },
+    "contentLanguage": {
+      "pct_original": 67.5,
+      "pct_corregido": 0.0,
+      "filas_corregidas": {},
+      "pct_final": 67.5,
+      "origen": {
+        "original": 67.5,
+        "sin_dato": 32.5
+      }
+    },
+    "contentIsLiveStream": {
+      "pct_original": 29.8,
+      "pct_corregido": 0.0,
+      "filas_corregidas": {},
+      "pct_final": 48.9,
+      "origen": {
+        "sin_dato": 51.1,
+        "original": 29.8,
+        "app_semantica": 19.1
+      }
+    },
+    "contentRating": {
+      "pct_original": 75.5,
+      "pct_corregido": 0.0,
+      "filas_corregidas": {},
+      "pct_final": 75.6,
+      "origen": {
+        "original": 75.5,
+        "sin_dato": 24.4,
+        "wikidata": 0.1
+      }
+    },
+    "contentGenre": {
+      "pct_original": 90.6,
+      "pct_corregido": 1.03,
+      "filas_corregidas": {
+        "corregido_imdb": 14455
+      },
+      "pct_final": 93.3,
+      "origen": {
+        "original": 89.5,
+        "sin_dato": 6.7,
+        "imdb": 2.7,
+        "corregido_imdb": 1.0
+      }
+    }
+  },
+  "contentCategory_afinado": {
+    "nota": "filas con categoria generica rellenada ([IAB1], [IAB1-5], [IAB1-7]) y titulo, a las que se agregaron codigos de genero de IAB 2.2 (se conservan los genericos), por fuente del genero",
+    "pct_filas": {
+      "genero_declarado": 48.3,
+      "imdb": 3.8,
+      "wikidata": 0.0
+    }
+  }
+}

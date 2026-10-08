@@ -1,0 +1,297 @@
+{
+ "fuente": "reportes/27-consolidado-v10-a-v24-latam-content-objetcs-20260922T00_00-20261006T23_59/recursos/reporte-requests-ecpm-por-vacio-v24.json",
+ "grupos": {
+  "(todos)": {
+   "scatter_lleno_vs_vacio": {
+    "ols": {
+     "pendiente": -0.4829,
+     "intercepto": 5.501,
+     "r2": 0.0791,
+     "n": 9
+    },
+    "columnas_vacio_paga_mas": 2,
+    "columnas": 9
+   },
+   "scatter_fill_vs_ecpm": {
+    "llenas": {
+     "pendiente": -0.0063,
+     "intercepto": 4.3681,
+     "r2": 0.5583,
+     "n": 9
+    },
+    "vacias": {
+     "pendiente": -0.0017,
+     "intercepto": 3.6532,
+     "r2": 0.0143,
+     "n": 9
+    }
+   },
+   "gasto": {
+    "App Name": {
+     "pct_gasto_llenas": 94.0,
+     "gasto_llenas": 1252716745.42,
+     "gasto_vacias": 80485760.63
+    },
+    "contentGenre": {
+     "pct_gasto_llenas": 83.0,
+     "gasto_llenas": 1105832159.0,
+     "gasto_vacias": 227255590.66
+    },
+    "contentTitle": {
+     "pct_gasto_llenas": 61.3,
+     "gasto_llenas": 817373716.98,
+     "gasto_vacias": 515785101.46
+    },
+    "contentRating": {
+     "pct_gasto_llenas": 81.7,
+     "gasto_llenas": 1088447274.04,
+     "gasto_vacias": 244591647.27
+    },
+    "contentLanguage": {
+     "pct_gasto_llenas": 76.1,
+     "gasto_llenas": 1014415938.77,
+     "gasto_vacias": 318854129.34
+    },
+    "contentIsLiveStream": {
+     "pct_gasto_llenas": 43.3,
+     "gasto_llenas": 577777413.41,
+     "gasto_vacias": 755339016.9
+    },
+    "contentCategory": {
+     "pct_gasto_llenas": 34.6,
+     "gasto_llenas": 460967848.51,
+     "gasto_vacias": 872220452.77
+    },
+    "contentLength": {
+     "pct_gasto_llenas": 31.7,
+     "gasto_llenas": 422684852.58,
+     "gasto_vacias": 910270366.59
+    },
+    "contentSeries": {
+     "pct_gasto_llenas": 7.7,
+     "gasto_llenas": 102656372.42,
+     "gasto_vacias": 1230416881.07
+    }
+   }
+  },
+  "Mexico": {
+   "scatter_lleno_vs_vacio": {
+    "ols": {
+     "pendiente": -0.5686,
+     "intercepto": 5.0457,
+     "r2": 0.2329,
+     "n": 9
+    },
+    "columnas_vacio_paga_mas": 2,
+    "columnas": 9
+   },
+   "scatter_fill_vs_ecpm": {
+    "llenas": {
+     "pendiente": -0.01,
+     "intercepto": 4.1664,
+     "r2": 0.4005,
+     "n": 9
+    },
+    "vacias": {
+     "pendiente": 0.0001,
+     "intercepto": 2.9699,
+     "r2": 0.0001,
+     "n": 9
+    }
+   },
+   "gasto": {
+    "App Name": {
+     "pct_gasto_llenas": 93.0,
+     "gasto_llenas": 737622148.46,
+     "gasto_vacias": 55330417.93
+    },
+    "contentGenre": {
+     "pct_gasto_llenas": 85.1,
+     "gasto_llenas": 674907201.9,
+     "gasto_vacias": 117997424.39
+    },
+    "contentTitle": {
+     "pct_gasto_llenas": 47.4,
+     "gasto_llenas": 375681178.71,
+     "gasto_vacias": 417190473.13
+    },
+    "contentRating": {
+     "pct_gasto_llenas": 84.8,
+     "gasto_llenas": 672096788.76,
+     "gasto_vacias": 120737122.97
+    },
+    "contentLanguage": {
+     "pct_gasto_llenas": 80.9,
+     "gasto_llenas": 641795681.14,
+     "gasto_vacias": 151085294.97
+    },
+    "contentIsLiveStream": {
+     "pct_gasto_llenas": 46.8,
+     "gasto_llenas": 370736458.34,
+     "gasto_vacias": 422095556.84
+    },
+    "contentCategory": {
+     "pct_gasto_llenas": 44.9,
+     "gasto_llenas": 356258978.55,
+     "gasto_vacias": 436587969.76
+    },
+    "contentLength": {
+     "pct_gasto_llenas": 42.3,
+     "gasto_llenas": 335630032.79,
+     "gasto_vacias": 457284987.78
+    },
+    "contentSeries": {
+     "pct_gasto_llenas": 5.2,
+     "gasto_llenas": 41438442.93,
+     "gasto_vacias": 751438278.31
+    }
+   }
+  },
+  "Colombia": {
+   "scatter_lleno_vs_vacio": {
+    "ols": {
+     "pendiente": -0.8158,
+     "intercepto": 5.7937,
+     "r2": 0.6823,
+     "n": 9
+    },
+    "columnas_vacio_paga_mas": 5,
+    "columnas": 9
+   },
+   "scatter_fill_vs_ecpm": {
+    "llenas": {
+     "pendiente": -0.0086,
+     "intercepto": 3.7018,
+     "r2": 0.6522,
+     "n": 9
+    },
+    "vacias": {
+     "pendiente": 0.0088,
+     "intercepto": 2.6804,
+     "r2": 0.6961,
+     "n": 9
+    }
+   },
+   "gasto": {
+    "App Name": {
+     "pct_gasto_llenas": 91.9,
+     "gasto_llenas": 58522199.7,
+     "gasto_vacias": 5129998.83
+    },
+    "contentGenre": {
+     "pct_gasto_llenas": 85.8,
+     "gasto_llenas": 54622730.78,
+     "gasto_vacias": 9043498.59
+    },
+    "contentTitle": {
+     "pct_gasto_llenas": 89.5,
+     "gasto_llenas": 56968314.34,
+     "gasto_vacias": 6691951.15
+    },
+    "contentRating": {
+     "pct_gasto_llenas": 77.3,
+     "gasto_llenas": 49182051.9,
+     "gasto_vacias": 14480399.61
+    },
+    "contentLanguage": {
+     "pct_gasto_llenas": 57.6,
+     "gasto_llenas": 36650632.19,
+     "gasto_vacias": 27008967.14
+    },
+    "contentIsLiveStream": {
+     "pct_gasto_llenas": 39.6,
+     "gasto_llenas": 25192537.44,
+     "gasto_vacias": 38466097.1
+    },
+    "contentCategory": {
+     "pct_gasto_llenas": 30.2,
+     "gasto_llenas": 19251262.24,
+     "gasto_vacias": 44403197.08
+    },
+    "contentLength": {
+     "pct_gasto_llenas": 23.4,
+     "gasto_llenas": 14898968.61,
+     "gasto_vacias": 48758436.78
+    },
+    "contentSeries": {
+     "pct_gasto_llenas": 17.0,
+     "gasto_llenas": 10829833.58,
+     "gasto_vacias": 52839847.38
+    }
+   }
+  },
+  "Chile": {
+   "scatter_lleno_vs_vacio": {
+    "ols": {
+     "pendiente": -0.3659,
+     "intercepto": 8.0962,
+     "r2": 0.1598,
+     "n": 9
+    },
+    "columnas_vacio_paga_mas": 2,
+    "columnas": 9
+   },
+   "scatter_fill_vs_ecpm": {
+    "llenas": {
+     "pendiente": -0.0157,
+     "intercepto": 7.1248,
+     "r2": 0.8439,
+     "n": 9
+    },
+    "vacias": {
+     "pendiente": 0.0068,
+     "intercepto": 5.4334,
+     "r2": 0.1905,
+     "n": 9
+    }
+   },
+   "gasto": {
+    "App Name": {
+     "pct_gasto_llenas": 97.4,
+     "gasto_llenas": 88914425.08,
+     "gasto_vacias": 2417946.64
+    },
+    "contentGenre": {
+     "pct_gasto_llenas": 88.5,
+     "gasto_llenas": 80862634.0,
+     "gasto_vacias": 10456446.19
+    },
+    "contentTitle": {
+     "pct_gasto_llenas": 90.3,
+     "gasto_llenas": 82472323.69,
+     "gasto_vacias": 8842086.73
+    },
+    "contentRating": {
+     "pct_gasto_llenas": 87.8,
+     "gasto_llenas": 80184696.67,
+     "gasto_vacias": 11137253.97
+    },
+    "contentLanguage": {
+     "pct_gasto_llenas": 90.6,
+     "gasto_llenas": 82720824.11,
+     "gasto_vacias": 8587796.71
+    },
+    "contentIsLiveStream": {
+     "pct_gasto_llenas": 26.8,
+     "gasto_llenas": 24478561.07,
+     "gasto_vacias": 66853290.26
+    },
+    "contentCategory": {
+     "pct_gasto_llenas": 14.6,
+     "gasto_llenas": 13294366.37,
+     "gasto_vacias": 78027843.56
+    },
+    "contentLength": {
+     "pct_gasto_llenas": 15.0,
+     "gasto_llenas": 13675566.26,
+     "gasto_vacias": 77651738.85
+    },
+    "contentSeries": {
+     "pct_gasto_llenas": 11.1,
+     "gasto_llenas": 10125939.46,
+     "gasto_vacias": 81186636.08
+    }
+   }
+  }
+ }
+}

@@ -82,7 +82,7 @@ scripts/                          codigo que genera los consolidados y los JSON
                                   exportados por la pagina; acuerdo entre revisores
 
 reportes/
-  old_reports/                    tandas hasta v21 (v10 a v21), archivadas para no hacer ruido:
+  old_reports/                    tandas hasta v22 (v10 a v22), archivadas para no hacer ruido:
     01-v10/                         primera exploracion (v10): resumen y detallado 18 paises
     02-v11/                         detallado de v11 (18 paises)
     03-consolidado-v10-v11/         comparativo v10 vs v11, unificado y normalizacion
@@ -112,13 +112,14 @@ reportes/
     18-enriquecimiento-externo-v18/ relleno de content objects sobre v10-a-v18
     19-validacion-categorias-v18/   validacion de contentCategory sobre v10-a-v18
     20-validacion-genero-series-v18/  lo mismo para contentGenre y contentSeries
-    21-consolidado-v10-a-v19/       tanda v10 a v19, tres reportes md (misma estructura que 26)
-    22-consolidado-v10-a-v20/       tanda v10 a v20, tres reportes md (misma estructura que 26)
-    23-consolidado-v10-a-v21/       tanda v10 a v21, tres reportes md (misma estructura que 26)
+    21-consolidado-v10-a-v19/       tanda v10 a v19, tres reportes md (misma estructura que 27)
+    22-consolidado-v10-a-v20/       tanda v10 a v20, tres reportes md (misma estructura que 27)
+    23-consolidado-v10-a-v21/       tanda v10 a v21, tres reportes md (misma estructura que 27)
+    24-consolidado-v10-a-v22/       tanda v10 a v22, tres reportes md (misma estructura que 27)
   25-auditoria-relleno-v22/         ¿lo rellenado esta bien y es util? enmascaramiento, homonimos,
                                   bases para contrastar, pagina de revision manual (recursos/revision-manual-v22.html)
-  24-consolidado-v10-a-v22/         tanda v10 a v22, tres reportes md (misma estructura que 26)
-  26-consolidado-v10-a-v23/         la version vigente, tres reportes md: detallado por pais
+  26-consolidado-v10-a-v23/         tanda v10 a v23, tres reportes md (misma estructura que 27)
+  27-consolidado-v10-a-v24/         la version vigente, tres reportes md: detallado por pais
                                   (MX/CO/CL) con requests y eCPM ponderado lleno/vacio por
                                   columna; graficas del eCPM lleno/vacio y heatmap; y "que se
                                   puede completar de cada content object" (solo tablas);
@@ -228,7 +229,7 @@ El inventario tambien vive en **BigQuery** (proyecto `tudia-tagscreen`, dataset 
 location US) para consultarlo desde Looker Studio. Dos tablas (esquemas en `scripts/bigquery/`):
 
 - `consolidado_v10_a_v14` (nombre historico de la primera carga): contiene **solo el corte
-  vigente** (desde 2026-10-05, v23: 512,000 filas, 451,484,559,785 requests), con los 16 campos
+  vigente** (desde 2026-10-08, v24: 512,000 filas, 425,921,024,811 requests), con los 16 campos
   del CSV crudo tal cual (sin normalizar) mas dos columnas para Looker:
   `cal_total_cost` = total_requests * ecpm / 1000 (eCPM ponderado en Looker =
   SUM(cal_total_cost) / SUM(total_requests) * 1000) y `fecha_reporte` (DATE, dia en que se
@@ -271,10 +272,11 @@ quedan como NULL en BigQuery.
 | Reporte | Contenido |
 |---|---|
 | `reportes/25-auditoria-relleno-v22/reporte-auditoria-relleno-v22.md` | Auditoria del relleno sobre v10-a-v22: intra_titulo acierta 92-99% al enmascarar (categoria 50%); lo que depende del match IMDb por titulo es el 33% de los requests y el 62% de eso tiene señales de homonimo; bases para contrastar por ID (TMDB, Wikidata, TVMaze), candados anti-homonimos, pagina HTML de revision manual con 500 filas y campos OpenRTB 2.6 que se pueden llenar |
-| `reportes/26-.../reporte-content-objects-detallado-v23-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v23 (1,377,006 filas, 604,322,292,147 requests; v23 aporto 32,377 combinaciones nuevas; solo v23: 512,000 filas, 451,484,559,785 requests). Misma estructura que v19 |
-| `reportes/26-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** las mismas graficas que v19 sobre v10-a-v23 (publisher x pais explica el 62.0 % de la variacion del eCPM ponderado, en `recursos/reporte-drivers-ecpm-publisher-pais.md`) |
-| `reportes/26-.../reporte-completitud-content-objects-v23.md` | **Vigente:** que se puede completar de cada content object sobre v10-a-v23 (version completa en `recursos/reporte-completitud-content-objects-v23-completo.md`) |
-| `reportes/24-.../` | (v10-a-v22) los mismos tres md sobre el consolidado v10 a v22 (1,344,629 filas, 622,384,767,599 requests; v22 aporto 46,484 combinaciones nuevas; publisher x pais explica el 63.8 %) |
+| `reportes/27-.../reporte-content-objects-detallado-v24-consolidado.md` | **Vigente:** content objects por pais (MX/CO/CL) sobre el consolidado v10 a v24 (1,396,663 filas, 583,047,756,539 requests; v24 aporto 19,657 combinaciones nuevas; solo v24: 512,000 filas, 425,921,024,811 requests). Misma estructura que v19 |
+| `reportes/27-.../reporte-graficos-ecpm-vacio.md` | **Vigente:** las mismas graficas que v19 sobre v10-a-v24 (publisher x pais explica el 59.8 % de la variacion del eCPM ponderado, en `recursos/reporte-drivers-ecpm-publisher-pais.md`) |
+| `reportes/27-.../reporte-completitud-content-objects-v24.md` | **Vigente:** que se puede completar de cada content object sobre v10-a-v24 (version completa en `recursos/reporte-completitud-content-objects-v24-completo.md`) |
+| `reportes/26-.../` | (v10-a-v23) los mismos tres md sobre el consolidado v10 a v23 (1,377,006 filas, 604,322,292,147 requests; v23 aporto 32,377 combinaciones nuevas; publisher x pais explica el 62.0 %) |
+| `reportes/old_reports/24-.../` | (v10-a-v22) los mismos tres md sobre el consolidado v10 a v22 (1,344,629 filas, 622,384,767,599 requests; v22 aporto 46,484 combinaciones nuevas; publisher x pais explica el 63.8 %) |
 | `reportes/old_reports/23-.../` | (v10-a-v21) los mismos tres md sobre el consolidado v10 a v21 (1,298,145 filas, 593,279,479,040 requests; v21 aporto 25,267 combinaciones nuevas; publisher x pais explica el 66.3 %) |
 | `reportes/old_reports/22-.../` | (v10-a-v20) los mismos tres md sobre el consolidado v10 a v20 (1,272,878 filas, 561,740,400,400 requests; v20 aporto 114,369 combinaciones nuevas) |
 | `reportes/old_reports/21-.../reporte-content-objects-detallado-v19-consolidado.md` | (v10-a-v19) content objects por pais (MX/CO/CL) sobre el consolidado v10 a v19 (1,158,509 filas; v19 aporto 86,669 combinaciones nuevas). Tablas por pais con % de filas llenas, top 3 referencias, si se puede aumentar el % de filas llenas y el aumento estimado (ganancia del relleno) por columna |
