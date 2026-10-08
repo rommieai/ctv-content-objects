@@ -199,7 +199,7 @@
           {/each}
         </div>
       </div>
-      <h3 class="sub">Content objects del reporte</h3>
+      <h3 class="sub">Content Object</h3>
       <div class="dos">
         <label class="campo"><span class="etq">Género</span>
           <select bind:value={genero}>
@@ -319,19 +319,6 @@
             <dl><dt>Vendido</dt><dd>{pc(sim.recomendado.pct_vendido)}</dd><dt>eCPM histórico</dt><dd>{usd(sim.recomendado.ecpm)}</dd></dl>
           </div>
         </div>
-        <ul class="nota lista">
-          <li>La lista de títulos alcanza {fmt(sim.lista.requests)} requests; {fmt(sim.solo_lista.requests)} de ellos no los ven los filtros
-            (eCPM histórico {usd(sim.solo_lista.ecpm)}): eso es lo que la recomendación agrega.</li>
-          <li>Los filtros alcanzan {fmt(sim.solo_nativo.requests)} requests que la lista no cubre, casi siempre porque vienen sin título.
-            También cuentan en la recomendación.</li>
-          <li>En PubMatic dos reglas de contenido se unen con «y», así que la recomendación completa son <b>dos deals</b>: uno con la lista de
-            títulos (el que se crea abajo) y otro con los filtros de PubMatic.</li>
-          {#if sim.titulos.total > sim.titulos.en_csv}
-            <li>La lista tiene {fmt(sim.titulos.total)} títulos; al CSV solo le caben {fmt(sim.titulos.en_csv)} (tope de PubMatic), los de más requests.</li>
-          {/if}
-          <li>El eCPM es lo que se pagó en esa ventana, no el precio de tu deal: ese lo fijas en PubMatic.</li>
-        </ul>
-
         <h3>Por dónde se vende</h3>
         <div class="scroll">
           <table>
@@ -478,7 +465,6 @@
   .extra input[type=text], .extra select { width: 100%; }
   @media (max-width: 720px) { .extra { grid-template-columns: 1fr; } }
   .nota { color: var(--ink2); font-size: 13px; }
-  .lista { margin: 12px 0 0; padding-left: 18px; display: grid; gap: 4px; }
   .caja { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-top: 14px; display: grid; gap: 12px; }
   .caja.viejo > :not(h2):not(.aviso) { opacity: .45; }
   .campo { display: grid; gap: 4px; min-width: 0; }
