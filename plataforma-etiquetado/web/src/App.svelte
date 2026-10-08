@@ -16,12 +16,12 @@
     return h === "completo" || h === "resultados" || h === "deals" ? h : "muestra";
   }
   $effect(() => { history.replaceState(null, "", "#" + vista); });
-  $effect(() => { if (yo && yo.rol !== "admin") vista = "muestra"; });
+  $effect(() => { if (yo && yo.rol !== "admin") vista = yo.rol === "deals" ? "deals" : "muestra"; });
 
   async function iniciar() {
     try {
       yo = await api<Usuario>("/api/yo");
-      opciones = await api<Opciones>("/api/opciones");
+      if (yo.rol !== "deals") opciones = await api<Opciones>("/api/opciones");   // el perfil deals solo ve Deals
     } catch { yo = null; }
     cargando = false;
   }
@@ -36,19 +36,21 @@
   <p class="centro">Cargando…</p>
 {:else if !yo}
   <Login onentrar={iniciar} />
-{:else if opciones}
+{:else if opciones || yo.rol === "deals"}
   <nav>
     <div class="wrap fila">
       <strong class="marca">CTV by <b>TagScreen</b></strong>
       <div class="pestanas">
-        <button class:activa={vista === "muestra"} onclick={() => (vista = "muestra")}>Muestra ({opciones.tarjetas_muestra})</button>
+        {#if opciones}<button class:activa={vista === "muestra"} onclick={() => (vista = "muestra")}>Muestra ({opciones.tarjetas_muestra})</button>{/if}
         {#if yo.rol === "admin"}
           <button class:activa={vista === "completo"} onclick={() => (vista = "completo")}>Datos completos</button>
           <button class:activa={vista === "resultados"} onclick={() => (vista = "resultados")}>Resultados</button>
+        {/if}
+        {#if yo.rol !== "revisor"}
           <button class:activa={vista === "deals"} onclick={() => (vista = "deals")}>Deals</button>
         {/if}
       </div>
-      <span class="quien">{yo.nombre} · {yo.rol === "admin" ? "administración" : "revisión de la muestra"}
+      <span class="quien">{yo.nombre} · {yo.rol === "admin" ? "administración" : yo.rol === "deals" ? "deals" : "revisión de la muestra"}
         <button onclick={salir}>Salir</button></span>
     </div>
   </nav>
@@ -56,7 +58,7 @@
     <Resultados />
   {:else if vista === "deals"}
     <Deals />
-  {:else}
+  {:else if opciones}
     {#key vista}
       <Revision ambito={vista} {opciones} admin={yo.rol === "admin"} />
     {/key}

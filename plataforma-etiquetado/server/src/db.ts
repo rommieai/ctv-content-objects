@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS usuarios (
   usuario TEXT NOT NULL UNIQUE,
   nombre TEXT NOT NULL,
   rol TEXT NOT NULL CHECK (rol IN ('admin', 'revisor')),
+  solo_deals INTEGER NOT NULL DEFAULT 0,
   clave TEXT NOT NULL,
   creado TEXT NOT NULL DEFAULT (datetime('now'))
 );
@@ -44,5 +45,10 @@ export function abrir(ruta = RUTA_DB) {
   db.pragma("journal_mode = WAL");
   db.pragma("foreign_keys = ON");
   db.exec(ESQUEMA);
+  // Perfil que solo ve la pestaña Deals. Va en una columna aparte y no como un rol más porque cambiar el
+  // CHECK de rol obligaría a recrear usuarios, y de esa tabla cuelgan las etiquetas (ON DELETE CASCADE).
+  if (!(db.pragma("table_info(usuarios)") as { name: string }[]).some(c => c.name === "solo_deals")) {
+    db.exec("ALTER TABLE usuarios ADD COLUMN solo_deals INTEGER NOT NULL DEFAULT 0");
+  }
   return db;
 }

@@ -1,4 +1,4 @@
-export interface Usuario { id: number; usuario: string; nombre: string; rol: "admin" | "revisor" }
+export interface Usuario { id: number; usuario: string; nombre: string; rol: "admin" | "revisor" | "deals" }
 export interface Iab { codigo: string; es: string; en: string; tax: string }
 export interface Unidad { valor: string; agregado: boolean; estrato: string }
 export interface Campo {

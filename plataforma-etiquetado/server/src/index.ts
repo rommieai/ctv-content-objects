@@ -9,7 +9,7 @@ import { cargarIab } from "./significados.js";
 import { rutasDeals } from "./deals.js";
 import { CAMPOS, construirRegistro, FICHA, llaves, NOMBRE_CAMPO, ORIGINAL, PREVIO, type Campo, type Fila, type Registro } from "./registros.js";
 
-interface Usuario { id: number; usuario: string; nombre: string; rol: "admin" | "revisor" }
+interface Usuario { id: number; usuario: string; nombre: string; rol: "admin" | "revisor" | "deals" }
 type Env = { Variables: { u: Usuario } };
 
 const PUERTO = Number(process.env.PORT ?? 3000);
@@ -184,19 +184,28 @@ app.post("/api/login", async c => {
     httpOnly: true, sameSite: "Lax", path: "/", maxAge: DIAS_SESION * 86400,
     secure: c.req.header("x-forwarded-proto") === "https",
   });
-  return c.json({ usuario: u.usuario, nombre: u.nombre, rol: u.rol });
+  return c.json({ usuario: u.usuario, nombre: u.nombre, rol: u.solo_deals ? "deals" : u.rol });
 });
 
 app.use("/api/*", async (c, next) => {
   const token = getCookie(c, "sid");
-  const u = token && db.prepare(`SELECT u.id, u.usuario, u.nombre, u.rol FROM sesiones s JOIN usuarios u ON u.id = s.usuario_id
+  const u = token && db.prepare(`SELECT u.id, u.usuario, u.nombre, CASE WHEN u.solo_deals THEN 'deals' ELSE u.rol END AS rol FROM sesiones s JOIN usuarios u ON u.id = s.usuario_id
     WHERE s.token = ? AND s.expira > ?`).get(hashToken(token), Date.now()) as Usuario | undefined;
   if (!u) return c.json({ error: "Sesión no válida" }, 401);
   c.set("u", u);
   await next();
 });
+// El perfil "deals" solo ve el armador de deals: ni la muestra, ni los datos, ni los resultados
+const LIBRES_DEALS = new Set(["/api/yo", "/api/logout"]);
+app.use("/api/*", async (c, next) => {
+  if (c.get("u").rol === "deals" && !LIBRES_DEALS.has(c.req.path) && !c.req.path.startsWith("/api/admin/deals/")) {
+    return c.json({ error: "Este perfil solo tiene acceso a Deals" }, 403);
+  }
+  await next();
+});
 app.use("/api/admin/*", async (c, next) => {
-  if (c.get("u").rol !== "admin") return c.json({ error: "Solo administradores" }, 403);
+  const rol = c.get("u").rol;
+  if (rol !== "admin" && !(rol === "deals" && c.req.path.startsWith("/api/admin/deals/"))) return c.json({ error: "Solo administradores" }, 403);
   await next();
 });
 
@@ -305,7 +314,7 @@ app.put("/api/notas", async c => {
 
 // ---- Administración: avance, precisión y exportación compatible con calcular_precision_revision.py
 app.get("/api/admin/resumen", c => {
-  const usuarios = db.prepare("SELECT id, usuario, nombre, rol FROM usuarios ORDER BY id").all() as Usuario[];
+  const usuarios = db.prepare("SELECT id, usuario, nombre, rol FROM usuarios WHERE solo_deals = 0 ORDER BY id").all() as Usuario[];
   const todas = db.prepare("SELECT usuario_id, fila_id, campo, valor, veredicto, actualizado FROM etiquetas ORDER BY actualizado").all() as any[];
   const primero = new Map<string, string>(), porValor = new Map<string, string[]>();
   const salida = usuarios.map(u => {

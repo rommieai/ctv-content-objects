@@ -77,6 +77,8 @@ docker compose run --rm -u $(id -u):$(id -g) \
 docker compose run --rm -u $(id -u):$(id -g) etiquetas-ctv node dist/usuarios.js crear diego.gonzalez admin "Diego Gonzalez"
 docker compose run --rm -u $(id -u):$(id -g) etiquetas-ctv node dist/usuarios.js clave elizabeth.garcia   # cambiar clave
 docker compose run --rm -u $(id -u):$(id -g) etiquetas-ctv node dist/usuarios.js listar
+# perfil que solo ve la pestaña Deals (entra directo ahí; no ve la muestra, los datos ni los resultados)
+docker compose run --rm -u $(id -u):$(id -g) etiquetas-ctv node dist/usuarios.js crear alguien@empresa.com deals "Nombre Apellido"
 
 # 3) levantar
 docker compose up -d
