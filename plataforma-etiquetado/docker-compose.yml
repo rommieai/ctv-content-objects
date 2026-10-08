@@ -3,8 +3,12 @@ services:
     build: .
     container_name: etiquetas-ctv
     restart: always
+    # credenciales de PubMatic para la pestaña Deals (ver .env.example); sin el archivo, la creación queda apagada
+    env_file:
+      - path: .env
+        required: false
     volumes:
-      # SQLite: datos importados + usuarios + etiquetas (no se versiona)
+      # SQLite: datos importados + usuarios + etiquetas, y deals.db de la pestaña Deals (no se versionan)
       - ./data:/data
     networks:
       - app-network

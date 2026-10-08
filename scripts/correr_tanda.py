@@ -12,6 +12,7 @@ Encadena lo que antes se corria a mano (ver "Pipeline" en el README):
   reportes     los tres md (detallado, graficas, completitud)
   archivar     deja en reportes/ la tanda vigente y la anterior; el resto va a old_reports/
   readme       arbol de carpetas y tabla de reportes del README
+  deals        (--deals) genera deals.db para la pestaña Deals de la plataforma y la sube a la VM
   bigquery     (--bigquery) recarga ctv_inventory.consolidado_v10_a_v14 con el corte crudo
   commit       (--commit / --push) commit de reportes/ y README.md
 
@@ -312,6 +313,28 @@ def cargar_bigquery(crudo, fecha, st, trabajo):
     return filas, req
 
 
+# ---------------------------------------------------------------------------- deals.db
+def subir_deals(ruta):
+    """Copia deals.db a la VM de la plataforma. Destino y llave salen del .env de la raiz:
+    DEALS_DESTINO=usuario@host:/ruta/plataforma-etiquetado/data/deals.db y DEALS_LLAVE_SSH=ruta de la llave.
+    Se sube con otro nombre y se renombra, para que el servidor nunca lea un archivo a medias."""
+    cfg = {}
+    env = os.path.join(REPO, ".env")
+    if os.path.exists(env):
+        for linea in open(env, encoding="utf-8-sig"):
+            if "=" in linea and not linea.lstrip().startswith("#"):
+                k, v = linea.strip().split("=", 1)
+                cfg[k.strip()] = v.strip().strip('"')
+    destino, llave = cfg.get("DEALS_DESTINO", ""), os.path.expanduser(cfg.get("DEALS_LLAVE_SSH", ""))
+    if ":" not in destino or not llave:
+        raise Fallo("faltan DEALS_DESTINO y DEALS_LLAVE_SSH en .env")
+    host, remoto = destino.split(":", 1)
+    ssh = ["-i", llave, "-o", "BatchMode=yes", "-o", "ConnectTimeout=20"]
+    correr(["scp"] + ssh + [ruta, f"{host}:{remoto}.nuevo"])
+    correr(["ssh"] + ssh + [host, f"mv -f '{remoto}.nuevo' '{remoto}'"])
+    return destino
+
+
 # ---------------------------------------------------------------------------- main
 def main():
     global LOG
@@ -321,6 +344,7 @@ def main():
     ap.add_argument("--forzar", action="store_true", help="repetir los pasos aunque sus salidas esten al dia")
     ap.add_argument("--bigquery", action="store_true", help=f"recargar {BQ_TABLA} con el corte")
     ap.add_argument("--fecha-reporte", default="", help="fecha_reporte de BigQuery (default: fecha de descarga del CSV)")
+    ap.add_argument("--deals", action="store_true", help="generar deals.db para la pestaña Deals de la plataforma y subirla a la VM")
     ap.add_argument("--commit", action="store_true", help="commit de reportes/ y README.md")
     ap.add_argument("--push", action="store_true", help="commit y push")
     ap.add_argument("--imdb-max-dias", type=int, default=7, help="se pasa a enriquecer_externo.py")
@@ -430,6 +454,16 @@ def main():
             decir(f"PRUEBA terminada: {D}")
             return 0
 
+        if a.deals:
+            deals_db = os.path.join(REPO, "plataforma-etiquetado", "data", "deals.db")
+            paso("base de deals (deals.db)", [S("exportar_deals_db.py"), "--salida", deals_db, "--relleno", Lr, "--corte", crudo],
+                 [deals_db], [Lr, crudo], F)
+            try:
+                decir("[>] deals.db -> " + subir_deals(deals_db))
+            except Fallo as e:   # la web sigue con la base anterior; no es motivo para tumbar la tanda
+                avisos.append(f"deals.db no se subio: {e}")
+                decir(f"    AVISO: {avisos[-1]}")
+
         # archivar: en reportes/ quedan la vigente y la anterior
         tandas = sorted((int(RE_CARPETA.match(x).group(2)), x) for x in os.listdir(reales) if RE_CARPETA.match(x))
         archivadas = []
@@ -466,6 +500,8 @@ def main():
                 correr(["git", "commit", "-m", "; ".join(mensaje)])
                 decir("[>] commit: " + "; ".join(mensaje))
             if a.push:
+                # otra persona pudo haber subido cambios (la plataforma vive en el mismo repo)
+                correr(["git", "pull", "--rebase", "--autostash"])
                 correr(["git", "push"])
                 decir("[>] push")
         decir(f"TANDA v{V} LISTA: {os.path.relpath(D, REPO)}" + (f" · {len(avisos)} aviso(s)" if avisos else ""))

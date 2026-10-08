@@ -1,0 +1,54 @@
+{
+ "tipo": "categoria",
+ "valor": "IAB17",
+ "paises": [
+  "Mexico"
+ ],
+ "relleno": "inventory-consolidado-v10-a-v23-relleno.csv",
+ "corte": "60333-inventory-source-alcance-ctv-v23-latam-content-objetcs-20260920T00_00-20261004T23_59.csv",
+ "dominio": 0.6,
+ "confianza_imdb": "A",
+ "titulos": 563,
+ "titulos_recortados": 0,
+ "archivos": [
+  "Title_is-01.csv"
+ ],
+ "alcance": {
+  "universo": {
+   "filas": 141466,
+   "requests": 270430528076,
+   "vendidos": 206262775553,
+   "ecpm_ponderado": 3.3775468730761014
+  },
+  "nativo": {
+   "filas": 1335,
+   "requests": 3372510640,
+   "vendidos": 2602747600,
+   "ecpm_ponderado": 3.630777865062436
+  },
+  "lista": {
+   "filas": 2719,
+   "requests": 2592535792,
+   "vendidos": 1942515558,
+   "ecpm_ponderado": 2.2224878204177636
+  },
+  "union": {
+   "filas": 3142,
+   "requests": 5258408672,
+   "vendidos": 3892754838,
+   "ecpm_ponderado": 3.324190770222091
+  },
+  "solo_lista": {
+   "filas": 1807,
+   "requests": 1885898032,
+   "vendidos": 1290007238,
+   "ecpm_ponderado": 2.7056137562482525
+  },
+  "contradice_declarado": {
+   "filas": 227,
+   "requests": 70774960,
+   "vendidos": 5106400,
+   "ecpm_ponderado": 1.8699382899420334
+  }
+ }
+}

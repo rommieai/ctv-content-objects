@@ -1,0 +1,54 @@
+{
+ "tipo": "genero",
+ "valor": "drama",
+ "paises": [
+  "Mexico"
+ ],
+ "relleno": "inventory-consolidado-v10-a-v23-relleno.csv",
+ "corte": "60333-inventory-source-alcance-ctv-v23-latam-content-objetcs-20260920T00_00-20261004T23_59.csv",
+ "dominio": 0.6,
+ "confianza_imdb": "A",
+ "titulos": 2247,
+ "titulos_recortados": 0,
+ "archivos": [
+  "Title_is-01.csv"
+ ],
+ "alcance": {
+  "universo": {
+   "filas": 141466,
+   "requests": 270430528076,
+   "vendidos": 206262775553,
+   "ecpm_ponderado": 3.3775468730761014
+  },
+  "nativo": {
+   "filas": 26578,
+   "requests": 65688322296,
+   "vendidos": 49989325813,
+   "ecpm_ponderado": 2.982821628011229
+  },
+  "lista": {
+   "filas": 26201,
+   "requests": 44068609717,
+   "vendidos": 32230685341,
+   "ecpm_ponderado": 2.103343555160718
+  },
+  "union": {
+   "filas": 28638,
+   "requests": 66947270333,
+   "vendidos": 50555258230,
+   "ecpm_ponderado": 2.9815359558216983
+  },
+  "solo_lista": {
+   "filas": 2060,
+   "requests": 1258948037,
+   "vendidos": 565932417,
+   "ecpm_ponderado": 2.867971360402564
+  },
+  "contradice_declarado": {
+   "filas": 511,
+   "requests": 142675001,
+   "vendidos": 60354097,
+   "ecpm_ponderado": 2.0764780815870214
+  }
+ }
+}

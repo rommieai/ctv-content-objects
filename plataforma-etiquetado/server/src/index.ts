@@ -6,6 +6,7 @@ import { deleteCookie, getCookie, setCookie } from "hono/cookie";
 import { abrir, DIR_IAB } from "./db.js";
 import { hashToken, nuevoToken, verificarClave } from "./auth.js";
 import { cargarIab } from "./significados.js";
+import { rutasDeals } from "./deals.js";
 import { CAMPOS, construirRegistro, FICHA, llaves, NOMBRE_CAMPO, ORIGINAL, PREVIO, type Campo, type Fila, type Registro } from "./registros.js";
 
 interface Usuario { id: number; usuario: string; nombre: string; rol: "admin" | "revisor" }
@@ -377,6 +378,9 @@ app.get("/api/admin/exportar", c => {
   c.header("Content-Disposition", `attachment; filename="${version}-${u.usuario}-${new Date().toISOString().slice(0, 10)}.json"`);
   return c.json(salida);
 });
+
+// ---- Armador de deals (solo administradores)
+rutasDeals(app, db);
 
 app.all("/api/*", c => c.json({ error: "No encontrado" }, 404));
 
