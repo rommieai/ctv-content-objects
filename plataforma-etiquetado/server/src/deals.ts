@@ -392,22 +392,26 @@ export function rutasDeals(app: Hono<any>, db: Db) {
   const CPM_MIN = 1, CPM_MAX = 20;   // mitad y mitad: la puja no baja del piso de $0.50 y el fee fijo no pasa de $10
   const RE_CUENTA = /^[A-Za-z0-9][A-Za-z0-9._-]{1,39}$/;
 
-  /** Los campos que llena la persona: brief, DSP, cuenta, CPM, tipo de campaña y formato. */
-  function leerEntradaAi(b: any) {
+  const paisesAi = (d: Db) => (d.prepare("SELECT pais FROM base GROUP BY pais ORDER BY SUM(req) DESC").all() as { pais: string }[]).map(x => x.pais);
+
+  /** Los campos que llena la persona: brief, DSP, cuenta, CPM, mercado (país), tipo de campaña y formato. */
+  function leerEntradaAi(d: Db, b: any) {
     const brief = String(b?.brief ?? "").trim();
     if (brief.length < 20) return "Escribe el brief de la campaña (al menos un par de frases)";
     if (brief.length > 6000) return "El brief es demasiado largo (máximo 6,000 caracteres)";
     const dsp = String(b?.dsp ?? "").trim();
     if (!(DSPS as readonly string[]).includes(dsp)) return "Elige el DSP de la lista";
     const cuenta = String(b?.cuenta ?? "").trim();
-    if (!RE_CUENTA.test(cuenta)) return "Escribe el ID de la cuenta en el DSP (seat ID)";
+    if (!RE_CUENTA.test(cuenta)) return "Escribe el ID de la cuenta (seat ID)";
+    const pais = String(b?.pais ?? "").trim();
+    if (!paisesAi(d).includes(pais)) return "Elige el mercado de la lista";
     const cpm = Number(b?.cpm);
     if (!Number.isFinite(cpm)) return "Escribe el CPM en dólares";
     if (Math.abs(Math.round(cpm * 100) - cpm * 100) > 1e-6) return "El CPM admite máximo dos decimales";
     if (cpm < CPM_MIN || cpm > CPM_MAX) return `El CPM debe estar entre $${CPM_MIN} y $${CPM_MAX}`;
     if (!CAMPANAS.includes(String(b?.campana ?? ""))) return "Tipo de campaña no disponible";
     if (!FORMATOS.includes(String(b?.formato ?? ""))) return "Formato no disponible";
-    return { brief, dsp, cuenta, cpm: Math.round(cpm * 100) / 100 };
+    return { brief, dsp, cuenta, pais, cpm: Math.round(cpm * 100) / 100 };
   }
 
   /** CPM total -> mitad fee fijo y mitad Media CPM a precio fijo (como se configura a mano en PubMatic). */
@@ -416,14 +420,12 @@ export function rutasDeals(app: Hono<any>, db: Db) {
     return { inicio: "", fin: "", fee: "fijo", feeValor: fee, subasta: "fixed", mediaCpm: Math.round((cpm - fee) * 100) / 100 };
   }
 
-  /** Lo que el modelo puede elegir: lo que hay en el corte vigente, con su peso en requests. */
-  function catalogoAi(d: Db): Catalogo {
-    const total = (d.prepare("SELECT SUM(req) r FROM base").get() as { r: number }).r || 1;
-    const de = (tipo: string, n: number, formato?: RegExp) => (d.prepare("SELECT valor, SUM(req) r FROM valores WHERE tipo = ? GROUP BY valor ORDER BY r DESC").all(tipo) as { valor: string; r: number }[])
+  /** Lo que el modelo puede elegir: lo que hay en el corte vigente para ese mercado, con su peso en requests. */
+  function catalogoAi(d: Db, pais: string): Catalogo {
+    const total = (d.prepare("SELECT SUM(req) r FROM base WHERE pais = ?").get(pais) as { r: number }).r || 1;
+    const de = (tipo: string, n: number, formato?: RegExp) => (d.prepare("SELECT valor, SUM(req) r FROM valores WHERE tipo = ? AND pais = ? GROUP BY valor ORDER BY r DESC").all(tipo, pais) as { valor: string; r: number }[])
       .filter(x => !formato || formato.test(x.valor)).slice(0, n).map(x => ({ valor: x.valor, pct: 100 * x.r / total }));
     return {
-      paises: (d.prepare("SELECT pais valor, SUM(req) r FROM base GROUP BY pais ORDER BY r DESC").all() as { valor: string; r: number }[])
-        .map(x => ({ valor: x.valor, pct: 100 * x.r / total })),
       generos: de("genero", 40).filter(x => !["otros/desconocido"].includes(x.valor)),
       categorias: de("categoria", 30, /^IAB\d/).map(x => ({ ...x, nombre: significadoCategoria(`[${x.valor}]`)[0]?.es || undefined })),
       ratings: de("rating", 5), idiomas: de("idioma", 12),
@@ -468,7 +470,7 @@ export function rutasDeals(app: Hono<any>, db: Db) {
     const d = base();
     return c.json({
       dsps: DSPS, dsp_defecto: PUBMATIC.dsp, campanas: CAMPANAS, formatos: FORMATOS, cpm: { min: CPM_MIN, max: CPM_MAX },
-      meta: d ? metaDe(d) : null,
+      meta: d ? metaDe(d) : null, paises: d ? paisesAi(d) : [],
       configurado: { datos: !!d, ai: aiConfigurado(), pubmatic: pubmaticConfigurado(), ensayo: PUBMATIC.ensayo },
     });
   });
@@ -477,11 +479,11 @@ export function rutasDeals(app: Hono<any>, db: Db) {
     const d = base();
     if (!d) return c.json({ error: "Todavía no se ha cargado la base de deals (deals.db)" }, 503);
     if (!aiConfigurado()) return c.json({ error: "El servidor no tiene configurada la llave del modelo que lee el brief (ANTHROPIC_API_KEY o GROQ_API_KEY)" }, 503);
-    const e = leerEntradaAi(await c.req.json().catch(() => null));
+    const e = leerEntradaAi(d, await c.req.json().catch(() => null));
     if (typeof e === "string") return c.json({ error: e }, 400);
     let plan: PlanBrief;
     try {
-      plan = await interpretarBrief(e.brief, catalogoAi(d));
+      plan = await interpretarBrief(e.brief, catalogoAi(d, e.pais), e.pais);
     } catch (err) {
       if (err instanceof ErrorAi) return c.json({ error: err.message }, 502);
       console.error("ai deals:", err);
@@ -500,9 +502,9 @@ export function rutasDeals(app: Hono<any>, db: Db) {
     if (!d) return c.json({ error: "Todavía no se ha cargado la base de deals (deals.db)" }, 503);
     if (!pubmaticConfigurado()) return c.json({ error: "El servidor no tiene configuradas las credenciales de PubMatic" }, 503);
     const b = await c.req.json().catch(() => null);
-    const e = leerEntradaAi(b);
+    const e = leerEntradaAi(d, b);
     if (typeof e === "string") return c.json({ error: e }, 400);
-    const plan = leerPlan(b?.plan);
+    const plan = leerPlan({ ...b?.plan, paises: [e.pais] });   // el mercado lo decide la persona, no el plan
     if (typeof plan === "string") return c.json({ error: plan }, 400);
     const f = filtroDePlan(d, plan);   // vuelve a validar contra el catálogo lo que manda el navegador
     if (typeof f === "string") return c.json({ error: f }, 400);

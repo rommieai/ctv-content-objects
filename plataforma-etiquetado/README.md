@@ -90,11 +90,12 @@ descarga el CSV de títulos o se crea el deal en PubMatic.
 
 Segunda pestaña de deals (admin y perfil `deals`): el deal se arma a partir del brief de la campaña.
 
-- **Entradas:** brief (texto), DSP (lista de PubMatic, `server/src/dsps.ts`), ID de la cuenta en el DSP (seat ID),
-  CPM, tipo de campaña (solo Connected TV) y formato (solo Video).
+- **Entradas:** brief (texto), DSP (lista de PubMatic, `server/src/dsps.ts`), ID de la cuenta (seat ID), CPM,
+  mercado (un país de los que hay en el corte; lo elige la persona, no el modelo), tipo de campaña (solo
+  Connected TV) y formato (solo Video).
 - **Content objects:** `server/src/ai.ts` le pasa al modelo (salida estructurada) el brief y el
-  catálogo del corte vigente (países, géneros, categorías IAB, clasificaciones e idiomas con su peso en
-  requests). Devuelve un plan con valores de ese catálogo: países, 1 a 4 géneros, y categoría, clasificación o
+  catálogo del corte vigente en el mercado elegido (géneros, categorías IAB, clasificaciones e idiomas con su
+  peso en requests). Devuelve un plan con valores de ese catálogo: 1 a 4 géneros, y categoría, clasificación o
   idioma solo si el brief los pide, más una explicación y las palabras clave del nombre. El modelo es
   Claude (`claude-opus-5-5`, con `ANTHROPIC_API_KEY`) o `openai/gpt-oss-120b` servido por Groq (con
   `GROQ_API_KEY`, capa gratuita: 1,000 solicitudes al día y 8,000 tokens por minuto). Si están las dos

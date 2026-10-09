@@ -1,7 +1,7 @@
 // AI Deals: lee el brief de una campaña y elige los content objects con los que se arma el deal.
 //
-// El modelo recibe el brief y el catálogo de lo que hay en el corte vigente (países, géneros, categorías,
-// clasificaciones e idiomas, con su peso en requests) y devuelve un plan con valores de ese catálogo. La salida
+// El modelo recibe el brief y el catálogo de lo que hay en el corte vigente para el mercado (país) que eligió la
+// persona (géneros, categorías, clasificaciones e idiomas, con su peso en requests) y devuelve un plan con valores de ese catálogo. La salida
 // es estructurada: el esquema solo admite valores que existen, así que el plan siempre se puede simular y crear.
 //
 // Dos proveedores: Claude (ANTHROPIC_API_KEY) o un modelo abierto servido por Groq (GROQ_API_KEY, tiene capa
@@ -21,7 +21,7 @@ export const aiConfigurado = () => (PROVEEDOR === "groq" ? LLAVES_GROQ.length > 
 
 export interface ValorCatalogo { valor: string; nombre?: string; pct: number }
 export interface Catalogo {
-  paises: ValorCatalogo[]; generos: ValorCatalogo[]; categorias: ValorCatalogo[]; ratings: ValorCatalogo[]; idiomas: ValorCatalogo[];
+  generos: ValorCatalogo[]; categorias: ValorCatalogo[]; ratings: ValorCatalogo[]; idiomas: ValorCatalogo[];
 }
 export interface PlanBrief {
   paises: string[]; generos: string[]; categorias: string[]; ratings: string[]; idioma: string;
@@ -30,10 +30,10 @@ export interface PlanBrief {
 export class ErrorAi extends Error {}
 
 const SIN_IDIOMA = "(cualquiera)";
-const MAX = { paises: 12, generos: 4, categorias: 2, ratings: 3, palabras_clave: 4 };
+const MAX = { generos: 4, categorias: 2, ratings: 3, palabras_clave: 4 };
 
 const SISTEMA = `Eres planner de medios de una empresa que vende publicidad en televisión conectada (CTV) en Latinoamérica.
-Recibes el brief de una campaña y el catálogo del inventario disponible, y eliges con qué content objects se arma el deal.
+Recibes el brief de una campaña, el mercado (país) donde va a correr y el catálogo del inventario disponible en ese mercado, y eliges con qué content objects se arma el deal.
 
 Cómo se usa lo que elijas:
 - Dentro de un mismo content object, varios valores se suman (cualquiera de ellos entra).
@@ -44,8 +44,8 @@ Criterio:
 - Categoría IAB: úsala solo si el brief pide explícitamente un tipo de contenido (películas, series o televisión, deportes, noticias…). Si no, déjala vacía.
 - Clasificación (rating): úsala solo si el brief lo exige por público o por seguridad de marca (por ejemplo, contenido infantil o exclusión de contenido para adultos). Si no, déjala vacía.
 - Idioma: elígelo solo si el brief pide un idioma de forma explícita. Si no, "${SIN_IDIOMA}".
-- Países: los que mencione el brief. Si habla de una región, los países del catálogo que pertenezcan a ella. Si no menciona ninguno, todos los del catálogo.
-- palabras_clave: de 2 a ${MAX.palabras_clave} palabras cortas, en minúsculas y sin acentos, que identifiquen la campaña (marca o producto, tema, mercado). Sirven para nombrar el deal.
+- El mercado ya está decidido: no lo elijas ni lo cambies aunque el brief mencione otros países.
+- palabras_clave: de 2 a ${MAX.palabras_clave} palabras cortas, en minúsculas y sin acentos, que identifiquen la campaña (marca o producto, tema). Sirven para nombrar el deal.
 - razon: dos o tres frases en español, para quien arma el deal, explicando por qué esos content objects responden al brief. Sin tecnicismos.
 
 Usa únicamente valores del catálogo. El porcentaje junto a cada valor es su peso en los requests del inventario: sirve para no elegir algo sin volumen, no para elegir lo más grande.`;
@@ -86,9 +86,8 @@ async function pedirAGroq(usuario: string, esquema: unknown): Promise<unknown> {
 }
 
 /** Pide al modelo el plan de content objects para un brief. Lanza ErrorAi con un mensaje para mostrar en pantalla. */
-export async function interpretarBrief(brief: string, cat: Catalogo): Promise<PlanBrief> {
+export async function interpretarBrief(brief: string, cat: Catalogo, pais: string): Promise<PlanBrief> {
   const Plan = z.object({
-    paises: z.array(enumDe(cat.paises.map(x => x.valor))),
     generos: z.array(enumDe(cat.generos.map(x => x.valor))),
     categorias: z.array(enumDe(cat.categorias.map(x => x.valor))),
     ratings: z.array(enumDe(cat.ratings.map(x => x.valor))),
@@ -97,20 +96,19 @@ export async function interpretarBrief(brief: string, cat: Catalogo): Promise<Pl
     razon: z.string(),
   });
   const catalogo = [
-    lista("Países", cat.paises), lista("Géneros", cat.generos), lista("Categorías IAB", cat.categorias),
+    lista("Géneros", cat.generos), lista("Categorías IAB", cat.categorias),
     lista("Clasificaciones", cat.ratings), lista("Idiomas", cat.idiomas),
   ].join("\n\n");
 
-  const usuario = `<catalogo>\n${catalogo}\n</catalogo>\n\n<brief>\n${brief}\n</brief>`;
+  const usuario = `<mercado>${pais}</mercado>\n\n<catalogo>\n${catalogo}\n</catalogo>\n\n<brief>\n${brief}\n</brief>`;
   const p = PROVEEDOR === "groq"
     ? Plan.safeParse(await pedirAGroq(usuario, z.toJSONSchema(Plan))).data
     : await pedirAClaude(usuario, Plan);
   if (!p) throw new ErrorAi("El modelo no devolvió un plan que se pudiera leer. Intenta de nuevo");
 
   const unicos = <T>(xs: T[], n: number) => [...new Set(xs)].slice(0, n);
-  const paises = unicos(p.paises, MAX.paises);
   return {
-    paises: paises.length ? paises : cat.paises.slice(0, MAX.paises).map(x => x.valor),
+    paises: [pais],
     generos: unicos(p.generos, MAX.generos),
     categorias: unicos(p.categorias, MAX.categorias),
     ratings: unicos(p.ratings, MAX.ratings),

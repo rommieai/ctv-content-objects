@@ -8,7 +8,7 @@
   }
   interface OpcionesAi {
     dsps: string[]; dsp_defecto: string; campanas: string[]; formatos: string[]; cpm: { min: number; max: number };
-    meta: Record<string, string> | null;
+    meta: Record<string, string> | null; paises: string[];
     configurado: { datos: boolean; ai: boolean; pubmatic: boolean; ensayo: boolean };
   }
   interface VistaPlan {
@@ -28,6 +28,7 @@
   let brief = $state("");
   let dsp = $state("");
   let cuenta = $state("");
+  let pais = $state("");              // el mercado: lo elige la persona, no el modelo
   let cpm = $state<number | null>(null);
   let campana = $state("");
   let formato = $state("");
@@ -48,14 +49,15 @@
     en_cola: "En cola", corriendo: "Creando…", listo: "Creado, en pausa", error: "Falló", sin_pausar: "Creado pero SIN PAUSAR",
   };
 
-  const entrada = () => ({ brief: brief.trim(), dsp, cuenta: cuenta.trim(), cpm, campana, formato });
+  const entrada = () => ({ brief: brief.trim(), dsp, cuenta: cuenta.trim(), cpm, pais, campana, formato });
   const falta = $derived(
     brief.trim().length < 20 ? "Escribe el brief de la campaña."
     : !dsp ? "Elige el DSP."
     : !opciones?.dsps.includes(dsp) ? "Ese DSP no está en la lista de PubMatic: elígelo de las sugerencias."
-    : !cuenta.trim() ? "Escribe el ID de la cuenta en el DSP."
+    : !cuenta.trim() ? "Escribe el ID de la cuenta."
     : typeof cpm !== "number" ? "Escribe el CPM."
     : opciones && (cpm < opciones.cpm.min || cpm > opciones.cpm.max) ? `El CPM debe estar entre $${opciones.cpm.min} y $${opciones.cpm.max}.`
+    : !pais ? "Elige el mercado."
     : "");
   const viejo = $derived(!!vista && pedido !== JSON.stringify(entrada()));
   const activos = $derived(trabajos.some(t => t.estado === "en_cola" || t.estado === "corriendo"));
@@ -63,7 +65,7 @@
 
   api<OpcionesAi>("/api/admin/deals/ai/opciones").then(o => {
     opciones = o;
-    dsp = o.dsp_defecto; campana = o.campanas[0]; formato = o.formatos[0];
+    dsp = o.dsp_defecto; campana = o.campanas[0]; formato = o.formatos[0]; pais = o.paises[0] ?? "";
   }).catch(e => (error = e.message));
   const cargarTrabajos = () => api<{ trabajos: Trabajo[] }>("/api/admin/deals/trabajos")
     .then(r => (trabajos = r.trabajos.filter(t => t.tipo === "ai"))).catch(() => {});
@@ -107,18 +109,25 @@
         <textarea bind:value={brief} rows="6" maxlength="6000"
           placeholder="Marca, producto, público, mercados y tono. Con eso se eligen los content objects del deal."></textarea>
       </label>
-      <div class="dos">
+      <div class="dos grupo">
         <label class="campo"><span class="etq">DSP que recibe el deal</span>
           <input type="text" list="ai-dsps" bind:value={dsp} placeholder="Escribe para buscar" />
           <datalist id="ai-dsps">{#each opciones.dsps as x (x)}<option value={x}></option>{/each}</datalist>
         </label>
-        <label class="campo"><span class="etq">ID de la cuenta en el DSP</span>
+        <label class="campo"><span class="etq">ID de la cuenta</span>
           <input type="text" bind:value={cuenta} maxlength="40" placeholder="Seat ID, ej. 1455254" />
         </label>
+      </div>
+      <div class="dos grupo">
         <label class="campo"><span class="etq">CPM (USD)</span>
           <span class="monto"><span>$</span>
             <input type="number" bind:value={cpm} min={opciones.cpm.min} max={opciones.cpm.max} step="0.01" placeholder="4.00" /></span>
         </label>
+        <label class="campo"><span class="etq">Mercado</span>
+          <select bind:value={pais}>{#each opciones.paises as x (x)}<option value={x}>{x}</option>{/each}</select>
+        </label>
+      </div>
+      <div class="dos grupo">
         <label class="campo"><span class="etq">Tipo de campaña</span>
           <select bind:value={campana}>{#each opciones.campanas as x (x)}<option value={x}>{x}</option>{/each}</select>
         </label>
@@ -176,7 +185,7 @@
         <h3>Content objects que se aplican, según el brief</h3>
         <p class="razon">{vista.plan.razon}</p>
         <dl class="ficha">
-          <dt>Países</dt><dd>{vista.plan.paises.join(", ")}</dd>
+          <dt>Mercado</dt><dd>{vista.plan.paises.join(", ")}</dd>
           {#if vista.plan.generos.length}<dt>Género</dt><dd>{vista.plan.generos.map(mayus).join(", ")}</dd>{/if}
           {#if vista.categorias.length}<dt>Categoría IAB</dt><dd>{vista.categorias.map(c => c.valor + (c.nombre ? ` · ${c.nombre}` : "")).join(", ")}</dd>{/if}
           {#if vista.plan.ratings.length}<dt>Clasificación</dt><dd>{vista.plan.ratings.join(", ")}</dd>{/if}
@@ -186,7 +195,7 @@
         <h3>Inventario histórico con el que se armó</h3>
         <dl class="ficha">
           {#if opciones.meta?.ventana}<dt>Datos de</dt><dd>{opciones.meta.ventana}</dd>{/if}
-          <dt>Requests</dt><dd>{fmt(vista.lista.requests)} <small>({pc(vista.lista.pct_universo)} de esos países)</small></dd>
+          <dt>Requests</dt><dd>{fmt(vista.lista.requests)} <small>({pc(vista.lista.pct_universo)} de ese mercado)</small></dd>
           <dt>Títulos</dt><dd>{fmt(vista.titulos.en_csv)}</dd>
           <dt>Vendido</dt><dd>{pc(vista.lista.pct_vendido)}</dd>
           <dt>eCPM histórico</dt><dd>{usd(vista.lista.ecpm)}</dd>
@@ -259,6 +268,7 @@
   .campo { display: grid; gap: 4px; min-width: 0; }
   .etq { font-size: 13px; color: var(--ink2); }
   .dos { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+  .grupo { padding-top: 12px; border-top: 1px solid var(--line); }
   .campo input[type=text], .campo select { width: 100%; }
   textarea, input[type=number] {
     font: inherit; padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink);
