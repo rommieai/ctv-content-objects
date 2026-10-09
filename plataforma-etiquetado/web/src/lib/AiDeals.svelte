@@ -34,7 +34,6 @@
   let vista = $state<VistaPlan | null>(null);
   let pedido = $state("");            // los campos con los que se calculó `vista`
   let pensando = $state(false);
-  let confirmo = $state(false);
   let creando = $state(false);
   let errorCrear = $state("");
   let trabajos = $state<Trabajo[]>([]);
@@ -61,7 +60,6 @@
   const viejo = $derived(!!vista && pedido !== JSON.stringify(entrada()));
   const activos = $derived(trabajos.some(t => t.estado === "en_cola" || t.estado === "corriendo"));
   const hecho = $derived(trabajos.find(t => t.id === ultimo) ?? null);
-  const mitad = $derived(typeof cpm === "number" && cpm > 0 ? Math.round(cpm * 50) / 100 : null);
 
   api<OpcionesAi>("/api/admin/deals/ai/opciones").then(o => {
     opciones = o;
@@ -77,7 +75,7 @@
   });
 
   async function armar() {
-    pensando = true; error = ""; errorCrear = ""; confirmo = false; ultimo = null;
+    pensando = true; error = ""; errorCrear = ""; ultimo = null;
     const e = entrada();
     try {
       vista = await api<VistaPlan>("/api/admin/deals/ai/plan", { metodo: "POST", cuerpo: e });
@@ -89,7 +87,7 @@
     creando = true; errorCrear = "";
     try {
       const r = await api<{ id: number }>("/api/admin/deals/ai/crear", { metodo: "POST", cuerpo: { ...entrada(), plan: vista!.plan, confirmo: true } });
-      ultimo = r.id; confirmo = false;
+      ultimo = r.id;
       await cargarTrabajos();
     } catch (x) { errorCrear = (x as Error).message; }
     creando = false;
@@ -128,7 +126,6 @@
           <select bind:value={formato}>{#each opciones.formatos as x (x)}<option value={x}>{x}</option>{/each}</select>
         </label>
       </div>
-      {#if mitad !== null}<small class="nota">El CPM se reparte mitad y mitad: {usd(mitad)} de transaction fee y {usd((cpm ?? 0) - mitad)} de puja (Media CPM a precio fijo).</small>{/if}
       <div class="botones">
         <button class="primario" disabled={!!falta || pensando || !opciones.configurado.ai || !opciones.configurado.datos} onclick={armar}>
           {pensando ? "Leyendo el brief…" : "Armar el deal"}</button>
@@ -150,15 +147,14 @@
           <dd>{#if hecho?.pm_id}{#if hecho.enlace}<a href={hecho.enlace} target="_blank" rel="noopener">{hecho.pm_id}</a>{:else}{hecho.pm_id}{/if}
             {:else if hecho}<span class="estado {hecho.estado}">{ESTADO[hecho.estado]}</span> <small>{hecho.detalle}</small>
             {:else}<span class="nota">se asigna al crearlo en PubMatic</span>{/if}</dd>
-          <dt>CPM</dt><dd>{usd(vista.cpm)} <small>({usd(vista.fee)} fee + {usd(vista.media_cpm)} puja)</small></dd>
+          <dt>CPM</dt><dd>{usd(vista.cpm)}</dd>
         </dl>
 
         {#if !hecho || hecho.estado === "error"}
           <div class="crear">
-            <label class="confirmo"><input type="checkbox" bind:checked={confirmo} /> Entiendo que esto crea un deal real en la cuenta de PubMatic</label>
             <div class="botones">
-              <button class="primario" disabled={viejo || creando || !confirmo || !opciones.configurado.pubmatic || !vista.titulos.en_csv} onclick={crear}>
-                {creando ? "Enviando…" : "Crear en PubMatic (en pausa)"}</button>
+              <button class="primario" disabled={viejo || creando || !opciones.configurado.pubmatic || !vista.titulos.en_csv} onclick={crear}>
+                {creando ? "Enviando…" : "Crear Deal"}</button>
             </div>
             {#if !vista.titulos.en_csv}<small class="nota falta">Con esos content objects no hay títulos en el inventario: ajusta el brief.</small>{/if}
             {#if !opciones.configurado.pubmatic}<small class="nota">Este servidor no tiene las credenciales de PubMatic.</small>{/if}
@@ -279,7 +275,6 @@
   .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
   .razon { margin: 0; font-size: 14px; }
   .crear { display: grid; gap: 10px; }
-  .confirmo { display: flex; gap: 8px; align-items: center; font-size: 14px; }
   .scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; }
   table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
   th, td { padding: 7px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
