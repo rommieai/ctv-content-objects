@@ -241,24 +241,16 @@ const esFecha = (s: string) => RE_FECHA.test(s) && !Number.isNaN(Date.parse(s + 
 const SIN_CONDICIONES: Condiciones = { inicio: "", fin: "", fee: "no", feeValor: 0, subasta: "first", mediaCpm: null };
 
 /** Condiciones comerciales pedidas desde la web. Los límites finos (fee máximo, etc.) los valida PubMatic al llenar el asistente. */
-/** Transaction Date: inicio y fin en AAAA-MM-DD; "" = hoy y sin fecha de fin (Ongoing). */
-function leerFechas(x: any): { inicio: string; fin: string } | string {
-  const inicio = String(x?.inicio ?? "").trim(), fin = String(x?.fin ?? "").trim();
+function leerCondiciones(b: any): Condiciones | string {
+  const x = b?.condiciones;
+  if (x === undefined || x === null) return SIN_CONDICIONES;
+  const inicio = String(x.inicio ?? "").trim(), fin = String(x.fin ?? "").trim();
   // PubMatic trabaja en hora del Pacífico: se admite desde "ayer" de aquí para no rechazar por el cambio de día
   const ayer = new Date(Date.now() - 864e5).toISOString().slice(0, 10);
   if (inicio && !esFecha(inicio)) return "Fecha de inicio inválida";
   if (fin && !esFecha(fin)) return "Fecha de fin inválida";
   if (inicio && inicio < ayer) return "La fecha de inicio ya pasó";
   if (fin && fin < (inicio || ayer)) return "La fecha de fin debe ser posterior a la de inicio";
-  return { inicio, fin };
-}
-
-function leerCondiciones(b: any): Condiciones | string {
-  const x = b?.condiciones;
-  if (x === undefined || x === null) return SIN_CONDICIONES;
-  const fechas = leerFechas(x);
-  if (typeof fechas === "string") return fechas;
-  const { inicio, fin } = fechas;
   const fee = String(x.fee ?? "no");
   if (fee !== "no" && fee !== "fijo" && fee !== "porcentaje") return "Transaction fee inválido";
   const feeValor = fee === "no" ? 0 : Number(x.feeValor);
@@ -402,7 +394,7 @@ export function rutasDeals(app: Hono<any>, db: Db) {
 
   const paisesAi = (d: Db) => (d.prepare("SELECT pais FROM base GROUP BY pais ORDER BY SUM(req) DESC").all() as { pais: string }[]).map(x => x.pais);
 
-  /** Los campos que llena la persona: brief, DSP, cuenta, CPM, mercado (país), tipo de campaña, formato y fechas. */
+  /** Los campos que llena la persona: brief, DSP, cuenta, CPM, mercado (país), tipo de campaña y formato. */
   function leerEntradaAi(d: Db, b: any) {
     const brief = String(b?.brief ?? "").trim();
     if (brief.length < 20) return "Escribe el brief de la campaña (al menos un par de frases)";
@@ -419,15 +411,13 @@ export function rutasDeals(app: Hono<any>, db: Db) {
     if (cpm < CPM_MIN || cpm > CPM_MAX) return `El CPM debe estar entre $${CPM_MIN} y $${CPM_MAX}`;
     if (!CAMPANAS.includes(String(b?.campana ?? ""))) return "Tipo de campaña no disponible";
     if (!FORMATOS.includes(String(b?.formato ?? ""))) return "Formato no disponible";
-    const fechas = leerFechas(b);
-    if (typeof fechas === "string") return fechas;
-    return { brief, dsp, cuenta, pais, cpm: Math.round(cpm * 100) / 100, ...fechas };
+    return { brief, dsp, cuenta, pais, cpm: Math.round(cpm * 100) / 100 };
   }
 
   /** CPM total -> mitad fee fijo y mitad Media CPM a precio fijo (como se configura a mano en PubMatic). */
-  function condicionesDeCpm(cpm: number, inicio = "", fin = ""): Condiciones {
+  function condicionesDeCpm(cpm: number): Condiciones {
     const fee = Math.round(cpm * 50) / 100;
-    return { inicio, fin, fee: "fijo", feeValor: fee, subasta: "fixed", mediaCpm: Math.round((cpm - fee) * 100) / 100 };
+    return { inicio: "", fin: "", fee: "fijo", feeValor: fee, subasta: "fixed", mediaCpm: Math.round((cpm - fee) * 100) / 100 };
   }
 
   /** Lo que el modelo puede elegir: lo que hay en el corte vigente para ese mercado, con su peso en requests. */
@@ -521,7 +511,7 @@ export function rutasDeals(app: Hono<any>, db: Db) {
     if (b?.confirmo !== true) return c.json({ error: "Falta confirmar la creación" }, 400);
     const t = titulosDe(d, f);
     if (!t.dentro) return c.json({ error: "Con esos content objects no hay títulos en el inventario: no hay con qué armar el deal" }, 400);
-    const nombre = nombreAi(plan, e.dsp, e.cpm), cond = condicionesDeCpm(e.cpm, e.inicio, e.fin);
+    const nombre = nombreAi(plan, e.dsp, e.cpm), cond = condicionesDeCpm(e.cpm);
     if (db.prepare("SELECT 1 FROM deals_trabajos WHERE nombre = ? AND estado IN ('en_cola', 'corriendo', 'listo', 'sin_pausar')").get(nombre)) {
       return c.json({ error: "Ya se está creando un deal con ese nombre; espera un minuto e intenta de nuevo" }, 409);
     }

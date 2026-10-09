@@ -29,9 +29,6 @@
   let dsp = $state("");
   let cuenta = $state("");
   let pais = $state("");              // el mercado: lo elige la persona, no el modelo
-  let inicio = $state("");            // Transaction Date: "" = el deal arranca hoy
-  let fin = $state("");
-  let sinFin = $state(true);
   let cpm = $state<number | null>(null);
   let campana = $state("");
   let formato = $state("");
@@ -62,13 +59,6 @@
     : opciones && (cpm < opciones.cpm.min || cpm > opciones.cpm.max) ? `El CPM debe estar entre $${opciones.cpm.min} y $${opciones.cpm.max}.`
     : !pais ? "Elige el mercado."
     : "");
-  // las fechas no cambian el plan: se pueden ajustar sin volver a leer el brief y viajan al crear
-  const fechas = () => ({ inicio, fin: sinFin ? "" : fin });
-  const faltaFecha = $derived(
-    !sinFin && !fin ? "Elige la fecha de fin o marca «Sin fecha de fin»."
-    : !sinFin && fin && inicio && fin < inicio ? "La fecha de fin debe ser posterior a la de inicio."
-    : "");
-  const dia = (iso: string) => `${iso.slice(8, 10)}/${iso.slice(5, 7)}/${iso.slice(0, 4)}`;
   const viejo = $derived(!!vista && pedido !== JSON.stringify(entrada()));
   const activos = $derived(trabajos.some(t => t.estado === "en_cola" || t.estado === "corriendo"));
   const hecho = $derived(trabajos.find(t => t.id === ultimo) ?? null);
@@ -98,7 +88,7 @@
   async function crear() {
     creando = true; errorCrear = "";
     try {
-      const r = await api<{ id: number }>("/api/admin/deals/ai/crear", { metodo: "POST", cuerpo: { ...entrada(), ...fechas(), plan: vista!.plan, confirmo: true } });
+      const r = await api<{ id: number }>("/api/admin/deals/ai/crear", { metodo: "POST", cuerpo: { ...entrada(), plan: vista!.plan, confirmo: true } });
       ultimo = r.id;
       await cargarTrabajos();
     } catch (x) { errorCrear = (x as Error).message; }
@@ -145,12 +135,6 @@
           <select bind:value={formato}>{#each opciones.formatos as x (x)}<option value={x}>{x}</option>{/each}</select>
         </label>
       </div>
-      <div class="dos grupo">
-        <label class="campo"><span class="etq">Desde</span><input type="date" bind:value={inicio} /></label>
-        <label class="campo"><span class="etq">Hasta</span><input type="date" bind:value={fin} min={inicio || undefined} disabled={sinFin} /></label>
-        <label class="marca"><input type="checkbox" bind:checked={sinFin} /> Sin fecha de fin (Ongoing)</label>
-      </div>
-      <small class="nota">Sin «Desde», el deal arranca hoy. PubMatic usa hora del Pacífico.</small>
       <div class="botones">
         <button class="primario" disabled={!!falta || pensando || !opciones.configurado.ai || !opciones.configurado.datos} onclick={armar}>
           {pensando ? "Leyendo el brief…" : "Armar el deal"}</button>
@@ -173,16 +157,14 @@
             {:else if hecho}<span class="estado {hecho.estado}">{ESTADO[hecho.estado]}</span> <small>{hecho.detalle}</small>
             {:else}<span class="nota">se asigna al crearlo en PubMatic</span>{/if}</dd>
           <dt>CPM</dt><dd>{usd(vista.cpm)}</dd>
-          <dt>Fechas</dt><dd>{inicio ? dia(inicio) : "desde hoy"} → {!sinFin && fin ? dia(fin) : "sin fecha de fin"}</dd>
         </dl>
 
         {#if !hecho || hecho.estado === "error"}
           <div class="crear">
             <div class="botones">
-              <button class="primario" disabled={viejo || creando || !!faltaFecha || !opciones.configurado.pubmatic || !vista.titulos.en_csv} onclick={crear}>
+              <button class="primario" disabled={viejo || creando || !opciones.configurado.pubmatic || !vista.titulos.en_csv} onclick={crear}>
                 {creando ? "Enviando…" : "Crear Deal"}</button>
             </div>
-            {#if faltaFecha}<small class="nota falta">{faltaFecha}</small>{/if}
             {#if !vista.titulos.en_csv}<small class="nota falta">Con esos content objects no hay títulos en el inventario: ajusta el brief.</small>{/if}
             {#if !opciones.configurado.pubmatic}<small class="nota">Este servidor no tiene las credenciales de PubMatic.</small>{/if}
             {#if opciones.configurado.ensayo}<small class="nota">Servidor en modo ensayo: el bot recorre el asistente de PubMatic pero no crea el deal.</small>{/if}
@@ -287,8 +269,6 @@
   .etq { font-size: 13px; color: var(--ink2); }
   .dos { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
   .grupo { padding-top: 12px; border-top: 1px solid var(--line); }
-  .campo input[type=date] { width: 100%; font: inherit; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); }
-  .marca { display: flex; gap: 6px; align-items: center; font-size: 14px; align-self: end; padding-bottom: 8px; }
   .campo input[type=text], .campo select { width: 100%; }
   textarea, input[type=number] {
     font: inherit; padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink);
