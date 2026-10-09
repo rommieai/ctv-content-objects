@@ -39,6 +39,7 @@
   let errorCrear = $state("");
   let trabajos = $state<Trabajo[]>([]);
   let ultimo = $state<number | null>(null);   // el trabajo que se acaba de lanzar desde aquí
+  let detalle = $state<HTMLDialogElement | null>(null);   // ventana con los content objects y el inventario del deal
 
   const usd = (x: number | null | undefined) => (x === null || x === undefined ? "—" : `$${x.toFixed(2)}`);
   const pc = (x: number | null | undefined) => (x === null || x === undefined ? "—" : `${(100 * x).toFixed(1)}%`);
@@ -137,7 +138,11 @@
 
     {#if vista}
       <section class="caja" class:viejo>
-        <h2>2. El deal</h2>
+        <div class="cab">
+          <h2>2. El deal</h2>
+          <button type="button" class="info" aria-label="Ver los content objects y el inventario de este deal" title="Detalle del deal"
+            onclick={() => detalle?.showModal()}>i</button>
+        </div>
         {#if viejo}<div class="aviso suave">Cambiaste los datos de la campaña: vuelve a dar clic en «Armar el deal».</div>{/if}
         <dl class="ficha">
           <dt>Nombre del deal</dt><dd class="mono">{hecho?.nombre ?? vista.nombre}</dd>
@@ -147,19 +152,6 @@
             {:else}<span class="nota">se asigna al crearlo en PubMatic</span>{/if}</dd>
           <dt>CPM</dt><dd>{usd(vista.cpm)} <small>({usd(vista.fee)} fee + {usd(vista.media_cpm)} puja)</small></dd>
         </dl>
-
-        <h3>Content objects que se aplican, según el brief</h3>
-        <p class="razon">{vista.plan.razon}</p>
-        <dl class="ficha">
-          <dt>Países</dt><dd>{vista.plan.paises.join(", ")}</dd>
-          {#if vista.plan.generos.length}<dt>Género</dt><dd>{vista.plan.generos.map(mayus).join(", ")}</dd>{/if}
-          {#if vista.categorias.length}<dt>Categoría IAB</dt><dd>{vista.categorias.map(c => c.valor + (c.nombre ? ` · ${c.nombre}` : "")).join(", ")}</dd>{/if}
-          {#if vista.plan.ratings.length}<dt>Clasificación</dt><dd>{vista.plan.ratings.join(", ")}</dd>{/if}
-          {#if vista.plan.idioma}<dt>Idioma</dt><dd>{vista.plan.idioma}</dd>{/if}
-          <dt>Inventario</dt><dd>{fmt(vista.lista.requests)} requests en {fmt(vista.titulos.en_csv)} títulos ({pc(vista.lista.pct_universo)} de esos países), eCPM histórico {usd(vista.lista.ecpm)}</dd>
-        </dl>
-        <p class="nota">En PubMatic esos content objects viajan como la lista de los {fmt(vista.titulos.en_csv)} títulos que nuestra base clasifica así{vista.plan.idioma ? `, más la regla Language is ${vista.plan.idioma}` : ""}.
-          Con los filtros de PubMatic solos se alcanzarían {fmt(vista.nativo.requests)} requests.</p>
 
         {#if !hecho || hecho.estado === "error"}
           <div class="crear">
@@ -175,6 +167,47 @@
           </div>
         {/if}
       </section>
+    {/if}
+
+    {#if vista}
+      <!-- el detalle va aparte: se abre con el botón «i» del deal; un clic fuera de la ventana la cierra -->
+      <dialog bind:this={detalle} class="detalle" onclick={e => { if (e.target === detalle) detalle?.close(); }}>
+        <div class="cab">
+          <h2>Detalle del deal</h2>
+          <button type="button" onclick={() => detalle?.close()}>Cerrar</button>
+        </div>
+
+        <h3>Content objects que se aplican, según el brief</h3>
+        <p class="razon">{vista.plan.razon}</p>
+        <dl class="ficha">
+          <dt>Países</dt><dd>{vista.plan.paises.join(", ")}</dd>
+          {#if vista.plan.generos.length}<dt>Género</dt><dd>{vista.plan.generos.map(mayus).join(", ")}</dd>{/if}
+          {#if vista.categorias.length}<dt>Categoría IAB</dt><dd>{vista.categorias.map(c => c.valor + (c.nombre ? ` · ${c.nombre}` : "")).join(", ")}</dd>{/if}
+          {#if vista.plan.ratings.length}<dt>Clasificación</dt><dd>{vista.plan.ratings.join(", ")}</dd>{/if}
+          {#if vista.plan.idioma}<dt>Idioma</dt><dd>{vista.plan.idioma}</dd>{/if}
+        </dl>
+
+        <h3>Inventario histórico con el que se armó</h3>
+        <dl class="ficha">
+          {#if opciones.meta?.ventana}<dt>Datos de</dt><dd>{opciones.meta.ventana}</dd>{/if}
+          <dt>Requests</dt><dd>{fmt(vista.lista.requests)} <small>({pc(vista.lista.pct_universo)} de esos países)</small></dd>
+          <dt>Títulos</dt><dd>{fmt(vista.titulos.en_csv)}</dd>
+          <dt>Vendido</dt><dd>{pc(vista.lista.pct_vendido)}</dd>
+          <dt>eCPM histórico</dt><dd>{usd(vista.lista.ecpm)}</dd>
+        </dl>
+        <p class="nota">En PubMatic esos content objects viajan como la lista de los {fmt(vista.titulos.en_csv)} títulos que nuestra base clasifica así{vista.plan.idioma ? `, más la regla Language is ${vista.plan.idioma}` : ""}.
+          Con los filtros de PubMatic solos se alcanzarían {fmt(vista.nativo.requests)} requests.</p>
+        {#if vista.titulos.top.length}
+          <div class="scroll">
+            <table>
+              <thead><tr><th>Títulos con más requests</th><th>Requests</th></tr></thead>
+              <tbody>
+                {#each vista.titulos.top.slice(0, 10) as t (t.titulo)}<tr><td>{t.titulo}</td><td>{fmt(t.requests)}</td></tr>{/each}
+              </tbody>
+            </table>
+          </div>
+        {/if}
+      </dialog>
     {/if}
 
     {#if trabajos.length}
@@ -213,7 +246,20 @@
   .nota { color: var(--ink2); font-size: 13px; margin: 0; }
   .falta { color: var(--bad); }
   .caja { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-top: 14px; display: grid; gap: 12px; }
-  .caja.viejo > :not(h2):not(.aviso) { opacity: .45; }
+  .caja.viejo > :not(.cab):not(.aviso) { opacity: .45; }
+  .cab { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .cab h2 { margin: 0; }
+  .info {
+    flex: 0 0 auto; width: 28px; height: 28px; padding: 0; border-radius: 50%; border-color: var(--accent); color: var(--lila);
+    font: italic 700 15px/1 Georgia, "Times New Roman", serif;
+  }
+  .detalle {
+    width: min(640px, calc(100vw - 32px)); max-height: calc(100vh - 48px); overflow-y: auto; padding: 18px; color: var(--ink);
+    background: var(--card); border: 1px solid var(--accent); border-radius: 14px;
+    box-shadow: 0 0 20px 5px rgba(163, 87, 250, .25), 0 10px 30px rgba(0, 0, 0, .5);
+  }
+  .detalle[open] { display: grid; gap: 12px; }
+  .detalle::backdrop { background: rgba(8, 0, 23, .72); }
   .campo { display: grid; gap: 4px; min-width: 0; }
   .etq { font-size: 13px; color: var(--ink2); }
   .dos { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
