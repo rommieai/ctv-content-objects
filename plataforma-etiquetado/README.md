@@ -92,7 +92,8 @@ Segunda pestaña de deals (admin y perfil `deals`): el deal se arma a partir del
 
 - **Entradas:** brief (texto), DSP (lista de PubMatic, `server/src/dsps.ts`), ID de la cuenta (seat ID), CPM,
   mercado (un país de los que hay en el corte; lo elige la persona, no el modelo), tipo de campaña (solo
-  Connected TV) y formato (solo Video).
+  Connected TV), formato (solo Video) y fechas (Transaction Date: desde / hasta o sin fecha de fin, igual que
+  en la pestaña Deals; el bot las pone en PubMatic y comprueba que el resumen las muestre antes de crear).
 - **Content objects:** `server/src/ai.ts` le pasa al modelo (salida estructurada) el brief y el
   catálogo del corte vigente en el mercado elegido (géneros, categorías IAB, clasificaciones e idiomas con su
   peso en requests). Devuelve un plan con valores de ese catálogo: 1 a 4 géneros, y categoría, clasificación o
