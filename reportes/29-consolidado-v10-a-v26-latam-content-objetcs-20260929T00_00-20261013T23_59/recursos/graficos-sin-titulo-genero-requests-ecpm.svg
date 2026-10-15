@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="600" viewBox="0 0 1040 600" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12">
+<rect width="1040" height="600" fill="#ffffff"/>
+<text x="16" y="24" font-size="17" font-weight="700" fill="#1f2933">Registros sin contentTitle: requests totales y eCPM ponderado por género</text>
+<text x="16" y="44" font-size="12" fill="#5f6b76">Top 20 géneros (normalizados, tal como llegan, antes del relleno) por requests totales. Barras: requests totales (vendidos o no),</text>
+<text x="16" y="60" font-size="12" fill="#5f6b76">en miles de millones (eje izquierdo). Línea: eCPM ponderado del género (eje derecho). Línea punteada: $4.30, el ponderado de todas las filas sin título.</text>
+<rect x="16" y="72" width="12" height="12" rx="2" fill="#2a78d6"/><text x="32" y="82" font-size="11" fill="#1f2933">requests totales (eje izquierdo)</text>
+<line x1="210" y1="78" x2="232" y2="78" stroke="#1f2933" stroke-width="2"/><circle cx="221" cy="78" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/><text x="238" y="82" font-size="11" fill="#1f2933">eCPM ponderado (eje derecho)</text>
+<line x1="60" y1="470.0" x2="980" y2="470.0" stroke="#e3e7ea"/>
+<text x="54" y="474.0" text-anchor="end" font-size="10.5" fill="#5f6b76">0</text>
+<line x1="60" y1="410.9" x2="980" y2="410.9" stroke="#e3e7ea"/>
+<text x="54" y="414.9" text-anchor="end" font-size="10.5" fill="#5f6b76">10</text>
+<line x1="60" y1="351.9" x2="980" y2="351.9" stroke="#e3e7ea"/>
+<text x="54" y="355.9" text-anchor="end" font-size="10.5" fill="#5f6b76">20</text>
+<line x1="60" y1="292.8" x2="980" y2="292.8" stroke="#e3e7ea"/>
+<text x="54" y="296.8" text-anchor="end" font-size="10.5" fill="#5f6b76">30</text>
+<line x1="60" y1="233.8" x2="980" y2="233.8" stroke="#e3e7ea"/>
+<text x="54" y="237.8" text-anchor="end" font-size="10.5" fill="#5f6b76">40</text>
+<line x1="60" y1="174.7" x2="980" y2="174.7" stroke="#e3e7ea"/>
+<text x="54" y="178.7" text-anchor="end" font-size="10.5" fill="#5f6b76">50</text>
+<line x1="60" y1="115.7" x2="980" y2="115.7" stroke="#e3e7ea"/>
+<text x="54" y="119.7" text-anchor="end" font-size="10.5" fill="#5f6b76">60</text>
+<line x1="980" y1="470.0" x2="984" y2="470.0" stroke="#5f6b76"/>
+<text x="987" y="474.0" font-size="10.5" fill="#5f6b76">$0</text>
+<line x1="980" y1="414.4" x2="984" y2="414.4" stroke="#5f6b76"/>
+<text x="987" y="418.4" font-size="10.5" fill="#5f6b76">$1</text>
+<line x1="980" y1="358.8" x2="984" y2="358.8" stroke="#5f6b76"/>
+<text x="987" y="362.8" font-size="10.5" fill="#5f6b76">$2</text>
+<line x1="980" y1="303.2" x2="984" y2="303.2" stroke="#5f6b76"/>
+<text x="987" y="307.2" font-size="10.5" fill="#5f6b76">$3</text>
+<line x1="980" y1="247.5" x2="984" y2="247.5" stroke="#5f6b76"/>
+<text x="987" y="251.5" font-size="10.5" fill="#5f6b76">$4</text>
+<line x1="980" y1="191.9" x2="984" y2="191.9" stroke="#5f6b76"/>
+<text x="987" y="195.9" font-size="10.5" fill="#5f6b76">$5</text>
+<line x1="980" y1="136.3" x2="984" y2="136.3" stroke="#5f6b76"/>
+<text x="987" y="140.3" font-size="10.5" fill="#5f6b76">$6</text>
+<line x1="980" y1="110" x2="980" y2="470" stroke="#5f6b76"/>
+<text transform="translate(18,290.0) rotate(-90)" text-anchor="middle" fill="#1f2933">requests totales (miles de millones)</text>
+<text transform="translate(1026,290.0) rotate(90)" text-anchor="middle" fill="#1f2933">eCPM ponderado ($)</text>
+<line x1="60" y1="230.8" x2="980" y2="230.8" stroke="#5f6b76" stroke-dasharray="5 4"/>
+<rect x="68.7" y="157.0" width="28.5" height="313.0" rx="2" fill="#2a78d6"/>
+<text transform="translate(80.0,482) rotate(40)" font-size="10.5" fill="#1f2933">(sin género)</text>
+<rect x="114.7" y="318.8" width="28.5" height="151.2" rx="2" fill="#2a78d6"/>
+<text transform="translate(126.0,482) rotate(40)" font-size="10.5" fill="#1f2933">drama</text>
+<rect x="160.7" y="366.3" width="28.5" height="103.7" rx="2" fill="#2a78d6"/>
+<text transform="translate(172.0,482) rotate(40)" font-size="10.5" fill="#1f2933">deportes</text>
+<rect x="206.7" y="386.0" width="28.5" height="84.0" rx="2" fill="#2a78d6"/>
+<text transform="translate(218.0,482) rotate(40)" font-size="10.5" fill="#1f2933">entretenimiento</text>
+<rect x="252.7" y="418.7" width="28.5" height="51.3" rx="2" fill="#2a78d6"/>
+<text transform="translate(264.0,482) rotate(40)" font-size="10.5" fill="#1f2933">comedia</text>
+<rect x="298.7" y="419.4" width="28.5" height="50.6" rx="2" fill="#2a78d6"/>
+<text transform="translate(310.0,482) rotate(40)" font-size="10.5" fill="#1f2933">noticias</text>
+<rect x="344.7" y="433.5" width="28.5" height="36.5" rx="2" fill="#2a78d6"/>
+<text transform="translate(356.0,482) rotate(40)" font-size="10.5" fill="#1f2933">accion</text>
+<rect x="390.7" y="446.2" width="28.5" height="23.8" rx="2" fill="#2a78d6"/>
+<text transform="translate(402.0,482) rotate(40)" font-size="10.5" fill="#1f2933">romance</text>
+<rect x="436.7" y="454.4" width="28.5" height="15.6" rx="2" fill="#2a78d6"/>
+<text transform="translate(448.0,482) rotate(40)" font-size="10.5" fill="#1f2933">terror</text>
+<rect x="482.7" y="456.7" width="28.5" height="13.3" rx="2" fill="#2a78d6"/>
+<text transform="translate(494.0,482) rotate(40)" font-size="10.5" fill="#1f2933">aventura</text>
+<rect x="528.7" y="459.4" width="28.5" height="10.6" rx="2" fill="#2a78d6"/>
+<text transform="translate(540.0,482) rotate(40)" font-size="10.5" fill="#1f2933">gastronomia</text>
+<rect x="574.7" y="459.8" width="28.5" height="10.2" rx="2" fill="#2a78d6"/>
+<text transform="translate(586.0,482) rotate(40)" font-size="10.5" fill="#1f2933">pelicula</text>
+<rect x="620.7" y="460.8" width="28.5" height="9.2" rx="2" fill="#2a78d6"/>
+<text transform="translate(632.0,482) rotate(40)" font-size="10.5" fill="#1f2933">documental</text>
+<rect x="666.7" y="461.2" width="28.5" height="8.8" rx="2" fill="#2a78d6"/>
+<text transform="translate(678.0,482) rotate(40)" font-size="10.5" fill="#1f2933">reality</text>
+<rect x="712.7" y="461.3" width="28.5" height="8.7" rx="2" fill="#2a78d6"/>
+<text transform="translate(724.0,482) rotate(40)" font-size="10.5" fill="#1f2933">crimen</text>
+<rect x="758.7" y="462.7" width="28.5" height="7.3" rx="2" fill="#2a78d6"/>
+<text transform="translate(770.0,482) rotate(40)" font-size="10.5" fill="#1f2933">animacion</text>
+<rect x="804.7" y="463.9" width="28.5" height="6.1" rx="2" fill="#2a78d6"/>
+<text transform="translate(816.0,482) rotate(40)" font-size="10.5" fill="#1f2933">thriller</text>
+<rect x="850.7" y="465.2" width="28.5" height="4.8" rx="2" fill="#2a78d6"/>
+<text transform="translate(862.0,482) rotate(40)" font-size="10.5" fill="#1f2933">concursos</text>
+<rect x="896.7" y="466.0" width="28.5" height="4.0" rx="2" fill="#2a78d6"/>
+<text transform="translate(908.0,482) rotate(40)" font-size="10.5" fill="#1f2933">western</text>
+<rect x="942.7" y="466.5" width="28.5" height="3.5" rx="2" fill="#2a78d6"/>
+<text transform="translate(954.0,482) rotate(40)" font-size="10.5" fill="#1f2933">musica</text>
+<text x="83.0" y="153.0" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">53.0</text>
+<text x="129.0" y="314.8" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">25.6</text>
+<text x="175.0" y="362.3" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">17.6</text>
+<text x="221.0" y="382.0" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">14.2</text>
+<text x="267.0" y="414.7" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">8.7</text>
+<text x="313.0" y="415.4" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">8.6</text>
+<text x="359.0" y="429.5" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">6.2</text>
+<text x="405.0" y="442.2" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">4.0</text>
+<text x="451.0" y="450.4" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">2.6</text>
+<text x="497.0" y="452.7" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">2.3</text>
+<text x="543.0" y="455.4" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">1.8</text>
+<text x="589.0" y="455.8" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">1.7</text>
+<text x="635.0" y="456.8" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">1.6</text>
+<text x="681.0" y="457.2" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">1.5</text>
+<text x="727.0" y="457.3" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">1.5</text>
+<text x="773.0" y="458.7" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">1.2</text>
+<text x="819.0" y="459.9" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">1.0</text>
+<text x="865.0" y="461.2" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">0.8</text>
+<text x="911.0" y="462.0" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">0.7</text>
+<text x="957.0" y="462.5" text-anchor="middle" font-size="9.5" fill="#5f6b76" stroke="#ffffff" stroke-width="3" paint-order="stroke">0.6</text>
+<polyline points="83.0,202.9 129.0,204.5 175.0,366.1 221.0,218.5 267.0,246.6 313.0,193.7 359.0,197.4 405.0,277.9 451.0,230.7 497.0,168.0 543.0,180.4 589.0,201.9 635.0,173.6 681.0,235.5 727.0,157.0 773.0,280.2 819.0,212.5 865.0,173.9 911.0,187.6 957.0,323.4" fill="none" stroke="#1f2933" stroke-width="2"/>
+<circle cx="83.0" cy="202.9" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="83.0" y="194.9" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">4.80</text>
+<circle cx="129.0" cy="204.5" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="129.0" y="196.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">4.77</text>
+<circle cx="175.0" cy="366.1" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="175.0" y="358.1" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">1.87</text>
+<circle cx="221.0" cy="218.5" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="221.0" y="210.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">4.52</text>
+<circle cx="267.0" cy="246.6" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="267.0" y="238.6" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">4.02</text>
+<circle cx="313.0" cy="193.7" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="313.0" y="185.7" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">4.97</text>
+<circle cx="359.0" cy="197.4" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="359.0" y="189.4" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">4.90</text>
+<circle cx="405.0" cy="277.9" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="405.0" y="269.9" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">3.46</text>
+<circle cx="451.0" cy="230.7" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="451.0" y="222.7" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">4.30</text>
+<circle cx="497.0" cy="168.0" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="497.0" y="160.0" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">5.43</text>
+<circle cx="543.0" cy="180.4" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="543.0" y="172.4" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">5.21</text>
+<circle cx="589.0" cy="201.9" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="589.0" y="193.9" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">4.82</text>
+<circle cx="635.0" cy="173.6" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="635.0" y="165.6" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">5.33</text>
+<circle cx="681.0" cy="235.5" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="681.0" y="227.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">4.22</text>
+<circle cx="727.0" cy="157.0" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="727.0" y="149.0" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">5.63</text>
+<circle cx="773.0" cy="280.2" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="773.0" y="272.2" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">3.41</text>
+<circle cx="819.0" cy="212.5" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="819.0" y="204.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">4.63</text>
+<circle cx="865.0" cy="173.9" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="865.0" y="165.9" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">5.33</text>
+<circle cx="911.0" cy="187.6" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="911.0" y="179.6" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">5.08</text>
+<circle cx="957.0" cy="323.4" r="3.5" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
+<text x="957.0" y="315.4" text-anchor="middle" font-size="10" font-weight="700" fill="#1f2933" stroke="#ffffff" stroke-width="3" paint-order="stroke">2.64</text>
+</svg>
